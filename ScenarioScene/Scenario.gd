@@ -1,19 +1,24 @@
 extends Node
 
 var tile_size
+var map_size
 
 var factions = Array()
 var architectures = Array()
+
+signal scenario_ready
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_setup()
 	
 	_load_game("user://Scenarios/000Test.json")
+	emit_signal("scenario_ready")
 	
 
 func _setup():
 	tile_size = $Map.cell_size[0]
+	map_size = $Map.get_used_rect().size
 
 func _load_game(path):
 	var file = File.new()
