@@ -4,6 +4,8 @@ var camera_speed = 10
 var mouse_scroll_margin = 50
 var zoom_speed = 0.05
 
+var scenario
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	limit_left = 0

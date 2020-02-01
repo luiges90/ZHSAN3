@@ -4,10 +4,12 @@ var _id
 var _map_position
 var belonged_faction
 
+var scenario
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.x = _map_position.x * get_parent().tile_size
-	position.y = _map_position.y * get_parent().tile_size
+	position.x = _map_position.x * scenario.tile_size
+	position.y = _map_position.y * scenario.tile_size
 
 func load_data(json):
 	_id = json["Id"]

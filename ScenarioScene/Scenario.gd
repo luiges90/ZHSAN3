@@ -15,10 +15,11 @@ func _ready():
 	_load_game("user://Scenarios/000Test.json")
 	emit_signal("scenario_ready")
 	
-
 func _setup():
 	tile_size = $Map.cell_size[0]
 	map_size = $Map.get_used_rect().size
+	
+	$Camera.scenario = self
 
 func _load_game(path):
 	var file = File.new()
@@ -30,6 +31,7 @@ func _load_game(path):
 	var architecture_scene = load("res://ScenarioScene/Architecture/Architecture.tscn")
 	for item in obj["Architectures"]:
 		var instance = architecture_scene.instance()
+		instance.scenario = self
 		instance.load_data(item)
 		architectures.append(instance)
 		add_child(instance)
@@ -37,6 +39,7 @@ func _load_game(path):
 	var faction_scene = load("res://ScenarioScene/Faction/Faction.tscn")
 	for item in obj["Factions"]:
 		var instance = faction_scene.instance()
+		instance.scenario = self
 		instance.load_data(item)
 		factions.append(instance)
 		add_child(faction_scene.instance())
