@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Architecture",
+"language": "GDScript",
+"path": "res://ScenarioScene/Architecture/Architecture.gd"
+}, {
+"base": "Node",
+"class": "Faction",
+"language": "GDScript",
+"path": "res://ScenarioScene/Faction/Faction.gd"
+}, {
+"base": "Node",
+"class": "Scenario",
+"language": "GDScript",
+"path": "res://ScenarioScene/Scenario.gd"
+} ]
 _global_script_class_icons={
-
+"Architecture": "",
+"Faction": "",
+"Scenario": ""
 }
 
 [application]

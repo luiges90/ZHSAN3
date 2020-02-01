@@ -1,4 +1,5 @@
 extends Node
+class_name Scenario
 
 var tile_size
 
@@ -31,9 +32,9 @@ func _load_game(path):
 	var obj = parse_json(json)
 	
 	for item in obj["Architectures"]:
-		var a = load("res://ScenarioScene/Architecture/Architecture.gd").load_data(item)
+		var a = Architecture.load_data(item)
 		architectures.append(a)
 		
 	for item in obj["Factions"]:
-		var f = load("res://ScenarioScene/Faction/Faction.gd").load_data(item)
+		var f = Faction.load_data(item)
 		factions.append(f)

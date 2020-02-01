@@ -1,4 +1,5 @@
 extends Node
+class_name Faction
 
 var _id
 var _architecture_list

@@ -1,4 +1,5 @@
 extends Node
+class_name Architecture
 
 var _id
 var _map_position

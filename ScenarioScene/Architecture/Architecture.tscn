@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Images/Architecture/1.png" type="Texture" id=1]
-[ext_resource path="res://ScenarioScene/Architecture/architecture.gd" type="Script" id=2]
+[ext_resource path="res://ScenarioScene/Architecture/Architecture.gd" type="Script" id=2]
 
 [node name="Architecture" type="Node2D"]
 scale = Vector2( 0.32, 0.32 )
