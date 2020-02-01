@@ -1,17 +1,10 @@
 extends Camera2D
 
-var camera_speed = 10
-var mouse_scroll_margin = 50
-var zoom_speed = 0.05
+export var camera_speed = 10
+export var mouse_scroll_margin = 50
+export var zoom_speed = 0.05
 
 var scenario
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	limit_left = 0
-	limit_top = 0
-	limit_right = 1000
-	limit_bottom = 1000
 
 func _process(delta):
 	var mouse_position = get_viewport().get_mouse_position()
@@ -39,8 +32,14 @@ func _process(delta):
 	if Input.is_action_pressed("ui_page_down"):
 		zoom.x += zoom_speed
 		zoom.y += zoom_speed
-	offset.x = clamp(offset.x, limit_left, limit_right)
-	offset.y = clamp(offset.y, limit_top, limit_bottom)
+		
 	zoom.x = clamp(zoom.x, 0.3, 2)
 	zoom.y = clamp(zoom.y, 0.3, 2)
+	limit_left = 0
+	limit_top = 0
+	limit_right = scenario.tile_size * scenario.map_size.x
+	limit_bottom = scenario.tile_size * scenario.map_size.y
+	offset.x = clamp(offset.x, limit_left, limit_right)
+	offset.y = clamp(offset.y, limit_top, limit_bottom)
+	
 
