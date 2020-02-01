@@ -1,10 +1,6 @@
 extends Node
-class_name Scenario
 
 var tile_size
-
-var _faction_scene
-var _architecture_scene
 
 var factions = Array()
 var architectures = Array()
@@ -15,11 +11,6 @@ func _ready():
 	
 	_load_game("user://Scenarios/000Test.json")
 	
-	_faction_scene = load("res://ScenarioScene/Faction/Faction.tscn")
-	_architecture_scene = load("res://ScenarioScene/Architecture/Architecture.tscn")
-	
-	add_child(_faction_scene.instance())
-	add_child(_architecture_scene.instance())
 
 func _setup():
 	tile_size = $Map.cell_size[0]
@@ -31,10 +22,16 @@ func _load_game(path):
 	var json = file.get_as_text()
 	var obj = parse_json(json)
 	
+	var architecture_scene = load("res://ScenarioScene/Architecture/Architecture.tscn")
 	for item in obj["Architectures"]:
-		var a = Architecture.load_data(item)
-		architectures.append(a)
+		var instance = architecture_scene.instance()
+		instance.load_data(item)
+		architectures.append(instance)
+		add_child(instance)
 		
+	var faction_scene = load("res://ScenarioScene/Faction/Faction.tscn")
 	for item in obj["Factions"]:
-		var f = Faction.load_data(item)
-		factions.append(f)
+		var instance = faction_scene.instance()
+		instance.load_data(item)
+		factions.append(instance)
+		add_child(faction_scene.instance())

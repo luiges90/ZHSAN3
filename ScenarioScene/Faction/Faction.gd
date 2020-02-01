@@ -1,5 +1,4 @@
 extends Node
-class_name Faction
 
 var _id
 var _architecture_list
@@ -8,10 +7,8 @@ var _architecture_list
 func _ready():
 	pass # Replace with function body.
 
-static func load_data(json):
-	var faction = load("res://ScenarioScene/Faction/Faction.gd").new()
-	faction._id = json["Id"]
-	return faction
+func load_data(json):
+	_id = json["Id"]
 	
 func add_architecture(arch):
 	arch.belonged_faction = self
