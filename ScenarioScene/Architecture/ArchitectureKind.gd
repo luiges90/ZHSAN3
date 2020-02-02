@@ -5,12 +5,12 @@ var _id: int
 var scenario
 
 var gname
-var image
+var texture
 
 func load_data(json: Dictionary):
 	_id = json["_Id"]
 	gname = json["Name"]
-	image = json["Image"]
+	texture = load("res://Images/Architecture/" + json["Image"])
 	
 func get_id() -> int:
 	return _id

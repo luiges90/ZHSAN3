@@ -31,24 +31,24 @@ func _load_data(path):
 	var json = file.get_as_text()
 	var obj = parse_json(json)
 	
-	var architecture_kind_script = load("res://ScenarioScene/Architecture/ArchitectureKind.gd")
+	var architecture_kind_script = preload("res://ScenarioScene/Architecture/ArchitectureKind.gd")
 	for item in obj["ArchitectureKinds"]:
 		var instance = architecture_kind_script.new()
 		__load_item(instance, item, architecture_kinds)
 	
-	var person_script = load("res://ScenarioScene/Person/Person.gd")
+	var person_script = preload("res://ScenarioScene/Person/Person.gd")
 	for item in obj["Persons"]:
 		var instance = person_script.new()
 		__load_item(instance, item, persons)
 	
-	var architecture_scene = load("res://ScenarioScene/Architecture/Architecture.tscn")
+	var architecture_scene = preload("res://ScenarioScene/Architecture/Architecture.tscn")
 	for item in obj["Architectures"]:
 		var instance = architecture_scene.instance()
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
 		
-	var faction_script = load("res://ScenarioScene/Faction/Faction.gd")
+	var faction_script = preload("res://ScenarioScene/Faction/Faction.gd")
 	for item in obj["Factions"]:
 		var instance = faction_script.new()
 		__load_item(instance, item, factions)
