@@ -12,7 +12,7 @@ signal scenario_ready
 func _ready():
 	_setup()
 	
-	_load_game("user://Scenarios/000Test.json")
+	_load_data("user://Scenarios/000Test.json")
 	emit_signal("scenario_ready")
 	
 func _setup():
@@ -21,7 +21,7 @@ func _setup():
 	
 	$Camera.scenario = self
 
-func _load_game(path):
+func _load_data(path):
 	var file = File.new()
 	file.open(path, File.READ)
 	
