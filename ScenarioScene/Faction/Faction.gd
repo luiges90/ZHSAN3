@@ -1,28 +1,30 @@
 extends Node
+class_name Faction
 
-var _id
+var _id: int
 var _architecture_list = Array()
 
 var scenario
 
-var dname
-var color
+var gname: String
+var color: Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func load_data(json):
+func load_data(json: Dictionary):
 	_id = json["_Id"]
-	dname = json["Name"]
+	gname = json["Name"]
 	color = Util.load_color(json["Color"])
-	for id in json["ArchitectureList"]:
-		add_architecture(scenario.architectures[id])
 	
-func get_id():
+func get_id() -> int:
 	return _id
 	
-func add_architecture(arch, force = false):
+func get_architectures() -> Array:
+	return _architecture_list
+	
+func add_architecture(arch, force: bool = false):
 	_architecture_list.append(arch)
 	if not force:
 		arch.set_belonged_faction(self, true)

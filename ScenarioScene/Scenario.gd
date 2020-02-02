@@ -1,7 +1,8 @@
 extends Node
+class_name Scenario
 
-var tile_size
-var map_size
+var tile_size: int
+var map_size: Vector2
 
 var factions = Dictionary()
 var architectures = Dictionary()
@@ -16,10 +17,9 @@ func _ready():
 	emit_signal("scenario_loaded")
 	
 func _setup():
-	tile_size = $Map.cell_size[0]
-	map_size = $Map.get_used_rect().size
-	
-	$Camera.scenario = self
+	tile_size = ($Map as TileMap).cell_size[0]
+	map_size = ($Map as TileMap).get_used_rect().size
+	($MainCamera as MainCamera).scenario = self
 
 func _load_data(path):
 	var file = File.new()
@@ -33,6 +33,7 @@ func _load_data(path):
 		var instance = architecture_scene.instance()
 		instance.scenario = self
 		instance.load_data(item)
+		
 		architectures[instance.get_id()] = instance
 		add_child(instance)
 		
@@ -41,5 +42,11 @@ func _load_data(path):
 		var instance = faction_scene.instance()
 		instance.scenario = self
 		instance.load_data(item)
+		
+		for id in item["ArchitectureList"]:
+			instance.add_architecture(architectures[int(id)])
+		
 		factions[instance.get_id()] = instance
 		add_child(faction_scene.instance())
+		
+	

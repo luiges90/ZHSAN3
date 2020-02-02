@@ -1,4 +1,5 @@
 extends Camera2D
+class_name MainCamera
 
 export var camera_speed = 10
 export var mouse_scroll_margin = 50

@@ -9,12 +9,36 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Architecture",
+"language": "GDScript",
+"path": "res://ScenarioScene/Architecture/Architecture.gd"
+}, {
+"base": "Node",
+"class": "Faction",
+"language": "GDScript",
+"path": "res://ScenarioScene/Faction/Faction.gd"
+}, {
+"base": "Camera2D",
+"class": "MainCamera",
+"language": "GDScript",
+"path": "res://ScenarioScene/MainCamera.gd"
+}, {
+"base": "Node",
+"class": "Scenario",
+"language": "GDScript",
+"path": "res://ScenarioScene/Scenario.gd"
+}, {
 "base": "Node",
 "class": "Util",
 "language": "GDScript",
 "path": "res://Util.gd"
 } ]
 _global_script_class_icons={
+"Architecture": "",
+"Faction": "",
+"MainCamera": "",
+"Scenario": "",
 "Util": ""
 }
 

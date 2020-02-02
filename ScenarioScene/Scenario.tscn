@@ -3,7 +3,7 @@
 [ext_resource path="res://Images/Map/Basic01.bmp" type="Texture" id=1]
 [ext_resource path="res://ScenarioScene/Scenario.gd" type="Script" id=2]
 [ext_resource path="res://Images/Map/Forest.bmp" type="Texture" id=3]
-[ext_resource path="res://ScenarioScene/Camera.gd" type="Script" id=4]
+[ext_resource path="res://ScenarioScene/MainCamera.gd" type="Script" id=4]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Basic01.bmp 0"
@@ -30,7 +30,7 @@
 [node name="Scenario" type="Node"]
 script = ExtResource( 2 )
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 4 )
 

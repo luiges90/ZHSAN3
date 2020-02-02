@@ -1,13 +1,14 @@
 extends Node2D
+class_name Architecture
 
-var _id
-var _map_position
+var _id: int
+var _map_position: Vector2
 var _belonged_faction
 
 var scenario
 
-var dname
-var title
+var gname: String
+var title: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,20 +16,17 @@ func _ready():
 	position.y = _map_position.y * scenario.tile_size
 	scenario.connect("scenario_loaded", self, "on_scenario_loaded")
 	
-func load_data(json):
+func load_data(json: Dictionary):
 	_id = json["_Id"]
-	dname = json["Name"]
+	gname = json["Name"]
 	title = json["Title"]
 	_map_position = Util.load_position(json["MapPosition"])
-	data_loaded()
-	
-func data_loaded():
-	$Sprite/Title/Label.text = title
 	
 func on_scenario_loaded():
-	$Flag.modulate = get_belonged_faction().color
+	($Sprite/Title/Label as Label).text = title
+	($Flag as Sprite).modulate = get_belonged_faction().color
 	
-func get_id():
+func get_id() -> int:
 	return _id
 	
 func get_belonged_faction(): 
@@ -37,6 +35,6 @@ func get_belonged_faction():
 func set_belonged_faction(faction, force = false):
 	_belonged_faction = faction
 	if not force:
-		faction.add_architecture(self)
+		faction.add_architecture(self, true)
 	
 
