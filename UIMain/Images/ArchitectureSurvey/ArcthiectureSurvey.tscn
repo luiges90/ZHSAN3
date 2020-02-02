@@ -54,11 +54,10 @@ __meta__ = {
 }
 
 [node name="TitlePanel" type="Panel" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -100.0
+anchor_right = 1.0
+margin_left = 20.0
 margin_top = 20.0
-margin_right = 100.0
+margin_right = -20.0
 margin_bottom = 60.0
 custom_styles/panel = SubResource( 4 )
 __meta__ = {
@@ -75,3 +74,60 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Content" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 75.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Faction" type="HBoxContainer" parent="Content"]
+margin_right = 210.0
+margin_bottom = 18.0
+
+[node name="Label" type="Label" parent="Content/Faction"]
+margin_right = 103.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "勢力"
+
+[node name="Text" type="HBoxContainer" parent="Content/Faction"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+
+[node name="Color" type="ColorRect" parent="Content/Faction/Text"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 0 )
+
+[node name="Text" type="Label" parent="Content/Faction/Text"]
+margin_left = 22.0
+margin_right = 103.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "----"
+
+[node name="PersonCount" type="HBoxContainer" parent="Content"]
+margin_top = 22.0
+margin_right = 210.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Content/PersonCount"]
+margin_right = 103.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "武將"
+
+[node name="Text" type="Label" parent="Content/PersonCount"]
+margin_left = 107.0
+margin_right = 210.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "----"

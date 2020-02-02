@@ -30,7 +30,10 @@ func load_data(json: Dictionary):
 func _on_scenario_loaded():
 	($SpriteArea/Sprite as Sprite).texture = kind.image
 	($SpriteArea/Sprite/Title/Label as Label).text = title
-	($Flag as Sprite).modulate = get_belonged_faction().color
+	
+	var faction = get_belonged_faction()
+	if faction:
+		($Flag as Sprite).modulate = faction.color
 	
 func get_id() -> int:
 	return _id
