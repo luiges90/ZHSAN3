@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://ScenarioScene/Architecture/Architecture.gd"
 }, {
 "base": "Node",
+"class": "ArchitectureKind",
+"language": "GDScript",
+"path": "res://ScenarioScene/Architecture/ArchitectureKind.gd"
+}, {
+"base": "Node",
 "class": "Faction",
 "language": "GDScript",
 "path": "res://ScenarioScene/Faction/Faction.gd"
@@ -41,6 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Architecture": "",
+"ArchitectureKind": "",
 "Faction": "",
 "MainCamera": "",
 "Person": "",

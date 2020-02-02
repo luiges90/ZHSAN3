@@ -4,6 +4,8 @@ class_name Scenario
 var tile_size: int
 var map_size: Vector2
 
+var architecture_kinds = Dictionary()
+
 var factions = Dictionary()
 var architectures = Dictionary()
 var persons = Dictionary()
@@ -29,38 +31,35 @@ func _load_data(path):
 	var json = file.get_as_text()
 	var obj = parse_json(json)
 	
+	var architecture_kind_script = load("res://ScenarioScene/Architecture/ArchitectureKind.gd")
+	for item in obj["ArchitectureKinds"]:
+		var instance = architecture_kind_script.new()
+		__load_item(instance, item, architecture_kinds)
+	
 	var person_script = load("res://ScenarioScene/Person/Person.gd")
 	for item in obj["Persons"]:
 		var instance = person_script.new()
-		instance.scenario = self
-		instance.load_data(item)
-		
-		persons[instance.get_id()] = instance
-		add_child(instance)
+		__load_item(instance, item, persons)
 	
 	var architecture_scene = load("res://ScenarioScene/Architecture/Architecture.tscn")
 	for item in obj["Architectures"]:
 		var instance = architecture_scene.instance()
-		instance.scenario = self
-		instance.load_data(item)
-		
+		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
-		
-		architectures[instance.get_id()] = instance
-		add_child(instance)
 		
 	var faction_script = load("res://ScenarioScene/Faction/Faction.gd")
 	for item in obj["Factions"]:
 		var instance = faction_script.new()
-		instance.scenario = self
-		instance.load_data(item)
-		
+		__load_item(instance, item, factions)
 		for id in item["ArchitectureList"]:
 			instance.add_architecture(architectures[int(id)])
-		
-		factions[instance.get_id()] = instance
-		add_child(instance)
+
 	
+func __load_item(instance, item, add_to_list):
+	instance.scenario = self
+	instance.load_data(item)
+	add_to_list[instance.get_id()] = instance
+	add_child(instance)
 	
 	

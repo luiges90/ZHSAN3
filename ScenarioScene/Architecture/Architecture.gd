@@ -9,6 +9,7 @@ var _map_position: Vector2
 var gname: String
 var title: String
 
+var kind: ArchitectureKind
 var _belonged_faction
 var _person_list = Array()
 
@@ -22,9 +23,11 @@ func load_data(json: Dictionary):
 	_id = json["_Id"]
 	gname = json["Name"]
 	title = json["Title"]
+	kind = scenario.architecture_kinds[int(json["Kind"])]
 	_map_position = Util.load_position(json["MapPosition"])
 	
 func on_scenario_loaded():
+	($Sprite as Sprite).texture = load("res://Images/Architecture/" + kind.image)
 	($Sprite/Title/Label as Label).text = title
 	($Flag as Sprite).modulate = get_belonged_faction().color
 	
