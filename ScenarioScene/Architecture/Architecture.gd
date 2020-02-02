@@ -13,16 +13,23 @@ var title
 func _ready():
 	position.x = _map_position.x * scenario.tile_size
 	position.y = _map_position.y * scenario.tile_size
+	scenario.connect("scenario_loaded", self, "on_scenario_loaded")
 	
 func load_data(json):
 	_id = json["_Id"]
 	dname = json["Name"]
 	title = json["Title"]
-	_map_position = Vector2(json["MapPositionX"], json["MapPositionY"])
+	_map_position = Util.load_position(json["MapPosition"])
 	data_loaded()
 	
 func data_loaded():
 	$Sprite/Title/Label.text = title
+	
+func on_scenario_loaded():
+	$Flag.modulate = get_belonged_faction().color
+	
+func get_id():
+	return _id
 	
 func get_belonged_faction(): 
 	return _belonged_faction

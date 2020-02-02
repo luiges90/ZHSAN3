@@ -3,17 +3,17 @@ extends Node
 var tile_size
 var map_size
 
-var factions = Array()
-var architectures = Array()
+var factions = Dictionary()
+var architectures = Dictionary()
 
-signal scenario_ready
+signal scenario_loaded
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_setup()
 	
 	_load_data("user://Scenarios/000Test.json")
-	emit_signal("scenario_ready")
+	emit_signal("scenario_loaded")
 	
 func _setup():
 	tile_size = $Map.cell_size[0]
@@ -33,7 +33,7 @@ func _load_data(path):
 		var instance = architecture_scene.instance()
 		instance.scenario = self
 		instance.load_data(item)
-		architectures.append(instance)
+		architectures[instance.get_id()] = instance
 		add_child(instance)
 		
 	var faction_scene = load("res://ScenarioScene/Faction/Faction.tscn")
@@ -41,5 +41,5 @@ func _load_data(path):
 		var instance = faction_scene.instance()
 		instance.scenario = self
 		instance.load_data(item)
-		factions.append(instance)
+		factions[instance.get_id()] = instance
 		add_child(faction_scene.instance())

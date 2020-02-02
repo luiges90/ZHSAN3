@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Images/Architecture/1.png" type="Texture" id=1]
 [ext_resource path="res://ScenarioScene/Architecture/Architecture.gd" type="Script" id=2]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Images/Architecture/Flag.png" type="Texture" id=4]
 
 [node name="Architecture" type="Node2D"]
 scale = Vector2( 0.32, 0.32 )
 script = ExtResource( 2 )
+
+[node name="Flag" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 42, -50 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
