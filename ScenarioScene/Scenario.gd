@@ -6,6 +6,7 @@ var map_size: Vector2
 
 var factions = Dictionary()
 var architectures = Dictionary()
+var persons = Dictionary()
 
 signal scenario_loaded
 
@@ -28,18 +29,30 @@ func _load_data(path):
 	var json = file.get_as_text()
 	var obj = parse_json(json)
 	
+	var person_script = load("res://ScenarioScene/Person/Person.gd")
+	for item in obj["Persons"]:
+		var instance = person_script.new()
+		instance.scenario = self
+		instance.load_data(item)
+		
+		persons[instance.get_id()] = instance
+		add_child(instance)
+	
 	var architecture_scene = load("res://ScenarioScene/Architecture/Architecture.tscn")
 	for item in obj["Architectures"]:
 		var instance = architecture_scene.instance()
 		instance.scenario = self
 		instance.load_data(item)
 		
+		for id in item["PersonList"]:
+			instance.add_person(persons[int(id)])
+		
 		architectures[instance.get_id()] = instance
 		add_child(instance)
 		
-	var faction_scene = load("res://ScenarioScene/Faction/Faction.tscn")
+	var faction_script = load("res://ScenarioScene/Faction/Faction.gd")
 	for item in obj["Factions"]:
-		var instance = faction_scene.instance()
+		var instance = faction_script.new()
 		instance.scenario = self
 		instance.load_data(item)
 		
@@ -47,6 +60,7 @@ func _load_data(path):
 			instance.add_architecture(architectures[int(id)])
 		
 		factions[instance.get_id()] = instance
-		add_child(faction_scene.instance())
-		
+		add_child(instance)
+	
+	
 	

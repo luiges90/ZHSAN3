@@ -2,13 +2,15 @@ extends Node2D
 class_name Architecture
 
 var _id: int
-var _map_position: Vector2
-var _belonged_faction
-
 var scenario
+
+var _map_position: Vector2
 
 var gname: String
 var title: String
+
+var _belonged_faction
+var _person_list = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,5 +38,13 @@ func set_belonged_faction(faction, force = false):
 	_belonged_faction = faction
 	if not force:
 		faction.add_architecture(self, true)
+		
+func get_persons() -> Array:
+	return _person_list
+	
+func add_person(p, force: bool = false):
+	_person_list.append(p)
+	if not force:
+		p.set_belonged_architecture(self, true)
 	
 
