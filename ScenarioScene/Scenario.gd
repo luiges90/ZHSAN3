@@ -61,5 +61,5 @@ func __load_item(instance, item, add_to_list):
 	instance.load_data(item)
 	add_to_list[instance.get_id()] = instance
 	add_child(instance)
-	
+
 	

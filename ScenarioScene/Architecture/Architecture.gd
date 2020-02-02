@@ -15,9 +15,10 @@ var _person_list = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position.x = _map_position.x * scenario.tile_size
-	position.y = _map_position.y * scenario.tile_size
-	scenario.connect("scenario_loaded", self, "on_scenario_loaded")
+	if scenario:
+		position.x = _map_position.x * scenario.tile_size
+		position.y = _map_position.y * scenario.tile_size
+		scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
 	
 func load_data(json: Dictionary):
 	_id = json["_Id"]
@@ -26,9 +27,9 @@ func load_data(json: Dictionary):
 	kind = scenario.architecture_kinds[int(json["Kind"])]
 	_map_position = Util.load_position(json["MapPosition"])
 	
-func on_scenario_loaded():
-	($Sprite as Sprite).texture = kind.image
-	($Sprite/Title/Label as Label).text = title
+func _on_scenario_loaded():
+	($SpriteArea/Sprite as Sprite).texture = kind.image
+	($SpriteArea/Sprite/Title/Label as Label).text = title
 	($Flag as Sprite).modulate = get_belonged_faction().color
 	
 func get_id() -> int:
@@ -49,5 +50,10 @@ func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
 		p.set_belonged_architecture(self, true)
-	
 
+func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			find_parent("Main").emit_signal("architecture_clicked", self)
+			
+			

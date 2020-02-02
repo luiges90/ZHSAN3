@@ -36,11 +36,11 @@ func _process(_delta):
 		
 	zoom.x = clamp(zoom.x, 0.3, 2)
 	zoom.y = clamp(zoom.y, 0.3, 2)
-	limit_left = 0
-	limit_top = 0
-	limit_right = scenario.tile_size * scenario.map_size.x
-	limit_bottom = scenario.tile_size * scenario.map_size.y
-	offset.x = clamp(offset.x, limit_left, limit_right)
-	offset.y = clamp(offset.y, limit_top, limit_bottom)
+	# limit_left = 0
+	# limit_top = 0
+	# limit_right = scenario.tile_size * scenario.map_size.x
+	# limit_bottom = scenario.tile_size * scenario.map_size.y
+	# offset.x = clamp(offset.x, limit_left, limit_right)
+	# offset.y = clamp(offset.y, limit_top, limit_bottom)
 	
 
