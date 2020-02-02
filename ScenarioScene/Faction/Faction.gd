@@ -10,7 +10,7 @@ func _ready():
 	pass # Replace with function body.
 
 func load_data(json):
-	_id = json["Id"]
+	_id = json["_Id"]
 	
 func add_architecture(arch):
 	arch.belonged_faction = self

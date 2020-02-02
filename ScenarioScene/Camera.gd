@@ -6,7 +6,7 @@ export var zoom_speed = 0.05
 
 var scenario
 
-func _process(delta):
+func _process(_delta):
 	var mouse_position = get_viewport().get_mouse_position()
 	var viewport_rect = get_viewport_rect()
 	

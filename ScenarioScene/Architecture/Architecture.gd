@@ -12,7 +12,7 @@ func _ready():
 	position.y = _map_position.y * scenario.tile_size
 
 func load_data(json):
-	_id = json["Id"]
+	_id = json["_Id"]
 	_map_position = Vector2(json["MapPositionX"], json["MapPositionY"])
 
 	
