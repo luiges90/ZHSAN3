@@ -12,6 +12,7 @@ func _ready():
 func load_data(json):
 	_id = json["_Id"]
 	
-func add_architecture(arch):
-	arch.belonged_faction = self
+func add_architecture(arch, force = false):
 	_architecture_list.add(arch)
+	if not force:
+		arch.set_belonged_faction(self, true)
