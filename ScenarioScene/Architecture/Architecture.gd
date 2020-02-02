@@ -27,7 +27,7 @@ func load_data(json: Dictionary):
 	_map_position = Util.load_position(json["MapPosition"])
 	
 func on_scenario_loaded():
-	($Sprite as Sprite).texture = kind.texture
+	($Sprite as Sprite).texture = kind.image
 	($Sprite/Title/Label as Label).text = title
 	($Flag as Sprite).modulate = get_belonged_faction().color
 	
