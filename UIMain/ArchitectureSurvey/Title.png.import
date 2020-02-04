@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Title.png-2fc1da8047d1acc29155c8b2860847c6.stex"
+path="res://.import/Title.png-6ea37c3b07145cd800bafe719d2cad31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UIMain/Images/ArchitectureSurvey/Title.png"
-dest_files=[ "res://.import/Title.png-2fc1da8047d1acc29155c8b2860847c6.stex" ]
+source_file="res://UIMain/ArchitectureSurvey/Title.png"
+dest_files=[ "res://.import/Title.png-6ea37c3b07145cd800bafe719d2cad31.stex" ]
 
 [params]
 

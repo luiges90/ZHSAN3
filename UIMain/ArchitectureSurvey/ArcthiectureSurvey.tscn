@@ -1,9 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
-[ext_resource path="res://UIMain/Images/ArchitectureSurvey/Background.png" type="Texture" id=2]
-[ext_resource path="res://UIMain/Images/ArchitectureSurvey/Title.png" type="Texture" id=3]
-[ext_resource path="res://UIMain/Images/ArchitectureSurvey/ArcthiectureSurvey.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -21,23 +18,53 @@ Label/fonts/font = null
 Label/styles/normal = null
 Panel/styles/panel = null
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 2 )
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/Background.png-063586f8af63d2c3dd30e09e1cec0359.stex"
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = SubResource( 3 )
 region_rect = Rect2( 0, 0, 60, 60 )
 margin_left = 20.0
 margin_right = 20.0
 margin_top = 20.0
 margin_bottom = 20.0
 
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 3 )
+[sub_resource type="GDScript" id=5]
+script/source = "extends Panel
+class_name ArchitectureSurvey
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func show_data(architecture: Architecture):
+	($TitlePanel/Title as Label).text = architecture.gname
+	var faction = architecture.get_belonged_faction()
+	if faction:
+		($Content/Faction/Text/Color as ColorRect).color = faction.color
+		($Content/Faction/Text/Text as Label).text = faction.gname
+	else:
+		($Content/Faction/Text/Color as ColorRect).color = Color(1, 1, 1)
+		($Content/Faction/Text/Text as Label).text = \"----\"
+	($Content/PersonCount/Text as Label).text = str(architecture.get_persons().size())
+	
+	show()
+"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/Title.png-2fc1da8047d1acc29155c8b2860847c6.stex"
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = SubResource( 6 )
 region_rect = Rect2( 0, 0, 142, 42 )
 margin_left = 30.0
 margin_right = 112.0
 margin_top = 20.0
 margin_bottom = 22.0
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=8]
 size = 28
 font_data = ExtResource( 1 )
 
@@ -47,8 +74,8 @@ anchor_bottom = 1.0
 margin_right = -1116.0
 margin_bottom = -268.0
 theme = SubResource( 2 )
-custom_styles/panel = SubResource( 3 )
-script = ExtResource( 4 )
+custom_styles/panel = SubResource( 4 )
+script = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,7 +86,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = 60.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -67,7 +94,7 @@ __meta__ = {
 [node name="Title" type="Label" parent="TitlePanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 8 )
 text = "西北"
 align = 1
 valign = 1
