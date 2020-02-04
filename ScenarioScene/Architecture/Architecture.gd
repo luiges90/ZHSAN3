@@ -1,7 +1,7 @@
 extends Node2D
 class_name Architecture
 
-var _id: int
+var _id: int setget ,get_id
 var scenario
 
 var _map_position: Vector2
@@ -10,8 +10,8 @@ var gname: String
 var title: String
 
 var kind: ArchitectureKind
-var _belonged_faction
-var _person_list = Array()
+var _belonged_faction setget set_belonged_faction, get_belonged_faction
+var _person_list = Array() setget ,get_persons
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

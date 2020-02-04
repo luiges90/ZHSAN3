@@ -1,14 +1,14 @@
 extends Node
 class_name Person
 
-var _id: int
+var _id: int setget ,get_id
 var scenario
 
 var surname: String
 var given_name: String
 var courtesy_name: String
 
-var _belonged_architecture
+var _belonged_architecture setget set_belonged_architecture,get_belonged_architecture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
