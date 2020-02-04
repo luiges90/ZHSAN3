@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Panel",
 "class": "ArchitectureSurvey",
 "language": "GDScript",
-"path": "res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.gd"
+"path": "res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd"
 }, {
 "base": "Node",
 "class": "Faction",

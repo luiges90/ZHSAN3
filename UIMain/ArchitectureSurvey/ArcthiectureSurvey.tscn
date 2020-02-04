@@ -1,6 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -30,28 +31,6 @@ margin_right = 20.0
 margin_top = 20.0
 margin_bottom = 20.0
 
-[sub_resource type="GDScript" id=5]
-script/source = "extends Panel
-class_name ArchitectureSurvey
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-func show_data(architecture: Architecture):
-	($TitlePanel/Title as Label).text = architecture.gname
-	var faction = architecture.get_belonged_faction()
-	if faction:
-		($Content/Faction/Text/Color as ColorRect).color = faction.color
-		($Content/Faction/Text/Text as Label).text = faction.gname
-	else:
-		($Content/Faction/Text/Color as ColorRect).color = Color(1, 1, 1)
-		($Content/Faction/Text/Text as Label).text = \"----\"
-	($Content/PersonCount/Text as Label).text = str(architecture.get_persons().size())
-	
-	show()
-"
-
 [sub_resource type="StreamTexture" id=6]
 flags = 4
 load_path = "res://.import/Title.png-2fc1da8047d1acc29155c8b2860847c6.stex"
@@ -75,7 +54,7 @@ margin_right = -1116.0
 margin_bottom = -268.0
 theme = SubResource( 2 )
 custom_styles/panel = SubResource( 4 )
-script = SubResource( 5 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
