@@ -100,7 +100,7 @@ margin_bottom = 18.0
 margin_right = 103.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
-text = "勢力"
+text = "FACTION"
 
 [node name="Text" type="HBoxContainer" parent="Content/Faction"]
 margin_left = 107.0
@@ -129,7 +129,7 @@ margin_bottom = 40.0
 margin_right = 103.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
-text = "武將"
+text = "OFFICERS"
 
 [node name="Text" type="Label" parent="Content/PersonCount"]
 margin_left = 107.0
