@@ -1,10 +1,6 @@
 extends Panel
 class_name ArchitectureSurvey
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func show_data(architecture: Architecture):
 	($TitlePanel/Title as Label).text = architecture.gname
 	var faction = architecture.get_belonged_faction()

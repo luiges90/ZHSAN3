@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd"
 }, {
 "base": "Node",
+"class": "DateRunner",
+"language": "GDScript",
+"path": "res://ScenarioScene/DateRunner.gd"
+}, {
+"base": "Node",
 "class": "Faction",
 "language": "GDScript",
 "path": "res://ScenarioScene/Faction/Faction.gd"
@@ -50,6 +55,11 @@ _global_script_classes=[ {
 "path": "res://ScenarioScene/Scenario.gd"
 }, {
 "base": "Control",
+"class": "ScreenBlind",
+"language": "GDScript",
+"path": "res://UIMain/ScreenBlind/ScreenBlind.gd"
+}, {
+"base": "Control",
 "class": "UIMain",
 "language": "GDScript",
 "path": "res://UIMain/UIMain.gd"
@@ -63,11 +73,13 @@ _global_script_class_icons={
 "Architecture": "",
 "ArchitectureKind": "",
 "ArchitectureSurvey": "",
+"DateRunner": "",
 "Faction": "",
 "Main": "",
 "MainCamera": "",
 "Person": "",
 "Scenario": "",
+"ScreenBlind": "",
 "UIMain": "",
 "Util": ""
 }

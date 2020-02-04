@@ -3,6 +3,7 @@ class_name Scenario
 
 var tile_size: int
 var map_size: Vector2
+var player_faction
 
 var architecture_kinds = Dictionary()
 
@@ -19,6 +20,8 @@ func _ready():
 	_load_data("user://Scenarios/000Test.json")
 	emit_signal("scenario_loaded")
 	
+	player_faction = factions[1]
+	
 func _setup():
 	tile_size = ($Map as TileMap).cell_size[0]
 	map_size = ($Map as TileMap).get_used_rect().size
@@ -30,6 +33,12 @@ func _load_data(path):
 	
 	var json = file.get_as_text()
 	var obj = parse_json(json)
+	
+	var date = $DateRunner as DateRunner
+	date.year = obj["GameData"]["Year"]
+	date.month = obj["GameData"]["Month"]
+	date.day = obj["GameData"]["Day"]
+	date.scenario = self
 	
 	var architecture_kind_script = preload("res://ScenarioScene/Architecture/ArchitectureKind.gd")
 	for item in obj["ArchitectureKinds"]:
