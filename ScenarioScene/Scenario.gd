@@ -38,7 +38,6 @@ func _load_data(path):
 	date.year = obj["GameData"]["Year"]
 	date.month = obj["GameData"]["Month"]
 	date.day = obj["GameData"]["Day"]
-	date.scenario = self
 	
 	var architecture_kind_script = preload("res://ScenarioScene/Architecture/ArchitectureKind.gd")
 	for item in obj["ArchitectureKinds"]:

@@ -7,7 +7,7 @@ var year: int
 var month: int
 var day: int
 
-var scenario
+signal date_updated
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,10 +21,6 @@ func get_season():
 	if month >= 9 and month <= 11:
 		return Season.AUTUMN
 	return Season.WINTER
-
-func add_day():
-	day += 1
-	invoke_date_updated()
 	
 func invoke_date_updated():
-	find_parent("Main").emit_signal("date_updated", year, month, day, get_season())
+	emit_signal("date_updated", year, month, day, get_season())
