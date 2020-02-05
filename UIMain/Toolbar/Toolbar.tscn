@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UIMain/Toolbar/Background.png" type="Texture" id=1]
 [ext_resource path="res://UIMain/Toolbar/UpperArrow.png" type="Texture" id=2]
 [ext_resource path="res://UIMain/Toolbar/LowerArrow.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=5]
-[ext_resource path="res://UIMain/Toolbar/Play.PNG" type="Texture" id=6]
+[ext_resource path="res://UIMain/Toolbar/Play.png" type="Texture" id=6]
 [ext_resource path="res://UIMain/Toolbar/PlaySelected.png" type="Texture" id=7]
 [ext_resource path="res://UIMain/Toolbar/UpperArrowSelected.png" type="Texture" id=8]
 [ext_resource path="res://UIMain/Toolbar/LowerArrowSelected.png" type="Texture" id=9]
 [ext_resource path="res://UIMain/Toolbar/StopSelected.png" type="Texture" id=10]
 [ext_resource path="res://UIMain/Toolbar/Stop.png" type="Texture" id=11]
+[ext_resource path="res://UIMain/Toolbar/Toolbar.gd" type="Script" id=12]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -26,6 +27,7 @@ anchor_right = 1.0
 margin_right = 0.00012207
 margin_bottom = 48.0
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,7 +42,9 @@ __meta__ = {
 margin_right = 20.0
 margin_bottom = 45.0
 
-[node name="Up" type="TextureButton" parent="DateRunner/TensDigit"]
+[node name="Up10" type="TextureButton" parent="DateRunner/TensDigit" groups=[
+"date_runner_change_digit",
+]]
 margin_right = 20.0
 margin_bottom = 5.0
 texture_normal = ExtResource( 2 )
@@ -50,7 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="Label" parent="DateRunner/TensDigit"]
+[node name="Text10" type="Label" parent="DateRunner/TensDigit"]
 margin_top = 9.0
 margin_right = 20.0
 margin_bottom = 36.0
@@ -60,7 +64,9 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="Down" type="TextureButton" parent="DateRunner/TensDigit"]
+[node name="Down10" type="TextureButton" parent="DateRunner/TensDigit" groups=[
+"date_runner_change_digit",
+]]
 margin_top = 40.0
 margin_right = 20.0
 margin_bottom = 45.0
@@ -76,7 +82,9 @@ margin_left = 24.0
 margin_right = 44.0
 margin_bottom = 45.0
 
-[node name="Up" type="TextureButton" parent="DateRunner/UnitDigit"]
+[node name="Up" type="TextureButton" parent="DateRunner/UnitDigit" groups=[
+"date_runner_change_digit",
+]]
 margin_right = 20.0
 margin_bottom = 5.0
 texture_normal = ExtResource( 2 )
@@ -96,7 +104,9 @@ text = "0"
 align = 1
 valign = 1
 
-[node name="Down" type="TextureButton" parent="DateRunner/UnitDigit"]
+[node name="Down" type="TextureButton" parent="DateRunner/UnitDigit" groups=[
+"date_runner_change_digit",
+]]
 margin_top = 40.0
 margin_right = 20.0
 margin_bottom = 45.0
@@ -128,3 +138,9 @@ texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 10 )
 stretch_mode = 3
+[connection signal="pressed" from="DateRunner/TensDigit/Up10" to="." method="_on_Up10_pressed"]
+[connection signal="pressed" from="DateRunner/TensDigit/Down10" to="." method="_on_Down10_pressed"]
+[connection signal="pressed" from="DateRunner/UnitDigit/Up" to="." method="_on_Up_pressed"]
+[connection signal="pressed" from="DateRunner/UnitDigit/Down" to="." method="_on_Down_pressed"]
+[connection signal="pressed" from="DateRunner/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="DateRunner/Stop" to="." method="_on_Stop_pressed"]
