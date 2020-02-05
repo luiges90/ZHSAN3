@@ -13,6 +13,8 @@ var kind: ArchitectureKind
 var _belonged_faction setget set_belonged_faction, get_belonged_faction
 var _person_list = Array() setget ,get_persons
 
+signal architecture_clicked
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if scenario:
@@ -57,6 +59,6 @@ func add_person(p, force: bool = false):
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			find_parent("Main").emit_signal("architecture_clicked", self)
+			emit_signal("architecture_clicked", self)
 			
 			

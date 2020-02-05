@@ -12,8 +12,8 @@ var architectures = Dictionary()
 var persons = Dictionary()
 
 signal player_faction_set
-
 signal scenario_loaded
+signal architecture_clicked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,6 +54,7 @@ func _load_data(path):
 	var architecture_scene = preload("res://ScenarioScene/Architecture/Architecture.tscn")
 	for item in obj["Architectures"]:
 		var instance = architecture_scene.instance()
+		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
@@ -74,4 +75,7 @@ func __load_item(instance, item, add_to_list):
 
 func _on_all_loaded():
 	emit_signal("player_faction_set", player_faction)
+	
+func _on_architecture_clicked(arch):
+	emit_signal("architecture_clicked", arch)
 	
