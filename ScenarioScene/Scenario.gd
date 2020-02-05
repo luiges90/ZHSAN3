@@ -11,6 +11,8 @@ var factions = Dictionary()
 var architectures = Dictionary()
 var persons = Dictionary()
 
+signal player_faction_set
+
 signal scenario_loaded
 
 # Called when the node enters the scene tree for the first time.
@@ -18,9 +20,9 @@ func _ready():
 	_setup()
 	
 	_load_data("user://Scenarios/000Test.json")
-	emit_signal("scenario_loaded")
-	
 	player_faction = factions[1]
+	
+	emit_signal("scenario_loaded")
 	
 func _setup():
 	tile_size = ($Map as TileMap).cell_size[0]
@@ -70,4 +72,6 @@ func __load_item(instance, item, add_to_list):
 	add_to_list[instance.get_id()] = instance
 	add_child(instance)
 
+func _on_all_loaded():
+	emit_signal("player_faction_set", player_faction)
 	

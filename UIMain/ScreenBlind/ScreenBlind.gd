@@ -15,3 +15,6 @@ func show_date(year, month, day, season):
 		DateRunner.Season.WINTER: 
 			season_texture = load("res://UIMain/ScreenBlind/Winter.png")
 	($Season as TextureRect).texture = season_texture
+
+func show_player_faction(faction):
+	($OverviewPanel/Content/Faction/Text as Label).text = faction.gname

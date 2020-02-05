@@ -22,5 +22,5 @@ func get_season():
 		return Season.AUTUMN
 	return Season.WINTER
 	
-func invoke_date_updated():
+func _on_all_loaded():
 	emit_signal("date_updated", year, month, day, get_season())
