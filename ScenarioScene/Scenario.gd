@@ -1,8 +1,8 @@
 extends Node
 class_name Scenario
 
-var tile_size: int
-var map_size: Vector2
+onready var tile_size: int = ($Map as TileMap).cell_size[0]
+onready var map_size: Vector2 = ($Map as TileMap).get_used_rect().size
 var player_faction
 
 var architecture_kinds = Dictionary()
@@ -17,17 +17,13 @@ signal architecture_clicked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_setup()
+	($MainCamera as MainCamera).scenario = self
 	
 	_load_data("user://Scenarios/000Test.json")
 	player_faction = factions[1]
 	
 	emit_signal("scenario_loaded")
 	
-func _setup():
-	tile_size = ($Map as TileMap).cell_size[0]
-	map_size = ($Map as TileMap).get_used_rect().size
-	($MainCamera as MainCamera).scenario = self
 
 func _load_data(path):
 	var file = File.new()
