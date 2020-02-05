@@ -15,9 +15,12 @@ signal player_faction_set
 signal scenario_loaded
 signal architecture_clicked
 
+signal all_faction_finished
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	($MainCamera as MainCamera).scenario = self
+	($DateRunner as DateRunner).scenario = self
 	
 	_load_data("user://Scenarios/000Test.json")
 	player_faction = factions[1]

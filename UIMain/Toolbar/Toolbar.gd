@@ -42,9 +42,11 @@ func _on_Play_pressed():
 		_set_play_button_texture_to_play()
 		emit_signal("stop_date_runner")
 	else:
-		_running = true
-		_set_play_button_texture_to_pause()
-		emit_signal("start_date_runner", _get_value())
+		var value = _get_value()
+		if value > 0:
+			_running = true
+			_set_play_button_texture_to_pause()
+			emit_signal("start_date_runner", value)
 		
 func _on_Stop_pressed():
 	_running = false
@@ -67,5 +69,21 @@ func _set_play_button_texture_to_pause():
 	$DateRunner/Play.texture_pressed = preload("Pause.png")
 	for node in get_tree().get_nodes_in_group("date_runner_change_digit"):
 		node.disabled = true
+		
+func _on_day_passed():
+	var unit = int($DateRunner/UnitDigit/Text.text)
+	if unit <= 0:
+		var tens = int($DateRunner/TensDigit/Text10.text)
+		if tens > 0:
+			$DateRunner/TensDigit/Text10.text = str(int($DateRunner/TensDigit/Text10.text) - 1)
+			$DateRunner/UnitDigit/Text.text = '9'
+		else:
+			_running = false
+			_set_play_button_texture_to_play()
+			emit_signal("stop_date_runner")
+	else:
+		$DateRunner/UnitDigit/Text.text = str(int($DateRunner/UnitDigit/Text.text) - 1)
+		
+
 
 

@@ -7,6 +7,8 @@ var year: int
 var month: int
 var day: int
 
+var scenario
+
 signal date_updated
 
 signal day_passed
@@ -44,6 +46,7 @@ func _on_start_date_runner(day_count):
 			year += 1
 			emit_signal("year_passed")
 	emit_signal("date_updated", year, month, day, get_season())
+	yield(scenario, "all_faction_finished")
 	
 func _on_stop_date_runner():
 	pass
