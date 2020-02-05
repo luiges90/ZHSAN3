@@ -31,7 +31,7 @@ func _on_all_loaded():
 	emit_signal("date_updated", year, month, day, get_season())
 
 func _on_start_date_runner(day_count):
-	day += 3
+	day += GameConfig.day_per_turn
 	emit_signal("day_passed")
 	if day > 30:
 		day -= 30

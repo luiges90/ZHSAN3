@@ -1,5 +1,4 @@
 extends Node
-class_name Util
 
 static func load_position(v) -> Vector2:
 	return Vector2(v[0], v[1])

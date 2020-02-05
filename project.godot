@@ -68,11 +68,6 @@ _global_script_classes=[ {
 "class": "UIMain",
 "language": "GDScript",
 "path": "res://UIMain/UIMain.gd"
-}, {
-"base": "Node",
-"class": "Util",
-"language": "GDScript",
-"path": "res://Util.gd"
 } ]
 _global_script_class_icons={
 "Architecture": "",
@@ -86,8 +81,7 @@ _global_script_class_icons={
 "Scenario": "",
 "ScreenBlind": "",
 "Toolbar": "",
-"UIMain": "",
-"Util": ""
+"UIMain": ""
 }
 
 [application]
@@ -97,6 +91,11 @@ run/main_scene="res://Main.tscn"
 boot_splash/image="res://Images/Splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
+
+[autoload]
+
+Util="*res://Util.gd"
+GameConfig="*res://GameConfig.gd"
 
 [debug]
 
