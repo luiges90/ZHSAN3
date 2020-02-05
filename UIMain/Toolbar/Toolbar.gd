@@ -78,11 +78,18 @@ func _on_day_passed():
 			$DateRunner/TensDigit/Text10.text = str(int($DateRunner/TensDigit/Text10.text) - 1)
 			$DateRunner/UnitDigit/Text.text = '9'
 		else:
+			# this path should not happen
 			_running = false
 			_set_play_button_texture_to_play()
 			emit_signal("stop_date_runner")
 	else:
 		$DateRunner/UnitDigit/Text.text = str(int($DateRunner/UnitDigit/Text.text) - 1)
+		var units = int($DateRunner/UnitDigit/Text.text)
+		var tens = int($DateRunner/TensDigit/Text10.text)
+		if units <= 0 and tens <= 0:
+			_running = false
+			_set_play_button_texture_to_play()
+			emit_signal("stop_date_runner")
 		
 
 

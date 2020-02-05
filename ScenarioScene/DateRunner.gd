@@ -36,7 +36,6 @@ func _on_all_loaded():
 
 func _on_start_date_runner(day_count):
 	while not stop_date_runner:
-		print('day passed')
 		day += GameConfig.day_per_turn
 		emit_signal("day_passed")
 		if day > 30:
@@ -50,10 +49,7 @@ func _on_start_date_runner(day_count):
 				year += 1
 				emit_signal("year_passed")
 		emit_signal("date_updated", year, month, day, get_season())
-		#yield(get_tree().create_timer(1.0), "timeout")
-		print('uyieldsing')
 		yield(scenario, "all_faction_finished")
-		print('all faciton ifnshed')
 	stop_date_runner = false
 	
 func _on_stop_date_runner():
