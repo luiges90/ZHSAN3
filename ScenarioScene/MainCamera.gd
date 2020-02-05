@@ -14,6 +14,8 @@ func _on_all_loaded():
 	_all_ready = true
 
 func _process(_delta):
+	if not _all_ready: 
+		return
 	var mouse_position = get_viewport().get_mouse_position()
 	var viewport_rect = get_viewport_rect()
 	
