@@ -8,6 +8,11 @@ var bottom_ui_margin
 
 var scenario
 
+var _all_ready = false
+
+func _on_all_loaded():
+	_all_ready = true
+
 func _process(_delta):
 	var mouse_position = get_viewport().get_mouse_position()
 	var viewport_rect = get_viewport_rect()
@@ -18,7 +23,7 @@ func _process(_delta):
 		offset.y -= camera_speed
 	if Input.is_action_pressed("ui_down"):
 		offset.y += camera_speed
-	if mouse_position.y > viewport_rect.size.y - mouse_scroll_margin  - bottom_ui_margin and \
+	if mouse_position.y > viewport_rect.size.y - mouse_scroll_margin - bottom_ui_margin and \
 		mouse_position.y < viewport_rect.size.y - bottom_ui_margin:
 		offset.y += camera_speed
 	if Input.is_action_pressed("ui_left"):

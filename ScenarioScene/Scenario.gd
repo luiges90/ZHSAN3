@@ -41,17 +41,17 @@ func _load_data(path):
 	date.month = obj["GameData"]["Month"]
 	date.day = obj["GameData"]["Day"]
 	
-	var architecture_kind_script = preload("res://ScenarioScene/Architecture/ArchitectureKind.gd")
+	var architecture_kind_script = preload("Architecture/ArchitectureKind.gd")
 	for item in obj["ArchitectureKinds"]:
 		var instance = architecture_kind_script.new()
 		__load_item(instance, item, architecture_kinds)
 	
-	var person_script = preload("res://ScenarioScene/Person/Person.gd")
+	var person_script = preload("Person/Person.gd")
 	for item in obj["Persons"]:
 		var instance = person_script.new()
 		__load_item(instance, item, persons)
 	
-	var architecture_scene = preload("res://ScenarioScene/Architecture/Architecture.tscn")
+	var architecture_scene = preload("Architecture/Architecture.tscn")
 	for item in obj["Architectures"]:
 		var instance = architecture_scene.instance()
 		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
@@ -59,7 +59,7 @@ func _load_data(path):
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
 		
-	var faction_script = preload("res://ScenarioScene/Faction/Faction.gd")
+	var faction_script = preload("Faction/Faction.gd")
 	for item in obj["Factions"]:
 		var instance = faction_script.new()
 		__load_item(instance, item, factions)
