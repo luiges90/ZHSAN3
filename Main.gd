@@ -10,6 +10,9 @@ func _ready():
 	$Scenario/DateRunner.connect("date_updated", $UICanvas/UIMain/ScreenBlind, "show_date")
 	$Scenario.connect("player_faction_set", $UICanvas/UIMain/ScreenBlind, "show_player_faction")
 	
+	$UICanvas/UIMain/Toolbar.connect("start_date_runner", $Scenario/DateRunner, "_on_start_date_runner")
+	$UICanvas/UIMain/Toolbar.connect("stop_date_runner", $Scenario/DateRunner, "_on_stop_date_runner")
+	
 	$Scenario.connect("architecture_clicked", $UICanvas/UIMain/ArchitectureSurvey, "show_data")
 	
 	connect("all_loaded", $Scenario, "_on_all_loaded")
