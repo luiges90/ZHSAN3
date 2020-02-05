@@ -4,6 +4,7 @@ class_name MainCamera
 export var camera_speed = 10
 export var mouse_scroll_margin = 50
 export var zoom_speed = 0.05
+var bottom_ui_margin
 
 var scenario
 
@@ -13,19 +14,20 @@ func _process(_delta):
 	
 	if Input.is_action_pressed("ui_up"):
 		offset.y -= camera_speed
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and mouse_position.y < mouse_scroll_margin:
+	if mouse_position.y < mouse_scroll_margin:
 		offset.y -= camera_speed
 	if Input.is_action_pressed("ui_down"):
 		offset.y += camera_speed
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and mouse_position.y > viewport_rect.size.y - mouse_scroll_margin:
+	if mouse_position.y > viewport_rect.size.y - mouse_scroll_margin  - bottom_ui_margin and \
+		mouse_position.y < viewport_rect.size.y - bottom_ui_margin:
 		offset.y += camera_speed
 	if Input.is_action_pressed("ui_left"):
 		offset.x -= camera_speed
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and mouse_position.x < mouse_scroll_margin:
+	if mouse_position.x < mouse_scroll_margin:
 		offset.x -= camera_speed
 	if Input.is_action_pressed("ui_right"):
 		offset.x += camera_speed
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and mouse_position.x > viewport_rect.size.x - mouse_scroll_margin:
+	if mouse_position.x > viewport_rect.size.x - mouse_scroll_margin:
 		offset.x += camera_speed
 	if Input.is_action_pressed("ui_page_up"):
 		zoom.x -= zoom_speed

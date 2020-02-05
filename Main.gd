@@ -5,6 +5,7 @@ signal all_loaded
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Scenario/MainCamera.bottom_ui_margin = ($UICanvas/UIMain/Toolbar as Panel).rect_size.y
 	connect("all_loaded", $Scenario, "_on_all_loaded")
 	connect("all_loaded", $Scenario/DateRunner, "_on_all_loaded")
 	
