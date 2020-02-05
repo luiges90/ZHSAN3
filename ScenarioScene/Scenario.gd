@@ -27,6 +27,8 @@ func _ready():
 	
 	emit_signal("scenario_loaded")
 	
+	$DateRunner.connect("day_passed", self, "_on_day_passed")
+	
 
 func _load_data(path):
 	var file = File.new()
@@ -77,4 +79,8 @@ func _on_all_loaded():
 	
 func _on_architecture_clicked(arch):
 	emit_signal("architecture_clicked", arch)
-	
+		
+func _on_day_passed():
+	yield(get_tree().create_timer(1.0), "timeout")
+	print('send finasdih sigll')
+	emit_signal("all_faction_finished")

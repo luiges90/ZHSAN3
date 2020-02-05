@@ -16,6 +16,8 @@ signal month_passed
 signal season_passed
 signal year_passed
 
+var stop_date_runner = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -33,20 +35,26 @@ func _on_all_loaded():
 	emit_signal("date_updated", year, month, day, get_season())
 
 func _on_start_date_runner(day_count):
-	day += GameConfig.day_per_turn
-	emit_signal("day_passed")
-	if day > 30:
-		day -= 30
-		month += 1
-		emit_signal("month_passed")
-		if month == 3 or month == 6 or month == 9 or month == 12:
-			emit_signal("season_passed")
-		if month > 12:
-			month -= 12
-			year += 1
-			emit_signal("year_passed")
-	emit_signal("date_updated", year, month, day, get_season())
-	yield(scenario, "all_faction_finished")
+	while not stop_date_runner:
+		print('day passed')
+		day += GameConfig.day_per_turn
+		emit_signal("day_passed")
+		if day > 30:
+			day -= 30
+			month += 1
+			emit_signal("month_passed")
+			if month == 3 or month == 6 or month == 9 or month == 12:
+				emit_signal("season_passed")
+			if month > 12:
+				month -= 12
+				year += 1
+				emit_signal("year_passed")
+		emit_signal("date_updated", year, month, day, get_season())
+		#yield(get_tree().create_timer(1.0), "timeout")
+		print('uyieldsing')
+		yield(scenario, "all_faction_finished")
+		print('all faciton ifnshed')
+	stop_date_runner = false
 	
 func _on_stop_date_runner():
-	pass
+	stop_date_runner = true
