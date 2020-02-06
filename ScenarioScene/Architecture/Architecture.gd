@@ -13,7 +13,12 @@ var kind: ArchitectureKind
 var _belonged_faction setget set_belonged_faction, get_belonged_faction
 var _person_list = Array() setget forbidden, get_persons
 
+var _fund: int setget forbidden, get_fund
+var _food: int setget forbidden, get_food
 var _agriculture: int setget forbidden, get_agriculture
+var _commerce: int setget forbidden, get_commerce
+var _morale: int setget forbidden, get_morale
+var _endurance: int setget forbidden, get_endurance
 
 signal architecture_clicked
 
@@ -33,6 +38,13 @@ func load_data(json: Dictionary):
 	title = json["Title"]
 	kind = scenario.architecture_kinds[int(json["Kind"])]
 	_map_position = Util.load_position(json["MapPosition"])
+	
+	_fund = json["Fund"]
+	_food = json["Food"]
+	_agriculture = json["Agriculture"]
+	_commerce = json["Commerce"]
+	_morale = json["Morale"]
+	_endurance = json["Endurance"]
 	
 func _on_scenario_loaded():
 	($SpriteArea/Sprite as Sprite).texture = kind.image
@@ -60,9 +72,24 @@ func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
 		p.set_belonged_architecture(self, true)
+		
+func get_fund() -> int:
+	return _fund
+	
+func get_food() -> int:
+	return _food
 
 func get_agriculture() -> int:
 	return _agriculture
+	
+func get_commerce() -> int:
+	return _commerce
+	
+func get_morale() -> int:
+	return _morale
+	
+func get_endurance() -> int:
+	return _endurance
 
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
