@@ -81,5 +81,5 @@ func _on_architecture_clicked(arch):
 	emit_signal("architecture_clicked", arch)
 		
 func _on_day_passed():
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")
