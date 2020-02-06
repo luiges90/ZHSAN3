@@ -1,13 +1,16 @@
 extends Node
 class_name Faction
 
-var _id: int setget ,get_id
+var _id: int setget forbidden ,get_id
 var scenario
 
 var gname: String
 var color: Color
 
-var _architecture_list = Array() setget ,get_architectures
+var _architecture_list = Array() setget forbidden, get_architectures
+
+func forbidden(x):
+	assert(false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

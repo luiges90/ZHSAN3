@@ -1,7 +1,7 @@
 extends Node2D
 class_name Architecture
 
-var _id: int setget ,get_id
+var _id: int setget forbidden ,get_id
 var scenario
 
 var _map_position: Vector2
@@ -11,9 +11,14 @@ var title: String
 
 var kind: ArchitectureKind
 var _belonged_faction setget set_belonged_faction, get_belonged_faction
-var _person_list = Array() setget ,get_persons
+var _person_list = Array() setget forbidden, get_persons
+
+var _agriculture: int setget forbidden, get_agriculture
 
 signal architecture_clicked
+
+func forbidden(x):
+	assert(false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,6 +60,9 @@ func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
 		p.set_belonged_architecture(self, true)
+
+func get_agriculture() -> int:
+	return _agriculture
 
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
