@@ -54,4 +54,13 @@ func _process(_delta):
 	# offset.x = clamp(offset.x, limit_left, limit_right)
 	# offset.y = clamp(offset.y, limit_top, limit_bottom)
 	
-
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == BUTTON_WHEEL_UP:
+			zoom.x -= zoom_speed
+			zoom.y -= zoom_speed
+		if event.button_index == BUTTON_WHEEL_DOWN:
+			zoom.x += zoom_speed
+			zoom.y += zoom_speed
+		zoom.x = clamp(zoom.x, 0.3, 2)
+		zoom.y = clamp(zoom.y, 0.3, 2)
