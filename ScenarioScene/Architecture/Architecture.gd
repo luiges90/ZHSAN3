@@ -13,6 +13,7 @@ var kind: ArchitectureKind
 var _belonged_faction setget set_belonged_faction, get_belonged_faction
 var _person_list = Array() setget forbidden, get_persons
 
+var _population: int setget forbidden, get_population
 var _fund: int setget forbidden, get_fund
 var _food: int setget forbidden, get_food
 var _agriculture: int setget forbidden, get_agriculture
@@ -21,6 +22,7 @@ var _morale: int setget forbidden, get_morale
 var _endurance: int setget forbidden, get_endurance
 
 signal architecture_clicked
+signal architecture_survey_updated
 
 func forbidden(x):
 	assert(false)
@@ -39,6 +41,7 @@ func load_data(json: Dictionary):
 	kind = scenario.architecture_kinds[int(json["Kind"])]
 	_map_position = Util.load_position(json["MapPosition"])
 	
+	_population = json["Population"]
 	_fund = json["Fund"]
 	_food = json["Food"]
 	_agriculture = json["Agriculture"]
@@ -73,6 +76,9 @@ func add_person(p, force: bool = false):
 	if not force:
 		p.set_belonged_architecture(self, true)
 		
+func get_population() -> int:
+	return _population
+
 func get_fund() -> int:
 	return _fund
 	
@@ -97,6 +103,14 @@ func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 			emit_signal("architecture_clicked", self)
 			
 func day_event():
-	print('day_event: ' + gname)
 	for p in get_persons():
 		p.day_event()
+		
+func month_event():
+	_develop_resources()
+	emit_signal("architecture_survey_updated", self)
+
+func _develop_resources():
+	_fund += 1000
+	_food += 100000
+	

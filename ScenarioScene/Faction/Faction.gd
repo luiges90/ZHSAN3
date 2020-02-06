@@ -32,7 +32,13 @@ func add_architecture(arch, force: bool = false):
 	if not force:
 		arch.set_belonged_faction(self, true)
 		
+func ai():
+	pass
+		
 func day_event():
-	print('day_event: ' + gname)
 	for arch in get_architectures():
 		arch.day_event()
+
+func month_event():
+	for arch in get_architectures():
+		arch.month_event()

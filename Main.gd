@@ -15,6 +15,7 @@ func _ready():
 	$Scenario/DateRunner.connect("day_passed", $UICanvas/UIMain/Toolbar, "_on_day_passed")
 	
 	$Scenario.connect("architecture_clicked", $UICanvas/UIMain/ArchitectureSurvey, "show_data")
+	$Scenario.connect("architecture_survey_updated", $UICanvas/UIMain/ArchitectureSurvey, "update_data")
 	
 	connect("all_loaded", $Scenario, "_on_all_loaded")
 	connect("all_loaded", $Scenario/DateRunner, "_on_all_loaded")

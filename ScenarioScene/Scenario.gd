@@ -13,7 +13,9 @@ var persons = Dictionary()
 
 signal player_faction_set
 signal scenario_loaded
+
 signal architecture_clicked
+signal architecture_survey_updated
 
 signal all_faction_finished
 
@@ -28,7 +30,7 @@ func _ready():
 	emit_signal("scenario_loaded")
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
-	
+	$DateRunner.connect("month_passed", self, "_on_month_passed")
 
 func _load_data(path):
 	var file = File.new()
@@ -56,6 +58,7 @@ func _load_data(path):
 	for item in obj["Architectures"]:
 		var instance = architecture_scene.instance()
 		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
+		instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
@@ -79,9 +82,19 @@ func _on_all_loaded():
 	
 func _on_architecture_clicked(arch):
 	emit_signal("architecture_clicked", arch)
+	
+func _on_architecture_survey_updated(arch):
+	emit_signal("architecture_survey_updated", arch)
 		
 func _on_day_passed():
+	for faction in factions.values():
+		faction.ai()
 	for faction in factions.values():
 		faction.day_event()
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")
+	
+func _on_month_passed():
+	for faction in factions.values():
+		faction.month_event()
+	
