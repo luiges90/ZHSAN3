@@ -69,4 +69,7 @@ func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("architecture_clicked", self)
 			
-			
+func day_event():
+	print('day_event: ' + gname)
+	for p in get_persons():
+		p.day_event()

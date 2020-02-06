@@ -31,3 +31,8 @@ func add_architecture(arch, force: bool = false):
 	_architecture_list.append(arch)
 	if not force:
 		arch.set_belonged_faction(self, true)
+		
+func day_event():
+	print('day_event: ' + gname)
+	for arch in get_architectures():
+		arch.day_event()

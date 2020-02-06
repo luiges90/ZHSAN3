@@ -81,5 +81,7 @@ func _on_architecture_clicked(arch):
 	emit_signal("architecture_clicked", arch)
 		
 func _on_day_passed():
+	for faction in factions.values():
+		faction.day_event()
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")

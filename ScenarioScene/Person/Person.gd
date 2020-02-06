@@ -36,3 +36,6 @@ func set_belonged_architecture(arch, force = false):
 	_belonged_architecture = arch
 	if not force:
 		arch.add_person(self, true)
+		
+func day_event():
+	print('day_event: ' + get_name())
