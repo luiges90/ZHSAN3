@@ -1,11 +1,11 @@
 extends Node
 class_name Faction
 
-var _id: int setget forbidden ,get_id
+var id: int setget forbidden
 var scenario
 
-var gname: String
-var color: Color
+var gname: String setget forbidden
+var color: Color setget forbidden
 
 var _architecture_list = Array() setget forbidden, get_architectures
 
@@ -17,12 +17,9 @@ func _ready():
 	pass # Replace with function body.
 
 func load_data(json: Dictionary):
-	_id = json["_Id"]
+	id = json["_Id"]
 	gname = json["Name"]
 	color = Util.load_color(json["Color"])
-	
-func get_id() -> int:
-	return _id
 	
 func get_architectures() -> Array:
 	return _architecture_list

@@ -1,23 +1,23 @@
 extends Node
 class_name ArchitectureKind
 
-var _id: int setget forbidden, get_id
+var id: int setget forbidden
 var scenario
 
-var gname: String
-var image: Texture
+var gname: String setget forbidden
+var image: Texture setget forbidden
 
-var agriculture: int
-var commerce: int
-var morale: int
-var endurance: int
-var population: int
+var agriculture: int setget forbidden
+var commerce: int setget forbidden
+var morale: int setget forbidden
+var endurance: int setget forbidden
+var population: int setget forbidden
 
 func forbidden(x):
 	assert(false)
 
 func load_data(json: Dictionary):
-	_id = json["_Id"]
+	id = json["_Id"]
 	gname = json["Name"]
 	image = load("res://Images/Architecture/" + json["Image"])
 	agriculture = json["Agriculture"]
@@ -26,5 +26,3 @@ func load_data(json: Dictionary):
 	endurance = json["Endurance"]
 	population = json["Population"]
 	
-func get_id() -> int:
-	return _id

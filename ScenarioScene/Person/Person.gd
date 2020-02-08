@@ -1,12 +1,12 @@
 extends Node
 class_name Person
 
-var _id: int setget forbidden, get_id
+var id: int setget forbidden
 var scenario
 
-var surname: String
-var given_name: String
-var courtesy_name: String
+var surname: String setget forbidden
+var given_name: String setget forbidden
+var courtesy_name: String setget forbidden
 
 var _belonged_architecture setget set_belonged_architecture,get_belonged_architecture
 
@@ -18,14 +18,11 @@ func _ready():
 	pass # Replace with function body.
 
 func load_data(json: Dictionary):
-	_id = json["_Id"]
+	id = json["_Id"]
 	surname = json["Surname"]
 	given_name = json["GivenName"]
 	courtesy_name = json["CourtesyName"]
-	
-func get_id() -> int:
-	return _id
-	
+
 func get_name() -> String:
 	return surname + given_name
 	

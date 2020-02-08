@@ -1,25 +1,25 @@
 extends Node2D
 class_name Architecture
 
-var _id: int setget forbidden, get_id
+var id: int setget forbidden
 var scenario
 
-var _map_position: Vector2
+var map_position: Vector2 setget forbidden
 
 var gname: String
 var title: String
 
-var kind: ArchitectureKind
+var kind: ArchitectureKind setget forbidden
 var _belonged_faction setget set_belonged_faction, get_belonged_faction
 var _person_list = Array() setget forbidden, get_persons
 
-var _population: int setget forbidden, get_population
-var _fund: int setget forbidden, get_fund
-var _food: int setget forbidden, get_food
-var _agriculture: int setget forbidden, get_agriculture
-var _commerce: int setget forbidden, get_commerce
-var _morale: int setget forbidden, get_morale
-var _endurance: int setget forbidden, get_endurance
+var population: int setget forbidden
+var fund: int setget forbidden
+var food: int setget forbidden
+var agriculture: int setget forbidden
+var commerce: int setget forbidden
+var morale: int setget forbidden
+var endurance: int setget forbidden
 
 signal architecture_clicked
 signal architecture_survey_updated
@@ -30,24 +30,24 @@ func forbidden(x):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if scenario:
-		position.x = _map_position.x * scenario.tile_size
-		position.y = _map_position.y * scenario.tile_size
+		position.x = map_position.x * scenario.tile_size
+		position.y = map_position.y * scenario.tile_size
 		scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
 	
 func load_data(json: Dictionary):
-	_id = json["_Id"]
+	id = json["_Id"]
 	gname = json["Name"]
 	title = json["Title"]
 	kind = scenario.architecture_kinds[int(json["Kind"])]
-	_map_position = Util.load_position(json["MapPosition"])
+	map_position = Util.load_position(json["MapPosition"])
 	
-	_population = json["Population"]
-	_fund = json["Fund"]
-	_food = json["Food"]
-	_agriculture = json["Agriculture"]
-	_commerce = json["Commerce"]
-	_morale = json["Morale"]
-	_endurance = json["Endurance"]
+	population = json["Population"]
+	fund = json["Fund"]
+	food = json["Food"]
+	agriculture = json["Agriculture"]
+	commerce = json["Commerce"]
+	morale = json["Morale"]
+	endurance = json["Endurance"]
 	
 func _on_scenario_loaded():
 	($SpriteArea/Sprite as Sprite).texture = kind.image
@@ -56,9 +56,6 @@ func _on_scenario_loaded():
 	var faction = get_belonged_faction()
 	if faction:
 		($Flag as Sprite).modulate = faction.color
-	
-func get_id() -> int:
-	return _id
 	
 func get_belonged_faction(): 
 	return _belonged_faction
@@ -75,27 +72,6 @@ func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
 		p.set_belonged_architecture(self, true)
-		
-func get_population() -> int:
-	return _population
-
-func get_fund() -> int:
-	return _fund
-	
-func get_food() -> int:
-	return _food
-
-func get_agriculture() -> int:
-	return _agriculture
-	
-func get_commerce() -> int:
-	return _commerce
-	
-func get_morale() -> int:
-	return _morale
-	
-func get_endurance() -> int:
-	return _endurance
 
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
@@ -111,11 +87,11 @@ func month_event():
 	emit_signal("architecture_survey_updated", self)
 
 func _develop_resources():
-	_fund += _commerce * sqrt(sqrt(_population + 1000)) * sqrt(_morale) / 100
-	_food += _agriculture * sqrt(sqrt(_population + 1000)) * sqrt(_morale)
+	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
+	food += agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
 	
 	var max_population = kind.population
-	var pop_f = -(10.0 * (_population - max_population / 2)) / max_population
-	_population *= (10.0 * pop_f) / ((exp(-pop_f) + 1) * (exp(-pop_f) + 1))
-	_population += ((_morale - 100) * sqrt(max_population)) / 1000.0
+	var pop_f = -(10.0 * (population - max_population / 2)) / max_population
+	population *= (10.0 * pop_f) / ((exp(-pop_f) + 1) * (exp(-pop_f) + 1))
+	population += ((morale - 100) * sqrt(max_population)) / 1000.0
 	

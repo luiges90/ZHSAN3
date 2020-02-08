@@ -5,11 +5,11 @@ onready var tile_size: int = ($Map as TileMap).cell_size[0]
 onready var map_size: Vector2 = ($Map as TileMap).get_used_rect().size
 var player_faction
 
-var architecture_kinds = Dictionary()
+var architecture_kinds = Dictionary() setget forbidden
 
-var factions = Dictionary()
-var architectures = Dictionary()
-var persons = Dictionary()
+var factions = Dictionary() setget forbidden
+var architectures = Dictionary() setget forbidden
+var persons = Dictionary() setget forbidden
 
 signal player_faction_set
 signal scenario_loaded
@@ -18,6 +18,9 @@ signal architecture_clicked
 signal architecture_survey_updated
 
 signal all_faction_finished
+
+func forbidden(x):
+	assert(false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,7 +77,7 @@ func _load_data(path):
 func __load_item(instance, item, add_to_list):
 	instance.scenario = self
 	instance.load_data(item)
-	add_to_list[instance.get_id()] = instance
+	add_to_list[instance.id] = instance
 	add_child(instance)
 
 func _on_all_loaded():
