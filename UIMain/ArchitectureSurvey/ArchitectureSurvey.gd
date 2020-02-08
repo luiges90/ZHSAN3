@@ -27,6 +27,8 @@ func show_data(architecture: Architecture):
 	show()
 
 func update_data(architecture: Architecture):
+	if showing_architecture == null:
+		return
 	if architecture.get_id() == showing_architecture.get_id():
 		show_data(architecture)
 

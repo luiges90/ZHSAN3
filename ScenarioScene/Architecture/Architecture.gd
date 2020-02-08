@@ -111,6 +111,6 @@ func month_event():
 	emit_signal("architecture_survey_updated", self)
 
 func _develop_resources():
-	_fund += 1000
-	_food += 100000
+	_fund += _commerce * sqrt(sqrt(_population + 1000)) * sqrt(_morale) / 100
+	_food += _agriculture * sqrt(sqrt(_population + 1000)) * sqrt(_morale)
 	
