@@ -90,8 +90,6 @@ func _develop_resources():
 	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
 	food += agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
 
-	var a = 10 * exp(10 * population / kind.population + 5)
-	var b = exp(10 * population / kind.population) + exp(5)
-	population *= 1 + a / (b * b) / 100
-	population += ((morale - 100) * sqrt(kind.population)) / 1000.0
+	population *= 1 + ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population))
+	population += 10
 	
