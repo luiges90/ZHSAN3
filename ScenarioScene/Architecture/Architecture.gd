@@ -89,9 +89,9 @@ func month_event():
 func _develop_resources():
 	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
 	food += agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
-	
-	var max_population = kind.population
-	var pop_f = -(10.0 * (population - max_population / 2)) / max_population
-	population *= (10.0 * pop_f) / ((exp(-pop_f) + 1) * (exp(-pop_f) + 1))
-	population += ((morale - 100) * sqrt(max_population)) / 1000.0
+
+	var a = 10 * exp(10 * population / kind.population + 5)
+	var b = exp(10 * population / kind.population) + exp(5)
+	population *= 1 + a / (b * b) / 100
+	population += ((morale - 100) * sqrt(kind.population)) / 1000.0
 	
