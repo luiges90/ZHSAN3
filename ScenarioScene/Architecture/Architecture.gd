@@ -1,7 +1,7 @@
 extends Node2D
 class_name Architecture
 
-var _id: int setget forbidden ,get_id
+var _id: int setget forbidden, get_id
 var scenario
 
 var _map_position: Vector2
@@ -113,4 +113,9 @@ func month_event():
 func _develop_resources():
 	_fund += _commerce * sqrt(sqrt(_population + 1000)) * sqrt(_morale) / 100
 	_food += _agriculture * sqrt(sqrt(_population + 1000)) * sqrt(_morale)
+	
+	var max_population = kind.population
+	var pop_f = -(10.0 * (_population - max_population / 2)) / max_population
+	_population *= (10.0 * pop_f) / ((exp(-pop_f) + 1) * (exp(-pop_f) + 1))
+	_population += ((_morale - 100) * sqrt(max_population)) / 1000.0
 	
