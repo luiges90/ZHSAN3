@@ -22,6 +22,64 @@ func _change_digit(node, change):
 		i = 9
 	node.text = str(i)
 
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.scancode == KEY_SPACE:
+			_on_Play_pressed()
+		elif not _running:
+			match event.scancode:
+				KEY_0:
+					$DateRunner/TensDigit/Text10.text = '1'
+					$DateRunner/UnitDigit/Text.text = '0'
+					_on_Play_pressed()
+				KEY_1:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '1'
+					_on_Play_pressed()
+				KEY_2:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '2'
+					_on_Play_pressed()
+				KEY_3:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '3'
+					_on_Play_pressed()
+				KEY_4:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '4'
+					_on_Play_pressed()
+				KEY_5:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '5'
+					_on_Play_pressed()
+				KEY_6:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '6'
+					_on_Play_pressed()
+				KEY_7:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '7'
+					_on_Play_pressed()
+				KEY_8:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '8'
+					_on_Play_pressed()
+				KEY_9:
+					$DateRunner/TensDigit/Text10.text = '0'
+					$DateRunner/UnitDigit/Text.text = '9'
+					_on_Play_pressed()
+				KEY_F1:
+					$DateRunner/TensDigit/Text10.text = '3'
+					$DateRunner/UnitDigit/Text.text = '0'
+					_on_Play_pressed()
+				KEY_F2:
+					$DateRunner/TensDigit/Text10.text = '6'
+					$DateRunner/UnitDigit/Text.text = '0'
+					_on_Play_pressed()
+				KEY_F3:
+					$DateRunner/TensDigit/Text10.text = '9'
+					$DateRunner/UnitDigit/Text.text = '0'
+					_on_Play_pressed()
 
 func _on_Up10_pressed():
 	_change_digit($DateRunner/TensDigit/Text10, 1)
