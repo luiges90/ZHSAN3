@@ -10,6 +10,12 @@ var courtesy_name: String setget forbidden
 
 var _belonged_architecture setget set_belonged_architecture,get_belonged_architecture
 
+var command: int setget forbidden
+var strength: int setget forbidden
+var intelligence: int setget forbidden
+var politics: int setget forbidden
+var glamour: int setget forbidden
+
 func forbidden(x):
 	assert(false)
 
@@ -22,6 +28,11 @@ func load_data(json: Dictionary):
 	surname = json["Surname"]
 	given_name = json["GivenName"]
 	courtesy_name = json["CourtesyName"]
+	command = json["Command"]
+	strength = json["Strength"]
+	intelligence = json["Intelligence"]
+	politics = json["Politics"]
+	glamour = json["Glamour"]
 
 func get_name() -> String:
 	return surname + given_name
