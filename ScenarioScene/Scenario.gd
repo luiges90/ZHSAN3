@@ -16,6 +16,7 @@ signal scenario_loaded
 
 signal architecture_clicked
 signal architecture_survey_updated
+signal architecture_person_list_clicked
 
 signal all_faction_finished
 
@@ -62,6 +63,7 @@ func _load_data(path):
 		var instance = architecture_scene.instance()
 		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
 		instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
+		instance.connect("architecture_person_list_clicked", self, "_on_architecture_person_list_clicked")
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
@@ -88,6 +90,9 @@ func _on_architecture_clicked(arch):
 	
 func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
+	
+func _on_architecture_person_list_clicked(arch):
+	emit_signal("architecture_person_list_clicked", arch)
 		
 func _on_day_passed():
 	for faction in factions.values():

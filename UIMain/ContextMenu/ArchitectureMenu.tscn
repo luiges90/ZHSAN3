@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=2]
+[ext_resource path="res://UIMain/ContextMenu/ArchitectureMenu.gd" type="Script" id=3]
+
+[node name="ArchitectureMenu" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 159.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+text = "PERSON_LIST"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

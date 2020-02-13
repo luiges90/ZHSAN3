@@ -10,4 +10,5 @@ func show_data(person_list: Array):
 		list.push_back(person.intelligence)
 		list.push_back(person.politics)
 		list.push_back(person.glamour)
-	item_list.items = person_list	
+	item_list.items = list	
+	show()

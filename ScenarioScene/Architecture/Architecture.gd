@@ -23,6 +23,7 @@ var endurance: int setget forbidden
 
 signal architecture_clicked
 signal architecture_survey_updated
+signal architecture_person_list_clicked
 
 func forbidden(x):
 	assert(false)
@@ -93,3 +94,5 @@ func _develop_resources():
 	population *= 1 + ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population))
 	population += 10
 	
+func _on_ArchitectureMenu_person_list_clicked():
+	emit_signal("architecture_person_list_clicked", self.get_persons())
