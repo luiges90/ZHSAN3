@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=2]
+[ext_resource path="res://UIMain/TabList/PersonList.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="PersonList" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+custom_fonts/font = SubResource( 1 )
+text = "PERSON_LIST"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 50.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_styles/panel = SubResource( 2 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ABILITY" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 28.0
+
+[node name="ItemList" type="ItemList" parent="TabContainer/ABILITY"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
