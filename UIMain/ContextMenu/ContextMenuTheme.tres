@@ -1,0 +1,248 @@
+[gd_resource type="Theme" load_steps=37 format=2]
+
+[ext_resource path="res://UIMain/MainTheme/TabButton.png" type="Texture" id=1]
+[ext_resource path="res://UIMain/MainTheme/RightArrow.png" type="Texture" id=2]
+[ext_resource path="res://UIMain/MainTheme/TabButtonSelected.png" type="Texture" id=3]
+[ext_resource path="res://UIMain/MainTheme/CheckBoxSelected.png" type="Texture" id=4]
+[ext_resource path="res://UIMain/MainTheme/ScrollButton.png" type="Texture" id=5]
+[ext_resource path="res://UIMain/MainTheme/DownArrow.png" type="Texture" id=6]
+[ext_resource path="res://UIMain/MainTheme/RoundCheckBoxSelected.png" type="Texture" id=7]
+[ext_resource path="res://UIMain/MainTheme/background.png" type="Texture" id=8]
+[ext_resource path="res://UIMain/MainTheme/UpperArrow.png" type="Texture" id=9]
+[ext_resource path="res://UIMain/MainTheme/LeftArrow.png" type="Texture" id=10]
+[ext_resource path="res://UIMain/MainTheme/RoundCheckBox.png" type="Texture" id=11]
+[ext_resource path="res://UIMain/MainTheme/CheckBox.png" type="Texture" id=12]
+[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=13]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenuLeftClick.png" type="Texture" id=14]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenuLeftClickSelected.png" type="Texture" id=15]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenuLeftDisabled.png" type="Texture" id=16]
+
+[sub_resource type="StyleBoxTexture" id=21]
+content_margin_left = 20.0
+content_margin_right = 20.0
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 100, 27 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=22]
+content_margin_left = 20.0
+content_margin_right = 20.0
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 100, 27 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=23]
+content_margin_left = 20.0
+content_margin_right = 20.0
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 100, 27 )
+margin_left = 9.68279
+margin_right = 10.0
+margin_top = 10.1229
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=24]
+content_margin_left = 20.0
+content_margin_right = 20.0
+texture = ExtResource( 15 )
+region_rect = Rect2( 0, 0, 100, 27 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 60, 90 )
+margin_left = 20.0
+margin_right = 20.1033
+margin_top = 20.0
+margin_bottom = 17.2314
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 7.54698
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=20]
+font_data = ExtResource( 13 )
+
+[resource]
+default_font = SubResource( 20 )
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 21 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 22 )
+Button/styles/normal = SubResource( 23 )
+Button/styles/pressed = SubResource( 24 )
+CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = ExtResource( 4 )
+CheckBox/icons/radio_checked = ExtResource( 7 )
+CheckBox/icons/radio_unchecked = ExtResource( 11 )
+CheckBox/icons/unchecked = ExtResource( 12 )
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+HScrollBar/icons/decrement = ExtResource( 10 )
+HScrollBar/icons/decrement_highlight = ExtResource( 10 )
+HScrollBar/icons/increment = ExtResource( 2 )
+HScrollBar/icons/increment_highlight = ExtResource( 2 )
+HScrollBar/styles/grabber = SubResource( 5 )
+HScrollBar/styles/grabber_highlight = SubResource( 6 )
+HScrollBar/styles/grabber_pressed = SubResource( 7 )
+HScrollBar/styles/scroll = SubResource( 8 )
+HScrollBar/styles/scroll_focus = SubResource( 9 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+Panel/styles/panel = SubResource( 10 )
+PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 11 )
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+Tabs/colors/font_color_bg = Color( 0.690196, 0.690196, 0.690196, 1 )
+Tabs/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Tabs/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )
+Tabs/constants/hseparation = 4
+Tabs/constants/label_valign_bg = 2
+Tabs/constants/label_valign_fg = 0
+Tabs/constants/top_margin = 24
+Tabs/fonts/font = null
+Tabs/icons/close = null
+Tabs/icons/decrement = null
+Tabs/icons/decrement_highlight = null
+Tabs/icons/increment = null
+Tabs/icons/increment_highlight = null
+Tabs/styles/button = null
+Tabs/styles/button_pressed = null
+Tabs/styles/panel = SubResource( 12 )
+Tabs/styles/tab_bg = SubResource( 13 )
+Tabs/styles/tab_disabled = null
+Tabs/styles/tab_fg = SubResource( 14 )
+VScrollBar/icons/decrement = ExtResource( 9 )
+VScrollBar/icons/decrement_highlight = ExtResource( 9 )
+VScrollBar/icons/increment = ExtResource( 6 )
+VScrollBar/icons/increment_highlight = ExtResource( 6 )
+VScrollBar/styles/grabber = SubResource( 15 )
+VScrollBar/styles/grabber_highlight = SubResource( 16 )
+VScrollBar/styles/grabber_pressed = SubResource( 17 )
+VScrollBar/styles/scroll = SubResource( 18 )
+VScrollBar/styles/scroll_focus = SubResource( 19 )
