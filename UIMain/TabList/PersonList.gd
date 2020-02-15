@@ -1,4 +1,5 @@
 extends Panel
+class_name PersonList
 
 func show_data(person_list: Array):
 	var item_list = $TabContainer/ABILITY/ItemList as ItemList
@@ -23,3 +24,9 @@ func show_data(person_list: Array):
 
 func _on_ArchitectureMenu_person_list_clicked(arch: Architecture):
 	show_data(arch.get_persons())
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			hide()

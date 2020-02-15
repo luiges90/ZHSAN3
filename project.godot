@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Person/Person.gd"
 }, {
+"base": "Panel",
+"class": "PersonList",
+"language": "GDScript",
+"path": "res://UIMain/TabList/PersonList.gd"
+}, {
 "base": "Node",
 "class": "Scenario",
 "language": "GDScript",
@@ -84,6 +89,7 @@ _global_script_class_icons={
 "Main": "",
 "MainCamera": "",
 "Person": "",
+"PersonList": "",
 "Scenario": "",
 "ScreenBlind": "",
 "Toolbar": "",
