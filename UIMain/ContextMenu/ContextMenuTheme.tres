@@ -17,7 +17,7 @@
 [ext_resource path="res://UIMain/ContextMenu/ContextMenuLeftClickSelected.png" type="Texture" id=15]
 [ext_resource path="res://UIMain/ContextMenu/ContextMenuLeftDisabled.png" type="Texture" id=16]
 
-[sub_resource type="StyleBoxTexture" id=21]
+[sub_resource type="StyleBoxTexture" id=1]
 content_margin_left = 20.0
 content_margin_right = 20.0
 texture = ExtResource( 16 )
@@ -27,7 +27,7 @@ margin_right = 10.0
 margin_top = 10.0
 margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id=22]
+[sub_resource type="StyleBoxTexture" id=2]
 content_margin_left = 20.0
 content_margin_right = 20.0
 texture = ExtResource( 15 )
@@ -37,7 +37,7 @@ margin_right = 10.0
 margin_top = 10.0
 margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id=23]
+[sub_resource type="StyleBoxTexture" id=3]
 content_margin_left = 20.0
 content_margin_right = 20.0
 texture = ExtResource( 14 )
@@ -47,7 +47,7 @@ margin_right = 10.0
 margin_top = 10.1229
 margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id=24]
+[sub_resource type="StyleBoxTexture" id=4]
 content_margin_left = 20.0
 content_margin_right = 20.0
 texture = ExtResource( 15 )
@@ -88,6 +88,10 @@ bg_color = Color( 0, 0, 0, 1 )
 bg_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxTexture" id=10]
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 60, 90 )
 margin_left = 20.0
@@ -158,11 +162,11 @@ Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = null
-Button/styles/disabled = SubResource( 21 )
+Button/styles/disabled = SubResource( 1 )
 Button/styles/focus = null
-Button/styles/hover = SubResource( 22 )
-Button/styles/normal = SubResource( 23 )
-Button/styles/pressed = SubResource( 24 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
 CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )

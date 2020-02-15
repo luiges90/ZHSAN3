@@ -2,15 +2,22 @@ extends Panel
 
 func show_data(person_list: Array):
 	var item_list = $TabContainer/ABILITY/ItemList as ItemList
-	var list = [tr('NAME'), tr('COMMAND'), tr('STRENGTH'), tr('INTELLIGENCE'), tr('POLITICS'), tr('GLAMOUR')]
+	item_list.clear()
+	item_list.add_item(tr('NAME'), null, false)
+	item_list.add_item(tr('COMMAND'), null, false)
+	item_list.add_item(tr('STRENGTH'), null, false)
+	item_list.add_item(tr('INTELLIGENCE'), null, false)
+	item_list.add_item(tr('POLITICS'), null, false)
+	item_list.add_item(tr('GLAMOUR'), null, false)
+	for i in range(0, 6):
+		item_list.set_item_custom_bg_color(i, Color(0.04, 0.53, 0.79))
 	for person in person_list:
-		list.push_back(person.get_name())
-		list.push_back(person.command)
-		list.push_back(person.strength)
-		list.push_back(person.intelligence)
-		list.push_back(person.politics)
-		list.push_back(person.glamour)
-	item_list.items = list	
+		item_list.add_item(person.get_name())
+		item_list.add_item(str(person.command))
+		item_list.add_item(str(person.strength))
+		item_list.add_item(str(person.intelligence))
+		item_list.add_item(str(person.politics))
+		item_list.add_item(str(person.glamour))
 	show()
 
 
