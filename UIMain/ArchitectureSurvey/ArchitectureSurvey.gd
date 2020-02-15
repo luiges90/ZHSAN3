@@ -3,7 +3,7 @@ class_name ArchitectureSurvey
 
 var showing_architecture
 
-func show_data(architecture: Architecture):
+func show_data(architecture: Architecture, mouse_x: int, mouse_y: int):
 	showing_architecture = architecture
 	
 	($TitlePanel/Title as Label).text = architecture.gname
@@ -30,7 +30,7 @@ func update_data(architecture: Architecture):
 	if showing_architecture == null:
 		return
 	if architecture.id == showing_architecture.id:
-		show_data(architecture)
+		show_data(architecture, 0, 0)
 
 func _on_ArchitectureSurvey_hide():
 	showing_architecture = null

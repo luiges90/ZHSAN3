@@ -12,3 +12,7 @@ func show_data(person_list: Array):
 		list.push_back(person.glamour)
 	item_list.items = list	
 	show()
+
+
+func _on_ArchitectureMenu_person_list_clicked(arch: Architecture):
+	show_data(arch.get_persons())

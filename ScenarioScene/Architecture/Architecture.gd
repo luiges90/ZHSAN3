@@ -23,7 +23,6 @@ var endurance: int setget forbidden
 
 signal architecture_clicked
 signal architecture_survey_updated
-signal architecture_person_list_clicked
 
 func forbidden(x):
 	assert(false)
@@ -77,7 +76,7 @@ func add_person(p, force: bool = false):
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			emit_signal("architecture_clicked", self)
+			emit_signal("architecture_clicked", self, event.global_position.x, event.global_position.y)
 			
 func day_event():
 	for p in get_persons():
@@ -94,5 +93,3 @@ func _develop_resources():
 	population *= 1 + ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population))
 	population += 10
 	
-func _on_ArchitectureMenu_person_list_clicked():
-	emit_signal("architecture_person_list_clicked", self.get_persons())
