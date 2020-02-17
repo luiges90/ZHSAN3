@@ -30,3 +30,8 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_RIGHT and event.pressed:
 			hide()
+
+
+func _on_PersonList_hide():
+	if GameConfig.se_enabled:
+		$CloseSound.play()

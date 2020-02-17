@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=2]
 [ext_resource path="res://UIMain/TabList/PersonList.gd" type="Script" id=3]
+[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -60,3 +61,7 @@ same_column_width = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CloseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="hide" from="." to="." method="_on_PersonList_hide"]

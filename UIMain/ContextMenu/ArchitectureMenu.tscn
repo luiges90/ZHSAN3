@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=2]
 [ext_resource path="res://UIMain/ContextMenu/ArchitectureMenu.gd" type="Script" id=3]
+[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=4]
+[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=5]
 
 [node name="ArchitectureMenu" type="VBoxContainer"]
 margin_right = 40.0
@@ -16,4 +19,14 @@ __meta__ = {
 margin_right = 143.0
 margin_bottom = 38.1229
 text = "PERSON_LIST"
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="CloseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+[connection signal="hide" from="." to="." method="_on_ArchitectureMenu_hide"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
