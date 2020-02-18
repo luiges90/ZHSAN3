@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=38 format=2]
+[gd_resource type="Theme" load_steps=40 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://UIMain/MainTheme/TabButtonSelected.png" type="Texture" id=2]
@@ -109,6 +109,30 @@ margin_top = 15.0
 margin_bottom = 15.0
 
 [sub_resource type="StyleBoxTexture" id=14]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id=21]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id=22]
 content_margin_left = 8.0
 content_margin_right = 8.0
 content_margin_top = 8.0
@@ -236,6 +260,25 @@ TabContainer/styles/panel = SubResource( 12 )
 TabContainer/styles/tab_bg = SubResource( 13 )
 TabContainer/styles/tab_disabled = null
 TabContainer/styles/tab_fg = SubResource( 14 )
+Tabs/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )
+Tabs/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Tabs/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )
+Tabs/constants/hseparation = 4
+Tabs/constants/label_valign_bg = 2
+Tabs/constants/label_valign_fg = 0
+Tabs/constants/top_margin = 24
+Tabs/fonts/font = null
+Tabs/icons/close = null
+Tabs/icons/decrement = null
+Tabs/icons/decrement_highlight = null
+Tabs/icons/increment = null
+Tabs/icons/increment_highlight = null
+Tabs/styles/button = null
+Tabs/styles/button_pressed = null
+Tabs/styles/panel = null
+Tabs/styles/tab_bg = SubResource( 21 )
+Tabs/styles/tab_disabled = null
+Tabs/styles/tab_fg = SubResource( 22 )
 VScrollBar/icons/decrement = ExtResource( 10 )
 VScrollBar/icons/decrement_highlight = ExtResource( 10 )
 VScrollBar/icons/increment = ExtResource( 13 )

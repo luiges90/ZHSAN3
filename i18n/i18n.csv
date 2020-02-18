@@ -20,3 +20,8 @@ STRENGTH,Strength,武藝,武藝
 INTELLIGENCE,Intelligence,智謀,智謀
 POLITICS,Politics,政略,政略
 GLAMOUR,Glamour,魅力,魅力
+INTERNAL,Internal,內政,內政
+AGRICULTURE_ABILITY,Agriculture,農業能力,農業能力
+COMMERCE_ABILITY,Commerce,商業能力,商業能力
+MORALE_ABILITY,Morale,民心能力,民心能力
+ENDURANCE_ABILITY,Endurance,耐久能力,耐久能力
