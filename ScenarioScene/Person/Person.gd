@@ -1,6 +1,8 @@
 extends Node
 class_name Person
 
+enum TASK { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE }
+
 var id: int setget forbidden
 var scenario
 
@@ -15,6 +17,8 @@ var strength: int setget forbidden
 var intelligence: int setget forbidden
 var politics: int setget forbidden
 var glamour: int setget forbidden
+
+var working_task setget forbidden
 
 func forbidden(x):
 	assert(false)
@@ -33,6 +37,7 @@ func load_data(json: Dictionary):
 	intelligence = json["Intelligence"]
 	politics = json["Politics"]
 	glamour = json["Glamour"]
+	working_task = json["Task"]
 
 func get_name() -> String:
 	return surname + given_name
@@ -44,6 +49,18 @@ func set_belonged_architecture(arch, force = false):
 	_belonged_architecture = arch
 	if not force:
 		arch.add_person(self, true)
+		
+func get_agriculture_ability():
+	return 0.25 * intelligence + 0.5 * politics + 0.25 * glamour
+	
+func get_commerce_ability():
+	return 0.5 * intelligence + 0.25 * politics + 0.25 * glamour
+	
+func get_morale_ability():
+	return 0.25 * command + 0.25 * strength + 0.5 * glamour
+	
+func get_endurance_ability():
+	return 0.25 * command + 0.25 * strength + 0.25 * intelligence + 0.25 * politics
 		
 func day_event():
 	pass

@@ -15,3 +15,10 @@ static func nstr(n: int) -> String:
 	if s.length() > 12:
 		s = s.insert(s.length() - 12, ',')
 	return s
+
+# float to integer with randomized component by remaining frac
+# note: input should be positive otherwise result is not exactly correct...
+static func f2ri(x: float) -> int:
+	var trunc = int(x)
+	var frac = abs(x - int(x))
+	return trunc + (1 if randf() < frac else 0)

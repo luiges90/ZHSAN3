@@ -111,19 +111,20 @@
 		"Strength": 60,
 		"Intelligence": 80,
 		"Politics": 70,
-		"Glamour": 50
+		"Glamour": 50,
+		"Task": "NONE"
 	},
 	{
 		"_Id": 2,
 		"Surname": "北",
 		"GivenName": "小文",
-		"CourtesyName": ""
-		,
+		"CourtesyName": "",
 		"Command": 85,
 		"Strength": 55,
 		"Intelligence": 75,
 		"Politics": 45,
-		"Glamour": 25
+		"Glamour": 25,
+		"Task": "NONE"
 	},
 	{
 		"_Id": 3,
@@ -134,7 +135,8 @@
 		"Strength": 85,
 		"Intelligence": 60,
 		"Politics": 50,
-		"Glamour": 90
+		"Glamour": 90,
+		"Task": "NONE"
 	},
 	{
 		"_Id": 4,
@@ -145,7 +147,8 @@
 		"Strength": 70,
 		"Intelligence": 75,
 		"Politics": 90,
-		"Glamour": 10
+		"Glamour": 10,
+		"Task": "NONE"
 	}
   ],
   "GameData":

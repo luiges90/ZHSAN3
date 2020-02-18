@@ -30,7 +30,8 @@ func add_architecture(arch, force: bool = false):
 		arch.set_belonged_faction(self, true)
 		
 func ai():
-	pass
+	for arch in get_architectures():
+		arch.ai()
 		
 func day_event():
 	for arch in get_architectures():

@@ -81,10 +81,15 @@ func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 func day_event():
 	for p in get_persons():
 		p.day_event()
+	_develop_internal()
 		
 func month_event():
 	_develop_resources()
+	_decay_internal()
 	emit_signal("architecture_survey_updated", self)
+	
+func ai():
+	pass
 
 func _develop_resources():
 	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
@@ -93,3 +98,28 @@ func _develop_resources():
 	population *= 1 + ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population))
 	population += 10
 	
+func _decay_internal():
+	agriculture -= Util.f2ri(agriculture * 0.005)
+	commerce -= Util.f2ri(commerce * 0.005)
+	morale -= Util.f2ri(morale * 0.01)
+	endurance -= Util.f2ri(endurance * 0.005)
+	
+func _develop_internal():
+	for p in get_persons():
+		match p.working_task:
+			Person.TASK.AGRICULTURE: _develop_agriculture(p)
+			Person.TASK.COMMERCE: _develop_commerce(p)
+			Person.TASK.MORALE: _develop_morale(p)
+			Person.TASK.ENDURANCE: _develop_endurance(p)
+
+func _develop_agriculture(p: Person):
+	agriculture += Util.f2ri(p.get_agriculture_ability() / 10.0 / max(1, agriculture / kind.agriculture))
+	
+func _develop_commerce(p: Person):
+	commerce += Util.f2ri(p.get_commerce_ability() / 10.0 / max(1, commerce / kind.commerce))
+	
+func _develop_morale(p: Person):
+	morale += Util.f2ri(p.get_morale_ability() / 10.0 / max(1, morale / kind.morale))
+	
+func _develop_endurance(p: Person):
+	endurance += Util.f2ri(p.get_endurance_ability() / 10.0 / max(1, endurance / kind.endurance))
