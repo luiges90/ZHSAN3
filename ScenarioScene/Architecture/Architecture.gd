@@ -89,7 +89,36 @@ func month_event():
 	emit_signal("architecture_survey_updated", self)
 	
 func ai():
-	pass
+	_ai_assign_task()
+	
+func _ai_assign_task():
+	var list = get_persons().duplicate()
+	var pass_n = 1
+	while list.size() > 0:
+		var multi = 2 - pass_n * 0.2
+		if morale < agriculture * multi and morale < commerce * multi and morale < endurance * multi:
+			var p = Util.max_by(list, "get_morale_ability")
+			p[1].set_task(Person.Task.MORALE)
+			list.remove(p[0])
+		if list.size() <= 0:
+			break
+		if commerce < agriculture * multi and commerce < morale * multi and commerce < endurance * multi:
+			var p = Util.max_by(list, "get_commerce_ability")
+			p[1].set_task(Person.Task.COMMERCE)
+			list.remove(p[0])
+		if list.size() <= 0:
+			break
+		if agriculture < morale * multi and agriculture < commerce * multi and agriculture < endurance * multi:
+			var p = Util.max_by(list, "get_agriculture_ability")
+			p[1].set_task(Person.Task.AGRICULTURE)
+			list.remove(p[0])
+		if list.size() <= 0:
+			break
+		if endurance < agriculture * multi and endurance < commerce * multi and endurance < morale * multi:
+			var p = Util.max_by(list, "get_endurance_ability")
+			p[1].set_task(Person.Task.ENDURANCE)
+			list.remove(p[0])
+		pass_n += 1
 
 func _develop_resources():
 	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
@@ -107,10 +136,10 @@ func _decay_internal():
 func _develop_internal():
 	for p in get_persons():
 		match p.working_task:
-			Person.TASK.AGRICULTURE: _develop_agriculture(p)
-			Person.TASK.COMMERCE: _develop_commerce(p)
-			Person.TASK.MORALE: _develop_morale(p)
-			Person.TASK.ENDURANCE: _develop_endurance(p)
+			Person.Task.AGRICULTURE: _develop_agriculture(p)
+			Person.Task.COMMERCE: _develop_commerce(p)
+			Person.Task.MORALE: _develop_morale(p)
+			Person.Task.ENDURANCE: _develop_endurance(p)
 
 func _develop_agriculture(p: Person):
 	agriculture += Util.f2ri(p.get_agriculture_ability() / 10.0 / max(1, agriculture / kind.agriculture))

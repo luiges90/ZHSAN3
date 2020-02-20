@@ -22,3 +22,18 @@ static func f2ri(x: float) -> int:
 	var trunc = int(x)
 	var frac = abs(x - int(x))
 	return trunc + (1 if randf() < frac else 0)
+
+
+static func max_by(list: Array, criteria_func: String):
+	var value = list[0].call(criteria_func)
+	var result = list[0]
+	var index = 0
+	var result_index = 0
+	for item in list:
+		var i = item.call(criteria_func)
+		if i > value:
+			value = i
+			result = item
+			result_index = index
+		index += 1
+	return [result_index, result]
