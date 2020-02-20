@@ -98,25 +98,25 @@ func _ai_assign_task():
 		var multi = 2 - pass_n * 0.2
 		if morale < agriculture * multi and morale < commerce * multi and morale < endurance * multi:
 			var p = Util.max_by(list, "get_morale_ability")
-			p[1].set_task(Person.Task.MORALE)
+			p[1].set_working_task(Person.Task.MORALE)
 			list.remove(p[0])
 		if list.size() <= 0:
 			break
 		if commerce < agriculture * multi and commerce < morale * multi and commerce < endurance * multi:
 			var p = Util.max_by(list, "get_commerce_ability")
-			p[1].set_task(Person.Task.COMMERCE)
+			p[1].set_working_task(Person.Task.COMMERCE)
 			list.remove(p[0])
 		if list.size() <= 0:
 			break
 		if agriculture < morale * multi and agriculture < commerce * multi and agriculture < endurance * multi:
 			var p = Util.max_by(list, "get_agriculture_ability")
-			p[1].set_task(Person.Task.AGRICULTURE)
+			p[1].set_working_task(Person.Task.AGRICULTURE)
 			list.remove(p[0])
 		if list.size() <= 0:
 			break
 		if endurance < agriculture * multi and endurance < commerce * multi and endurance < morale * multi:
 			var p = Util.max_by(list, "get_endurance_ability")
-			p[1].set_task(Person.Task.ENDURANCE)
+			p[1].set_working_task(Person.Task.ENDURANCE)
 			list.remove(p[0])
 		pass_n += 1
 

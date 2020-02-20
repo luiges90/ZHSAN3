@@ -62,8 +62,16 @@ func get_morale_ability():
 func get_endurance_ability():
 	return 0.25 * command + 0.25 * strength + 0.25 * intelligence + 0.25 * politics
 	
-func set_task(work):
+func set_working_task(work):
 	working_task = work
+	
+func get_working_task_str():
+	match working_task:
+		Task.NONE: return tr('NONE')
+		Task.AGRICULTURE: return tr('AGRICULTURE')
+		Task.COMMERCE: return tr('COMMERCE')
+		Task.MORALE: return tr('MORALE')
+		Task.ENDURANCE: return tr('ENDURANCE')
 		
 func day_event():
 	pass

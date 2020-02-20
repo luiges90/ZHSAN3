@@ -25,3 +25,5 @@ AGRICULTURE_ABILITY,Agriculture,農業能力,農業能力
 COMMERCE_ABILITY,Commerce,商業能力,商業能力
 MORALE_ABILITY,Morale,民心能力,民心能力
 ENDURANCE_ABILITY,Endurance,耐久能力,耐久能力
+TASK,Task,工作,工作
+NONE,None,無,無

@@ -21,7 +21,7 @@ func _populate_ability_data(person_list: Array):
 	item_list.add_item(tr('INTELLIGENCE'), null, false)
 	item_list.add_item(tr('POLITICS'), null, false)
 	item_list.add_item(tr('GLAMOUR'), null, false)
-	for i in range(0, 6):
+	for i in range(0, item_list.max_columns):
 		item_list.set_item_custom_bg_color(i, TITLE_COLOR)
 	for person in person_list:
 		item_list.add_item(person.get_name())
@@ -35,14 +35,16 @@ func _populate_internal_data(person_list: Array):
 	var item_list = $TabContainer/Tab2 as ItemList
 	item_list.clear()
 	item_list.add_item(tr('NAME'), null, false)
+	item_list.add_item(tr('TASK'), null, false)
 	item_list.add_item(tr('AGRICULTURE_ABILITY'), null, false)
 	item_list.add_item(tr('COMMERCE_ABILITY'), null, false)
 	item_list.add_item(tr('MORALE_ABILITY'), null, false)
 	item_list.add_item(tr('ENDURANCE_ABILITY'), null, false)
-	for i in range(0, 5):
+	for i in range(0, item_list.max_columns):
 		item_list.set_item_custom_bg_color(i, TITLE_COLOR)
 	for person in person_list:
 		item_list.add_item(person.get_name())
+		item_list.add_item(str(person.get_working_task_str()))
 		item_list.add_item(str(round(person.get_agriculture_ability())))
 		item_list.add_item(str(round(person.get_commerce_ability())))
 		item_list.add_item(str(round(person.get_morale_ability())))

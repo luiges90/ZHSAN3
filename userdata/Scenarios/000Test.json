@@ -114,7 +114,7 @@
 		"Intelligence": 80,
 		"Politics": 70,
 		"Glamour": 50,
-		"Task": "NONE"
+		"Task": 0
 	},
 	{
 		"_Id": 2,
@@ -126,7 +126,7 @@
 		"Intelligence": 75,
 		"Politics": 45,
 		"Glamour": 25,
-		"Task": "NONE"
+		"Task": 0
 	},
 	{
 		"_Id": 3,
@@ -138,7 +138,7 @@
 		"Intelligence": 60,
 		"Politics": 50,
 		"Glamour": 90,
-		"Task": "NONE"
+		"Task": 0
 	},
 	{
 		"_Id": 4,
@@ -150,7 +150,7 @@
 		"Intelligence": 75,
 		"Politics": 90,
 		"Glamour": 10,
-		"Task": "NONE"
+		"Task": 0
 	}
   ],
   "GameData":
