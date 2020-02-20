@@ -88,7 +88,7 @@ func _on_architecture_clicked(arch, mx, my):
 	
 func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
-		
+
 func _on_day_passed():
 	var last_faction = current_faction
 	for faction in factions.values():

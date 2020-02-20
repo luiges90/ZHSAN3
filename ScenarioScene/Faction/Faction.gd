@@ -9,6 +9,8 @@ var color: Color setget forbidden
 
 var _architecture_list = Array() setget forbidden, get_architectures
 
+var player_controlled: bool
+
 func forbidden(x):
 	assert(false)
 
@@ -20,6 +22,7 @@ func load_data(json: Dictionary):
 	id = json["_Id"]
 	gname = json["Name"]
 	color = Util.load_color(json["Color"])
+	player_controlled = json["PlayerControlled"]
 	
 func get_architectures() -> Array:
 	return _architecture_list
@@ -30,8 +33,9 @@ func add_architecture(arch, force: bool = false):
 		arch.set_belonged_faction(self, true)
 		
 func ai():
-	for arch in get_architectures():
-		arch.ai()
+	if not player_controlled:
+		for arch in get_architectures():
+			arch.ai()
 		
 func day_event():
 	for arch in get_architectures():
