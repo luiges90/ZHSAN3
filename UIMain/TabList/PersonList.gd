@@ -1,6 +1,8 @@
 extends Panel
 class_name PersonList
 
+enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE }
+
 const TITLE_COLOR = Color(0.04, 0.53, 0.79)
 
 func _ready():
@@ -50,7 +52,7 @@ func _populate_internal_data(person_list: Array):
 		item_list.add_item(str(round(person.get_morale_ability())))
 		item_list.add_item(str(round(person.get_endurance_ability())))
 
-func _on_ArchitectureMenu_person_list_clicked(arch: Architecture):
+func _on_ArchitectureMenu_person_list_clicked(arch: Architecture, action):
 	show_data(arch.get_persons())
 
 

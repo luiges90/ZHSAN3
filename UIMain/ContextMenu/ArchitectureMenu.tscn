@@ -6,19 +6,61 @@
 [ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=4]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=5]
 
-[node name="ArchitectureMenu" type="VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="ArchitectureMenu" type="HBoxContainer"]
+margin_right = 143.0
+margin_bottom = 68.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="MainMenu" type="VBoxContainer" parent="."]
+margin_right = 143.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Internal" type="Button" parent="MainMenu"]
 margin_right = 143.0
 margin_bottom = 38.1229
+text = "INTERNAL"
+
+[node name="PersonList" type="Button" parent="MainMenu"]
+margin_top = 34.0
+margin_right = 143.0
+margin_bottom = 72.1229
 text = "PERSON_LIST"
+
+[node name="InternalMenu" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 139.0
+margin_right = 294.0
+margin_bottom = 140.0
+
+[node name="Agriculture" type="Button" parent="InternalMenu"]
+margin_right = 155.0
+margin_bottom = 38.1229
+text = "AGRICULTURE"
+
+[node name="Commerce" type="Button" parent="InternalMenu"]
+margin_top = 34.0
+margin_right = 155.0
+margin_bottom = 72.1229
+text = "COMMERCE"
+
+[node name="Morale" type="Button" parent="InternalMenu"]
+margin_top = 68.0
+margin_right = 155.0
+margin_bottom = 106.123
+text = "MORALE"
+
+[node name="Endurance" type="Button" parent="InternalMenu"]
+margin_top = 102.0
+margin_right = 155.0
+margin_bottom = 140.123
+text = "ENDURANCE"
 
 [node name="OpenSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -29,4 +71,9 @@ stream = ExtResource( 4 )
 [node name="CloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 [connection signal="hide" from="." to="." method="_on_ArchitectureMenu_hide"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MainMenu/Internal" to="." method="_on_Internal_pressed"]
+[connection signal="pressed" from="MainMenu/PersonList" to="." method="_on_PersonList_pressed"]
+[connection signal="pressed" from="InternalMenu/Agriculture" to="." method="_on_Agriculture_pressed"]
+[connection signal="pressed" from="InternalMenu/Commerce" to="." method="_on_Commerce_pressed"]
+[connection signal="pressed" from="InternalMenu/Morale" to="." method="_on_Morale_pressed"]
+[connection signal="pressed" from="InternalMenu/Endurance" to="." method="_on_Endurance_pressed"]
