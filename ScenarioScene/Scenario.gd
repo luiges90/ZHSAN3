@@ -3,7 +3,7 @@ class_name Scenario
 
 onready var tile_size: int = ($Map as TileMap).cell_size[0]
 onready var map_size: Vector2 = ($Map as TileMap).get_used_rect().size
-var player_faction
+var current_faction
 
 var architecture_kinds = Dictionary() setget forbidden
 
@@ -11,7 +11,7 @@ var factions = Dictionary() setget forbidden
 var architectures = Dictionary() setget forbidden
 var persons = Dictionary() setget forbidden
 
-signal player_faction_set
+signal current_faction_set
 signal scenario_loaded
 
 signal architecture_clicked
@@ -28,7 +28,7 @@ func _ready():
 	($DateRunner as DateRunner).scenario = self
 	
 	_load_data("user://Scenarios/000Test.json")
-	player_faction = factions[1]
+	current_faction = factions[1]
 	
 	emit_signal("scenario_loaded")
 	
@@ -81,7 +81,7 @@ func __load_item(instance, item, add_to_list):
 	add_child(instance)
 
 func _on_all_loaded():
-	emit_signal("player_faction_set", player_faction)
+	emit_signal("current_faction_set", current_faction)
 	
 func _on_architecture_clicked(arch, mx, my):
 	emit_signal("architecture_clicked", arch, mx, my)
@@ -90,8 +90,13 @@ func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
 		
 func _on_day_passed():
+	var last_faction = current_faction
 	for faction in factions.values():
+		current_faction = faction
+		emit_signal("current_faction_set", current_faction)
 		faction.ai()
+	current_faction = last_faction
+	emit_signal("current_faction_set", current_faction)
 	for faction in factions.values():
 		faction.day_event()
 	yield(get_tree(), "idle_frame")

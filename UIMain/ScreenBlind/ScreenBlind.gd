@@ -16,5 +16,5 @@ func show_date(year, month, day, season):
 			season_texture = load("res://UIMain/ScreenBlind/Winter.png")
 	($Season as TextureRect).texture = season_texture
 
-func show_player_faction(faction):
+func show_current_faction(faction):
 	($OverviewPanel/Content/Faction/Text as Label).text = faction.gname
