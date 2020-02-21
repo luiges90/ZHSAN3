@@ -39,6 +39,7 @@ static func f2ri(x: float) -> int:
 ##############################################
 #                 Collections                #
 ##############################################
+
 static func min_pos(list: Array):
 	var value = list[0]
 	var result = list[0]
@@ -94,3 +95,13 @@ static func max_by(list: Array, criteria_func: String):
 			result_index = index
 		index += 1
 	return [result_index, result]
+	
+##############################################
+#                      Misc                  #
+##############################################
+
+static func delete_all_children(node: Node):
+	for n in node.get_children():
+		node.remove_child(n)
+		n.queue_free()
+		

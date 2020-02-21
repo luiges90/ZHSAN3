@@ -34,42 +34,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="Tabs" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 50.0
 margin_right = -10.0
-margin_bottom = -10.0
+margin_bottom = -50.0
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tab1" type="ItemList" parent="TabContainer"]
+[node name="Tab1" type="ScrollContainer" parent="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
-items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false, "Item 5", null, false, "Item 6", null, false, "Item 7", null, false, "Item 8", null, false, "Item 9", null, false, "Item 10", null, false, "Item 11", null, false, "Item 12", null, false, "Item 13", null, false, "Item 14", null, false ]
-auto_height = true
-max_columns = 6
-same_column_width = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Tab2" type="ItemList" parent="TabContainer"]
+[node name="Grid" type="GridContainer" parent="Tabs/Tab1"]
+columns = 6
+
+[node name="Tab2" type="ScrollContainer" parent="Tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
-items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false, "Item 5", null, false, "Item 6", null, false, "Item 7", null, false, "Item 8", null, false, "Item 9", null, false, "Item 10", null, false, "Item 11", null, false, "Item 12", null, false, "Item 13", null, false, "Item 14", null, false, "Item 15", null, false, "Item 16", null, false, "Item 17", null, false ]
-auto_height = true
-max_columns = 6
-same_column_width = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Grid" type="GridContainer" parent="Tabs/Tab2"]
+columns = 6
 
 [node name="CloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
