@@ -72,6 +72,7 @@ func get_working_task_str():
 		Task.COMMERCE: return tr('COMMERCE')
 		Task.MORALE: return tr('MORALE')
 		Task.ENDURANCE: return tr('ENDURANCE')
+		_: return tr('NONE')
 		
 func day_event():
 	pass
