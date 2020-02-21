@@ -93,32 +93,34 @@ func ai():
 	
 func _ai_assign_task():
 	var list = get_persons().duplicate()
-	var pass_n = 1
+	var a = float(agriculture) / kind.agriculture
+	var c = float(commerce) / kind.commerce
+	var m = float(morale) / kind.morale
+	var e = float(endurance) / kind.endurance
+	var task_priority = [-a, -c, -m, -e]
 	while list.size() > 0:
-		var multi = 2 - pass_n * 0.2
-		if morale < agriculture * multi and morale < commerce * multi and morale < endurance * multi:
-			var p = Util.max_by(list, "get_morale_ability")
-			p[1].set_working_task(Person.Task.MORALE)
-			list.remove(p[0])
-		if list.size() <= 0:
-			break
-		if commerce < agriculture * multi and commerce < morale * multi and commerce < endurance * multi:
-			var p = Util.max_by(list, "get_commerce_ability")
-			p[1].set_working_task(Person.Task.COMMERCE)
-			list.remove(p[0])
-		if list.size() <= 0:
-			break
-		if agriculture < morale * multi and agriculture < commerce * multi and agriculture < endurance * multi:
-			var p = Util.max_by(list, "get_agriculture_ability")
-			p[1].set_working_task(Person.Task.AGRICULTURE)
-			list.remove(p[0])
-		if list.size() <= 0:
-			break
-		if endurance < agriculture * multi and endurance < commerce * multi and endurance < morale * multi:
-			var p = Util.max_by(list, "get_endurance_ability")
-			p[1].set_working_task(Person.Task.ENDURANCE)
-			list.remove(p[0])
-		pass_n += 1
+		var task = Util.max_pos(task_priority)
+		match task[0]:
+			0: 
+				var person = Util.max_by(list, "get_agriculture_ability")
+				person[1].set_working_task(Person.Task.AGRICULTURE)
+				list.remove(person[0])
+				task_priority[0] -= 0.2
+			1:
+				var person = Util.max_by(list, "get_commerce_ability")
+				person[1].set_working_task(Person.Task.COMMERCE)
+				list.remove(person[0])
+				task_priority[1] -= 0.2
+			2:
+				var person = Util.max_by(list, "get_morale_ability")
+				person[1].set_working_task(Person.Task.MORALE)
+				list.remove(person[0])
+				task_priority[2] -= 0.2
+			3:
+				var person = Util.max_by(list, "get_endurance_ability")
+				person[1].set_working_task(Person.Task.ENDURANCE)
+				list.remove(person[0])
+				task_priority[3] -= 0.2
 
 func _develop_resources():
 	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
