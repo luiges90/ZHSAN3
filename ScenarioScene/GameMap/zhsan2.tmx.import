@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/zhsan2.tmx-ef793a54e6d817cc73c6c937b9f9f884.scn"
+
+[deps]
+
+source_file="res://ScenarioScene/GameMap/zhsan2.tmx"
+dest_files=[ "res://.import/zhsan2.tmx-ef793a54e6d817cc73c6c937b9f9f884.scn" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+uv_clip=true
+image_flags=7
+collision_layer=1
+embed_internal_images=false
+save_tiled_properties=false
+add_background=true
+post_import_script=""
