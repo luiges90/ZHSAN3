@@ -27,3 +27,5 @@ MORALE_ABILITY,Morale,民心能力,民心能力
 ENDURANCE_ABILITY,Endurance,耐久能力,耐久能力
 TASK,Task,工作,工作
 NONE,None,無,無
+CONFIRM,Confirm,確定,確定
+CANCEL,Cancel,取消,取消

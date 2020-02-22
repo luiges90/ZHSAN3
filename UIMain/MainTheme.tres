@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=40 format=2]
+[gd_resource type="Theme" load_steps=46 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://UIMain/MainTheme/TabButtonSelected.png" type="Texture" id=2]
@@ -49,6 +49,18 @@ margin_left = 28.0
 margin_right = 28.0
 margin_top = 16.0
 margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="StyleBoxEmpty" id=27]
+
+[sub_resource type="StyleBoxEmpty" id=28]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 9 )
@@ -202,12 +214,12 @@ CheckBox/icons/checked = ExtResource( 6 )
 CheckBox/icons/radio_checked = ExtResource( 8 )
 CheckBox/icons/radio_unchecked = ExtResource( 5 )
 CheckBox/icons/unchecked = ExtResource( 7 )
-CheckBox/styles/disabled = null
-CheckBox/styles/focus = null
-CheckBox/styles/hover = null
-CheckBox/styles/hover_pressed = null
-CheckBox/styles/normal = null
-CheckBox/styles/pressed = null
+CheckBox/styles/disabled = SubResource( 23 )
+CheckBox/styles/focus = SubResource( 24 )
+CheckBox/styles/hover = SubResource( 25 )
+CheckBox/styles/hover_pressed = SubResource( 26 )
+CheckBox/styles/normal = SubResource( 27 )
+CheckBox/styles/pressed = SubResource( 28 )
 HScrollBar/icons/decrement = ExtResource( 12 )
 HScrollBar/icons/decrement_highlight = ExtResource( 12 )
 HScrollBar/icons/increment = ExtResource( 11 )

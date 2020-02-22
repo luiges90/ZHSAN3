@@ -22,7 +22,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 anchor_right = 1.0
 margin_left = 10.0
 margin_top = 10.0
@@ -40,7 +40,7 @@ anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 50.0
 margin_right = -10.0
-margin_bottom = -50.0
+margin_bottom = -70.0
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -65,4 +65,41 @@ columns = 6
 
 [node name="CloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="ActionButtons" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -10.0
+margin_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="ActionButtons"]
+margin_right = 121.0
+margin_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="ActionButtons"]
+margin_left = 125.0
+margin_right = 249.0
+margin_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 0
+disabled = true
+text = "CONFIRM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="hide" from="." to="." method="_on_PersonList_hide"]
+[connection signal="pressed" from="ActionButtons/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="ActionButtons/Confirm" to="." method="_on_Confirm_pressed"]
