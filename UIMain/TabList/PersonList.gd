@@ -10,6 +10,8 @@ const TITLE_COLOR = Color(0.04, 0.53, 0.79)
 var current_action = Action.LIST
 var current_architecture
 
+var _confirming
+
 func _ready():
 	$Tabs.set_tab_title(0, tr('ABILITY'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
@@ -107,8 +109,9 @@ func _input(event):
 
 
 func _on_PersonList_hide():
-	if GameConfig.se_enabled:
+	if GameConfig.se_enabled and not _confirming:
 		$CloseSound.play()
+	_confirming = false
 
 
 func _on_Cancel_pressed():
@@ -127,4 +130,6 @@ func _on_Confirm_pressed():
 		Action.MORALE: task = Person.Task.MORALE
 		Action.ENDURANCE: task = Person.Task.ENDURANCE
 	emit_signal("person_selected", current_action, current_architecture, selected_persons)
+	$ConfirmSound.play()
+	_confirming = true
 	hide()

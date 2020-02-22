@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=2]
 [ext_resource path="res://UIMain/TabList/PersonList.gd" type="Script" id=3]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
+[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -63,9 +64,6 @@ margin_top = 34.0
 [node name="Grid" type="GridContainer" parent="Tabs/Tab2"]
 columns = 6
 
-[node name="CloseSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-
 [node name="ActionButtons" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -100,6 +98,12 @@ text = "CONFIRM"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CloseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="ConfirmSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="hide" from="." to="." method="_on_PersonList_hide"]
 [connection signal="pressed" from="ActionButtons/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="ActionButtons/Confirm" to="." method="_on_Confirm_pressed"]
