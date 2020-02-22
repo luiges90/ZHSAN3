@@ -33,6 +33,5 @@ func _register_person_list():
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")
 	connect("all_loaded", $Scenario/DateRunner, "_on_all_loaded")
-	connect("all_loaded", $Scenario/MainCamera, "_on_all_loaded")
 	
 	emit_signal("all_loaded")
