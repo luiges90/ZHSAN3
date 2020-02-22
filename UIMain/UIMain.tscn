@@ -46,4 +46,8 @@ visible = false
 visible = false
 margin_right = 0.0
 margin_bottom = 0.0
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
 [connection signal="person_list_clicked" from="ArchitectureMenu" to="PersonList" method="_on_ArchitectureMenu_person_list_clicked"]

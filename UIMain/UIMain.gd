@@ -5,6 +5,9 @@ class_name UIMain
 func _ready():
 	pass
 	
+func _process(delta):
+	$Label.text = str(Engine.get_frames_per_second())
+	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) and event.pressed:
