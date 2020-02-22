@@ -88,6 +88,12 @@ func _on_architecture_clicked(arch, mx, my):
 	
 func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
+	
+func _on_architecture_person_selected(task, current_architecture, selected_person_ids):
+	var p = []
+	for id in selected_person_ids:
+		p.append(persons[id])
+	architectures[current_architecture].set_person_task(task, p)
 
 func _on_day_passed():
 	var last_faction = current_faction

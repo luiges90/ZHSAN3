@@ -21,7 +21,7 @@ func show_menu(arch, mouse_x, mouse_y):
 func _on_PersonList_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
-	emit_signal("person_list_clicked", showing_architecture, PersonList.Action.LIST)
+	emit_signal("person_list_clicked", showing_architecture.id, showing_architecture.get_persons(), PersonList.Action.LIST)
 	_opening_list = true
 	hide()
 
@@ -42,7 +42,7 @@ func _on_Internal_pressed():
 func _on_Agriculture_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
-	emit_signal("person_list_clicked", showing_architecture, PersonList.Action.AGRICULTURE)
+	emit_signal("person_list_clicked", showing_architecture.id, showing_architecture.get_persons(), PersonList.Action.AGRICULTURE)
 	_opening_list = true
 	hide()
 
@@ -50,7 +50,7 @@ func _on_Agriculture_pressed():
 func _on_Commerce_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
-	emit_signal("person_list_clicked", showing_architecture, PersonList.Action.COMMERCE)
+	emit_signal("person_list_clicked", showing_architecture.id, showing_architecture.get_persons(), PersonList.Action.COMMERCE)
 	_opening_list = true
 	hide()
 
@@ -58,7 +58,7 @@ func _on_Commerce_pressed():
 func _on_Morale_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
-	emit_signal("person_list_clicked", showing_architecture, PersonList.Action.MORALE)
+	emit_signal("person_list_clicked", showing_architecture.id, showing_architecture.get_persons(), PersonList.Action.MORALE)
 	_opening_list = true
 	hide()
 
@@ -66,6 +66,6 @@ func _on_Morale_pressed():
 func _on_Endurance_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
-	emit_signal("person_list_clicked", showing_architecture, PersonList.Action.ENDURANCE)
+	emit_signal("person_list_clicked", showing_architecture.id, showing_architecture.get_persons(), PersonList.Action.ENDURANCE)
 	_opening_list = true
 	hide()

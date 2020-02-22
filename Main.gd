@@ -12,6 +12,8 @@ func _ready():
 	_register_date_runner()
 	_register_architecture_ui()
 	
+	_register_person_list()
+	
 	_all_loaded()
 
 func _register_architecture_ui():
@@ -24,6 +26,9 @@ func _register_date_runner():
 	$UICanvas/UIMain/Toolbar.connect("start_date_runner", $Scenario/DateRunner, "_on_start_date_runner")
 	$UICanvas/UIMain/Toolbar.connect("stop_date_runner", $Scenario/DateRunner, "_on_stop_date_runner")
 	$Scenario/DateRunner.connect("day_passed", $UICanvas/UIMain/Toolbar, "_on_day_passed")
+	
+func _register_person_list():
+	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_architecture_person_selected")
 
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")

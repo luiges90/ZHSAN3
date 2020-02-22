@@ -88,6 +88,10 @@ func month_event():
 	_decay_internal()
 	emit_signal("architecture_survey_updated", self)
 	
+func set_person_task(task, persons: Array):
+	for p in persons:
+		p.set_working_task(task)
+	
 func ai():
 	_ai_assign_task()
 	
