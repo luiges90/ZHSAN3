@@ -133,3 +133,15 @@ func _on_Confirm_pressed():
 	$ConfirmSound.play()
 	_confirming = true
 	hide()
+
+
+func _on_SelectAll_pressed():
+	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+		checkbox.set_pressed(true)
+	$ActionButtons/Confirm.disabled = false
+
+
+func _on_UnselectAll_pressed():
+	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+		checkbox.set_pressed(false)
+	$ActionButtons/Confirm.disabled = true

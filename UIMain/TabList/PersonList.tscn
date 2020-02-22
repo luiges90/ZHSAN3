@@ -99,6 +99,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SelectionButtons" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_bottom = -10.0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectAll" type="Button" parent="SelectionButtons"]
+margin_right = 158.0
+margin_bottom = 50.0
+text = "SELECT_ALL"
+
+[node name="UnselectAll" type="Button" parent="SelectionButtons"]
+margin_left = 162.0
+margin_right = 342.0
+margin_bottom = 50.0
+text = "UNSELECT_ALL"
+
 [node name="CloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
@@ -107,3 +128,5 @@ stream = ExtResource( 5 )
 [connection signal="hide" from="." to="." method="_on_PersonList_hide"]
 [connection signal="pressed" from="ActionButtons/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="ActionButtons/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="SelectionButtons/SelectAll" to="." method="_on_SelectAll_pressed"]
+[connection signal="pressed" from="SelectionButtons/UnselectAll" to="." method="_on_UnselectAll_pressed"]
