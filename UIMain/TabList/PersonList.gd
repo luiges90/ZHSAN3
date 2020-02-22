@@ -43,16 +43,21 @@ func _title(text: String):
 func _checkbox(id: int):
 	var checkbox = CheckBox.new()
 	checkbox.add_to_group("checkboxes")
+	checkbox.add_to_group("person_id_" + str(id))
 	checkbox.set_meta("person_id", id)
-	checkbox.connect("pressed", self, "_checkbox_changed")
+	checkbox.connect("pressed", self, "_checkbox_changed", [checkbox])
 	return checkbox
 	
-func _checkbox_changed():
+func _checkbox_changed(in_cb: CheckBox):
 	var any_checked = false
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		if checkbox.is_pressed():
 			any_checked = true
 			break
+	for group in in_cb.get_groups():
+		if group.find("person_id_") >= 0:
+			for checkbox in get_tree().get_nodes_in_group(group):
+				checkbox.set_pressed(in_cb.is_pressed())
 	$ActionButtons/Confirm.disabled = not any_checked
 
 func _populate_ability_data(person_list: Array, action):
@@ -82,6 +87,11 @@ func _populate_ability_data(person_list: Array, action):
 func _populate_internal_data(person_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
 	Util.delete_all_children(item_list)
+	if action != Action.LIST:
+		item_list.columns = 7
+		item_list.add_child(_title(''))
+	else:
+		item_list.columns = 6
 	item_list.add_child(_title(tr('NAME')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('AGRICULTURE_ABILITY')))
@@ -89,6 +99,8 @@ func _populate_internal_data(person_list: Array, action):
 	item_list.add_child(_title(tr('MORALE_ABILITY')))
 	item_list.add_child(_title(tr('ENDURANCE_ABILITY')))
 	for person in person_list:
+		if action != Action.LIST:
+			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_label(person.get_name()))
 		item_list.add_child(_label(str(person.get_working_task_str())))
 		item_list.add_child(_label(str(round(person.get_agriculture_ability()))))

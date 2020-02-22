@@ -1,8 +1,8 @@
 extends Node
 class_name Scenario
 
-onready var tile_size: int = ($Map as TileMap).cell_size[0]
-onready var map_size: Vector2 = ($Map as TileMap).get_used_rect().size
+onready var tile_size: int = ($Map.find_node('Tile Layer 1') as TileMap).cell_size[0]
+onready var map_size: Vector2 = ($Map.find_node('Tile Layer 1') as TileMap).get_used_rect().size
 var current_faction
 
 var architecture_kinds = Dictionary() setget forbidden
