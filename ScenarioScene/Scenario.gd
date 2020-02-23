@@ -1,8 +1,9 @@
 extends Node
 class_name Scenario
 
-onready var tile_size: int = ($Map.find_node('0x0') as TileMap).cell_size[0]
-onready var map_size: Vector2 = Vector2(100, 100)
+onready var tile_size: int = $Map.tile_size
+onready var map_size: Vector2 = $Map.map_size
+
 var current_faction
 
 var architecture_kinds = Dictionary() setget forbidden
