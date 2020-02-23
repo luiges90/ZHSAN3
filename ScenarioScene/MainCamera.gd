@@ -1,6 +1,8 @@
 extends Camera2D
 class_name MainCamera
 
+signal camera_moved
+
 export var camera_speed = 10
 export var mouse_scroll_margin = 50
 export var zoom_speed = 0.05
@@ -14,25 +16,29 @@ var _zooming_camera = 0
 
 func _physics_process(delta):
 	var viewport_rect = get_viewport_rect()
-	offset.x += _moving_camera_x
-	offset.y += _moving_camera_y
-	zoom.x += _zooming_camera
-	zoom.y += _zooming_camera
-	
 	limit_left = 0
 	limit_top = 0
-	limit_right = scenario.tile_size * scenario.map_size.x - viewport_rect.size.x
-	limit_bottom = scenario.tile_size * scenario.map_size.y - viewport_rect.size.y + bottom_ui_margin
-	offset.x = clamp(offset.x, limit_left, limit_right)
-	offset.y = clamp(offset.y, limit_top, limit_bottom)
+	limit_right = scenario.tile_size * scenario.map_size.x
+	limit_bottom = scenario.tile_size * scenario.map_size.y + bottom_ui_margin * (zoom.y - 1)
+	
+	position.x += _moving_camera_x
+	position.y += _moving_camera_y
+	position.x = clamp(position.x, 0, limit_right - viewport_rect.size.x * zoom.x)
+	position.y = clamp(position.y, 0, limit_bottom - viewport_rect.size.y * zoom.y)
+	
+	zoom.x += _zooming_camera
+	zoom.y += _zooming_camera
 	zoom.x = clamp(zoom.x, 0.3, 2)
 	zoom.y = clamp(zoom.y, 0.3, 2)
+	
+	print(get_camera_position())
+	if _moving_camera_x > 0 or _moving_camera_y > 0 or _zooming_camera > 0:
+		emit_signal("camera_moved", get_camera_position())
 	
 func _unhandled_input(event):
 	var mouse_position = get_viewport().get_mouse_position()
 	var viewport_rect = get_viewport_rect()
 	if event is InputEventMouseButton:
-		print(event.button_index, event.is_pressed())
 		if event.button_index == BUTTON_LEFT:
 			if event.is_pressed():
 				if mouse_position.y < mouse_scroll_margin:
