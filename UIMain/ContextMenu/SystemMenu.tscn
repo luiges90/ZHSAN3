@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UIMain/ContextMenu/SystemMenu.gd" type="Script" id=2]
+[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=3]
+[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
+
+[node name="SystemMenu" type="VBoxContainer"]
+margin_right = 180.0
+margin_bottom = 106.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="Button" parent="."]
+margin_right = 180.0
+margin_bottom = 38.1229
+text = "SAVE_GAME"
+
+[node name="Load" type="Button" parent="."]
+margin_top = 34.0
+margin_right = 180.0
+margin_bottom = 72.1229
+text = "LOAD_GAME"
+
+[node name="Quit" type="Button" parent="."]
+margin_top = 68.0
+margin_right = 180.0
+margin_bottom = 106.123
+text = "QUIT_GAME"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="hide" from="." to="." method="_on_SystemMenu_hide"]
+[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

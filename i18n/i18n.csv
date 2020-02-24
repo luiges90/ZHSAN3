@@ -32,3 +32,6 @@ CANCEL,Cancel,取消,取消
 SELECT_ALL,Select All,全選,全選
 UNSELECT_ALL,Unselect All,全不選,全不選
 SYSTEM,System,系統,系統
+SAVE_GAME,Save,儲存遊戲,儲存遊戲
+LOAD_GAME,Load,讀取遊戲,讀取遊戲
+QUIT_GAME,Quit,離開,離開

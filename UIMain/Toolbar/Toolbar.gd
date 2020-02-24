@@ -5,6 +5,7 @@ var _running = false
 
 signal start_date_runner
 signal stop_date_runner
+signal system_clicked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -148,7 +149,8 @@ func _on_day_passed():
 			_running = false
 			_set_play_button_texture_to_play()
 			emit_signal("stop_date_runner")
-		
 
 
-
+func _on_System_pressed():
+	$Select.play()
+	emit_signal("system_clicked")
