@@ -23,6 +23,7 @@ func show_data(person_list: Array):
 		Action.COMMERCE: $Title.text = tr('COMMERCE')
 		Action.MORALE: $Title.text = tr('MORALE')
 		Action.ENDURANCE: $Title.text = tr('ENDURANCE')
+	$SelectionButtons.visible = current_action != Action.LIST
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)
 	show()
