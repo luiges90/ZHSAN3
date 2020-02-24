@@ -69,6 +69,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -42.0
 margin_right = -10.0
 margin_bottom = -10.0
 grow_horizontal = 0
@@ -79,7 +80,7 @@ __meta__ = {
 
 [node name="Cancel" type="Button" parent="ActionButtons"]
 margin_right = 121.0
-margin_bottom = 50.0
+margin_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CANCEL"
@@ -90,7 +91,7 @@ __meta__ = {
 [node name="Confirm" type="Button" parent="ActionButtons"]
 margin_left = 125.0
 margin_right = 249.0
-margin_bottom = 50.0
+margin_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
 disabled = true
@@ -103,6 +104,7 @@ __meta__ = {
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
+margin_top = -42.0
 margin_bottom = -10.0
 grow_vertical = 0
 __meta__ = {
@@ -111,13 +113,13 @@ __meta__ = {
 
 [node name="SelectAll" type="Button" parent="SelectionButtons"]
 margin_right = 158.0
-margin_bottom = 50.0
+margin_bottom = 32.0
 text = "SELECT_ALL"
 
 [node name="UnselectAll" type="Button" parent="SelectionButtons"]
 margin_left = 162.0
 margin_right = 342.0
-margin_bottom = 50.0
+margin_bottom = 32.0
 text = "UNSELECT_ALL"
 
 [node name="CloseSound" type="AudioStreamPlayer" parent="."]
