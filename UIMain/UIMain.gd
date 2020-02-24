@@ -6,7 +6,7 @@ func _ready():
 	pass
 	
 func _process(delta):
-	$Label.text = str(Engine.get_frames_per_second())
+	$FPSCounter.text = str(Engine.get_frames_per_second())
 	
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
