@@ -15,4 +15,5 @@ func _unhandled_input(event):
 			($ArchitectureMenu as ArchitectureMenu).hide()
 			($PersonList as PersonList).hide()
 			($SystemMenu as SystemMenu).hide()
+			($SaveLoadMenu as SaveLoadMenu).hide()
 

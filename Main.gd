@@ -11,8 +11,8 @@ func _ready():
 	
 	_register_date_runner()
 	_register_architecture_ui()
-	
 	_register_person_list()
+	_register_save_load_list()
 	
 	_all_loaded()
 
@@ -29,6 +29,9 @@ func _register_date_runner():
 	
 func _register_person_list():
 	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_architecture_person_selected")
+	
+func _register_save_load_list():
+	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
 
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")

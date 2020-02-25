@@ -35,6 +35,12 @@ func _ready():
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
+	
+func _on_file_slot_clicked(mode, file_name: String):
+	pass
+	
+func _save_data(path):
+	pass
 
 func _load_data(path):
 	var file = File.new()

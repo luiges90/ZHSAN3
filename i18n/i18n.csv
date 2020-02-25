@@ -35,3 +35,4 @@ SYSTEM,System,系統,系統
 SAVE_GAME,Save,儲存遊戲,儲存遊戲
 LOAD_GAME,Load,讀取遊戲,讀取遊戲
 QUIT_GAME,Quit,離開,離開
+FILE_BLANK,<Blank>,＜空白＞,＜空白＞
