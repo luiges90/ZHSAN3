@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=1]
 [ext_resource path="res://UIMain/ContextMenu/SystemMenu.gd" type="Script" id=2]
 [ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=3]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
+[ext_resource path="res://UIMain/MainTheme/Title.tres" type="StyleBox" id=5]
 
 [node name="SystemMenu" type="VBoxContainer"]
 margin_right = 180.0
@@ -14,21 +15,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Save" type="Button" parent="."]
+[node name="Label" type="Label" parent="."]
 margin_right = 180.0
-margin_bottom = 38.1229
+margin_bottom = 34.0
+custom_styles/normal = ExtResource( 5 )
+text = "SYSTEM"
+align = 1
+
+[node name="Save" type="Button" parent="."]
+margin_top = 30.0
+margin_right = 180.0
+margin_bottom = 68.1229
 text = "SAVE_GAME"
 
 [node name="Load" type="Button" parent="."]
-margin_top = 34.0
+margin_top = 64.0
 margin_right = 180.0
-margin_bottom = 72.1229
+margin_bottom = 102.123
 text = "LOAD_GAME"
 
 [node name="Quit" type="Button" parent="."]
-margin_top = 68.0
+margin_top = 98.0
 margin_right = 180.0
-margin_bottom = 106.123
+margin_bottom = 136.123
 text = "QUIT_GAME"
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
