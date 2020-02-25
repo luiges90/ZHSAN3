@@ -29,18 +29,40 @@ func _ready():
 	($DateRunner as DateRunner).scenario = self
 	
 	_load_data("user://Scenarios/000Test.json")
-	current_faction = factions[1]
 	
 	emit_signal("scenario_loaded")
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
 	
-func _on_file_slot_clicked(mode, file_name: String):
-	pass
+func _on_file_slot_clicked(mode, path: String):
+	if mode == SaveLoadMenu.MODE.SAVE:
+		_save_data(path)
 	
 func _save_data(path):
-	pass
+	var file = File.new()
+	file.open(path, File.WRITE)
+	
+	var date = $DateRunner as DateRunner
+	var data = {
+		"CurrentFactionId": current_faction.id,
+		"ArchitectureKinds": __save_items(architecture_kinds),
+		"Factions": __save_items(factions),
+		"Architectures": __save_items(architectures),
+		"Persons": __save_items(persons),
+		"GameData": {
+			"Year": date.year,
+			"Month": date.month,
+			"Day": date.day
+		}
+	}
+	file.store_line(JSONBeautifier.beautify_json(to_json(data)))
+	
+func __save_items(d: Dictionary):
+	var arr = []
+	for item in d.values():
+		arr.push_back(item.save_data())
+	return arr
 
 func _load_data(path):
 	var file = File.new()
@@ -79,6 +101,8 @@ func _load_data(path):
 		__load_item(instance, item, factions)
 		for id in item["ArchitectureList"]:
 			instance.add_architecture(architectures[int(id)])
+			
+	current_faction = factions[int(obj["CurrentFactionId"])]
 
 	
 func __load_item(instance, item, add_to_list):

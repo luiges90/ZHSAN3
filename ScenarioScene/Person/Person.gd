@@ -38,6 +38,20 @@ func load_data(json: Dictionary):
 	politics = json["Politics"]
 	glamour = json["Glamour"]
 	working_task = json["Task"]
+	
+func save_data() -> Dictionary:
+	return {
+		"_Id": id,
+		"Surname": surname,
+		"GivenName": given_name,
+		"CourtesyName": courtesy_name,
+		"Command": command,
+		"Strength": strength,
+		"Intelligence": intelligence,
+		"Politics": politics,
+		"Glamour": glamour,
+		"Task": working_task
+	}
 
 func get_name() -> String:
 	return surname + given_name

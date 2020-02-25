@@ -12,7 +12,7 @@ func _on_game_pressed(name: String):
 	$Confirm.play()
 	_confirming = true
 	hide()
-	emit_signal("file_slot_clicked", mode, name)
+	emit_signal("file_slot_clicked", mode, "user://Saves/Save" + name + ".json")
 	
 
 func _on_Game1_pressed():

@@ -49,6 +49,22 @@ func load_data(json: Dictionary):
 	morale = json["Morale"]
 	endurance = json["Endurance"]
 	
+func save_data() -> Dictionary:
+	return {
+		"_Id": id,
+		"Name": gname,
+		"Title": title,
+		"Kind": kind.id,
+		"MapPosition": Util.save_position(map_position),
+		"Population": population,
+		"Fund": fund,
+		"Food": food,
+		"Agriculture": agriculture,
+		"Commerce": commerce,
+		"Morale": morale,
+		"Endurance": endurance
+	}
+	
 func _on_scenario_loaded():
 	($SpriteArea/Sprite as Sprite).texture = kind.image
 	($SpriteArea/Sprite/Title/Label as Label).text = title

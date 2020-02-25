@@ -24,6 +24,14 @@ func load_data(json: Dictionary):
 	color = Util.load_color(json["Color"])
 	player_controlled = json["PlayerControlled"]
 	
+func save_data() -> Dictionary:
+	return {
+		"_Id": id,
+		"Name": gname,
+		"Color": Util.save_color(color),
+		"PlayerControlled": player_controlled
+	}
+	
 func get_architectures() -> Array:
 	return _architecture_list
 	

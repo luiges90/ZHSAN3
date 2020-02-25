@@ -4,11 +4,17 @@ extends Node
 #           JSON de/serialization            #
 ##############################################
 
-static func load_position(v) -> Vector2:
+static func load_position(v: Array) -> Vector2:
 	return Vector2(v[0], v[1])
 
-static func load_color(v) -> Color:
+static func load_color(v: Array) -> Color:
 	return Color(v[0], v[1], v[2])
+	
+static func save_position(v: Vector2) -> Array:
+	return [v.x, v.y]
+	
+static func save_color(c: Color) -> Array:
+	 return [c.r, c.g, c.b]
 
 ##############################################
 #                 Formatting                 #
