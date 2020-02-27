@@ -38,6 +38,8 @@ func _ready():
 func _on_file_slot_clicked(mode, path: String):
 	if mode == SaveLoadMenu.MODE.SAVE:
 		_save_data(path)
+	else:
+		_load_data(path)
 	
 func _save_data(path):
 	var file = File.new()

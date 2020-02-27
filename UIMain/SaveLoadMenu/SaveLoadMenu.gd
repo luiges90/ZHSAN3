@@ -8,12 +8,34 @@ var mode
 
 var _confirming = false
 
+func _update_items():
+	var file = File.new()
+	var err = file.open("user://Saves/saves.json", File.READ)
+	if err == OK:
+		var json = file.get_as_text()
+		var obj = parse_json(json)
+		for key in obj:
+			var node = get_node("Game" + key)
+			node.text = obj[key]
+			node.disabled = false
+	elif err == ERR_FILE_NOT_FOUND:
+		file.open("user://Saves/saves.json", File.WRITE)
+		file.store_line("{}")
+		file.close()
+
 func _on_game_pressed(name: String):
 	$Confirm.play()
 	_confirming = true
 	hide()
 	emit_signal("file_slot_clicked", mode, "user://Saves/Save" + name + ".json")
 	
+	var file = File.new()
+	file.open("user://Saves/saves.json", File.READ_WRITE)
+	var json = file.get_as_text()
+	var obj = parse_json(json)
+	obj[name] = name + ": " + Util.current_date_str()
+	file.store_line(to_json(obj))
+	file.close()
 
 func _on_Game1_pressed():
 	_on_game_pressed("01")
@@ -58,15 +80,25 @@ func _on_Game10_pressed():
 func _on_SystemMenu_save_clicked():
 	mode = MODE.SAVE
 	$Title.text = tr('SAVE_GAME')
+	for node in get_children():
+		if node.get_name().begins_with("Game"):
+			node.disabled = false
+	_update_items()
 	show()
 
 
 func _on_SystemMenu_load_clicked():
 	mode = MODE.LOAD
 	$Title.text = tr('LOAD_GAME')
+	for node in get_children():
+		if node.get_name().begins_with("Game"):
+			node.disabled = true
+	_update_items()
 	show()
 
 
 func _on_SaveLoadMenu_hide():
 	if not _confirming:
 		$Cancel.play()
+
+

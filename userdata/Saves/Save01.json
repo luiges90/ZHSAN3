@@ -23,53 +23,53 @@
 	],
 	"Architectures": [
 		{
-			"Agriculture": 94,
-			"Commerce": 143,
-			"Endurance": 192,
-			"Food": 1168164,
-			"Fund": 12527,
+			"Agriculture": 100,
+			"Commerce": 150,
+			"Endurance": 200,
+			"Food": 1000000,
+			"Fund": 10000,
 			"Kind": 1,
 			"MapPosition": [
 				6,
 				3
 			],
-			"Morale": 110,
+			"Morale": 120,
 			"Name": "東北",
-			"Population": 97579,
+			"Population": 100000,
 			"Title": "北郡 東北",
 			"_Id": 1
 		},
 		{
-			"Agriculture": 144,
-			"Commerce": 96,
-			"Endurance": 239,
-			"Food": 1441440,
-			"Fund": 13594,
+			"Agriculture": 150,
+			"Commerce": 100,
+			"Endurance": 250,
+			"Food": 1200000,
+			"Fund": 12000,
 			"Kind": 1,
 			"MapPosition": [
 				24,
 				3
 			],
-			"Morale": 92,
+			"Morale": 100,
 			"Name": "西北",
-			"Population": 116730,
+			"Population": 120000,
 			"Title": "北郡 西北",
 			"_Id": 2
 		},
 		{
-			"Agriculture": 351,
-			"Commerce": 348,
-			"Endurance": 353,
-			"Food": 1635127,
-			"Fund": 16303,
+			"Agriculture": 80,
+			"Commerce": 100,
+			"Endurance": 150,
+			"Food": 800000,
+			"Fund": 8000,
 			"Kind": 2,
 			"MapPosition": [
 				6,
 				18
 			],
-			"Morale": 696,
+			"Morale": 150,
 			"Name": "東南",
-			"Population": 87583,
+			"Population": 80000,
 			"Title": "南郡 東南",
 			"_Id": 3
 		},
@@ -116,8 +116,8 @@
 	],
 	"GameData": {
 		"Day": 1,
-		"Month": 3,
-		"Year": 195
+		"Month": 6,
+		"Year": 194
 	},
 	"Persons": [
 		{
@@ -153,7 +153,7 @@
 			"Politics": 50,
 			"Strength": 85,
 			"Surname": "南",
-			"Task": 3,
+			"Task": 0,
 			"_Id": 3
 		},
 		{
@@ -165,7 +165,7 @@
 			"Politics": 90,
 			"Strength": 70,
 			"Surname": "南",
-			"Task": 4,
+			"Task": 0,
 			"_Id": 4
 		}
 	]

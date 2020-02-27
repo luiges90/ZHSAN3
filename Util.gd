@@ -29,6 +29,10 @@ static func nstr(n: int) -> String:
 	if s.length() > 12:
 		s = s.insert(s.length() - 12, ',')
 	return s
+	
+static func current_date_str() -> String:
+	var now = OS.get_datetime()
+	return str(now['year']) + '-' + str(now['month']) + '-' + str(now['day']) + " " + str(now['hour']) + ":" + str(now['minute'])
 
 ##############################################
 #                     Math                   #

@@ -22,55 +22,55 @@ custom_styles/normal = ExtResource( 2 )
 text = "SAVE_GAME"
 align = 1
 
-[node name="Game1" type="Button" parent="."]
+[node name="Game01" type="Button" parent="."]
 margin_top = 30.0
 margin_right = 600.0
 margin_bottom = 68.1229
 text = "FILE_BLANK"
 
-[node name="Game2" type="Button" parent="."]
+[node name="Game02" type="Button" parent="."]
 margin_top = 64.0
 margin_right = 600.0
 margin_bottom = 102.123
 text = "FILE_BLANK"
 
-[node name="Game3" type="Button" parent="."]
+[node name="Game03" type="Button" parent="."]
 margin_top = 98.0
 margin_right = 600.0
 margin_bottom = 136.123
 text = "FILE_BLANK"
 
-[node name="Game4" type="Button" parent="."]
+[node name="Game04" type="Button" parent="."]
 margin_top = 132.0
 margin_right = 600.0
 margin_bottom = 170.123
 text = "FILE_BLANK"
 
-[node name="Game5" type="Button" parent="."]
+[node name="Game05" type="Button" parent="."]
 margin_top = 166.0
 margin_right = 600.0
 margin_bottom = 204.123
 text = "FILE_BLANK"
 
-[node name="Game6" type="Button" parent="."]
+[node name="Game06" type="Button" parent="."]
 margin_top = 200.0
 margin_right = 600.0
 margin_bottom = 238.123
 text = "FILE_BLANK"
 
-[node name="Game7" type="Button" parent="."]
+[node name="Game07" type="Button" parent="."]
 margin_top = 234.0
 margin_right = 600.0
 margin_bottom = 272.123
 text = "FILE_BLANK"
 
-[node name="Game8" type="Button" parent="."]
+[node name="Game08" type="Button" parent="."]
 margin_top = 268.0
 margin_right = 600.0
 margin_bottom = 306.123
 text = "FILE_BLANK"
 
-[node name="Game9" type="Button" parent="."]
+[node name="Game09" type="Button" parent="."]
 margin_top = 302.0
 margin_right = 600.0
 margin_bottom = 340.123
@@ -88,13 +88,13 @@ stream = ExtResource( 4 )
 [node name="Cancel" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 [connection signal="hide" from="." to="." method="_on_SaveLoadMenu_hide"]
-[connection signal="pressed" from="Game1" to="." method="_on_Game1_pressed"]
-[connection signal="pressed" from="Game2" to="." method="_on_Game2_pressed"]
-[connection signal="pressed" from="Game3" to="." method="_on_Game3_pressed"]
-[connection signal="pressed" from="Game4" to="." method="_on_Game4_pressed"]
-[connection signal="pressed" from="Game5" to="." method="_on_Game5_pressed"]
-[connection signal="pressed" from="Game6" to="." method="_on_Game6_pressed"]
-[connection signal="pressed" from="Game7" to="." method="_on_Game7_pressed"]
-[connection signal="pressed" from="Game8" to="." method="_on_Game8_pressed"]
-[connection signal="pressed" from="Game9" to="." method="_on_Game9_pressed"]
+[connection signal="pressed" from="Game01" to="." method="_on_Game1_pressed"]
+[connection signal="pressed" from="Game02" to="." method="_on_Game2_pressed"]
+[connection signal="pressed" from="Game03" to="." method="_on_Game3_pressed"]
+[connection signal="pressed" from="Game04" to="." method="_on_Game4_pressed"]
+[connection signal="pressed" from="Game05" to="." method="_on_Game5_pressed"]
+[connection signal="pressed" from="Game06" to="." method="_on_Game6_pressed"]
+[connection signal="pressed" from="Game07" to="." method="_on_Game7_pressed"]
+[connection signal="pressed" from="Game08" to="." method="_on_Game8_pressed"]
+[connection signal="pressed" from="Game09" to="." method="_on_Game9_pressed"]
 [connection signal="pressed" from="Game10" to="." method="_on_Game10_pressed"]
