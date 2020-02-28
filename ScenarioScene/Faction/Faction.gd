@@ -29,7 +29,8 @@ func save_data() -> Dictionary:
 		"_Id": id,
 		"Name": gname,
 		"Color": Util.save_color(color),
-		"PlayerControlled": player_controlled
+		"PlayerControlled": player_controlled,
+		"ArchitectureList": Util.id_list(get_architectures())
 	}
 	
 func get_architectures() -> Array:

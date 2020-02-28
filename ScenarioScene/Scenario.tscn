@@ -19,4 +19,5 @@ script = ExtResource( 5 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+[connection signal="scenario_loaded" from="." to="DateRunner" method="_on_Scenario_scenario_loaded"]
 [connection signal="camera_moved" from="MainCamera" to="Map" method="_on_MainCamera_camera_moved"]

@@ -62,7 +62,8 @@ func save_data() -> Dictionary:
 		"Agriculture": agriculture,
 		"Commerce": commerce,
 		"Morale": morale,
-		"Endurance": endurance
+		"Endurance": endurance,
+		"PersonList": Util.id_list(get_persons())
 	}
 	
 func _on_scenario_loaded():

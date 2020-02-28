@@ -15,6 +15,12 @@ static func save_position(v: Vector2) -> Array:
 	
 static func save_color(c: Color) -> Array:
 	 return [c.r, c.g, c.b]
+	
+static func id_list(list: Array) -> Array:
+	var s = []
+	for item in list:
+		s.append(item.id)
+	return s
 
 ##############################################
 #                 Formatting                 #
@@ -50,7 +56,7 @@ static func f2ri(x: float) -> int:
 #                 Collections                #
 ##############################################
 
-static func min_pos(list: Array):
+static func min_pos(list: Array) -> Array:
 	var value = list[0]
 	var result = list[0]
 	var index = 0
@@ -64,7 +70,7 @@ static func min_pos(list: Array):
 		index += 1
 	return [result_index, result]
 	
-static func max_pos(list: Array):
+static func max_pos(list: Array) -> Array:
 	var value = list[0]
 	var result = list[0]
 	var index = 0
@@ -78,7 +84,7 @@ static func max_pos(list: Array):
 		index += 1
 	return [result_index, result]
 	
-static func min_by(list: Array, criteria_func: String):
+static func min_by(list: Array, criteria_func: String) -> Array:
 	var value = list[0].call(criteria_func)
 	var result = list[0]
 	var index = 0
@@ -92,7 +98,7 @@ static func min_by(list: Array, criteria_func: String):
 		index += 1
 	return [result_index, result]
 
-static func max_by(list: Array, criteria_func: String):
+static func max_by(list: Array, criteria_func: String) -> Array:
 	var value = list[0].call(criteria_func)
 	var result = list[0]
 	var index = 0
@@ -107,7 +113,7 @@ static func max_by(list: Array, criteria_func: String):
 	return [result_index, result]
 	
 ##############################################
-#                      Misc                  #
+#                    Misc                    #
 ##############################################
 
 static func delete_all_children(node: Node):

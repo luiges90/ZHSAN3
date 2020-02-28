@@ -30,8 +30,6 @@ func _ready():
 	
 	_load_data("user://Scenarios/000Test.json")
 	
-	emit_signal("scenario_loaded")
-	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
 	
@@ -105,6 +103,8 @@ func _load_data(path):
 			instance.add_architecture(architectures[int(id)])
 			
 	current_faction = factions[int(obj["CurrentFactionId"])]
+	
+	emit_signal("scenario_loaded")
 
 	
 func __load_item(instance, item, add_to_list):
