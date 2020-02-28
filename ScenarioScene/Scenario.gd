@@ -4,6 +4,8 @@ class_name Scenario
 onready var tile_size: int = $Map.tile_size
 onready var map_size: Vector2 = $Map.map_size
 
+var ai: AI
+
 var current_faction
 
 var architecture_kinds = Dictionary() setget forbidden
@@ -25,6 +27,9 @@ func forbidden(x):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var ai_script = preload("AI/AI.gd")
+	ai = ai_script.new()
+	
 	($MainCamera as MainCamera).scenario = self
 	($DateRunner as DateRunner).scenario = self
 	
@@ -133,7 +138,8 @@ func _on_day_passed():
 	for faction in factions.values():
 		current_faction = faction
 		emit_signal("current_faction_set", current_faction)
-		faction.ai()
+		if not faction.player_controlled:
+			ai.run_faction(faction, self)
 	current_faction = last_faction
 	emit_signal("current_faction_set", current_faction)
 	for faction in factions.values():

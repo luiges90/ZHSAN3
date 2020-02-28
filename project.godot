@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AI",
+"language": "GDScript",
+"path": "res://ScenarioScene/AI/AI.gd"
+}, {
 "base": "Node2D",
 "class": "Architecture",
 "language": "GDScript",
@@ -100,6 +105,7 @@ _global_script_classes=[ {
 "path": "res://ScenarioScene/GameMap/ZhsanMap.gd"
 } ]
 _global_script_class_icons={
+"AI": "",
 "Architecture": "",
 "ArchitectureKind": "",
 "ArchitectureMenu": "",

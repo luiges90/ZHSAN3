@@ -108,40 +108,6 @@ func month_event():
 func set_person_task(task, persons: Array):
 	for p in persons:
 		p.set_working_task(task)
-	
-func ai():
-	_ai_assign_task()
-	
-func _ai_assign_task():
-	var list = get_persons().duplicate()
-	var a = float(agriculture) / kind.agriculture
-	var c = float(commerce) / kind.commerce
-	var m = float(morale) / kind.morale
-	var e = float(endurance) / kind.endurance
-	var task_priority = [-a, -c, -m, -e]
-	while list.size() > 0:
-		var task = Util.max_pos(task_priority)
-		match task[0]:
-			0: 
-				var person = Util.max_by(list, "get_agriculture_ability")
-				person[1].set_working_task(Person.Task.AGRICULTURE)
-				list.remove(person[0])
-				task_priority[0] -= 0.2
-			1:
-				var person = Util.max_by(list, "get_commerce_ability")
-				person[1].set_working_task(Person.Task.COMMERCE)
-				list.remove(person[0])
-				task_priority[1] -= 0.2
-			2:
-				var person = Util.max_by(list, "get_morale_ability")
-				person[1].set_working_task(Person.Task.MORALE)
-				list.remove(person[0])
-				task_priority[2] -= 0.2
-			3:
-				var person = Util.max_by(list, "get_endurance_ability")
-				person[1].set_working_task(Person.Task.ENDURANCE)
-				list.remove(person[0])
-				task_priority[3] -= 0.2
 
 func _develop_resources():
 	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100

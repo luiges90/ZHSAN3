@@ -41,11 +41,6 @@ func add_architecture(arch, force: bool = false):
 	if not force:
 		arch.set_belonged_faction(self, true)
 		
-func ai():
-	if not player_controlled:
-		for arch in get_architectures():
-			arch.ai()
-		
 func day_event():
 	for arch in get_architectures():
 		arch.day_event()
