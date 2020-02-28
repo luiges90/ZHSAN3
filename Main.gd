@@ -31,6 +31,7 @@ func _register_person_list():
 	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_architecture_person_selected")
 	
 func _register_save_load_list():
+	$Scenario.connect("current_faction_set", $UICanvas/UIMain/SaveLoadMenu, "_on_faction_updated")
 	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
 
 func _all_loaded():

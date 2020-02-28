@@ -8,6 +8,11 @@ var mode
 
 var _confirming = false
 
+var player_name = ""
+
+func _on_faction_updated(faction):
+	player_name = faction.gname
+
 func _update_items():
 	var file = File.new()
 	var err = file.open("user://Saves/saves.json", File.READ)
@@ -33,7 +38,7 @@ func _on_game_pressed(name: String):
 	file.open("user://Saves/saves.json", File.READ_WRITE)
 	var json = file.get_as_text()
 	var obj = parse_json(json)
-	obj[name] = name + ": " + Util.current_date_str()
+	obj[name] = name + "：" + player_name + "　" + Util.current_date_str()
 	file.store_line(to_json(obj))
 	file.close()
 
