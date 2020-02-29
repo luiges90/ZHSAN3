@@ -21,7 +21,7 @@ func _on_Load_pressed():
 
 
 func _on_Quit_pressed():
-	$Click.play()
+	get_tree().quit()
 
 
 func _on_Toolbar_system_clicked():

@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UIMain/TabList/PersonList.gd"
 }, {
+"base": "Node",
+"class": "Root",
+"language": "GDScript",
+"path": "res://Root.gd"
+}, {
 "base": "VBoxContainer",
 "class": "SaveLoadMenu",
 "language": "GDScript",
@@ -117,6 +122,7 @@ _global_script_class_icons={
 "MainCamera": "",
 "Person": "",
 "PersonList": "",
+"Root": "",
 "SaveLoadMenu": "",
 "Scenario": "",
 "ScreenBlind": "",
@@ -129,7 +135,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ZHSAN3"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Root.tscn"
 boot_splash/image="res://Images/Splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"

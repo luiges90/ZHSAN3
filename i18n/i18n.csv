@@ -36,3 +36,9 @@ SAVE_GAME,Save,儲存遊戲,儲存遊戲
 LOAD_GAME,Load,讀取遊戲,讀取遊戲
 QUIT_GAME,Quit,離開,離開
 FILE_BLANK,<Blank>,＜空白＞,＜空白＞
+NEW_GAME,New Game,新遊戲,新遊戲
+OPTIONS,Options,設置,設置
+OTHER_FEATURES,Other Features,其他功能,其他功能
+CREDITS,Credits,製作人員,製作人員
+IMPORT_SCENARIO,Import Scenario,導入劇本,導入劇本
+BACK,Back,返回,返回
