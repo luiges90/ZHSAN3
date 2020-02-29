@@ -93,6 +93,10 @@ func _on_SystemMenu_save_clicked():
 
 
 func _on_SystemMenu_load_clicked():
+	load_game()
+	
+	
+func load_game():
 	mode = MODE.LOAD
 	$Title.text = tr('LOAD_GAME')
 	for node in get_children():

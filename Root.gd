@@ -7,12 +7,13 @@ func _on_Quit_pressed():
 
 
 func _on_LoadGame_pressed():
-	# TODO new game setup
-	get_tree().change_scene("res://Main.tscn")
+	$SaveLoadMenu.load_game()
+	$SaveLoadMenu.show()
 
 
 func _on_NewGame_pressed():
-	# TODO load game menu
+	# TODO create scenario selection
+	SharedData.loading_file_path = "user://Scenarios/000Test.json"
 	get_tree().change_scene("res://Main.tscn")
 
 
@@ -24,3 +25,8 @@ func _on_Other_pressed():
 func _on_Back_pressed():
 	$OtherMenu.hide()
 	$MainMenu.show()
+
+
+func _on_SaveLoadMenu_file_slot_clicked(mode, path):
+	SharedData.loading_file_path = path
+	get_tree().change_scene("res://Main.tscn")

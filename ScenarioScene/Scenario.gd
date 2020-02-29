@@ -33,7 +33,7 @@ func _ready():
 	($MainCamera as MainCamera).scenario = self
 	($DateRunner as DateRunner).scenario = self
 	
-	_load_data("user://Scenarios/000Test.json")
+	_load_data(SharedData.loading_file_path)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")

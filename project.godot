@@ -144,6 +144,7 @@ config/icon="res://icon.png"
 
 Util="*res://Util.gd"
 GameConfig="*res://GameConfig.gd"
+SharedData="*res://SharedData.gd"
 
 [debug]
 
