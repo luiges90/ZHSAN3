@@ -34,7 +34,7 @@ func _ready():
 	($DateRunner as DateRunner).scenario = self
 	
 	if SharedData.loading_file_path == null:
-		SharedData.loading_file_path = "user://Scenarios/000Test"
+		SharedData.loading_file_path = "user://Scenarios/194QXGJ-qh"
 	_load_data(SharedData.loading_file_path)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
