@@ -1,0 +1,22 @@
+[
+	{
+	  "_Id": 1,
+	  "Image": "1.png",
+	  "Name": "北部城池",
+	  "Agriculture": 500,
+	  "Commerce": 500,
+	  "Morale": 1000,
+	  "Endurance": 500,
+	  "Population": 300000
+	},
+	{
+	  "_Id": 2,
+	  "Image": "2.png",
+	  "Name": "南部城池",
+	  "Agriculture": 500,
+	  "Commerce": 500,
+	  "Morale": 1000,
+	  "Endurance": 500,
+	  "Population": 300000
+	}
+]

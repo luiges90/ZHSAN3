@@ -45,23 +45,41 @@ func _on_file_slot_clicked(mode, path: String):
 		_load_data(path)
 	
 func _save_data(path):
-	var file = File.new()
-	file.open(path, File.WRITE)
+	var dir = Directory.new()
+	dir.make_dir(path)
 	
 	var date = $DateRunner as DateRunner
-	var data = {
-		"CurrentFactionId": current_faction.id,
-		"ArchitectureKinds": __save_items(architecture_kinds),
-		"Factions": __save_items(factions),
-		"Architectures": __save_items(architectures),
-		"Persons": __save_items(persons),
-		"GameData": {
-			"Year": date.year,
-			"Month": date.month,
-			"Day": date.day
+	
+	var file = File.new()
+	file.open(path + "/Scenario.json", File.WRITE)
+	file.store_line(to_json(
+		{
+			"CurrentFactionId": current_faction.id,
+			"GameData": {
+				"Year": date.year,
+				"Month": date.month,
+				"Day": date.day
+			}
 		}
-	}
-	file.store_line(JSONBeautifier.beautify_json(to_json(data)))
+	))
+	file.close()
+	
+	file.open(path + "/ArchitectureKinds.json", File.WRITE)
+	file.store_line(to_json(__save_items(architecture_kinds)))
+	file.close()
+	
+	file.open(path + "/Factions.json", File.WRITE)
+	file.store_line(to_json(__save_items(factions)))
+	file.close()
+	
+	file.open(path + "/Architectures.json", File.WRITE)
+	file.store_line(to_json(__save_items(architectures)))
+	file.close()
+	
+	file.open(path + "/Persons.json", File.WRITE)
+	file.store_line(to_json(__save_items(persons)))
+	file.close()
+
 	
 func __save_items(d: Dictionary):
 	var arr = []
@@ -71,43 +89,53 @@ func __save_items(d: Dictionary):
 
 func _load_data(path):
 	var file = File.new()
-	file.open(path, File.READ)
+	file.open(path + "/Scenario.json", File.READ)
 	
-	var json = file.get_as_text()
-	var obj = parse_json(json)
+	var obj = parse_json(file.get_as_text())
 	
 	var date = $DateRunner as DateRunner
 	date.year = obj["GameData"]["Year"]
 	date.month = obj["GameData"]["Month"]
 	date.day = obj["GameData"]["Day"]
+	var current_faction_id = obj["CurrentFactionId"]
+	file.close()
 	
-	var architecture_kind_script = preload("Architecture/ArchitectureKind.gd")
-	for item in obj["ArchitectureKinds"]:
-		var instance = architecture_kind_script.new()
+	file.open(path + "/ArchitectureKinds.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = ArchitectureKind.new()
 		__load_item(instance, item, architecture_kinds)
+	file.close()
 	
-	var person_script = preload("Person/Person.gd")
-	for item in obj["Persons"]:
-		var instance = person_script.new()
+	file.open(path + "/Persons.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = Person.new()
 		__load_item(instance, item, persons)
+	file.close()
 	
+	file.open(path + "/Architectures.json", File.READ)
 	var architecture_scene = preload("Architecture/Architecture.tscn")
-	for item in obj["Architectures"]:
+	obj = parse_json(file.get_as_text())
+	for item in obj:
 		var instance = architecture_scene.instance()
 		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
 		instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
-		
-	var faction_script = preload("Faction/Faction.gd")
-	for item in obj["Factions"]:
-		var instance = faction_script.new()
+	file.close()
+	
+	file.open(path + "/Factions.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = Faction.new()
 		__load_item(instance, item, factions)
 		for id in item["ArchitectureList"]:
 			instance.add_architecture(architectures[int(id)])
 			
-	current_faction = factions[int(obj["CurrentFactionId"])]
+	current_faction = factions[int(current_faction_id)]
+	file.close()
 	
 	emit_signal("scenario_loaded")
 

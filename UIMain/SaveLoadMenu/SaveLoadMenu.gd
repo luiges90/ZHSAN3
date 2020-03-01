@@ -32,7 +32,7 @@ func _on_game_pressed(name: String):
 	$Confirm.play()
 	_confirming = true
 	hide()
-	emit_signal("file_slot_clicked", mode, "user://Saves/Save" + name + ".json")
+	emit_signal("file_slot_clicked", mode, "user://Saves/Save" + name)
 	
 	var file = File.new()
 	file.open("user://Saves/saves.json", File.READ_WRITE)
