@@ -8,10 +8,10 @@ func run_faction(faction, scenario):
 
 func _assign_task(arch):
 	var list = arch.get_persons().duplicate()
-	var a = float(arch.agriculture) / arch.kind.agriculture
-	var c = float(arch.commerce) / arch.kind.commerce
-	var m = float(arch.morale) / arch.kind.morale
-	var e = float(arch.endurance) / arch.kind.endurance
+	var a = float(arch.agriculture) / (arch.kind.agriculture + 1)
+	var c = float(arch.commerce) / (arch.kind.commerce + 1)
+	var m = float(arch.morale) / (arch.kind.morale + 1)
+	var e = float(arch.endurance) / (arch.kind.endurance + 1)
 	var task_priority = [-a, -c, -m, -e]
 	while list.size() > 0:
 		var task = Util.max_pos(task_priority)

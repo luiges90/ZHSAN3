@@ -7,7 +7,10 @@ var showing_architecture
 var _opening_list
 
 func show_menu(arch, mouse_x, mouse_y):
-	$MainMenu/Internal.visible = arch.get_belonged_faction().player_controlled
+	if arch.get_belonged_faction() == null:
+		$MainMenu/Internal.visible = false
+	else:
+		$MainMenu/Internal.visible = arch.get_belonged_faction().player_controlled
 	
 	if GameConfig.se_enabled:
 		($OpenSound as AudioStreamPlayer).play()
