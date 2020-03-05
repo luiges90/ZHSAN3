@@ -30,12 +30,16 @@ func _ready():
 	var ai_script = preload("AI/AI.gd")
 	ai = ai_script.new()
 	
-	($MainCamera as MainCamera).scenario = self
+	var camera = $MainCamera as MainCamera
+	camera.scenario = self
 	($DateRunner as DateRunner).scenario = self
 	
 	if SharedData.loading_file_path == null:
 		SharedData.loading_file_path = "user://Scenarios/194QXGJ-qh"
 	_load_data(SharedData.loading_file_path)
+	
+	camera.position = current_faction.get_architectures()[0].position
+	camera.emit_signal("camera_moved", camera.position, camera.position + camera.get_viewport_rect().size * camera.zoom)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")

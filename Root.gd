@@ -13,7 +13,7 @@ func _on_LoadGame_pressed():
 
 func _on_NewGame_pressed():
 	# TODO create scenario selection
-	SharedData.loading_file_path = "user://Scenarios/000Test"
+	SharedData.loading_file_path = "user://Scenarios/194QXGJ-qh"
 	get_tree().change_scene("res://Main.tscn")
 
 
