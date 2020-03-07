@@ -81,7 +81,7 @@ func _on_Confirm_pressed():
 	var selected_persons = []
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		if checkbox.is_pressed():
-			selected_persons.append(int(checkbox.get_meta("person_id")))
+			selected_persons.append(int(checkbox.get_meta("id")))
 	var task
 	match current_action:
 		Action.AGRICULTURE: 

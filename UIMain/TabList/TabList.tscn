@@ -127,3 +127,8 @@ stream = ExtResource( 4 )
 
 [node name="ConfirmSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+[connection signal="hide" from="." to="." method="_on_TabList_hide"]
+[connection signal="pressed" from="ActionButtons/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="ActionButtons/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="SelectionButtons/SelectAll" to="." method="_on_SelectAll_pressed"]
+[connection signal="pressed" from="SelectionButtons/UnselectAll" to="." method="_on_UnselectAll_pressed"]
