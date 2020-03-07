@@ -3,7 +3,7 @@ class_name PersonList
 
 signal person_selected
 
-enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE }
+enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
 
 const TITLE_COLOR = Color(0.04, 0.53, 0.79)
 
@@ -142,6 +142,7 @@ func _on_Confirm_pressed():
 		Action.COMMERCE: task = Person.Task.COMMERCE
 		Action.MORALE: task = Person.Task.MORALE
 		Action.ENDURANCE: task = Person.Task.ENDURANCE
+		Action.MOVE: task = Person.Task.MOVE
 	emit_signal("person_selected", current_action, current_architecture, selected_persons)
 	$ConfirmSound.play()
 	_confirming = true

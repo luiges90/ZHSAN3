@@ -38,8 +38,11 @@ func _ready():
 		SharedData.loading_file_path = "user://Scenarios/194QXGJ-qh"
 	_load_data(SharedData.loading_file_path)
 	
-	camera.position = current_faction.get_architectures()[0].position
-	camera.emit_signal("camera_moved", camera.position, camera.position + camera.get_viewport_rect().size * camera.zoom)
+	var player_factions = get_player_factions()
+	if player_factions.size() > 0:
+		var fid = player_factions[0]
+		camera.position = factions[fid].get_architectures()[0].position
+		camera.emit_signal("camera_moved", camera.position, camera.position + camera.get_viewport_rect().size * camera.zoom)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
@@ -151,6 +154,13 @@ func __load_item(instance, item, add_to_list):
 	instance.load_data(item)
 	add_to_list[instance.id] = instance
 	add_child(instance)
+	
+func get_player_factions():
+	var arr = []
+	for f in factions:
+		if factions[f].player_controlled:
+			arr.append(f)
+	return arr
 
 func _on_all_loaded():
 	emit_signal("current_faction_set", current_faction)
@@ -165,7 +175,12 @@ func _on_architecture_person_selected(task, current_architecture, selected_perso
 	var p = []
 	for id in selected_person_ids:
 		p.append(persons[id])
-	architectures[current_architecture].set_person_task(task, p)
+	match task:
+		Person.Task.AGRICULTURE: architectures[current_architecture].set_person_task(task, p)
+		Person.Task.COMMERCE: architectures[current_architecture].set_person_task(task, p)
+		Person.Task.MORALE: architectures[current_architecture].set_person_task(task, p)
+		Person.Task.ENDURANCE: architectures[current_architecture].set_person_task(task, p)
+		# Person.Task.MOVE:
 
 func _on_day_passed():
 	var last_faction = current_faction

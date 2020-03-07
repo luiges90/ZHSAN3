@@ -1,7 +1,7 @@
 extends Node
 class_name Person
 
-enum Task { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE }
+enum Task { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
 
 var id: int setget forbidden
 var scenario
@@ -87,6 +87,9 @@ func get_working_task_str():
 		Task.MORALE: return tr('MORALE')
 		Task.ENDURANCE: return tr('ENDURANCE')
 		_: return tr('NONE')
+		
+func move_to_architecture():
+	pass
 		
 func day_event():
 	pass

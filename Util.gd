@@ -111,6 +111,7 @@ static func max_by(list: Array, criteria_func: String) -> Array:
 			result_index = index
 		index += 1
 	return [result_index, result]
+
 	
 ##############################################
 #                    Misc                    #
