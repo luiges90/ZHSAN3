@@ -52,6 +52,13 @@ func _input(event):
 			hide()
 
 
+func _get_selected_list() -> Array:
+	var selected = []
+	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+		if checkbox.is_pressed():
+			selected.append(int(checkbox.get_meta("id")))
+	return selected
+
 func _on_TabList_hide():
 	if GameConfig.se_enabled and not _confirming:
 		$CloseSound.play()

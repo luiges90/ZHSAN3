@@ -88,7 +88,7 @@ func get_working_task_str():
 		Task.ENDURANCE: return tr('ENDURANCE')
 		_: return tr('NONE')
 		
-func move_to_architecture():
+func move_to_architecture(arch):
 	pass
 		
 func day_event():

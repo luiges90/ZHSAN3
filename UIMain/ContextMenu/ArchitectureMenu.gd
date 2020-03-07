@@ -2,6 +2,7 @@ extends Control
 class_name ArchitectureMenu
 
 signal person_list_clicked
+signal architecture_list_clicked
 
 var showing_architecture
 var _opening_list
@@ -102,3 +103,9 @@ func _on_Call_pressed():
 		($SelectSound as AudioStreamPlayer).play()
 
 
+func _on_ArchitectureDetail_pressed():
+	if GameConfig.se_enabled:
+		($SelectSound as AudioStreamPlayer).play()
+	emit_signal("architecture_list_clicked", showing_architecture.id, [showing_architecture], PersonList.Action.LIST)
+	_opening_list = true
+	hide()

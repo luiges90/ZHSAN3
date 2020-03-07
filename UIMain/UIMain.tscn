@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UIMain/ContextMenu/ArchitectureMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UIMain/ContextMenu/SystemMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UIMain/SaveLoadMenu/SaveLoadMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UIMain/TabList/ArchitectureList.tscn" type="PackedScene" id=9]
 
 [node name="UIMain" type="Control"]
 anchor_right = 1.0
@@ -36,19 +37,10 @@ margin_top = -250.0
 margin_right = 274.0
 margin_bottom = 250.0
 
-[node name="ScreenBlind" parent="." instance=ExtResource( 3 )]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 260.0
-margin_bottom = 90.0
-
-[node name="Toolbar" parent="." instance=ExtResource( 4 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -48.0
-margin_bottom = 0.0
-
 [node name="PersonList" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="ArchitectureList" parent="." instance=ExtResource( 9 )]
 visible = false
 
 [node name="ArchitectureMenu" parent="." instance=ExtResource( 6 )]
@@ -63,8 +55,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -90.0
+margin_top = -68.0
 margin_right = 90.0
-margin_bottom = 0.0
+margin_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -75,11 +68,25 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -300.0
+margin_top = -187.0
 margin_right = 300.0
-margin_bottom = 0.0
+margin_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
-[connection signal="system_clicked" from="Toolbar" to="SystemMenu" method="_on_Toolbar_system_clicked"]
+
+[node name="Toolbar" parent="." instance=ExtResource( 4 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -48.0
+margin_bottom = 0.0
+
+[node name="ScreenBlind" parent="." instance=ExtResource( 3 )]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 260.0
+margin_bottom = 90.0
+[connection signal="architecture_list_clicked" from="ArchitectureMenu" to="ArchitectureList" method="_on_ArchitectureMenu_architecture_list_clicked"]
 [connection signal="person_list_clicked" from="ArchitectureMenu" to="PersonList" method="_on_ArchitectureMenu_person_list_clicked"]
 [connection signal="load_clicked" from="SystemMenu" to="SaveLoadMenu" method="_on_SystemMenu_load_clicked"]
 [connection signal="save_clicked" from="SystemMenu" to="SaveLoadMenu" method="_on_SystemMenu_save_clicked"]
+[connection signal="system_clicked" from="Toolbar" to="SystemMenu" method="_on_Toolbar_system_clicked"]

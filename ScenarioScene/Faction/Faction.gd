@@ -17,6 +17,9 @@ func forbidden(x):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+func get_name():
+	return gname
 
 func load_data(json: Dictionary):
 	id = json["_Id"]

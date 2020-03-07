@@ -4,10 +4,18 @@ class_name PersonList
 enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
 
 signal person_selected
+signal person_selected_to_move
 
 func _ready():
 	$Tabs.set_tab_title(0, tr('ABILITY'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
+	
+
+func _on_ArchitectureMenu_person_list_clicked(arch: int, persons: Array, action):
+	current_action = action
+	current_architecture = arch
+	show_data(persons)
+
 
 func show_data(person_list: Array):
 	match current_action:
@@ -71,31 +79,24 @@ func _populate_internal_data(person_list: Array, action):
 		item_list.add_child(_label(str(round(person.get_endurance_ability()))))
 
 
-func _on_ArchitectureMenu_person_list_clicked(arch: int, persons: Array, action):
-	current_action = action
-	current_architecture = arch
-	show_data(persons)
-
-
 func _on_Confirm_pressed():
-	var selected_persons = []
-	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
-		if checkbox.is_pressed():
-			selected_persons.append(int(checkbox.get_meta("id")))
+	var selected = _get_selected_list()
 	var task
 	match current_action:
 		Action.AGRICULTURE: 
 			task = Person.Task.AGRICULTURE
-			emit_signal("person_selected", current_action, current_architecture, selected_persons)
+			emit_signal("person_selected", current_action, current_architecture, selected)
 		Action.COMMERCE: 
 			task = Person.Task.COMMERCE
-			emit_signal("person_selected", current_action, current_architecture, selected_persons)
+			emit_signal("person_selected", current_action, current_architecture, selected)
 		Action.MORALE: 
 			task = Person.Task.MORALE
-			emit_signal("person_selected", current_action, current_architecture, selected_persons)
+			emit_signal("person_selected", current_action, current_architecture, selected)
 		Action.ENDURANCE: 
 			task = Person.Task.ENDURANCE
-			emit_signal("person_selected", current_action, current_architecture, selected_persons)
-		Action.MOVE: task = Person.Task.MOVE
+			emit_signal("person_selected", current_action, current_architecture, selected)
+		Action.MOVE: 
+			task = Person.Task.MOVE
+			emit_signal("person_selected_to_move", current_action, current_architecture, selected)
 	._on_Confirm_pressed()
 

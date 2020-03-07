@@ -39,3 +39,6 @@ func save_data() -> Dictionary:
 		"Endurance": endurance,
 		"Population": population
 	}
+	
+func get_name() -> String:
+	return gname

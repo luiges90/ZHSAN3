@@ -44,3 +44,7 @@ IMPORT_SCENARIO,Import Scenario,導入劇本,導入劇本
 BACK,Back,返回,返回
 MOVE,Move,移動,移動
 CALL,Call,召喚,召喚
+BASIC,Basic,基本,基本
+FACTION_NAME,Faction,勢力,勢力
+KIND_NAME,Kind,種類,種類
+ARCHITECTURE_DETAILS,Architecture Details,建築情報,建築情報

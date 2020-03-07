@@ -73,6 +73,9 @@ func _on_scenario_loaded():
 	var faction = get_belonged_faction()
 	if faction:
 		($Flag as Sprite).modulate = faction.color
+		
+func get_name() -> String:
+	return gname
 	
 func get_belonged_faction(): 
 	return _belonged_faction
