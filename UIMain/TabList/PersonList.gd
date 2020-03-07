@@ -1,16 +1,9 @@
-extends Panel
+extends TabList
 class_name PersonList
-
-signal person_selected
 
 enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
 
-const TITLE_COLOR = Color(0.04, 0.53, 0.79)
-
-var current_action = Action.LIST
-var current_architecture
-
-var _confirming
+signal person_selected
 
 func _ready():
 	$Tabs.set_tab_title(0, tr('ABILITY'))
@@ -28,38 +21,6 @@ func show_data(person_list: Array):
 	_populate_internal_data(person_list, current_action)
 	show()
 	
-func _label(text: String):
-	var label = Label.new()
-	label.text = text
-	return label
-	
-func _title(text: String):
-	var label = Label.new()
-	label.text = text
-	var stylebox = StyleBoxFlat.new()
-	stylebox.bg_color = TITLE_COLOR
-	label.add_stylebox_override("normal", stylebox)
-	return label
-	
-func _checkbox(id: int):
-	var checkbox = CheckBox.new()
-	checkbox.add_to_group("checkboxes")
-	checkbox.add_to_group("person_id_" + str(id))
-	checkbox.set_meta("person_id", id)
-	checkbox.connect("pressed", self, "_checkbox_changed", [checkbox])
-	return checkbox
-	
-func _checkbox_changed(in_cb: CheckBox):
-	var any_checked = false
-	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
-		if checkbox.is_pressed():
-			any_checked = true
-			break
-	for group in in_cb.get_groups():
-		if group.find("person_id_") >= 0:
-			for checkbox in get_tree().get_nodes_in_group(group):
-				checkbox.set_pressed(in_cb.is_pressed())
-	$ActionButtons/Confirm.disabled = not any_checked
 
 func _populate_ability_data(person_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
@@ -109,26 +70,11 @@ func _populate_internal_data(person_list: Array, action):
 		item_list.add_child(_label(str(round(person.get_morale_ability()))))
 		item_list.add_child(_label(str(round(person.get_endurance_ability()))))
 
+
 func _on_ArchitectureMenu_person_list_clicked(arch: int, persons: Array, action):
 	current_action = action
 	current_architecture = arch
 	show_data(persons)
-
-
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
-			hide()
-
-
-func _on_PersonList_hide():
-	if GameConfig.se_enabled and not _confirming:
-		$CloseSound.play()
-	_confirming = false
-
-
-func _on_Cancel_pressed():
-	hide()
 
 
 func _on_Confirm_pressed():
@@ -138,24 +84,18 @@ func _on_Confirm_pressed():
 			selected_persons.append(int(checkbox.get_meta("person_id")))
 	var task
 	match current_action:
-		Action.AGRICULTURE: task = Person.Task.AGRICULTURE
-		Action.COMMERCE: task = Person.Task.COMMERCE
-		Action.MORALE: task = Person.Task.MORALE
-		Action.ENDURANCE: task = Person.Task.ENDURANCE
+		Action.AGRICULTURE: 
+			task = Person.Task.AGRICULTURE
+			emit_signal("person_selected", current_action, current_architecture, selected_persons)
+		Action.COMMERCE: 
+			task = Person.Task.COMMERCE
+			emit_signal("person_selected", current_action, current_architecture, selected_persons)
+		Action.MORALE: 
+			task = Person.Task.MORALE
+			emit_signal("person_selected", current_action, current_architecture, selected_persons)
+		Action.ENDURANCE: 
+			task = Person.Task.ENDURANCE
+			emit_signal("person_selected", current_action, current_architecture, selected_persons)
 		Action.MOVE: task = Person.Task.MOVE
-	emit_signal("person_selected", current_action, current_architecture, selected_persons)
-	$ConfirmSound.play()
-	_confirming = true
-	hide()
+	._on_Confirm_pressed()
 
-
-func _on_SelectAll_pressed():
-	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
-		checkbox.set_pressed(true)
-	$ActionButtons/Confirm.disabled = false
-
-
-func _on_UnselectAll_pressed():
-	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
-		checkbox.set_pressed(false)
-	$ActionButtons/Confirm.disabled = true
