@@ -41,7 +41,7 @@ func _ready():
 	var player_factions = get_player_factions()
 	if player_factions.size() > 0:
 		var fid = player_factions[0]
-		camera.position = factions[fid].get_architectures()[0].position
+		camera.position = factions[fid].get_architectures()[0].position - camera.get_viewport_rect().size / 2
 		camera.emit_signal("camera_moved", camera.position, camera.position + camera.get_viewport_rect().size * camera.zoom)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
