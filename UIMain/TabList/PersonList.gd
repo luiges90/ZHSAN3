@@ -4,14 +4,13 @@ class_name PersonList
 enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
 
 signal person_selected
-signal person_selected_to_move
 
 func _ready():
 	$Tabs.set_tab_title(0, tr('ABILITY'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
 	
 
-func _on_ArchitectureMenu_person_list_clicked(arch: int, persons: Array, action):
+func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
 	current_action = action
 	current_architecture = arch
 	show_data(persons)
@@ -97,6 +96,6 @@ func _on_Confirm_pressed():
 			emit_signal("person_selected", current_action, current_architecture, selected)
 		Action.MOVE: 
 			task = Person.Task.MOVE
-			emit_signal("person_selected_to_move", current_action, current_architecture, selected)
+			emit_signal("person_selected", current_action, current_architecture, selected)
 	._on_Confirm_pressed()
 

@@ -53,11 +53,12 @@ func _input(event):
 
 
 func _get_selected_list() -> Array:
-	var selected = []
+	var selected = {}
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		if checkbox.is_pressed():
-			selected.append(int(checkbox.get_meta("id")))
-	return selected
+			var id = int(checkbox.get_meta("id"))
+			selected[id] = true
+	return selected.keys()
 
 func _on_TabList_hide():
 	if GameConfig.se_enabled and not _confirming:
@@ -67,6 +68,7 @@ func _on_TabList_hide():
 
 func _on_Cancel_pressed():
 	hide()
+	_on_UnselectAll_pressed()
 
 
 func _on_Confirm_pressed():
@@ -74,6 +76,7 @@ func _on_Confirm_pressed():
 	$ConfirmSound.play()
 	_confirming = true
 	hide()
+	_on_UnselectAll_pressed()
 
 
 func _on_SelectAll_pressed():

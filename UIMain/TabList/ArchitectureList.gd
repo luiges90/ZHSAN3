@@ -5,6 +5,8 @@ enum Action { LIST, MOVE_TO }
 
 signal architecture_selected
 
+var _selected_person_ids
+
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
@@ -67,11 +69,22 @@ func _on_Confirm_pressed():
 	var task
 	match current_action:
 		Action.MOVE_TO: 
-			emit_signal("architecture_selected", current_action, current_architecture, selected_arch)
+			emit_signal("architecture_selected", current_action, current_architecture, selected_arch, {
+				"selected_person_ids": _selected_person_ids
+			})
 	._on_Confirm_pressed()
 
 
-func _on_ArchitectureMenu_architecture_list_clicked(arch: int, archs: Array, action):
+func _on_ArchitectureMenu_architecture_list_clicked(arch, archs: Array, action):
 	current_action = action
 	current_architecture = arch
 	show_data(archs)
+
+
+func _on_PersonList_person_selected(task, arch, selected_person_ids):
+	match task:
+		PersonList.Action.MOVE:
+			current_action = Action.MOVE_TO
+			current_architecture = arch
+			_selected_person_ids = selected_person_ids
+			show_data(arch.get_belonged_faction().get_architectures())

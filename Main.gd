@@ -28,7 +28,8 @@ func _register_date_runner():
 	$Scenario/DateRunner.connect("day_passed", $UICanvas/UIMain/Toolbar, "_on_day_passed")
 	
 func _register_person_list():
-	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_architecture_person_selected")
+	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_person_selected")
+	$UICanvas/UIMain/ArchitectureList.connect("architecture_selected", $Scenario, "_on_architecture_selected")
 	
 func _register_save_load_list():
 	$Scenario.connect("current_faction_set", $UICanvas/UIMain/SaveLoadMenu, "_on_faction_updated")

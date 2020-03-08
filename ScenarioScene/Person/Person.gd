@@ -89,6 +89,7 @@ func get_working_task_str():
 		_: return tr('NONE')
 		
 func move_to_architecture(arch):
+	print(self.get_name() + ' move to ' + arch.get_name())
 	pass
 		
 func day_event():
