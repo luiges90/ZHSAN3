@@ -13,9 +13,13 @@ func _ready():
 
 func show_data(arch_list: Array):
 	match current_action:
-		Action.LIST: $Title.text = tr('PERSON_LIST')
-		Action.MOVE_TO: $Title.text = tr('AGRICULTURE')
-	$SelectionButtons.visible = current_action != Action.LIST
+		Action.LIST: 
+			$Title.text = tr('PERSON_LIST')
+			_max_selection = 0
+		Action.MOVE_TO: 
+			$Title.text = tr('MOVE')
+			_max_selection = 1
+	$SelectionButtons.visible = _max_selection != 0
 	_populate_basic_data(arch_list, current_action)
 	_populate_internal_data(arch_list, current_action)
 	show()
@@ -87,4 +91,8 @@ func _on_PersonList_person_selected(task, arch, selected_person_ids):
 			current_action = Action.MOVE_TO
 			current_architecture = arch
 			_selected_person_ids = selected_person_ids
-			show_data(arch.get_belonged_faction().get_architectures())
+			var selectable_archs = []
+			for a in arch.get_belonged_faction().get_architectures():
+				if a != arch:
+					selectable_archs.append(a)
+			show_data(selectable_archs)

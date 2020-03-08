@@ -18,12 +18,22 @@ func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
 
 func show_data(person_list: Array):
 	match current_action:
-		Action.LIST: $Title.text = tr('PERSON_LIST')
-		Action.AGRICULTURE: $Title.text = tr('AGRICULTURE')
-		Action.COMMERCE: $Title.text = tr('COMMERCE')
-		Action.MORALE: $Title.text = tr('MORALE')
-		Action.ENDURANCE: $Title.text = tr('ENDURANCE')
-	$SelectionButtons.visible = current_action != Action.LIST
+		Action.LIST: 
+			$Title.text = tr('PERSON_LIST')
+			_max_selection = 0
+		Action.AGRICULTURE: 
+			$Title.text = tr('AGRICULTURE')
+			_max_selection = -1
+		Action.COMMERCE: 
+			$Title.text = tr('COMMERCE')
+			_max_selection = -1
+		Action.MORALE: 
+			$Title.text = tr('MORALE')
+			_max_selection = -1
+		Action.ENDURANCE: 
+			$Title.text = tr('ENDURANCE')
+			_max_selection = -1
+	$SelectionButtons.visible = _max_selection != 0
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)
 	show()

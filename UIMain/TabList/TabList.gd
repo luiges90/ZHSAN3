@@ -8,6 +8,8 @@ var current_architecture
 
 var _confirming
 
+var _max_selection = -1
+
 func show_data(list: Array):
 	# Subclasses should override this
 	pass
@@ -34,6 +36,11 @@ func _checkbox(id: int):
 	return checkbox
 	
 func _checkbox_changed(in_cb: CheckBox):
+	if _max_selection == 1:
+		for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+			checkbox.set_pressed(false)
+		in_cb.set_pressed(true)
+	
 	var any_checked = false
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		if checkbox.is_pressed():
