@@ -56,6 +56,7 @@ func _on_ArchitectureMenu_hide():
 	if GameConfig.se_enabled and not _opening_list:
 		($CloseSound as AudioStreamPlayer).play()
 	$InternalMenu.hide()
+	$OfficersMenu.hide()
 	_opening_list = false
 
 
