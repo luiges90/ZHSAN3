@@ -20,6 +20,8 @@ var glamour: int setget forbidden
 
 var working_task setget forbidden
 
+var task_days = 0
+
 func forbidden(x):
 	assert(false)
 
@@ -89,8 +91,12 @@ func get_working_task_str():
 		_: return tr('NONE')
 		
 func move_to_architecture(arch):
-	print(self.get_name() + ' move to ' + arch.get_name())
-	pass
+	var old_arch = get_belonged_architecture()
+	set_belonged_architecture(arch)
+	working_task = Task.MOVE
+	task_days = int(ScenarioUtil.arch_distance(old_arch, arch) * 0.2)
 		
 func day_event():
-	pass
+	if task_days > 0:
+		task_days -= 1
+	

@@ -150,6 +150,7 @@ config/icon="res://icon.png"
 
 Util="*res://Util.gd"
 GameConfig="*res://GameConfig.gd"
+ScenarioUtil="*res://ScenarioUtil.gd"
 SharedData="*res://SharedData.gd"
 
 [debug]

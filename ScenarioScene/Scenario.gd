@@ -205,4 +205,4 @@ func _on_day_passed():
 func _on_month_passed():
 	for faction in factions.values():
 		faction.month_event()
-	
+
