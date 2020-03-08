@@ -88,6 +88,13 @@ func set_belonged_faction(faction, force = false):
 func get_persons() -> Array:
 	return _person_list
 	
+func get_workable_persons() -> Array:
+	var result = []
+	for p in _person_list:
+		if p.task_days == 0:
+			result.append(p)
+	return result
+	
 func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:

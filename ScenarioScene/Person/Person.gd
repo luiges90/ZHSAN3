@@ -20,7 +20,7 @@ var glamour: int setget forbidden
 
 var working_task setget forbidden
 
-var task_days = 0
+var task_days = 0 setget forbidden
 
 func forbidden(x):
 	assert(false)

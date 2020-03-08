@@ -48,3 +48,7 @@ BASIC,Basic,基本,基本
 FACTION_NAME,Faction,勢力,勢力
 KIND_NAME,Kind,種類,種類
 ARCHITECTURE_DETAILS,Architecture Details,建築情報,建築情報
+PERSON_COUNT,Persons,武將數,武將數
+BELONGED_ARCHITECTURE,Architecture,所屬,所屬
+TASK_DAYS,Task Days,天數,天數
+DAY_UNIT," Days",天,天

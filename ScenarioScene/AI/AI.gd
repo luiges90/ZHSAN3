@@ -7,7 +7,7 @@ func run_faction(faction, scenario):
 		_assign_task(arch)
 
 func _assign_task(arch):
-	var list = arch.get_persons().duplicate()
+	var list = arch.get_workable_persons().duplicate()
 	var a = float(arch.agriculture) / (arch.kind.agriculture + 1)
 	var c = float(arch.commerce) / (arch.kind.commerce + 1)
 	var m = float(arch.morale) / (arch.kind.morale + 1)

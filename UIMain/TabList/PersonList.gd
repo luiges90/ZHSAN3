@@ -6,8 +6,9 @@ enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
 signal person_selected
 
 func _ready():
-	$Tabs.set_tab_title(0, tr('ABILITY'))
-	$Tabs.set_tab_title(1, tr('INTERNAL'))
+	$Tabs.set_tab_title(0, tr('BASIC'))
+	$Tabs.set_tab_title(1, tr('ABILITY'))
+	$Tabs.set_tab_title(2, tr('INTERNAL'))
 	
 
 func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
@@ -34,13 +35,34 @@ func show_data(person_list: Array):
 			$Title.text = tr('ENDURANCE')
 			_max_selection = -1
 	$SelectionButtons.visible = _max_selection != 0
+	_populate_basic_data(person_list, current_action)
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)
 	show()
 	
 
-func _populate_ability_data(person_list: Array, action):
+func _populate_basic_data(person_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
+	Util.delete_all_children(item_list)
+	if action != Action.LIST:
+		item_list.columns = 5
+		item_list.add_child(_title(''))
+	else:
+		item_list.columns = 4
+	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('BELONGED_ARCHITECTURE')))
+	item_list.add_child(_title(tr('TASK')))
+	item_list.add_child(_title(tr('TASK_DAYS')))
+	for person in person_list:
+		if action != Action.LIST:
+			item_list.add_child(_checkbox(person.id))
+		item_list.add_child(_label(person.get_name()))
+		item_list.add_child(_label(person.get_belonged_architecture().get_name()))
+		item_list.add_child(_label(person.get_working_task_str()))
+		item_list.add_child(_label(str(person.task_days) + tr('DAY_UNIT')))
+
+func _populate_ability_data(person_list: Array, action):
+	var item_list = $Tabs/Tab2/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 7
@@ -64,7 +86,7 @@ func _populate_ability_data(person_list: Array, action):
 		item_list.add_child(_label(str(person.glamour)))
 		
 func _populate_internal_data(person_list: Array, action):
-	var item_list = $Tabs/Tab2/Grid as GridContainer
+	var item_list = $Tabs/Tab3/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 7
@@ -81,7 +103,7 @@ func _populate_internal_data(person_list: Array, action):
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_label(person.get_name()))
-		item_list.add_child(_label(str(person.get_working_task_str())))
+		item_list.add_child(_label(person.get_working_task_str()))
 		item_list.add_child(_label(str(round(person.get_agriculture_ability()))))
 		item_list.add_child(_label(str(round(person.get_commerce_ability()))))
 		item_list.add_child(_label(str(round(person.get_morale_ability()))))

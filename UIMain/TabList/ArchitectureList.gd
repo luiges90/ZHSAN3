@@ -10,6 +10,7 @@ var _selected_person_ids
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
+	$Tabs.remove_child($Tabs/Tab3)
 
 func show_data(arch_list: Array):
 	match current_action:
@@ -28,15 +29,16 @@ func _populate_basic_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 6
+		item_list.columns = 7
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 5
+		item_list.columns = 6
 	item_list.add_child(_title(tr('NAME')))
 	item_list.add_child(_title(tr('KIND_NAME')))
 	item_list.add_child(_title(tr('FACTION_NAME')))
 	item_list.add_child(_title(tr('FOOD')))
 	item_list.add_child(_title(tr('FUND')))
+	item_list.add_child(_title(tr('PERSON_COUNT')))
 	for arch in arch_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
@@ -45,6 +47,7 @@ func _populate_basic_data(arch_list: Array, action):
 		item_list.add_child(_label(arch.get_belonged_faction().get_name()))
 		item_list.add_child(_label(Util.nstr(arch.food)))
 		item_list.add_child(_label(Util.nstr(arch.fund)))
+		item_list.add_child(_label(str(arch.get_persons().size())))
 	
 func _populate_internal_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
