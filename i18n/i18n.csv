@@ -51,4 +51,5 @@ ARCHITECTURE_DETAILS,Architecture Details,建築情報,建築情報
 PERSON_COUNT,Persons,武將數,武將數
 BELONGED_ARCHITECTURE,Architecture,所屬,所屬
 TASK_DAYS,Task Days,天數,天數
-DAY_UNIT," Days",天,天
+DAY_UNIT," Days",天,天,
+SECTION,Section,軍區,軍區

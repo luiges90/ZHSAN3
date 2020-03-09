@@ -44,17 +44,28 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Endurance": k['Endurance']
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
+			
+		with open(file_name + '/Sections.json', mode='w', encoding='utf-8') as fout:
+			r = []
+			for k in obj["Sections"]["GameObjects"]:
+				archs = [int(x) for x in k['ArchitecturesString'].split(' ') if x]
+				r.append({
+				  "_Id": k['ID'],
+				  "Name": k['Name'],
+				  "ArchitectureList": archs
+				})
+			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
 		with open(file_name + '/Factions.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			colors = common['AllColors']
 			for k in obj["Factions"]["GameObjects"]:
-				archs = [int(x) for x in k['ArchitecturesString'].split(' ') if x]
+				sects = [int(x) for x in k['SectionsString'].split(' ') if x]
 				r.append({
 				  "_Id": k['ID'],
 				  "Name": k['Name'],
 				  "Color": [colors[k['ColorIndex']]['R'], colors[k['ColorIndex']]['G'], colors[k['ColorIndex']]['B']],
-				  "ArchitectureList": archs,
+				  "SectionList": sects,
 				  "PlayerControlled": False
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))

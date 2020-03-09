@@ -56,6 +56,10 @@ static func f2ri(x: float) -> int:
 #                 Collections                #
 ##############################################
 
+static func append_all(list: Array, other: Array):
+	for i in other:
+		list.append(i)
+
 static func min_pos(list: Array) -> Array:
 	var value = list[0]
 	var result = list[0]

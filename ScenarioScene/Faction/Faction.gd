@@ -7,7 +7,7 @@ var scenario
 var gname: String setget forbidden
 var color: Color setget forbidden
 
-var _architecture_list = Array() setget forbidden, get_architectures
+var _section_list = Array() setget forbidden, get_sections
 
 var player_controlled: bool
 
@@ -33,16 +33,22 @@ func save_data() -> Dictionary:
 		"Name": gname,
 		"Color": Util.save_color(color),
 		"PlayerControlled": player_controlled,
-		"ArchitectureList": Util.id_list(get_architectures())
+		"SectionList": Util.id_list(get_sections())
 	}
 	
 func get_architectures() -> Array:
-	return _architecture_list
+	var result = []
+	for s in get_sections():
+		Util.append_all(result, s.get_architectures())
+	return result
 	
-func add_architecture(arch, force: bool = false):
-	_architecture_list.append(arch)
+func get_sections() -> Array:
+	return _section_list
+	
+func add_section(section, force: bool = false):
+	_section_list.append(section)
 	if not force:
-		arch.set_belonged_faction(self, true)
+		section.set_belonged_faction(self, true)
 		
 func day_event():
 	for arch in get_architectures():

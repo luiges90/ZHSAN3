@@ -11,6 +11,7 @@ var current_faction
 var architecture_kinds = Dictionary() setget forbidden
 
 var factions = Dictionary() setget forbidden
+var sections = Dictionary() setget forbidden
 var architectures = Dictionary() setget forbidden
 var persons = Dictionary() setget forbidden
 
@@ -81,6 +82,10 @@ func _save_data(path):
 	file.store_line(to_json(__save_items(factions)))
 	file.close()
 	
+	file.open(path + "/Sections.json", File.WRITE)
+	file.store_line(to_json(__save_items(sections)))
+	file.close()
+	
 	file.open(path + "/Architectures.json", File.WRITE)
 	file.store_line(to_json(__save_items(architectures)))
 	file.close()
@@ -135,13 +140,21 @@ func _load_data(path):
 			instance.add_person(persons[int(id)])
 	file.close()
 	
+	file.open(path + "/Sections.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = Section.new()
+		__load_item(instance, item, sections)
+		for id in item["ArchitectureList"]:
+			instance.add_architecture(architectures[int(id)])
+	
 	file.open(path + "/Factions.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = Faction.new()
 		__load_item(instance, item, factions)
-		for id in item["ArchitectureList"]:
-			instance.add_architecture(architectures[int(id)])
+		for id in item["SectionList"]:
+			instance.add_section(sections[int(id)])
 			
 	current_faction = factions[int(current_faction_id)]
 	file.close()

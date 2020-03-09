@@ -10,7 +10,8 @@ var gname: String
 var title: String
 
 var kind: ArchitectureKind setget forbidden
-var _belonged_faction setget set_belonged_faction, get_belonged_faction
+
+var _belonged_section setget set_belonged_section, get_belonged_section
 var _person_list = Array() setget forbidden, get_persons
 
 var population: int setget forbidden
@@ -77,13 +78,16 @@ func _on_scenario_loaded():
 func get_name() -> String:
 	return gname
 	
-func get_belonged_faction(): 
-	return _belonged_faction
+func get_belonged_faction():
+	return _belonged_section.get_belonged_faction() if _belonged_section != null else null
 	
-func set_belonged_faction(faction, force = false):
-	_belonged_faction = faction
+func get_belonged_section(): 
+	return _belonged_section
+	
+func set_belonged_section(section, force = false):
+	_belonged_section = section
 	if not force:
-		faction.add_architecture(self, true)
+		section.add_architecture(self, true)
 		
 func get_persons() -> Array:
 	return _person_list

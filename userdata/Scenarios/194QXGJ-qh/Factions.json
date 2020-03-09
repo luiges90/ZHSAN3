@@ -1,10 +1,5 @@
 [
   {
-    "ArchitectureList": [
-      311,
-      312,
-      313
-    ],
     "Color": [
       160,
       0,
@@ -12,12 +7,12 @@
     ],
     "Name": "曹操",
     "PlayerControlled": true,
+    "SectionList": [
+      0
+    ],
     "_Id": 1
   },
   {
-    "ArchitectureList": [
-      40
-    ],
     "Color": [
       0,
       0,
@@ -25,12 +20,12 @@
     ],
     "Name": "刘备",
     "PlayerControlled": false,
+    "SectionList": [
+      1
+    ],
     "_Id": 2
   },
   {
-    "ArchitectureList": [
-      209
-    ],
     "Color": [
       120,
       240,
@@ -38,29 +33,12 @@
     ],
     "Name": "孙策",
     "PlayerControlled": false,
+    "SectionList": [
+      2
+    ],
     "_Id": 3
   },
   {
-    "ArchitectureList": [
-      133,
-      135,
-      166,
-      167,
-      28,
-      79,
-      127,
-      134,
-      136,
-      138,
-      169,
-      170,
-      171,
-      201,
-      129,
-      130,
-      131,
-      200
-    ],
     "Color": [
       0,
       255,
@@ -68,21 +46,12 @@
     ],
     "Name": "袁绍",
     "PlayerControlled": false,
+    "SectionList": [
+      3
+    ],
     "_Id": 6
   },
   {
-    "ArchitectureList": [
-      105,
-      106,
-      107,
-      108,
-      109,
-      182,
-      191,
-      192,
-      183,
-      190
-    ],
     "Color": [
       0,
       0,
@@ -90,19 +59,12 @@
     ],
     "Name": "李傕",
     "PlayerControlled": false,
+    "SectionList": [
+      4
+    ],
     "_Id": 7
   },
   {
-    "ArchitectureList": [
-      143,
-      142,
-      140,
-      199,
-      141,
-      139,
-      144,
-      85
-    ],
     "Color": [
       34,
       105,
@@ -110,22 +72,12 @@
     ],
     "Name": "公孙瓒",
     "PlayerControlled": false,
+    "SectionList": [
+      5
+    ],
     "_Id": 8
   },
   {
-    "ArchitectureList": [
-      80,
-      81,
-      82,
-      83,
-      84,
-      96,
-      87,
-      98,
-      97,
-      180,
-      181
-    ],
     "Color": [
       155,
       0,
@@ -133,25 +85,12 @@
     ],
     "Name": "刘焉",
     "PlayerControlled": false,
+    "SectionList": [
+      6
+    ],
     "_Id": 10
   },
   {
-    "ArchitectureList": [
-      9,
-      10,
-      16,
-      179,
-      60,
-      61,
-      62,
-      63,
-      64,
-      208,
-      15,
-      14,
-      216,
-      214
-    ],
     "Color": [
       207,
       228,
@@ -159,19 +98,12 @@
     ],
     "Name": "刘表",
     "PlayerControlled": false,
+    "SectionList": [
+      7
+    ],
     "_Id": 11
   },
   {
-    "ArchitectureList": [
-      18,
-      19,
-      26,
-      27,
-      31,
-      36,
-      37,
-      78
-    ],
     "Color": [
       0,
       0,
@@ -179,13 +111,12 @@
     ],
     "Name": "吕布",
     "PlayerControlled": false,
+    "SectionList": [
+      8
+    ],
     "_Id": 13
   },
   {
-    "ArchitectureList": [
-      116,
-      185
-    ],
     "Color": [
       0,
       64,
@@ -193,14 +124,12 @@
     ],
     "Name": "马腾",
     "PlayerControlled": false,
+    "SectionList": [
+      9
+    ],
     "_Id": 14
   },
   {
-    "ArchitectureList": [
-      113,
-      115,
-      2
-    ],
     "Color": [
       204,
       147,
@@ -208,12 +137,12 @@
     ],
     "Name": "韩遂",
     "PlayerControlled": false,
+    "SectionList": [
+      10
+    ],
     "_Id": 15
   },
   {
-    "ArchitectureList": [
-      74
-    ],
     "Color": [
       160,
       0,
@@ -221,16 +150,12 @@
     ],
     "Name": "士燮",
     "PlayerControlled": false,
+    "SectionList": [
+      11
+    ],
     "_Id": 16
   },
   {
-    "ArchitectureList": [
-      35,
-      38,
-      33,
-      41,
-      42
-    ],
     "Color": [
       83,
       166,
@@ -238,15 +163,12 @@
     ],
     "Name": "陶谦",
     "PlayerControlled": false,
+    "SectionList": [
+      12
+    ],
     "_Id": 17
   },
   {
-    "ArchitectureList": [
-      22,
-      23,
-      24,
-      72
-    ],
     "Color": [
       192,
       128,
@@ -254,12 +176,12 @@
     ],
     "Name": "袁术",
     "PlayerControlled": false,
+    "SectionList": [
+      13
+    ],
     "_Id": 18
   },
   {
-    "ArchitectureList": [
-      29
-    ],
     "Color": [
       151,
       75,
@@ -267,17 +189,12 @@
     ],
     "Name": "孔融",
     "PlayerControlled": false,
+    "SectionList": [
+      14
+    ],
     "_Id": 19
   },
   {
-    "ArchitectureList": [
-      30,
-      146,
-      147,
-      150,
-      151,
-      173
-    ],
     "Color": [
       85,
       170,
@@ -285,14 +202,12 @@
     ],
     "Name": "公孙度",
     "PlayerControlled": false,
+    "SectionList": [
+      15
+    ],
     "_Id": 20
   },
   {
-    "ArchitectureList": [
-      43,
-      157,
-      210
-    ],
     "Color": [
       255,
       68,
@@ -300,12 +215,12 @@
     ],
     "Name": "刘繇",
     "PlayerControlled": false,
+    "SectionList": [
+      16
+    ],
     "_Id": 22
   },
   {
-    "ArchitectureList": [
-      45
-    ],
     "Color": [
       192,
       128,
@@ -313,12 +228,12 @@
     ],
     "Name": "王朗",
     "PlayerControlled": false,
+    "SectionList": [
+      17
+    ],
     "_Id": 23
   },
   {
-    "ArchitectureList": [
-      174
-    ],
     "Color": [
       210,
       191,
@@ -326,14 +241,12 @@
     ],
     "Name": "严白虎",
     "PlayerControlled": false,
+    "SectionList": [
+      18
+    ],
     "_Id": 24
   },
   {
-    "ArchitectureList": [
-      100,
-      101,
-      178
-    ],
     "Color": [
       192,
       128,
@@ -341,12 +254,12 @@
     ],
     "Name": "张鲁",
     "PlayerControlled": false,
+    "SectionList": [
+      19
+    ],
     "_Id": 25
   },
   {
-    "ArchitectureList": [
-      17
-    ],
     "Color": [
       120,
       240,
@@ -354,12 +267,12 @@
     ],
     "Name": "张邈",
     "PlayerControlled": false,
+    "SectionList": [
+      20
+    ],
     "_Id": 26
   },
   {
-    "ArchitectureList": [
-      11
-    ],
     "Color": [
       40,
       0,
@@ -367,12 +280,12 @@
     ],
     "Name": "张济",
     "PlayerControlled": false,
+    "SectionList": [
+      21
+    ],
     "_Id": 27
   },
   {
-    "ArchitectureList": [
-      137
-    ],
     "Color": [
       98,
       98,
@@ -380,14 +293,12 @@
     ],
     "Name": "张燕",
     "PlayerControlled": false,
+    "SectionList": [
+      22
+    ],
     "_Id": 28
   },
   {
-    "ArchitectureList": [
-      125,
-      172,
-      193
-    ],
     "Color": [
       120,
       240,
@@ -395,12 +306,12 @@
     ],
     "Name": "张杨",
     "PlayerControlled": false,
+    "SectionList": [
+      23
+    ],
     "_Id": 29
   },
   {
-    "ArchitectureList": [
-      160
-    ],
     "Color": [
       155,
       0,
@@ -408,12 +319,12 @@
     ],
     "Name": "乌丸",
     "PlayerControlled": false,
+    "SectionList": [
+      24
+    ],
     "_Id": 31
   },
   {
-    "ArchitectureList": [
-      102
-    ],
     "Color": [
       255,
       68,
@@ -421,12 +332,12 @@
     ],
     "Name": "氐族",
     "PlayerControlled": false,
+    "SectionList": [
+      25
+    ],
     "_Id": 32
   },
   {
-    "ArchitectureList": [
-      159
-    ],
     "Color": [
       125,
       0,
@@ -434,12 +345,12 @@
     ],
     "Name": "东部鲜卑",
     "PlayerControlled": false,
+    "SectionList": [
+      26
+    ],
     "_Id": 33
   },
   {
-    "ArchitectureList": [
-      161
-    ],
     "Color": [
       255,
       68,
@@ -447,12 +358,12 @@
     ],
     "Name": "夫余",
     "PlayerControlled": false,
+    "SectionList": [
+      27
+    ],
     "_Id": 34
   },
   {
-    "ArchitectureList": [
-      149
-    ],
     "Color": [
       255,
       255,
@@ -460,12 +371,12 @@
     ],
     "Name": "高句丽",
     "PlayerControlled": false,
+    "SectionList": [
+      28
+    ],
     "_Id": 35
   },
   {
-    "ArchitectureList": [
-      93
-    ],
     "Color": [
       120,
       240,
@@ -473,12 +384,12 @@
     ],
     "Name": "南蛮",
     "PlayerControlled": false,
+    "SectionList": [
+      29
+    ],
     "_Id": 36
   },
   {
-    "ArchitectureList": [
-      114
-    ],
     "Color": [
       136,
       0,
@@ -486,12 +397,12 @@
     ],
     "Name": "羌",
     "PlayerControlled": false,
+    "SectionList": [
+      30
+    ],
     "_Id": 37
   },
   {
-    "ArchitectureList": [
-      56
-    ],
     "Color": [
       207,
       228,
@@ -499,12 +410,12 @@
     ],
     "Name": "山越",
     "PlayerControlled": false,
+    "SectionList": [
+      31
+    ],
     "_Id": 38
   },
   {
-    "ArchitectureList": [
-      155
-    ],
     "Color": [
       160,
       0,
@@ -512,12 +423,12 @@
     ],
     "Name": "拓跋鲜卑",
     "PlayerControlled": false,
+    "SectionList": [
+      32
+    ],
     "_Id": 39
   },
   {
-    "ArchitectureList": [
-      123
-    ],
     "Color": [
       0,
       255,
@@ -525,12 +436,12 @@
     ],
     "Name": "匈奴",
     "PlayerControlled": false,
+    "SectionList": [
+      33
+    ],
     "_Id": 40
   },
   {
-    "ArchitectureList": [
-      162
-    ],
     "Color": [
       128,
       0,
@@ -538,12 +449,12 @@
     ],
     "Name": "刘宠",
     "PlayerControlled": false,
+    "SectionList": [
+      34
+    ],
     "_Id": 55
   },
   {
-    "ArchitectureList": [
-      187
-    ],
     "Color": [
       0,
       255,
@@ -551,12 +462,12 @@
     ],
     "Name": "宋建",
     "PlayerControlled": false,
+    "SectionList": [
+      35
+    ],
     "_Id": 64
   },
   {
-    "ArchitectureList": [
-      34
-    ],
     "Color": [
       207,
       228,
@@ -564,12 +475,12 @@
     ],
     "Name": "臧霸",
     "PlayerControlled": false,
+    "SectionList": [
+      36
+    ],
     "_Id": 85
   },
   {
-    "ArchitectureList": [
-      39
-    ],
     "Color": [
       0,
       255,
@@ -577,12 +488,12 @@
     ],
     "Name": "陈瑀",
     "PlayerControlled": false,
+    "SectionList": [
+      37
+    ],
     "_Id": 86
   },
   {
-    "ArchitectureList": [
-      44
-    ],
     "Color": [
       40,
       0,
@@ -590,12 +501,12 @@
     ],
     "Name": "许贡",
     "PlayerControlled": false,
+    "SectionList": [
+      38
+    ],
     "_Id": 87
   },
   {
-    "ArchitectureList": [
-      52
-    ],
     "Color": [
       125,
       0,
@@ -603,6 +514,9 @@
     ],
     "Name": "华歆",
     "PlayerControlled": false,
+    "SectionList": [
+      39
+    ],
     "_Id": 88
   }
 ]
