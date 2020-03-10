@@ -3,7 +3,11 @@ extends Node
 class_name AI
 
 func run_faction(faction, scenario):
-	for arch in faction.get_architectures():
+	for sect in faction.get_sections():
+		run_section(sect, scenario)
+		
+func run_section(section, scenario):
+	for arch in section.get_architectures():
 		_assign_task(arch)
 
 func _assign_task(arch):

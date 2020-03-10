@@ -145,13 +145,13 @@ func _develop_internal():
 			Person.Task.ENDURANCE: _develop_endurance(p)
 
 func _develop_agriculture(p: Person):
-	agriculture += Util.f2ri(p.get_agriculture_ability() / 10.0 / max(1, float(agriculture) / kind.agriculture))
+	agriculture += Util.f2ri(p.get_agriculture_ability() / 50.0 / max(1, float(agriculture) / kind.agriculture))
 	
 func _develop_commerce(p: Person):
-	commerce += Util.f2ri(p.get_commerce_ability() / 10.0 / max(1, float(commerce) / kind.commerce))
+	commerce += Util.f2ri(p.get_commerce_ability() / 50.0 / max(1, float(commerce) / kind.commerce))
 	
 func _develop_morale(p: Person):
-	morale += Util.f2ri(p.get_morale_ability() / 10.0 / max(1, float(morale) / kind.morale))
+	morale += Util.f2ri(p.get_morale_ability() / 50.0 / max(1, float(morale) / kind.morale))
 	
 func _develop_endurance(p: Person):
-	endurance += Util.f2ri(p.get_endurance_ability() / 10.0 / max(1, float(endurance) / kind.endurance))
+	endurance += Util.f2ri(p.get_endurance_ability() / 50.0 / max(1, float(endurance) / kind.endurance))
