@@ -7,6 +7,7 @@ func run_faction(faction, scenario):
 		run_section(sect, scenario)
 		
 func run_section(section, scenario):
+	_allocate_person(section)
 	for arch in section.get_architectures():
 		_assign_task(arch)
 
@@ -40,3 +41,7 @@ func _assign_task(arch):
 				person[1].set_working_task(Person.Task.ENDURANCE)
 				list.remove(person[0])
 				task_priority[3] -= 0.2
+
+func _allocate_person(section):
+	# TODO consider frontlines etc
+	pass

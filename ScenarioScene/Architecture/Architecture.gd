@@ -6,8 +6,8 @@ var scenario
 
 var map_position: Vector2 setget forbidden
 
-var gname: String
-var title: String
+var gname: String setget forbidden
+var title: String setget forbidden
 
 var kind: ArchitectureKind setget forbidden
 

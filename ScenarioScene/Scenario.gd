@@ -8,6 +8,8 @@ var ai: AI
 
 var current_faction
 
+var terrain_details = Dictionary() setget forbidden
+var movement_kinds = Dictionary() setget forbidden
 var architecture_kinds = Dictionary() setget forbidden
 
 var factions = Dictionary() setget forbidden
@@ -74,6 +76,14 @@ func _save_data(path):
 	))
 	file.close()
 	
+	file.open(path + "/TerrainDetails.json", File.WRITE)
+	file.store_line(to_json(__save_items(terrain_details)))
+	file.close()
+	
+	file.open(path + "/MovementKinds.json", File.WRITE)
+	file.store_line(to_json(__save_items(movement_kinds)))
+	file.close()
+	
 	file.open(path + "/ArchitectureKinds.json", File.WRITE)
 	file.store_line(to_json(__save_items(architecture_kinds)))
 	file.close()
@@ -112,6 +122,20 @@ func _load_data(path):
 	date.month = obj["GameData"]["Month"]
 	date.day = obj["GameData"]["Day"]
 	var current_faction_id = obj["CurrentFactionId"]
+	file.close()
+	
+	file.open(path + "/TerrainDetails.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = TerrainDetail.new()
+		__load_item(instance, item, terrain_details)
+	file.close()
+	
+	file.open(path + "/MovementKinds.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = MovementKind.new()
+		__load_item(instance, item, movement_kinds)
 	file.close()
 	
 	file.open(path + "/ArchitectureKinds.json", File.READ)

@@ -1,0 +1,79 @@
+[
+  {
+    "Name": "未知",
+    "TerrainIds": [
+      0
+    ],
+    "_Id": 0
+  },
+  {
+    "Name": "平原",
+    "TerrainIds": [
+      1
+    ],
+    "_Id": 1
+  },
+  {
+    "Name": "草原",
+    "TerrainIds": [
+      2
+    ],
+    "_Id": 2
+  },
+  {
+    "Name": "森林",
+    "TerrainIds": [
+      3
+    ],
+    "_Id": 3
+  },
+  {
+    "Name": "湿地",
+    "TerrainIds": [
+      4
+    ],
+    "_Id": 4
+  },
+  {
+    "Name": "山地",
+    "TerrainIds": [
+      5
+    ],
+    "_Id": 5
+  },
+  {
+    "Name": "水域",
+    "TerrainIds": [
+      6
+    ],
+    "_Id": 6
+  },
+  {
+    "Name": "峻岭",
+    "TerrainIds": [
+      7
+    ],
+    "_Id": 7
+  },
+  {
+    "Name": "荒地",
+    "TerrainIds": [
+      8
+    ],
+    "_Id": 8
+  },
+  {
+    "Name": "栈道",
+    "TerrainIds": [
+      9
+    ],
+    "_Id": 9
+  },
+  {
+    "Name": "瘴气林",
+    "TerrainIds": [
+      10
+    ],
+    "_Id": 10
+  }
+]

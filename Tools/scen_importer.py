@@ -6,6 +6,49 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 	with open(file_name + '.json', mode='r', encoding='utf-8') as fin:
 		obj = json.loads(fin.read(), strict=False)
 		
+		with open(file_name + '/TerrainDetails.json', mode='w', encoding='utf-8') as fout:
+			r = []
+			for i in common['AllTerrainDetails']['TerrainDetails']:
+				k = i['Value']
+				r.append({
+					"_Id": k['ID'],
+					"Name": k['Name'],
+					"TerrainIds": [k['ID']]
+				})
+			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
+		
+		movement_to_save = [] 
+		movement_set = {}
+		movement_mapping = {}
+		with open(file_name + '/MovementKinds.json', mode='w', encoding='utf-8') as fout:
+			r = []
+			for i in common['AllMilitaryKinds']['MilitaryKinds']:
+				k = i['Value']
+				costs = {
+					"_Id": k['ID'],
+					"MovementCosts": {
+						1: k['PlainAdaptability'],
+						2: k['GrasslandAdaptability'],
+						3: k['ForrestAdaptability'],
+						4: k['MarshAdaptability'],
+						5: k['MountainAdaptability'],
+						6: k['WaterAdaptability'],
+						7: k['RidgeAdaptability'],
+						8: k['WastelandAdaptability'],
+						9: k['DesertAdaptability'],
+						10: k['CliffAdaptability']
+					}
+				}
+				cost_key = frozenset(costs['MovementCosts'].items())
+				if cost_key in movement_set.keys():
+					movement_mapping[movement_set[cost_key]].append(k['ID'])
+				else:
+					movement_set[cost_key] = costs['_Id']
+					movement_mapping[costs['_Id']] = [k['ID']]
+					movement_to_save.append(costs)
+			fout.write(json.dumps(movement_to_save, indent=2, ensure_ascii=False, sort_keys=True))
+		# TODO save movement_mapping to MilitaryKinds
+		
 		with open(file_name + '/ArchitectureKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllArchitectureKinds']['ArchitectureKinds']:
