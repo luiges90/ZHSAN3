@@ -127,4 +127,4 @@ for kind in movement_kinds:
 					})
 				grid.cleanup()
 	with open(scen_file_path + '/Paths/' + str(kind) + '.json', mode='w', encoding='utf-8') as fout:
-		fout.write(json.dumps(kind_paths, indent=2, ensure_ascii=False, sort_keys=True))
+		fout.write(json.dumps(kind_paths, indent=0, separators=(',',':'), ensure_ascii=False, sort_keys=True))

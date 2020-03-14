@@ -12,6 +12,8 @@ var terrain_details = Dictionary() setget forbidden
 var movement_kinds = Dictionary() setget forbidden
 var architecture_kinds = Dictionary() setget forbidden
 
+var ai_paths = Dictionary() setget forbidden
+
 var factions = Dictionary() setget forbidden
 var sections = Dictionary() setget forbidden
 var architectures = Dictionary() setget forbidden
@@ -138,6 +140,14 @@ func _load_data(path):
 		__load_item(instance, item, movement_kinds)
 	file.close()
 	
+	for kind in movement_kinds:
+		file.open(path + "/paths/" + str(kind) + '.json', File.READ)
+		obj = parse_json(file.get_as_text())
+		var ai_path = AIPaths.new()
+		ai_path.load_data(obj)
+		ai_paths[kind] = ai_path
+		file.close()
+			
 	file.open(path + "/ArchitectureKinds.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:

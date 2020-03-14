@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/AI/AI.gd"
 }, {
+"base": "Node",
+"class": "AIPaths",
+"language": "GDScript",
+"path": "res://ScenarioScene/AI/AIPaths.gd"
+}, {
 "base": "Node2D",
 "class": "Architecture",
 "language": "GDScript",
@@ -131,6 +136,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AI": "",
+"AIPaths": "",
 "Architecture": "",
 "ArchitectureKind": "",
 "ArchitectureList": "",
