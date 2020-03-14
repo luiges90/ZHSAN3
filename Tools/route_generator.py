@@ -11,7 +11,7 @@ from io import StringIO
 
 map_file_path = '../ScenarioScene/GameMap/Zhsan2.tmx'
 scen_file_path = '194QXGJ-qh'
-MAX_DISTANCE = 5
+MAX_DISTANCE = 75
 
 print('ZHSan route generator. Scenario file path:', scen_file_path)
 print('Max architecture distance', MAX_DISTANCE)
@@ -80,7 +80,6 @@ for a in architectures:
 			arch_exclusion[r][c].append(a)
 
 print('Calculating paths')
-all_paths = {}
 for kind in movement_kinds:
 	kind_paths = []
 	print('Calulcating path for Movement Kind',kind,'Data',movement_kinds[kind])
@@ -127,8 +126,5 @@ for kind in movement_kinds:
 						'Path': list(reversed(path))
 					})
 				grid.cleanup()
-	all_paths[kind] = kind_paths
-
-for kind in all_paths:
 	with open(scen_file_path + '/Paths/' + str(kind) + '.json', mode='w', encoding='utf-8') as fout:
-		fout.write(json.dumps(all_paths[kind], indent=2, ensure_ascii=False, sort_keys=True))
+		fout.write(json.dumps(kind_paths, indent=2, ensure_ascii=False, sort_keys=True))
