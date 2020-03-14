@@ -12,10 +12,10 @@ func forbidden(x):
 
 func load_data(json: Dictionary):
 	id = json["_Id"]
-	movement_cost = json["MovementCost"]
+	movement_cost = json["MovementCosts"]
 	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
-		"MovementCost": movement_cost
+		"MovementCosts": movement_cost
 	}
