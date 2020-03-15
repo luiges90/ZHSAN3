@@ -29,6 +29,12 @@ signal architecture_survey_updated
 
 func forbidden(x):
 	assert(false)
+	
+func _draw():
+	for a in adjacent_archs:
+		var arch = scenario.architectures[a]
+		var dest = arch.get_global_transform_with_canvas().origin - get_global_transform_with_canvas().origin
+		draw_line(Vector2(0, 0), dest, Color(255, 0, 0), 5, true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -82,7 +88,7 @@ func set_adjacency(archs, ai_paths):
 		for path in ai_paths[kind].list:
 			if path.start_architecture == id:
 				adjacent_archs[path.end_architecture] = path.path
-		
+
 func get_name() -> String:
 	return gname
 	

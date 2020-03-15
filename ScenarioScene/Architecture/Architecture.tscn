@@ -41,7 +41,8 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="SpriteArea/Sprite/Title"]
-margin_right = 400.0
+margin_left = 100.0
+margin_right = 500.0
 margin_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -50,9 +51,9 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 0.3 )
 
 [node name="Label" type="Label" parent="SpriteArea/Sprite/Title"]
-margin_left = 64.0
+margin_left = 164.0
 margin_top = 4.0
-margin_right = 336.0
+margin_right = 436.0
 margin_bottom = 75.0
 size_flags_horizontal = 6
 theme = ExtResource( 3 )
