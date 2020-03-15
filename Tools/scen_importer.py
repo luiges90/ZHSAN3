@@ -78,7 +78,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Kind": k['KindId'],
 					"Name": k['Name'],
 					"Title": states[k['StateID']] + ' ' + k['Name'],
-					"MapPosition": [position[0], position[1]],
+					"MapPosition": [position[0], position[1] - 1],
 					"PersonList": persons,
 					"Population": k['Population'],
 					"Fund": k['Fund'],

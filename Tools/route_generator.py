@@ -12,9 +12,11 @@ from io import StringIO
 map_file_path = '../ScenarioScene/GameMap/Zhsan2.tmx'
 scen_file_path = '194QXGJ-qh'
 MAX_DISTANCE = 75
+ARCH_EXCLUSION_RANGE = 6
 
 print('ZHSan route generator. Scenario file path:', scen_file_path)
 print('Max architecture distance', MAX_DISTANCE)
+print('Architecture Exculsion Range', ARCH_EXCLUSION_RANGE)
 
 print('Parsing TMX file', map_file_path)
 map_xml = ET.parse(map_file_path).getroot()
@@ -75,8 +77,8 @@ for r in range(0, height):
 		row.append([])
 	arch_exclusion.append(row)
 for a in architectures:
-	for r in range(architectures[a][0]-4, architectures[a][0]+5):
-		for c in range(architectures[a][1]-4, architectures[a][1]+5):
+	for r in range(architectures[a][0]-ARCH_EXCLUSION_RANGE, architectures[a][0]+ARCH_EXCLUSION_RANGE+1):
+		for c in range(architectures[a][1]-ARCH_EXCLUSION_RANGE, architectures[a][1]+ARCH_EXCLUSION_RANGE+1):
 			arch_exclusion[r][c].append(a)
 
 print('Calculating paths')
