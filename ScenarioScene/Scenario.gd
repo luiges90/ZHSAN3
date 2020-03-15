@@ -154,7 +154,7 @@ func _load_data(path):
 		var instance = ArchitectureKind.new()
 		__load_item(instance, item, architecture_kinds)
 	file.close()
-	
+
 	file.open(path + "/Persons.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
@@ -173,6 +173,8 @@ func _load_data(path):
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
 	file.close()
+	for item in architectures:
+		architectures[item].set_adjacency(architectures, ai_paths)
 	
 	file.open(path + "/Sections.json", File.READ)
 	obj = parse_json(file.get_as_text())

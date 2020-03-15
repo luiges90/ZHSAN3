@@ -22,6 +22,8 @@ var commerce: int setget forbidden
 var morale: int setget forbidden
 var endurance: int setget forbidden
 
+var adjacent_archs = {}
+
 signal architecture_clicked
 signal architecture_survey_updated
 
@@ -74,6 +76,12 @@ func _on_scenario_loaded():
 	var faction = get_belonged_faction()
 	if faction:
 		($Flag as Sprite).modulate = faction.color
+		
+func set_adjacency(archs, ai_paths):
+	for kind in ai_paths:
+		for path in ai_paths[kind].list:
+			if path.start_architecture == id:
+				adjacent_archs[path.end_architecture] = path.path
 		
 func get_name() -> String:
 	return gname

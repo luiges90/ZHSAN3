@@ -17,6 +17,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 		
+		"""
 		movement_to_save = [] 
 		movement_set = {}
 		movement_mapping = {}
@@ -48,6 +49,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					movement_to_save.append(costs)
 			fout.write(json.dumps(movement_to_save, indent=2, ensure_ascii=False, sort_keys=True))
 		# TODO save movement_mapping to MilitaryKinds
+		"""
 		
 		with open(file_name + '/ArchitectureKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
