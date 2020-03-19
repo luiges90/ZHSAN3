@@ -11,8 +11,8 @@ from io import StringIO
 
 map_file_path = '../ScenarioScene/GameMap/Zhsan2.tmx'
 scen_file_path = '194QXGJ-qh'
-MAX_DISTANCE = 75
-ARCH_EXCLUSION_RANGE = 6
+MAX_DISTANCE = 100
+ARCH_EXCLUSION_RANGE = 8
 
 print('ZHSan route generator. Scenario file path:', scen_file_path)
 print('Max architecture distance', MAX_DISTANCE)
@@ -55,6 +55,7 @@ with open(scen_file_path + '/Architectures.json', mode='r', encoding='utf-8') as
 	archs = json.loads(arch_file.read(), strict=False)
 	for arch in archs:
 		architectures[arch['_Id']] = arch['MapPosition']
+		architectures[arch['_Id']][1] += 1
 		
 print('Reading movement kind data.')
 movement_kinds = {}
@@ -77,8 +78,8 @@ for r in range(0, height):
 		row.append([])
 	arch_exclusion.append(row)
 for a in architectures:
-	for r in range(architectures[a][0]-ARCH_EXCLUSION_RANGE, architectures[a][0]+ARCH_EXCLUSION_RANGE+1):
-		for c in range(architectures[a][1]-ARCH_EXCLUSION_RANGE, architectures[a][1]+ARCH_EXCLUSION_RANGE+1):
+	for r in range(architectures[a][1]-ARCH_EXCLUSION_RANGE, architectures[a][1]+ARCH_EXCLUSION_RANGE+1):
+		for c in range(architectures[a][0]-ARCH_EXCLUSION_RANGE, architectures[a][0]+ARCH_EXCLUSION_RANGE+1):
 			arch_exclusion[r][c].append(a)
 
 print('Calculating paths')
@@ -109,11 +110,12 @@ for kind in movement_kinds:
 				try:
 					finder = AStarFinder(diagonal_movement=DiagonalMovement.never, max_runs=MAX_DISTANCE*MAX_DISTANCE)
 					path, runs = finder.find_path(start, end, grid)
+					print('operations:', runs, 'path length:', len(path))
+					print('found path:', path)
 				except ExecutionRunsException:
 					print('Path too long')
 					path = []
 				
-				print('found path',path)
 				if len(path) > 0:
 					kind_paths.append({
 						'MovementKind': kind,
