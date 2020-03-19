@@ -38,3 +38,9 @@ func set_belonged_faction(faction, force = false):
 	_belonged_faction = faction
 	if not force:
 		faction.add_architecture(self, true)
+
+func get_persons():
+	var result = []
+	for a in get_architectures():
+		Util.append_all(result, a.get_persons())
+	return result

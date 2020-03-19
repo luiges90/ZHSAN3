@@ -13,10 +13,10 @@ func run_section(section, scenario):
 
 func _assign_task(arch):
 	var list = arch.get_workable_persons().duplicate()
-	var a = float(arch.agriculture) / (arch.kind.agriculture + 1)
-	var c = float(arch.commerce) / (arch.kind.commerce + 1)
-	var m = float(arch.morale) / (arch.kind.morale + 1)
-	var e = float(arch.endurance) / (arch.kind.endurance + 1)
+	var a = -999999 if arch.kind.agriculture <= 0 else float(arch.agriculture) / arch.kind.agriculture
+	var c = -999999 if arch.kind.commerce <= 0 else float(arch.commerce) / arch.kind.commerce
+	var m = -999999 if arch.kind.morale <= 0 else float(arch.morale) / arch.kind.morale
+	var e = -999999 if arch.kind.endurance <= 0 else float(arch.endurance) / arch.kind.endurance
 	var task_priority = [-a, -c, -m, -e]
 	while list.size() > 0:
 		var task = Util.max_pos(task_priority)
@@ -43,5 +43,19 @@ func _assign_task(arch):
 				task_priority[3] -= 0.2
 
 func _allocate_person(section):
-	# TODO consider frontlines etc
-	pass
+	# TODO consider frontlines, person ability etc
+	var person_per_arch = section.get_persons().size() / section.get_architectures().size()
+	for a in section.get_architectures():
+		if a.get_persons().size() < person_per_arch:
+			var archs = section.get_architectures()
+			archs.shuffle()
+			for a2 in archs:
+				if a.id == a2.id:
+					continue
+				var persons = a2.get_persons()
+				persons.shuffle()
+				while persons.size() > person_per_arch:
+					var p = persons.pop_back()
+					p.move_to_architecture(a)
+					if a.get_persons().size() >= person_per_arch:
+						break

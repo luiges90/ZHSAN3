@@ -31,10 +31,12 @@ func forbidden(x):
 	assert(false)
 	
 func _draw():
-	for a in adjacent_archs:
-		var arch = scenario.architectures[a]
-		var dest = arch.get_global_transform_with_canvas().origin - get_global_transform_with_canvas().origin
-		draw_line(Vector2(0, 0), dest, Color(255, 0, 0), 5, true)
+	pass
+	# TODO create debug draw
+	# for a in adjacent_archs:
+	#	var arch = scenario.architectures[a]
+	#	var dest = arch.get_global_transform_with_canvas().origin - get_global_transform_with_canvas().origin
+	#	draw_line(Vector2(0, 0), dest, Color(255, 0, 0), 5, true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -88,6 +90,12 @@ func set_adjacency(archs, ai_paths):
 		for path in ai_paths[kind].list:
 			if path.start_architecture == id:
 				adjacent_archs[path.end_architecture] = path.path
+				
+func is_frontline() -> bool:
+	for arch_id in adjacent_archs:
+		if scenario.architectures[arch_id].belonged_faction().id != id:
+			return true
+	return false
 
 func get_name() -> String:
 	return gname
@@ -159,13 +167,17 @@ func _develop_internal():
 			Person.Task.ENDURANCE: _develop_endurance(p)
 
 func _develop_agriculture(p: Person):
-	agriculture += Util.f2ri(p.get_agriculture_ability() / 50.0 / max(1, float(agriculture) / kind.agriculture))
+	if kind.agriculture > 0:
+		agriculture += Util.f2ri(p.get_agriculture_ability() / 50.0 / max(1, float(agriculture) / kind.agriculture))
 	
 func _develop_commerce(p: Person):
-	commerce += Util.f2ri(p.get_commerce_ability() / 50.0 / max(1, float(commerce) / kind.commerce))
+	if kind.commerce > 0:
+		commerce += Util.f2ri(p.get_commerce_ability() / 50.0 / max(1, float(commerce) / kind.commerce))
 	
 func _develop_morale(p: Person):
-	morale += Util.f2ri(p.get_morale_ability() / 50.0 / max(1, float(morale) / kind.morale))
+	if kind.morale > 0:
+		morale += Util.f2ri(p.get_morale_ability() / 50.0 / max(1, float(morale) / kind.morale))
 	
 func _develop_endurance(p: Person):
-	endurance += Util.f2ri(p.get_endurance_ability() / 50.0 / max(1, float(endurance) / kind.endurance))
+	if kind.endurance > 0:
+		endurance += Util.f2ri(p.get_endurance_ability() / 50.0 / max(1, float(endurance) / kind.endurance))
