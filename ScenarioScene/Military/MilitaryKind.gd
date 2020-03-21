@@ -4,17 +4,17 @@ class_name MilitaryKind
 var id: int setget forbidden
 var scenario
 
-var gname: String
+var gname: String setget forbidden
 
-var offence: int
-var defence: int
-var range_min: int
-var range_max: int
+var offence: int setget forbidden
+var defence: int setget forbidden
+var range_min: int setget forbidden
+var range_max: int setget forbidden
 
-var speed: int
-var initiative: int
-var movement_kind
-var terrain_strength
+var speed: int setget forbidden
+var initiative: int setget forbidden
+var movement_kind setget forbidden
+var terrain_strength setget forbidden
 
 func forbidden(x):
 	assert(false)
