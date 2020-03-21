@@ -89,16 +89,18 @@ func _populate_internal_data(person_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 7
+		item_list.columns = 9
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 6
+		item_list.columns = 8
 	item_list.add_child(_title(tr('NAME')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('AGRICULTURE_ABILITY')))
 	item_list.add_child(_title(tr('COMMERCE_ABILITY')))
 	item_list.add_child(_title(tr('MORALE_ABILITY')))
 	item_list.add_child(_title(tr('ENDURANCE_ABILITY')))
+	item_list.add_child(_title(tr('RECRUIT_ABILITY')))
+	item_list.add_child(_title(tr('TRAIN_ABILITY')))
 	for person in person_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -108,6 +110,8 @@ func _populate_internal_data(person_list: Array, action):
 		item_list.add_child(_label(str(round(person.get_commerce_ability()))))
 		item_list.add_child(_label(str(round(person.get_morale_ability()))))
 		item_list.add_child(_label(str(round(person.get_endurance_ability()))))
+		item_list.add_child(_label(str(round(person.get_recruit_troop_ability()))))
+		item_list.add_child(_label(str(round(person.get_train_troop_ability()))))
 
 
 func _on_Confirm_pressed():

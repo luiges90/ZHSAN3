@@ -15,6 +15,7 @@ var _belonged_section setget set_belonged_section, get_belonged_section
 var _person_list = Array() setget forbidden, get_persons
 
 var population: int setget forbidden
+var military_population: int setget forbidden
 var fund: int setget forbidden
 var food: int setget forbidden
 var agriculture: int setget forbidden
@@ -22,11 +23,11 @@ var commerce: int setget forbidden
 var morale: int setget forbidden
 var endurance: int setget forbidden
 
-var adjacent_archs = {}
+var adjacent_archs = {} setget forbidden
 
-var troop: int
-var troop_morale: int
-var troop_combativity: int
+var troop: int setget forbidden
+var troop_morale: int setget forbidden
+var troop_combativity: int setget forbidden
 
 signal architecture_clicked
 signal architecture_survey_updated
@@ -146,6 +147,7 @@ func day_event():
 	for p in get_persons():
 		p.day_event()
 	_develop_internal()
+	_develop_military()
 		
 func month_event():
 	_develop_resources()
@@ -169,6 +171,7 @@ func _decay_internal():
 	morale -= Util.f2ri(morale * 0.01)
 	endurance -= Util.f2ri(endurance * 0.005)
 	
+	
 func _develop_internal():
 	for p in get_persons():
 		match p.working_task:
@@ -176,19 +179,42 @@ func _develop_internal():
 			Person.Task.COMMERCE: _develop_commerce(p)
 			Person.Task.MORALE: _develop_morale(p)
 			Person.Task.ENDURANCE: _develop_endurance(p)
+			
+func _develop_military():
+	for p in get_persons():
+		match p.working_task:
+			Person.Task.RECRUIT_TROOP: _recruit_troop(p)
+			Person.Task.TRAIN_TROOP: _train_troop(p)
 
 func _develop_agriculture(p: Person):
 	if kind.agriculture > 0:
-		agriculture += Util.f2ri(p.get_agriculture_ability() / 50.0 / max(1, float(agriculture) / kind.agriculture))
+		agriculture += Util.f2ri(p.get_agriculture_ability() * 0.02 / max(1, float(agriculture) / kind.agriculture))
 	
 func _develop_commerce(p: Person):
 	if kind.commerce > 0:
-		commerce += Util.f2ri(p.get_commerce_ability() / 50.0 / max(1, float(commerce) / kind.commerce))
+		commerce += Util.f2ri(p.get_commerce_ability() * 0.02 / max(1, float(commerce) / kind.commerce))
 	
 func _develop_morale(p: Person):
 	if kind.morale > 0:
-		morale += Util.f2ri(p.get_morale_ability() / 50.0 / max(1, float(morale) / kind.morale))
+		morale += Util.f2ri(p.get_morale_ability() * 0.02 / max(1, float(morale) / kind.morale))
 	
 func _develop_endurance(p: Person):
 	if kind.endurance > 0:
-		endurance += Util.f2ri(p.get_endurance_ability() / 50.0 / max(1, float(endurance) / kind.endurance))
+		endurance += Util.f2ri(p.get_endurance_ability() * 0.02 / max(1, float(endurance) / kind.endurance))
+
+func _recruit_troop(p: Person):
+	if population > 0:
+		var quantity = Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(population)) * morale * 0.0005)
+		if quantity > 0:
+			var old_quantity = troop
+			troop += quantity
+			population -= quantity
+			troop_morale = Util.f2ri(troop_morale * old_quantity / float(troop))
+			troop_combativity = Util.f2ri(troop_combativity * old_quantity / float(troop))
+			morale -= Util.f2ri(quantity / 50.0)
+	
+func _train_troop(p: Person):
+	troop_morale += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1))
+	troop_combativity += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_combativity + 10.0) - 1) * 0.1))
+
+

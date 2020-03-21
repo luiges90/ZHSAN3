@@ -1,7 +1,7 @@
 extends Node
 class_name Person
 
-enum Task { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
+enum Task { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, RECRUIT_TROOP, TRAIN_TROOP }
 
 var id: int setget forbidden
 var scenario
@@ -78,6 +78,12 @@ func get_morale_ability():
 func get_endurance_ability():
 	return 0.25 * command + 0.25 * strength + 0.25 * intelligence + 0.25 * politics
 	
+func get_recruit_troop_ability():
+	return 0.5 * strength + 0.5 * glamour
+	
+func get_train_troop_ability():
+	return 0.5 * command + 0.5 * strength
+	
 func set_working_task(work):
 	working_task = work
 	
@@ -88,6 +94,8 @@ func get_working_task_str():
 		Task.COMMERCE: return tr('COMMERCE')
 		Task.MORALE: return tr('MORALE')
 		Task.ENDURANCE: return tr('ENDURANCE')
+		Task.RECRUIT_TROOP: return tr('RECRUIT_TROOP')
+		Task.TRAIN_TROOP: return tr('TRAIN_TROOP')
 		_: return tr('NONE')
 		
 func move_to_architecture(arch):

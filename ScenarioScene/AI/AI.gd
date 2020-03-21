@@ -12,12 +12,15 @@ func run_section(section, scenario):
 		_assign_task(arch)
 
 func _assign_task(arch):
+	# TODO better weighting
 	var list = arch.get_workable_persons().duplicate()
-	var a = -999999 if arch.kind.agriculture <= 0 else float(arch.agriculture) / arch.kind.agriculture
-	var c = -999999 if arch.kind.commerce <= 0 else float(arch.commerce) / arch.kind.commerce
-	var m = -999999 if arch.kind.morale <= 0 else float(arch.morale) / arch.kind.morale
-	var e = -999999 if arch.kind.endurance <= 0 else float(arch.endurance) / arch.kind.endurance
-	var task_priority = [-a, -c, -m, -e]
+	var a = -9e99 if arch.kind.agriculture <= 0 else arch.kind.agriculture / float(arch.agriculture + 1)
+	var c = -9e99 if arch.kind.commerce <= 0 else arch.kind.commerce / float(arch.commerce + 1)
+	var m = -9e99 if arch.kind.morale <= 0 else arch.kind.morale / float(arch.morale + 1)
+	var e = -9e99 if arch.kind.endurance <= 0 else arch.kind.endurance / float(arch.endurance + 1)
+	var r = 10000.0 / (arch.troop + 1)
+	var t = (110.0 / (arch.troop_morale + 10.0) - 1) * 2
+	var task_priority = [a, c, m, e, r, t]
 	while list.size() > 0:
 		var task = Util.max_pos(task_priority)
 		match task[0]:
@@ -41,6 +44,16 @@ func _assign_task(arch):
 				person[1].set_working_task(Person.Task.ENDURANCE)
 				list.remove(person[0])
 				task_priority[3] -= 0.2
+			4:
+				var person = Util.max_by(list, "get_recruit_troop_ability")
+				person[1].set_working_task(Person.Task.RECRUIT_TROOP)
+				list.remove(person[0])
+				task_priority[4] -= 0.2
+			5:
+				var person = Util.max_by(list, "get_train_troop_ability")
+				person[1].set_working_task(Person.Task.TRAIN_TROOP)
+				list.remove(person[0])
+				task_priority[5] -= 0.2
 
 func _allocate_person(section):
 	# TODO consider frontlines, person ability etc

@@ -57,3 +57,7 @@ MILITARY,Military,軍事,軍事
 TROOP,Troop,士兵,士兵
 TROOP_MORALE,Morale,士氣,士氣
 COMBATIVITY,Combativity,戰意,戰意
+RECRUIT_TROOP,Recruit Army,募兵,募兵
+TRAIN_TROOP,Train Army,訓練,訓練
+RECRUIT_ABILITY,Recruit Army Ability,募兵能力,募兵能力
+TRAIN_ABILITY,Train Army Ability,訓練能力,訓練能力
