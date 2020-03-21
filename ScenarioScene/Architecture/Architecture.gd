@@ -207,7 +207,7 @@ func _develop_endurance(p: Person):
 		endurance += Util.f2ri(p.get_endurance_ability() * 0.02 / max(1, float(endurance) / kind.endurance))
 
 func _recruit_troop(p: Person):
-	if military_population > 0:
+	if military_population > 0 and morale > 100:
 		var quantity = Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(military_population)) * morale * 0.0005)
 		if quantity > 0:
 			var old_quantity = troop

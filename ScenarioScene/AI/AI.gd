@@ -18,7 +18,7 @@ func _assign_task(arch):
 	var c = -9e99 if arch.kind.commerce <= 0 else arch.kind.commerce / float(arch.commerce + 1)
 	var m = -9e99 if arch.kind.morale <= 0 else arch.kind.morale / float(arch.morale + 1)
 	var e = -9e99 if arch.kind.endurance <= 0 else arch.kind.endurance / float(arch.endurance + 1)
-	var r = 10000.0 / (arch.troop + 1)
+	var r = -9e99 if arch.population <= 0 or arch.morale <= 100 else 10000.0 / (arch.troop + 1)
 	var t = (110.0 / (arch.troop_morale + 10.0) - 1) * 2
 	var task_priority = [a, c, m, e, r, t]
 	while list.size() > 0:
