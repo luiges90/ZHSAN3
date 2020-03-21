@@ -53,3 +53,7 @@ BELONGED_ARCHITECTURE,Architecture,所屬,所屬
 TASK_DAYS,Task Days,天數,天數
 DAY_UNIT," Days",天,天
 SECTION,Section,軍區,軍區
+MILITARY,Military,軍事,軍事
+TROOP,Troop,士兵,士兵
+TROOP_MORALE,Morale,士氣,士氣
+COMBATIVITY,Combativity,戰意,戰意

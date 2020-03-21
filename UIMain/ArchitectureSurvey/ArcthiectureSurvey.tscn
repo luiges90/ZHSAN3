@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd" type="Script" id=2]
@@ -47,8 +47,12 @@ margin_bottom = 22.0
 size = 28
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 1 )
+
 [node name="ArchitectureSurvey" type="Panel"]
-margin_right = 250.0
+margin_right = 300.0
 margin_bottom = 500.0
 theme = SubResource( 2 )
 custom_styles/panel = SubResource( 4 )
@@ -92,14 +96,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Content"]
-margin_right = 115.0
+margin_right = 128.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 text = "FACTION"
 
 [node name="Faction" type="HBoxContainer" parent="Content"]
-margin_left = 119.0
-margin_right = 210.0
+margin_left = 132.0
+margin_right = 260.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 
@@ -110,128 +114,229 @@ rect_min_size = Vector2( 18, 0 )
 
 [node name="Text" type="Label" parent="Content/Faction"]
 margin_left = 22.0
-margin_right = 91.0
+margin_right = 128.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label2" type="Label" parent="Content"]
 margin_top = 22.0
-margin_right = 115.0
+margin_right = 128.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 text = "OFFICERS"
 
 [node name="PersonCount" type="Label" parent="Content"]
-margin_left = 119.0
+margin_left = 132.0
 margin_top = 22.0
-margin_right = 210.0
+margin_right = 260.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 text = "----"
 
-[node name="Label9" type="Label" parent="Content"]
+[node name="Label17" type="Label" parent="Content"]
 margin_top = 44.0
-margin_right = 115.0
+margin_right = 128.0
 margin_bottom = 62.0
+size_flags_horizontal = 3
+text = "SECTION"
+
+[node name="Section" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 44.0
+margin_right = 260.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+text = "----"
+
+[node name="Label10" type="Label" parent="Content"]
+margin_top = 66.0
+margin_right = 128.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "INTERNAL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 70.0
+margin_right = 260.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Content"]
+margin_top = 97.0
+margin_right = 128.0
+margin_bottom = 115.0
 size_flags_horizontal = 3
 text = "POPULATION"
 
 [node name="Population" type="Label" parent="Content"]
-margin_left = 119.0
-margin_top = 44.0
-margin_right = 210.0
-margin_bottom = 62.0
+margin_left = 132.0
+margin_top = 97.0
+margin_right = 260.0
+margin_bottom = 115.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label3" type="Label" parent="Content"]
-margin_top = 66.0
-margin_right = 115.0
-margin_bottom = 84.0
+margin_top = 119.0
+margin_right = 128.0
+margin_bottom = 137.0
 size_flags_horizontal = 3
 text = "FUND"
 
 [node name="Fund" type="Label" parent="Content"]
-margin_left = 119.0
-margin_top = 66.0
-margin_right = 210.0
-margin_bottom = 84.0
+margin_left = 132.0
+margin_top = 119.0
+margin_right = 260.0
+margin_bottom = 137.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label4" type="Label" parent="Content"]
-margin_top = 88.0
-margin_right = 115.0
-margin_bottom = 106.0
+margin_top = 141.0
+margin_right = 128.0
+margin_bottom = 159.0
 size_flags_horizontal = 3
 text = "FOOD"
 
 [node name="Food" type="Label" parent="Content"]
-margin_left = 119.0
-margin_top = 88.0
-margin_right = 210.0
-margin_bottom = 106.0
+margin_left = 132.0
+margin_top = 141.0
+margin_right = 260.0
+margin_bottom = 159.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label5" type="Label" parent="Content"]
-margin_top = 110.0
-margin_right = 115.0
-margin_bottom = 128.0
+margin_top = 163.0
+margin_right = 128.0
+margin_bottom = 181.0
 size_flags_horizontal = 3
 text = "AGRICULTURE"
 
 [node name="Agriculture" type="Label" parent="Content"]
-margin_left = 119.0
-margin_top = 110.0
-margin_right = 210.0
-margin_bottom = 128.0
+margin_left = 132.0
+margin_top = 163.0
+margin_right = 260.0
+margin_bottom = 181.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label6" type="Label" parent="Content"]
-margin_top = 132.0
-margin_right = 115.0
-margin_bottom = 150.0
+margin_top = 185.0
+margin_right = 128.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 text = "COMMERCE"
 
 [node name="Commerce" type="Label" parent="Content"]
-margin_left = 119.0
-margin_top = 132.0
-margin_right = 210.0
-margin_bottom = 150.0
+margin_left = 132.0
+margin_top = 185.0
+margin_right = 260.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label7" type="Label" parent="Content"]
-margin_top = 154.0
-margin_right = 115.0
-margin_bottom = 172.0
+margin_top = 207.0
+margin_right = 128.0
+margin_bottom = 225.0
 size_flags_horizontal = 3
 text = "MORALE"
 
 [node name="Morale" type="Label" parent="Content"]
-margin_left = 119.0
-margin_top = 154.0
-margin_right = 210.0
-margin_bottom = 172.0
+margin_left = 132.0
+margin_top = 207.0
+margin_right = 260.0
+margin_bottom = 225.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label8" type="Label" parent="Content"]
-margin_top = 176.0
-margin_right = 115.0
-margin_bottom = 194.0
+margin_top = 229.0
+margin_right = 128.0
+margin_bottom = 247.0
 size_flags_horizontal = 3
 text = "ENDURANCE"
 
 [node name="Endurance" type="Label" parent="Content"]
-margin_left = 119.0
-margin_top = 176.0
-margin_right = 210.0
-margin_bottom = 194.0
+margin_left = 132.0
+margin_top = 229.0
+margin_right = 260.0
+margin_bottom = 247.0
+size_flags_horizontal = 3
+text = "----"
+
+[node name="Label12" type="Label" parent="Content"]
+margin_top = 251.0
+margin_right = 128.0
+margin_bottom = 278.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "MILITARY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label13" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 255.0
+margin_right = 260.0
+margin_bottom = 273.0
+size_flags_horizontal = 3
+
+[node name="Label14" type="Label" parent="Content"]
+margin_top = 282.0
+margin_right = 128.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+text = "TROOP"
+
+[node name="Troop" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 282.0
+margin_right = 260.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+text = "----"
+
+[node name="Label15" type="Label" parent="Content"]
+margin_top = 304.0
+margin_right = 128.0
+margin_bottom = 322.0
+size_flags_horizontal = 3
+text = "TROOP_MORALE"
+
+[node name="TroopMorale" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 304.0
+margin_right = 260.0
+margin_bottom = 322.0
+size_flags_horizontal = 3
+text = "----"
+
+[node name="Label16" type="Label" parent="Content"]
+margin_top = 326.0
+margin_right = 128.0
+margin_bottom = 344.0
+size_flags_horizontal = 3
+text = "COMBATIVITY"
+
+[node name="Combativity" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 326.0
+margin_right = 260.0
+margin_bottom = 344.0
 size_flags_horizontal = 3
 text = "----"
 [connection signal="hide" from="." to="." method="_on_ArchitectureSurvey_hide"]

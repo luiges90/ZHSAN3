@@ -24,6 +24,10 @@ var endurance: int setget forbidden
 
 var adjacent_archs = {}
 
+var troop: int
+var troop_morale: int
+var troop_combativity: int
+
 signal architecture_clicked
 signal architecture_survey_updated
 
@@ -60,6 +64,10 @@ func load_data(json: Dictionary):
 	morale = json["Morale"]
 	endurance = json["Endurance"]
 	
+	troop = json["Troop"]
+	troop_morale = json["TroopMorale"]
+	troop_combativity = json["TroopCombativity"]
+	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
@@ -74,7 +82,10 @@ func save_data() -> Dictionary:
 		"Commerce": commerce,
 		"Morale": morale,
 		"Endurance": endurance,
-		"PersonList": Util.id_list(get_persons())
+		"PersonList": Util.id_list(get_persons()),
+		"Troop": troop,
+		"TroopMorale": troop_morale,
+		"TroopCombativity": troop_combativity
 	}
 	
 func _on_scenario_loaded():

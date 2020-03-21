@@ -114,7 +114,10 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Agriculture": k['Agriculture'],
 					"Commerce": k['Commerce'],
 					"Morale": k['Morale'],
-					"Endurance": k['Endurance']
+					"Endurance": k['Endurance'],
+					"Troop": 0,
+					"TroopMorale": 0,
+					"TroopCombativity": 0
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 			
@@ -132,6 +135,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 		with open(file_name + '/Factions.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			colors = common['AllColors']
+			first = True
 			for k in obj["Factions"]["GameObjects"]:
 				sects = [int(x) for x in k['SectionsString'].split(' ') if x]
 				r.append({
@@ -139,8 +143,9 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				  "Name": k['Name'],
 				  "Color": [colors[k['ColorIndex']]['R'], colors[k['ColorIndex']]['G'], colors[k['ColorIndex']]['B']],
 				  "SectionList": sects,
-				  "PlayerControlled": False
+				  "PlayerControlled": first
 				})
+				first = False
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
 		with open(file_name + '/Persons.json', mode='w', encoding='utf-8') as fout:

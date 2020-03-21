@@ -22,6 +22,9 @@ func save_data() -> Dictionary:
 		"Name": gname,
 		"ArchitectureList": Util.id_list(get_architectures())
 	}
+	
+func get_name():
+	return gname
 
 func get_architectures():
 	return _architecture_list

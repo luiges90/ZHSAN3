@@ -44,3 +44,6 @@ func save_data() -> Dictionary:
 		"MovementKind": movement_kind.id,
 		"TerrainStrength": terrain_strength
 	}
+	
+func get_name():
+	return gname
