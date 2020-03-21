@@ -5,7 +5,6 @@ var id: int setget forbidden
 var scenario
 
 var movement_cost = {} setget forbidden
-var effectiveness = {} setget forbidden
 
 func forbidden(x):
 	assert(false)

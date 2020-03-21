@@ -42,14 +42,42 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				}
 				cost_key = frozenset(costs['MovementCosts'].items())
 				if cost_key in movement_set.keys():
-					movement_mapping[movement_set[cost_key]].append(k['ID'])
+					movement_mapping[k['ID']].append(movement_set[cost_key])
 				else:
 					movement_set[cost_key] = costs['_Id']
-					movement_mapping[costs['_Id']] = [k['ID']]
+					movement_mapping[k['ID']] = [costs['_Id']]
 					movement_to_save.append(costs)
 			fout.write(json.dumps(movement_to_save, indent=2, ensure_ascii=False, sort_keys=True))
-		# TODO save movement_mapping to MilitaryKinds
 		"""
+		with open(file_name + '/MilitaryKinds.json', mode='w', encoding='utf-8') as fout:
+			r = []
+			for i in common['AllMilitaryKinds']['MilitaryKinds']:
+				k = i['Value']
+				r.append({
+					"_Id": k['ID'],
+					"Name": k['Name'],
+					"Offence": k['OffencePerScale'],
+					"Defence": k['DefencePerScale'],
+					"RangeMin": 1 if k['ContactOffence'] else 2,
+					"RangeMax": k['OffenceRadius'],
+					"Speed": k['Movability'],
+					"Initiative": k['Speed'],
+					"MovementKind": 2 if '骑' in k['Name'] else 1,
+					# "MovementKind": movement_mapping[k['ID']]
+					"TerrainStrength": {
+						1: k['PlainRate'],
+						2: k['GrasslandRate'],
+						3: k['ForrestRate'],
+						4: k['MarshRate'],
+						5: k['MountainRate'],
+						6: k['WaterRate'],
+						7: k['RidgeRate'],
+						8: k['WastelandRate'],
+						9: k['DesertRate'],
+						10: k['CliffRate']
+					}
+				})
+			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 		
 		with open(file_name + '/ArchitectureKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []

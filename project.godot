@@ -65,6 +65,11 @@ _global_script_classes=[ {
 "path": "res://ScenarioScene/MainCamera.gd"
 }, {
 "base": "Node",
+"class": "MilitaryKind",
+"language": "GDScript",
+"path": "res://ScenarioScene/Military/MilitaryKind.gd"
+}, {
+"base": "Node",
 "class": "MovementKind",
 "language": "GDScript",
 "path": "res://ScenarioScene/Military/MovementKind.gd"
@@ -146,6 +151,7 @@ _global_script_class_icons={
 "Faction": "",
 "Main": "",
 "MainCamera": "",
+"MilitaryKind": "",
 "MovementKind": "",
 "Person": "",
 "PersonList": "",

@@ -11,6 +11,7 @@ var current_faction
 var terrain_details = Dictionary() setget forbidden
 var movement_kinds = Dictionary() setget forbidden
 var architecture_kinds = Dictionary() setget forbidden
+var military_kinds = Dictionary() setget forbidden
 
 var ai_paths = Dictionary() setget forbidden
 
@@ -86,6 +87,10 @@ func _save_data(path):
 	file.store_line(to_json(__save_items(movement_kinds)))
 	file.close()
 	
+	file.open(path + "/MilitaryKinds.json", File.WRITE)
+	file.store_line(to_json(__save_items(military_kinds)))
+	file.close()
+	
 	file.open(path + "/ArchitectureKinds.json", File.WRITE)
 	file.store_line(to_json(__save_items(architecture_kinds)))
 	file.close()
@@ -147,6 +152,13 @@ func _load_data(path):
 		ai_path.load_data(obj)
 		ai_paths[kind] = ai_path
 		file.close()
+		
+	file.open(path + "/MilitaryKinds.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = MilitaryKind.new()
+		__load_item(instance, item, military_kinds)
+	file.close()
 			
 	file.open(path + "/ArchitectureKinds.json", File.READ)
 	obj = parse_json(file.get_as_text())
