@@ -1,7 +1,7 @@
 extends TabList
 class_name PersonList
 
-enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE }
+enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, RECRUIT_TROOP, TRAIN_TROOP }
 
 signal person_selected
 
@@ -33,6 +33,15 @@ func show_data(person_list: Array):
 			_max_selection = -1
 		Action.ENDURANCE: 
 			$Title.text = tr('ENDURANCE')
+			_max_selection = -1
+		Action.MOVE: 
+			$Title.text = tr('MOVE')
+			_max_selection = -1
+		Action.RECRUIT_TROOP:
+			$Title.text = tr('RECRUIT_TROOP')
+			_max_selection = -1
+		Action.TRAIN_TROOP:
+			$Title.text = tr('TRAIN_TROOP')
 			_max_selection = -1
 	$SelectionButtons.visible = _max_selection != 0
 	_populate_basic_data(person_list, current_action)
@@ -132,6 +141,12 @@ func _on_Confirm_pressed():
 			emit_signal("person_selected", current_action, current_architecture, selected)
 		Action.MOVE: 
 			task = Person.Task.MOVE
+			emit_signal("person_selected", current_action, current_architecture, selected)
+		Action.RECRUIT_TROOP: 
+			task = Person.Task.RECRUIT_TROOP
+			emit_signal("person_selected", current_action, current_architecture, selected)
+		Action.TRAIN_TROOP: 
+			task = Person.Task.TRAIN_TROOP
 			emit_signal("person_selected", current_action, current_architecture, selected)
 	._on_Confirm_pressed()
 

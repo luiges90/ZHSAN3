@@ -24,28 +24,34 @@ margin_right = 239.0
 margin_bottom = 38.1229
 text = "INTERNAL"
 
-[node name="Officers" type="Button" parent="MainMenu"]
+[node name="Military" type="Button" parent="MainMenu"]
 margin_top = 34.0
 margin_right = 239.0
 margin_bottom = 72.1229
-text = "OFFICERS"
+text = "MILITARY"
 
-[node name="PersonList" type="Button" parent="MainMenu"]
+[node name="Officers" type="Button" parent="MainMenu"]
 margin_top = 68.0
 margin_right = 239.0
 margin_bottom = 106.123
-text = "PERSON_LIST"
+text = "OFFICERS"
 
-[node name="ArchitectureDetail" type="Button" parent="MainMenu"]
+[node name="PersonList" type="Button" parent="MainMenu"]
 margin_top = 102.0
 margin_right = 239.0
 margin_bottom = 140.123
+text = "PERSON_LIST"
+
+[node name="ArchitectureDetail" type="Button" parent="MainMenu"]
+margin_top = 136.0
+margin_right = 239.0
+margin_bottom = 174.123
 text = "ARCHITECTURE_DETAILS"
 
 [node name="InternalMenu" type="VBoxContainer" parent="."]
 visible = false
 margin_left = 139.0
-margin_right = 294.0
+margin_right = 224.0
 margin_bottom = 140.0
 
 [node name="Agriculture" type="Button" parent="InternalMenu"]
@@ -71,12 +77,30 @@ margin_right = 155.0
 margin_bottom = 140.123
 text = "ENDURANCE"
 
-[node name="OfficersMenu" type="VBoxContainer" parent="."]
+[node name="MilitaryMenu" type="VBoxContainer" parent="."]
 visible = false
 margin_left = 139.0
 margin_top = 34.0
 margin_right = 224.0
 margin_bottom = 106.0
+
+[node name="RecruitTroop" type="Button" parent="MilitaryMenu"]
+margin_right = 169.0
+margin_bottom = 38.1229
+text = "RECRUIT_TROOP"
+
+[node name="TrainTroop" type="Button" parent="MilitaryMenu"]
+margin_top = 34.0
+margin_right = 169.0
+margin_bottom = 72.1229
+text = "TRAIN_TROOP"
+
+[node name="OfficersMenu" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 139.0
+margin_top = 68.0
+margin_right = 224.0
+margin_bottom = 140.0
 
 [node name="Move" type="Button" parent="OfficersMenu"]
 margin_right = 85.0
@@ -99,6 +123,7 @@ stream = ExtResource( 4 )
 stream = ExtResource( 5 )
 [connection signal="hide" from="." to="." method="_on_ArchitectureMenu_hide"]
 [connection signal="pressed" from="MainMenu/Internal" to="." method="_on_Internal_pressed"]
+[connection signal="pressed" from="MainMenu/Military" to="." method="_on_Military_pressed"]
 [connection signal="pressed" from="MainMenu/Officers" to="." method="_on_Officers_pressed"]
 [connection signal="pressed" from="MainMenu/PersonList" to="." method="_on_PersonList_pressed"]
 [connection signal="pressed" from="MainMenu/ArchitectureDetail" to="." method="_on_ArchitectureDetail_pressed"]
@@ -106,5 +131,7 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="InternalMenu/Commerce" to="." method="_on_Commerce_pressed"]
 [connection signal="pressed" from="InternalMenu/Morale" to="." method="_on_Morale_pressed"]
 [connection signal="pressed" from="InternalMenu/Endurance" to="." method="_on_Endurance_pressed"]
+[connection signal="pressed" from="MilitaryMenu/RecruitTroop" to="." method="_on_RecruitTroop_pressed"]
+[connection signal="pressed" from="MilitaryMenu/TrainTroop" to="." method="_on_TrainTroop_pressed"]
 [connection signal="pressed" from="OfficersMenu/Move" to="." method="_on_Move_pressed"]
 [connection signal="pressed" from="OfficersMenu/Call" to="." method="_on_Call_pressed"]

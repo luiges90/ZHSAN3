@@ -241,6 +241,8 @@ func _on_person_selected(task, current_architecture, selected_person_ids, other 
 		Person.Task.COMMERCE: current_architecture.set_person_task(task, p)
 		Person.Task.MORALE: current_architecture.set_person_task(task, p)
 		Person.Task.ENDURANCE: current_architecture.set_person_task(task, p)
+		Person.Task.RECRUIT_TROOP: current_architecture.set_person_task(task, p)
+		Person.Task.TRAIN_TROOP: current_architecture.set_person_task(task, p)
 
 func _on_architecture_selected(task, current_architecture, selected_arch_ids, other = {}):
 	var selected_person_ids = other['selected_person_ids']

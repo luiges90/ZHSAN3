@@ -27,6 +27,7 @@ func show_menu(arch, mouse_x, mouse_y):
 	
 func _hide_submenus():
 	$InternalMenu.hide()
+	$MilitaryMenu.hide()
 	$OfficersMenu.hide()
 
 
@@ -55,8 +56,7 @@ func _on_PersonList_pressed():
 func _on_ArchitectureMenu_hide():
 	if GameConfig.se_enabled and not _opening_list:
 		($CloseSound as AudioStreamPlayer).play()
-	$InternalMenu.hide()
-	$OfficersMenu.hide()
+	_hide_submenus()
 	_opening_list = false
 
 
@@ -108,5 +108,28 @@ func _on_ArchitectureDetail_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
 	emit_signal("architecture_list_clicked", showing_architecture, [showing_architecture], PersonList.Action.LIST)
+	_opening_list = true
+	hide()
+
+
+func _on_Military_pressed():
+	if GameConfig.se_enabled:
+		($OpenSound as AudioStreamPlayer).play()
+	_hide_submenus()
+	$MilitaryMenu.show()
+
+
+func _on_RecruitTroop_pressed():
+	if GameConfig.se_enabled:
+		($SelectSound as AudioStreamPlayer).play()
+	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.RECRUIT_TROOP)
+	_opening_list = true
+	hide()
+
+
+func _on_TrainTroop_pressed():
+	if GameConfig.se_enabled:
+		($SelectSound as AudioStreamPlayer).play()
+	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.TRAIN_TROOP)
 	_opening_list = true
 	hide()
