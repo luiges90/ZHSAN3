@@ -22,6 +22,7 @@ func show_data(architecture: Architecture, mouse_x: int, mouse_y: int):
 		($Content/Section as Label).text = "----"
 	
 	($Content/Population as Label).text = Util.nstr(architecture.population)
+	($Content/MilitaryPopulation as Label).text = Util.nstr(architecture.military_population)
 	($Content/Fund as Label).text = Util.nstr(architecture.fund)
 	($Content/Food as Label).text = Util.nstr(architecture.food)
 	($Content/Agriculture as Label).text = Util.nstr(architecture.agriculture)

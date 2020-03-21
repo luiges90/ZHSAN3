@@ -10,7 +10,7 @@ var _selected_person_ids
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
-	$Tabs.remove_child($Tabs/Tab3)
+	$Tabs.set_tab_title(1, tr('MILITARY'))
 
 func show_data(arch_list: Array):
 	match current_action:
@@ -23,6 +23,7 @@ func show_data(arch_list: Array):
 	$SelectionButtons.visible = _max_selection != 0
 	_populate_basic_data(arch_list, current_action)
 	_populate_internal_data(arch_list, current_action)
+	_populate_military_data(arch_list, current_action)
 	show()
 
 func _populate_basic_data(arch_list: Array, action):
@@ -53,11 +54,13 @@ func _populate_internal_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 6
+		item_list.columns = 8
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 5
+		item_list.columns = 7
 	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('POPULATION')))
+	item_list.add_child(_title(tr('MILITARY_POPULATION')))
 	item_list.add_child(_title(tr('AGRICULTURE')))
 	item_list.add_child(_title(tr('COMMERCE')))
 	item_list.add_child(_title(tr('MORALE')))
@@ -66,10 +69,32 @@ func _populate_internal_data(arch_list: Array, action):
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
 		item_list.add_child(_label(arch.get_name()))
+		item_list.add_child(_label(str(arch.population)))
+		item_list.add_child(_label(str(arch.military_population)))
 		item_list.add_child(_label(str(arch.agriculture)))
 		item_list.add_child(_label(str(arch.commerce)))
 		item_list.add_child(_label(str(arch.morale)))
 		item_list.add_child(_label(str(arch.endurance)))
+		
+func _populate_military_data(arch_list: Array, action):
+	var item_list = $Tabs/Tab3/Grid as GridContainer
+	Util.delete_all_children(item_list)
+	if action != Action.LIST:
+		item_list.columns = 5
+		item_list.add_child(_title(''))
+	else:
+		item_list.columns = 4
+	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('TROOP')))
+	item_list.add_child(_title(tr('TROOP_MORALE')))
+	item_list.add_child(_title(tr('COMBATIVITY')))
+	for arch in arch_list:
+		if action != Action.LIST:
+			item_list.add_child(_checkbox(arch.id))
+		item_list.add_child(_label(arch.get_name()))
+		item_list.add_child(_label(str(arch.troop)))
+		item_list.add_child(_label(str(arch.troop_morale)))
+		item_list.add_child(_label(str(arch.troop_combativity)))
 
 func _on_Confirm_pressed():
 	var selected_arch = _get_selected_list()

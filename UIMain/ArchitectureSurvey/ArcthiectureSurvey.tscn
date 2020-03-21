@@ -96,13 +96,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Content"]
-margin_right = 128.0
+margin_right = 177.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 text = "FACTION"
 
 [node name="Faction" type="HBoxContainer" parent="Content"]
-margin_left = 132.0
+margin_left = 181.0
 margin_right = 260.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
@@ -114,20 +114,20 @@ rect_min_size = Vector2( 18, 0 )
 
 [node name="Text" type="Label" parent="Content/Faction"]
 margin_left = 22.0
-margin_right = 128.0
+margin_right = 79.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label2" type="Label" parent="Content"]
 margin_top = 22.0
-margin_right = 128.0
+margin_right = 177.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 text = "OFFICERS"
 
 [node name="PersonCount" type="Label" parent="Content"]
-margin_left = 132.0
+margin_left = 181.0
 margin_top = 22.0
 margin_right = 260.0
 margin_bottom = 40.0
@@ -136,13 +136,13 @@ text = "----"
 
 [node name="Label17" type="Label" parent="Content"]
 margin_top = 44.0
-margin_right = 128.0
+margin_right = 177.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 text = "SECTION"
 
 [node name="Section" type="Label" parent="Content"]
-margin_left = 132.0
+margin_left = 181.0
 margin_top = 44.0
 margin_right = 260.0
 margin_bottom = 62.0
@@ -151,7 +151,7 @@ text = "----"
 
 [node name="Label10" type="Label" parent="Content"]
 margin_top = 66.0
-margin_right = 128.0
+margin_right = 177.0
 margin_bottom = 93.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 8 )
@@ -162,7 +162,7 @@ __meta__ = {
 }
 
 [node name="Label11" type="Label" parent="Content"]
-margin_left = 132.0
+margin_left = 181.0
 margin_top = 70.0
 margin_right = 260.0
 margin_bottom = 88.0
@@ -173,113 +173,128 @@ __meta__ = {
 
 [node name="Label9" type="Label" parent="Content"]
 margin_top = 97.0
-margin_right = 128.0
+margin_right = 177.0
 margin_bottom = 115.0
 size_flags_horizontal = 3
 text = "POPULATION"
 
 [node name="Population" type="Label" parent="Content"]
-margin_left = 132.0
+margin_left = 181.0
 margin_top = 97.0
 margin_right = 260.0
 margin_bottom = 115.0
 size_flags_horizontal = 3
 text = "----"
 
-[node name="Label3" type="Label" parent="Content"]
+[node name="Label18" type="Label" parent="Content"]
 margin_top = 119.0
-margin_right = 128.0
+margin_right = 177.0
 margin_bottom = 137.0
+size_flags_horizontal = 3
+text = "MILITARY_POPULATION"
+
+[node name="MilitaryPopulation" type="Label" parent="Content"]
+margin_left = 181.0
+margin_top = 119.0
+margin_right = 260.0
+margin_bottom = 137.0
+size_flags_horizontal = 3
+text = "----"
+
+[node name="Label3" type="Label" parent="Content"]
+margin_top = 141.0
+margin_right = 177.0
+margin_bottom = 159.0
 size_flags_horizontal = 3
 text = "FUND"
 
 [node name="Fund" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 119.0
+margin_left = 181.0
+margin_top = 141.0
 margin_right = 260.0
-margin_bottom = 137.0
+margin_bottom = 159.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label4" type="Label" parent="Content"]
-margin_top = 141.0
-margin_right = 128.0
-margin_bottom = 159.0
+margin_top = 163.0
+margin_right = 177.0
+margin_bottom = 181.0
 size_flags_horizontal = 3
 text = "FOOD"
 
 [node name="Food" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 141.0
+margin_left = 181.0
+margin_top = 163.0
 margin_right = 260.0
-margin_bottom = 159.0
+margin_bottom = 181.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label5" type="Label" parent="Content"]
-margin_top = 163.0
-margin_right = 128.0
-margin_bottom = 181.0
+margin_top = 185.0
+margin_right = 177.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 text = "AGRICULTURE"
 
 [node name="Agriculture" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 163.0
+margin_left = 181.0
+margin_top = 185.0
 margin_right = 260.0
-margin_bottom = 181.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label6" type="Label" parent="Content"]
-margin_top = 185.0
-margin_right = 128.0
-margin_bottom = 203.0
+margin_top = 207.0
+margin_right = 177.0
+margin_bottom = 225.0
 size_flags_horizontal = 3
 text = "COMMERCE"
 
 [node name="Commerce" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 185.0
+margin_left = 181.0
+margin_top = 207.0
 margin_right = 260.0
-margin_bottom = 203.0
+margin_bottom = 225.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label7" type="Label" parent="Content"]
-margin_top = 207.0
-margin_right = 128.0
-margin_bottom = 225.0
+margin_top = 229.0
+margin_right = 177.0
+margin_bottom = 247.0
 size_flags_horizontal = 3
 text = "MORALE"
 
 [node name="Morale" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 207.0
+margin_left = 181.0
+margin_top = 229.0
 margin_right = 260.0
-margin_bottom = 225.0
+margin_bottom = 247.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label8" type="Label" parent="Content"]
-margin_top = 229.0
-margin_right = 128.0
-margin_bottom = 247.0
+margin_top = 251.0
+margin_right = 177.0
+margin_bottom = 269.0
 size_flags_horizontal = 3
 text = "ENDURANCE"
 
 [node name="Endurance" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 229.0
+margin_left = 181.0
+margin_top = 251.0
 margin_right = 260.0
-margin_bottom = 247.0
+margin_bottom = 269.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label12" type="Label" parent="Content"]
-margin_top = 251.0
-margin_right = 128.0
-margin_bottom = 278.0
+margin_top = 273.0
+margin_right = 177.0
+margin_bottom = 300.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -289,54 +304,54 @@ __meta__ = {
 }
 
 [node name="Label13" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 255.0
+margin_left = 181.0
+margin_top = 277.0
 margin_right = 260.0
-margin_bottom = 273.0
+margin_bottom = 295.0
 size_flags_horizontal = 3
 
 [node name="Label14" type="Label" parent="Content"]
-margin_top = 282.0
-margin_right = 128.0
-margin_bottom = 300.0
+margin_top = 304.0
+margin_right = 177.0
+margin_bottom = 322.0
 size_flags_horizontal = 3
 text = "TROOP"
 
 [node name="Troop" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 282.0
+margin_left = 181.0
+margin_top = 304.0
 margin_right = 260.0
-margin_bottom = 300.0
+margin_bottom = 322.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label15" type="Label" parent="Content"]
-margin_top = 304.0
-margin_right = 128.0
-margin_bottom = 322.0
+margin_top = 326.0
+margin_right = 177.0
+margin_bottom = 344.0
 size_flags_horizontal = 3
 text = "TROOP_MORALE"
 
 [node name="TroopMorale" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 304.0
+margin_left = 181.0
+margin_top = 326.0
 margin_right = 260.0
-margin_bottom = 322.0
+margin_bottom = 344.0
 size_flags_horizontal = 3
 text = "----"
 
 [node name="Label16" type="Label" parent="Content"]
-margin_top = 326.0
-margin_right = 128.0
-margin_bottom = 344.0
+margin_top = 348.0
+margin_right = 177.0
+margin_bottom = 366.0
 size_flags_horizontal = 3
 text = "COMBATIVITY"
 
 [node name="Combativity" type="Label" parent="Content"]
-margin_left = 132.0
-margin_top = 326.0
+margin_left = 181.0
+margin_top = 348.0
 margin_right = 260.0
-margin_bottom = 344.0
+margin_bottom = 366.0
 size_flags_horizontal = 3
 text = "----"
 [connection signal="hide" from="." to="." method="_on_ArchitectureSurvey_hide"]

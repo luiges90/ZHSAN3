@@ -58,6 +58,7 @@ func load_data(json: Dictionary):
 	map_position = Util.load_position(json["MapPosition"])
 	
 	population = json["Population"]
+	military_population = json["MilitaryPopulation"]
 	fund = json["Fund"]
 	food = json["Food"]
 	agriculture = json["Agriculture"]
@@ -77,6 +78,7 @@ func save_data() -> Dictionary:
 		"Kind": kind.id,
 		"MapPosition": Util.save_position(map_position),
 		"Population": population,
+		"MilitaryPopulation": military_population,
 		"Fund": fund,
 		"Food": food,
 		"Agriculture": agriculture,
@@ -161,9 +163,11 @@ func set_person_task(task, persons: Array):
 func _develop_resources():
 	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
 	food += agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
-
-	population *= 1 + ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population))
-	population += 10
+	
+	var population_increase = population * ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population)) + 10
+	population += population_increase
+	military_population += population_increase * 0.4
+	
 	
 func _decay_internal():
 	agriculture -= Util.f2ri(agriculture * 0.005)
@@ -203,12 +207,13 @@ func _develop_endurance(p: Person):
 		endurance += Util.f2ri(p.get_endurance_ability() * 0.02 / max(1, float(endurance) / kind.endurance))
 
 func _recruit_troop(p: Person):
-	if population > 0:
-		var quantity = Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(population)) * morale * 0.0005)
+	if military_population > 0:
+		var quantity = Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(military_population)) * morale * 0.0005)
 		if quantity > 0:
 			var old_quantity = troop
 			troop += quantity
 			population -= quantity
+			military_population -= quantity
 			troop_morale = Util.f2ri(troop_morale * old_quantity / float(troop))
 			troop_combativity = Util.f2ri(troop_combativity * old_quantity / float(troop))
 			morale -= Util.f2ri(quantity / 50.0)

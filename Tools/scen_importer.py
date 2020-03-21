@@ -109,6 +109,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"MapPosition": [position[0], position[1] - 1],
 					"PersonList": persons,
 					"Population": k['Population'],
+					"MilitaryPopulation": k['Population'] * 0.4,
 					"Fund": k['Fund'],
 					"Food": k['Food'],
 					"Agriculture": k['Agriculture'],

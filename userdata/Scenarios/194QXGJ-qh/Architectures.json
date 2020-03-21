@@ -10,6 +10,7 @@
       156,
       127
     ],
+    "MilitaryPopulation": 80000.0,
     "Morale": 200,
     "Name": "洛阳",
     "PersonList": [],
@@ -31,6 +32,7 @@
       148,
       126
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "函谷关",
     "PersonList": [],
@@ -52,6 +54,7 @@
       41,
       115
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "金城",
     "PersonList": [],
@@ -73,6 +76,7 @@
       130,
       131
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "潼关",
     "PersonList": [],
@@ -94,6 +98,7 @@
       133,
       145
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "武关",
     "PersonList": [],
@@ -115,6 +120,7 @@
       178,
       140
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "许县",
     "PersonList": [],
@@ -136,6 +142,7 @@
       200,
       141
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "谯县",
     "PersonList": [],
@@ -157,6 +164,7 @@
       156,
       154
     ],
+    "MilitaryPopulation": 80000.0,
     "Morale": 200,
     "Name": "宛县",
     "PersonList": [],
@@ -178,6 +186,7 @@
       153,
       163
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "新野",
     "PersonList": [],
@@ -199,6 +208,7 @@
       151,
       173
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "襄阳",
     "PersonList": [
@@ -258,6 +268,7 @@
       150,
       196
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "江陵",
     "PersonList": [],
@@ -279,6 +290,7 @@
       139,
       128
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "弘农",
     "PersonList": [
@@ -305,6 +317,7 @@
       126,
       170
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "上庸",
     "PersonList": [],
@@ -326,6 +339,7 @@
       113,
       162
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "西城",
     "PersonList": [],
@@ -347,6 +361,7 @@
       172,
       201
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "乌林港",
     "PersonList": [],
@@ -368,6 +383,7 @@
       163,
       215
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 100,
     "Name": "巴丘",
     "PersonList": [],
@@ -389,6 +405,7 @@
       187,
       198
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "鄂县",
     "PersonList": [],
@@ -410,6 +427,7 @@
       184,
       127
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "陈留",
     "PersonList": [
@@ -434,6 +452,7 @@
       180,
       107
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 100,
     "Name": "白马津",
     "PersonList": [],
@@ -455,6 +474,7 @@
       187,
       107
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "濮阳",
     "PersonList": [
@@ -500,6 +520,7 @@
       159,
       123
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "孟津",
     "PersonList": [],
@@ -521,6 +542,7 @@
       182,
       154
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "平舆",
     "PersonList": [],
@@ -542,6 +564,7 @@
       210,
       193
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "皖县",
     "PersonList": [],
@@ -563,6 +586,7 @@
       214,
       162
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "寿春",
     "PersonList": [
@@ -608,6 +632,7 @@
       218,
       170
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "合肥",
     "PersonList": [],
@@ -629,6 +654,7 @@
       204,
       105
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "无盐",
     "PersonList": [],
@@ -650,6 +676,7 @@
       215,
       103
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "奉高",
     "PersonList": [],
@@ -671,6 +698,7 @@
       227,
       91
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "临淄",
     "PersonList": [],
@@ -692,6 +720,7 @@
       236,
       91
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "都昌",
     "PersonList": [
@@ -717,6 +746,7 @@
       248,
       78
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "黄县",
     "PersonList": [],
@@ -738,6 +768,7 @@
       194,
       114
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "定陶",
     "PersonList": [],
@@ -759,6 +790,7 @@
       78,
       142
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "散关",
     "PersonList": [],
@@ -780,6 +812,7 @@
       239,
       102
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "东武",
     "PersonList": [],
@@ -801,6 +834,7 @@
       227,
       114
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "开阳",
     "PersonList": [
@@ -828,6 +862,7 @@
       225,
       123
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "郯县",
     "PersonList": [
@@ -861,6 +896,7 @@
       208,
       114
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "任城",
     "PersonList": [],
@@ -882,6 +918,7 @@
       201,
       114
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "昌邑",
     "PersonList": [],
@@ -903,6 +940,7 @@
       215,
       134
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 500,
     "Name": "彭城",
     "PersonList": [],
@@ -924,6 +962,7 @@
       221,
       138
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "下邳",
     "PersonList": [
@@ -949,6 +988,7 @@
       210,
       123
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "沛县",
     "PersonList": [
@@ -982,6 +1022,7 @@
       235,
       147
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "淮阴",
     "PersonList": [],
@@ -1003,6 +1044,7 @@
       238,
       164
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "广陵港",
     "PersonList": [],
@@ -1024,6 +1066,7 @@
       238,
       173
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "秣陵",
     "PersonList": [
@@ -1056,6 +1099,7 @@
       257,
       181
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "吴县",
     "PersonList": [
@@ -1079,6 +1123,7 @@
       258,
       198
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "山阴",
     "PersonList": [
@@ -1104,6 +1149,7 @@
       242,
       203
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "始新",
     "PersonList": [],
@@ -1125,6 +1171,7 @@
       270,
       218
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "章安",
     "PersonList": [],
@@ -1146,6 +1193,7 @@
       243,
       258
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "侯官",
     "PersonList": [],
@@ -1167,6 +1215,7 @@
       207,
       206
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "柴桑",
     "PersonList": [],
@@ -1188,6 +1237,7 @@
       222,
       191
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 200,
     "Name": "虎林港",
     "PersonList": [],
@@ -1209,6 +1259,7 @@
       215,
       216
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "鄱阳",
     "PersonList": [],
@@ -1230,6 +1281,7 @@
       207,
       222
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "南昌",
     "PersonList": [
@@ -1253,6 +1305,7 @@
       215,
       241
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "南城",
     "PersonList": [],
@@ -1274,6 +1327,7 @@
       187,
       245
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "高昌",
     "PersonList": [],
@@ -1295,6 +1349,7 @@
       229,
       246
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "建安",
     "PersonList": [],
@@ -1316,6 +1371,7 @@
       228,
       214
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "山越",
     "PersonList": [
@@ -1347,6 +1403,7 @@
       259,
       282
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "夷西渡口",
     "PersonList": [],
@@ -1368,6 +1425,7 @@
       268,
       277
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "夷洲",
     "PersonList": [],
@@ -1389,6 +1447,7 @@
       191,
       132
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "己吾",
     "PersonList": [],
@@ -1410,6 +1469,7 @@
       165,
       232
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "临湘",
     "PersonList": [
@@ -1433,6 +1493,7 @@
       142,
       220
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "临沅",
     "PersonList": [],
@@ -1454,6 +1515,7 @@
       160,
       239
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "湘南",
     "PersonList": [],
@@ -1475,6 +1537,7 @@
       146,
       258
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "泉陵",
     "PersonList": [
@@ -1499,6 +1562,7 @@
       161,
       263
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "郴县",
     "PersonList": [],
@@ -1520,6 +1584,7 @@
       146,
       286
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "临贺",
     "PersonList": [],
@@ -1541,6 +1606,7 @@
       170,
       299
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "番禹",
     "PersonList": [],
@@ -1562,6 +1628,7 @@
       140,
       201
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "夷道",
     "PersonList": [],
@@ -1583,6 +1650,7 @@
       103,
       211
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "临江",
     "PersonList": [],
@@ -1604,6 +1672,7 @@
       142,
       297
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "广信",
     "PersonList": [],
@@ -1625,6 +1694,7 @@
       50,
       177
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "江油关",
     "PersonList": [],
@@ -1646,6 +1716,7 @@
       116,
       318
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "合浦",
     "PersonList": [],
@@ -1667,6 +1738,7 @@
       213,
       194
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 200,
     "Name": "皖口港",
     "PersonList": [],
@@ -1688,6 +1760,7 @@
       123,
       299
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "布山",
     "PersonList": [],
@@ -1709,6 +1782,7 @@
       74,
       326
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "龙编",
     "PersonList": [
@@ -1739,6 +1813,7 @@
       42,
       143
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "沓中",
     "PersonList": [],
@@ -1760,6 +1835,7 @@
       183,
       191
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 200,
     "Name": "夏口港",
     "PersonList": [],
@@ -1781,6 +1857,7 @@
       205,
       165
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 100,
     "Name": "安风",
     "PersonList": [],
@@ -1802,6 +1879,7 @@
       208,
       99
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 100,
     "Name": "卢县",
     "PersonList": [],
@@ -1823,6 +1901,7 @@
       196,
       71
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "乐成",
     "PersonList": [],
@@ -1844,6 +1923,7 @@
       41,
       207
     ],
+    "MilitaryPopulation": 80000.0,
     "Morale": 200,
     "Name": "成都",
     "PersonList": [
@@ -1894,6 +1974,7 @@
       27,
       214
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "汉嘉",
     "PersonList": [],
@@ -1915,6 +1996,7 @@
       38,
       215
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "武阳",
     "PersonList": [],
@@ -1936,6 +2018,7 @@
       63,
       237
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "江阳",
     "PersonList": [],
@@ -1957,6 +2040,7 @@
       82,
       223
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "江州",
     "PersonList": [],
@@ -1978,6 +2062,7 @@
       196,
       56
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 100,
     "Name": "易京",
     "PersonList": [],
@@ -1999,6 +2084,7 @@
       115,
       190
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "永安",
     "PersonList": [],
@@ -2020,6 +2106,7 @@
       47,
       195
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "绵竹关",
     "PersonList": [],
@@ -2041,6 +2128,7 @@
       19,
       253
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "邛都",
     "PersonList": [],
@@ -2062,6 +2150,7 @@
       98,
       261
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "且兰",
     "PersonList": [],
@@ -2083,6 +2172,7 @@
       35,
       258
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "朱提",
     "PersonList": [],
@@ -2104,6 +2194,7 @@
       35,
       284
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "味县",
     "PersonList": [],
@@ -2125,6 +2216,7 @@
       176,
       114
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "乌巢",
     "PersonList": [],
@@ -2146,6 +2238,7 @@
       12,
       261
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "南蛮",
     "PersonList": [
@@ -2170,6 +2263,7 @@
       11,
       283
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "梇栋",
     "PersonList": [],
@@ -2191,6 +2285,7 @@
       1,
       287
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 400,
     "Name": "不韦",
     "PersonList": [],
@@ -2212,6 +2307,7 @@
       44,
       199
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "雒县",
     "PersonList": [],
@@ -2233,6 +2329,7 @@
       68,
       188
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "阆中",
     "PersonList": [],
@@ -2254,6 +2351,7 @@
       57,
       185
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "梓潼",
     "PersonList": [],
@@ -2275,6 +2373,7 @@
       60,
       174
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "剑阁",
     "PersonList": [],
@@ -2296,6 +2395,7 @@
       83,
       161
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 400,
     "Name": "南郑",
     "PersonList": [
@@ -2325,6 +2425,7 @@
       77,
       158
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "阳平关",
     "PersonList": [],
@@ -2346,6 +2447,7 @@
       61,
       145
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "下辨",
     "PersonList": [
@@ -2372,6 +2474,7 @@
       49,
       162
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "阴平",
     "PersonList": [],
@@ -2393,6 +2496,7 @@
       177,
       121
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "官渡",
     "PersonList": [],
@@ -2414,6 +2518,7 @@
       115,
       138
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "长安",
     "PersonList": [
@@ -2462,6 +2567,7 @@
       104,
       139
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "槐里",
     "PersonList": [],
@@ -2483,6 +2589,7 @@
       125,
       125
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "临晋",
     "PersonList": [],
@@ -2504,6 +2611,7 @@
       116,
       120
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "祋栩",
     "PersonList": [],
@@ -2525,6 +2633,7 @@
       100,
       124
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "漆县",
     "PersonList": [],
@@ -2546,6 +2655,7 @@
       88,
       118
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "临泾",
     "PersonList": [],
@@ -2567,6 +2677,7 @@
       64,
       135
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "上邽",
     "PersonList": [],
@@ -2588,6 +2699,7 @@
       58,
       134
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "冀县",
     "PersonList": [],
@@ -2609,6 +2721,7 @@
       50,
       132
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "襄武",
     "PersonList": [
@@ -2640,6 +2753,7 @@
       30,
       150
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "羌胡",
     "PersonList": [
@@ -2667,6 +2781,7 @@
       49,
       116
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "榆中",
     "PersonList": [],
@@ -2688,6 +2803,7 @@
       17,
       110
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 400,
     "Name": "西都",
     "PersonList": [
@@ -2716,6 +2832,7 @@
       26,
       92
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 201,
     "Name": "姑臧",
     "PersonList": [],
@@ -2737,6 +2854,7 @@
       13,
       83
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "觻得",
     "PersonList": [],
@@ -2758,6 +2876,7 @@
       9,
       71
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "禄福",
     "PersonList": [],
@@ -2779,6 +2898,7 @@
       2,
       57
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "敦煌",
     "PersonList": [],
@@ -2800,6 +2920,7 @@
       22,
       13
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "居延",
     "PersonList": [],
@@ -2821,6 +2942,7 @@
       4,
       11
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "乌孙",
     "PersonList": [],
@@ -2842,6 +2964,7 @@
       124,
       42
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "美稷",
     "PersonList": [
@@ -2872,6 +2995,7 @@
       140,
       110
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "安邑",
     "PersonList": [],
@@ -2893,6 +3017,7 @@
       165,
       115
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "怀县",
     "PersonList": [],
@@ -2914,6 +3039,7 @@
       140,
       101
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "平阳",
     "PersonList": [],
@@ -2935,6 +3061,7 @@
       174,
       97
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "邺县",
     "PersonList": [
@@ -2962,6 +3089,7 @@
       185,
       88
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "界桥",
     "PersonList": [],
@@ -2983,6 +3111,7 @@
       152,
       75
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "晋阳",
     "PersonList": [
@@ -3006,6 +3135,7 @@
       139,
       78
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "离石",
     "PersonList": [],
@@ -3027,6 +3157,7 @@
       153,
       58
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "原平",
     "PersonList": [],
@@ -3048,6 +3179,7 @@
       155,
       47
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "雁门关",
     "PersonList": [],
@@ -3069,6 +3201,7 @@
       199,
       87
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 400,
     "Name": "平原",
     "PersonList": [],
@@ -3090,6 +3223,7 @@
       185,
       79
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "信都",
     "PersonList": [],
@@ -3111,6 +3245,7 @@
       219,
       79
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "厌次",
     "PersonList": [],
@@ -3132,6 +3267,7 @@
       205,
       73
     ],
+    "MilitaryPopulation": 80000.0,
     "Morale": 200,
     "Name": "南皮",
     "PersonList": [
@@ -3200,6 +3336,7 @@
       169,
       72
     ],
+    "MilitaryPopulation": 32000.0,
     "Morale": 200,
     "Name": "真定",
     "PersonList": [
@@ -3227,6 +3364,7 @@
       181,
       62
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "卢奴",
     "PersonList": [],
@@ -3248,6 +3386,7 @@
       194,
       46
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "涿县",
     "PersonList": [],
@@ -3269,6 +3408,7 @@
       169,
       31
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "高柳",
     "PersonList": [],
@@ -3290,6 +3430,7 @@
       200,
       40
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "蓟县",
     "PersonList": [],
@@ -3311,6 +3452,7 @@
       193,
       32
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "沮阳",
     "PersonList": [],
@@ -3332,6 +3474,7 @@
       205,
       34
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "渔阳",
     "PersonList": [],
@@ -3353,6 +3496,7 @@
       220,
       45
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "土垠",
     "PersonList": [
@@ -3392,6 +3536,7 @@
       154,
       132
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "伊阙关",
     "PersonList": [],
@@ -3413,6 +3558,7 @@
       246,
       18
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "昌黎",
     "PersonList": [],
@@ -3434,6 +3580,7 @@
       256,
       25
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "襄平",
     "PersonList": [
@@ -3461,6 +3608,7 @@
       162,
       133
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "轘辕关",
     "PersonList": [],
@@ -3482,6 +3630,7 @@
       278,
       30
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "丸都",
     "PersonList": [
@@ -3510,6 +3659,7 @@
       285,
       62
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "朝鲜",
     "PersonList": [],
@@ -3531,6 +3681,7 @@
       286,
       71
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "带方港",
     "PersonList": [],
@@ -3552,6 +3703,7 @@
       159,
       139
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "广成关",
     "PersonList": [],
@@ -3573,6 +3725,7 @@
       65,
       176
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "葭萌关",
     "PersonList": [],
@@ -3594,6 +3747,7 @@
       163,
       124
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "虎牢关",
     "PersonList": [],
@@ -3615,6 +3769,7 @@
       143,
       29
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "盛乐",
     "PersonList": [
@@ -3639,6 +3794,7 @@
       74,
       118
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "街亭",
     "PersonList": [],
@@ -3660,6 +3816,7 @@
       244,
       171
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 0,
     "Name": "曲阿港",
     "PersonList": [],
@@ -3681,6 +3838,7 @@
       238,
       187
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "宛陵",
     "PersonList": [],
@@ -3702,6 +3860,7 @@
       200,
       4
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "东部鲜卑",
     "PersonList": [
@@ -3734,6 +3893,7 @@
       231,
       28
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "白狼山",
     "PersonList": [
@@ -3768,6 +3928,7 @@
       294,
       2
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "夫余",
     "PersonList": [
@@ -3792,6 +3953,7 @@
       188,
       145
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "陈县",
     "PersonList": [
@@ -3816,6 +3978,7 @@
       211,
       171
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "六县",
     "PersonList": [],
@@ -3837,6 +4000,7 @@
       197,
       130
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "睢阳",
     "PersonList": [],
@@ -3858,6 +4022,7 @@
       203,
       200
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "寻阳",
     "PersonList": [],
@@ -3879,6 +4044,7 @@
       218,
       93
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "东平陵",
     "PersonList": [],
@@ -3900,6 +4066,7 @@
       221,
       86
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "临济",
     "PersonList": [],
@@ -3921,6 +4088,7 @@
       159,
       118
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "温县",
     "PersonList": [],
@@ -3942,6 +4110,7 @@
       177,
       105
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "黎阳",
     "PersonList": [],
@@ -3963,6 +4132,7 @@
       184,
       96
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "馆陶",
     "PersonList": [],
@@ -3984,6 +4154,7 @@
       190,
       90
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "甘陵",
     "PersonList": [],
@@ -4005,6 +4176,7 @@
       163,
       96
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 200,
     "Name": "壶关",
     "PersonList": [],
@@ -4026,6 +4198,7 @@
       262,
       13
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "高句骊",
     "PersonList": [],
@@ -4047,6 +4220,7 @@
       250,
       189
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "乌程",
     "PersonList": [
@@ -4071,6 +4245,7 @@
       251,
       197
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "富春",
     "PersonList": [],
@@ -4092,6 +4267,7 @@
       151,
       168
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "樊城",
     "PersonList": [],
@@ -4113,6 +4289,7 @@
       138,
       155
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "南乡",
     "PersonList": [],
@@ -4134,6 +4311,7 @@
       91,
       157
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "成固",
     "PersonList": [],
@@ -4155,6 +4333,7 @@
       150,
       189
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "当阳",
     "PersonList": [],
@@ -4176,6 +4355,7 @@
       55,
       204
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "郪县",
     "PersonList": [],
@@ -4197,6 +4377,7 @@
       52,
       189
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "涪县",
     "PersonList": [],
@@ -4218,6 +4399,7 @@
       84,
       135
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "陈仓",
     "PersonList": [],
@@ -4239,6 +4421,7 @@
       90,
       135
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "郿县",
     "PersonList": [],
@@ -4260,6 +4443,7 @@
       88,
       140
     ],
+    "MilitaryPopulation": 0.0,
     "Morale": 0,
     "Name": "五丈原",
     "PersonList": [],
@@ -4281,6 +4465,7 @@
       33,
       114
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 100,
     "Name": "允吾",
     "PersonList": [],
@@ -4302,6 +4487,7 @@
       43,
       126
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "狄道",
     "PersonList": [],
@@ -4323,6 +4509,7 @@
       33,
       123
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "枹罕",
     "PersonList": [
@@ -4346,6 +4533,7 @@
       74,
       84
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "富平",
     "PersonList": [],
@@ -4367,6 +4555,7 @@
       68,
       129
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "陇县",
     "PersonList": [],
@@ -4388,6 +4577,7 @@
       118,
       131
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "高陵",
     "PersonList": [],
@@ -4409,6 +4599,7 @@
       125,
       141
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "上洛",
     "PersonList": [],
@@ -4430,6 +4621,7 @@
       126,
       132
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "华阴",
     "PersonList": [],
@@ -4451,6 +4643,7 @@
       160,
       101
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "长子",
     "PersonList": [
@@ -4478,6 +4671,7 @@
       118,
       66
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "肤施",
     "PersonList": [],
@@ -4499,6 +4693,7 @@
       86,
       34
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "临戎",
     "PersonList": [],
@@ -4520,6 +4715,7 @@
       109,
       29
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "九原",
     "PersonList": [],
@@ -4541,6 +4737,7 @@
       130,
       28
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "云中",
     "PersonList": [],
@@ -4562,6 +4759,7 @@
       131,
       119
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 200,
     "Name": "蒲坂津",
     "PersonList": [],
@@ -4583,6 +4781,7 @@
       180,
       40
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "代县",
     "PersonList": [],
@@ -4604,6 +4803,7 @@
       168,
       76
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 200,
     "Name": "元氏",
     "PersonList": [],
@@ -4625,6 +4825,7 @@
       177,
       80
     ],
+    "MilitaryPopulation": 60000.0,
     "Morale": 200,
     "Name": "廮陶",
     "PersonList": [],
@@ -4646,6 +4847,7 @@
       25,
       292
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "滇池",
     "PersonList": [],
@@ -4667,6 +4869,7 @@
       169,
       137
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "阳翟",
     "PersonList": [],
@@ -4688,6 +4891,7 @@
       186,
       163
     ],
+    "MilitaryPopulation": 48000.0,
     "Morale": 100,
     "Name": "新息",
     "PersonList": [],
@@ -4709,6 +4913,7 @@
       185,
       187
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "西陵",
     "PersonList": [],
@@ -4730,6 +4935,7 @@
       139,
       191
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "夷陵",
     "PersonList": [],
@@ -4751,6 +4957,7 @@
       133,
       188
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "秭归",
     "PersonList": [],
@@ -4772,6 +4979,7 @@
       155,
       179
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 200,
     "Name": "汉津",
     "PersonList": [],
@@ -4793,6 +5001,7 @@
       230,
       173
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "历阳",
     "PersonList": [
@@ -4836,6 +5045,7 @@
       235,
       178
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "牛渚",
     "PersonList": [],
@@ -4857,6 +5067,7 @@
       164,
       141
     ],
+    "MilitaryPopulation": 40000.0,
     "Morale": 200,
     "Name": "鲁阳",
     "PersonList": [],
@@ -4878,6 +5089,7 @@
       155,
       119
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 100,
     "Name": "河阳津",
     "PersonList": [],
@@ -4899,6 +5111,7 @@
       155,
       123
     ],
+    "MilitaryPopulation": 2000.0,
     "Morale": 100,
     "Name": "小平津",
     "PersonList": [],
@@ -4920,6 +5133,7 @@
       175,
       204
     ],
+    "MilitaryPopulation": 20000.0,
     "Morale": 100,
     "Name": "陆口",
     "PersonList": [],
@@ -4941,6 +5155,7 @@
       138,
       174
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "房陵",
     "PersonList": [],
@@ -4962,6 +5177,7 @@
       148,
       204
     ],
+    "MilitaryPopulation": 20000.0,
     "Morale": 100,
     "Name": "孱陵",
     "PersonList": [],
@@ -4983,6 +5199,7 @@
       194,
       106
     ],
+    "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "鄄城",
     "PersonList": [
@@ -5036,6 +5253,7 @@
       202,
       100
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "东阿",
     "PersonList": [
@@ -5059,6 +5277,7 @@
       198,
       102
     ],
+    "MilitaryPopulation": 12000.0,
     "Morale": 200,
     "Name": "范县",
     "PersonList": [],
