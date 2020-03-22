@@ -124,3 +124,4 @@ func _on_PersonList_person_selected(task, arch, selected_person_ids):
 				if a != arch:
 					selectable_archs.append(a)
 			show_data(selectable_archs)
+		

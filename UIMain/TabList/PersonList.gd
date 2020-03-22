@@ -1,7 +1,7 @@
 extends TabList
 class_name PersonList
 
-enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, RECRUIT_TROOP, TRAIN_TROOP }
+enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, CALL, RECRUIT_TROOP, TRAIN_TROOP }
 
 signal person_selected
 
@@ -36,6 +36,9 @@ func show_data(person_list: Array):
 			_max_selection = -1
 		Action.MOVE: 
 			$Title.text = tr('MOVE')
+			_max_selection = -1
+		Action.CALL: 
+			$Title.text = tr('CALL')
 			_max_selection = -1
 		Action.RECRUIT_TROOP:
 			$Title.text = tr('RECRUIT_TROOP')
@@ -125,28 +128,6 @@ func _populate_internal_data(person_list: Array, action):
 
 func _on_Confirm_pressed():
 	var selected = _get_selected_list()
-	var task
-	match current_action:
-		Action.AGRICULTURE: 
-			task = Person.Task.AGRICULTURE
-			emit_signal("person_selected", current_action, current_architecture, selected)
-		Action.COMMERCE: 
-			task = Person.Task.COMMERCE
-			emit_signal("person_selected", current_action, current_architecture, selected)
-		Action.MORALE: 
-			task = Person.Task.MORALE
-			emit_signal("person_selected", current_action, current_architecture, selected)
-		Action.ENDURANCE: 
-			task = Person.Task.ENDURANCE
-			emit_signal("person_selected", current_action, current_architecture, selected)
-		Action.MOVE: 
-			task = Person.Task.MOVE
-			emit_signal("person_selected", current_action, current_architecture, selected)
-		Action.RECRUIT_TROOP: 
-			task = Person.Task.RECRUIT_TROOP
-			emit_signal("person_selected", current_action, current_architecture, selected)
-		Action.TRAIN_TROOP: 
-			task = Person.Task.TRAIN_TROOP
-			emit_signal("person_selected", current_action, current_architecture, selected)
+	emit_signal("person_selected", current_action, current_architecture, selected)
 	._on_Confirm_pressed()
 

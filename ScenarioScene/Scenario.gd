@@ -233,16 +233,19 @@ func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
 	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
-	var p = []
+	var selected_persons = []
 	for id in selected_person_ids:
-		p.append(persons[id])
+		selected_persons.append(persons[id])
 	match task:
-		Person.Task.AGRICULTURE: current_architecture.set_person_task(task, p)
-		Person.Task.COMMERCE: current_architecture.set_person_task(task, p)
-		Person.Task.MORALE: current_architecture.set_person_task(task, p)
-		Person.Task.ENDURANCE: current_architecture.set_person_task(task, p)
-		Person.Task.RECRUIT_TROOP: current_architecture.set_person_task(task, p)
-		Person.Task.TRAIN_TROOP: current_architecture.set_person_task(task, p)
+		PersonList.Action.AGRICULTURE: current_architecture.set_person_task(Person.Task.AGRICULTURE, selected_persons)
+		PersonList.Action.COMMERCE: current_architecture.set_person_task(Person.Task.COMMERCE, selected_persons)
+		PersonList.Action.MORALE: current_architecture.set_person_task(Person.Task.MORALE, selected_persons)
+		PersonList.Action.ENDURANCE: current_architecture.set_person_task(Person.Task.ENDURANCE, selected_persons)
+		PersonList.Action.RECRUIT_TROOP: current_architecture.set_person_task(Person.Task.RECRUIT_TROOP, selected_persons)
+		PersonList.Action.TRAIN_TROOP: current_architecture.set_person_task(Person.Task.TRAIN_TROOP, selected_persons)
+		PersonList.Action.CALL:
+			for p in selected_persons:
+				p.move_to_architecture(current_architecture)
 
 func _on_architecture_selected(task, current_architecture, selected_arch_ids, other = {}):
 	var selected_person_ids = other['selected_person_ids']

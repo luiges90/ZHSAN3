@@ -102,6 +102,13 @@ func _on_Move_pressed():
 func _on_Call_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
+	var list = []
+	for a in showing_architecture.get_belonged_faction().get_architectures():
+		if a.id != showing_architecture.id:
+			Util.append_all(list, a.get_workable_persons())
+	emit_signal("person_list_clicked", showing_architecture, list, PersonList.Action.CALL)
+	_opening_list = true
+	hide()
 
 
 func _on_ArchitectureDetail_pressed():

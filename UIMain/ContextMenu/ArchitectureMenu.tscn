@@ -11,6 +11,9 @@ margin_right = 143.0
 margin_bottom = 68.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 margin_right = 143.0
