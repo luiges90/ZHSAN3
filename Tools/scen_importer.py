@@ -17,10 +17,10 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 		
-		"""
 		movement_to_save = [] 
 		movement_set = {}
 		movement_mapping = {}
+		movement_mapping_reverse = {}
 		with open(file_name + '/MovementKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllMilitaryKinds']['MilitaryKinds']:
@@ -42,13 +42,15 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				}
 				cost_key = frozenset(costs['MovementCosts'].items())
 				if cost_key in movement_set.keys():
-					movement_mapping[k['ID']].append(movement_set[cost_key])
+					movement_mapping[movement_set[cost_key]].append(k['ID'])
+					movement_mapping_reverse[k['ID']] = movement_set[cost_key]
 				else:
 					movement_set[cost_key] = costs['_Id']
-					movement_mapping[k['ID']] = [costs['_Id']]
+					movement_mapping[costs['_Id']] = [k['ID']]
+					movement_mapping_reverse[k['ID']] = costs['_Id']
 					movement_to_save.append(costs)
 			fout.write(json.dumps(movement_to_save, indent=2, ensure_ascii=False, sort_keys=True))
-		"""
+
 		with open(file_name + '/MilitaryKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllMilitaryKinds']['MilitaryKinds']:
@@ -56,14 +58,15 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 					"_Id": k['ID'],
 					"Name": k['Name'],
-					"Offence": k['OffencePerScale'],
-					"Defence": k['DefencePerScale'],
+					"Offence": k['Offence'] + k['OffencePerScale'] * k['MaxScale'] / k['MinScale'],
+					"Defence": k['Defence'] + k['DefencePerScale'] * k['MaxScale'] / k['MinScale'],
 					"RangeMin": 1 if k['ContactOffence'] else 2,
 					"RangeMax": k['OffenceRadius'],
+					"MaxQuantityMuiltipler": k['MaxScale'] / 20000,
 					"Speed": k['Movability'],
 					"Initiative": k['Speed'],
-					"MovementKind": 2 if '骑' in k['Name'] else 1,
-					# "MovementKind": movement_mapping[k['ID']]
+					"EquipmentCost": k['CreateCost'] / 100,
+					"MovementKind": movement_mapping_reverse[k['ID']],
 					"TerrainStrength": {
 						1: k['PlainRate'],
 						2: k['GrasslandRate'],
