@@ -16,7 +16,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"TerrainIds": [k['ID']]
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
-		
+		"""
 		movement_to_save = [] 
 		movement_set = {}
 		movement_mapping = {}
@@ -81,7 +81,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					}
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
-		
+		"""
 		with open(file_name + '/ArchitectureKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllArchitectureKinds']['ArchitectureKinds']:
@@ -165,7 +165,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Intelligence": k['BaseIntelligence'],
 					"Politics": k['BasePolitics'],
 					"Glamour": k['BaseGlamour'],
-					"Task": 0
+					"Task": 0,
+					"ProducingEquipment": 0
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				

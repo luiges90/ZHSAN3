@@ -1,7 +1,7 @@
 extends TabList
 class_name PersonList
 
-enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, CALL, RECRUIT_TROOP, TRAIN_TROOP }
+enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, CALL, RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT }
 
 signal person_selected
 
@@ -9,6 +9,7 @@ func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('ABILITY'))
 	$Tabs.set_tab_title(2, tr('INTERNAL'))
+	$Tabs.set_tab_title(3, tr('MILITARY'))
 	
 
 func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
@@ -46,10 +47,14 @@ func show_data(person_list: Array):
 		Action.TRAIN_TROOP:
 			$Title.text = tr('TRAIN_TROOP')
 			_max_selection = -1
+		Action.PRODUCE_EQUIPMENT:
+			$Title.text = tr('PRODUCE_EQUIPMENT')
+			_max_selection = -1
 	$SelectionButtons.visible = _max_selection != 0
 	_populate_basic_data(person_list, current_action)
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)
+	_populate_military_data(person_list, current_action)
 	show()
 	
 
@@ -101,18 +106,16 @@ func _populate_internal_data(person_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 9
+		item_list.columns = 7
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 8
+		item_list.columns = 6
 	item_list.add_child(_title(tr('NAME')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('AGRICULTURE_ABILITY')))
 	item_list.add_child(_title(tr('COMMERCE_ABILITY')))
 	item_list.add_child(_title(tr('MORALE_ABILITY')))
 	item_list.add_child(_title(tr('ENDURANCE_ABILITY')))
-	item_list.add_child(_title(tr('RECRUIT_ABILITY')))
-	item_list.add_child(_title(tr('TRAIN_ABILITY')))
 	for person in person_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -122,8 +125,31 @@ func _populate_internal_data(person_list: Array, action):
 		item_list.add_child(_label(str(round(person.get_commerce_ability()))))
 		item_list.add_child(_label(str(round(person.get_morale_ability()))))
 		item_list.add_child(_label(str(round(person.get_endurance_ability()))))
+		
+		
+func _populate_military_data(person_list: Array, action):
+	var item_list = $Tabs/Tab4/Grid as GridContainer
+	Util.delete_all_children(item_list)
+	if action != Action.LIST:
+		item_list.columns = 7
+		item_list.add_child(_title(''))
+	else:
+		item_list.columns = 6
+	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('TASK')))
+	item_list.add_child(_title(tr('PRODUCING_EQUIPMENT_TYPE')))
+	item_list.add_child(_title(tr('RECRUIT_ABILITY')))
+	item_list.add_child(_title(tr('TRAIN_ABILITY')))
+	item_list.add_child(_title(tr('PRODUCE_EQUIPMENT_ABILITY')))
+	for person in person_list:
+		if action != Action.LIST:
+			item_list.add_child(_checkbox(person.id))
+		item_list.add_child(_label(person.get_name()))
+		item_list.add_child(_label(person.get_working_task_str()))
+		item_list.add_child(_label(person.get_producing_equipment_name()))
 		item_list.add_child(_label(str(round(person.get_recruit_troop_ability()))))
 		item_list.add_child(_label(str(round(person.get_train_troop_ability()))))
+		item_list.add_child(_label(str(round(person.get_produce_equipment_ability()))))
 
 
 func _on_Confirm_pressed():

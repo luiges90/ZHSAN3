@@ -1,7 +1,7 @@
 extends Node
 class_name Person
 
-enum Task { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, RECRUIT_TROOP, TRAIN_TROOP }
+enum Task { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT }
 
 var id: int setget forbidden
 var scenario
@@ -19,15 +19,13 @@ var politics: int setget forbidden
 var glamour: int setget forbidden
 
 var working_task setget forbidden
+var producing_equipment setget forbidden
 
 var task_days = 0 setget forbidden
 
 func forbidden(x):
 	assert(false)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func load_data(json: Dictionary):
 	id = json["_Id"]
@@ -40,6 +38,7 @@ func load_data(json: Dictionary):
 	politics = json["Politics"]
 	glamour = json["Glamour"]
 	working_task = json["Task"]
+	producing_equipment = scenario.military_kinds.get(json["ProducingEquipment"])
 	
 func save_data() -> Dictionary:
 	return {
@@ -52,7 +51,8 @@ func save_data() -> Dictionary:
 		"Intelligence": intelligence,
 		"Politics": politics,
 		"Glamour": glamour,
-		"Task": working_task
+		"Task": working_task,
+		"ProducingEquipment": producing_equipment.id
 	}
 
 func get_name() -> String:
@@ -84,6 +84,9 @@ func get_recruit_troop_ability():
 func get_train_troop_ability():
 	return 0.5 * command + 0.5 * strength
 	
+func get_produce_equipment_ability():
+	return 0.5 * intelligence + 0.5 * politics
+	
 func set_working_task(work):
 	working_task = work
 	
@@ -96,7 +99,14 @@ func get_working_task_str():
 		Task.ENDURANCE: return tr('ENDURANCE')
 		Task.RECRUIT_TROOP: return tr('RECRUIT_TROOP')
 		Task.TRAIN_TROOP: return tr('TRAIN_TROOP')
+		Task.PRODUCE_EQUIPMENT: return tr('PRODUCE_EQUIPMENT')
 		_: return tr('NONE')
+		
+func get_producing_equipment_name():
+	if producing_equipment == null:
+		return "--"
+	else:
+		return producing_equipment.get_name()
 		
 func move_to_architecture(arch):
 	var old_arch = get_belonged_architecture()

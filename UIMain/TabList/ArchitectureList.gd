@@ -10,7 +10,8 @@ var _selected_person_ids
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
-	$Tabs.set_tab_title(1, tr('MILITARY'))
+	$Tabs.set_tab_title(2, tr('MILITARY'))
+	$Tabs.remove_child($Tabs/Tab4)
 
 func show_data(arch_list: Array):
 	match current_action:

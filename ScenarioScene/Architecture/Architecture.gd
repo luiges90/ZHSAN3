@@ -150,11 +150,11 @@ func day_event():
 		p.day_event()
 	_develop_internal()
 	_develop_military()
+	emit_signal("architecture_survey_updated", self)
 		
 func month_event():
 	_develop_resources()
 	_decay_internal()
-	emit_signal("architecture_survey_updated", self)
 	
 func set_person_task(task, persons: Array):
 	for p in persons:

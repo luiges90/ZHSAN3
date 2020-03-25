@@ -98,6 +98,12 @@ margin_right = 169.0
 margin_bottom = 72.1229
 text = "TRAIN_TROOP"
 
+[node name="ProduceEquipment" type="Button" parent="MilitaryMenu"]
+margin_top = 34.0
+margin_right = 169.0
+margin_bottom = 72.1229
+text = "PRODUCE_EQUIPMENT"
+
 [node name="OfficersMenu" type="VBoxContainer" parent="."]
 visible = false
 margin_left = 139.0
@@ -136,5 +142,6 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="InternalMenu/Endurance" to="." method="_on_Endurance_pressed"]
 [connection signal="pressed" from="MilitaryMenu/RecruitTroop" to="." method="_on_RecruitTroop_pressed"]
 [connection signal="pressed" from="MilitaryMenu/TrainTroop" to="." method="_on_TrainTroop_pressed"]
+[connection signal="pressed" from="MilitaryMenu/ProduceEquipment" to="." method="_on_ProduceEquipment_pressed"]
 [connection signal="pressed" from="OfficersMenu/Move" to="." method="_on_Move_pressed"]
 [connection signal="pressed" from="OfficersMenu/Call" to="." method="_on_Call_pressed"]

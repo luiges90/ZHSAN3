@@ -62,3 +62,6 @@ TRAIN_TROOP,Train Army,訓練,訓練
 RECRUIT_ABILITY,Recruit Army Ability,募兵能力,募兵能力
 TRAIN_ABILITY,Train Army Ability,訓練能力,訓練能力
 MILITARY_POPULATION,Leviable Pop.,兵役人口,兵役人口
+PRODUCE_EQUIPMENT,Produce Equip.,生產兵裝,生產兵裝
+PRODUCE_EQUIPMENT_ABILITY,Produce Equip. Ability,生產兵裝能力,生產兵裝能力
+PRODUCING_EQUIPMENT_TYPE,Producing Type,兵裝類,兵裝類
