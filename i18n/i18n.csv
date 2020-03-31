@@ -65,3 +65,14 @@ MILITARY_POPULATION,Leviable Pop.,兵役人口,兵役人口
 PRODUCE_EQUIPMENT,Produce Equip.,生產兵裝,生產兵裝
 PRODUCE_EQUIPMENT_ABILITY,Produce Equip. Ability,生產兵裝能力,生產兵裝能力
 PRODUCING_EQUIPMENT_TYPE,Producing Type,兵裝類,兵裝類
+MILITARY_KIND_LIST,Military Kinds,兵種列表,兵種列表
+MOVEMENT_DETAILS,Movement,地型移動,地型移動
+TERRAIN_STRENGTH,Terrain,地型能力,地型能力
+COST,Cost,所需資金,所需資金
+OFFENSE,Attack,攻擊力,攻擊力
+DEFENSE,Defense,防禦力,防禦力
+RANGE,Range,攻擊距離,攻擊距離
+SPEED,Speed,速度,速度
+INITIATIVE,Initiative,先行,先行
+MAX_QUANTITY_MULITPLIER,Max Quantity,兵力上限,兵力上限
+GAME_INFO,Information,各項信息,各項信息

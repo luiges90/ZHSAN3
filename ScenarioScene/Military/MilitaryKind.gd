@@ -54,3 +54,17 @@ func save_data() -> Dictionary:
 	
 func get_name():
 	return gname
+
+func get_movement_kind_with_name():
+	var result = {}
+	var costs = movement_kind.movement_cost
+	for i in costs:
+		result[scenario.terrain_details[i]] = costs[i]
+	return result
+	
+func get_terrain_strength_with_name():
+	var result = {}
+	for i in terrain_strength:
+		result[scenario.terrain_details[i]] = terrain_strength[i]
+	return result
+	
