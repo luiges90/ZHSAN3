@@ -3,6 +3,7 @@ class_name SystemMenu
 
 signal save_clicked
 signal load_clicked
+signal info_clicked
 
 var _confirming = false
 
@@ -32,3 +33,10 @@ func _on_SystemMenu_hide():
 	if not _confirming:
 		$Close.play()
 	_confirming = false
+
+
+func _on_Info_pressed():
+	$Click.play()
+	_confirming = true
+	hide()
+	emit_signal("info_clicked")

@@ -34,10 +34,16 @@ margin_right = 180.0
 margin_bottom = 102.123
 text = "LOAD_GAME"
 
-[node name="Quit" type="Button" parent="."]
+[node name="Info" type="Button" parent="."]
 margin_top = 98.0
 margin_right = 180.0
 margin_bottom = 136.123
+text = "GAME_INFO"
+
+[node name="Quit" type="Button" parent="."]
+margin_top = 132.0
+margin_right = 180.0
+margin_bottom = 170.123
 text = "QUIT_GAME"
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
@@ -48,4 +54,5 @@ stream = ExtResource( 4 )
 [connection signal="hide" from="." to="." method="_on_SystemMenu_hide"]
 [connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="Info" to="." method="_on_Info_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
