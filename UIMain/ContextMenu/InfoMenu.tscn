@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UIMain/ContextMenu/InfoMenu.gd" type="Script" id=2]
+[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=3]
+[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=4]
+
+[node name="InfoMenu" type="VBoxContainer"]
+margin_right = 206.0
+margin_bottom = 18.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MilitaryKind" type="Button" parent="."]
+margin_right = 206.0
+margin_bottom = 38.1229
+text = "MILITARY_KIND_LIST"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="hide" from="." to="." method="_on_InfoMenu_hide"]
+[connection signal="pressed" from="MilitaryKind" to="." method="_on_MilitaryKind_pressed"]

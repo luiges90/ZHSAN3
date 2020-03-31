@@ -22,3 +22,6 @@ func save_data() -> Dictionary:
 		"Name": gname,
 		"TerrainIds": terrain_ids
 	}
+
+func get_name() -> String:
+	return gname

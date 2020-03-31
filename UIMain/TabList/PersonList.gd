@@ -66,7 +66,7 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 4
-	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('PERSON_NAME')))
 	item_list.add_child(_title(tr('BELONGED_ARCHITECTURE')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('TASK_DAYS')))
@@ -86,7 +86,7 @@ func _populate_ability_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('PERSON_NAME')))
 	item_list.add_child(_title(tr('COMMAND')))
 	item_list.add_child(_title(tr('STRENGTH')))
 	item_list.add_child(_title(tr('INTELLIGENCE')))
@@ -110,7 +110,7 @@ func _populate_internal_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('PERSON_NAME')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('AGRICULTURE_ABILITY')))
 	item_list.add_child(_title(tr('COMMERCE_ABILITY')))
@@ -135,7 +135,7 @@ func _populate_military_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('PERSON_NAME')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('PRODUCING_EQUIPMENT_TYPE')))
 	item_list.add_child(_title(tr('RECRUIT_ABILITY')))
