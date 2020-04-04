@@ -23,33 +23,39 @@ __meta__ = {
 }
 
 [node name="Internal" type="Button" parent="MainMenu"]
-margin_right = 239.0
+margin_right = 246.0
 margin_bottom = 38.1229
 text = "INTERNAL"
 
 [node name="Military" type="Button" parent="MainMenu"]
 margin_top = 34.0
-margin_right = 239.0
+margin_right = 246.0
 margin_bottom = 72.1229
 text = "MILITARY"
 
 [node name="Officers" type="Button" parent="MainMenu"]
 margin_top = 68.0
-margin_right = 239.0
+margin_right = 246.0
 margin_bottom = 106.123
 text = "OFFICERS"
 
 [node name="PersonList" type="Button" parent="MainMenu"]
 margin_top = 102.0
-margin_right = 239.0
+margin_right = 246.0
 margin_bottom = 140.123
 text = "PERSON_LIST"
 
 [node name="ArchitectureDetail" type="Button" parent="MainMenu"]
 margin_top = 136.0
-margin_right = 239.0
+margin_right = 246.0
 margin_bottom = 174.123
 text = "ARCHITECTURE_DETAILS"
+
+[node name="FactionArchitectures" type="Button" parent="MainMenu"]
+margin_top = 170.0
+margin_right = 246.0
+margin_bottom = 208.123
+text = "FACTION_ARCHITECTURES"
 
 [node name="InternalMenu" type="VBoxContainer" parent="."]
 visible = false
@@ -136,6 +142,7 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="MainMenu/Officers" to="." method="_on_Officers_pressed"]
 [connection signal="pressed" from="MainMenu/PersonList" to="." method="_on_PersonList_pressed"]
 [connection signal="pressed" from="MainMenu/ArchitectureDetail" to="." method="_on_ArchitectureDetail_pressed"]
+[connection signal="pressed" from="MainMenu/FactionArchitectures" to="." method="_on_FactionArchitectures_pressed"]
 [connection signal="pressed" from="InternalMenu/Agriculture" to="." method="_on_Agriculture_pressed"]
 [connection signal="pressed" from="InternalMenu/Commerce" to="." method="_on_Commerce_pressed"]
 [connection signal="pressed" from="InternalMenu/Morale" to="." method="_on_Morale_pressed"]

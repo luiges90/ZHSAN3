@@ -148,3 +148,11 @@ func _on_ProduceEquipment_pressed():
 	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.PRODUCE_EQUIPMENT)
 	_opening_list = true
 	hide()
+
+
+func _on_FactionArchitectures_pressed():
+	if GameConfig.se_enabled:
+		($SelectSound as AudioStreamPlayer).play()
+	emit_signal("architecture_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_architectures(), PersonList.Action.LIST)
+	_opening_list = true
+	hide()
