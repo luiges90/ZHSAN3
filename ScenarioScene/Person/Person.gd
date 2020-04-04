@@ -38,7 +38,7 @@ func load_data(json: Dictionary):
 	politics = json["Politics"]
 	glamour = json["Glamour"]
 	working_task = json["Task"]
-	producing_equipment = scenario.military_kinds.get(json["ProducingEquipment"])
+	producing_equipment = json["ProducingEquipment"]
 	
 func save_data() -> Dictionary:
 	return {
@@ -52,7 +52,7 @@ func save_data() -> Dictionary:
 		"Politics": politics,
 		"Glamour": glamour,
 		"Task": working_task,
-		"ProducingEquipment": producing_equipment.id
+		"ProducingEquipment": producing_equipment
 	}
 
 func get_name() -> String:
