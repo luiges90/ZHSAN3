@@ -71,6 +71,24 @@ static func dict_add(dict: Dictionary, key, value: int):
 		dict[key] += value
 	else:
 		dict[key] = value
+		
+static func dict_min(dict: Dictionary):
+	var least = 9e99
+	var result
+	for k in dict:
+		if dict[k] < least:
+			result = k
+			least = dict[k]
+	return result
+	
+static func dict_max(dict: Dictionary):
+	var most = -9e99
+	var result
+	for k in dict:
+		if dict[k] > most:
+			result = k
+			most = dict[k]
+	return result
 
 static func min_pos(list: Array) -> Array:
 	var value = list[0]
@@ -137,4 +155,5 @@ static func delete_all_children(node: Node):
 	for n in node.get_children():
 		node.remove_child(n)
 		n.queue_free()
+		
 		

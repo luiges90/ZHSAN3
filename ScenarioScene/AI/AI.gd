@@ -2,18 +2,18 @@ extends Node
 
 class_name AI
 
-func run_faction(faction, scenario):
+func run_faction(faction: Faction, scenario):
 	for sect in faction.get_sections():
 		run_section(faction, sect, scenario)
 		
-func run_section(faction, section, scenario):
+func run_section(faction: Faction, section: Section, scenario):
 	if not faction.player_controlled:
 		_allocate_person(section)
 	for arch in section.get_architectures():
 		if not faction.player_controlled or arch.auto:
-			_assign_task(arch)
+			_assign_task(arch, scenario)
 
-func _assign_task(arch):
+func _assign_task(arch: Architecture, scenario):
 	# TODO better weighting
 	var list = arch.get_workable_persons().duplicate()
 	var a = -9e99 if arch.kind.agriculture <= 0 else arch.kind.agriculture / float(arch.agriculture + 1)
@@ -22,7 +22,8 @@ func _assign_task(arch):
 	var e = -9e99 if arch.kind.endurance <= 0 else arch.kind.endurance / float(arch.endurance + 1)
 	var r = -9e99 if arch.population <= 0 or arch.morale <= 100 else 10000.0 / (arch.troop + 1)
 	var t = (110.0 / (arch.troop_morale + 10.0) - 1) * 2
-	var task_priority = [a, c, m, e, r, t]
+	var q = -9e99 if arch.troop <= 0 else 10000.0 / (arch.equipments.values().min() + 1)
+	var task_priority = [a, c, m, e, r, t, q]
 	while list.size() > 0:
 		var task = Util.max_pos(task_priority)
 		match task[0]:
@@ -56,8 +57,15 @@ func _assign_task(arch):
 				person[1].set_working_task(Person.Task.TRAIN_TROOP)
 				list.remove(person[0])
 				task_priority[5] -= 0.2
+			6:
+				var person = Util.max_by(list, "get_produce_equipment_ability")
+				var equipment = Util.dict_min(arch.equipments)
+				person[1].set_working_task(Person.Task.PRODUCE_EQUIPMENT)
+				person[1].set_produce_equipment(equipment)
+				list.remove(person[0])
+				task_priority[6] -= 0.2
 
-func _allocate_person(section):
+func _allocate_person(section: Section):
 	# TODO consider frontlines, person ability etc
 	var person_per_arch = section.get_persons().size() / section.get_architectures().size()
 	for a in section.get_architectures():

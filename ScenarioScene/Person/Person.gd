@@ -109,7 +109,7 @@ func get_producing_equipment_name():
 	if producing_equipment == null:
 		return "--"
 	else:
-		return producing_equipment.get_name()
+		return scenario.military_kinds[producing_equipment].get_name()
 		
 func move_to_architecture(arch):
 	var old_arch = get_belonged_architecture()

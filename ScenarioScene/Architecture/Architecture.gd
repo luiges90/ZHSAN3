@@ -74,6 +74,8 @@ func load_data(json: Dictionary):
 	troop_morale = json["TroopMorale"]
 	troop_combativity = json["TroopCombativity"]
 	
+	equipments = json["Equipments"]
+	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
@@ -92,8 +94,14 @@ func save_data() -> Dictionary:
 		"PersonList": Util.id_list(get_persons()),
 		"Troop": troop,
 		"TroopMorale": troop_morale,
-		"TroopCombativity": troop_combativity
+		"TroopCombativity": troop_combativity,
+		"Equipments": equipments
 	}
+	
+func setup_after_load():
+	for kind in scenario.military_kinds:
+		if not equipments.has(kind):
+			equipments[kind] = 0
 	
 func _on_scenario_loaded():
 	($SpriteArea/Sprite as Sprite).texture = kind.image
@@ -229,5 +237,4 @@ func _train_troop(p: Person):
 
 func _produce_equipment(p: Person):
 	var equipment = p.producing_equipment
-	var count = Util.f2ri(p.get_produce_equipment_ability() * 0.2)
-	Util.dict_add(equipments, equipment, count)
+	equipments[equipment] += Util.f2ri(p.get_produce_equipment_ability() * 0.2)

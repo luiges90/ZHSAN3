@@ -184,6 +184,7 @@ func _load_data(path):
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
+		instance.setup_after_load()
 	file.close()
 	for item in architectures:
 		architectures[item].set_adjacency(architectures, ai_paths)
@@ -256,7 +257,7 @@ func _on_architecture_selected(task, current_architecture, selected_arch_ids, ot
 		
 func _on_military_kind_selected(task, current_architecture, selected_kind_ids, other = {}):
 	var selected_person_ids = other['selected_person_ids']
-	var a = military_kinds[selected_kind_ids[0]]
+	var a = military_kinds[selected_kind_ids[0]].id
 	for id in selected_person_ids:
 		var p = persons[id]
 		p.set_working_task(Person.Task.PRODUCE_EQUIPMENT)

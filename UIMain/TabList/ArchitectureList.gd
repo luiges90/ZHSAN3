@@ -121,7 +121,7 @@ func _populate_equipments_data(arch_list: Array, action):
 			item_list.add_child(_checkbox(arch.id))
 		item_list.add_child(_label(arch.get_name()))
 		for k in kinds:
-			item_list.add_child(_label(str(Util.dict_try_get(arch.equipments, k, 0))))
+			item_list.add_child(_label(str(arch.equipments[k.id])))
 	
 
 func _on_Confirm_pressed():
