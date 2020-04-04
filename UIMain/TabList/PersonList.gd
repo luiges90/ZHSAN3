@@ -51,6 +51,7 @@ func show_data(person_list: Array):
 			$Title.text = tr('PRODUCE_EQUIPMENT')
 			_max_selection = -1
 	$SelectionButtons.visible = _max_selection != 0
+	$Title.text = tr('PERSON_LIST')
 	_populate_basic_data(person_list, current_action)
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)

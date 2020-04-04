@@ -22,6 +22,7 @@ func show_data(arch_list: Array):
 			$Title.text = tr('MOVE')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
+	$Title.text = tr('ARCHITECTURE_LIST')
 	_populate_basic_data(arch_list, current_action)
 	_populate_internal_data(arch_list, current_action)
 	_populate_military_data(arch_list, current_action)

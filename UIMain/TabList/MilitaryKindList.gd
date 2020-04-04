@@ -26,6 +26,7 @@ func show_data(list: Array):
 			$Title.text = tr('PRODUCE_EQUIPMENT')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
+	$Title.text = tr('MILITARY_KIND_LIST')
 	_populate_basic_data(list, current_action)
 	_populate_movement_details_data(list, current_action)
 	_populate_terrain_strength_data(list, current_action)
