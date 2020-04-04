@@ -146,6 +146,12 @@ static func max_by(list: Array, criteria_func: String) -> Array:
 		index += 1
 	return [result_index, result]
 
+static func array_filter(list: Array, criteria_func: String) -> Array:
+	var result = []
+	for item in list:
+		if item.call(criteria_func):
+			result.append(item)
+	return result
 	
 ##############################################
 #                    Misc                    #

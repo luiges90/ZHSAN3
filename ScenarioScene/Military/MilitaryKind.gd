@@ -68,3 +68,5 @@ func get_terrain_strength_with_name():
 		result[scenario.terrain_details[int(i)].get_name()] = terrain_strength[i]
 	return result
 	
+func has_equipments():
+	return equipment_cost > 0

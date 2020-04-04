@@ -100,8 +100,9 @@ func save_data() -> Dictionary:
 	
 func setup_after_load():
 	for kind in scenario.military_kinds:
-		if not equipments.has(kind):
-			equipments[kind] = 0
+		if scenario.military_kinds[kind].has_equipments():
+			if not equipments.has(kind):
+				equipments[kind] = 0
 	
 func _on_scenario_loaded():
 	($SpriteArea/Sprite as Sprite).texture = kind.image

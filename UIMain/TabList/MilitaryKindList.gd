@@ -77,10 +77,10 @@ func _populate_movement_details_data(mk_list: Array, action):
 	for t in terrains:
 		item_list.add_child(_title(t))
 	for mk in mk_list:
-		item_list.add_child(_label(mk.get_name()))
-		var terrain = mk.get_movement_kind_with_name()
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
+		item_list.add_child(_label(mk.get_name()))
+		var terrain = mk.get_movement_kind_with_name()	
 		for t in terrain:
 			item_list.add_child(_label(str(terrain[t])))
 	
@@ -101,10 +101,10 @@ func _populate_terrain_strength_data(mk_list: Array, action):
 	for t in terrains:
 		item_list.add_child(_title(t))
 	for mk in mk_list:
-		item_list.add_child(_label(mk.get_name()))
-		var terrain = mk.get_terrain_strength_with_name()
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
+		item_list.add_child(_label(mk.get_name()))
+		var terrain = mk.get_terrain_strength_with_name()
 		for t in terrain:
 			item_list.add_child(_label(str(terrain[t])))
 

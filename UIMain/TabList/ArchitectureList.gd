@@ -103,10 +103,12 @@ func _populate_equipments_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab4/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	
-	var kinds = arch_list[0].scenario.military_kinds.values()
+	var all_kinds = arch_list[0].scenario.military_kinds.values()
+	var kinds = Util.array_filter(all_kinds, 'has_equipments')
 	var kind_names = []
 	for kind in kinds:
 		kind_names.append(kind.get_name())
+		
 	if action != Action.LIST:
 		item_list.columns = kind_names.size() + 2
 		item_list.add_child(_title(''))
