@@ -22,7 +22,7 @@ func _assign_task(arch: Architecture, scenario):
 	var e = -9e99 if arch.kind.endurance <= 0 else arch.kind.endurance / float(arch.endurance + 1)
 	var r = -9e99 if arch.population <= 0 or arch.morale <= 100 else 10000.0 / (arch.troop + 1)
 	var t = (110.0 / (arch.troop_morale + 10.0) - 1) * 2
-	var q = -9e99 if arch.troop <= 0 else 10000.0 / (arch.equipments.values().min() + 1)
+	var q = -9e99 if arch.troop <= 0 else 5000.0 / (arch.equipments.values().min() + 1)
 	var task_priority = [a, c, m, e, r, t, q]
 	while list.size() > 0:
 		var task = Util.max_pos(task_priority)
