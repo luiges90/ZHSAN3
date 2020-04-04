@@ -89,6 +89,7 @@ func get_produce_equipment_ability():
 	
 func set_working_task(work):
 	working_task = work
+	producing_equipment = null
 	
 func set_produce_equipment(equipment):
 	producing_equipment = equipment

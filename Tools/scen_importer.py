@@ -167,7 +167,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Politics": k['BasePolitics'],
 					"Glamour": k['BaseGlamour'],
 					"Task": 0,
-					"ProducingEquipment": 0
+					"ProducingEquipment": None
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
