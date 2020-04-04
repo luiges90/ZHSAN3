@@ -12,8 +12,7 @@ func _ready():
 	_register_date_runner()
 	_register_architecture_ui()
 	_register_lists()
-	_register_save_load_list()
-	_register_info_list()
+	_register_menus()
 	
 	_all_loaded()
 
@@ -33,12 +32,12 @@ func _register_lists():
 	$UICanvas/UIMain/ArchitectureList.connect("architecture_selected", $Scenario, "_on_architecture_selected")
 	$UICanvas/UIMain/MilitaryKindList.connect("military_kind_selected", $Scenario, "_on_military_kind_selected")
 	
-func _register_save_load_list():
+func _register_menus():
 	$Scenario.connect("current_faction_set", $UICanvas/UIMain/SaveLoadMenu, "_on_faction_updated")
+	$UICanvas/UIMain/ArchitectureMenu.connect("architecture_toggle_auto", $Scenario, "on_architecture_toggle_auto")
 	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
-	
-func _register_info_list():
 	$UICanvas/UIMain/InfoMenu.connect("military_kind_clicked", $UICanvas/UIMain/MilitaryKindList, "_on_InfoMenu_military_kind_clicked", [$Scenario])
+
 
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")

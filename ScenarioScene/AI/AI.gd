@@ -4,12 +4,14 @@ class_name AI
 
 func run_faction(faction, scenario):
 	for sect in faction.get_sections():
-		run_section(sect, scenario)
+		run_section(faction, sect, scenario)
 		
-func run_section(section, scenario):
-	_allocate_person(section)
+func run_section(faction, section, scenario):
+	if not faction.player_controlled:
+		_allocate_person(section)
 	for arch in section.get_architectures():
-		_assign_task(arch)
+		if not faction.player_controlled or arch.auto:
+			_assign_task(arch)
 
 func _assign_task(arch):
 	# TODO better weighting

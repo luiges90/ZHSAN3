@@ -261,14 +261,16 @@ func _on_military_kind_selected(task, current_architecture, selected_kind_ids, o
 		var p = persons[id]
 		p.set_working_task(Person.Task.PRODUCE_EQUIPMENT)
 		p.set_produce_equipment(a)
+		
+func on_architecture_toggle_auto(current_architecture):
+	current_architecture.auto = !current_architecture.auto
 
 func _on_day_passed():
 	var last_faction = current_faction
 	for faction in factions.values():
 		current_faction = faction
 		emit_signal("current_faction_set", current_faction)
-		if not faction.player_controlled:
-			ai.run_faction(faction, self)
+		ai.run_faction(faction, self)
 	current_faction = last_faction
 	emit_signal("current_faction_set", current_faction)
 	for faction in factions.values():

@@ -3,6 +3,7 @@ class_name ArchitectureMenu
 
 signal person_list_clicked
 signal architecture_list_clicked
+signal architecture_toggle_auto
 
 var showing_architecture
 var _opening_list
@@ -22,6 +23,8 @@ func show_menu(arch, mouse_x, mouse_y):
 	
 	margin_left = mouse_x
 	margin_top = mouse_y
+	
+	$MainMenu/ToggleAuto.text = tr('TOGGLE_MANUAL') if arch.auto else tr('TOGGLE_AUTO')
 	
 	show()
 	
@@ -154,5 +157,13 @@ func _on_FactionArchitectures_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
 	emit_signal("architecture_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_architectures(), PersonList.Action.LIST)
+	_opening_list = true
+	hide()
+
+
+func _on_ToggleAuto_pressed():
+	if GameConfig.se_enabled:
+		($SelectSound as AudioStreamPlayer).play()
+	emit_signal("architecture_toggle_auto", showing_architecture)
 	_opening_list = true
 	hide()
