@@ -11,11 +11,15 @@ var _opening_list
 func show_menu(arch, mouse_x, mouse_y):
 	if arch.get_belonged_faction() == null:
 		$MainMenu/Internal.visible = false
+		$MainMenu/Military.visible = false
 		$MainMenu/Officers.visible = false
+		$MainMenu/ToggleAuto.visible = false
 	else:
 		var is_player = arch.get_belonged_faction().player_controlled
 		$MainMenu/Internal.visible = is_player
+		$MainMenu/Military.visible = is_player
 		$MainMenu/Officers.visible = is_player
+		$MainMenu/ToggleAuto.visible = is_player
 	
 	if GameConfig.se_enabled:
 		($OpenSound as AudioStreamPlayer).play()
