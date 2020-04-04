@@ -253,6 +253,14 @@ func _on_architecture_selected(task, current_architecture, selected_arch_ids, ot
 	for id in selected_person_ids:
 		var p = persons[id]
 		p.move_to_architecture(a)
+		
+func _on_military_kind_selected(task, current_architecture, selected_kind_ids, other = {}):
+	var selected_person_ids = other['selected_person_ids']
+	var a = military_kinds[selected_kind_ids[0]]
+	for id in selected_person_ids:
+		var p = persons[id]
+		p.set_working_task(Person.Task.PRODUCE_EQUIPMENT)
+		p.set_produce_equipment(a)
 
 func _on_day_passed():
 	var last_faction = current_faction

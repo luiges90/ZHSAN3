@@ -99,7 +99,6 @@ func _populate_military_data(arch_list: Array, action):
 
 func _on_Confirm_pressed():
 	var selected_arch = _get_selected_list()
-	var task
 	match current_action:
 		Action.MOVE_TO: 
 			emit_signal("architecture_selected", current_action, current_architecture, selected_arch, {

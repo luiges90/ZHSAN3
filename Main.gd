@@ -11,7 +11,7 @@ func _ready():
 	
 	_register_date_runner()
 	_register_architecture_ui()
-	_register_person_list()
+	_register_lists()
 	_register_save_load_list()
 	_register_info_list()
 	
@@ -28,9 +28,10 @@ func _register_date_runner():
 	$UICanvas/UIMain/Toolbar.connect("stop_date_runner", $Scenario/DateRunner, "_on_stop_date_runner")
 	$Scenario/DateRunner.connect("day_passed", $UICanvas/UIMain/Toolbar, "_on_day_passed")
 	
-func _register_person_list():
+func _register_lists():
 	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_person_selected")
 	$UICanvas/UIMain/ArchitectureList.connect("architecture_selected", $Scenario, "_on_architecture_selected")
+	$UICanvas/UIMain/MilitaryKindList.connect("military_kind_selected", $Scenario, "_on_military_kind_selected")
 	
 func _register_save_load_list():
 	$Scenario.connect("current_faction_set", $UICanvas/UIMain/SaveLoadMenu, "_on_faction_updated")

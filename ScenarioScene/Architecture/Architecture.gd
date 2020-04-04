@@ -189,6 +189,7 @@ func _develop_military():
 		match p.working_task:
 			Person.Task.RECRUIT_TROOP: _recruit_troop(p)
 			Person.Task.TRAIN_TROOP: _train_troop(p)
+			Person.Task.PRODUCE_EQUIPMENT: _produce_equipment(p)
 
 func _develop_agriculture(p: Person):
 	if kind.agriculture > 0:

@@ -5,6 +5,8 @@ enum Action { LIST, PRODUCE_EQUIPMENT }
 
 signal military_kind_selected
 
+var _selected_person_ids
+
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('MOVEMENT_DETAILS'))
@@ -105,4 +107,24 @@ func _populate_terrain_strength_data(mk_list: Array, action):
 		for t in terrain:
 			item_list.add_child(_label(str(terrain[t])))
 
+func _on_Confirm_pressed():
+	var selected_kinds = _get_selected_list()
+	match current_action:
+		Action.PRODUCE_EQUIPMENT: 
+			emit_signal("military_kind_selected", current_action, current_architecture, selected_kinds, {
+				"selected_person_ids": _selected_person_ids
+			})
+	._on_Confirm_pressed()
+
+func _on_PersonList_person_selected(task, arch, selected_person_ids):
+	match task:
+		PersonList.Action.PRODUCE_EQUIPMENT:
+			current_action = Action.PRODUCE_EQUIPMENT
+			current_architecture = arch
+			_selected_person_ids = selected_person_ids
+			var selectable_kinds = []
+			for k in arch.scenario.military_kinds.values():
+				if k.equipment_cost > 0:
+					selectable_kinds.append(k)
+			show_data(selectable_kinds)
 
