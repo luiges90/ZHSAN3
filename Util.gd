@@ -59,6 +59,18 @@ static func f2ri(x: float) -> int:
 static func append_all(list: Array, other: Array):
 	for i in other:
 		list.append(i)
+		
+static func dict_try_get(dict: Dictionary, key, default):
+	if dict.has(key):
+		return dict[key]
+	else:
+		return default
+		
+static func dict_add(dict: Dictionary, key, value: int):
+	if dict.has(key):
+		dict[key] += value
+	else:
+		dict[key] = value
 
 static func min_pos(list: Array) -> Array:
 	var value = list[0]

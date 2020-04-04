@@ -11,7 +11,7 @@ func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
 	$Tabs.set_tab_title(2, tr('MILITARY'))
-	$Tabs.remove_child($Tabs/Tab4)
+	$Tabs.set_tab_title(3, tr('EQUIPMENTS'))
 
 func show_data(arch_list: Array):
 	match current_action:
@@ -25,6 +25,7 @@ func show_data(arch_list: Array):
 	_populate_basic_data(arch_list, current_action)
 	_populate_internal_data(arch_list, current_action)
 	_populate_military_data(arch_list, current_action)
+	_populate_equipments_data(arch_list, current_action)
 	show()
 
 func _populate_basic_data(arch_list: Array, action):
@@ -96,6 +97,31 @@ func _populate_military_data(arch_list: Array, action):
 		item_list.add_child(_label(str(arch.troop)))
 		item_list.add_child(_label(str(arch.troop_morale)))
 		item_list.add_child(_label(str(arch.troop_combativity)))
+		
+func _populate_equipments_data(arch_list: Array, action):
+	var item_list = $Tabs/Tab4/Grid as GridContainer
+	Util.delete_all_children(item_list)
+	
+	var kinds = arch_list[0].scenario.military_kinds.values()
+	var kind_names = []
+	for kind in kinds:
+		kind_names.append(kind.get_name())
+	if action != Action.LIST:
+		item_list.columns = kind_names.size() + 2
+		item_list.add_child(_title(''))
+	else:
+		item_list.columns = kind_names.size() + 1
+	item_list.add_child(_title(tr('NAME')))
+	for kind in kinds:
+		item_list.add_child(_title(kind.get_name()))
+		
+	for arch in arch_list:
+		if action != Action.LIST:
+			item_list.add_child(_checkbox(arch.id))
+		item_list.add_child(_label(arch.get_name()))
+		for k in kinds:
+			item_list.add_child(_label(str(Util.dict_try_get(arch.equipments, k, 0))))
+	
 
 func _on_Confirm_pressed():
 	var selected_arch = _get_selected_list()

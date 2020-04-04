@@ -29,6 +29,8 @@ var troop: int setget forbidden
 var troop_morale: int setget forbidden
 var troop_combativity: int setget forbidden
 
+var equipments = {} setget forbidden
+
 signal architecture_clicked
 signal architecture_survey_updated
 
@@ -223,4 +225,7 @@ func _train_troop(p: Person):
 	troop_morale += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1))
 	troop_combativity += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_combativity + 10.0) - 1) * 0.1))
 
-
+func _produce_equipment(p: Person):
+	var equipment = p.producing_equipment
+	var count = Util.f2ri(p.get_produce_equipment_ability() * 0.2)
+	Util.dict_add(equipments, equipment, count)
