@@ -12,17 +12,25 @@ func run_section(faction: Faction, section: Section, scenario):
 	for arch in section.get_architectures():
 		if not faction.player_controlled or arch.auto:
 			_assign_task(arch, scenario)
+			
+func _arch_enough_fund(arch: Architecture):
+	return arch.get_workable_persons().size() * 50
 
 func _assign_task(arch: Architecture, scenario):
 	# TODO better weighting
 	var list = arch.get_workable_persons().duplicate()
-	var a = -9e99 if arch.kind.agriculture <= 0 else arch.kind.agriculture / float(arch.agriculture + 1)
-	var c = -9e99 if arch.kind.commerce <= 0 else arch.kind.commerce / float(arch.commerce + 1)
-	var m = -9e99 if arch.kind.morale <= 0 else arch.kind.morale / float(arch.morale + 1)
-	var e = -9e99 if arch.kind.endurance <= 0 else arch.kind.endurance / float(arch.endurance + 1)
-	var r = -9e99 if arch.population <= 0 or arch.morale <= 100 else 10000.0 / (arch.troop + 1)
-	var t = (110.0 / (arch.troop_morale + 10.0) - 1) * 2
-	var q = -9e99 if arch.troop <= 0 else 5000.0 / (arch.equipments.values().min() + 1)
+	var fund = arch.fund
+	var a = -9e99 if arch.kind.agriculture <= 0 or fund < 20 else arch.kind.agriculture / float(arch.agriculture + 1)
+	var c = -9e99 if arch.kind.commerce <= 0 or fund < 20 else arch.kind.commerce / float(arch.commerce + 1)
+	var m = -9e99 if arch.kind.morale <= 0 or fund < 20 else arch.kind.morale / float(arch.morale + 1)
+	var e = -9e99 if arch.kind.endurance <= 0 or fund < 20 else arch.kind.endurance / float(arch.endurance + 1)
+	var r = -9e99 if arch.population <= 0 or fund < 50 or arch.morale <= 100 or arch.military_population <= 0 else 10000.0 / (arch.troop + 1)
+	var t = -9e99 if arch.troop <= 0 or fund < 20 else (110.0 / (arch.troop_morale + 10.0) - 1) * 2
+	var q = -9e99 if arch.troop <= 0 or fund < 100 else 5000.0 / (arch.equipments.values().min() + 1)
+	
+	if fund < _arch_enough_fund(arch):
+		c *= 100
+	
 	var task_priority = [a, c, m, e, r, t, q]
 	while list.size() > 0:
 		var task = Util.max_pos(task_priority)

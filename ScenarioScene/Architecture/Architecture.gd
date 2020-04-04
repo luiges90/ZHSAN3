@@ -172,10 +172,16 @@ func month_event():
 func set_person_task(task, persons: Array):
 	for p in persons:
 		p.set_working_task(task)
+		
+func expected_fund_income():
+	return commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
+	
+func expected_food_income():
+	return agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
 
 func _develop_resources():
-	fund += commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
-	food += agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+	fund += expected_fund_income()
+	food += expected_food_income()
 	
 	var population_increase = population * ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population)) + 10
 	population += population_increase
@@ -205,23 +211,32 @@ func _develop_military():
 			Person.Task.PRODUCE_EQUIPMENT: _produce_equipment(p)
 
 func _develop_agriculture(p: Person):
-	if kind.agriculture > 0:
-		agriculture += Util.f2ri(p.get_agriculture_ability() * 0.02 / max(1, float(agriculture) / kind.agriculture))
+	if fund > 20:
+		fund -= 20
+		if kind.agriculture > 0:
+			agriculture += Util.f2ri(p.get_agriculture_ability() * 0.02 / max(1, float(agriculture) / kind.agriculture))
 	
 func _develop_commerce(p: Person):
-	if kind.commerce > 0:
-		commerce += Util.f2ri(p.get_commerce_ability() * 0.02 / max(1, float(commerce) / kind.commerce))
+	if fund > 20:
+		fund -= 20
+		if kind.commerce > 0:
+			commerce += Util.f2ri(p.get_commerce_ability() * 0.02 / max(1, float(commerce) / kind.commerce))
 	
 func _develop_morale(p: Person):
-	if kind.morale > 0:
-		morale += Util.f2ri(p.get_morale_ability() * 0.02 / max(1, float(morale) / kind.morale))
+	if fund > 20:
+		fund -= 20
+		if kind.morale > 0:
+			morale += Util.f2ri(p.get_morale_ability() * 0.02 / max(1, float(morale) / kind.morale))
 	
 func _develop_endurance(p: Person):
-	if kind.endurance > 0:
-		endurance += Util.f2ri(p.get_endurance_ability() * 0.02 / max(1, float(endurance) / kind.endurance))
+	if fund > 20:
+		fund -= 20
+		if kind.endurance > 0:
+			endurance += Util.f2ri(p.get_endurance_ability() * 0.02 / max(1, float(endurance) / kind.endurance))
 
 func _recruit_troop(p: Person):
-	if military_population > 0 and morale > 100:
+	if fund > 50 and military_population > 0 and morale > 100:
+		fund -= 50
 		var quantity = Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(military_population)) * morale * 0.0005)
 		if quantity > 0:
 			var old_quantity = troop
@@ -233,9 +248,17 @@ func _recruit_troop(p: Person):
 			morale -= Util.f2ri(quantity / 50.0)
 	
 func _train_troop(p: Person):
-	troop_morale += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1))
-	troop_combativity += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_combativity + 10.0) - 1) * 0.1))
+	if fund > 20:
+		fund -= 20
+		troop_morale += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1))
+		troop_combativity += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_combativity + 10.0) - 1) * 0.1))
 
 func _produce_equipment(p: Person):
 	var equipment = p.producing_equipment
-	equipments[equipment] += Util.f2ri(p.get_produce_equipment_ability() * 0.2)
+	var cost = scenario.military_kinds[equipment].equipment_cost
+	if fund > cost:
+		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.2)
+		if fund < cost * amount:
+			amount = fund / cost
+		fund -= amount * cost
+		equipments[equipment] += amount
