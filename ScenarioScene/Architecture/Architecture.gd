@@ -259,6 +259,6 @@ func _produce_equipment(p: Person):
 	if fund > cost:
 		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.2)
 		if fund < cost * amount:
-			amount = fund / cost
+			amount = floor(fund / cost)
 		fund -= amount * cost
 		equipments[equipment] += amount
