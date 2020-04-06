@@ -1,6 +1,10 @@
 extends Node2D
 class_name Troop
 
+const SPRITE_SIZE = 128
+const SPRITE_SHEET_FRAMES = 10
+const ANIMATION_SPEED = 30
+
 var military_kind setget forbidden
 
 func forbidden(x):
@@ -30,20 +34,20 @@ func _update_military_kind_sprite():
 	
 	var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
 	for i in range(0, 8):
-		_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), 128 * i)
-		_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), 128 * i)
-		_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), 128 * i)
+		_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
+		_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
+		_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
 		
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 	animated_sprite.frames = sprite_frame
 	
 func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 	sprite_frame.add_animation(animation)
-	sprite_frame.set_animation_speed(animation, 30)
-	for i in range(0, 10):
+	sprite_frame.set_animation_speed(animation, ANIMATION_SPEED)
+	for i in range(0, SPRITE_SHEET_FRAMES):
 		var sprite = Image.new()
-		sprite.create(128, 128, false, texture.get_format())
-		sprite.blit_rect(texture, Rect2(i * 128, spritesheet_offset, 128, 128), Vector2(0, 0))
+		sprite.create(SPRITE_SIZE, SPRITE_SIZE, true, texture.get_format())
+		sprite.blit_rect(texture, Rect2(i * SPRITE_SIZE, spritesheet_offset, SPRITE_SIZE, SPRITE_SIZE), Vector2(0, 0))
 		
 		var image = ImageTexture.new()
 		image.create_from_image(sprite)
