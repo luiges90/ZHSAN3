@@ -99,21 +99,27 @@ margin_top = 34.0
 margin_right = 224.0
 margin_bottom = 106.0
 
-[node name="RecruitTroop" type="Button" parent="MilitaryMenu"]
-margin_right = 169.0
+[node name="StartCampaign" type="Button" parent="MilitaryMenu"]
+margin_right = 215.0
 margin_bottom = 38.1229
+text = "CREATE_TROOP"
+
+[node name="RecruitTroop" type="Button" parent="MilitaryMenu"]
+margin_top = 34.0
+margin_right = 215.0
+margin_bottom = 72.1229
 text = "RECRUIT_TROOP"
 
 [node name="TrainTroop" type="Button" parent="MilitaryMenu"]
-margin_top = 34.0
-margin_right = 169.0
-margin_bottom = 72.1229
+margin_top = 68.0
+margin_right = 215.0
+margin_bottom = 106.123
 text = "TRAIN_TROOP"
 
 [node name="ProduceEquipment" type="Button" parent="MilitaryMenu"]
-margin_top = 34.0
-margin_right = 169.0
-margin_bottom = 72.1229
+margin_top = 102.0
+margin_right = 215.0
+margin_bottom = 140.123
 text = "PRODUCE_EQUIPMENT"
 
 [node name="OfficersMenu" type="VBoxContainer" parent="."]
@@ -154,6 +160,7 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="InternalMenu/Commerce" to="." method="_on_Commerce_pressed"]
 [connection signal="pressed" from="InternalMenu/Morale" to="." method="_on_Morale_pressed"]
 [connection signal="pressed" from="InternalMenu/Endurance" to="." method="_on_Endurance_pressed"]
+[connection signal="pressed" from="MilitaryMenu/StartCampaign" to="." method="_on_StartCampaign_pressed"]
 [connection signal="pressed" from="MilitaryMenu/RecruitTroop" to="." method="_on_RecruitTroop_pressed"]
 [connection signal="pressed" from="MilitaryMenu/TrainTroop" to="." method="_on_TrainTroop_pressed"]
 [connection signal="pressed" from="MilitaryMenu/ProduceEquipment" to="." method="_on_ProduceEquipment_pressed"]

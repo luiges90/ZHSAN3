@@ -4,6 +4,7 @@ class_name ArchitectureMenu
 signal person_list_clicked
 signal architecture_list_clicked
 signal architecture_toggle_auto
+signal architecture_create_troop
 
 var showing_architecture
 var _opening_list
@@ -169,5 +170,13 @@ func _on_ToggleAuto_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
 	emit_signal("architecture_toggle_auto", showing_architecture)
+	_opening_list = true
+	hide()
+
+
+func _on_StartCampaign_pressed():
+	if GameConfig.se_enabled:
+		($SelectSound as AudioStreamPlayer).play()
+	emit_signal("architecture_create_troop", showing_architecture, showing_architecture.get_workable_persons(), showing_architecture.scenario.military_kinds)
 	_opening_list = true
 	hide()
