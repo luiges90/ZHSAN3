@@ -21,6 +21,8 @@ var architectures = Dictionary() setget forbidden
 var persons = Dictionary() setget forbidden
 var troops = Dictionary() setget forbidden
 
+var current_scenario_name = null
+
 signal current_faction_set
 signal scenario_loaded
 
@@ -43,6 +45,11 @@ func _ready():
 	
 	if SharedData.loading_file_path == null:
 		SharedData.loading_file_path = "user://Scenarios/194QXGJ-qh"
+		current_scenario_name = "194QXGJ-qh"
+	else: 
+		var pos = SharedData.loading_file_path.find('Scenarios')
+		if pos >= 0:
+			current_scenario_name = SharedData.loading_file_path.substr(pos + 10)
 	_load_data(SharedData.loading_file_path)
 	
 	var player_factions = get_player_factions()
@@ -71,6 +78,7 @@ func _save_data(path):
 	file.store_line(to_json(
 		{
 			"CurrentFactionId": current_faction.id,
+			"Scenario": current_scenario_name,
 			"GameData": {
 				"Year": date.year,
 				"Month": date.month,
@@ -134,6 +142,9 @@ func _load_data(path):
 	date.month = obj["GameData"]["Month"]
 	date.day = obj["GameData"]["Day"]
 	var current_faction_id = obj["CurrentFactionId"]
+	var current_name = obj.get("Scenario")
+	if current_name != null:
+		current_scenario_name = current_name
 	file.close()
 	
 	file.open(path + "/TerrainDetails.json", File.READ)
@@ -153,6 +164,9 @@ func _load_data(path):
 	for kind in movement_kinds:
 		file.open(path + "/paths/" + str(kind) + '.json', File.READ)
 		obj = parse_json(file.get_as_text())
+		if obj == null:
+			file.open("user://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)
+			obj = parse_json(file.get_as_text())
 		var ai_path = AIPaths.new()
 		ai_path.load_data(obj)
 		ai_paths[kind] = ai_path
