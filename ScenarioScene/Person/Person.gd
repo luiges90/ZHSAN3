@@ -10,7 +10,7 @@ var surname: String setget forbidden
 var given_name: String setget forbidden
 var courtesy_name: String setget forbidden
 
-var _belonged_architecture setget set_belonged_architecture,get_belonged_architecture
+var _location setget set_location, get_location
 
 var command: int setget forbidden
 var strength: int setget forbidden
@@ -58,13 +58,13 @@ func save_data() -> Dictionary:
 func get_name() -> String:
 	return surname + given_name
 	
-func get_belonged_architecture(): 
-	return _belonged_architecture
+func get_location(): 
+	return _location
 	
-func set_belonged_architecture(arch, force = false):
-	_belonged_architecture = arch
+func set_location(item, force = false):
+	_location = item
 	if not force:
-		arch.add_person(self, true)
+		item.add_person(self, true)
 		
 func get_agriculture_ability():
 	return 0.25 * intelligence + 0.5 * politics + 0.25 * glamour
@@ -113,10 +113,10 @@ func get_producing_equipment_name():
 		return scenario.military_kinds[producing_equipment].get_name()
 		
 func move_to_architecture(arch):
-	var old_arch = get_belonged_architecture()
-	set_belonged_architecture(arch)
+	var old_location = get_location()
+	set_location(arch)
 	working_task = Task.MOVE
-	task_days = int(ScenarioUtil.arch_distance(old_arch, arch) * 0.2)
+	task_days = int(ScenarioUtil.arch_distance(old_location, arch) * 0.2)
 		
 func day_event():
 	if task_days > 0:

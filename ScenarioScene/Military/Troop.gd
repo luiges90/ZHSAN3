@@ -5,7 +5,17 @@ const SPRITE_SIZE = 128
 const SPRITE_SHEET_FRAMES = 10
 const ANIMATION_SPEED = 30
 
+var id: int setget forbidden
+var scenario
+
+var map_position: Vector2 setget forbidden
+
 var military_kind setget forbidden
+var quantity: int setget forbidden
+var morale: int setget forbidden
+var combativity: int setget forbidden
+
+var _person_list = Array() setget forbidden, get_persons
 
 func forbidden(x):
 	assert(false)
@@ -53,3 +63,30 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		image.create_from_image(sprite)
 		
 		sprite_frame.add_frame(animation, image)
+
+func load_data(json: Dictionary):
+	id = json["_Id"]
+	
+	map_position = Util.load_position(json["MapPosition"])
+	
+	military_kind = scenario.military_kinds[json["MilitaryKind"]]
+	quantity = json["Quantity"]
+	morale = json["Morale"]
+	combativity = json["Combativity"]
+	
+func save_data() -> Dictionary:
+	return {
+		"_Id": id,
+		"MapPosition": Util.save_position(map_position),
+		"PersonList": Util.id_list(get_persons()),
+		"MilitaryKind": military_kind.id,
+		"Quantity": quantity,
+		"Morale": morale,
+		"Combativity": combativity
+	}
+
+func get_name() -> String:
+	return _person_list[0].get_name() + tr('PERSON_TROOP')
+
+func get_persons() -> Array:
+	return _person_list

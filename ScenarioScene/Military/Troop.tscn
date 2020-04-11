@@ -12,7 +12,6 @@ script = ExtResource( 2 )
 position = Vector2( 64, 64 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
-animation = "MoveE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TroopArea"]
 shape = SubResource( 1 )

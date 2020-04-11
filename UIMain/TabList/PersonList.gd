@@ -75,7 +75,7 @@ func _populate_basic_data(person_list: Array, action):
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_label(person.get_name()))
-		item_list.add_child(_label(person.get_belonged_architecture().get_name()))
+		item_list.add_child(_label(person.get_location().get_name()))
 		item_list.add_child(_label(person.get_working_task_str()))
 		item_list.add_child(_label(str(person.task_days) + tr('DAY_UNIT')))
 

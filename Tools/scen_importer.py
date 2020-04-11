@@ -171,6 +171,9 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
+		with open(file_name + '/Troops.json', mode='w', encoding='utf-8') as fout:
+			fout.write(json.dumps([], indent=2, ensure_ascii=False, sort_keys=True))
+		
 		with open(file_name + '/Scenario.json', mode='w', encoding='utf-8') as fout:
 			fout.write(json.dumps({
 			  "CurrentFactionId": 1,
@@ -181,3 +184,4 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				"Day": obj['Date']['Day']
 			  }
 			}, indent=2, ensure_ascii=False, sort_keys=True))
+

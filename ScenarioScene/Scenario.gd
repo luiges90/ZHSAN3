@@ -19,6 +19,7 @@ var factions = Dictionary() setget forbidden
 var sections = Dictionary() setget forbidden
 var architectures = Dictionary() setget forbidden
 var persons = Dictionary() setget forbidden
+var troops = Dictionary() setget forbidden
 
 signal current_faction_set
 signal scenario_loaded
@@ -107,6 +108,10 @@ func _save_data(path):
 	file.store_line(to_json(__save_items(architectures)))
 	file.close()
 	
+	file.open(path + "/Troops.json", File.WRITE)
+	file.store_line(to_json(__save_items(troops)))
+	file.close()
+	
 	file.open(path + "/Persons.json", File.WRITE)
 	file.store_line(to_json(__save_items(persons)))
 	file.close()
@@ -172,6 +177,16 @@ func _load_data(path):
 	for item in obj:
 		var instance = Person.new()
 		__load_item(instance, item, persons)
+	file.close()
+	
+	file.open(path + "/Troops.json", File.READ)
+	var troop_scene = preload("Military/Troop.tscn")
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = troop_scene.new()
+		__load_item(instance, item, troops)
+		for id in item["PersonList"]:
+			instance.add_person(persons[int(id)])
 	file.close()
 	
 	file.open(path + "/Architectures.json", File.READ)

@@ -151,7 +151,7 @@ func get_workable_persons() -> Array:
 func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
-		p.set_belonged_architecture(self, true)
+		p.set_location(self, true)
 
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
