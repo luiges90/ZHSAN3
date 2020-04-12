@@ -51,6 +51,7 @@ func set_data():
 		var max_quantity = current_troop.military_kind.max_quantity_multiplier * current_troop.get_persons()[0].get_max_troop_quantity()
 		max_quantity = int(max_quantity)
 		$Quantity.text = "0/" + str(max_quantity)
+		$QuantitySlider.step = 100
 		$QuantitySlider.min_value = 0
 		$QuantitySlider.max_value = max_quantity
 
@@ -85,3 +86,7 @@ func _on_MilitaryKindList_military_kind_selected_for_troop(current_action, selec
 	var kind = current_architecture.scenario.military_kinds[selected_kinds[0]]
 	current_troop.set_military_kind(kind)
 	set_data()
+
+
+func _on_QuantitySlider_value_changed(value):
+	$Quantity.text = str(value) + "/" + str($QuantitySlider.max_value)
