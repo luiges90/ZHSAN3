@@ -312,3 +312,8 @@ func _on_month_passed():
 	for faction in factions.values():
 		faction.month_event()
 
+func get_persons_from_ids(ids):
+	var result = []
+	for p in ids:
+		result.append(persons[p])
+	return result

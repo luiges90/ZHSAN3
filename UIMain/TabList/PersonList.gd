@@ -12,7 +12,8 @@ enum Action {
 	RECRUIT_TROOP, 
 	TRAIN_TROOP, 
 	PRODUCE_EQUIPMENT,
-	SELECT_TROOP_PERSON
+	SELECT_TROOP_PERSON,
+	SELECT_TROOP_LEADER
 }
 
 signal person_selected
@@ -62,6 +63,12 @@ func show_data(person_list: Array):
 		Action.PRODUCE_EQUIPMENT:
 			$Title.text = tr('PRODUCE_EQUIPMENT')
 			_max_selection = -1
+		Action.SELECT_TROOP_PERSON:
+			$Title.text = tr('SELECT_TROOP_PERSON')
+			_max_selection = 3
+		Action.SELECT_TROOP_LEADER:
+			$Title.text = tr('SELECT_TROOP_LEADER')
+			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 	$Title.text = tr('PERSON_LIST')
 	_populate_basic_data(person_list, current_action)
@@ -173,5 +180,11 @@ func _on_Confirm_pressed():
 
 func _on_CreateTroop_select_person(arch, persons):
 	current_action = Action.SELECT_TROOP_PERSON
+	current_architecture = arch
+	show_data(persons)
+
+
+func _on_CreateTroop_select_leader(arch, persons):
+	current_action = Action.SELECT_TROOP_LEADER
 	current_architecture = arch
 	show_data(persons)

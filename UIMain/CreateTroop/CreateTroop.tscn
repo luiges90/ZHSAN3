@@ -288,3 +288,4 @@ stream = ExtResource( 5 )
 stream = ExtResource( 6 )
 [connection signal="hide" from="." to="." method="_on_CreateTroop_hide"]
 [connection signal="pressed" from="SelectPersons" to="." method="_on_SelectPersons_pressed"]
+[connection signal="pressed" from="SelectLeader" to="." method="_on_SelectLeader_pressed"]
