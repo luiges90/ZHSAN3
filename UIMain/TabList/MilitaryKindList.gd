@@ -139,4 +139,4 @@ func _on_PersonList_person_selected(task, arch, selected_person_ids):
 
 func _on_CreateTroop_select_military_kind(arch, military_kinds):
 	current_action = Action.SELECT_TROOP_MILITARY_KIND
-	show_data(military_kinds.values())
+	show_data(military_kinds)

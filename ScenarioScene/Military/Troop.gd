@@ -96,3 +96,8 @@ func set_persons(list: Array):
 
 func set_military_kind(kind):
 	military_kind = kind
+
+func set_from_arch(in_quantity, in_morale, in_combativity):
+	quantity = in_quantity
+	morale = in_morale
+	combativity = in_combativity

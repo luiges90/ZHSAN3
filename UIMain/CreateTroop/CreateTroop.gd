@@ -19,8 +19,10 @@ func _on_ArchitectureMenu_architecture_create_troop(arch, persons, military_kind
 	eligible_military_kinds = military_kinds
 	
 	current_troop = Troop.new()
+	current_troop.set_from_arch(0, current_architecture.troop_morale, current_architecture.troop_combativity)
 	
 	show()
+	set_data()
 	
 
 func _on_CreateTroop_hide():
@@ -38,6 +40,8 @@ func set_data():
 	Util.delete_all_children($PersonList)
 	
 	$SelectLeader.disabled = current_troop.get_persons().size() <= 1
+	$Morale.text = str(current_troop.morale)
+	$Combativity.text = str(current_troop.combativity)
 	
 	if current_troop.get_persons().size() > 0:
 		for p in current_troop.get_persons():
@@ -50,11 +54,23 @@ func set_data():
 	if current_troop.get_persons().size() > 0 and current_troop.military_kind != null:
 		var max_quantity = current_troop.military_kind.max_quantity_multiplier * current_troop.get_persons()[0].get_max_troop_quantity()
 		max_quantity = int(max_quantity)
-		$Quantity.text = "0/" + str(max_quantity)
+		max_quantity = min(max_quantity, current_architecture.troop)
+		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].equipment_cost > 0:
+			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / 100))
+		$Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
 		$QuantitySlider.step = 100
 		$QuantitySlider.min_value = 0
 		$QuantitySlider.max_value = max_quantity
 
+
+func get_available_kinds():
+	var available_kinds = []
+	for kind in eligible_military_kinds:
+		if current_architecture.scenario.military_kinds[kind].equipment_cost <= 0:
+			available_kinds.append(eligible_military_kinds[kind])
+		elif current_architecture.equipments[kind] > 0:
+			available_kinds.append(eligible_military_kinds[kind])
+	return available_kinds
 
 
 func _on_PersonList_person_selected(action, arch, selected):
@@ -79,7 +95,7 @@ func _on_SelectLeader_pressed():
 func _on_SelectMilitaryKind_pressed():
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	emit_signal("select_military_kind", current_architecture, eligible_military_kinds)
+	emit_signal("select_military_kind", current_architecture, get_available_kinds())
 
 
 func _on_MilitaryKindList_military_kind_selected_for_troop(current_action, selected_kinds):
@@ -89,4 +105,5 @@ func _on_MilitaryKindList_military_kind_selected_for_troop(current_action, selec
 
 
 func _on_QuantitySlider_value_changed(value):
-	$Quantity.text = str(value) + "/" + str($QuantitySlider.max_value)
+	current_troop.set_from_arch(value, current_architecture.morale, current_architecture.combativity)
+	set_data()
