@@ -74,7 +74,7 @@ func load_data(json: Dictionary):
 	troop_morale = json["TroopMorale"]
 	troop_combativity = json["TroopCombativity"]
 	
-	equipments = json["Equipments"]
+	equipments = Util.convert_dict_to_int_key(json["Equipments"])
 	
 func save_data() -> Dictionary:
 	return {

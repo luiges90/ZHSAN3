@@ -54,9 +54,9 @@ func set_data():
 	if current_troop.get_persons().size() > 0 and current_troop.military_kind != null:
 		var max_quantity = current_troop.military_kind.max_quantity_multiplier * current_troop.get_persons()[0].get_max_troop_quantity()
 		max_quantity = int(max_quantity)
-		max_quantity = min(max_quantity, current_architecture.troop)
+		max_quantity = min(max_quantity, floor(current_architecture.troop / 100) * 100)
 		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].equipment_cost > 0:
-			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / 100))
+			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / 100) * 100)
 		$Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
 		$QuantitySlider.step = 100
 		$QuantitySlider.min_value = 0
@@ -66,9 +66,7 @@ func set_data():
 func get_available_kinds():
 	var available_kinds = []
 	for kind in eligible_military_kinds:
-		if current_architecture.scenario.military_kinds[kind].equipment_cost <= 0:
-			available_kinds.append(eligible_military_kinds[kind])
-		elif current_architecture.equipments[kind] > 0:
+		if current_architecture.scenario.military_kinds[kind].equipment_cost <= 0 or current_architecture.equipments[kind] > 0:
 			available_kinds.append(eligible_military_kinds[kind])
 	return available_kinds
 
@@ -105,5 +103,5 @@ func _on_MilitaryKindList_military_kind_selected_for_troop(current_action, selec
 
 
 func _on_QuantitySlider_value_changed(value):
-	current_troop.set_from_arch(value, current_architecture.morale, current_architecture.combativity)
+	current_troop.set_from_arch(value, current_architecture.troop_morale, current_architecture.troop_combativity)
 	set_data()

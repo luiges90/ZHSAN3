@@ -153,6 +153,12 @@ static func array_filter(list: Array, criteria_func: String) -> Array:
 			result.append(item)
 	return result
 	
+static func convert_dict_to_int_key(dict):
+	var result = {}
+	for k in dict:
+		result[int(k)] = dict[k]
+	return result
+	
 ##############################################
 #                    Misc                    #
 ##############################################
