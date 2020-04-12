@@ -93,3 +93,6 @@ func get_persons() -> Array:
 	
 func set_persons(list: Array):
 	_person_list = list
+
+func set_military_kind(kind):
+	military_kind = kind

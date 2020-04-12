@@ -1,9 +1,10 @@
 extends TabList
 class_name MilitaryKindList
 
-enum Action { LIST, PRODUCE_EQUIPMENT }
+enum Action { LIST, PRODUCE_EQUIPMENT, SELECT_TROOP_MILITARY_KIND }
 
 signal military_kind_selected
+signal military_kind_selected_for_troop
 
 var _selected_person_ids
 
@@ -24,6 +25,9 @@ func show_data(list: Array):
 			_max_selection = 0
 		Action.PRODUCE_EQUIPMENT: 
 			$Title.text = tr('PRODUCE_EQUIPMENT')
+			_max_selection = 1
+		Action.SELECT_TROOP_MILITARY_KIND:
+			$Title.text = tr('SELECT_TROOP_MILITARY_KIND')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 	$Title.text = tr('MILITARY_KIND_LIST')
@@ -115,6 +119,8 @@ func _on_Confirm_pressed():
 			emit_signal("military_kind_selected", current_action, current_architecture, selected_kinds, {
 				"selected_person_ids": _selected_person_ids
 			})
+		Action.SELECT_TROOP_MILITARY_KIND:
+			emit_signal("military_kind_selected_for_troop", current_action, selected_kinds)
 	._on_Confirm_pressed()
 
 func _on_PersonList_person_selected(task, arch, selected_person_ids):
@@ -129,3 +135,8 @@ func _on_PersonList_person_selected(task, arch, selected_person_ids):
 					selectable_kinds.append(k)
 			show_data(selectable_kinds)
 
+
+
+func _on_CreateTroop_select_military_kind(arch, military_kinds):
+	current_action = Action.SELECT_TROOP_MILITARY_KIND
+	show_data(military_kinds.values())
