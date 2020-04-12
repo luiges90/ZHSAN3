@@ -1,7 +1,19 @@
 extends TabList
 class_name PersonList
 
-enum Action { LIST, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, CALL, RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT }
+enum Action { 
+	LIST, 
+	AGRICULTURE, 
+	COMMERCE, 
+	MORALE, 
+	ENDURANCE, 
+	MOVE, 
+	CALL, 
+	RECRUIT_TROOP, 
+	TRAIN_TROOP, 
+	PRODUCE_EQUIPMENT,
+	SELECT_TROOP_PERSON
+}
 
 signal person_selected
 
@@ -158,3 +170,8 @@ func _on_Confirm_pressed():
 	emit_signal("person_selected", current_action, current_architecture, selected)
 	._on_Confirm_pressed()
 
+
+func _on_CreateTroop_select_person(arch, persons):
+	current_action = Action.SELECT_TROOP_PERSON
+	current_architecture = arch
+	show_data(persons)

@@ -46,6 +46,16 @@ margin_top = -250.0
 margin_right = 274.0
 margin_bottom = 250.0
 
+[node name="CreateTroop" parent="." instance=ExtResource( 12 )]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+margin_left = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
 [node name="PersonList" parent="." instance=ExtResource( 5 )]
 visible = false
 
@@ -101,18 +111,10 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -48.0
 margin_bottom = 0.0
-
-[node name="CreateTroop" parent="." instance=ExtResource( 12 )]
-visible = false
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-margin_left = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+[connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
 [connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
 [connection signal="architecture_create_troop" from="ArchitectureMenu" to="CreateTroop" method="_on_ArchitectureMenu_architecture_create_troop"]
 [connection signal="architecture_list_clicked" from="ArchitectureMenu" to="ArchitectureList" method="_on_ArchitectureMenu_architecture_list_clicked"]
 [connection signal="person_list_clicked" from="ArchitectureMenu" to="PersonList" method="_on_ArchitectureMenu_person_list_clicked"]

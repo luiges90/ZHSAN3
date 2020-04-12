@@ -90,3 +90,6 @@ func get_name() -> String:
 
 func get_persons() -> Array:
 	return _person_list
+	
+func set_persons(list: Array):
+	_person_list = list

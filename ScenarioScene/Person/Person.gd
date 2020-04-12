@@ -111,6 +111,9 @@ func get_producing_equipment_name():
 		return "--"
 	else:
 		return scenario.military_kinds[producing_equipment].get_name()
+
+func get_max_troop_quantity() -> int:
+	return 5000
 		
 func move_to_architecture(arch):
 	var old_location = get_location()

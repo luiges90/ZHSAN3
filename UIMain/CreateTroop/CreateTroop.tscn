@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://UIMain/CreateTroop/CreateTroop.gd" type="Script" id=3]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
 [ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=5]
+[ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -47,6 +48,7 @@ margin_left = 204.0
 margin_top = 64.0
 margin_right = 384.0
 margin_bottom = 96.0
+disabled = true
 text = "LEADER"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -120,7 +122,7 @@ margin_left = 682.0
 margin_top = 110.0
 margin_right = -16.0
 margin_bottom = 128.0
-text = "0/12000"
+text = "0/5000"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -182,7 +184,7 @@ margin_top = 208.0
 margin_right = 248.0
 margin_bottom = 232.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
-text = "MORALE"
+text = "TROOP_MORALE"
 align = 1
 valign = 1
 __meta__ = {
@@ -281,4 +283,8 @@ stream = ExtResource( 4 )
 
 [node name="Confirm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 [connection signal="hide" from="." to="." method="_on_CreateTroop_hide"]
+[connection signal="pressed" from="SelectPersons" to="." method="_on_SelectPersons_pressed"]
