@@ -55,18 +55,22 @@ func set_data():
 		var max_quantity = current_troop.military_kind.max_quantity_multiplier * current_troop.get_persons()[0].get_max_troop_quantity()
 		max_quantity = int(max_quantity)
 		max_quantity = min(max_quantity, floor(current_architecture.troop / 100) * 100)
-		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].equipment_cost > 0:
+		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].has_equipments():
 			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / 100) * 100)
 		$Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
 		$QuantitySlider.step = 100
 		$QuantitySlider.min_value = 0
 		$QuantitySlider.max_value = max_quantity
+		$Offence.text = str(current_troop.get_offence())
+		$Defence.text = str(current_troop.get_defence())
+		$Speed.text = str(current_troop.get_speed())
+		$Initiative.text = str(current_troop.get_initiative())
 
 
 func get_available_kinds():
 	var available_kinds = []
 	for kind in eligible_military_kinds:
-		if current_architecture.scenario.military_kinds[kind].equipment_cost <= 0 or current_architecture.equipments[kind] > 0:
+		if not current_architecture.scenario.military_kinds[kind].has_equipments() or current_architecture.equipments[kind] > 0:
 			available_kinds.append(eligible_military_kinds[kind])
 	return available_kinds
 
@@ -74,6 +78,7 @@ func get_available_kinds():
 func _on_PersonList_person_selected(action, arch, selected):
 	if action == PersonList.Action.SELECT_TROOP_PERSON:
 		current_troop.set_persons(current_architecture.scenario.get_persons_from_ids(selected))
+		set_data()
 	elif action == PersonList.Action.SELECT_TROOP_LEADER:
 		var selected_person = current_architecture.scenario.persons[selected[0]]
 		var persons = current_troop.get_persons()
@@ -81,7 +86,7 @@ func _on_PersonList_person_selected(action, arch, selected):
 		persons.remove(index)
 		persons.push_front(selected_person)
 		current_troop.set_persons(persons)
-	set_data()
+		set_data()
 
 
 func _on_SelectLeader_pressed():

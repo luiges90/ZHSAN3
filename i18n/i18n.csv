@@ -71,8 +71,8 @@ MILITARY_KIND_LIST,Military Kinds,兵種列表,兵種列表
 MOVEMENT_DETAILS,Movement,地型移動,地型移動
 TERRAIN_STRENGTH,Terrain,地型能力,地型能力
 COST,Cost,所需資金,所需資金
-OFFENSE,Attack,攻擊力,攻擊力
-DEFENSE,Defense,防禦力,防禦力
+OFFENCE,Attack,攻擊力,攻擊力
+DEFENCE,Defense,防禦力,防禦力
 RANGE,Range,攻擊距離,攻擊距離
 SPEED,Speed,速度,速度
 INITIATIVE,Initiative,先行,先行

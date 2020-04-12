@@ -6,6 +6,8 @@ var scenario
 
 var gname: String setget forbidden
 
+var base_offence: int setget forbidden
+var base_defence: int setget forbidden
 var offence: float setget forbidden
 var defence: float setget forbidden
 var range_min: int setget forbidden
@@ -25,6 +27,8 @@ func forbidden(x):
 func load_data(json: Dictionary):
 	id = json["_Id"]
 	gname = json["Name"]
+	base_offence = json["BaseOffence"]
+	base_defence = json["BaseDefence"]
 	offence = json["Offence"]
 	defence = json["Defence"]
 	range_min = json["RangeMin"]
@@ -40,6 +44,8 @@ func save_data() -> Dictionary:
 	return {
 		"_Id": id,
 		"Name": gname,
+		"BaseOffence": base_offence,
+		"BaseDefence": base_defence,
 		"Offence": offence,
 		"Defence": defence,
 		"RangeMin": range_min,
