@@ -28,8 +28,8 @@ func _ready():
 	if scenario:
 		position.x = map_position.x * scenario.tile_size
 		position.y = map_position.y * scenario.tile_size
-		# scale.x = 0.25
-		# scale.y = 0.25
+		scale.x = 50.0 / 128
+		scale.y = 50.0 / 128
 
 
 func _update_military_kind_sprite():
@@ -63,7 +63,7 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 	sprite_frame.set_animation_speed(animation, ANIMATION_SPEED)
 	for i in range(0, SPRITE_SHEET_FRAMES):
 		var sprite = Image.new()
-		sprite.create(SPRITE_SIZE, SPRITE_SIZE, true, texture.get_format())
+		sprite.create(SPRITE_SIZE, SPRITE_SIZE, false, texture.get_format())
 		sprite.blit_rect(texture, Rect2(i * SPRITE_SIZE, spritesheet_offset, SPRITE_SIZE, SPRITE_SIZE), Vector2(0, 0))
 		
 		var image = ImageTexture.new()

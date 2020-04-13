@@ -3,13 +3,13 @@
 [ext_resource path="res://ScenarioScene/Military/Troop.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25, 25 )
+extents = Vector2( 64, 64 )
 
 [node name="Troop" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="TroopArea" type="Area2D" parent="."]
-position = Vector2( 25, 25 )
+position = Vector2( 64, 64 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
 

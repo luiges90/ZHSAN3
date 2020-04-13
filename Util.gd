@@ -168,4 +168,13 @@ static func delete_all_children(node: Node):
 		node.remove_child(n)
 		n.queue_free()
 		
-		
+static func resize_texture(texture, old_size: Vector2, new_size: Vector2):
+	var sprite = Image.new()
+	sprite.create(old_size.x, old_size.y, false, texture.get_format())
+	sprite.blit_rect(texture, Rect2(0, 0, old_size.x, old_size.y), Vector2(0, 0))
+	sprite.resize(new_size.x, new_size.y, Image.INTERPOLATE_CUBIC)
+	
+	var image = ImageTexture.new()
+	image.create_from_image(sprite)
+	return image
+	
