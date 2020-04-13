@@ -244,7 +244,8 @@ func __load_item(instance, item, add_to_list):
 	instance.scenario = self
 	instance.load_data(item)
 	add_to_list[instance.id] = instance
-	add_child(instance)
+	if instance is Architecture or instance is Troop:
+		add_child(instance)
 	
 func get_player_factions():
 	var arr = []
@@ -317,3 +318,15 @@ func get_persons_from_ids(ids):
 	for p in ids:
 		result.append(persons[p])
 	return result
+	
+func _on_create_troop(arch, troop):
+	var scene = preload("Military/Troop.tscn")
+	var instance = scene.instance()
+	instance.set_persons(troop.get_persons())
+	instance.set_military_kind(troop.military_kind)
+	instance.set_from_arch(troop.quantity, troop.morale, troop.combativity)
+	instance.set_map_position(arch.map_position)
+	instance.scenario = self
+	troops[instance.id] = instance
+	add_child(instance)
+	

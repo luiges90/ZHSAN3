@@ -4,6 +4,7 @@ class_name CreateTroop
 signal select_person
 signal select_leader
 signal select_military_kind
+signal create_troop
 
 var _confirming = false
 
@@ -28,6 +29,7 @@ func _on_ArchitectureMenu_architecture_create_troop(arch, persons, military_kind
 func _on_CreateTroop_hide():
 	if not _confirming:
 		$Cancel.play()
+	_confirming = false
 
 
 func _on_SelectPersons_pressed():
@@ -51,6 +53,7 @@ func set_data():
 	if current_troop.military_kind != null:
 		$MilitaryKind.text = current_troop.military_kind.get_name()
 	
+	$Create.disabled = true
 	if current_troop.get_persons().size() > 0 and current_troop.military_kind != null:
 		var max_quantity = current_troop.military_kind.max_quantity_multiplier * current_troop.get_persons()[0].get_max_troop_quantity()
 		max_quantity = int(max_quantity)
@@ -65,6 +68,7 @@ func set_data():
 		$Defence.text = str(current_troop.get_defence())
 		$Speed.text = str(current_troop.get_speed())
 		$Initiative.text = str(current_troop.get_initiative())
+		$Create.disabled = current_troop.quantity <= 0
 
 
 func get_available_kinds():
@@ -110,3 +114,11 @@ func _on_MilitaryKindList_military_kind_selected_for_troop(current_action, selec
 func _on_QuantitySlider_value_changed(value):
 	current_troop.set_from_arch(value, current_architecture.troop_morale, current_architecture.troop_combativity)
 	set_data()
+
+
+func _on_Create_pressed():
+	_confirming = true
+	if GameConfig.se_enabled:
+		($Select as AudioStreamPlayer).play()
+	emit_signal("create_troop", current_architecture, current_troop)
+	hide()

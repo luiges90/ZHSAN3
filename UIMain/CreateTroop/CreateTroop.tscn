@@ -70,6 +70,7 @@ margin_left = 582.0
 margin_top = 64.0
 margin_right = -16.0
 margin_bottom = 96.0
+disabled = true
 text = "CREATE_TROOP"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,7 +114,6 @@ margin_top = 132.0
 margin_right = -16.0
 margin_bottom = 148.0
 max_value = 1.0
-step = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,4 +318,5 @@ stream = ExtResource( 6 )
 [connection signal="pressed" from="SelectPersons" to="." method="_on_SelectPersons_pressed"]
 [connection signal="pressed" from="SelectLeader" to="." method="_on_SelectLeader_pressed"]
 [connection signal="pressed" from="SelectMilitaryKind" to="." method="_on_SelectMilitaryKind_pressed"]
+[connection signal="pressed" from="Create" to="." method="_on_Create_pressed"]
 [connection signal="value_changed" from="QuantitySlider" to="." method="_on_QuantitySlider_value_changed"]

@@ -21,35 +21,42 @@ func forbidden(x):
 	assert(false)
 	
 func _ready():
-	military_kind = 1
 	_update_military_kind_sprite()
 	$TroopArea/AnimatedSprite.animation = "move_e"
 	$TroopArea/AnimatedSprite.play()
+	
+	if scenario:
+		position.x = map_position.x * scenario.tile_size
+		position.y = map_position.y * scenario.tile_size
+		# scale.x = 0.25
+		# scale.y = 0.25
+
 
 func _update_military_kind_sprite():
-	var textures = SharedData.troop_images.get(military_kind, null)
-	if textures == null:
-		var attack = load("res://Images/Troop/" + str(military_kind) + "/Attack.png")
-		var be_attacked = load("res://Images/Troop/" + str(military_kind) + "/BeAttacked.png")
-		var move = load("res://Images/Troop/" + str(military_kind) + "/Move.png")
-		if attack != null and be_attacked != null and move != null:
-			textures = {
-				"attack": attack,
-				"be_attacked": be_attacked,
-				"move": move
-			}
-			SharedData.troop_images[military_kind] = textures
-	
-	var sprite_frame = SpriteFrames.new()
-	
-	var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
-	for i in range(0, 8):
-		_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
-		_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
-		_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
-		
+	var textures = SharedData.troop_images.get(military_kind.id, null)
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
-	animated_sprite.frames = sprite_frame
+	if animated_sprite != null:
+		if textures == null:
+			var attack = load("res://Images/Troop/" + str(military_kind.id) + "/Attack.png")
+			var be_attacked = load("res://Images/Troop/" + str(military_kind.id) + "/BeAttacked.png")
+			var move = load("res://Images/Troop/" + str(military_kind.id) + "/Move.png")
+			if attack != null and be_attacked != null and move != null:
+				textures = {
+					"attack": attack,
+					"be_attacked": be_attacked,
+					"move": move
+				}
+				SharedData.troop_images[military_kind.id] = textures
+		
+		var sprite_frame = SpriteFrames.new()
+		
+		var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
+		for i in range(0, 8):
+			_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
+			_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
+			_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
+			
+		animated_sprite.frames = sprite_frame
 	
 func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 	sprite_frame.add_animation(animation)
@@ -99,11 +106,15 @@ func set_persons(list: Array):
 
 func set_military_kind(kind):
 	military_kind = kind
+	_update_military_kind_sprite()
 
 func set_from_arch(in_quantity, in_morale, in_combativity):
 	quantity = in_quantity
 	morale = in_morale
 	combativity = in_combativity
+	
+func set_map_position(pos):
+	map_position = pos
 	
 func get_strength():
 	var strength = get_leader().strength

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Forest.bmp-a4a64560e1b36afe0ba7f6bd2d774f19.stex"
+path="res://.import/Move.png-cc0e59952aa1aedf582aed8902e851e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Map/Forest.bmp"
-dest_files=[ "res://.import/Forest.bmp-a4a64560e1b36afe0ba7f6bd2d774f19.stex" ]
+source_file="res://Images/Troop/4/Move.png"
+dest_files=[ "res://.import/Move.png-cc0e59952aa1aedf582aed8902e851e9.stex" ]
 
 [params]
 
