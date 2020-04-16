@@ -81,8 +81,8 @@ QUANTITY,Quantity,兵力,兵力
 GAME_INFO,Information,各項信息,各項信息
 EQUIPMENTS,Equipments,兵裝,兵裝
 FACTION_ARCHITECTURES,Faction Architectures,勢力建築,勢力建築
-TOGGLE_AUTO,Auto,委任內政,委任內政
-TOGGLE_MANUAL,Manual,手動內政,手動內政
+TOGGLE_AUTO_TASK,Auto Task,委任內政,委任內政
+TOGGLE_MANUAL_TASK,Manual Task,手動內政,手動內政
 PERSON_TROOP,"'s Troop",隊,隊
 CREATE_TROOP,Create Troop,出征,出征
 PERSONS,Persons,武將,武將

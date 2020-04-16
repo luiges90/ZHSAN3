@@ -293,8 +293,8 @@ func _on_military_kind_selected(task, current_architecture, selected_kind_ids, o
 		p.set_working_task(Person.Task.PRODUCE_EQUIPMENT)
 		p.set_produce_equipment(a)
 		
-func on_architecture_toggle_auto(current_architecture):
-	current_architecture.auto = !current_architecture.auto
+func on_architecture_toggle_auto_task(current_architecture):
+	current_architecture.auto_task = !current_architecture.auto_task
 
 func _on_day_passed():
 	var last_faction = current_faction

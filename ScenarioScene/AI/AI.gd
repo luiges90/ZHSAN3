@@ -10,7 +10,7 @@ func run_section(faction: Faction, section: Section, scenario):
 	if not faction.player_controlled:
 		_allocate_person(section)
 	for arch in section.get_architectures():
-		if not faction.player_controlled or arch.auto:
+		if not faction.player_controlled or arch.auto_task:
 			_assign_task(arch, scenario)
 			
 func _arch_enough_fund(arch: Architecture):

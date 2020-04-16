@@ -39,11 +39,11 @@ margin_right = 246.0
 margin_bottom = 106.123
 text = "OFFICERS"
 
-[node name="ToggleAuto" type="Button" parent="MainMenu"]
+[node name="ToggleAutoTask" type="Button" parent="MainMenu"]
 margin_top = 102.0
 margin_right = 246.0
 margin_bottom = 140.123
-text = "TOGGLE_AUTO"
+text = "TOGGLE_AUTO_TASK"
 
 [node name="PersonList" type="Button" parent="MainMenu"]
 margin_top = 136.0
@@ -152,7 +152,7 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="MainMenu/Internal" to="." method="_on_Internal_pressed"]
 [connection signal="pressed" from="MainMenu/Military" to="." method="_on_Military_pressed"]
 [connection signal="pressed" from="MainMenu/Officers" to="." method="_on_Officers_pressed"]
-[connection signal="pressed" from="MainMenu/ToggleAuto" to="." method="_on_ToggleAuto_pressed"]
+[connection signal="pressed" from="MainMenu/ToggleAutoTask" to="." method="_on_ToggleAutoTask_pressed"]
 [connection signal="pressed" from="MainMenu/PersonList" to="." method="_on_PersonList_pressed"]
 [connection signal="pressed" from="MainMenu/ArchitectureDetail" to="." method="_on_ArchitectureDetail_pressed"]
 [connection signal="pressed" from="MainMenu/FactionArchitectures" to="." method="_on_FactionArchitectures_pressed"]

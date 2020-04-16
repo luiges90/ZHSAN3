@@ -3,7 +3,7 @@ class_name ArchitectureMenu
 
 signal person_list_clicked
 signal architecture_list_clicked
-signal architecture_toggle_auto
+signal architecture_toggle_auto_task
 signal architecture_create_troop
 
 var showing_architecture
@@ -14,13 +14,13 @@ func show_menu(arch, mouse_x, mouse_y):
 		$MainMenu/Internal.visible = false
 		$MainMenu/Military.visible = false
 		$MainMenu/Officers.visible = false
-		$MainMenu/ToggleAuto.visible = false
+		$MainMenu/ToggleAutoTask.visible = false
 	else:
 		var is_player = arch.get_belonged_faction().player_controlled
 		$MainMenu/Internal.visible = is_player
 		$MainMenu/Military.visible = is_player
 		$MainMenu/Officers.visible = is_player
-		$MainMenu/ToggleAuto.visible = is_player
+		$MainMenu/ToggleAutoTask.visible = is_player
 	
 	if GameConfig.se_enabled:
 		($OpenSound as AudioStreamPlayer).play()
@@ -29,7 +29,7 @@ func show_menu(arch, mouse_x, mouse_y):
 	margin_left = mouse_x
 	margin_top = mouse_y
 	
-	$MainMenu/ToggleAuto.text = tr('TOGGLE_MANUAL') if arch.auto else tr('TOGGLE_AUTO')
+	$MainMenu/ToggleAutoTask.text = tr('TOGGLE_MANUAL_TASK') if arch.auto_task else tr('TOGGLE_AUTO_TASK')
 	
 	show()
 	
@@ -166,10 +166,10 @@ func _on_FactionArchitectures_pressed():
 	hide()
 
 
-func _on_ToggleAuto_pressed():
+func _on_ToggleAutoTask_pressed():
 	if GameConfig.se_enabled:
 		($SelectSound as AudioStreamPlayer).play()
-	emit_signal("architecture_toggle_auto", showing_architecture)
+	emit_signal("architecture_toggle_auto_task", showing_architecture)
 	_opening_list = true
 	hide()
 
@@ -180,3 +180,4 @@ func _on_StartCampaign_pressed():
 	emit_signal("architecture_create_troop", showing_architecture, showing_architecture.get_workable_persons(), showing_architecture.scenario.military_kinds)
 	_opening_list = true
 	hide()
+

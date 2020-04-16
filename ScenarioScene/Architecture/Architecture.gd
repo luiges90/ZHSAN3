@@ -31,7 +31,7 @@ var troop_combativity: int setget forbidden
 
 var equipments = {} setget forbidden
 
-var auto: bool
+var auto_task: bool
 
 signal architecture_clicked
 signal architecture_survey_updated
