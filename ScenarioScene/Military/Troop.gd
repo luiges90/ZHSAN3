@@ -137,14 +137,18 @@ func get_command():
 func get_offence():
 	var troop_base = military_kind.base_offence
 	var troop_quantity = military_kind.offence * quantity / military_kind.max_quantity_multiplier
+	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
+	var morale_factor = (morale + 5) / 100.0
 	
-	return int((troop_base + troop_quantity) * (((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0))
+	return int((troop_base + troop_quantity) * ability_factor * morale_factor)
 	
 func get_defence():
 	var troop_base = military_kind.base_defence
 	var troop_quantity = military_kind.defence * quantity / military_kind.max_quantity_multiplier
+	var ability_factor = (get_command() + 10) / 100.0
+	var morale_factor = (morale + 10) / 100.0
 	
-	return int((troop_base + troop_quantity) * ((get_command() + 10) / 100.0))
+	return int((troop_base + troop_quantity) * ability_factor * morale_factor)
 
 func get_speed():
 	return military_kind.speed
