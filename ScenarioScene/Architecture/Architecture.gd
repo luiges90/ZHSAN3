@@ -74,6 +74,8 @@ func load_data(json: Dictionary):
 	troop_morale = json["TroopMorale"]
 	troop_combativity = json["TroopCombativity"]
 	
+	auto_task = json.get("_AutoTask", false)
+	
 	equipments = Util.convert_dict_to_int_key(json["Equipments"])
 	
 func save_data() -> Dictionary:
@@ -95,7 +97,8 @@ func save_data() -> Dictionary:
 		"Troop": troop,
 		"TroopMorale": troop_morale,
 		"TroopCombativity": troop_combativity,
-		"Equipments": equipments
+		"Equipments": equipments,
+		"_AutoTask": auto_task
 	}
 	
 func setup_after_load():
