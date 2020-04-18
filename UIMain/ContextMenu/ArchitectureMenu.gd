@@ -181,3 +181,7 @@ func _on_StartCampaign_pressed():
 	_opening_list = true
 	hide()
 
+
+
+func _on_ArchitectureAndTroopMenu_architecture_clicked(arch, mx, my):
+	show_menu(arch, mx, my)

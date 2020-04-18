@@ -23,12 +23,17 @@ var troops = Dictionary() setget forbidden
 
 var current_scenario_name = null
 
+var _architecture_clicked
+var _troop_clicked
+var _clicked_at: Vector2
+
 signal current_faction_set
 signal scenario_loaded
 
 signal architecture_clicked
 signal architecture_survey_updated
 signal troop_clicked
+signal architecture_and_troop_clicked
 
 signal all_faction_finished
 
@@ -260,13 +265,25 @@ func _on_all_loaded():
 	emit_signal("current_faction_set", current_faction)
 	
 func _on_architecture_clicked(arch, mx, my):
-	emit_signal("architecture_clicked", arch, mx, my)
+	_architecture_clicked = arch
+	_clicked_at = Vector2(mx, my)
 	
 func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
 	
 func _on_troop_clicked(troop, mx, my):
-	emit_signal("troop_clicked", troop, mx, my)
+	_troop_clicked = troop
+	_clicked_at = Vector2(mx, my)
+	
+func _process(delta):
+	if _architecture_clicked != null and _troop_clicked == null:
+		emit_signal("architecture_clicked", _architecture_clicked, _clicked_at.x, _clicked_at.y)
+	elif _architecture_clicked == null and _troop_clicked != null:
+		emit_signal("troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y)
+	elif _architecture_clicked != null and _troop_clicked != null:
+		emit_signal("architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y)
+	_architecture_clicked = null
+	_troop_clicked = null
 	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
 	var selected_persons = []

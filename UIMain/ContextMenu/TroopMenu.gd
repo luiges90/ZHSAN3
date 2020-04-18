@@ -13,3 +13,15 @@ func show_menu(troop, mouse_x, mouse_y):
 	margin_top = mouse_y
 	
 	show()
+
+
+func _on_ArchitectureAndTroopMenu_troop_clicked(troop, mx, my):
+	show_menu(troop, mx, my)
+
+
+
+func _on_TroopMenu_hide():
+	if GameConfig.se_enabled and not _opening_list:
+		($CloseSound as AudioStreamPlayer).play()
+	_opening_list = false
+

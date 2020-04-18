@@ -25,6 +25,7 @@ func _register_architecture_ui():
 
 func _register_troop_ui():
 	$Scenario.connect("troop_clicked", $UICanvas/UIMain/TroopMenu, "show_menu")
+	$Scenario.connect("architecture_and_troop_clicked", $UICanvas/UIMain/ArchitectureAndTroopMenu, "show_menu")
 
 func _register_date_runner():
 	$Scenario/DateRunner.connect("date_updated", $UICanvas/UIMain/ScreenBlind, "show_date")

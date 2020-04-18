@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Architecture/Architecture.gd"
 }, {
+"base": "VBoxContainer",
+"class": "ArchitectureAndTroopMenu",
+"language": "GDScript",
+"path": "res://UIMain/ContextMenu/ArchitectureAndTroopMenu.gd"
+}, {
 "base": "Node",
 "class": "ArchitectureKind",
 "language": "GDScript",
@@ -168,6 +173,7 @@ _global_script_class_icons={
 "AI": "",
 "AIPaths": "",
 "Architecture": "",
+"ArchitectureAndTroopMenu": "",
 "ArchitectureKind": "",
 "ArchitectureList": "",
 "ArchitectureMenu": "",

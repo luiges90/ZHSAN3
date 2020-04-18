@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://UIMain/TabList/MilitaryKindList.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UIMain/CreateTroop/CreateTroop.tscn" type="PackedScene" id=12]
 [ext_resource path="res://UIMain/ContextMenu/TroopMenu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://UIMain/ContextMenu/ArchitectureAndTroopMenu.tscn" type="PackedScene" id=14]
 
 [node name="UIMain" type="Control"]
 anchor_right = 1.0
@@ -64,6 +65,9 @@ visible = false
 visible = false
 
 [node name="MilitaryKindList" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="ArchitectureAndTroopMenu" parent="." instance=ExtResource( 14 )]
 visible = false
 
 [node name="ArchitectureMenu" parent="." instance=ExtResource( 6 )]
@@ -122,6 +126,8 @@ margin_bottom = 0.0
 [connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
+[connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
+[connection signal="troop_clicked" from="ArchitectureAndTroopMenu" to="TroopMenu" method="_on_ArchitectureAndTroopMenu_troop_clicked"]
 [connection signal="architecture_create_troop" from="ArchitectureMenu" to="CreateTroop" method="_on_ArchitectureMenu_architecture_create_troop"]
 [connection signal="architecture_list_clicked" from="ArchitectureMenu" to="ArchitectureList" method="_on_ArchitectureMenu_architecture_list_clicked"]
 [connection signal="person_list_clicked" from="ArchitectureMenu" to="PersonList" method="_on_ArchitectureMenu_person_list_clicked"]
