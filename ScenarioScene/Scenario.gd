@@ -28,6 +28,7 @@ signal scenario_loaded
 
 signal architecture_clicked
 signal architecture_survey_updated
+signal troop_clicked
 
 signal all_faction_finished
 
@@ -198,6 +199,7 @@ func _load_data(path):
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = troop_scene.new()
+		instance.connect("troop_clicked", self, "_on_troop_clicked")
 		__load_item(instance, item, troops)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
@@ -263,6 +265,9 @@ func _on_architecture_clicked(arch, mx, my):
 func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
 	
+func _on_troop_clicked(troop, mx, my):
+	emit_signal("troop_clicked", troop, mx, my)
+	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
 	var selected_persons = []
 	for id in selected_person_ids:
@@ -322,6 +327,7 @@ func get_persons_from_ids(ids):
 func _on_create_troop(arch, troop):
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
+	instance.connect("troop_clicked", self, "_on_troop_clicked")
 	instance.set_persons(troop.get_persons())
 	instance.set_military_kind(troop.military_kind)
 	instance.set_from_arch(troop.quantity, troop.morale, troop.combativity)

@@ -11,6 +11,7 @@ func _ready():
 	
 	_register_date_runner()
 	_register_architecture_ui()
+	_register_troop_ui()
 	_register_lists()
 	_register_menus()
 	$UICanvas/UIMain/CreateTroop.connect("create_troop", $Scenario, "_on_create_troop")
@@ -21,6 +22,9 @@ func _register_architecture_ui():
 	$Scenario.connect("architecture_clicked", $UICanvas/UIMain/ArchitectureSurvey, "show_data")
 	$Scenario.connect("architecture_survey_updated", $UICanvas/UIMain/ArchitectureSurvey, "update_data")
 	$Scenario.connect("architecture_clicked", $UICanvas/UIMain/ArchitectureMenu, "show_menu")
+
+func _register_troop_ui():
+	$Scenario.connect("troop_clicked", $UICanvas/UIMain/TroopMenu, "show_menu")
 
 func _register_date_runner():
 	$Scenario/DateRunner.connect("date_updated", $UICanvas/UIMain/ScreenBlind, "show_date")

@@ -17,6 +17,8 @@ var combativity: int setget forbidden
 
 var _person_list = Array() setget forbidden, get_persons
 
+signal troop_clicked
+
 func forbidden(x):
 	assert(false)
 	
@@ -33,9 +35,9 @@ func _ready():
 
 
 func _update_military_kind_sprite():
-	var textures = SharedData.troop_images.get(military_kind.id, null)
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 	if animated_sprite != null:
+		var textures = SharedData.troop_images.get(military_kind.id, null)
 		if textures == null:
 			var attack = load("res://Images/Troop/" + str(military_kind.id) + "/Attack.png")
 			var be_attacked = load("res://Images/Troop/" + str(military_kind.id) + "/BeAttacked.png")
@@ -155,3 +157,10 @@ func get_speed():
 	
 func get_initiative():
 	return military_kind.initiative
+
+
+func _on_TroopArea_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			emit_signal("troop_clicked", self, event.global_position.x, event.global_position.y)
+

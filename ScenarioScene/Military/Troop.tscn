@@ -13,5 +13,6 @@ position = Vector2( 64, 64 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TroopArea"]
+[node name="ClickArea" type="CollisionShape2D" parent="TroopArea"]
 shape = SubResource( 1 )
+[connection signal="input_event" from="TroopArea" to="." method="_on_TroopArea_input_event"]

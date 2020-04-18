@@ -150,6 +150,11 @@ _global_script_classes=[ {
 "path": "res://ScenarioScene/Military/Troop.gd"
 }, {
 "base": "Control",
+"class": "TroopMenu",
+"language": "GDScript",
+"path": "res://UIMain/ContextMenu/TroopMenu.gd"
+}, {
+"base": "Control",
 "class": "UIMain",
 "language": "GDScript",
 "path": "res://UIMain/UIMain.gd"
@@ -188,6 +193,7 @@ _global_script_class_icons={
 "TerrainDetail": "",
 "Toolbar": "",
 "Troop": "",
+"TroopMenu": "",
 "UIMain": "",
 "ZhsanMap": ""
 }

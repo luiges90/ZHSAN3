@@ -91,3 +91,4 @@ MILITARY_KIND,Military Kind,兵裝,兵裝
 SELECT_TROOP_PERSON,Select Person,選擇武將,選擇武將
 SELECT_TROOP_LEADER,Select Leader,選擇主將,選擇主將
 SELECT_TROOP_MILITARY_KIND,Select Military Kind,選擇兵種,選擇兵種
+ATTACK,Attack,攻擊,攻擊
