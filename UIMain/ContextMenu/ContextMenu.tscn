@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=1]
+[ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=2]
+[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=3]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenu.gd" type="Script" id=4]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=5]
+
+[node name="ContextMenu" type="Control"]
+theme = ExtResource( 5 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="CloseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+[connection signal="hide" from="." to="." method="_on_ContextMenu_hide"]

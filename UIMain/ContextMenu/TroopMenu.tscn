@@ -1,44 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=1]
 [ext_resource path="res://UIMain/ContextMenu/TroopMenu.gd" type="Script" id=2]
-[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=3]
-[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
-[ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=5]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenu.tscn" type="PackedScene" id=6]
 
-[node name="TroopMenu" type="Control"]
+[node name="TroopMenu" instance=ExtResource( 6 )]
 margin_right = 40.0
 margin_bottom = 40.0
-theme = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." index="3"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Move" type="Button" parent="VBoxContainer"]
+[node name="Move" type="Button" parent="VBoxContainer" index="0"]
 margin_right = 104.0
 margin_bottom = 38.1229
 text = "MOVE"
 
-[node name="Attack" type="Button" parent="VBoxContainer"]
+[node name="Attack" type="Button" parent="VBoxContainer" index="1"]
 margin_top = 34.0
 margin_right = 104.0
 margin_bottom = 72.1229
 text = "ATTACK"
-
-[node name="OpenSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-
-[node name="SelectSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-
-[node name="CloseSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-[connection signal="hide" from="." to="." method="_on_TroopMenu_hide"]

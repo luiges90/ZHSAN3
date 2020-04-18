@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Architecture/Architecture.gd"
 }, {
-"base": "VBoxContainer",
+"base": "ContextMenu",
 "class": "ArchitectureAndTroopMenu",
 "language": "GDScript",
 "path": "res://UIMain/ContextMenu/ArchitectureAndTroopMenu.gd"
@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UIMain/TabList/ArchitectureList.gd"
 }, {
-"base": "Control",
+"base": "ContextMenu",
 "class": "ArchitectureMenu",
 "language": "GDScript",
 "path": "res://UIMain/ContextMenu/ArchitectureMenu.gd"
@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "ArchitectureSurvey",
 "language": "GDScript",
 "path": "res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd"
+}, {
+"base": "Control",
+"class": "ContextMenu",
+"language": "GDScript",
+"path": "res://UIMain/ContextMenu/ContextMenu.gd"
 }, {
 "base": "Panel",
 "class": "CreateTroop",
@@ -64,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Faction/Faction.gd"
 }, {
-"base": "VBoxContainer",
+"base": "ContextMenu",
 "class": "InfoMenu",
 "language": "GDScript",
 "path": "res://UIMain/ContextMenu/InfoMenu.gd"
@@ -129,7 +134,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Faction/Section.gd"
 }, {
-"base": "VBoxContainer",
+"base": "ContextMenu",
 "class": "SystemMenu",
 "language": "GDScript",
 "path": "res://UIMain/ContextMenu/SystemMenu.gd"
@@ -154,7 +159,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Military/Troop.gd"
 }, {
-"base": "Control",
+"base": "ContextMenu",
 "class": "TroopMenu",
 "language": "GDScript",
 "path": "res://UIMain/ContextMenu/TroopMenu.gd"
@@ -178,6 +183,7 @@ _global_script_class_icons={
 "ArchitectureList": "",
 "ArchitectureMenu": "",
 "ArchitectureSurvey": "",
+"ContextMenu": "",
 "CreateTroop": "",
 "DateRunner": "",
 "Faction": "",

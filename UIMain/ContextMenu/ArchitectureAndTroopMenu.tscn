@@ -1,39 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=1]
-[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=2]
-[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=3]
-[ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=4]
 [ext_resource path="res://UIMain/ContextMenu/ArchitectureAndTroopMenu.gd" type="Script" id=5]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenu.tscn" type="PackedScene" id=6]
 
-[node name="ArchitectureAndTroopMenu" type="VBoxContainer"]
+[node name="ArchitectureAndTroopMenu" instance=ExtResource( 6 )]
 margin_right = 40.0
 margin_bottom = 40.0
-theme = ExtResource( 1 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Architecture" type="Button" parent="."]
+[node name="Architecture" type="Button" parent="." index="3"]
 margin_right = 167.0
 margin_bottom = 38.1229
 text = "ARCHITECTURE"
 
-[node name="Troop" type="Button" parent="."]
+[node name="Troop" type="Button" parent="." index="4"]
 margin_top = 34.0
 margin_right = 167.0
 margin_bottom = 72.1229
 text = "TROOP"
-
-[node name="OpenSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-
-[node name="ClickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-
-[node name="CloseSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-[connection signal="hide" from="." to="." method="_on_ArchitectureAndTroopMenu_hide"]
 [connection signal="pressed" from="Architecture" to="." method="_on_Architecture_pressed"]
 [connection signal="pressed" from="Troop" to="." method="_on_Troop_pressed"]

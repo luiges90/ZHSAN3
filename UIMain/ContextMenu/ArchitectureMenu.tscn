@@ -1,154 +1,137 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://UIMain/ContextMenu/ContextMenuTheme.tres" type="Theme" id=1]
-[ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=2]
 [ext_resource path="res://UIMain/ContextMenu/ArchitectureMenu.gd" type="Script" id=3]
-[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=4]
-[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=5]
+[ext_resource path="res://UIMain/ContextMenu/ContextMenu.tscn" type="PackedScene" id=6]
 
-[node name="ArchitectureMenu" type="Control"]
+[node name="ArchitectureMenu" instance=ExtResource( 6 )]
 margin_right = 143.0
 margin_bottom = 68.0
-theme = ExtResource( 1 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="MainMenu" type="VBoxContainer" parent="."]
+[node name="MainMenu" type="VBoxContainer" parent="." index="3"]
 margin_right = 143.0
 margin_bottom = 140.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Internal" type="Button" parent="MainMenu"]
+[node name="Internal" type="Button" parent="MainMenu" index="0"]
 margin_right = 246.0
 margin_bottom = 38.1229
 text = "INTERNAL"
 
-[node name="Military" type="Button" parent="MainMenu"]
+[node name="Military" type="Button" parent="MainMenu" index="1"]
 margin_top = 34.0
 margin_right = 246.0
 margin_bottom = 72.1229
 text = "MILITARY"
 
-[node name="Officers" type="Button" parent="MainMenu"]
+[node name="Officers" type="Button" parent="MainMenu" index="2"]
 margin_top = 68.0
 margin_right = 246.0
 margin_bottom = 106.123
 text = "OFFICERS"
 
-[node name="ToggleAutoTask" type="Button" parent="MainMenu"]
+[node name="ToggleAutoTask" type="Button" parent="MainMenu" index="3"]
 margin_top = 102.0
 margin_right = 246.0
 margin_bottom = 140.123
 text = "TOGGLE_AUTO_TASK"
 
-[node name="PersonList" type="Button" parent="MainMenu"]
+[node name="PersonList" type="Button" parent="MainMenu" index="4"]
 margin_top = 136.0
 margin_right = 246.0
 margin_bottom = 174.123
 text = "PERSON_LIST"
 
-[node name="ArchitectureDetail" type="Button" parent="MainMenu"]
+[node name="ArchitectureDetail" type="Button" parent="MainMenu" index="5"]
 margin_top = 170.0
 margin_right = 246.0
 margin_bottom = 208.123
 text = "ARCHITECTURE_DETAILS"
 
-[node name="FactionArchitectures" type="Button" parent="MainMenu"]
+[node name="FactionArchitectures" type="Button" parent="MainMenu" index="6"]
 margin_top = 204.0
 margin_right = 246.0
 margin_bottom = 242.123
 text = "FACTION_ARCHITECTURES"
 
-[node name="InternalMenu" type="VBoxContainer" parent="."]
+[node name="InternalMenu" type="VBoxContainer" parent="." index="4"]
 visible = false
 margin_left = 139.0
 margin_right = 224.0
 margin_bottom = 140.0
 
-[node name="Agriculture" type="Button" parent="InternalMenu"]
+[node name="Agriculture" type="Button" parent="InternalMenu" index="0"]
 margin_right = 155.0
 margin_bottom = 38.1229
 text = "AGRICULTURE"
 
-[node name="Commerce" type="Button" parent="InternalMenu"]
+[node name="Commerce" type="Button" parent="InternalMenu" index="1"]
 margin_top = 34.0
 margin_right = 155.0
 margin_bottom = 72.1229
 text = "COMMERCE"
 
-[node name="Morale" type="Button" parent="InternalMenu"]
+[node name="Morale" type="Button" parent="InternalMenu" index="2"]
 margin_top = 68.0
 margin_right = 155.0
 margin_bottom = 106.123
 text = "MORALE"
 
-[node name="Endurance" type="Button" parent="InternalMenu"]
+[node name="Endurance" type="Button" parent="InternalMenu" index="3"]
 margin_top = 102.0
 margin_right = 155.0
 margin_bottom = 140.123
 text = "ENDURANCE"
 
-[node name="MilitaryMenu" type="VBoxContainer" parent="."]
+[node name="MilitaryMenu" type="VBoxContainer" parent="." index="5"]
 visible = false
 margin_left = 139.0
 margin_top = 34.0
 margin_right = 224.0
 margin_bottom = 106.0
 
-[node name="StartCampaign" type="Button" parent="MilitaryMenu"]
+[node name="StartCampaign" type="Button" parent="MilitaryMenu" index="0"]
 margin_right = 215.0
 margin_bottom = 38.1229
 text = "CREATE_TROOP"
 
-[node name="RecruitTroop" type="Button" parent="MilitaryMenu"]
+[node name="RecruitTroop" type="Button" parent="MilitaryMenu" index="1"]
 margin_top = 34.0
 margin_right = 215.0
 margin_bottom = 72.1229
 text = "RECRUIT_TROOP"
 
-[node name="TrainTroop" type="Button" parent="MilitaryMenu"]
+[node name="TrainTroop" type="Button" parent="MilitaryMenu" index="2"]
 margin_top = 68.0
 margin_right = 215.0
 margin_bottom = 106.123
 text = "TRAIN_TROOP"
 
-[node name="ProduceEquipment" type="Button" parent="MilitaryMenu"]
+[node name="ProduceEquipment" type="Button" parent="MilitaryMenu" index="3"]
 margin_top = 102.0
 margin_right = 215.0
 margin_bottom = 140.123
 text = "PRODUCE_EQUIPMENT"
 
-[node name="OfficersMenu" type="VBoxContainer" parent="."]
+[node name="OfficersMenu" type="VBoxContainer" parent="." index="6"]
 visible = false
 margin_left = 139.0
 margin_top = 68.0
 margin_right = 224.0
 margin_bottom = 140.0
 
-[node name="Move" type="Button" parent="OfficersMenu"]
+[node name="Move" type="Button" parent="OfficersMenu" index="0"]
 margin_right = 85.0
 margin_bottom = 38.1229
 text = "MOVE"
 
-[node name="Call" type="Button" parent="OfficersMenu"]
+[node name="Call" type="Button" parent="OfficersMenu" index="1"]
 margin_top = 34.0
 margin_right = 85.0
 margin_bottom = 72.1229
 text = "CALL"
-
-[node name="OpenSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-
-[node name="SelectSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-
-[node name="CloseSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-[connection signal="hide" from="." to="." method="_on_ArchitectureMenu_hide"]
 [connection signal="pressed" from="MainMenu/Internal" to="." method="_on_Internal_pressed"]
 [connection signal="pressed" from="MainMenu/Military" to="." method="_on_Military_pressed"]
 [connection signal="pressed" from="MainMenu/Officers" to="." method="_on_Officers_pressed"]
