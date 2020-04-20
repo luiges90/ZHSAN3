@@ -6,7 +6,7 @@
       0
     ],
     "Name": "曹操",
-    "PlayerControlled": true,
+    "PlayerControlled": false,
     "SectionList": [
       0
     ],
@@ -518,5 +518,18 @@
       39
     ],
     "_Id": 88
+  },
+  {
+    "Color": [
+      255,
+      0,
+      255
+    ],
+    "Name": "耒火",
+    "PlayerControlled": true,
+    "SectionList": [
+      100
+    ],
+    "_Id": 100
   }
 ]

@@ -58,8 +58,10 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 					"_Id": k['ID'],
 					"Name": k['Name'],
-					"Offence": k['Offence'] + k['OffencePerScale'] * k['MaxScale'] / k['MinScale'],
-					"Defence": k['Defence'] + k['DefencePerScale'] * k['MaxScale'] / k['MinScale'],
+					"BaseOffence": k['Offence'],
+					"BaseDefence": k['Defence'],
+					"Offence": k['OffencePerScale'] * k['MaxScale'] / k['MinScale'],
+					"Defence": k['DefencePerScale'] * k['MaxScale'] / k['MinScale'],
 					"RangeMin": 1 if k['ContactOffence'] else 2,
 					"RangeMax": k['OffenceRadius'],
 					"MaxQuantityMuiltipler": k['MaxScale'] / 20000,
@@ -110,7 +112,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Name": k['Name'],
 					"Title": states[k['StateID']] + ' ' + k['Name'],
 					"MapPosition": [position[0], position[1] - 1],
-					"PersonList": persons,
+					"PersonList": persons if k["ID"] != 64 else [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388],
 					"Population": k['Population'],
 					"MilitaryPopulation": k['Population'] * 0.4,
 					"Fund": k['Fund'],
@@ -135,12 +137,16 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				  "Name": k['Name'],
 				  "ArchitectureList": archs
 				})
+			r.append({
+			    "_Id": 100,
+			    "Name": '郴县军区',
+			    "ArchitectureList": [64]
+			})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
 		with open(file_name + '/Factions.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			colors = common['AllColors']
-			first = True
 			for k in obj["Factions"]["GameObjects"]:
 				sects = [int(x) for x in k['SectionsString'].split(' ') if x]
 				r.append({
@@ -148,9 +154,15 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				  "Name": k['Name'],
 				  "Color": [colors[k['ColorIndex']]['R'], colors[k['ColorIndex']]['G'], colors[k['ColorIndex']]['B']],
 				  "SectionList": sects,
-				  "PlayerControlled": first
+				  "PlayerControlled": False
 				})
-				first = False
+			r.append({
+				"_Id": 100,
+				"Name": '耒火',
+				"Color": [255, 0, 255],
+				"SectionList": [100],
+				"PlayerControlled": True
+			})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
 		with open(file_name + '/Persons.json', mode='w', encoding='utf-8') as fout:

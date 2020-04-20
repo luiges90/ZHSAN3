@@ -120,5 +120,5 @@ func _on_Create_pressed():
 	_confirming = true
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	emit_signal("create_troop", current_architecture, current_troop)
+	emit_signal("create_troop_select_position", current_architecture, current_troop)
 	hide()
