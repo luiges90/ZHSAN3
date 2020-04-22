@@ -4,7 +4,7 @@ class_name CreateTroop
 signal select_person
 signal select_leader
 signal select_military_kind
-signal create_troop
+signal create_troop_select_position
 
 var _confirming = false
 

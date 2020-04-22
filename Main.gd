@@ -14,7 +14,7 @@ func _ready():
 	_register_troop_ui()
 	_register_lists()
 	_register_menus()
-	$UICanvas/UIMain/CreateTroop.connect("create_troop", $Scenario, "_on_create_troop")
+	$UICanvas/UIMain/CreateTroop.connect("create_troop_select_position", $Scenario/PositionSelector, "_on_create_troop")
 	
 	_all_loaded()
 

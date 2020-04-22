@@ -30,8 +30,8 @@ func _ready():
 	if scenario:
 		position.x = map_position.x * scenario.tile_size
 		position.y = map_position.y * scenario.tile_size
-		scale.x = 50.0 / 128
-		scale.y = 50.0 / 128
+		scale.x = SharedData.TILE_SIZE / 128.0
+		scale.y = SharedData.TILE_SIZE / 128.0
 
 
 func _update_military_kind_sprite():

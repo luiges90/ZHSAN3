@@ -109,6 +109,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UIMain/TabList/PersonList.gd"
 }, {
+"base": "Node2D",
+"class": "PositionSelector",
+"language": "GDScript",
+"path": "res://ScenarioScene/PositionSelector/PositionSelector.gd"
+}, {
 "base": "Node",
 "class": "Root",
 "language": "GDScript",
@@ -195,6 +200,7 @@ _global_script_class_icons={
 "MovementKind": "",
 "Person": "",
 "PersonList": "",
+"PositionSelector": "",
 "Root": "",
 "SaveLoadMenu": "",
 "Scenario": "",
