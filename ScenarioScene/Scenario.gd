@@ -321,6 +321,33 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	add_child(instance)
 	
 ########################################
+#         Other signal Logic           #
+########################################
+
+func _on_day_passed():
+	var last_faction = current_faction
+	for faction in factions.values():
+		current_faction = faction
+		emit_signal("current_faction_set", current_faction)
+		ai.run_faction(faction, self)
+	current_faction = last_faction
+	emit_signal("current_faction_set", current_faction)
+	for faction in factions.values():
+		faction.day_event()
+	yield(get_tree(), "idle_frame")
+	emit_signal("all_faction_finished")
+	
+func _on_month_passed():
+	for faction in factions.values():
+		faction.month_event()
+	
+
+func _on_all_loaded():
+	emit_signal("current_faction_set", current_faction)
+
+
+	
+########################################
 #                Process               #
 ########################################
 
@@ -351,29 +378,3 @@ func get_player_factions():
 			arr.append(f)
 	return arr
 	
-########################################
-#            Other Logic               #
-########################################
-
-func _on_day_passed():
-	var last_faction = current_faction
-	for faction in factions.values():
-		current_faction = faction
-		emit_signal("current_faction_set", current_faction)
-		ai.run_faction(faction, self)
-	current_faction = last_faction
-	emit_signal("current_faction_set", current_faction)
-	for faction in factions.values():
-		faction.day_event()
-	yield(get_tree(), "idle_frame")
-	emit_signal("all_faction_finished")
-	
-func _on_month_passed():
-	for faction in factions.values():
-		faction.month_event()
-	
-
-func _on_all_loaded():
-	emit_signal("current_faction_set", current_faction)
-
-
