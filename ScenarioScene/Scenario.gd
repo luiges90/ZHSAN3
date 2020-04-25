@@ -66,6 +66,10 @@ func _ready():
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
+
+########################################
+#             Save / Load              #
+########################################
 	
 func _on_file_slot_clicked(mode, path: String):
 	if mode == SaveLoadMenu.MODE.SAVE:
@@ -254,15 +258,10 @@ func __load_item(instance, item, add_to_list):
 	if instance is Architecture or instance is Troop:
 		add_child(instance)
 	
-func get_player_factions():
-	var arr = []
-	for f in factions:
-		if factions[f].player_controlled:
-			arr.append(f)
-	return arr
 
-func _on_all_loaded():
-	emit_signal("current_faction_set", current_faction)
+########################################
+#           UI signal handling         #
+########################################
 	
 func _on_architecture_clicked(arch, mx, my):
 	_architecture_clicked = arch
@@ -274,16 +273,7 @@ func _on_architecture_survey_updated(arch):
 func _on_troop_clicked(troop, mx, my):
 	_troop_clicked = troop
 	_clicked_at = Vector2(mx, my)
-	
-func _process(delta):
-	if _architecture_clicked != null and _troop_clicked == null:
-		emit_signal("architecture_clicked", _architecture_clicked, _clicked_at.x, _clicked_at.y)
-	elif _architecture_clicked == null and _troop_clicked != null:
-		emit_signal("troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y)
-	elif _architecture_clicked != null and _troop_clicked != null:
-		emit_signal("architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y)
-	_architecture_clicked = null
-	_troop_clicked = null
+
 	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
 	var selected_persons = []
@@ -318,6 +308,53 @@ func _on_military_kind_selected(task, current_architecture, selected_kind_ids, o
 func on_architecture_toggle_auto_task(current_architecture):
 	current_architecture.auto_task = !current_architecture.auto_task
 
+func _on_PositionSelector_create_troop(arch, troop, position):
+	var scene = preload("Military/Troop.tscn")
+	var instance = scene.instance()
+	instance.connect("troop_clicked", self, "_on_troop_clicked")
+	instance.set_persons(troop.get_persons())
+	instance.set_military_kind(troop.military_kind)
+	instance.set_from_arch(troop.quantity, troop.morale, troop.combativity)
+	instance.set_map_position(position)
+	instance.scenario = self
+	troops[instance.id] = instance
+	add_child(instance)
+	
+########################################
+#                Process               #
+########################################
+
+func _process(delta):
+	if _architecture_clicked != null and _troop_clicked == null:
+		emit_signal("architecture_clicked", _architecture_clicked, _clicked_at.x, _clicked_at.y)
+	elif _architecture_clicked == null and _troop_clicked != null:
+		emit_signal("troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y)
+	elif _architecture_clicked != null and _troop_clicked != null:
+		emit_signal("architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y)
+	_architecture_clicked = null
+	_troop_clicked = null
+	
+########################################
+#           Data Retrieval             #
+########################################
+
+func get_persons_from_ids(ids):
+	var result = []
+	for p in ids:
+		result.append(persons[p])
+	return result
+	
+func get_player_factions():
+	var arr = []
+	for f in factions:
+		if factions[f].player_controlled:
+			arr.append(f)
+	return arr
+	
+########################################
+#            Other Logic               #
+########################################
+
 func _on_day_passed():
 	var last_faction = current_faction
 	for faction in factions.values():
@@ -334,22 +371,9 @@ func _on_day_passed():
 func _on_month_passed():
 	for faction in factions.values():
 		faction.month_event()
-
-func get_persons_from_ids(ids):
-	var result = []
-	for p in ids:
-		result.append(persons[p])
-	return result
 	
 
-func _on_PositionSelector_create_troop(arch, troop, position):
-	var scene = preload("Military/Troop.tscn")
-	var instance = scene.instance()
-	instance.connect("troop_clicked", self, "_on_troop_clicked")
-	instance.set_persons(troop.get_persons())
-	instance.set_military_kind(troop.military_kind)
-	instance.set_from_arch(troop.quantity, troop.morale, troop.combativity)
-	instance.set_map_position(position)
-	instance.scenario = self
-	troops[instance.id] = instance
-	add_child(instance)
+func _on_all_loaded():
+	emit_signal("current_faction_set", current_faction)
+
+
