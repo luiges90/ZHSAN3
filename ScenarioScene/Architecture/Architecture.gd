@@ -160,6 +160,8 @@ func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("architecture_clicked", self, event.global_position.x, event.global_position.y)
+			get_tree().set_input_as_handled()
+			
 			
 func day_event():
 	for p in get_persons():

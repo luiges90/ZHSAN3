@@ -1,6 +1,8 @@
 extends Control
 class_name UIMain
 
+signal cancel_ui
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -20,4 +22,5 @@ func _unhandled_input(event):
 			($SystemMenu as SystemMenu).hide()
 			($SaveLoadMenu as SaveLoadMenu).hide()
 			($CreateTroop as CreateTroop).hide()
+			emit_signal("cancel_ui")
 
