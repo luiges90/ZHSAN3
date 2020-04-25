@@ -103,8 +103,13 @@ func get_persons() -> Array:
 func get_leader():
 	return _person_list[0]
 	
-func set_persons(list: Array):
-	_person_list = list
+func add_person(p, force: bool = false):
+	_person_list.append(p)
+	if not force:
+		p.set_location(self)
+		
+func remove_person(p):
+	Util.remove_object(_person_list, p)
 
 func set_military_kind(kind):
 	military_kind = kind

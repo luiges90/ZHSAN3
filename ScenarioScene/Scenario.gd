@@ -312,7 +312,8 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
 	instance.connect("troop_clicked", self, "_on_troop_clicked")
-	instance.set_persons(troop.get_persons())
+	for p in troop.persons:
+		instance.add_person(p)
 	instance.set_military_kind(troop.military_kind)
 	instance.set_from_arch(troop.quantity, troop.morale, troop.combativity)
 	instance.set_map_position(position)

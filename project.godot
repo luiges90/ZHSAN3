@@ -60,6 +60,11 @@ _global_script_classes=[ {
 "path": "res://UIMain/CreateTroop/CreateTroop.gd"
 }, {
 "base": "Node",
+"class": "CreatingTroop",
+"language": "GDScript",
+"path": "res://UIMain/CreateTroop/CreatingTroop.gd"
+}, {
+"base": "Node",
 "class": "DateRunner",
 "language": "GDScript",
 "path": "res://ScenarioScene/DateRunner.gd"
@@ -195,6 +200,7 @@ _global_script_class_icons={
 "ArchitectureSurvey": "",
 "ContextMenu": "",
 "CreateTroop": "",
+"CreatingTroop": "",
 "DateRunner": "",
 "Faction": "",
 "InfoMenu": "",

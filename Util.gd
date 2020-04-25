@@ -60,6 +60,11 @@ static func append_all(list: Array, other: Array):
 	for i in other:
 		list.append(i)
 		
+static func remove_object(arr: Array, item):
+	var index = arr.find(item)
+	if index >= 0:
+		arr.remove(index)
+		
 static func dict_try_get(dict: Dictionary, key, default):
 	if dict.has(key):
 		return dict[key]

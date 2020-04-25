@@ -155,6 +155,9 @@ func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
 		p.set_location(self, true)
+		
+func remove_person(p):
+	Util.remove_object(_person_list, p)
 
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:

@@ -62,6 +62,8 @@ func get_location():
 	return _location
 	
 func set_location(item, force = false):
+	if not force and _location != null:
+		_location.remove_person(self)
 	_location = item
 	if not force:
 		item.add_person(self, true)
