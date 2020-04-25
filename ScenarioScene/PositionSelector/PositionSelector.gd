@@ -21,11 +21,28 @@ func _on_create_troop(arch, troop):
 	current_action = CurrentAction.CREATE_TROOP
 	current_architecture = arch
 	current_troop = troop
-	_create_position_select_item(arch.map_position)
-	_create_position_select_item(arch.map_position + Vector2.UP)
-	_create_position_select_item(arch.map_position + Vector2.DOWN)
-	_create_position_select_item(arch.map_position + Vector2.LEFT)
-	_create_position_select_item(arch.map_position + Vector2.RIGHT)
+	
+	var scen = arch.scenario
+	
+	var pos = arch.map_position
+	if scen.get_troop_on_position(pos) == null:
+		_create_position_select_item(pos)
+		
+	pos = arch.map_position + Vector2.UP
+	if scen.get_troop_on_position(pos) == null:
+		_create_position_select_item(pos)
+		
+	pos = arch.map_position + Vector2.DOWN
+	if scen.get_troop_on_position(pos) == null:
+		_create_position_select_item(pos)
+		
+	pos = arch.map_position + Vector2.LEFT
+	if scen.get_troop_on_position(pos) == null:
+		_create_position_select_item(pos)
+		
+	pos = arch.map_position + Vector2.RIGHT
+	if scen.get_troop_on_position(pos) == null:
+		_create_position_select_item(pos)
 	
 	
 func _create_position_select_item(position):

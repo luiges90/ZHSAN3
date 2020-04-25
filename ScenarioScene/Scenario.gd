@@ -346,7 +346,6 @@ func _on_all_loaded():
 	emit_signal("current_faction_set", current_faction)
 
 
-	
 ########################################
 #                Process               #
 ########################################
@@ -377,4 +376,10 @@ func get_player_factions():
 		if factions[f].player_controlled:
 			arr.append(f)
 	return arr
-	
+
+func get_troop_on_position(position):
+	for id in troops:
+		var troop = troops[id]
+		if troop.map_position == position:
+			return troop
+	return null
