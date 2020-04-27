@@ -387,3 +387,11 @@ func get_troop_on_position(position):
 		if troop.map_position == position:
 			return troop
 	return null
+
+func get_terrain_at_position(position):
+	var terrain_id = $Map._get_terrain_id_at_position(position)
+	for t in terrain_details:
+		for id in terrain_details[t].terrain_ids:
+			if int(id) == int(terrain_id):
+				return terrain_details[t]
+	assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))

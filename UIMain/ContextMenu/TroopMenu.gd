@@ -20,4 +20,5 @@ func _on_ArchitectureAndTroopMenu_troop_clicked(troop, mx, my):
 
 
 func _on_Move_pressed():
-	emit_signal("select_move", showing_troop)
+	_select_item()
+	emit_signal("move_clicked", showing_troop)

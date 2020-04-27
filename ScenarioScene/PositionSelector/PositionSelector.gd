@@ -49,7 +49,9 @@ func _on_select_troop_move_to(troop):
 	current_action = CurrentAction.MOVE_TROOP
 	current_architecture = null
 	current_troop = troop
-	# TODO select position
+	
+	for pos in current_troop.get_movement_area():
+		_create_position_select_item(pos)
 	
 	
 func _create_position_select_item(position):
