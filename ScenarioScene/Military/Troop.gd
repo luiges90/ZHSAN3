@@ -80,7 +80,7 @@ func load_data(json: Dictionary):
 	
 	map_position = Util.load_position(json["MapPosition"])
 	
-	military_kind = scenario.military_kinds[json["MilitaryKind"]]
+	military_kind = scenario.military_kinds[int(json["MilitaryKind"])]
 	quantity = json["Quantity"]
 	morale = json["Morale"]
 	combativity = json["Combativity"]

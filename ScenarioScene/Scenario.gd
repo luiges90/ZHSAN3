@@ -207,7 +207,7 @@ func _load_data(path):
 	var troop_scene = preload("Military/Troop.tscn")
 	obj = parse_json(file.get_as_text())
 	for item in obj:
-		var instance = troop_scene.new()
+		var instance = troop_scene.instance()
 		instance.connect("troop_clicked", self, "_on_troop_clicked")
 		__load_item(instance, item, troops)
 		for id in item["PersonList"]:
