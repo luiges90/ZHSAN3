@@ -17,6 +17,8 @@ var combativity: int setget forbidden
 
 var _person_list = Array() setget forbidden, get_persons
 
+var current_order
+
 signal troop_clicked
 
 func forbidden(x):

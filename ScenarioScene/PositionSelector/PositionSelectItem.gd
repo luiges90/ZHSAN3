@@ -11,7 +11,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 
 
 func _on_Area2D_mouse_entered():
-	($Area2D/Sprite as Sprite).modulate = Color.blue
+	($Area2D/Sprite as Sprite).modulate = Color.gray
 
 
 func _on_Area2D_mouse_exited():

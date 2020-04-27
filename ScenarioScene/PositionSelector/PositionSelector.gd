@@ -1,7 +1,7 @@
 extends Node2D
 class_name PositionSelector
 
-enum CurrentAction { CREATE_TROOP }
+enum CurrentAction { CREATE_TROOP, MOVE_TROOP }
 var current_action
 
 var current_architecture
@@ -43,6 +43,13 @@ func _on_create_troop(arch, troop):
 	pos = arch.map_position + Vector2.RIGHT
 	if scen.get_troop_on_position(pos) == null:
 		_create_position_select_item(pos)
+
+
+func _on_select_troop_move_to(troop):
+	current_action = CurrentAction.MOVE_TROOP
+	current_architecture = null
+	current_troop = troop
+	# TODO select position
 	
 	
 func _create_position_select_item(position):

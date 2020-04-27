@@ -25,3 +25,4 @@ margin_top = 34.0
 margin_right = 104.0
 margin_bottom = 72.1229
 text = "ATTACK"
+[connection signal="pressed" from="VBoxContainer/Move" to="." method="_on_Move_pressed"]

@@ -45,6 +45,7 @@ func _register_menus():
 	$UICanvas/UIMain/ArchitectureMenu.connect("architecture_toggle_auto_task", $Scenario, "on_architecture_toggle_auto_task")
 	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
 	$UICanvas/UIMain/InfoMenu.connect("military_kind_clicked", $UICanvas/UIMain/MilitaryKindList, "_on_InfoMenu_military_kind_clicked", [$Scenario])
+	$UICanvas/UIMain/TroopMenu.connect("move_clicked", $Scenario, "_on_troop_move_clicked")
 
 
 func _all_loaded():

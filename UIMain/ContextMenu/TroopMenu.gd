@@ -4,6 +4,8 @@ class_name TroopMenu
 var showing_troop
 var _opening_list
 
+signal move_clicked
+
 func show_menu(troop, mouse_x, mouse_y):	
 	showing_troop = troop
 	
@@ -17,4 +19,5 @@ func _on_ArchitectureAndTroopMenu_troop_clicked(troop, mx, my):
 	show_menu(troop, mx, my)
 
 
-
+func _on_Move_pressed():
+	emit_signal("select_move", showing_troop)

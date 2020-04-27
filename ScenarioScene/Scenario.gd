@@ -321,6 +321,9 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	troops[instance.id] = instance
 	add_child(instance)
 	
+func _on_troop_move_clicked(troop):
+	$PositionSelector._on_select_troop_move_to(troop)
+	
 ########################################
 #         Other signal Logic           #
 ########################################
