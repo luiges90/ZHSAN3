@@ -5,6 +5,8 @@ const SPRITE_SIZE = 128
 const SPRITE_SHEET_FRAMES = 10
 const ANIMATION_SPEED = 30
 
+enum OrderType { MOVE }
+
 var id: int setget forbidden
 var scenario
 
@@ -17,11 +19,14 @@ var combativity: int setget forbidden
 
 var _person_list = Array() setget forbidden, get_persons
 
-var current_order
+var current_order setget forbidden, forbidden_get
 
 signal troop_clicked
 
 func forbidden(x):
+	assert(false)
+	
+func forbidden_get():
 	assert(false)
 	
 func _ready():
@@ -168,6 +173,11 @@ func get_initiative():
 func get_movement_cost(terrain_kind):
 	return military_kind.movement_kind.movement_cost[str(terrain_kind.id)]
 
+func set_move_order(position):
+	current_order = {
+		"type": OrderType.MOVE,
+		"destination": position
+	}
 
 class PositionItem:
 	var position: Vector2

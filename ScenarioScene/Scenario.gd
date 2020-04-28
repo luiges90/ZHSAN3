@@ -321,6 +321,11 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	troops[instance.id] = instance
 	add_child(instance)
 	
+
+func _on_PositionSelector_move_troop(troop, position):
+	troop.set_move_order(position)
+
+	
 func _on_troop_move_clicked(troop):
 	$PositionSelector._on_select_troop_move_to(troop)
 	
@@ -395,3 +400,4 @@ func get_terrain_at_position(position):
 			if int(id) == int(terrain_id):
 				return terrain_details[t]
 	assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
+

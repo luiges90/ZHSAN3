@@ -3,6 +3,13 @@ class_name PositionSelectItem
 
 signal position_selected
 
+var color
+
+func set_color(in_color):
+	color = in_color
+	($Area2D/Sprite as Sprite).modulate = color
+	
+
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
@@ -11,8 +18,8 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 
 
 func _on_Area2D_mouse_entered():
-	($Area2D/Sprite as Sprite).modulate = Color.gray
+	($Area2D/Sprite as Sprite).modulate = color.lightened(0.5)
 
 
 func _on_Area2D_mouse_exited():
-	($Area2D/Sprite as Sprite).modulate = Color.white
+	($Area2D/Sprite as Sprite).modulate = color
