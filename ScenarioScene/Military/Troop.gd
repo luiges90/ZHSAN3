@@ -21,6 +21,8 @@ var _person_list = Array() setget forbidden, get_persons
 
 var current_order setget forbidden
 
+onready var pathfinder: PathFinder = PathFinder.new(self)
+
 signal troop_clicked
 
 func forbidden(x):
@@ -177,7 +179,7 @@ func set_move_order(position):
 	}
 
 func get_movement_area():
-	return PathFinder.new(self).get_movement_area()
+	return pathfinder.get_movement_area()
 
 
 func _on_TroopArea_input_event(viewport, event, shape_idx):
