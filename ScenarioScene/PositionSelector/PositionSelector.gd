@@ -1,7 +1,7 @@
 extends Node2D
 class_name PositionSelector
 
-enum CurrentAction { CREATE_TROOP, MOVE_TROOP }
+enum CurrentAction { CREATE_TROOP, MOVE_TROOP, ATTACK_TROOP, ENTER_TROOP }
 var current_action
 
 var current_architecture
@@ -53,6 +53,20 @@ func _on_select_troop_move_to(troop):
 	
 	for pos in current_troop.get_movement_area():
 		_create_position_select_item(pos, Color.blue)
+		
+
+func _on_select_troop_attack(troop):
+	current_action = CurrentAction.ATTACK_TROOP
+	current_architecture = null
+	current_troop = troop
+	# select locations
+
+func _on_select_troop_enter(troop):
+	current_action = CurrentAction.ENTER_TROOP
+	current_architecture = null
+	current_troop = troop
+	# select locations
+
 	
 	
 func _create_position_select_item(position, color = Color.white):

@@ -327,6 +327,12 @@ func _on_PositionSelector_move_troop(troop, position):
 func _on_troop_move_clicked(troop):
 	$PositionSelector._on_select_troop_move_to(troop)
 	
+func _on_troop_attack_clicked(troop):
+	$PositionSelector._on_select_troop_attack(troop)
+	
+func _on_troop_enter_clicked(troop):
+	$PositionSelector._on_select_troop_enter(troop)
+	
 ########################################
 #         Other signal Logic           #
 ########################################
