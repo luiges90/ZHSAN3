@@ -47,13 +47,15 @@ func _draw():
 	#	var dest = arch.get_global_transform_with_canvas().origin - get_global_transform_with_canvas().origin
 	#	draw_line(Vector2(0, 0), dest, Color(255, 0, 0), 5, true)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if scenario:
 		position.x = map_position.x * scenario.tile_size
 		position.y = map_position.y * scenario.tile_size
 		scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
-	
+
+####################################
+#            Save / Load           #
+####################################
 func load_data(json: Dictionary):
 	id = json["_Id"]
 	gname = json["Name"]
@@ -100,7 +102,10 @@ func save_data() -> Dictionary:
 		"Equipments": equipments,
 		"_AutoTask": auto_task
 	}
-	
+
+####################################
+#        Set up / Tear down        #
+####################################
 func setup_after_load():
 	for kind in scenario.military_kinds:
 		if scenario.military_kinds[kind].has_equipments():
@@ -120,7 +125,10 @@ func set_adjacency(archs, ai_paths):
 		for path in ai_paths[kind].list:
 			if path.start_architecture == id:
 				adjacent_archs[path.end_architecture] = path.path
-				
+
+####################################
+#             Get stat             #
+####################################
 func is_frontline() -> bool:
 	for arch_id in adjacent_archs:
 		if scenario.architectures[arch_id].belonged_faction().id != id:
@@ -151,19 +159,13 @@ func get_workable_persons() -> Array:
 			result.append(p)
 	return result
 	
-func add_person(p, force: bool = false):
-	_person_list.append(p)
-	if not force:
-		p.set_location(self, true)
 		
-func remove_person(p):
-	Util.remove_object(_person_list, p)
+func expected_fund_income():
+	return commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
+	
+func expected_food_income():
+	return agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
 
-func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			emit_signal("architecture_clicked", self, event.global_position.x, event.global_position.y)
-			get_tree().set_input_as_handled()
 			
 			
 func day_event():
@@ -176,17 +178,25 @@ func day_event():
 func month_event():
 	_develop_resources()
 	_decay_internal()
-	
+
+####################################
+#            Set command           #
+####################################
 func set_person_task(task, persons: Array):
 	for p in persons:
 		p.set_working_task(task)
 		
-func expected_fund_income():
-	return commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
-	
-func expected_food_income():
-	return agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+func add_person(p, force: bool = false):
+	_person_list.append(p)
+	if not force:
+		p.set_location(self, true)
+		
+func remove_person(p):
+	Util.remove_object(_person_list, p)
 
+####################################
+#          Order Execution         #
+####################################
 func _develop_resources():
 	fund += expected_fund_income()
 	food += expected_food_income()
@@ -195,13 +205,11 @@ func _develop_resources():
 	population += population_increase
 	military_population += population_increase * 0.4
 	
-	
 func _decay_internal():
 	agriculture -= Util.f2ri(agriculture * 0.005)
 	commerce -= Util.f2ri(commerce * 0.005)
 	morale -= Util.f2ri(morale * 0.01)
 	endurance -= Util.f2ri(endurance * 0.005)
-	
 	
 func _develop_internal():
 	for p in get_persons():
@@ -270,3 +278,12 @@ func _produce_equipment(p: Person):
 			amount = floor(fund / cost)
 		fund -= amount * cost
 		equipments[equipment] += amount
+
+####################################
+#                UI                #
+####################################
+func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			emit_signal("architecture_clicked", self, event.global_position.x, event.global_position.y)
+			get_tree().set_input_as_handled()
