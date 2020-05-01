@@ -164,20 +164,25 @@ func set_position(pos):
 #          Order Execution         #
 ####################################
 func prepare_orders():
-	_remaining_movement = get_speed()
-	_current_path = pathfinder.get_walk_path_to(current_order.destination)
-	_current_path_index = 0
+	if current_order.type == OrderType.MOVE:
+		_remaining_movement = get_speed()
+		_current_path = pathfinder.get_walk_path_to(current_order.destination)
+		_current_path_index = 0
 
-func execute_step():
-	_current_path_index += 1
-	if _current_path_index >= _current_path.size():
-		return false
-	var new_position = _current_path[_current_path_index]
-	var movement_cost = get_movement_cost(new_position)
-	if _remaining_movement >= movement_cost:
-		set_position(new_position)
-		_remaining_movement -= movement_cost
-		return true
+# Returns: If there are any more steps to execute
+func execute_step() -> bool:
+	if current_order.type == OrderType.MOVE:
+		_current_path_index += 1
+		if _current_path_index >= _current_path.size():
+			return false
+		var new_position = _current_path[_current_path_index]
+		var movement_cost = get_movement_cost(new_position)
+		if _remaining_movement >= movement_cost:
+			set_position(new_position)
+			_remaining_movement -= movement_cost
+			return true
+		else:
+			return false
 	else:
 		return false
 
