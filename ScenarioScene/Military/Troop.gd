@@ -19,6 +19,9 @@ var combativity: int setget forbidden
 
 var _person_list = Array() setget forbidden, get_persons
 
+var _belonged_section setget forbidden, get_belonged_section
+var _starting_arch setget forbidden, get_starting_architecture
+
 var current_order setget forbidden
 var _current_path setget forbidden
 var _current_path_index = 0 setget forbidden
@@ -83,7 +86,9 @@ func add_person(p, force: bool = false):
 func remove_person(p):
 	Util.remove_object(_person_list, p)
 
-func create_troop_set_data(kind, in_quantity, in_morale, in_combativity, pos):
+func create_troop_set_data(starting_arch, kind, in_quantity, in_morale, in_combativity, pos):
+	_starting_arch = starting_arch
+	_belonged_section = starting_arch.get_belonged_section()
 	military_kind = kind
 	quantity = in_quantity
 	morale = in_morale
@@ -94,6 +99,15 @@ func create_troop_set_data(kind, in_quantity, in_morale, in_combativity, pos):
 ####################################
 #             Get stat             #
 ####################################
+func get_belonged_section():
+	return _belonged_section
+	
+func get_belonged_faction():
+	return _belonged_section.get_belonged_faction()
+	
+func get_starting_architecture():
+	return _starting_arch
+
 func get_leader():
 	return _person_list[0]
 

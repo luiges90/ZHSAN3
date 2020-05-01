@@ -314,7 +314,7 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	instance.connect("troop_clicked", self, "_on_troop_clicked")
 	for p in troop.persons:
 		instance.add_person(p)
-	instance.create_troop_set_data(troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
+	instance.create_troop_set_data(arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
 	instance.scenario = self
 	troops[instance.id] = instance
 	add_child(instance)
