@@ -4,7 +4,7 @@ class_name PathFinder
 var troop
 var scenario
 
-var stored_paths = {}
+var _stored_paths = {}
 
 func _init(troop):
 	self.troop = troop
@@ -21,31 +21,33 @@ func get_movement_area():
 	var start_item = PositionItem.new(troop.map_position, troop.get_speed())
 	var area = [start_item]
 	var position_queue = [start_item]
-	stored_paths.clear()
-	stored_paths[start_item.position] = [start_item.position]
+	_stored_paths.clear()
+	_stored_paths[start_item.position] = [start_item.position]
 	while position_queue.size() > 0:
 		var item = position_queue.pop_front()
 		
 		var up = item.position + Vector2.UP
-		_step_forward(item, up, area, position_queue, stored_paths)
+		_step_forward(item, up, area, position_queue, _stored_paths)
 		
 		var down = item.position + Vector2.DOWN
-		_step_forward(item, down, area, position_queue, stored_paths)
+		_step_forward(item, down, area, position_queue, _stored_paths)
 		
 		var left = item.position + Vector2.LEFT
-		_step_forward(item, left, area, position_queue, stored_paths)
+		_step_forward(item, left, area, position_queue, _stored_paths)
 		
 		var right = item.position + Vector2.RIGHT
-		_step_forward(item, right, area, position_queue, stored_paths)
+		_step_forward(item, right, area, position_queue, _stored_paths)
 	
 	var area_pos = []
 	for a in area:
 		area_pos.append(a.position)
 	return area_pos
+	
+func get_walk_path_to(position):
+	return _stored_paths[position] 
 
 func _step_forward(last_position_item, position, area, position_queue, stored_paths):
-	var terrain = scenario.get_terrain_at_position(position)
-	var movement_cost = troop.get_movement_cost(terrain)
+	var movement_cost = troop.get_movement_cost(position)
 	if last_position_item.movement_left - movement_cost >= 0:
 		var found = false
 		for a in area:

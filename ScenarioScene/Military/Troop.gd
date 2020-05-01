@@ -20,6 +20,9 @@ var combativity: int setget forbidden
 var _person_list = Array() setget forbidden, get_persons
 
 var current_order setget forbidden
+var _current_path setget forbidden
+var _current_path_index = 0 setget forbidden
+var _remaining_movement = 0 setget forbidden
 
 onready var pathfinder: PathFinder = PathFinder.new(self)
 
@@ -39,46 +42,9 @@ func _ready():
 		scale.x = SharedData.TILE_SIZE / 128.0
 		scale.y = SharedData.TILE_SIZE / 128.0
 
-
-func _update_military_kind_sprite():
-	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
-	if animated_sprite != null:
-		var textures = SharedData.troop_images.get(military_kind.id, null)
-		if textures == null:
-			var attack = load("res://Images/Troop/" + str(military_kind.id) + "/Attack.png")
-			var be_attacked = load("res://Images/Troop/" + str(military_kind.id) + "/BeAttacked.png")
-			var move = load("res://Images/Troop/" + str(military_kind.id) + "/Move.png")
-			if attack != null and be_attacked != null and move != null:
-				textures = {
-					"attack": attack,
-					"be_attacked": be_attacked,
-					"move": move
-				}
-				SharedData.troop_images[military_kind.id] = textures
-		
-		var sprite_frame = SpriteFrames.new()
-		
-		var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
-		for i in range(0, 8):
-			_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
-			_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
-			_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
-			
-		animated_sprite.frames = sprite_frame
-	
-func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
-	sprite_frame.add_animation(animation)
-	sprite_frame.set_animation_speed(animation, ANIMATION_SPEED)
-	for i in range(0, SPRITE_SHEET_FRAMES):
-		var sprite = Image.new()
-		sprite.create(SPRITE_SIZE, SPRITE_SIZE, false, texture.get_format())
-		sprite.blit_rect(texture, Rect2(i * SPRITE_SIZE, spritesheet_offset, SPRITE_SIZE, SPRITE_SIZE), Vector2(0, 0))
-		
-		var image = ImageTexture.new()
-		image.create_from_image(sprite)
-		
-		sprite_frame.add_frame(animation, image)
-
+####################################
+#            Save / Load           #
+####################################
 func load_data(json: Dictionary):
 	id = json["_Id"]
 	
@@ -106,29 +72,31 @@ func get_name() -> String:
 func get_persons() -> Array:
 	return _person_list
 	
-func get_leader():
-	return _person_list[0]
-	
+####################################
+#        Set up / Tear down        #
+####################################
 func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
 		p.set_location(self)
-		
+		  
 func remove_person(p):
 	Util.remove_object(_person_list, p)
 
-func set_military_kind(kind):
+func create_troop_set_data(kind, in_quantity, in_morale, in_combativity, pos):
 	military_kind = kind
-	_update_military_kind_sprite()
-
-func set_from_arch(in_quantity, in_morale, in_combativity):
 	quantity = in_quantity
 	morale = in_morale
 	combativity = in_combativity
-	
-func set_map_position(pos):
 	map_position = pos
-	
+	_update_military_kind_sprite()
+
+####################################
+#             Get stat             #
+####################################
+func get_leader():
+	return _person_list[0]
+
 func get_strength():
 	var strength = get_leader().strength
 	var max_strength = 0
@@ -168,10 +136,17 @@ func get_speed():
 	
 func get_initiative():
 	return military_kind.initiative
+	
+static func cmp_initiative(a, b):
+	return a.get_initiative() < b.get_initiative()
 
-func get_movement_cost(terrain_kind):
-	return military_kind.movement_kind.movement_cost[terrain_kind.id]
+func get_movement_cost(position):
+	var terrain = scenario.get_terrain_at_position(position)
+	return military_kind.movement_kind.movement_cost[terrain.id]
 
+####################################
+#            Set command           #
+####################################
 func set_move_order(position):
 	current_order = {
 		"type": OrderType.MOVE,
@@ -180,10 +155,79 @@ func set_move_order(position):
 
 func get_movement_area():
 	return pathfinder.get_movement_area()
+	
+func set_position(pos):
+	map_position = pos
+	position = map_position * scenario.tile_size
 
+####################################
+#          Order Execution         #
+####################################
+func prepare_orders():
+	_remaining_movement = get_speed()
+	_current_path = pathfinder.get_walk_path_to(current_order.destination)
+	_current_path_index = 0
 
+func execute_step():
+	_current_path_index += 1
+	if _current_path_index >= _current_path.size():
+		return false
+	var new_position = _current_path[_current_path_index]
+	var movement_cost = get_movement_cost(new_position)
+	if _remaining_movement >= movement_cost:
+		set_position(new_position)
+		_remaining_movement -= movement_cost
+		return true
+	else:
+		return false
+
+####################################
+#                UI                #
+####################################
+func _update_military_kind_sprite():
+	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+	if animated_sprite != null:
+		var textures = SharedData.troop_images.get(military_kind.id, null)
+		if textures == null:
+			var attack = load("res://Images/Troop/" + str(military_kind.id) + "/Attack.png")
+			var be_attacked = load("res://Images/Troop/" + str(military_kind.id) + "/BeAttacked.png")
+			var move = load("res://Images/Troop/" + str(military_kind.id) + "/Move.png")
+			if attack != null and be_attacked != null and move != null:
+				textures = {
+					"attack": attack,
+					"be_attacked": be_attacked,
+					"move": move
+				}
+				SharedData.troop_images[military_kind.id] = textures
+		
+		var sprite_frame = SpriteFrames.new()
+		
+		var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
+		for i in range(0, 8):
+			_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
+			_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
+			_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
+			
+		animated_sprite.frames = sprite_frame
+	
+func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
+	sprite_frame.add_animation(animation)
+	sprite_frame.set_animation_speed(animation, ANIMATION_SPEED)
+	for i in range(0, SPRITE_SHEET_FRAMES):
+		var sprite = Image.new()
+		sprite.create(SPRITE_SIZE, SPRITE_SIZE, false, texture.get_format())
+		sprite.blit_rect(texture, Rect2(i * SPRITE_SIZE, spritesheet_offset, SPRITE_SIZE, SPRITE_SIZE), Vector2(0, 0))
+		
+		var image = ImageTexture.new()
+		image.create_from_image(sprite)
+		
+		sprite_frame.add_frame(animation, image)
+		
+
+####################################
+#         UI event handling        #
+####################################
 func _on_TroopArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("troop_clicked", self, event.global_position.x, event.global_position.y)
-

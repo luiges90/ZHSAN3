@@ -314,9 +314,7 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	instance.connect("troop_clicked", self, "_on_troop_clicked")
 	for p in troop.persons:
 		instance.add_person(p)
-	instance.set_military_kind(troop.military_kind)
-	instance.set_from_arch(troop.quantity, troop.morale, troop.combativity)
-	instance.set_map_position(position)
+	instance.create_troop_set_data(troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
 	instance.scenario = self
 	troops[instance.id] = instance
 	add_child(instance)
@@ -335,7 +333,15 @@ func _on_troop_move_clicked(troop):
 
 func _on_day_passed():
 	# run Troops
-	
+	var troop_queue = troops.values()
+	troop_queue.shuffle()
+	troop_queue.sort_custom(Troop, "cmp_initiative")
+	for troop in troop_queue:
+		troop.prepare_orders()
+	while troop_queue.size() > 0:
+		var troop = troop_queue.pop_front()
+		if troop.execute_step():
+			troop_queue.push_back(troop)
 	
 	# run Factions
 	var last_faction = current_faction
