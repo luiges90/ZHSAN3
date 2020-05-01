@@ -26,6 +26,9 @@ func _change_digit(node, change):
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.scancode == KEY_SPACE:
+			if $DateRunner/UnitDigit/Text.text == '0' and $DateRunner/TensDigit/Text10.text == '0':
+				$DateRunner/TensDigit/Text10.text = '0'
+				$DateRunner/UnitDigit/Text.text = '1'
 			_on_Play_pressed()
 		elif not _running:
 			match event.scancode:

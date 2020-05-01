@@ -155,7 +155,7 @@ __meta__ = {
 }
 
 [node name="System" type="Button" parent="EndContainer"]
-margin_right = 86.4147
+margin_right = 86.4148
 margin_bottom = 32.0
 grow_horizontal = 0
 text = "SYSTEM"
