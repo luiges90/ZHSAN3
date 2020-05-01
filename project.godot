@@ -105,6 +105,11 @@ _global_script_classes=[ {
 "path": "res://ScenarioScene/Military/MovementKind.gd"
 }, {
 "base": "Node",
+"class": "PathFinder",
+"language": "GDScript",
+"path": "res://ScenarioScene/Military/PathFinder.gd"
+}, {
+"base": "Node",
 "class": "Person",
 "language": "GDScript",
 "path": "res://ScenarioScene/Person/Person.gd"
@@ -209,6 +214,7 @@ _global_script_class_icons={
 "MilitaryKind": "",
 "MilitaryKindList": "",
 "MovementKind": "",
+"PathFinder": "",
 "Person": "",
 "PersonList": "",
 "PositionSelectItem": "",

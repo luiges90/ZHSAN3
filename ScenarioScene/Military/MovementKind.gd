@@ -11,7 +11,7 @@ func forbidden(x):
 
 func load_data(json: Dictionary):
 	id = json["_Id"]
-	movement_cost = json["MovementCosts"]
+	movement_cost = Util.convert_dict_to_int_key(json["MovementCosts"])
 	
 func save_data() -> Dictionary:
 	return {

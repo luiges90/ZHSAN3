@@ -334,6 +334,10 @@ func _on_troop_move_clicked(troop):
 ########################################
 
 func _on_day_passed():
+	# run Troops
+	
+	
+	# run Factions
 	var last_faction = current_faction
 	for faction in factions.values():
 		current_faction = faction
@@ -343,6 +347,7 @@ func _on_day_passed():
 	emit_signal("current_faction_set", current_faction)
 	for faction in factions.values():
 		faction.day_event()
+	
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")
 	
