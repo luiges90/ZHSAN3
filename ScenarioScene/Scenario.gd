@@ -172,11 +172,10 @@ func _load_data(path):
 	file.close()
 	
 	for kind in movement_kinds:
-		file.open(path + "/paths/" + str(kind) + '.json', File.READ)
-		obj = parse_json(file.get_as_text())
-		if obj == null:
+		var err = file.open(path + "/paths/" + str(kind) + '.json', File.READ)
+		if err != OK:
 			file.open("user://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)
-			obj = parse_json(file.get_as_text())
+		obj = parse_json(file.get_as_text())
 		var ai_path = AIPaths.new()
 		ai_path.load_data(obj)
 		ai_paths[kind] = ai_path
