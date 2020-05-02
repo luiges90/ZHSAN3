@@ -37,7 +37,7 @@ func load_data(json: Dictionary):
 	intelligence = json["Intelligence"]
 	politics = json["Politics"]
 	glamour = json["Glamour"]
-	working_task = json["Task"]
+	working_task = int(json["Task"])
 	producing_equipment = json["ProducingEquipment"]
 	
 func save_data() -> Dictionary:

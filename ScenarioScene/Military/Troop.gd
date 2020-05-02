@@ -60,7 +60,7 @@ func load_data(json: Dictionary):
 	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
 	
-	current_order = json["CurrentOrder"]
+	current_order = int(json["CurrentOrder"])
 	
 func save_data() -> Dictionary:
 	return {
