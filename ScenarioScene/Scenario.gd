@@ -4,6 +4,8 @@ class_name Scenario
 onready var tile_size: int = $Map.tile_size
 onready var map_size: Vector2 = $Map.map_size
 
+const GROUP_GAME_INSTANCES = "game_instances"
+
 var ai: AI
 
 var current_faction
@@ -142,6 +144,10 @@ func __save_items(d: Dictionary):
 	return arr
 
 func _load_data(path):
+	for n in get_tree().get_nodes_in_group(GROUP_GAME_INSTANCES):
+		remove_child(n)
+		n.queue_free()
+	
 	var file = File.new()
 	file.open(path + "/Scenario.json", File.READ)
 	
@@ -257,6 +263,7 @@ func __load_item(instance, item, add_to_list):
 	instance.load_data(item)
 	add_to_list[int(instance.id)] = instance
 	if instance is Architecture or instance is Troop:
+		instance.add_to_group(GROUP_GAME_INSTANCES)
 		add_child(instance)
 	
 
