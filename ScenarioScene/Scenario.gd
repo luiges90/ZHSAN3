@@ -417,3 +417,14 @@ func get_terrain_at_position(position):
 				return terrain_details[t]
 	assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
 
+func get_troop_at_position(position):
+	for t in troops:
+		if troops[t].map_position == position:
+			return troops[t]
+	return null
+
+func get_architecture_at_position(position):
+	for a in architectures:
+		if architectures[a].map_position == position:
+			return architectures[a]
+	return null

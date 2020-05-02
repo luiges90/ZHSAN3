@@ -155,6 +155,12 @@ static func cmp_initiative(a, b):
 	return a.get_initiative() < b.get_initiative()
 
 func get_movement_cost(position):
+	if scenario.get_troop_at_position(position) != null:
+		return INF
+	var arch = scenario.get_architecture_at_position(position)
+	if arch != null and arch.get_belonged_faction() != self.get_belonged_faction() and arch.endurance > 0:
+		return INF
+	
 	var terrain = scenario.get_terrain_at_position(position)
 	return military_kind.movement_kind.movement_cost[terrain.id]
 
