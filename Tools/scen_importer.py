@@ -135,12 +135,14 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 				  "_Id": k['ID'],
 				  "Name": k['Name'],
-				  "ArchitectureList": archs
+				  "ArchitectureList": archs,
+				  "TroopList": []
 				})
 			r.append({
 			    "_Id": 100,
 			    "Name": '郴县军区',
-			    "ArchitectureList": [64]
+			    "ArchitectureList": [64],
+				"TroopList": []
 			})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				

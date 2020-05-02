@@ -42,6 +42,12 @@ func get_architectures() -> Array:
 		Util.append_all(result, s.get_architectures())
 	return result
 	
+func get_troops() -> Array:
+	var result = []
+	for s in get_sections():
+		Util.append_all(result, s.get_troops())
+	return result
+	
 func get_sections() -> Array:
 	return _section_list
 	

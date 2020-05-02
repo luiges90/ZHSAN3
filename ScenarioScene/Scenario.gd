@@ -202,17 +202,6 @@ func _load_data(path):
 		__load_item(instance, item, persons)
 	file.close()
 	
-	file.open(path + "/Troops.json", File.READ)
-	var troop_scene = preload("Military/Troop.tscn")
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = troop_scene.instance()
-		instance.connect("troop_clicked", self, "_on_troop_clicked")
-		__load_item(instance, item, troops)
-		for id in item["PersonList"]:
-			instance.add_person(persons[int(id)])
-	file.close()
-	
 	file.open(path + "/Architectures.json", File.READ)
 	var architecture_scene = preload("Architecture/Architecture.tscn")
 	obj = parse_json(file.get_as_text())
@@ -227,6 +216,17 @@ func _load_data(path):
 	file.close()
 	for item in architectures:
 		architectures[item].set_adjacency(architectures, ai_paths)
+		
+	file.open(path + "/Troops.json", File.READ)
+	var troop_scene = preload("Military/Troop.tscn")
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = troop_scene.instance()
+		instance.connect("troop_clicked", self, "_on_troop_clicked")
+		__load_item(instance, item, troops)
+		for id in item["PersonList"]:
+			instance.add_person(persons[int(id)])
+	file.close()
 	
 	file.open(path + "/Sections.json", File.READ)
 	obj = parse_json(file.get_as_text())
@@ -235,6 +235,8 @@ func _load_data(path):
 		__load_item(instance, item, sections)
 		for id in item["ArchitectureList"]:
 			instance.add_architecture(architectures[int(id)])
+		for id in item["TroopList"]:
+			instance.add_troop(troops[int(id)])
 	
 	file.open(path + "/Factions.json", File.READ)
 	obj = parse_json(file.get_as_text())
@@ -253,7 +255,7 @@ func _load_data(path):
 func __load_item(instance, item, add_to_list):
 	instance.scenario = self
 	instance.load_data(item)
-	add_to_list[instance.id] = instance
+	add_to_list[int(instance.id)] = instance
 	if instance is Architecture or instance is Troop:
 		add_child(instance)
 	

@@ -58,15 +58,21 @@ func load_data(json: Dictionary):
 	morale = json["Morale"]
 	combativity = json["Combativity"]
 	
+	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
+	
+	current_order = json["CurrentOrder"]
+	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
 		"MapPosition": Util.save_position(map_position),
 		"PersonList": Util.id_list(get_persons()),
+		"StartingArchitecture": _starting_arch.id,
 		"MilitaryKind": military_kind.id,
 		"Quantity": quantity,
 		"Morale": morale,
-		"Combativity": combativity
+		"Combativity": combativity,
+		"CurrentOrder": current_order
 	}
 
 func get_name() -> String:
@@ -86,9 +92,11 @@ func add_person(p, force: bool = false):
 func remove_person(p):
 	Util.remove_object(_person_list, p)
 
+# TODO make this static factory
 func create_troop_set_data(starting_arch, kind, in_quantity, in_morale, in_combativity, pos):
+	id = randi()
 	_starting_arch = starting_arch
-	_belonged_section = starting_arch.get_belonged_section()
+	set_belonged_section(starting_arch.get_belonged_section())
 	military_kind = kind
 	quantity = in_quantity
 	morale = in_morale
@@ -104,6 +112,11 @@ func get_belonged_section():
 	
 func get_belonged_faction():
 	return _belonged_section.get_belonged_faction()
+	
+func set_belonged_section(section, force = false):
+	_belonged_section = section
+	if not force:
+		section.add_troop(self, true)
 	
 func get_starting_architecture():
 	return _starting_arch
