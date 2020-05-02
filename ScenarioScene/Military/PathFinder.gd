@@ -17,10 +17,6 @@ class PositionItem:
 		position = pos
 		movement_left = movement
 
-class Sorter:
-	static func _cmp_position_item_movement(a, b):
-		return a.movement_left < b.movement_left
-
 func get_movement_area():
 	var start_item = PositionItem.new(troop.map_position, troop.get_speed())
 	var area = [start_item]
@@ -41,8 +37,6 @@ func get_movement_area():
 		
 		var right = item.position + Vector2.RIGHT
 		_step_forward(item, right, area, position_queue, _stored_paths)
-		
-		position_queue.sort_custom(Sorter, "_cmp_position_item_movement")
 	
 	var area_pos = []
 	for a in area:
@@ -62,6 +56,7 @@ func _step_forward(last_position_item, position, area, position_queue, stored_pa
 				if last_position_item.movement_left - movement_cost > a.movement_left:
 					a.movement_left = last_position_item.movement_left - movement_cost
 					stored_paths[position] = stored_paths[last_position_item.position] + [position]
+					position_queue.push_back(a)
 		if not found:
 			var new_item = PositionItem.new(position, last_position_item.movement_left - movement_cost)
 			position_queue.push_back(new_item)

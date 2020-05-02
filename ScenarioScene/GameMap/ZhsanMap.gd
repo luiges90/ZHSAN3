@@ -23,6 +23,6 @@ func _on_MainCamera_camera_moved(camera_top_left: Vector2, camera_bottom_right: 
 
 func _get_terrain_id_at_position(pos: Vector2):
 	var quadrant_x = int(pos.x / quadrant_size.x)
-	var quadrant_y = int(pos.y / quadrant_size.y)
+	var quadrant_y = int((pos.y + 1) / quadrant_size.y)
 	return (find_node(str(quadrant_y) + 'x' + str(quadrant_x)) as TileMap).get_cell(pos.x, pos.y + 1)
 	
