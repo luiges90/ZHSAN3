@@ -87,14 +87,13 @@ func get_persons() -> Array:
 func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
-		p.set_location(self)
+		p.set_location(self, true)
 		  
 func remove_person(p):
 	Util.remove_object(_person_list, p)
 
-# TODO make this static factory
-func create_troop_set_data(starting_arch, kind, in_quantity, in_morale, in_combativity, pos):
-	id = randi()
+func create_troop_set_data(id, starting_arch, kind, in_quantity, in_morale, in_combativity, pos):
+	self.id = id
 	_starting_arch = starting_arch
 	set_belonged_section(starting_arch.get_belonged_section())
 	military_kind = kind
