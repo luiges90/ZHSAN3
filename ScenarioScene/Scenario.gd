@@ -320,10 +320,17 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
 	instance.connect("troop_clicked", self, "_on_troop_clicked")
+	
 	for p in troop.persons:
 		instance.add_person(p)
-	instance.create_troop_set_data(troops.keys().max() + 1, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
+
+	var id = troops.keys().max()
+	if id == null:
+		id = 1
+	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
+	
 	instance.scenario = self
+	
 	troops[instance.id] = instance
 	add_child(instance)
 	

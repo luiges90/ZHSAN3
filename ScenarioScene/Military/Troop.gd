@@ -265,6 +265,17 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		
 		sprite_frame.add_frame(animation, image)
 		
+func animate_position(destination):
+	# TODO do not animate if not on screen
+	# TODO multiple troop does not work correctly
+	var animation = $AnimationPlayer.get_animation("Move") as Animation
+	var track_idx = animation.find_track(".:position")
+	var key1 = animation.track_find_key(track_idx, 0)
+	var key2 = animation.track_find_key(track_idx, 100)
+	animation.track_set_key_value(track_idx, key1, position)
+	animation.track_set_key_value(track_idx, key2, destination)
+	$AnimationPlayer.play("Move")
+		
 
 ####################################
 #         UI event handling        #
