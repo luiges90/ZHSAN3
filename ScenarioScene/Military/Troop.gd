@@ -92,8 +92,8 @@ func add_person(p, force: bool = false):
 func remove_person(p):
 	Util.remove_object(_person_list, p)
 
-func create_troop_set_data(id, starting_arch, kind, in_quantity, in_morale, in_combativity, pos):
-	self.id = id
+func create_troop_set_data(in_id, starting_arch, kind, in_quantity, in_morale, in_combativity, pos):
+	id = in_id
 	_starting_arch = starting_arch
 	set_belonged_section(starting_arch.get_belonged_section())
 	military_kind = kind
@@ -190,7 +190,8 @@ func get_movement_area():
 	
 func set_position(pos):
 	map_position = pos
-	position = map_position * scenario.tile_size
+	animate_position(map_position * scenario.tile_size)
+	# position = map_position * scenario.tile_size
 
 ####################################
 #          Order Execution         #
