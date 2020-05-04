@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Images/Troop/1/Move.png" type="Texture" id=1]
 [ext_resource path="res://ScenarioScene/Military/Troop.gd" type="Script" id=2]
@@ -65,39 +65,6 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="Animation" id=13]
-resource_name = "Move"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "audio"
-tracks/1/path = NodePath("MovingSound")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.3,
-"stream": ExtResource( 3 )
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": null
-} ],
-"times": PoolRealArray( 0, 1 )
-}
-
 [node name="Troop" type="Node2D"]
 z_index = 10
 script = ExtResource( 2 )
@@ -113,11 +80,10 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
 frames = SubResource( 12 )
-frame = 9
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Move = SubResource( 13 )
 
 [node name="MovingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

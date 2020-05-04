@@ -267,15 +267,18 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		
 func animate_position(destination):
 	# TODO do not animate if not on screen
-	# TODO multiple troop does not work correctly
-	var animation = $AnimationPlayer.get_animation("Move") as Animation
-	var track_idx = animation.find_track(".:position")
-	var key1 = animation.track_find_key(track_idx, 0)
-	var key2 = animation.track_find_key(track_idx, 100)
-	animation.track_set_key_value(track_idx, key1, position)
-	animation.track_set_key_value(track_idx, key2, destination)
+	var animation = Animation.new()
+	animation.length = 1.0
+	var value_track_idx = animation.add_track(Animation.TYPE_VALUE)
+	animation.track_set_path(value_track_idx, ".:position")
+	animation.track_insert_key(value_track_idx, 0, position)
+	animation.track_insert_key(value_track_idx, 1, destination)
+	var sound_track_idx = animation.add_track(Animation.TYPE_AUDIO)
+	animation.track_set_path(sound_track_idx, "MovingSound")
+	animation.audio_track_insert_key(sound_track_idx, 0, $MovingSound.stream)
+	$AnimationPlayer.add_animation("Move", animation)
 	$AnimationPlayer.play("Move")
-		
+
 
 ####################################
 #         UI event handling        #
