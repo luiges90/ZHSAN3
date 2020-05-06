@@ -30,6 +30,7 @@ var _remaining_movement = 0 setget forbidden
 onready var pathfinder: PathFinder = PathFinder.new(self)
 
 signal troop_clicked
+signal animation_step_finished
 
 func forbidden(x):
 	assert(false)
@@ -190,8 +191,7 @@ func get_movement_area():
 	
 func set_position(pos):
 	map_position = pos
-	animate_position(map_position * scenario.tile_size)
-	# position = map_position * scenario.tile_size
+	_animate_position(map_position * scenario.tile_size)
 
 ####################################
 #          Order Execution         #
@@ -265,7 +265,7 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		
 		sprite_frame.add_frame(animation, image)
 		
-func animate_position(destination):
+func _animate_position(destination):
 	# TODO do not animate if not on screen
 	var animation = Animation.new()
 	animation.length = 1.0
@@ -278,8 +278,10 @@ func animate_position(destination):
 	animation.audio_track_insert_key(sound_track_idx, 0, $MovingSound.stream)
 	$AnimationPlayer.add_animation("Move", animation)
 	$AnimationPlayer.play("Move")
-
-
+	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	emit_signal("animation_step_finished")
+	
 ####################################
 #         UI event handling        #
 ####################################
@@ -287,3 +289,8 @@ func _on_TroopArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("troop_clicked", self, event.global_position.x, event.global_position.y)
+
+
+
+
+

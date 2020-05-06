@@ -80,7 +80,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
 frames = SubResource( 12 )
-frame = 1
+frame = 8
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -88,3 +88,4 @@ playing = true
 [node name="MovingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 [connection signal="input_event" from="TroopArea" to="." method="_on_TroopArea_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

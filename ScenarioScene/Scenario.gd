@@ -362,6 +362,7 @@ func _on_day_passed():
 	while troop_queue.size() > 0:
 		var troop = troop_queue.pop_front()
 		if troop.execute_step():
+			yield(troop, "animation_step_finished")
 			troop_queue.push_back(troop)
 	
 	# run Factions
