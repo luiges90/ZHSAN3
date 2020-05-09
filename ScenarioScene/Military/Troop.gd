@@ -204,7 +204,7 @@ func prepare_orders():
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_remaining_movement = get_speed()
-			_current_path = pathfinder.get_walk_path_to(current_order.destination)
+			_current_path = pathfinder.get_stored_path_to(current_order.destination)
 			_current_path_index = 0
 			__step_retry = 0
 

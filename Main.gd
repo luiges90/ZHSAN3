@@ -43,11 +43,15 @@ func _register_lists():
 func _register_menus():
 	$Scenario.connect("current_faction_set", $UICanvas/UIMain/SaveLoadMenu, "_on_faction_updated")
 	$UICanvas/UIMain/ArchitectureMenu.connect("architecture_toggle_auto_task", $Scenario, "on_architecture_toggle_auto_task")
+	
 	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
+	
 	$UICanvas/UIMain/InfoMenu.connect("military_kind_clicked", $UICanvas/UIMain/MilitaryKindList, "_on_InfoMenu_military_kind_clicked", [$Scenario])
+	
 	$UICanvas/UIMain/TroopMenu.connect("move_clicked", $Scenario, "_on_troop_move_clicked")
 	$UICanvas/UIMain/TroopMenu.connect("attack_clicked", $Scenario, "_on_troop_attack_clicked")
 	$UICanvas/UIMain/TroopMenu.connect("enter_clicked", $Scenario, "_on_troop_enter_clicked")
+	$UICanvas/UIMain/TroopMenu.connect("follow_clicked", $Scenario, "_on_troop_follow_clicked")
 
 
 func _all_loaded():

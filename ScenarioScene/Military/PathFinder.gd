@@ -43,7 +43,7 @@ func get_movement_area():
 		area_pos.append(a.position)
 	return area_pos
 	
-func get_walk_path_to(position):
+func get_stored_path_to(position):
 	return _stored_paths[position] 
 
 func _step_forward(last_position_item, position, area, position_queue, stored_paths):
