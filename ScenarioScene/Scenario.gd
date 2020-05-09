@@ -338,7 +338,10 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 func _on_PositionSelector_move_troop(troop, position):
 	troop.set_move_order(position)
 
+func _on_PositionSelector_enter_troop(troop, position):
+	troop.set_enter_order(position)
 	
+
 func _on_troop_move_clicked(troop):
 	$PositionSelector._on_select_troop_move_to(troop)
 	
@@ -452,3 +455,6 @@ func get_architecture_at_position(position):
 		if architectures[a].map_position == position:
 			return architectures[a]
 	return null
+
+
+

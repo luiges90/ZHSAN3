@@ -188,6 +188,12 @@ func set_move_order(position):
 		"type": OrderType.MOVE,
 		"destination": position
 	}
+	
+func set_enter_order(position):
+	var architecture = scenario.get_architecture_at_position(position)
+	if architecture != null:
+		architecture.accept_entering_troop(self)
+		queue_free()
 
 func get_movement_area():
 	return pathfinder.get_movement_area()

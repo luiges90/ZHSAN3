@@ -278,6 +278,15 @@ func _produce_equipment(p: Person):
 			amount = floor(fund / cost)
 		fund -= amount * cost
 		equipments[equipment] += amount
+		
+func accept_entering_troop(in_troop):
+	troop_morale = int((troop * troop_morale + in_troop.quantity * in_troop.morale) / (troop + in_troop.quantity))
+	troop_combativity = int((troop * troop_combativity + in_troop.quantity * in_troop.combativity) / (troop + in_troop.quantity))
+	troop += in_troop.quantity
+	equipments[in_troop.military_kind.id] += in_troop.quantity
+	for p in in_troop.get_persons():
+		add_person(p)
+	
 
 ####################################
 #                UI                #

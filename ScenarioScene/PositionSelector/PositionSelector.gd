@@ -11,6 +11,7 @@ var _cancel = false
 
 signal create_troop
 signal move_troop
+signal enter_troop
 
 func _process(delta):
 	if _cancel:
@@ -24,7 +25,6 @@ func _on_create_troop(arch, troop):
 	current_troop = troop
 	
 	var scen = arch.scenario
-	
 	var pos = arch.map_position
 	if scen.get_troop_on_position(pos) == null:
 		_create_position_select_item(pos, Color.blue)
@@ -65,7 +65,33 @@ func _on_select_troop_enter(troop):
 	current_action = CurrentAction.ENTER_TROOP
 	current_architecture = null
 	current_troop = troop
-	# select locations
+	
+	var scen = troop.scenario
+	var pos = troop.map_position
+	var arch = scen.get_architecture_at_position(pos)
+	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
+		_create_position_select_item(pos, Color.yellow)
+		
+	pos = troop.map_position + Vector2.UP
+	arch = scen.get_architecture_at_position(pos)
+	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
+		_create_position_select_item(pos, Color.yellow)
+		
+	pos = troop.map_position + Vector2.DOWN
+	arch = scen.get_architecture_at_position(pos)
+	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
+		_create_position_select_item(pos, Color.yellow)
+		
+	pos = troop.map_position + Vector2.LEFT
+	arch = scen.get_architecture_at_position(pos)
+	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
+		_create_position_select_item(pos, Color.yellow)
+		
+	pos = troop.map_position + Vector2.RIGHT
+	arch = scen.get_architecture_at_position(pos)
+	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
+		_create_position_select_item(pos, Color.yellow)
+
 
 func _on_select_troop_follow(troop):
 	current_action = CurrentAction.FOLLOW_TROOP
@@ -96,3 +122,5 @@ func _on_position_selected(position):
 			emit_signal("create_troop", current_architecture, current_troop, position)
 		CurrentAction.MOVE_TROOP:
 			emit_signal("move_troop", current_troop, position)
+		CurrentAction.ENTER_TROOP:
+			emit_signal("enter_troop", current_troop, position)
