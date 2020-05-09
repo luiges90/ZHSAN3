@@ -47,7 +47,7 @@ func get_walk_path_to(position):
 	return _stored_paths[position] 
 
 func _step_forward(last_position_item, position, area, position_queue, stored_paths):
-	var movement_cost = troop.get_movement_cost(position)
+	var movement_cost = troop.get_movement_cost(position, true)[0]
 	if last_position_item.movement_left - movement_cost >= 0:
 		var found = false
 		for a in area:

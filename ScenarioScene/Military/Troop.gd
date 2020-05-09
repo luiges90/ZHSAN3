@@ -165,17 +165,20 @@ func get_initiative():
 	return military_kind.initiative
 	
 static func cmp_initiative(a, b):
-	return a.get_initiative() < b.get_initiative()
+	return a.get_initiative() > b.get_initiative()
 
-func get_movement_cost(position):
-	if scenario.get_troop_at_position(position) != null:
-		return INF
+# returns [cost, blocked by object]
+func get_movement_cost(position, ignore_troops):
+	if not ignore_troops:
+		var troop = scenario.get_troop_at_position(position)
+		if troop != null:
+			return [INF, troop]
 	var arch = scenario.get_architecture_at_position(position)
 	if arch != null and arch.get_belonged_faction() != self.get_belonged_faction() and arch.endurance > 0:
-		return INF
+		return [INF, arch]
 	
 	var terrain = scenario.get_terrain_at_position(position)
-	return military_kind.movement_kind.movement_cost[terrain.id]
+	return [military_kind.movement_kind.movement_cost[terrain.id], null]
 
 ####################################
 #            Set command           #
@@ -196,32 +199,45 @@ func set_position(pos):
 ####################################
 #          Order Execution         #
 ####################################
+var __step_retry = 0
 func prepare_orders():
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_remaining_movement = get_speed()
 			_current_path = pathfinder.get_walk_path_to(current_order.destination)
 			_current_path_index = 0
+			__step_retry = 0
 
-# Returns: If there are any more steps to execute
-func execute_step() -> bool:
+enum ExecuteStepResult { MOVED, BLOCKED, STOPPED }
+func execute_step():
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_current_path_index += 1
 			if _current_path_index >= _current_path.size():
-				return false
+				return ExecuteStepResult.STOPPED
 			var new_position = _current_path[_current_path_index]
-			var movement_cost = get_movement_cost(new_position)
-			if _remaining_movement >= movement_cost:
+			var movement_cost = get_movement_cost(new_position, false)
+			if movement_cost[1] != null:
+				_current_path_index -= 1
+				__step_retry += 1
+				if __step_retry <= 3:
+					return ExecuteStepResult.BLOCKED
+				else:
+					return ExecuteStepResult.STOPPED
+			elif _remaining_movement >= movement_cost[0]:
 				set_position(new_position)
-				_remaining_movement -= movement_cost
-				return true
+				_remaining_movement -= movement_cost[0]
+				__step_retry = 0
+				return ExecuteStepResult.MOVED
 			else:
-				return false
+				return ExecuteStepResult.STOPPED
 		else:
-			return false
+			return ExecuteStepResult.STOPPED
 	else:
-		return false
+		return ExecuteStepResult.STOPPED
+
+func after_order_cleanup():
+	current_order = null
 
 ####################################
 #                UI                #

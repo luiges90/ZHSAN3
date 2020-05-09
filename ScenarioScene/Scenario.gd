@@ -361,9 +361,13 @@ func _on_day_passed():
 		troop.prepare_orders()
 	while troop_queue.size() > 0:
 		var troop = troop_queue.pop_front()
-		if troop.execute_step():
-			yield(troop, "animation_step_finished")
+		var step = troop.execute_step()
+		if step != Troop.ExecuteStepResult.STOPPED:
+			if step == Troop.ExecuteStepResult.MOVED:
+				yield(troop, "animation_step_finished")
 			troop_queue.push_back(troop)
+	for troop in troops.values():
+		troop.after_order_cleanup()
 	
 	# run Factions
 	var last_faction = current_faction
