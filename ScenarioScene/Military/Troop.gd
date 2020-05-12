@@ -5,7 +5,7 @@ const SPRITE_SIZE = 128
 const SPRITE_SHEET_FRAMES = 10
 const ANIMATION_SPEED = 30
 
-enum OrderType { MOVE }
+enum OrderType { MOVE, FOLLOW }
 
 var id: int setget forbidden
 var scenario
@@ -194,6 +194,12 @@ func set_enter_order(position):
 	if architecture != null:
 		architecture.accept_entering_troop(self)
 		queue_free()
+		
+func set_follow_order(troop):
+	current_order = {
+		"type": OrderType.FOLLOW,
+		"target": troop
+	}
 
 func get_movement_area():
 	return pathfinder.get_movement_area()
@@ -237,13 +243,57 @@ func execute_step():
 				return ExecuteStepResult.MOVED
 			else:
 				return ExecuteStepResult.STOPPED
+		elif current_order.type == OrderType.FOLLOW:
+			var target = current_order.target
+			var x = target.map_position.x - map_position.x
+			var y = target.map_position.y - map_position.y
+			
+			var new_position = map_position
+			if x != 0 and y != 0:
+				if x >= 0 and y >= 0:
+					if x >= y:
+						new_position.x += 1
+					else:
+						new_position.y += 1
+				elif x >= 0 and y < 0:
+					if x >= -y:
+						new_position.x += 1
+					else:
+						new_position.y -= 1
+				elif x < 0 and y >= 0:
+					if -x >= y:
+						new_position.x -= 1
+					else:
+						new_position.y += 1
+				elif x < 0 and y < 0:
+					if -x >= -y:
+						new_position.x -= 1
+					else:
+						new_position.y -= 1
+			if new_position != map_position:
+				var movement_cost = get_movement_cost(new_position, false)
+				if movement_cost[1] != null:
+					_current_path_index -= 1
+					__step_retry += 1
+					if __step_retry <= 3:
+						return ExecuteStepResult.BLOCKED
+					else:
+						return ExecuteStepResult.STOPPED
+				elif _remaining_movement >= movement_cost[0]:
+					set_position(new_position)
+					_remaining_movement -= movement_cost[0]
+					__step_retry = 0
+					return ExecuteStepResult.MOVED
+				else:
+					return ExecuteStepResult.STOPPED
 		else:
 			return ExecuteStepResult.STOPPED
 	else:
 		return ExecuteStepResult.STOPPED
 
 func after_order_cleanup():
-	current_order = null
+	# current_order = null
+	pass
 
 ####################################
 #                UI                #

@@ -12,6 +12,7 @@ var _cancel = false
 signal create_troop
 signal move_troop
 signal enter_troop
+signal follow_troop
 
 func _process(delta):
 	if _cancel:
@@ -26,23 +27,23 @@ func _on_create_troop(arch, troop):
 	
 	var scen = arch.scenario
 	var pos = arch.map_position
-	if scen.get_troop_on_position(pos) == null:
+	if scen.get_troop_at_position(pos) == null:
 		_create_position_select_item(pos, Color.blue)
 		
 	pos = arch.map_position + Vector2.UP
-	if scen.get_troop_on_position(pos) == null:
+	if scen.get_troop_at_position(pos) == null:
 		_create_position_select_item(pos, Color.blue)
 		
 	pos = arch.map_position + Vector2.DOWN
-	if scen.get_troop_on_position(pos) == null:
+	if scen.get_troop_at_position(pos) == null:
 		_create_position_select_item(pos, Color.blue)
 		
 	pos = arch.map_position + Vector2.LEFT
-	if scen.get_troop_on_position(pos) == null:
+	if scen.get_troop_at_position(pos) == null:
 		_create_position_select_item(pos, Color.blue)
 		
 	pos = arch.map_position + Vector2.RIGHT
-	if scen.get_troop_on_position(pos) == null:
+	if scen.get_troop_at_position(pos) == null:
 		_create_position_select_item(pos, Color.blue)
 
 
@@ -97,7 +98,12 @@ func _on_select_troop_follow(troop):
 	current_action = CurrentAction.FOLLOW_TROOP
 	current_architecture = null
 	current_troop = troop
-	# select locations
+	
+	var scen = current_troop.scenario
+	for pos in current_troop.get_movement_area():
+		var target_troop = scen.get_troop_at_position(pos)
+		if target_troop != null and target_troop != troop:
+			_create_position_select_item(pos, Color.lightgreen)
 
 
 func _create_position_select_item(position, color = Color.white):
@@ -124,3 +130,5 @@ func _on_position_selected(position):
 			emit_signal("move_troop", current_troop, position)
 		CurrentAction.ENTER_TROOP:
 			emit_signal("enter_troop", current_troop, position)
+		CurrentAction.FOLLOW_TROOP:
+			emit_signal("follow_troop", current_troop, position)

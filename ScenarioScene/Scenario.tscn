@@ -27,4 +27,5 @@ z_index = 99
 [connection signal="camera_moved" from="MainCamera" to="Map" method="_on_MainCamera_camera_moved"]
 [connection signal="create_troop" from="PositionSelector" to="." method="_on_PositionSelector_create_troop"]
 [connection signal="enter_troop" from="PositionSelector" to="." method="_on_PositionSelector_enter_troop"]
+[connection signal="follow_troop" from="PositionSelector" to="." method="_on_PositionSelector_follow_troop"]
 [connection signal="move_troop" from="PositionSelector" to="." method="_on_PositionSelector_move_troop"]
