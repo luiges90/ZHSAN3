@@ -213,15 +213,17 @@ func set_position(pos):
 ####################################
 var __step_retry = 0
 func prepare_orders():
+	_remaining_movement = get_speed()
+	_current_path = null
+	_current_path_index = 0
+	__step_retry = 0
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
-			_remaining_movement = get_speed()
 			_current_path = pathfinder.get_stored_path_to(current_order.destination)
-			_current_path_index = 0
-			__step_retry = 0
+			
 
 enum ExecuteStepResult { MOVED, BLOCKED, STOPPED }
-func execute_step():
+func execute_step() -> int:
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_current_path_index += 1
@@ -249,51 +251,68 @@ func execute_step():
 			var y = target.map_position.y - map_position.y
 			
 			var new_position = map_position
+			var alt_position = map_position
 			if x != 0 and y != 0:
 				if x >= 0 and y >= 0:
 					if x >= y:
 						new_position.x += 1
+						alt_position.y += 1
 					else:
 						new_position.y += 1
+						alt_position.x += 1
 				elif x >= 0 and y < 0:
 					if x >= -y:
 						new_position.x += 1
+						alt_position.y += 1
 					else:
 						new_position.y -= 1
+						alt_position.x -= 1
 				elif x < 0 and y >= 0:
 					if -x >= y:
 						new_position.x -= 1
+						alt_position.y -= 1
 					else:
 						new_position.y += 1
+						alt_position.x += 1
 				elif x < 0 and y < 0:
 					if -x >= -y:
 						new_position.x -= 1
+						alt_position.y -= 1
 					else:
 						new_position.y -= 1
+						alt_position.x += 1
 			if new_position != map_position:
 				var movement_cost = get_movement_cost(new_position, false)
-				if movement_cost[1] != null:
+				var movement_cost2 = get_movement_cost(alt_position, false)
+				if movement_cost[1] != null and movement_cost2[1] != null:
 					_current_path_index -= 1
 					__step_retry += 1
 					if __step_retry <= 3:
 						return ExecuteStepResult.BLOCKED
 					else:
 						return ExecuteStepResult.STOPPED
-				elif _remaining_movement >= movement_cost[0]:
+				elif _remaining_movement >= movement_cost[0] and movement_cost[0] <= movement_cost2[0]:
 					set_position(new_position)
 					_remaining_movement -= movement_cost[0]
 					__step_retry = 0
 					return ExecuteStepResult.MOVED
+				elif _remaining_movement >= movement_cost2[0] and movement_cost2[0] <= movement_cost[0]:
+					set_position(alt_position)
+					_remaining_movement -= movement_cost2[0]
+					__step_retry = 0
+					return ExecuteStepResult.MOVED
 				else:
 					return ExecuteStepResult.STOPPED
+			else:
+				return ExecuteStepResult.STOPPED
 		else:
 			return ExecuteStepResult.STOPPED
 	else:
 		return ExecuteStepResult.STOPPED
 
 func after_order_cleanup():
-	# current_order = null
-	pass
+	if current_order != null and current_order.type == OrderType.MOVE and current_order.destination == map_position:
+		current_order = null
 
 ####################################
 #                UI                #
