@@ -100,10 +100,10 @@ func _on_select_troop_follow(troop):
 	current_troop = troop
 	
 	var scen = current_troop.scenario
-	for pos in current_troop.get_movement_area():
-		var target_troop = scen.get_troop_at_position(pos)
+	for t in scen.troops:
+		var target_troop = scen.troops[t]
 		if target_troop != null and target_troop != troop:
-			_create_position_select_item(pos, Color.lightgreen)
+			_create_position_select_item(target_troop.map_position, Color.lightgreen)
 
 
 func _create_position_select_item(position, color = Color.white):
