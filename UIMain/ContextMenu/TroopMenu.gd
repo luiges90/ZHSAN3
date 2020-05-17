@@ -9,7 +9,7 @@ signal attack_clicked
 signal enter_clicked
 signal follow_clicked
 
-func show_menu(troop, mouse_x, mouse_y):	
+func show_menu(troop, mouse_x, mouse_y): 
 	showing_troop = troop
 	
 	margin_left = mouse_x

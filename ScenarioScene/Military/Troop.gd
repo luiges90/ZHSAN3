@@ -5,7 +5,7 @@ const SPRITE_SIZE = 128
 const SPRITE_SHEET_FRAMES = 10
 const ANIMATION_SPEED = 30
 
-enum OrderType { MOVE, FOLLOW }
+enum OrderType { MOVE, FOLLOW, ATTACK }
 
 var id: int setget forbidden
 var scenario
@@ -196,9 +196,26 @@ func set_enter_order(position):
 		queue_free()
 		
 func set_follow_order(troop):
+	if troop == null:
+		current_order = null
+	else:
+		current_order = {
+			"type": OrderType.FOLLOW,
+			"target": troop
+		}
+	
+func set_attack_order(troop, arch):
+	var object
+	if troop != null:
+		object = troop
+	elif arch != null:
+		object = arch
+	else:
+		current_order = null
+		return
 	current_order = {
-		"type": OrderType.FOLLOW,
-		"target": troop
+		"type": OrderType.ATTACK,
+		"target": object
 	}
 
 func get_movement_area():
@@ -245,7 +262,7 @@ func execute_step() -> int:
 				return ExecuteStepResult.MOVED
 			else:
 				return ExecuteStepResult.STOPPED
-		elif current_order.type == OrderType.FOLLOW:
+		elif current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK:
 			var target = current_order.target
 			var x = target.map_position.x - map_position.x
 			var y = target.map_position.y - map_position.y
@@ -358,17 +375,20 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		
 func _animate_position(destination):
 	# TODO do not animate if not on screen
+	# if GameConfig.enable_troop_animations:
 	var animation = Animation.new()
-	animation.length = 1.0
+	animation.length = 1.0 / GameConfig.troop_animation_speed
 	var value_track_idx = animation.add_track(Animation.TYPE_VALUE)
 	animation.track_set_path(value_track_idx, ".:position")
 	animation.track_insert_key(value_track_idx, 0, position)
-	animation.track_insert_key(value_track_idx, 1, destination)
+	animation.track_insert_key(value_track_idx, animation.length, destination)
 	var sound_track_idx = animation.add_track(Animation.TYPE_AUDIO)
 	animation.track_set_path(sound_track_idx, "MovingSound")
 	animation.audio_track_insert_key(sound_track_idx, 0, $MovingSound.stream)
 	$AnimationPlayer.add_animation("Move", animation)
 	$AnimationPlayer.play("Move")
+	# else:
+	#	position = destination
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")

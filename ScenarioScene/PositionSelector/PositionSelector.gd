@@ -13,6 +13,7 @@ signal create_troop
 signal move_troop
 signal enter_troop
 signal follow_troop
+signal attack_troop
 
 func _process(delta):
 	if _cancel:
@@ -60,7 +61,16 @@ func _on_select_troop_attack(troop):
 	current_action = CurrentAction.ATTACK_TROOP
 	current_architecture = null
 	current_troop = troop
-	# select locations
+	
+	var scen = current_troop.scenario
+	for t in scen.troops:
+		var target_troop = scen.troops[t]
+		if target_troop != null and target_troop != troop and target_troop.get_belonged_faction() != troop.get_belonged_faction():
+			_create_position_select_item(target_troop.map_position, Color.red)
+	for a in scen.architectures:
+		var target_arch = scen.architectures[a]
+		if target_arch != null and target_arch.get_belonged_faction() != troop.get_belonged_faction():
+			_create_position_select_item(target_arch.map_position, Color.red)
 
 func _on_select_troop_enter(troop):
 	current_action = CurrentAction.ENTER_TROOP
@@ -103,7 +113,7 @@ func _on_select_troop_follow(troop):
 	for t in scen.troops:
 		var target_troop = scen.troops[t]
 		if target_troop != null and target_troop != troop:
-			_create_position_select_item(target_troop.map_position, Color.lightgreen)
+			_create_position_select_item(target_troop.map_position, Color.yellow)
 
 
 func _create_position_select_item(position, color = Color.white):
@@ -132,3 +142,5 @@ func _on_position_selected(position):
 			emit_signal("enter_troop", current_troop, position)
 		CurrentAction.FOLLOW_TROOP:
 			emit_signal("follow_troop", current_troop, position)
+		CurrentAction.ATTACK_TROOP:
+			emit_signal("attack_troop", current_troop, position)

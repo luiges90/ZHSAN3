@@ -344,6 +344,10 @@ func _on_PositionSelector_enter_troop(troop, position):
 func _on_PositionSelector_follow_troop(troop, position):
 	troop.set_follow_order(get_troop_at_position(position))
 	
+func _on_PositionSelector_attack_troop(troop, position):
+	troop.set_attack_order(get_troop_at_position(position), get_architecture_at_position(position))
+
+	
 
 func _on_troop_move_clicked(troop):
 	$PositionSelector._on_select_troop_move_to(troop)
@@ -453,6 +457,4 @@ func get_architecture_at_position(position):
 		if architectures[a].map_position == position:
 			return architectures[a]
 	return null
-
-
 
