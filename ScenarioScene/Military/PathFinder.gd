@@ -17,7 +17,7 @@ class PositionItem:
 		position = pos
 		movement_left = movement
 
-func get_movement_area():
+func get_movement_area() -> Array:
 	var start_item = PositionItem.new(troop.map_position, troop.get_speed())
 	var area = [start_item]
 	var position_queue = [start_item]
@@ -43,7 +43,7 @@ func get_movement_area():
 		area_pos.append(a.position)
 	return area_pos
 	
-func get_stored_path_to(position):
+func get_stored_path_to(position) -> Array:
 	return _stored_paths[position] 
 
 func _step_forward(last_position_item, position, area, position_queue, stored_paths):
@@ -62,3 +62,53 @@ func _step_forward(last_position_item, position, area, position_queue, stored_pa
 			position_queue.push_back(new_item)
 			area.append(new_item)
 			stored_paths[position] = stored_paths[last_position_item.position] + [position]
+
+# return [next_position, movement_cost]
+func stupid_path_to_step(target_position):
+	var x = target_position.x - troop.map_position.x
+	var y = target_position.y - troop.map_position.y
+	if abs(x) + abs(y) <= 1:
+		return null
+	
+	var new_position = troop.map_position
+	var alt_position = troop.map_position
+	if x != 0 or y != 0:
+		if x >= 0 and y >= 0:
+			if x >= y:
+				new_position.x += 1
+				alt_position.y += 1
+			else:
+				new_position.y += 1
+				alt_position.x += 1
+		elif x >= 0 and y < 0:
+			if x >= -y:
+				new_position.x += 1
+				alt_position.y -= 1
+			else:
+				new_position.y -= 1
+				alt_position.x += 1
+		elif x < 0 and y >= 0:
+			if -x >= y:
+				new_position.x -= 1
+				alt_position.y += 1
+			else:
+				new_position.y += 1
+				alt_position.x -= 1
+		elif x < 0 and y < 0:
+			if -x >= -y:
+				new_position.x -= 1
+				alt_position.y -= 1
+			else:
+				new_position.y -= 1
+				alt_position.x -= 1
+	var movement_cost = troop.get_movement_cost(new_position, false)
+	var movement_cost2 = troop.get_movement_cost(alt_position, false)
+	if movement_cost[1] != null and movement_cost2[1] != null:
+		return null
+	elif movement_cost[0] <= movement_cost2[0]:
+		return [new_position, movement_cost[0]]
+	elif movement_cost2[0] <= movement_cost[0]:
+		return [alt_position, movement_cost2[0]]
+	else:
+		assert(false)
+		return null

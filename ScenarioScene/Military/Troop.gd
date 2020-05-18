@@ -264,58 +264,17 @@ func execute_step() -> int:
 				return ExecuteStepResult.STOPPED
 		elif current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK:
 			var target = current_order.target
-			var x = target.map_position.x - map_position.x
-			var y = target.map_position.y - map_position.y
-			if abs(x) + abs(y) <= 1:
-				return ExecuteStepResult.STOPPED
+			var step_result = pathfinder.stupid_path_to_step(target.map_position)
 			
-			var new_position = map_position
-			var alt_position = map_position
-			if x != 0 or y != 0:
-				if x >= 0 and y >= 0:
-					if x >= y:
-						new_position.x += 1
-						alt_position.y += 1
-					else:
-						new_position.y += 1
-						alt_position.x += 1
-				elif x >= 0 and y < 0:
-					if x >= -y:
-						new_position.x += 1
-						alt_position.y -= 1
-					else:
-						new_position.y -= 1
-						alt_position.x += 1
-				elif x < 0 and y >= 0:
-					if -x >= y:
-						new_position.x -= 1
-						alt_position.y += 1
-					else:
-						new_position.y += 1
-						alt_position.x -= 1
-				elif x < 0 and y < 0:
-					if -x >= -y:
-						new_position.x -= 1
-						alt_position.y -= 1
-					else:
-						new_position.y -= 1
-						alt_position.x -= 1
-			var movement_cost = get_movement_cost(new_position, false)
-			var movement_cost2 = get_movement_cost(alt_position, false)
-			if movement_cost[1] != null and movement_cost2[1] != null:
+			if step_result == null:
 				__step_retry += 1
 				if __step_retry <= 3:
 					return ExecuteStepResult.BLOCKED
 				else:
 					return ExecuteStepResult.STOPPED
-			elif _remaining_movement >= movement_cost[0] and movement_cost[0] <= movement_cost2[0]:
-				set_position(new_position)
-				_remaining_movement -= movement_cost[0]
-				__step_retry = 0
-				return ExecuteStepResult.MOVED
-			elif _remaining_movement >= movement_cost2[0] and movement_cost2[0] <= movement_cost[0]:
-				set_position(alt_position)
-				_remaining_movement -= movement_cost2[0]
+			elif _remaining_movement >= step_result[1]:
+				set_position(step_result[0])
+				_remaining_movement -= step_result[1]
 				__step_retry = 0
 				return ExecuteStepResult.MOVED
 			else:
