@@ -367,20 +367,8 @@ func _on_troop_enter_clicked(troop):
 
 func _on_day_passed():
 	# run Troops
-	var troop_queue = troops.values()
-	troop_queue.shuffle()
-	troop_queue.sort_custom(Troop, "cmp_initiative")
-	for troop in troop_queue:
-		troop.prepare_orders()
-	while troop_queue.size() > 0:
-		var troop = troop_queue.pop_front()
-		var step = troop.execute_step()
-		if step != Troop.ExecuteStepResult.STOPPED:
-			if step == Troop.ExecuteStepResult.MOVED:
-				yield(troop, "animation_step_finished")
-			troop_queue.push_back(troop)
-	for troop in troops.values():
-		troop.after_order_cleanup()
+	var troop_queue = TroopQueue.new(troops.values())
+	troop_queue.execute()
 	
 	# run Factions
 	var last_faction = current_faction
