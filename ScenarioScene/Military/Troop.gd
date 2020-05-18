@@ -223,7 +223,7 @@ func get_movement_area():
 	
 func set_position(pos):
 	map_position = pos
-	_animate_position(map_position * scenario.tile_size)
+	return _animate_position(map_position * scenario.tile_size)
 
 ####################################
 #          Order Execution         #
@@ -239,29 +239,35 @@ func prepare_orders():
 			_current_path = pathfinder.get_stored_path_to(current_order.destination)
 			
 
-enum ExecuteStepResult { MOVED, BLOCKED, STOPPED }
-func execute_step() -> int:
+enum ExecuteStepType { MOVED, BLOCKED, STOPPED }
+class ExecuteStepResult:
+	var type #:ExecuteStepType
+	var new_position
+	func _init(t, n):
+		type = t
+		new_position = n
+
+func execute_step() -> ExecuteStepResult:
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_current_path_index += 1
 			if _current_path_index >= _current_path.size():
-				return ExecuteStepResult.STOPPED
+				return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 			var new_position = _current_path[_current_path_index]
 			var movement_cost = get_movement_cost(new_position, false)
 			if movement_cost[1] != null:
 				_current_path_index -= 1
 				__step_retry += 1
 				if __step_retry <= 3:
-					return ExecuteStepResult.BLOCKED
+					return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
 				else:
-					return ExecuteStepResult.STOPPED
+					return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 			elif _remaining_movement >= movement_cost[0]:
-				set_position(new_position)
 				_remaining_movement -= movement_cost[0]
 				__step_retry = 0
-				return ExecuteStepResult.MOVED
+				return ExecuteStepResult.new(ExecuteStepType.MOVED, new_position)
 			else:
-				return ExecuteStepResult.STOPPED
+				return ExecuteStepType.STOPPED
 		elif current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK:
 			var target = current_order.target
 			var step_result = pathfinder.stupid_path_to_step(target.map_position)
@@ -269,20 +275,19 @@ func execute_step() -> int:
 			if step_result == null:
 				__step_retry += 1
 				if __step_retry <= 3:
-					return ExecuteStepResult.BLOCKED
+					return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
 				else:
-					return ExecuteStepResult.STOPPED
+					return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 			elif _remaining_movement >= step_result[1]:
-				set_position(step_result[0])
 				_remaining_movement -= step_result[1]
 				__step_retry = 0
-				return ExecuteStepResult.MOVED
+				return ExecuteStepResult.new(ExecuteStepType.MOVED, step_result[0])
 			else:
-				return ExecuteStepResult.STOPPED
+				return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 		else:
-			return ExecuteStepResult.STOPPED
+			return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 	else:
-		return ExecuteStepResult.STOPPED
+		return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 
 func after_order_cleanup():
 	if current_order != null and current_order.type == OrderType.MOVE and current_order.destination == map_position:
@@ -332,20 +337,21 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		
 func _animate_position(destination):
 	# TODO do not animate if not on screen
-	# if GameConfig.enable_troop_animations:
-	var animation = Animation.new()
-	animation.length = 1.0 / GameConfig.troop_animation_speed
-	var value_track_idx = animation.add_track(Animation.TYPE_VALUE)
-	animation.track_set_path(value_track_idx, ".:position")
-	animation.track_insert_key(value_track_idx, 0, position)
-	animation.track_insert_key(value_track_idx, animation.length, destination)
-	var sound_track_idx = animation.add_track(Animation.TYPE_AUDIO)
-	animation.track_set_path(sound_track_idx, "MovingSound")
-	animation.audio_track_insert_key(sound_track_idx, 0, $MovingSound.stream)
-	$AnimationPlayer.add_animation("Move", animation)
-	$AnimationPlayer.play("Move")
-	# else:
-	#	position = destination
+	if GameConfig.enable_troop_animations:
+		var animation = Animation.new()
+		animation.length = 1.0 / GameConfig.troop_animation_speed
+		var value_track_idx = animation.add_track(Animation.TYPE_VALUE)
+		animation.track_set_path(value_track_idx, ".:position")
+		animation.track_insert_key(value_track_idx, 0, position)
+		animation.track_insert_key(value_track_idx, animation.length, destination)
+		var sound_track_idx = animation.add_track(Animation.TYPE_AUDIO)
+		animation.track_set_path(sound_track_idx, "MovingSound")
+		animation.audio_track_insert_key(sound_track_idx, 0, $MovingSound.stream)
+		$AnimationPlayer.add_animation("Move", animation)
+		$AnimationPlayer.play("Move")
+	else:
+		position = destination
+		yield()
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")

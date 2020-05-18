@@ -16,9 +16,13 @@ func execute():
 	while queue.size() > 0:
 		var troop = queue.pop_front()
 		var step = troop.execute_step()
-		if step != Troop.ExecuteStepResult.STOPPED:
-			if step == Troop.ExecuteStepResult.MOVED:
-				yield(troop, "animation_step_finished")
+		if step.type != Troop.ExecuteStepType.STOPPED:
+			if step.type == Troop.ExecuteStepType.MOVED:
+				var result = troop.set_position(step.new_position)
+				if result is GDScriptFunctionState:
+					result.resume()
+				else:
+					yield(troop, "animation_step_finished")
 			queue.push_back(troop)
 	for troop in troops:
 		troop.after_order_cleanup()
