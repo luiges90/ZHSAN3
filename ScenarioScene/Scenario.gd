@@ -372,7 +372,7 @@ func _on_troop_enter_clicked(troop):
 func _on_day_passed():
 	# run Troops
 	var troop_queue = TroopQueue.new(troops.values())
-	troop_queue.execute()
+	yield(troop_queue.execute(), "completed")
 	
 	# run Factions
 	var last_faction = current_faction

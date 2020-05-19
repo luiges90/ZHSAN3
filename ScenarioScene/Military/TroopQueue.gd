@@ -26,3 +26,4 @@ func execute():
 			queue.push_back(troop)
 	for troop in troops:
 		troop.after_order_cleanup()
+	return true
