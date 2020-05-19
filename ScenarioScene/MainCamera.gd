@@ -34,6 +34,9 @@ func _physics_process(delta):
 	
 	if _moving_camera_x != 0 or _moving_camera_y != 0 or _zooming_camera != 0:
 		emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom)
+		
+func get_viewing_rect() -> Rect2:
+	return Rect2(get_camera_position(), get_viewport_rect().size * zoom)
 	
 func _unhandled_input(event):
 	var mouse_position = get_viewport().get_mouse_position()

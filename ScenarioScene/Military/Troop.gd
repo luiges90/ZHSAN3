@@ -336,8 +336,9 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		sprite_frame.add_frame(animation, image)
 		
 func _animate_position(destination):
-	# TODO do not animate if not on screen
-	if GameConfig.enable_troop_animations:
+	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
+	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
+	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
 		var animation = Animation.new()
 		animation.length = 1.0 / GameConfig.troop_animation_speed
 		var value_track_idx = animation.add_track(Animation.TYPE_VALUE)
