@@ -51,6 +51,9 @@ static func f2ri(x: float) -> int:
 	var frac = abs(x - int(x))
 	return trunc + (1 if randf() < frac else 0)
 
+# Mahattan Distance
+static func m_dist(a: Vector2, b: Vector2):
+	return abs(a.x - b.x) + abs(a.y - b.y)
 
 ##############################################
 #                 Collections                #

@@ -248,46 +248,59 @@ class ExecuteStepResult:
 		new_position = n
 
 func execute_step() -> ExecuteStepResult:
-	if current_order != null:
-		if current_order.type == OrderType.MOVE:
-			_current_path_index += 1
-			if _current_path_index >= _current_path.size():
-				return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
-			var new_position = _current_path[_current_path_index]
-			var movement_cost = get_movement_cost(new_position, false)
-			if movement_cost[1] != null:
-				_current_path_index -= 1
-				__step_retry += 1
-				if __step_retry <= 3:
-					return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
-				else:
-					return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
-			elif _remaining_movement >= movement_cost[0]:
-				_remaining_movement -= movement_cost[0]
-				__step_retry = 0
-				return ExecuteStepResult.new(ExecuteStepType.MOVED, new_position)
-			else:
-				return ExecuteStepType.STOPPED
-		elif current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK:
-			var target = current_order.target
-			var step_result = pathfinder.stupid_path_to_step(target.map_position)
-			
-			if step_result == null:
-				__step_retry += 1
-				if __step_retry <= 3:
-					return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
-				else:
-					return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
-			elif _remaining_movement >= step_result[1]:
-				_remaining_movement -= step_result[1]
-				__step_retry = 0
-				return ExecuteStepResult.new(ExecuteStepType.MOVED, step_result[0])
+	if current_order != null and current_order.type == OrderType.MOVE:
+		_current_path_index += 1
+		if _current_path_index >= _current_path.size():
+			return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+		var new_position = _current_path[_current_path_index]
+		var movement_cost = get_movement_cost(new_position, false)
+		if movement_cost[1] != null:
+			_current_path_index -= 1
+			__step_retry += 1
+			if __step_retry <= 3:
+				return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
 			else:
 				return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+		elif _remaining_movement >= movement_cost[0]:
+			_remaining_movement -= movement_cost[0]
+			__step_retry = 0
+			return ExecuteStepResult.new(ExecuteStepType.MOVED, new_position)
+		else:
+			return ExecuteStepType.STOPPED
+	elif current_order != null and (current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK):
+		var target = current_order.target
+		var step_result = pathfinder.stupid_path_to_step(target.map_position)
+		
+		if step_result == null:
+			__step_retry += 1
+			if __step_retry <= 3:
+				return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
+			else:
+				return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+		elif _remaining_movement >= step_result[1]:
+			_remaining_movement -= step_result[1]
+			__step_retry = 0
+			return ExecuteStepResult.new(ExecuteStepType.MOVED, step_result[0])
 		else:
 			return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 	else:
 		return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+		
+func execute_attack():
+	if current_order != null and current_order.type == OrderType.ATTACK:
+		var dist = Util.m_dist(map_position, current_order.target.map_position) 
+		if dist >= military_kind.range_min and dist <= military_kind.range_max:
+			if current_order.target is Architecture:
+				attack_architecture(current_order.target)
+			else:
+				attack_troop(current_order.target)
+
+func attack_troop(target):
+	pass
+	
+func attack_architecture(target):
+	pass
+
 
 func after_order_cleanup():
 	if current_order != null and current_order.type == OrderType.MOVE and current_order.destination == map_position:

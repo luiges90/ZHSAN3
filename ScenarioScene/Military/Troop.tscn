@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Images/Troop/1/Move.png" type="Texture" id=1]
 [ext_resource path="res://ScenarioScene/Military/Troop.gd" type="Script" id=2]
 [ext_resource path="res://Sounds/Troop/1/Moving.wav" type="AudioStream" id=3]
+[ext_resource path="res://UIMain/TroopTitle/TroopTitle.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64, 64 )
@@ -68,24 +69,33 @@ animations = [ {
 [node name="Troop" type="Node2D"]
 z_index = 10
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="TroopArea" type="Area2D" parent="."]
 position = Vector2( 64, 64 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ClickArea" type="CollisionShape2D" parent="TroopArea"]
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
 frames = SubResource( 12 )
-frame = 9
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="MovingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TroopTitle" parent="." instance=ExtResource( 4 )]
+margin_left = 100.0
+margin_top = -28.0
+margin_right = 190.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 90, 56 )
 [connection signal="input_event" from="TroopArea" to="." method="_on_TroopArea_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
