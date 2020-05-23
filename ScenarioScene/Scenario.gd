@@ -39,6 +39,8 @@ signal architecture_and_troop_clicked
 
 signal all_faction_finished
 
+signal camera_moved
+
 func forbidden(x):
 	assert(false)
 
@@ -64,7 +66,7 @@ func _ready():
 	if player_factions.size() > 0:
 		var fid = player_factions[0]
 		camera.position = factions[fid].get_architectures()[0].position - camera.get_viewport_rect().size / 2
-		camera.emit_signal("camera_moved", camera.position, camera.position + camera.get_viewport_rect().size * camera.zoom)
+		camera.emit_signal("camera_moved", camera.position, camera.position + camera.get_viewport_rect().size * camera.zoom, camera.zoom)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
@@ -233,6 +235,7 @@ func _load_data(path):
 	for item in obj:
 		var instance = troop_scene.instance()
 		instance.connect("troop_clicked", self, "_on_troop_clicked")
+		self.connect("camera_moved", instance, "on_camera_moved")
 		__load_item(instance, item, troops)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
@@ -351,6 +354,8 @@ func _on_PositionSelector_follow_troop(troop, position):
 func _on_PositionSelector_attack_troop(troop, position):
 	troop.set_attack_order(get_troop_at_position(position), get_architecture_at_position(position))
 
+func _on_MainCamera_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
+	emit_signal("camera_moved", camera_top_left, camera_bottom_right, zoom)
 	
 
 func _on_troop_move_clicked(troop):
@@ -449,4 +454,5 @@ func get_architecture_at_position(position):
 		if architectures[a].map_position == position:
 			return architectures[a]
 	return null
+
 

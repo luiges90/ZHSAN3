@@ -81,7 +81,7 @@ shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
 frames = SubResource( 12 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -89,13 +89,11 @@ playing = true
 [node name="MovingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
-[node name="Node2D" type="Node2D" parent="."]
-
 [node name="TroopTitle" parent="." instance=ExtResource( 4 )]
 margin_left = 100.0
 margin_top = -28.0
 margin_right = 190.0
-margin_bottom = 27.0
+margin_bottom = 28.0
 rect_min_size = Vector2( 90, 56 )
 [connection signal="input_event" from="TroopArea" to="." method="_on_TroopArea_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

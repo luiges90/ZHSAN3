@@ -33,7 +33,7 @@ func _physics_process(delta):
 	zoom.y = clamp(zoom.y, 0.3, 2)
 	
 	if _moving_camera_x != 0 or _moving_camera_y != 0 or _zooming_camera != 0:
-		emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom)
+		emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom, zoom)
 		
 func get_viewing_rect() -> Rect2:
 	return Rect2(get_camera_position(), get_viewport_rect().size * zoom)
@@ -61,14 +61,14 @@ func _unhandled_input(event):
 				zoom.y -= zoom_speed
 				zoom.x = clamp(zoom.x, 0.3, 2)
 				zoom.y = clamp(zoom.y, 0.3, 2)
-				emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom)
+				emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom, zoom)
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			if event.is_pressed():
 				zoom.x += zoom_speed
 				zoom.y += zoom_speed
 				zoom.x = clamp(zoom.x, 0.3, 2)
 				zoom.y = clamp(zoom.y, 0.3, 2)
-				emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom)
+				emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom, zoom)
 	else:
 		if event.is_action("ui_up"):
 			if event.is_pressed():

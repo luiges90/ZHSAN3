@@ -370,6 +370,14 @@ func _animate_position(destination):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")
 	
+func on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
+	if zoom.x >= 1.5 or zoom.y >= 1.5:
+		$TroopTitle.visible = false
+	else:
+		$TroopTitle.visible = true
+		$TroopTitle.rect_scale.x = zoom.x * 2
+		$TroopTitle.rect_scale.y = zoom.y * 2
+	
 ####################################
 #         UI event handling        #
 ####################################
