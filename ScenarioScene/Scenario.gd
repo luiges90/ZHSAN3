@@ -235,7 +235,6 @@ func _load_data(path):
 	for item in obj:
 		var instance = troop_scene.instance()
 		instance.connect("troop_clicked", self, "_on_troop_clicked")
-		self.connect("camera_moved", instance, "on_camera_moved")
 		__load_item(instance, item, troops)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])

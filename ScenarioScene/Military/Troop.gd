@@ -45,6 +45,9 @@ func _ready():
 		position.y = map_position.y * scenario.tile_size
 		scale.x = SharedData.TILE_SIZE / 128.0
 		scale.y = SharedData.TILE_SIZE / 128.0
+		scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
+		scenario.connect("camera_moved", self, "_on_camera_moved")
+	
 
 ####################################
 #            Save / Load           #
@@ -75,6 +78,9 @@ func save_data() -> Dictionary:
 		"Combativity": combativity,
 		"CurrentOrder": current_order
 	}
+	
+func _on_scenario_loaded():
+	$TroopTitle.show_data(self)
 
 func get_name() -> String:
 	return _person_list[0].get_name() + tr('PERSON_TROOP')
@@ -370,7 +376,7 @@ func _animate_position(destination):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")
 	
-func on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
+func _on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
 	if zoom.x >= 1.5 or zoom.y >= 1.5:
 		$TroopTitle.visible = false
 	else:

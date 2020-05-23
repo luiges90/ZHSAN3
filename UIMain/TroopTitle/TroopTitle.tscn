@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://UIMain/TroopTitle/Background.png" type="Texture" id=2]
@@ -11,6 +11,15 @@
 [ext_resource path="res://UIMain/TroopTitle/ActionUndone.png" type="Texture" id=9]
 [ext_resource path="res://UIMain/TroopTitle/FoodNormal.png" type="Texture" id=10]
 [ext_resource path="res://UIMain/TroopTitle/TroopTitle.gd" type="Script" id=11]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 27, 54 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 27, 54 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -34,20 +43,28 @@ __meta__ = {
 }
 
 [node name="Morale" type="TextureRect" parent="Background"]
+anchor_bottom = 1.0
 margin_top = 2.0
-margin_right = 56.0
-margin_bottom = 56.0
-texture = ExtResource( 7 )
+margin_right = 27.0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 0, 54 )
+texture = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Combativity" type="TextureRect" parent="Background"]
+anchor_bottom = 1.0
 margin_left = 25.0
-margin_top = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
-texture = ExtResource( 5 )
+margin_top = 2.0
+margin_right = 52.0
+margin_bottom = 3.8147e-06
+grow_vertical = 0
+rect_pivot_offset = Vector2( 0, 54 )
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StatusMask" type="TextureRect" parent="Background"]
 margin_right = 90.0
