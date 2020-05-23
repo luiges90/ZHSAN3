@@ -109,6 +109,9 @@ func create_troop_set_data(in_id, starting_arch, kind, in_quantity, in_morale, i
 	combativity = in_combativity
 	map_position = pos
 	_update_military_kind_sprite()
+	$TroopTitle.show_data(self)
+	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
+	_on_camera_moved(camera_rect.position, camera_rect.position + camera_rect.size, scenario.get_camera_zoom())
 
 ####################################
 #             Get stat             #
@@ -199,6 +202,7 @@ func set_enter_order(position):
 	var architecture = scenario.get_architecture_at_position(position)
 	if architecture != null:
 		architecture.accept_entering_troop(self)
+		get_belonged_section().remove_troop(self)
 		queue_free()
 		
 func set_follow_order(troop):

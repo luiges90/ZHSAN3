@@ -74,6 +74,10 @@ func _ready():
 func get_camera_viewing_rect() -> Rect2:
 	var camera = $MainCamera as MainCamera
 	return camera.get_viewing_rect()
+	
+func get_camera_zoom() -> Vector2:
+	var camera = $MainCamera as MainCamera
+	return camera.zoom
 
 ########################################
 #             Save / Load              #
@@ -271,6 +275,9 @@ func __load_item(instance, item, add_to_list):
 	if instance is Architecture or instance is Troop:
 		instance.add_to_group(GROUP_GAME_INSTANCES)
 		add_child(instance)
+
+func remove_troop(item):
+	troops.erase(item.id)
 	
 
 ########################################
@@ -333,9 +340,8 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	var id = troops.keys().max()
 	if id == null:
 		id = 1
-	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
-	
 	instance.scenario = self
+	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
 	
 	troops[instance.id] = instance
 	add_child(instance)

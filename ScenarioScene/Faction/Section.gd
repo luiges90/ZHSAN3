@@ -43,6 +43,10 @@ func add_troop(troop, force: bool = false):
 	_troop_list.append(troop)
 	if not force:
 		troop.set_belonged_section(self, true)
+		
+func remove_troop(troop):
+	_troop_list.erase(troop)
+	scenario.remove_troop(troop)
 
 func get_belonged_faction(): 
 	return _belonged_faction
