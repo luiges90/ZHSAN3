@@ -166,8 +166,6 @@ func expected_fund_income():
 func expected_food_income():
 	return agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
 
-			
-			
 func day_event():
 	for p in get_persons():
 		p.day_event()
@@ -286,7 +284,9 @@ func accept_entering_troop(in_troop):
 	equipments[in_troop.military_kind.id] += in_troop.quantity
 	for p in in_troop.get_persons():
 		add_person(p)
-	
+
+func take_equipment(kind, quantity):
+	equipments[kind.id] -= quantity
 
 ####################################
 #                UI                #

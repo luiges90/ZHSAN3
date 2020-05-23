@@ -104,6 +104,8 @@ func create_troop_set_data(in_id, starting_arch, kind, in_quantity, in_morale, i
 	_starting_arch = starting_arch
 	set_belonged_section(starting_arch.get_belonged_section())
 	military_kind = kind
+	if military_kind.has_equipments():
+		starting_arch.take_equipment(military_kind, in_quantity)
 	quantity = in_quantity
 	morale = in_morale
 	combativity = in_combativity
