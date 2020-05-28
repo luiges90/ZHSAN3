@@ -11,7 +11,8 @@ var _confirming = false
 var player_name = ""
 
 func _on_faction_updated(faction):
-	player_name = faction.gname
+	if faction.player_controlled:
+		player_name = faction.get_name()
 
 func _update_items():
 	var file = File.new()
@@ -34,13 +35,14 @@ func _on_game_pressed(name: String):
 	hide()
 	emit_signal("file_slot_clicked", mode, "user://Saves/Save" + name)
 	
-	var file = File.new()
-	file.open("user://Saves/saves.json", File.READ_WRITE)
-	var json = file.get_as_text()
-	var obj = parse_json(json)
-	obj[name] = name + "：" + player_name + "　" + Util.current_date_str()
-	file.store_line(to_json(obj))
-	file.close()
+	if mode == MODE.SAVE:
+		var file = File.new()
+		file.open("user://Saves/saves.json", File.READ_WRITE)
+		var json = file.get_as_text()
+		var obj = parse_json(json)
+		obj[name] = name + "：" + player_name + "　" + Util.current_date_str()
+		file.store_line(to_json(obj))
+		file.close()
 
 func _on_Game1_pressed():
 	_on_game_pressed("01")
