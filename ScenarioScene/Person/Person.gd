@@ -121,7 +121,7 @@ func move_to_architecture(arch):
 	var old_location = get_location()
 	set_location(arch)
 	working_task = Task.MOVE
-	task_days = int(ScenarioUtil.arch_distance(old_location, arch) * 0.2)
+	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
 		
 func day_event():
 	if task_days > 0:

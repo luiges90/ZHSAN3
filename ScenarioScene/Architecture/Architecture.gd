@@ -178,6 +178,13 @@ func month_event():
 	_decay_internal()
 
 ####################################
+#           Manipulation           #
+####################################
+func receive_attack_damage(damage):
+	endurance -= damage
+
+
+####################################
 #            Set command           #
 ####################################
 func set_person_task(task, persons: Array):
@@ -190,6 +197,9 @@ func add_person(p, force: bool = false):
 		p.set_location(self, true)
 		
 func remove_person(p):
+	if id == 64:
+		var z = 0
+		z += 1
 	Util.remove_object(_person_list, p)
 
 ####################################

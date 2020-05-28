@@ -31,6 +31,7 @@ onready var pathfinder: PathFinder = PathFinder.new(self)
 
 signal troop_clicked
 signal animation_step_finished
+signal animation_attack_finished
 
 func forbidden(x):
 	assert(false)
@@ -302,17 +303,32 @@ func execute_attack():
 	if current_order != null and current_order.type == OrderType.ATTACK:
 		var dist = Util.m_dist(map_position, current_order.target.map_position) 
 		if dist >= military_kind.range_min and dist <= military_kind.range_max:
-			if current_order.target is Architecture:
-				attack_architecture(current_order.target)
+			var target = current_order.target
+			var damage = exp(0.693147 * log(get_offence() / target.get_defence()) + 6.21461)
+			var counter_damage = exp(0.693147 * log(get_defence() / target.get_offence()) + 6.21461) * 0.5
+			if target is Architecture:
+				damage = damage / 10
+			damage = int(damage)
+			counter_damage = int(counter_damage)
+			
+			self.quantity -= counter_damage
+			check_destroy()
+			if target is Architecture:
+				target.receive_attack_damage(damage)
 			else:
-				attack_troop(current_order.target)
-
-func attack_troop(target):
-	pass
-	
-func attack_architecture(target):
-	pass
-
+				target.quantity -= damage
+				target.check_destroy()
+			
+func check_destroy():
+	if quantity <= 0:
+		var return_to = get_starting_architecture()
+		if return_to.get_belonged_faction() != self.get_belonged_faction():
+			return_to = self.get_belonged_faction().get_architectures()[0]
+		for p in get_persons():
+			p.move_to_architecture(return_to)
+		get_belonged_section().remove_troop(self)
+		queue_free()
+			
 
 func after_order_cleanup():
 	if current_order != null and current_order.type == OrderType.MOVE and current_order.destination == map_position:
@@ -387,8 +403,8 @@ func _on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zo
 		$TroopTitle.visible = false
 	else:
 		$TroopTitle.visible = true
-		$TroopTitle.rect_scale.x = zoom.x * 2
-		$TroopTitle.rect_scale.y = zoom.y * 2
+		$TroopTitle.rect_scale.x = zoom.x + 1.0 / zoom.x
+		$TroopTitle.rect_scale.y = zoom.y + 1.0 / zoom.y
 	
 ####################################
 #         UI event handling        #

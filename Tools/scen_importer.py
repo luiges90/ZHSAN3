@@ -138,12 +138,6 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				  "ArchitectureList": archs,
 				  "TroopList": []
 				})
-			r.append({
-			    "_Id": 100,
-			    "Name": '郴县军区',
-			    "ArchitectureList": [64],
-				"TroopList": []
-			})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
 		with open(file_name + '/Factions.json', mode='w', encoding='utf-8') as fout:
@@ -162,7 +156,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				"_Id": 100,
 				"Name": '耒火',
 				"Color": [255, 0, 255],
-				"SectionList": [100],
+				"SectionList": [500],
 				"PlayerControlled": True
 			})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
