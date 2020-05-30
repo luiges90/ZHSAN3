@@ -307,17 +307,23 @@ func execute_attack():
 			var damage = exp(0.693147 * log(get_offence() / target.get_defence()) + 6.21461)
 			var counter_damage = exp(0.693147 * log(get_defence() / target.get_offence()) + 6.21461) * 0.5
 			if target is Architecture:
-				damage = damage / 10
+				damage = damage / 100
 			damage = int(damage)
 			counter_damage = int(counter_damage)
-			
-			self.quantity -= counter_damage
+		
+			quantity -= counter_damage
 			check_destroy()
 			if target is Architecture:
 				target.receive_attack_damage(damage)
 			else:
 				target.quantity -= damage
 				target.check_destroy()
+				
+			return _animate_attack(target)
+		else:
+			return yield()
+	else:
+		return yield()
 			
 func check_destroy():
 	if quantity <= 0:
@@ -394,6 +400,10 @@ func _animate_position(destination):
 	else:
 		position = destination
 		yield()
+		
+func _animate_attack(target):
+	# TODO Animate Attack
+	yield()
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")

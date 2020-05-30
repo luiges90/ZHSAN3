@@ -165,6 +165,16 @@ func expected_fund_income():
 	
 func expected_food_income():
 	return agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+	
+func get_defence():
+	return 500 + endurance + morale * 3
+	
+func get_offence():
+	return 500 + endurance * 3 + morale
+	
+####################################
+#            Time event            #
+####################################
 
 func day_event():
 	for p in get_persons():
