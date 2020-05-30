@@ -29,7 +29,7 @@
   {
     "BaseDefence": 100.0,
 	"Defence": 1.0,
-    "EquipmentCost": 6.0,
+    "EquipmentCost": 0.06,
     "Initiative": 50,
     "MaxQuantityMuiltipler": 1.0,
     "MovementKind": 1,
@@ -56,7 +56,7 @@
   {
     "BaseDefence": 70.0,
 	"Defence": 0.7,
-    "EquipmentCost": 10.0,
+    "EquipmentCost": 0.1,
     "Initiative": 40,
     "MaxQuantityMuiltipler": 1.0,
     "MovementKind": 1,
@@ -83,7 +83,7 @@
   {
     "BaseDefence": 100.0,
 	"Defence": 1.0,
-    "EquipmentCost": 60.0,
+    "EquipmentCost": 0.6,
     "Initiative": 60,
     "MaxQuantityMuiltipler": 0.3,
     "MovementKind": 2,

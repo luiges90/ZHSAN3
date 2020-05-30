@@ -93,7 +93,7 @@ func set_working_task(work):
 	working_task = work
 	producing_equipment = null
 	
-func set_produce_equipment(equipment):
+func set_produce_equipment(equipment: int):
 	producing_equipment = equipment
 	
 func get_working_task_str():

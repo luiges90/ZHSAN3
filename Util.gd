@@ -127,7 +127,7 @@ static func max_pos(list: Array) -> Array:
 	return [result_index, result]
 	
 static func min_by(list: Array, criteria_func: String) -> Array:
-	var value = list[0].call(criteria_func)
+	var value = 9e99
 	var result = list[0]
 	var index = 0
 	var result_index = 0
@@ -141,7 +141,7 @@ static func min_by(list: Array, criteria_func: String) -> Array:
 	return [result_index, result]
 
 static func max_by(list: Array, criteria_func: String) -> Array:
-	var value = list[0].call(criteria_func)
+	var value = -9e99
 	var result = list[0]
 	var index = 0
 	var result_index = 0
