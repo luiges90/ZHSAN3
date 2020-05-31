@@ -22,5 +22,6 @@ func _unhandled_input(event):
 			($SystemMenu as SystemMenu).hide()
 			($SaveLoadMenu as SaveLoadMenu).hide()
 			($CreateTroop as CreateTroop).hide()
+			($TroopDetail as TroopDetail).hide()
 			emit_signal("cancel_ui")
 

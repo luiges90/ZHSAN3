@@ -65,8 +65,6 @@ func load_data(json: Dictionary):
 	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
 	
-	current_order = json["CurrentOrder"]
-	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
@@ -76,8 +74,7 @@ func save_data() -> Dictionary:
 		"MilitaryKind": military_kind.id,
 		"Quantity": quantity,
 		"Morale": morale,
-		"Combativity": combativity,
-		"CurrentOrder": current_order
+		"Combativity": combativity
 	}
 	
 func _on_scenario_loaded():
