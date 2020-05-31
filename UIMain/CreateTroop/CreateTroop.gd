@@ -19,6 +19,8 @@ func _on_ArchitectureMenu_architecture_create_troop(arch, persons, military_kind
 	eligible_persons = persons
 	eligible_military_kinds = military_kinds
 	
+	$QuantitySlider.value = 0
+	
 	current_troop = CreatingTroop.new()
 	current_troop.morale = current_architecture.troop_morale
 	current_troop.combativity = current_architecture.troop_combativity

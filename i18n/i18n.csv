@@ -94,3 +94,6 @@ SELECT_TROOP_MILITARY_KIND,Select Military Kind,選擇兵種,選擇兵種
 ATTACK,Attack,攻擊,攻擊
 ENTER,Enter,入城,入城
 FOLLOW,Follow,跟隨,跟隨
+TROOP_DETAIL,Troop Details,部隊情報,部隊情報
+ORDER,Order,指令,指令
+TARGET,Target,目標,目標

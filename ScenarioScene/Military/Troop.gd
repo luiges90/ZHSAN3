@@ -193,12 +193,12 @@ func get_movement_cost(position, ignore_troops):
 	return [military_kind.movement_kind.movement_cost[terrain.id], null]
 
 ####################################
-#            Set command           #
+#             Set order            #
 ####################################
 func set_move_order(position):
 	current_order = {
 		"type": OrderType.MOVE,
-		"destination": position
+		"target": position
 	}
 	
 func set_enter_order(position):
@@ -237,6 +237,21 @@ func get_movement_area():
 func set_position(pos):
 	map_position = pos
 	return _animate_position(map_position * scenario.tile_size)
+	
+func get_order_text():
+	match current_order.type:
+		OrderType.MOVE: return "MOVE"
+		OrderType.ATTACK: return "ATTACK"
+		OrderType.FOLLOW: return "FOLLOW"
+		_: return ""
+		
+func get_order_target_text():
+	if current_order.target == null:
+		return ""
+	elif current_order.target is Vector2:
+		return str(current_order.target)
+	else:
+		return current_order.target.get_name()
 
 ####################################
 #          Order Execution         #
@@ -249,7 +264,7 @@ func prepare_orders():
 	__step_retry = 0
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
-			_current_path = pathfinder.get_stored_path_to(current_order.destination)
+			_current_path = pathfinder.get_stored_path_to(current_order.target)
 			
 
 enum ExecuteStepType { MOVED, BLOCKED, STOPPED }
@@ -337,7 +352,7 @@ func check_destroy():
 			
 
 func after_order_cleanup():
-	if current_order != null and current_order.type == OrderType.MOVE and current_order.destination == map_position:
+	if current_order != null and current_order.type == OrderType.MOVE and current_order.target == map_position:
 		current_order = null
 
 ####################################

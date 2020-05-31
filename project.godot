@@ -184,6 +184,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Military/Troop.gd"
 }, {
+"base": "Panel",
+"class": "TroopDetail",
+"language": "GDScript",
+"path": "res://UIMain/TroopDetail/TroopDetail.gd"
+}, {
 "base": "ContextMenu",
 "class": "TroopMenu",
 "language": "GDScript",
@@ -245,6 +250,7 @@ _global_script_class_icons={
 "TerrainDetail": "",
 "Toolbar": "",
 "Troop": "",
+"TroopDetail": "",
 "TroopMenu": "",
 "TroopQueue": "",
 "TroopTitle": "",
