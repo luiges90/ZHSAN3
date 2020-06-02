@@ -78,7 +78,7 @@ func save_data() -> Dictionary:
 	}
 	
 func _on_scenario_loaded():
-	$TroopTitle.show_data(self)
+	update_troop_title()
 
 func get_name() -> String:
 	return _person_list[0].get_name() + tr('PERSON_TROOP')
@@ -109,7 +109,7 @@ func create_troop_set_data(in_id, starting_arch, kind, in_quantity, in_morale, i
 	combativity = in_combativity
 	map_position = pos
 	_update_military_kind_sprite()
-	$TroopTitle.show_data(self)
+	update_troop_title()
 	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
 	_on_camera_moved(camera_rect.position, camera_rect.position + camera_rect.size, scenario.get_camera_zoom())
 
@@ -236,6 +236,8 @@ func set_position(pos):
 	return _animate_position(map_position * scenario.tile_size)
 	
 func get_order_text():
+	if current_order == null:
+		return ""
 	match current_order.type:
 		OrderType.MOVE: return "MOVE"
 		OrderType.ATTACK: return "ATTACK"
@@ -243,7 +245,7 @@ func get_order_text():
 		_: return ""
 		
 func get_order_target_text():
-	if current_order.target == null:
+	if current_order == null or current_order.target == null:
 		return ""
 	elif current_order.target is Vector2:
 		return str(current_order.target)
@@ -253,12 +255,14 @@ func get_order_target_text():
 ####################################
 #          Order Execution         #
 ####################################
+var _attack_count_in_turn = 0
 var __step_retry = 0
 func prepare_orders():
 	_remaining_movement = get_speed()
 	_current_path = null
 	_current_path_index = 0
 	__step_retry = 0
+	_attack_count_in_turn = 0
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_current_path = pathfinder.get_stored_path_to(current_order.target)
@@ -312,25 +316,29 @@ func execute_step() -> ExecuteStepResult:
 		return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 		
 func execute_attack():
-	if current_order != null and current_order.type == OrderType.ATTACK:
-		var dist = Util.m_dist(map_position, current_order.target.map_position) 
+	if current_order != null and current_order.type == OrderType.ATTACK and _attack_count_in_turn < 1:
+		var dist = Util.m_dist(map_position, current_order.target.map_position)
 		if dist >= military_kind.range_min and dist <= military_kind.range_max:
+			_attack_count_in_turn += 1
 			var target = current_order.target
-			var damage = exp(0.693147 * log(get_offence() / target.get_defence()) + 6.21461)
-			var counter_damage = exp(0.693147 * log(get_defence() / target.get_offence()) + 6.21461) * 0.5
+			var damage = exp(0.693147 * log(float(get_offence()) / target.get_defence()) + 6.21461)
+			var counter_damage = exp(0.693147 * log(float(target.get_offence()) / get_defence()) + 6.21461) * 0.5
+			print(get_offence(),',',get_defence(),',',target.get_offence(),',',target.get_defence(),',',damage,',',counter_damage)
 			if target is Architecture:
 				damage = damage / 100
 			damage = int(damage)
 			counter_damage = int(counter_damage)
 		
 			quantity -= counter_damage
+			update_troop_title()
 			check_destroy()
 			if target is Architecture:
 				target.receive_attack_damage(damage)
 			else:
 				target.quantity -= damage
 				target.check_destroy()
-				
+				target.update_troop_title()
+			
 			return _animate_attack(target)
 		else:
 			return yield()
@@ -355,6 +363,9 @@ func after_order_cleanup():
 ####################################
 #                UI                #
 ####################################
+func update_troop_title():
+	$TroopTitle.show_data(self)
+
 func _update_military_kind_sprite():
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 	if animated_sprite != null:
