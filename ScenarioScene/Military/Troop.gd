@@ -323,7 +323,6 @@ func execute_attack():
 			var target = current_order.target
 			var damage = exp(0.693147 * log(float(get_offence()) / target.get_defence()) + 6.21461)
 			var counter_damage = exp(0.693147 * log(float(target.get_offence()) / get_defence()) + 6.21461) * 0.5
-			print(get_offence(),',',get_defence(),',',target.get_offence(),',',target.get_defence(),',',damage,',',counter_damage)
 			if target is Architecture:
 				damage = damage / 100
 			damage = int(damage)
@@ -425,11 +424,23 @@ func _animate_position(destination):
 		yield()
 		
 func _animate_attack(target):
-	# TODO Animate Attack
-	yield()
+	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
+	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
+	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
+		var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+		animated_sprite.animation = "attack_e"
+		animated_sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+	else:
+		yield()
 	
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")
+	
+func _on_AnimatedSprite_animation_finished():
+	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+	animated_sprite.animation = "move_e"
+	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+	emit_signal("animation_attack_finished")
 	
 func _on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
 	if zoom.x >= 1.5 or zoom.y >= 1.5:
