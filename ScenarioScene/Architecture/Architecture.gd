@@ -170,7 +170,7 @@ func get_defence():
 	return 500 + endurance + morale * 3
 	
 func get_offence():
-	return 500 + endurance * 3 + morale
+	return endurance + morale * 0.5
 	
 ####################################
 #            Time event            #
