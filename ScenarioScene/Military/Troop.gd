@@ -338,7 +338,7 @@ func execute_attack():
 				target.check_destroy()
 				target.update_troop_title()
 			
-			return _animate_attack(target)
+			return _animate_attack(target, counter_damage, damage)
 		else:
 			return yield()
 	else:
@@ -423,13 +423,18 @@ func _animate_position(destination):
 		position = destination
 		yield()
 		
-func _animate_attack(target):
+func _animate_attack(target, self_damage, target_damage):
 	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
 	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
 	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
 		var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 		animated_sprite.animation = "attack_e"
 		animated_sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+		
+		find_node("NumberFlashText").text = "↓" + str(self_damage)
+		find_node("NumberFlashText").find_node('Timer').start()
+		target.find_node("NumberFlashText").text = "↓" + str(target_damage)
+		target.find_node("NumberFlashText").find_node('Timer').start()
 	else:
 		yield()
 	
