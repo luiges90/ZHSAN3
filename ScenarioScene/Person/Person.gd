@@ -89,6 +89,9 @@ func get_train_troop_ability():
 func get_produce_equipment_ability():
 	return 0.5 * intelligence + 0.5 * politics
 	
+func get_leader_value():
+	return command
+	
 func set_working_task(work):
 	working_task = work
 	producing_equipment = null

@@ -171,6 +171,37 @@ func get_defence():
 	
 func get_offence():
 	return endurance + morale * 0.5
+
+	
+####################################
+#           Gí¡et function           #
+####################################
+
+func enemy_troop_in_range(distance: int):
+	var positions = Util.squares_in_range(map_position, distance)
+	var results = []
+	for p in positions:
+		var troop = scenario.get_troop_at_position(p)
+		if troop != null and troop.get_belonged_faction().is_enemy_to(get_belonged_faction()):
+			results.append(troop)
+	return results
+	
+func friendly_troop_in_range(distance: int):
+	var positions = Util.squares_in_range(map_position, distance)
+	var results = []
+	for p in positions:
+		var troop = scenario.get_troop_at_position(p)
+		if troop.belonged_faction.is_friend_to(get_belonged_faction()):
+			results.append(troop)
+	return results
+	
+func create_troop_positions() -> Array:
+	var positions = Util.squares_in_range(map_position, 1)
+	var result = []
+	for p in positions:
+		if scenario.get_troop_at_position(p) == null:
+			result.append(p)
+	return result
 	
 ####################################
 #            Time event            #

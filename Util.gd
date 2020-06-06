@@ -54,10 +54,25 @@ static func f2ri(x: float) -> int:
 # Mahattan Distance
 static func m_dist(a: Vector2, b: Vector2):
 	return abs(a.x - b.x) + abs(a.y - b.y)
+	
+static func squares_in_range(position: Vector2, r: int) -> Array:
+	var result = []
+	for x in range(position.x - r, position.x + r + 1):
+		for y in range(position.y - r, position.y + r + 1):
+			if m_dist(Vector2(x,y), position) <= r:
+				result.append(Vector2(x, y))
+	return result
+	
 
 ##############################################
 #                 Collections                #
 ##############################################
+
+static func random_from(list: Array):
+	if list.size() > 0:
+		return list[randi() % list.size()]
+	else:
+		return null
 
 static func append_all(list: Array, other: Array):
 	for i in other:

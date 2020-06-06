@@ -27,6 +27,8 @@ var _current_path setget forbidden
 var _current_path_index = 0 setget forbidden
 var _remaining_movement = 0 setget forbidden
 
+var _orientation setget forbidden
+
 onready var pathfinder: PathFinder = PathFinder.new(self)
 
 signal troop_clicked
@@ -63,6 +65,8 @@ func load_data(json: Dictionary):
 	morale = json["Morale"]
 	combativity = json["Combativity"]
 	
+	_orientation = json["_Orientation"]
+	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
 	
 func save_data() -> Dictionary:
@@ -74,7 +78,8 @@ func save_data() -> Dictionary:
 		"MilitaryKind": military_kind.id,
 		"Quantity": quantity,
 		"Morale": morale,
-		"Combativity": combativity
+		"Combativity": combativity,
+		"_Orientation": _orientation
 	}
 	
 func _on_scenario_loaded():
@@ -183,7 +188,7 @@ func get_movement_cost(position, ignore_troops):
 		if troop != null:
 			return [INF, troop]
 	var arch = scenario.get_architecture_at_position(position)
-	if arch != null and arch.get_belonged_faction() != self.get_belonged_faction() and arch.endurance > 0:
+	if arch != null and get_belonged_faction().is_enemy_to(arch.get_belonged_faction()) and arch.endurance > 0:
 		return [INF, arch]
 	
 	var terrain = scenario.get_terrain_at_position(position)
@@ -232,8 +237,9 @@ func get_movement_area():
 	return pathfinder.get_movement_area()
 	
 func set_position(pos):
+	var old_position = map_position
 	map_position = pos
-	return _animate_position(map_position * scenario.tile_size)
+	return _animate_position(old_position, map_position)
 	
 func get_order_text():
 	if current_order == null:
@@ -404,7 +410,12 @@ func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 		
 		sprite_frame.add_frame(animation, image)
 		
-func _animate_position(destination):
+func _animate_position(old_position, destination_position):
+	_orientation = _get_animation_orientation(old_position, destination_position)
+	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+	animated_sprite.animation = "move_" + _orientation
+	
+	var destination = destination_position * scenario.tile_size
 	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
 	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
 	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
@@ -424,11 +435,14 @@ func _animate_position(destination):
 		yield()
 		
 func _animate_attack(target, self_damage, target_damage):
+	_orientation = _get_animation_orientation(map_position, target.map_position)
+	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+	animated_sprite.animation = "move_" + _orientation
+	
 	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
 	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
 	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
-		var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
-		animated_sprite.animation = "attack_e"
+		animated_sprite.animation = "attack_" + _orientation
 		animated_sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
 		
 		find_node("NumberFlashText").text = "↓" + str(self_damage)
@@ -443,7 +457,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	
 func _on_AnimatedSprite_animation_finished():
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
-	animated_sprite.animation = "move_e"
+	animated_sprite.animation = "move_" + _orientation
 	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
 	emit_signal("animation_attack_finished")
 	
@@ -454,6 +468,27 @@ func _on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zo
 		$TroopTitle.visible = true
 		$TroopTitle.rect_scale.x = min(1, zoom.x) + 1.0 / min(1, zoom.x)
 		$TroopTitle.rect_scale.y = min(1, zoom.y) + 1.0 / min(1, zoom.y)
+
+func _get_animation_orientation(from: Vector2, to: Vector2):
+	if from.x == to.x:
+		if from.y > to.y:
+			return "n"
+		else:
+			return "s"
+	elif from.x > to.x:
+		if from.y == to.y:
+			return "w"
+		elif from.y > to.y:
+			return "nw"
+		else:
+			return "sw"
+	else:
+		if from.y == to.y:
+			return "e"
+		elif from.y > to.y:
+			return "ne"
+		else:
+			return "se"
 	
 ####################################
 #         UI event handling        #

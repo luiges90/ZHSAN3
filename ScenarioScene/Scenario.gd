@@ -330,6 +330,9 @@ func on_architecture_toggle_auto_task(current_architecture):
 	current_architecture.auto_task = !current_architecture.auto_task
 
 func _on_PositionSelector_create_troop(arch, troop, position):
+	create_troop(arch, troop, position)
+	
+func create_troop(arch, troop, position):
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
 	instance.connect("troop_clicked", self, "_on_troop_clicked")

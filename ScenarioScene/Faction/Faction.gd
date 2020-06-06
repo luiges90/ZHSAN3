@@ -63,3 +63,9 @@ func day_event():
 func month_event():
 	for arch in get_architectures():
 		arch.month_event()
+		
+func is_friend_to(faction):
+	return self == faction
+	
+func is_enemy_to(faction):
+	return self != faction

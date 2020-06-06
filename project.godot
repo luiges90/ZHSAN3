@@ -15,9 +15,19 @@ _global_script_classes=[ {
 "path": "res://ScenarioScene/AI/AI.gd"
 }, {
 "base": "Node",
+"class": "AIAllocation",
+"language": "GDScript",
+"path": "res://ScenarioScene/AI/AIAllocation.gd"
+}, {
+"base": "Node",
 "class": "AIArchitecture",
 "language": "GDScript",
 "path": "res://ScenarioScene/AI/AIArchitecture.gd"
+}, {
+"base": "Node",
+"class": "AICampaign",
+"language": "GDScript",
+"path": "res://ScenarioScene/AI/AICampaign.gd"
 }, {
 "base": "Node",
 "class": "AIPaths",
@@ -216,7 +226,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AI": "",
+"AIAllocation": "",
 "AIArchitecture": "",
+"AICampaign": "",
 "AIPaths": "",
 "Architecture": "",
 "ArchitectureAndTroopMenu": "",

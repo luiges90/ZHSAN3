@@ -26,26 +26,9 @@ func _on_create_troop(arch, troop):
 	current_architecture = arch
 	current_troop = troop
 	
-	var scen = arch.scenario
-	var pos = arch.map_position
-	if scen.get_troop_at_position(pos) == null:
-		_create_position_select_item(pos, Color.blue)
-		
-	pos = arch.map_position + Vector2.UP
-	if scen.get_troop_at_position(pos) == null:
-		_create_position_select_item(pos, Color.blue)
-		
-	pos = arch.map_position + Vector2.DOWN
-	if scen.get_troop_at_position(pos) == null:
-		_create_position_select_item(pos, Color.blue)
-		
-	pos = arch.map_position + Vector2.LEFT
-	if scen.get_troop_at_position(pos) == null:
-		_create_position_select_item(pos, Color.blue)
-		
-	pos = arch.map_position + Vector2.RIGHT
-	if scen.get_troop_at_position(pos) == null:
-		_create_position_select_item(pos, Color.blue)
+	var positions = arch.create_troop_positions()
+	for p in positions:
+		_create_position_select_item(p, Color.blue)
 
 
 func _on_select_troop_move_to(troop):
