@@ -2,14 +2,9 @@ extends Control
 class_name TroopTitle
 
 func show_data(troop: Troop):
-	var morale = $Background/Morale as TextureRect
-	(morale.texture as AtlasTexture).region.position.y = (1 - troop.morale / 100.0) * 54
-	morale.rect_position.y = (1 - troop.morale / 100.0) * 54 + 2
-	
-	var combativity = $Background/Combativity as TextureRect
-	(combativity.texture as AtlasTexture).region.position.y = (1 - troop.combativity / 100.0) * 54
-	combativity.rect_position.y = (1 - troop.combativity / 100.0) * 54 + 2
-	
+	$Background/Morale.rect_scale.x = troop.morale / 100.0 * 0.75
+	$Background/Combativity.rect_scale.x = troop.combativity / 100.0 * 0.75
+
 	$Background/LeaderName.text = troop.get_leader().get_name()
 	$Background/TroopQuantity.text = str(troop.quantity)
 	$FlagBackground/FlagFaction.modulate = troop.get_belonged_faction().color

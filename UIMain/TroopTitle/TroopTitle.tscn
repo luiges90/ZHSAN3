@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://UIMain/TroopTitle/Background.png" type="Texture" id=2]
-[ext_resource path="res://UIMain/TroopTitle/StateMask.png" type="Texture" id=3]
 [ext_resource path="res://UIMain/TroopTitle/Flag.png" type="Texture" id=4]
 [ext_resource path="res://UIMain/TroopTitle/Combativity.png" type="Texture" id=5]
 [ext_resource path="res://UIMain/TroopTitle/Faction.png" type="Texture" id=6]
@@ -11,16 +10,6 @@
 [ext_resource path="res://UIMain/TroopTitle/ActionUndone.png" type="Texture" id=9]
 [ext_resource path="res://UIMain/TroopTitle/FoodNormal.png" type="Texture" id=10]
 [ext_resource path="res://UIMain/TroopTitle/TroopTitle.gd" type="Script" id=11]
-
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 27, 54 )
-
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 27, 54 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 14
@@ -44,43 +33,21 @@ __meta__ = {
 }
 
 [node name="Morale" type="TextureRect" parent="Background"]
-anchor_bottom = 1.0
-margin_top = 2.0
-margin_right = 27.0
-grow_vertical = 0
-rect_pivot_offset = Vector2( 0, 54 )
-texture = SubResource( 1 )
+margin_left = 48.0
+margin_top = 42.0
+margin_right = 126.0
+margin_bottom = 45.0
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Combativity" type="TextureRect" parent="Background"]
-anchor_bottom = 1.0
-margin_left = 25.0
-margin_top = 2.0
-margin_right = 52.0
-margin_bottom = 3.8147e-06
-grow_vertical = 0
-rect_pivot_offset = Vector2( 0, 54 )
-texture = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StatusMask" type="TextureRect" parent="Background"]
-margin_right = 90.0
-margin_bottom = 56.0
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LeaderName" type="Label" parent="Background"]
-margin_left = 40.0
-margin_top = 22.0
-margin_right = 90.0
-margin_bottom = 36.0
-text = "耒果田"
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 132.0
+margin_bottom = 55.0
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -95,11 +62,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionStatus" type="TextureRect" parent="Background"]
+[node name="LeaderName" type="Label" parent="Background"]
 margin_left = 40.0
-margin_top = 42.0
-margin_right = 52.0
-margin_bottom = 54.0
+margin_top = 22.0
+margin_right = 90.0
+margin_bottom = 36.0
+text = "耒果田"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionStatus" type="TextureRect" parent="Background"]
+margin_left = 68.2608
+margin_top = 8.33923
+margin_right = 80.2608
+margin_bottom = 20.3392
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false

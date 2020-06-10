@@ -102,7 +102,7 @@ func add_person(p, force: bool = false):
 func remove_person(p):
 	Util.remove_object(_person_list, p)
 
-func create_troop_set_data(in_id, starting_arch, kind, in_quantity, in_morale, in_combativity, pos):
+func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in_morale: int, in_combativity: int, pos: Vector2):
 	id = in_id
 	_starting_arch = starting_arch
 	set_belonged_section(starting_arch.get_belonged_section())
