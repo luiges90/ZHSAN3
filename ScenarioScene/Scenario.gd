@@ -343,6 +343,8 @@ func create_troop(arch, troop, position):
 	var id = troops.keys().max()
 	if id == null:
 		id = 1
+	else:
+		id = id + 1
 	instance.scenario = self
 	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
 	
