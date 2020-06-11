@@ -11,13 +11,14 @@
 [ext_resource path="res://UIMain/TroopTitle/FoodNormal.png" type="Texture" id=10]
 [ext_resource path="res://UIMain/TroopTitle/TroopTitle.gd" type="Script" id=11]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 14
 font_data = ExtResource( 8 )
 
 [node name="TroopTitle" type="Control"]
 margin_right = 90.0
 margin_bottom = 56.0
+mouse_filter = 2
 theme = ExtResource( 1 )
 script = ExtResource( 11 )
 __meta__ = {
@@ -27,6 +28,7 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 90.0
 margin_bottom = 56.0
+mouse_filter = 2
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,6 +39,7 @@ margin_left = 48.0
 margin_top = 42.0
 margin_right = 126.0
 margin_bottom = 45.0
+mouse_filter = 2
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,6 +50,7 @@ margin_left = 48.0
 margin_top = 48.0
 margin_right = 132.0
 margin_bottom = 55.0
+mouse_filter = 2
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,6 +81,7 @@ margin_left = 68.2608
 margin_top = 8.33923
 margin_right = 80.2608
 margin_bottom = 20.3392
+mouse_filter = 2
 texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,6 +92,7 @@ margin_left = 52.0
 margin_top = 8.0
 margin_right = 64.0
 margin_bottom = 22.0
+mouse_filter = 2
 texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -96,6 +102,7 @@ __meta__ = {
 margin_top = -25.0
 margin_right = 40.0
 margin_bottom = 15.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,6 +111,7 @@ __meta__ = {
 [node name="FlagFaction" type="TextureRect" parent="FlagBackground"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,7 +122,7 @@ margin_left = 2.0
 margin_top = 10.0
 margin_right = 40.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "耒"
 __meta__ = {
