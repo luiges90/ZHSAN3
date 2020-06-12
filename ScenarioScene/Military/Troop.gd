@@ -304,18 +304,21 @@ func execute_step() -> ExecuteStepResult:
 			return ExecuteStepType.STOPPED
 	elif current_order != null and (current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK):
 		var target = current_order.target
-		var step_result = pathfinder.stupid_path_to_step(target.map_position)
-		
-		if step_result == null:
-			__step_retry += 1
-			if __step_retry <= 3:
-				return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
+		if is_instance_valid(target):
+			var step_result = pathfinder.stupid_path_to_step(target.map_position)
+			
+			if step_result == null:
+				__step_retry += 1
+				if __step_retry <= 3:
+					return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
+				else:
+					return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+			elif _remaining_movement >= step_result[1]:
+				_remaining_movement -= step_result[1]
+				__step_retry = 0
+				return ExecuteStepResult.new(ExecuteStepType.MOVED, step_result[0])
 			else:
 				return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
-		elif _remaining_movement >= step_result[1]:
-			_remaining_movement -= step_result[1]
-			__step_retry = 0
-			return ExecuteStepResult.new(ExecuteStepType.MOVED, step_result[0])
 		else:
 			return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 	else:
@@ -340,15 +343,18 @@ func execute_attack():
 			if target is Architecture:
 				target.receive_attack_damage(damage)
 			else:
-				target.quantity -= damage
-				target.check_destroy()
+				target.receive_attack_damage(damage)
 				target.update_troop_title()
+				target.check_destroy()
 			
 			return _animate_attack(target, counter_damage, damage)
 		else:
 			return yield()
 	else:
 		return yield()
+		
+func receive_attack_damage(damage):
+	quantity -= damage
 			
 func check_destroy():
 	if quantity <= 0:

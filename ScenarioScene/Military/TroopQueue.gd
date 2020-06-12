@@ -34,5 +34,6 @@ func execute():
 			queue.push_back(troop)
 		
 	for troop in troops:
-		troop.after_order_cleanup()
+		if is_instance_valid(troop):
+			troop.after_order_cleanup()
 
