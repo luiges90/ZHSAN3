@@ -450,7 +450,7 @@ func _animate_attack(target, self_damage, target_damage):
 				target_animated_sprite.animation = "be_attacked_" + _orientation
 				target.__anim_self_damage = target_damage
 		else:
-			target.find_node("NumberFlashText").text = "↓" + str(__anim_self_damage)
+			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
 			target.find_node("NumberFlashText").find_node('Timer').start()
 	else:
 		yield()
