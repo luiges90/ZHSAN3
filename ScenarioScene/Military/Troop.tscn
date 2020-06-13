@@ -120,5 +120,6 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="NumberFlashText"]
 one_shot = true
 [connection signal="input_event" from="TroopArea" to="." method="_on_TroopArea_input_event"]
+[connection signal="animation_finished" from="TroopArea/AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="NumberFlashText/Timer" to="NumberFlashText" method="_on_Timer_timeout"]

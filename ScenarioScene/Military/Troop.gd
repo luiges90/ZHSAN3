@@ -27,7 +27,7 @@ var _current_path setget forbidden
 var _current_path_index = 0 setget forbidden
 var _remaining_movement = 0 setget forbidden
 
-var _orientation setget forbidden
+var _orientation = "e" setget forbidden
 
 onready var pathfinder: PathFinder = PathFinder.new(self)
 
@@ -330,22 +330,18 @@ func execute_attack():
 		if dist >= military_kind.range_min and dist <= military_kind.range_max:
 			_attack_count_in_turn += 1
 			var target = current_order.target
-			var damage = exp(0.693147 * log(float(get_offence()) / target.get_defence()) + 6.21461)
-			var counter_damage = exp(0.693147 * log(float(target.get_offence()) / get_defence()) + 6.21461) * 0.5
+			var damage = exp(0.693147 * log(float(get_offence()) / target.get_defence()) + 6.21461) + 1
+			var counter_damage = exp(0.693147 * log(float(target.get_offence()) / get_defence()) + 6.21461) * 0.5 + 1
 			if target is Architecture:
 				damage = damage / 100
 			damage = int(damage)
 			counter_damage = int(counter_damage)
 		
 			quantity -= counter_damage
-			update_troop_title()
-			check_destroy()
 			if target is Architecture:
 				target.receive_attack_damage(damage)
 			else:
 				target.receive_attack_damage(damage)
-				target.update_troop_title()
-				target.check_destroy()
 			
 			return _animate_attack(target, counter_damage, damage)
 		else:
@@ -439,33 +435,42 @@ func _animate_position(old_position, destination_position):
 	else:
 		position = destination
 		yield()
-		
+
+var __anim_self_damage = 0
 func _animate_attack(target, self_damage, target_damage):
 	_orientation = _get_animation_orientation(map_position, target.map_position)
-	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
-	animated_sprite.animation = "move_" + _orientation
-	
+
 	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
 	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
 	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
+		var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 		animated_sprite.animation = "attack_" + _orientation
-		animated_sprite.connect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
+		__anim_self_damage = self_damage
 		
-		find_node("NumberFlashText").text = "↓" + str(self_damage)
-		find_node("NumberFlashText").find_node('Timer').start()
-		target.find_node("NumberFlashText").text = "↓" + str(target_damage)
-		target.find_node("NumberFlashText").find_node('Timer').start()
+		var target_animated_sprite = target.find_node("TroopArea").find_node("AnimatedSprite") as AnimatedSprite
+		if target_animated_sprite != null:
+			target_animated_sprite.animation = "be_attacked_" + _orientation
+			target.__anim_self_damage = target_damage
 	else:
 		yield()
 	
-func _on_AnimationPlayer_animation_finished(anim_name):
-	emit_signal("animation_step_finished")
-	
 func _on_AnimatedSprite_animation_finished():
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
-	animated_sprite.animation = "move_" + _orientation
-	animated_sprite.disconnect("animation_finished", self, "_on_AnimatedSprite_animation_finished")
-	emit_signal("animation_attack_finished")
+	if animated_sprite.animation.begins_with("attack_") or animated_sprite.animation.begins_with("be_attacked_"):
+		update_troop_title()
+		animated_sprite.animation = "move_" + _orientation
+		
+		if __anim_self_damage > 0:
+			find_node("NumberFlashText").text = "↓" + str(__anim_self_damage)
+			find_node("NumberFlashText").find_node('Timer').start()
+			__anim_self_damage = 0
+			
+			check_destroy()
+	
+		emit_signal("animation_attack_finished")
+	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	emit_signal("animation_step_finished")
 	
 func _on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
 	if zoom.x >= 1.5 or zoom.y >= 1.5:
