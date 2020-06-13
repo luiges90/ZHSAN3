@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Moving.wav-298340c275b3e1eb05e0999ad957f9f9.sample"
+
+[deps]
+
+source_file="res://Sounds/Troop/3/Moving.wav"
+dest_files=[ "res://.import/Moving.wav-298340c275b3e1eb05e0999ad957f9f9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

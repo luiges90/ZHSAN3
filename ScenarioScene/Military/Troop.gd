@@ -377,27 +377,21 @@ func _update_military_kind_sprite():
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 	if animated_sprite != null:
 		var textures = SharedData.troop_images.get(military_kind.id, null)
-		if textures == null:
-			var attack = load("res://Images/Troop/" + str(military_kind.id) + "/Attack.png")
-			var be_attacked = load("res://Images/Troop/" + str(military_kind.id) + "/BeAttacked.png")
-			var move = load("res://Images/Troop/" + str(military_kind.id) + "/Move.png")
-			if attack != null and be_attacked != null and move != null:
-				textures = {
-					"attack": attack,
-					"be_attacked": be_attacked,
-					"move": move
-				}
-				SharedData.troop_images[military_kind.id] = textures
-		
-		var sprite_frame = SpriteFrames.new()
-		
-		var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
-		for i in range(0, 8):
-			_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
-			_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
-			_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
+		if textures != null:
+			var sprite_frame = SpriteFrames.new()
 			
-		animated_sprite.frames = sprite_frame
+			var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
+			for i in range(0, 8):
+				_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
+				_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
+				_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
+				
+			animated_sprite.frames = sprite_frame
+
+	var sounds = SharedData.troop_sounds.get(military_kind.id, null)
+	if sounds != null:
+		$MovingSound.stream = sounds["moving"]
+		$AttackSound.stream = sounds["attack"]
 	
 func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
 	sprite_frame.add_animation(animation)
@@ -447,10 +441,17 @@ func _animate_attack(target, self_damage, target_damage):
 		animated_sprite.animation = "attack_" + _orientation
 		__anim_self_damage = self_damage
 		
-		var target_animated_sprite = target.find_node("TroopArea").find_node("AnimatedSprite") as AnimatedSprite
-		if target_animated_sprite != null:
-			target_animated_sprite.animation = "be_attacked_" + _orientation
-			target.__anim_self_damage = target_damage
+		$AttackSound.play()
+		
+		var area_node = target.find_node("TroopArea")
+		if area_node != null:
+			var target_animated_sprite = area_node.find_node("AnimatedSprite") as AnimatedSprite
+			if target_animated_sprite != null:
+				target_animated_sprite.animation = "be_attacked_" + _orientation
+				target.__anim_self_damage = target_damage
+		else:
+			target.find_node("NumberFlashText").text = "↓" + str(__anim_self_damage)
+			target.find_node("NumberFlashText").find_node('Timer').start()
 	else:
 		yield()
 	
