@@ -178,20 +178,18 @@ func get_offence():
 ####################################
 
 func enemy_troop_in_range(distance: int):
-	var positions = Util.squares_in_range(map_position, distance)
 	var results = []
-	for p in positions:
-		var troop = scenario.get_troop_at_position(p)
-		if troop != null and troop.get_belonged_faction().is_enemy_to(get_belonged_faction()):
+	for t in scenario.troops:
+		var troop = scenario.troops[t]
+		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= 6:
 			results.append(troop)
 	return results
 	
 func friendly_troop_in_range(distance: int):
-	var positions = Util.squares_in_range(map_position, distance)
 	var results = []
-	for p in positions:
-		var troop = scenario.get_troop_at_position(p)
-		if troop.belonged_faction.is_friend_to(get_belonged_faction()):
+	for t in scenario.troops:
+		var troop = scenario.troops[t]
+		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= 6:
 			results.append(troop)
 	return results
 	
