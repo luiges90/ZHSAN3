@@ -16,7 +16,7 @@ func _target_troop_quantity(arch: Architecture):
 	var frontline = ai._frontline_connected_archs(arch)
 	var troops = 10000
 	for a in frontline:
-		troops += a.troops
+		troops += a.troop
 	return troops
 	
 func _target_equipment_quantity(arch: Architecture):
@@ -52,15 +52,11 @@ func _assign_task(arch: Architecture, scenario):
 	var t = -9e9 if arch.troop <= 0 or fund < 20 or arch.troop_morale >= target_troop_morale else (target_troop_morale * 2 / (arch.troop_morale + 10.0) - 1)
 	var q = -9e9 if arch.troop <= 0 or not enough_fund or not enough_food else _target_equipment_quantity(arch) / (arch.equipments[min_equipment.id] + 1)
 	
-	if fund < enough_fund:
+	if not enough_fund:
 		c = 9e9
-	else:
-		c *= max(1, enough_fund / fund + 1)
 	
-	if food < enough_food:
+	if not enough_food:
 		a = 9e9
-	else:
-		c *= max(1, enough_food / food + 1)
 	
 	var task_priority = [a, c, m, e, r, t, q]
 	while list.size() > 0:
