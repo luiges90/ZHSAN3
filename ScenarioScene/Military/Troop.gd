@@ -452,6 +452,7 @@ func _animate_position(old_position, destination_position):
 var __anim_self_damage = 0
 func _animate_attack(target, self_damage, target_damage):
 	_orientation = _get_animation_orientation(map_position, target.map_position)
+	var reverse_orientation = _get_animation_orientation(target.map_position, map_position)
 
 	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
 	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
@@ -466,7 +467,7 @@ func _animate_attack(target, self_damage, target_damage):
 		if area_node != null:
 			var target_animated_sprite = area_node.find_node("AnimatedSprite") as AnimatedSprite
 			if target_animated_sprite != null:
-				target_animated_sprite.animation = "be_attacked_" + _orientation
+				target_animated_sprite.animation = "be_attacked_" + reverse_orientation
 				target.__anim_self_damage = target_damage
 		else:
 			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
@@ -520,6 +521,7 @@ func _get_animation_orientation(from: Vector2, to: Vector2):
 			return "ne"
 		else:
 			return "se"
+			
 	
 ####################################
 #         UI event handling        #
