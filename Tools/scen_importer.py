@@ -69,6 +69,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Initiative": k['Speed'],
 					"EquipmentCost": k['CreateCost'] / 10000,
 					"MovementKind": movement_mapping_reverse[k['ID']],
+					"FoodPerSoldier": k['FoodPerSoldier'] - 1,
 					"TerrainStrength": {
 						1: k['PlainRate'],
 						2: k['GrasslandRate'],

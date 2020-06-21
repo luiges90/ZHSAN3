@@ -131,7 +131,7 @@ func set_adjacency(archs, ai_paths):
 ####################################
 func is_frontline() -> bool:
 	for arch_id in adjacent_archs:
-		if scenario.architectures[arch_id].belonged_faction().id != id:
+		if scenario.architectures[arch_id].get_belonged_faction().is_enemy_to(get_belonged_faction()):
 			return true
 	return false
 
@@ -161,10 +161,18 @@ func get_workable_persons() -> Array:
 	
 		
 func expected_fund_income():
-	return commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
+	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
+	var officer_expenditure = get_persons().size() * 10
+	return int(income - officer_expenditure)
 	
 func expected_food_income():
-	return agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+	var soldier_expenditure = troop
+	var equipment_expenditure = 0
+	for equipment in equipments:
+		var kind = scenario.military_kinds[equipment]
+		equipment_expenditure += equipments[equipment] * kind.food_per_soldier
+	return int(income - soldier_expenditure - equipment_expenditure)
 	
 func get_defence():
 	return 500 + endurance + morale * 3

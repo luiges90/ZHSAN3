@@ -35,3 +35,9 @@ func military_kind_power(military_kind: MilitaryKind) -> float:
 	var defence_factor = military_kind.defence
 	return offence_factor + defence_factor
 
+func _frontline_connected_archs(arch: Architecture) -> Array:
+	var archs = []
+	for arch_id in arch.adjacent_archs:
+		if arch.scenario.architectures[arch_id].get_belonged_faction().is_enemy_to(arch.get_belonged_faction()):
+			archs.append(arch.scenario.architectures[arch_id])
+	return archs

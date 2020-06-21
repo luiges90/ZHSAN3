@@ -7,10 +7,17 @@ func _init(ai):
 	self.ai = ai
 
 func _arch_enough_fund(arch: Architecture):
-	return arch.get_workable_persons().size() * 50
+	return arch.get_workable_persons().size() * 50 and arch.expected_fund_income() > 0
+	
+func _arch_enough_food(arch: Architecture):
+	return arch.expected_food_income() > 0
 	
 func _target_troop_quantity(arch: Architecture):
-	return 10000
+	var frontline = ai._frontline_connected_archs(arch)
+	var troops = 10000
+	for a in frontline:
+		troops += a.troops
+	return troops
 	
 func _target_equipment_quantity(arch: Architecture):
 	return _target_troop_quantity(arch) / 2.0
@@ -30,22 +37,30 @@ func _selected_equipment(arch: Architecture, scenario) -> MilitaryKind:
 	return result
 
 func _assign_task(arch: Architecture, scenario):
-	# TODO better weighting
 	var list = arch.get_workable_persons().duplicate()
 	var fund = arch.fund
+	var food = arch.food
 	var enough_fund = _arch_enough_fund(arch)
+	var enough_food = _arch_enough_food(arch)
 	var target_troop_morale = _target_troop_morale(arch)
 	var min_equipment = _selected_equipment(arch, scenario)
 	var a = -9e9 if arch.kind.agriculture <= 0 or fund < 20 else arch.kind.agriculture / float(arch.agriculture + 1)
 	var c = -9e9 if arch.kind.commerce <= 0 or fund < 20 else arch.kind.commerce / float(arch.commerce + 1)
 	var m = -9e9 if arch.kind.morale <= 0 or fund < 20 else arch.kind.morale / float(arch.morale + 1)
 	var e = -9e9 if arch.kind.endurance <= 0 or fund < 20 else arch.kind.endurance / float(arch.endurance + 1)
-	var r = -9e9 if arch.population <= 0 or fund < 50 or arch.morale <= 100 or arch.military_population <= 0 else _target_troop_quantity(arch) / (arch.troop + 1)
+	var r = -9e9 if arch.population <= 0 or fund < 50 or arch.morale <= 100 or arch.military_population <= 0 or not enough_food else _target_troop_quantity(arch) / (arch.troop + 1)
 	var t = -9e9 if arch.troop <= 0 or fund < 20 or arch.troop_morale >= target_troop_morale else (target_troop_morale * 2 / (arch.troop_morale + 10.0) - 1)
-	var q = -9e9 if arch.troop <= 0 or fund < enough_fund else _target_equipment_quantity(arch) / (arch.equipments[min_equipment.id] + 1)
+	var q = -9e9 if arch.troop <= 0 or not enough_fund or not enough_food else _target_equipment_quantity(arch) / (arch.equipments[min_equipment.id] + 1)
 	
 	if fund < enough_fund:
 		c = 9e9
+	else:
+		c *= max(1, enough_fund / fund + 1)
+	
+	if food < enough_food:
+		a = 9e9
+	else:
+		c *= max(1, enough_food / food + 1)
 	
 	var task_priority = [a, c, m, e, r, t, q]
 	while list.size() > 0:

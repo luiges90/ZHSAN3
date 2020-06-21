@@ -15,6 +15,7 @@ var range_max: int setget forbidden
 
 var speed: int setget forbidden
 var initiative: int setget forbidden
+var food_per_soldier: int setget forbidden
 var movement_kind setget forbidden
 var terrain_strength setget forbidden
 
@@ -36,6 +37,7 @@ func load_data(json: Dictionary):
 	max_quantity_multiplier = json["MaxQuantityMuiltipler"]
 	speed = json["Speed"]
 	initiative = json["Initiative"]
+	food_per_soldier = json["FoodPerSoldier"]
 	equipment_cost = json["EquipmentCost"]
 	movement_kind = scenario.movement_kinds[int(json["MovementKind"])]
 	terrain_strength = json["TerrainStrength"]
@@ -54,6 +56,7 @@ func save_data() -> Dictionary:
 		"Speed": speed,
 		"Initiative": initiative,
 		"EquipmentCost": equipment_cost,
+		"FoodPerSoldier": food_per_soldier,
 		"MovementKind": movement_kind.id,
 		"TerrainStrength": terrain_strength
 	}

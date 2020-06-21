@@ -12,6 +12,7 @@
     "RangeMax": 1,
     "RangeMin": 1,
     "Speed": 15,
+	"FoodPerSoldier": 0,
     "TerrainStrength": {
       "1": 1.1,
       "2": 1,
@@ -29,7 +30,7 @@
   {
     "BaseDefence": 100.0,
 	"Defence": 1.0,
-    "EquipmentCost": 0.06,
+    "EquipmentCost": 6.0,
     "Initiative": 50,
     "MaxQuantityMuiltipler": 1.0,
     "MovementKind": 1,
@@ -39,6 +40,7 @@
     "RangeMax": 1,
     "RangeMin": 1,
     "Speed": 18,
+	"FoodPerSoldier": 0,
     "TerrainStrength": {
       "1": 1.1,
       "2": 1,
@@ -56,7 +58,7 @@
   {
     "BaseDefence": 70.0,
 	"Defence": 0.7,
-    "EquipmentCost": 0.1,
+    "EquipmentCost": 10.0,
     "Initiative": 40,
     "MaxQuantityMuiltipler": 1.0,
     "MovementKind": 1,
@@ -66,6 +68,7 @@
     "RangeMax": 2,
     "RangeMin": 1,
     "Speed": 18,
+	"FoodPerSoldier": 0,
     "TerrainStrength": {
       "1": 1,
       "2": 1,
@@ -83,7 +86,7 @@
   {
     "BaseDefence": 100.0,
 	"Defence": 1.0,
-    "EquipmentCost": 0.6,
+    "EquipmentCost": 60.0,
     "Initiative": 60,
     "MaxQuantityMuiltipler": 0.3,
     "MovementKind": 2,
@@ -93,6 +96,7 @@
     "RangeMax": 1,
     "RangeMin": 1,
     "Speed": 24,
+	"FoodPerSoldier": 2,
     "TerrainStrength": {
       "1": 1.1,
       "2": 1.1,
