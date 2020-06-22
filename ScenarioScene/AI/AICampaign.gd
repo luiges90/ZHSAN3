@@ -21,7 +21,7 @@ func defence(arch, scenario):
 				var troop = CreatingTroop.new()
 				troop.persons = [leader]
 				troop.military_kind = scenario.military_kinds[equipment_id]
-				troop.quantity = arch.equipments[equipment_id] / 100 * 100
+				troop.quantity = min(arch.equipments[equipment_id] / 100 * 100, leader.get_max_troop_quantity())
 				troop.morale = arch.troop_morale
 				troop.combativity = arch.troop_combativity
 				
