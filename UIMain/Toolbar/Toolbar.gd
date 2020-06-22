@@ -30,6 +30,8 @@ func _input(event):
 				$DateRunner/TensDigit/Text10.text = '0'
 				$DateRunner/UnitDigit/Text.text = '1'
 			_on_Play_pressed()
+		elif event.scancode == KEY_ESCAPE:
+			_on_System_pressed()
 		elif not _running:
 			match event.scancode:
 				KEY_0:
