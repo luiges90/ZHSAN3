@@ -18,6 +18,7 @@ var initiative: int setget forbidden
 var food_per_soldier: int setget forbidden
 var movement_kind setget forbidden
 var terrain_strength setget forbidden
+var receive_counter_attacks: bool setget forbidden
 
 var max_quantity_multiplier: float setget forbidden
 var equipment_cost: float setget forbidden
@@ -41,6 +42,7 @@ func load_data(json: Dictionary):
 	equipment_cost = json["EquipmentCost"]
 	movement_kind = scenario.movement_kinds[int(json["MovementKind"])]
 	terrain_strength = json["TerrainStrength"]
+	receive_counter_attacks = json["ReceiveCounterAttacks"]
 	
 func save_data() -> Dictionary:
 	return {
@@ -58,7 +60,8 @@ func save_data() -> Dictionary:
 		"EquipmentCost": equipment_cost,
 		"FoodPerSoldier": food_per_soldier,
 		"MovementKind": movement_kind.id,
-		"TerrainStrength": terrain_strength
+		"TerrainStrength": terrain_strength,
+		"ReceiveCounterAttacks": receive_counter_attacks
 	}
 	
 func get_name():

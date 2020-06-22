@@ -63,18 +63,18 @@ func load_data(json: Dictionary):
 	kind = scenario.architecture_kinds[int(json["Kind"])]
 	map_position = Util.load_position(json["MapPosition"])
 	
-	population = json["Population"]
-	military_population = json["MilitaryPopulation"]
-	fund = json["Fund"]
-	food = json["Food"]
-	agriculture = json["Agriculture"]
-	commerce = json["Commerce"]
-	morale = json["Morale"]
-	endurance = json["Endurance"]
+	population = int(json["Population"])
+	military_population = int(json["MilitaryPopulation"])
+	fund = int(json["Fund"])
+	food = int(json["Food"])
+	agriculture = int(json["Agriculture"])
+	commerce = int(json["Commerce"])
+	morale = int(json["Morale"])
+	endurance = int(json["Endurance"])
 	
-	troop = json["Troop"]
-	troop_morale = json["TroopMorale"]
-	troop_combativity = json["TroopCombativity"]
+	troop = int(json["Troop"])
+	troop_morale = int(json["TroopMorale"])
+	troop_combativity = int(json["TroopCombativity"])
 	
 	auto_task = json.get("_AutoTask", false)
 	

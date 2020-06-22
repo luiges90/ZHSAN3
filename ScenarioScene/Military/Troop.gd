@@ -345,24 +345,36 @@ func execute_step() -> ExecuteStepResult:
 		
 func execute_attack():
 	if current_order != null and current_order.type == OrderType.ATTACK and _attack_count_in_turn < 1:
-		var dist = Util.m_dist(map_position, current_order.target.map_position)
-		if dist >= military_kind.range_min and dist <= military_kind.range_max:
-			_attack_count_in_turn += 1
-			var target = current_order.target
-			var damage = exp(0.693147 * log(float(get_offence()) / target.get_defence()) + 6.21461) + 1
-			var counter_damage = exp(0.693147 * log(float(target.get_offence()) / get_defence()) + 6.21461) * 0.5 + 1
-			if target is Architecture:
-				damage = damage / 100
-			damage = int(damage)
-			counter_damage = int(counter_damage)
-		
-			quantity -= counter_damage
-			if target is Architecture:
-				target.receive_attack_damage(damage)
+		var target = current_order.target
+		if is_instance_valid(self) and is_instance_valid(target):
+			var dist = Util.m_dist(map_position, current_order.target.map_position)
+			if dist >= military_kind.range_min and dist <= military_kind.range_max:
+				var target_valid = target is Architecture or target.quantity > 0
+				var self_valid = quantity > 0
+				if self_valid and target_valid:
+					_attack_count_in_turn += 1
+					var damage = exp(0.693147 * log(float(get_offence()) / target.get_defence()) + 6.21461) + 1
+					var counter_damage
+					if military_kind.receive_counter_attacks:
+						counter_damage = exp(0.693147 * log(float(target.get_offence()) / get_defence()) + 6.21461) * 0.5 + 1
+					else:
+						counter_damage = 0
+					if target is Architecture:
+						damage = damage / 100
+					damage = int(damage)
+					counter_damage = int(counter_damage)
+				
+					quantity -= counter_damage
+					if target is Architecture:
+						target.receive_attack_damage(damage)
+					else:
+						target.receive_attack_damage(damage)
+					
+					return _animate_attack(target, counter_damage, damage)
+				else:
+					return yield()
 			else:
-				target.receive_attack_damage(damage)
-			
-			return _animate_attack(target, counter_damage, damage)
+				return yield()
 		else:
 			return yield()
 	else:
@@ -390,7 +402,8 @@ func after_order_cleanup():
 #                UI                #
 ####################################
 func update_troop_title():
-	$TroopTitle.show_data(self)
+	if quantity > 0:
+		$TroopTitle.show_data(self)
 
 func _update_military_kind_sprite():
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite

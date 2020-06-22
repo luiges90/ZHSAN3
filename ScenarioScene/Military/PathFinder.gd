@@ -44,7 +44,11 @@ func get_movement_area() -> Array:
 	return area_pos
 	
 func get_stored_path_to(position) -> Array:
-	return _stored_paths[position] 
+	if _stored_paths.size() > 0:
+		return _stored_paths[position] 
+	else:
+		get_movement_area()
+		return _stored_paths[position] 
 
 func _step_forward(last_position_item, position, area, position_queue, stored_paths):
 	var movement_cost = troop.get_movement_cost(position, true)[0]

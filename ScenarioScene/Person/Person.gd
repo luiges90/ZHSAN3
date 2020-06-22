@@ -32,13 +32,13 @@ func load_data(json: Dictionary):
 	surname = json["Surname"]
 	given_name = json["GivenName"]
 	courtesy_name = json["CourtesyName"]
-	command = json["Command"]
-	strength = json["Strength"]
-	intelligence = json["Intelligence"]
-	politics = json["Politics"]
-	glamour = json["Glamour"]
+	command = int(json["Command"])
+	strength = int(json["Strength"])
+	intelligence = int(json["Intelligence"])
+	politics = int(json["Politics"])
+	glamour = int(json["Glamour"])
 	working_task = int(json["Task"])
-	producing_equipment = json["ProducingEquipment"]
+	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
 	
 func save_data() -> Dictionary:
 	return {
