@@ -364,6 +364,8 @@ func execute_attack():
 					damage = int(damage)
 					counter_damage = int(counter_damage)
 				
+					print(self.get_name(), "(", self.quantity ,") attacking ", target.get_name(), "(", target.quantity ,")")
+					print("damage = ", damage, ", counter = ", counter_damage)
 					quantity -= counter_damage
 					if target is Architecture:
 						target.receive_attack_damage(damage)

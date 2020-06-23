@@ -25,5 +25,5 @@ func consider_retreat(troop):
 	return troop.quantity < 1000
 
 func check_enter_start_arch(troop):
-	if Util.m_dist(troop.map_position, troop.get_starting_architecture().map_position):
+	if Util.m_dist(troop.map_position, troop.get_starting_architecture().map_position) <= 1:
 		troop.set_enter_order(troop.get_starting_architecture().map_position)
