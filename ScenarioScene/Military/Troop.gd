@@ -68,8 +68,23 @@ func load_data(json: Dictionary):
 	_orientation = json["_Orientation"]
 	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
+
 	
 func save_data() -> Dictionary:
+	var order_type
+	var order_target
+	var order_target_type
+	if current_order != null:
+		order_type = current_order.type
+		if current_order.target is Architecture:
+			order_target = current_order.target.id
+			order_target_type = "Architecture"
+		elif current_order.target is Vector2:
+			order_target = Util.save_position(current_order.target)
+			order_target_type = "Position"
+		else:
+			order_target = current_order.target.id
+			order_target_type = "Troop"
 	return {
 		"_Id": id,
 		"MapPosition": Util.save_position(map_position),
@@ -79,7 +94,10 @@ func save_data() -> Dictionary:
 		"Quantity": quantity,
 		"Morale": morale,
 		"Combativity": combativity,
-		"_Orientation": _orientation
+		"_Orientation": _orientation,
+		"_CurrentOrderType": order_type,
+		"_CurrentOrderTarget": order_target,
+		"_CurrentOrderTargetType": order_target_type
 	}
 	
 func _on_scenario_loaded():

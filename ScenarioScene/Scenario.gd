@@ -236,12 +236,31 @@ func _load_data(path):
 	file.open(path + "/Troops.json", File.READ)
 	var troop_scene = preload("Military/Troop.tscn")
 	obj = parse_json(file.get_as_text())
+	var troop_json = {}
 	for item in obj:
 		var instance = troop_scene.instance()
 		instance.connect("troop_clicked", self, "_on_troop_clicked")
 		__load_item(instance, item, troops)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
+		troop_json[instance.id] = item
+	for tid in troops:
+		var order_type = troop_json[tid]["_CurrentOrderType"]
+		var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
+		var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
+		if order_target_type == "Position":
+			troops[tid].set_move_order(Util.load_position(order_target_raw))
+		elif order_target_type == "Architecture":
+			var arch = architectures[int(order_target_raw)]
+			troops[tid].set_attack_order(null, arch)
+		elif order_target_type == "Troop":
+			var troop = troops[int(order_target_raw)]
+			if order_type == Troop.OrderType.ATTACK:
+				troops[tid].set_attack_order(troop, null)
+			elif order_type == Troop.OrderType.FOLLOW:
+				troops[tid].set_follow_order(troop)
+		
+	
 	file.close()
 	
 	file.open(path + "/Sections.json", File.READ)
@@ -350,6 +369,7 @@ func create_troop(arch, troop, position):
 	
 	troops[instance.id] = instance
 	add_child(instance)
+	instance.add_to_group(GROUP_GAME_INSTANCES)
 	
 
 func _on_PositionSelector_move_troop(troop, position):
