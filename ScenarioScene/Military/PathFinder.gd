@@ -4,6 +4,7 @@ class_name PathFinder
 var troop
 var scenario
 
+var _travelled_stupid_path = []
 var _stored_paths = {}
 
 func _init(troop):
@@ -66,6 +67,9 @@ func _step_forward(last_position_item, position, area, position_queue, stored_pa
 			position_queue.push_back(new_item)
 			area.append(new_item)
 			stored_paths[position] = stored_paths[last_position_item.position] + [position]
+			
+func prepare_orders():
+	_travelled_stupid_path = [troop.map_position]
 
 # return [next_position, movement_cost]
 func stupid_path_to_step(target_position):
@@ -110,9 +114,21 @@ func stupid_path_to_step(target_position):
 	if movement_cost[1] != null and movement_cost2[1] != null:
 		return null
 	elif movement_cost[0] <= movement_cost2[0]:
-		return [new_position, movement_cost[0]]
+		if !_travelled_stupid_path.has(new_position):
+			_travelled_stupid_path.append(new_position)
+			return [new_position, movement_cost[0]]
+		else:
+			_travelled_stupid_path.append(alt_position)
+			return [alt_position, movement_cost2[0]]
 	elif movement_cost2[0] <= movement_cost[0]:
-		return [alt_position, movement_cost2[0]]
+		if !_travelled_stupid_path.has(alt_position):
+			_travelled_stupid_path.append(alt_position)
+			return [alt_position, movement_cost2[0]]
+		else:
+			_travelled_stupid_path.append(new_position)
+			return [new_position, movement_cost[0]]
 	else:
-		assert(false)
 		return null
+
+func after_order_cleanup():
+	_travelled_stupid_path = []

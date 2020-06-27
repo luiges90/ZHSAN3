@@ -310,7 +310,8 @@ func prepare_orders():
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_current_path = pathfinder.get_stored_path_to(current_order.target)
-			
+	pathfinder.prepare_orders()
+
 
 enum ExecuteStepType { MOVED, BLOCKED, STOPPED }
 class ExecuteStepResult:
@@ -424,6 +425,7 @@ func check_destroy():
 func after_order_cleanup():
 	if current_order != null and current_order.type == OrderType.MOVE and current_order.target == map_position:
 		current_order = null
+	pathfinder.after_order_cleanup()
 
 ####################################
 #                UI                #
