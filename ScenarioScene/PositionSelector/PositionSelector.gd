@@ -60,31 +60,11 @@ func _on_select_troop_enter(troop):
 	current_architecture = null
 	current_troop = troop
 	
-	var scen = troop.scenario
-	var pos = troop.map_position
-	var arch = scen.get_architecture_at_position(pos)
-	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
-		_create_position_select_item(pos, Color.yellow)
-		
-	pos = troop.map_position + Vector2.UP
-	arch = scen.get_architecture_at_position(pos)
-	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
-		_create_position_select_item(pos, Color.yellow)
-		
-	pos = troop.map_position + Vector2.DOWN
-	arch = scen.get_architecture_at_position(pos)
-	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
-		_create_position_select_item(pos, Color.yellow)
-		
-	pos = troop.map_position + Vector2.LEFT
-	arch = scen.get_architecture_at_position(pos)
-	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
-		_create_position_select_item(pos, Color.yellow)
-		
-	pos = troop.map_position + Vector2.RIGHT
-	arch = scen.get_architecture_at_position(pos)
-	if arch != null and arch.get_belonged_faction() == troop.get_belonged_faction():
-		_create_position_select_item(pos, Color.yellow)
+	var scen = current_troop.scenario
+	for a in scen.architectures:
+		var target_arch = scen.architectures[a]
+		if target_arch != null and target_arch.get_belonged_faction() == troop.get_belonged_faction():
+			_create_position_select_item(target_arch.map_position, Color.blue)
 
 
 func _on_select_troop_follow(troop):

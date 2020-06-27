@@ -25,6 +25,8 @@ func execute():
 				else:
 					yield(troop, "animation_step_finished")
 					
+			var enter = troop.execute_enter()
+					
 			var attack = troop.execute_attack()
 			if attack is GDScriptFunctionState:
 				attack.resume()

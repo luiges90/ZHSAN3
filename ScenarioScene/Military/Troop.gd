@@ -5,7 +5,7 @@ const SPRITE_SIZE = 128
 const SPRITE_SHEET_FRAMES = 10
 const ANIMATION_SPEED = 30
 
-enum OrderType { MOVE, FOLLOW, ATTACK }
+enum OrderType { MOVE, FOLLOW, ATTACK, ENTER }
 
 var id: int setget forbidden
 var scenario
@@ -242,10 +242,10 @@ func set_move_order(position):
 	
 func set_enter_order(position):
 	var architecture = scenario.get_architecture_at_position(position)
-	if architecture != null:
-		architecture.accept_entering_troop(self)
-		get_belonged_section().remove_troop(self)
-		queue_free()
+	current_order = {
+		"type": OrderType.ENTER,
+		"target": architecture
+	}
 		
 func set_follow_order(troop):
 	if troop == null:
@@ -285,6 +285,7 @@ func get_order_text():
 		OrderType.MOVE: return "MOVE"
 		OrderType.ATTACK: return "ATTACK"
 		OrderType.FOLLOW: return "FOLLOW"
+		OrderType.ENTER: return "ENTER"
 		_: return ""
 		
 func get_order_target_text():
@@ -339,7 +340,7 @@ func execute_step() -> ExecuteStepResult:
 			return ExecuteStepResult.new(ExecuteStepType.MOVED, new_position)
 		else:
 			return ExecuteStepType.STOPPED
-	elif current_order != null and (current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK):
+	elif current_order != null and (current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK || current_order.type == OrderType.ENTER):
 		var target = current_order.target
 		if is_instance_valid(target):
 			var step_result = pathfinder.stupid_path_to_step(target.map_position)
@@ -360,6 +361,14 @@ func execute_step() -> ExecuteStepResult:
 			return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 	else:
 		return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+		
+func execute_enter():
+	if current_order != null and current_order.type == OrderType.ENTER:
+		var architecture = current_order.target
+		if Util.m_dist(map_position, architecture.map_position) <= 1:
+			architecture.accept_entering_troop(self)
+			get_belonged_section().remove_troop(self)
+			queue_free()
 		
 func execute_attack():
 	if current_order != null and current_order.type == OrderType.ATTACK and _attack_count_in_turn < 1:
