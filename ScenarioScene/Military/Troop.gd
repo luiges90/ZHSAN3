@@ -236,8 +236,8 @@ func can_occupy():
 	if on_arch != null:
 		var check_positions = Util.squares_in_range(on_arch.map_position, 1)
 		for p in check_positions:
-			var troop = scenario.get_troop.at_position(p)
-			if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()):
+			var troop = scenario.get_troop_at_position(p)
+			if troop != null and troop.get_belonged_faction().is_enemy_to(get_belonged_faction()):
 				return false
 		return true
 	return false
@@ -399,7 +399,7 @@ func execute_attack():
 					else:
 						counter_damage = 0
 					if target is Architecture:
-						damage = damage / 100
+						damage = damage * military_kind.architecture_attack_factor
 					damage = int(damage)
 					counter_damage = int(counter_damage)
 				

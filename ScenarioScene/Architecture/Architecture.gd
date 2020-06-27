@@ -195,7 +195,7 @@ func enemy_troop_in_range(distance: int):
 	
 func enemy_troop_in_architecture():
 	var troop = scenario.get_troop_at_position(map_position)
-	if get_belonged_faction().is_enemy_to(troop.get_belonged_faction()):
+	if troop != null and get_belonged_faction().is_enemy_to(troop.get_belonged_faction()):
 		return troop
 	return null
 	
@@ -277,7 +277,7 @@ func _decay_internal():
 	endurance -= Util.f2ri(endurance * 0.005 * factor)
 	
 func _develop_internal():
-	if enemy_troop_in_architecture() != null:
+	if enemy_troop_in_architecture() == null:
 		for p in get_persons():
 			match p.working_task:
 				Person.Task.AGRICULTURE: _develop_agriculture(p)
