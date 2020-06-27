@@ -400,6 +400,10 @@ func _on_troop_attack_clicked(troop):
 func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)
 	
+func _on_troop_occupy_clicked(troop):
+	# occupy clicked
+	pass
+	
 ########################################
 #         Other signal Logic           #
 ########################################

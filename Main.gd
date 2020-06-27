@@ -52,6 +52,7 @@ func _register_menus():
 	$UICanvas/UIMain/TroopMenu.connect("attack_clicked", $Scenario, "_on_troop_attack_clicked")
 	$UICanvas/UIMain/TroopMenu.connect("enter_clicked", $Scenario, "_on_troop_enter_clicked")
 	$UICanvas/UIMain/TroopMenu.connect("follow_clicked", $Scenario, "_on_troop_follow_clicked")
+	$UICanvas/UIMain/TroopMenu.connect("occupy_clicked", $Scenario, "_on_troop_occupy_clicked")
 
 
 func _all_loaded():
