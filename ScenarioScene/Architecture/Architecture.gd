@@ -189,15 +189,21 @@ func enemy_troop_in_range(distance: int):
 	var results = []
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
-		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= 6:
+		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance:
 			results.append(troop)
 	return results
+	
+func enemy_troop_in_architecture():
+	var troop = scenario.get_troop_at_position(map_position)
+	if get_belonged_faction().is_enemy_to(troop.get_belonged_faction()):
+		return troop
+	return null
 	
 func friendly_troop_in_range(distance: int):
 	var results = []
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
-		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= 6:
+		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance:
 			results.append(troop)
 	return results
 	
@@ -261,18 +267,23 @@ func _develop_resources():
 	military_population += population_increase * 0.4
 	
 func _decay_internal():
-	agriculture -= Util.f2ri(agriculture * 0.005)
-	commerce -= Util.f2ri(commerce * 0.005)
-	morale -= Util.f2ri(morale * 0.01)
-	endurance -= Util.f2ri(endurance * 0.005)
+	var factor = 1
+	var enemy_troop = enemy_troop_in_architecture()
+	if enemy_troop != null:
+		factor = 1 + enemy_troop.quantity / 2000.0
+	agriculture -= Util.f2ri(agriculture * 0.005 * factor)
+	commerce -= Util.f2ri(commerce * 0.005 * factor)
+	morale -= Util.f2ri(morale * 0.01 * factor)
+	endurance -= Util.f2ri(endurance * 0.005 * factor)
 	
 func _develop_internal():
-	for p in get_persons():
-		match p.working_task:
-			Person.Task.AGRICULTURE: _develop_agriculture(p)
-			Person.Task.COMMERCE: _develop_commerce(p)
-			Person.Task.MORALE: _develop_morale(p)
-			Person.Task.ENDURANCE: _develop_endurance(p)
+	if enemy_troop_in_architecture() != null:
+		for p in get_persons():
+			match p.working_task:
+				Person.Task.AGRICULTURE: _develop_agriculture(p)
+				Person.Task.COMMERCE: _develop_commerce(p)
+				Person.Task.MORALE: _develop_morale(p)
+				Person.Task.ENDURANCE: _develop_endurance(p)
 			
 func _develop_military():
 	for p in get_persons():

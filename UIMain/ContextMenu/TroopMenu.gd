@@ -14,6 +14,8 @@ signal occupy_clicked
 func show_menu(troop, mouse_x, mouse_y): 
 	showing_troop = troop
 	
+	$VBoxContainer/Occupy.disabled = !troop.can_occupy()
+	
 	margin_left = mouse_x
 	margin_top = mouse_y
 	

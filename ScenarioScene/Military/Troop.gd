@@ -230,6 +230,17 @@ func friendly_troop_in_range(distance: int):
 		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position):
 			results.append(troop)
 	return results
+	
+func can_occupy():
+	var on_arch = scenario.get_architecture_at_position(map_position)
+	if on_arch != null:
+		var check_positions = Util.squares_in_range(on_arch.map_position, 1)
+		for p in check_positions:
+			var troop = scenario.get_troop.at_position(p)
+			if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()):
+				return false
+		return true
+	return false
 
 ####################################
 #             Set order            #
