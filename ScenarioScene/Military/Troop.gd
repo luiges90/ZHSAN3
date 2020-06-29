@@ -306,6 +306,10 @@ func get_order_target_text():
 		return str(current_order.target)
 	else:
 		return current_order.target.get_name()
+		
+func occupy():
+	var arch = scenario.get_architecture_at_position(map_position)
+	arch.change_faction(get_belonged_faction())
 
 ####################################
 #          Order Execution         #

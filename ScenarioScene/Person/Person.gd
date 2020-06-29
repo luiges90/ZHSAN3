@@ -1,7 +1,13 @@
 extends Node
 class_name Person
 
-enum Task { NONE, AGRICULTURE, COMMERCE, MORALE, ENDURANCE, MOVE, RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT }
+enum Task { NONE, 
+	AGRICULTURE, COMMERCE, MORALE, ENDURANCE, 
+	MOVE, 
+	RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT }
+enum Status { NONE,
+	NORMAL, WILD
+}
 
 var id: int setget forbidden
 var scenario
@@ -11,6 +17,7 @@ var given_name: String setget forbidden
 var courtesy_name: String setget forbidden
 
 var _location setget set_location, get_location
+var _status = Status.NONE setget forbidden, get_status
 
 var command: int setget forbidden
 var strength: int setget forbidden
@@ -22,6 +29,7 @@ var working_task setget forbidden
 var producing_equipment setget forbidden
 
 var task_days = 0 setget forbidden
+
 
 func forbidden(x):
 	assert(false)
@@ -68,6 +76,12 @@ func set_location(item, force = false):
 	if not force:
 		item.add_person(self, true)
 		
+func get_status():
+	return _status
+	
+func set_status(status, force = false):
+	_status = status
+	
 func get_agriculture_ability():
 	return 0.25 * intelligence + 0.5 * politics + 0.25 * glamour
 	

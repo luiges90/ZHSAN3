@@ -250,10 +250,10 @@ func add_person(p, force: bool = false):
 		p.set_location(self, true)
 		
 func remove_person(p):
-	if id == 64:
-		var z = 0
-		z += 1
 	Util.remove_object(_person_list, p)
+	
+func change_faction(to_faction):
+	pass
 
 ####################################
 #          Order Execution         #

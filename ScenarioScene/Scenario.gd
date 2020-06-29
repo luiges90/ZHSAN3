@@ -228,6 +228,7 @@ func _load_data(path):
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
+		
 		instance.setup_after_load()
 	file.close()
 	for item in architectures:
@@ -401,8 +402,7 @@ func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)
 	
 func _on_troop_occupy_clicked(troop):
-	# occupy clicked
-	pass
+	troop.occupy()
 	
 ########################################
 #         Other signal Logic           #
