@@ -37,6 +37,7 @@ func forbidden(x):
 
 func load_data(json: Dictionary):
 	id = json["_Id"]
+	_status = int(json["Status"])
 	surname = json["Surname"]
 	given_name = json["GivenName"]
 	courtesy_name = json["CourtesyName"]
@@ -51,6 +52,7 @@ func load_data(json: Dictionary):
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
+		"Status": _status,
 		"Surname": surname,
 		"GivenName": given_name,
 		"CourtesyName": courtesy_name,
@@ -79,7 +81,14 @@ func set_location(item, force = false):
 func get_status():
 	return _status
 	
-func set_status(status, force = false):
+func get_status_str() -> String:
+	match _status:
+		Status.NONE: return '--'
+		Status.NORMAL: return tr('STATUS_NORMAL')
+		Status.WILD: return tr('STATUS_WILD')
+		_: return '--'
+	
+func set_status(status):
 	_status = status
 	
 func get_agriculture_ability():

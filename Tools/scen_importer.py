@@ -1,5 +1,7 @@
 import json
 
+dev = True
+
 file_name = '194QXGJ-qh'
 with open('CommonData.json', mode='r', encoding='utf-8') as cfin: 
 	common = json.loads(cfin.read(), strict=False)
@@ -101,19 +103,26 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 			
+		faction_person_ids = []
+		no_faction_person_ids = []
+		if dev:
+			faction_person_ids += [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388]
 		with open(file_name + '/Architectures.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			states = {x['ID']: x['Name'] for x in obj['States']['GameObjects']}
 			for k in obj['Architectures']['GameObjects']:
 				position = [int(x) for x in k['ArchitectureAreaString'].split(' ') if x]
 				persons = [int(x) for x in k['PersonsString'].split(' ') if x]
+				faction_person_ids += persons
+				no_faction_persons = [int(x) for x in k['NoFactionPersonsString'].split(' ') if x]
+				no_faction_person_ids += no_faction_persons
 				r.append({
 					"_Id": k["ID"],
 					"Kind": k['KindId'],
 					"Name": k['Name'],
 					"Title": states[k['StateID']] + ' ' + k['Name'],
 					"MapPosition": [position[0], position[1] - 1],
-					"PersonList": persons if k["ID"] != 64 else [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388],
+					"PersonList": persons + no_faction_persons if not dev or k["ID"] != 64 else [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388],
 					"Population": k['Population'],
 					"MilitaryPopulation": k['Population'] * 0.4,
 					"Fund": k['Fund'],
@@ -153,20 +162,28 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				  "SectionList": sects,
 				  "PlayerControlled": False
 				})
-			r.append({
-				"_Id": 100,
-				"Name": '耒火',
-				"Color": [255, 0, 255],
-				"SectionList": [500],
-				"PlayerControlled": True
-			})
+			if dev:
+				r.append({
+					"_Id": 100,
+					"Name": '耒火',
+					"Color": [255, 0, 255],
+					"SectionList": [500],
+					"PlayerControlled": True
+				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
-				
+		
 		with open(file_name + '/Persons.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for k in obj['Persons']['GameObjects']:
+				if k['ID'] in faction_person_ids:
+					status = 1
+				elif k['ID'] in no_faction_person_ids:
+					status = 2
+				else:
+					status = 0
 				r.append({
 					"_Id": k['ID'],
+					"Status": status,
 					"Surname": k['SurName'],
 					"GivenName": k['GivenName'],
 					"CourtesyName": k['CalledName'],

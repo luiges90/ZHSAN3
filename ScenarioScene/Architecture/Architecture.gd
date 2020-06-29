@@ -152,17 +152,37 @@ func set_belonged_section(section, force = false):
 func get_persons() -> Array:
 	return _person_list
 	
-func get_workable_persons() -> Array:
+func get_faction_persons() -> Array:
 	var result = []
 	for p in _person_list:
-		if p.task_days == 0:
+		if p.get_status() == Person.Status.NORMAL:
 			result.append(p)
 	return result
 	
-		
+func get_workable_persons() -> Array:
+	var result = []
+	for p in _person_list:
+		if p.get_status() == Person.Status.NORMAL and p.task_days == 0:
+			result.append(p)
+	return result
+	
+func get_wild_persons() -> Array:
+	var result = []
+	for p in _person_list:
+		if p.get_status() == Person.Status.WILD:
+			result.append(p)
+	return result
+	
+func get_idling_persons() -> Array:
+	var result = []
+	for p in _person_list:
+		if p.get_status() == Person.Status.NORMAL and p.task_days == 0 and p.working_task == Person.Task.NONE:
+			result.append(p)
+	return result
+	
 func expected_fund_income():
 	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
-	var officer_expenditure = get_persons().size() * 10
+	var officer_expenditure = get_faction_persons().size() * 10
 	return int(income - officer_expenditure)
 	
 func expected_food_income():
@@ -278,7 +298,7 @@ func _decay_internal():
 	
 func _develop_internal():
 	if enemy_troop_in_architecture() == null:
-		for p in get_persons():
+		for p in get_workable_persons():
 			match p.working_task:
 				Person.Task.AGRICULTURE: _develop_agriculture(p)
 				Person.Task.COMMERCE: _develop_commerce(p)
@@ -286,7 +306,7 @@ func _develop_internal():
 				Person.Task.ENDURANCE: _develop_endurance(p)
 			
 func _develop_military():
-	for p in get_persons():
+	for p in get_workable_persons():
 		match p.working_task:
 			Person.Task.RECRUIT_TROOP: _recruit_troop(p)
 			Person.Task.TRAIN_TROOP: _train_troop(p)

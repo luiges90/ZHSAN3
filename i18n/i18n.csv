@@ -50,7 +50,7 @@ BASIC,Basic,基本,基本
 FACTION_NAME,Faction,勢力,勢力
 KIND_NAME,Kind,種類,種類
 ARCHITECTURE_DETAILS,Architecture Details,建築情報,建築情報
-PERSON_COUNT,Persons,武將數,武將數
+PERSON_COUNT,Officers,武將數,武將數
 BELONGED_ARCHITECTURE,Architecture,所屬,所屬
 TASK_DAYS,Task Days,天數,天數
 DAY_UNIT," Days",天,天
@@ -98,3 +98,7 @@ TROOP_DETAIL,Troop Details,部隊情報,部隊情報
 ORDER,Order,指令,指令
 TARGET,Target,目標,目標
 OCCUPY,Occupy,佔領,佔領
+WILD_PERSON_COUNT,Non-officers,在野數,在野數
+STATUS,Status,狀態,狀態
+STATUS_NORMAL,Normal,一般,一般
+STATUS_WILD,Wild,在野,在野

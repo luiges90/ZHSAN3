@@ -26,7 +26,7 @@
       "10": 0.4
     },
 	"ReceiveCounterAttacks": true,
-	"ArchitectureAttackFactor": 0.005
+	"ArchitectureAttackFactor": 0.005,
     "_Id": 1
   },
   {
@@ -116,7 +116,7 @@
       "10": 0.2
     },
 	"ReceiveCounterAttacks": true,
-	"ArchitectureAttackFactor": 0.004
+	"ArchitectureAttackFactor": 0.004,
     "_Id": 4
   }
 ]

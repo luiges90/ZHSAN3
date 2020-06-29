@@ -59,5 +59,5 @@ func set_belonged_faction(faction, force = false):
 func get_persons():
 	var result = []
 	for a in get_architectures():
-		Util.append_all(result, a.get_persons())
+		Util.append_all(result, a.get_faction_persons())
 	return result

@@ -1805,7 +1805,12 @@
     "MilitaryPopulation": 16000.0,
     "Morale": 200,
     "Name": "合浦",
-    "PersonList": [],
+    "PersonList": [
+      9313,
+      9319,
+      9433,
+      9454
+    ],
     "Population": 40000,
     "Title": "交州 合浦",
     "Troop": 0,

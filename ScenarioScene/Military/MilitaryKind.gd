@@ -44,7 +44,7 @@ func load_data(json: Dictionary):
 	movement_kind = scenario.movement_kinds[int(json["MovementKind"])]
 	terrain_strength = json["TerrainStrength"]
 	receive_counter_attacks = json["ReceiveCounterAttacks"]
-	architecture_attack_factor = Util.dict_try_get(json, "ArchitectureAttackFactor", 0.01)
+	architecture_attack_factor = json["ArchitectureAttackFactor"]
 	
 func save_data() -> Dictionary:
 	return {

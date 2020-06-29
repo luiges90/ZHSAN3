@@ -82,12 +82,13 @@ func _populate_basic_data(person_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 5
+		item_list.columns = 6
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 4
+		item_list.columns = 5
 	item_list.add_child(_title(tr('PERSON_NAME')))
 	item_list.add_child(_title(tr('BELONGED_ARCHITECTURE')))
+	item_list.add_child(_title(tr('STATUS')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('TASK_DAYS')))
 	for person in person_list:
@@ -95,6 +96,7 @@ func _populate_basic_data(person_list: Array, action):
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_label(person.get_name()))
 		item_list.add_child(_label(person.get_location().get_name()))
+		item_list.add_child(_label(person.get_status_str()))
 		item_list.add_child(_label(person.get_working_task_str()))
 		item_list.add_child(_label(str(person.task_days) + tr('DAY_UNIT')))
 

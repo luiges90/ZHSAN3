@@ -12,7 +12,7 @@ func defence(arch, scenario):
 		var stop_creating_troop = false
 		while !stop_creating_troop:
 			var avail_positions = arch.create_troop_positions()
-			var persons = arch.get_persons()
+			var persons = arch.get_workable_persons()
 			var equipment_id = Util.dict_max(arch.equipments)
 			
 			if avail_positions.size() > 0 and arch.equipments[equipment_id] > 100 and persons.size() > 0:

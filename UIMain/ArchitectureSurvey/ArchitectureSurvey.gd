@@ -14,7 +14,7 @@ func show_data(architecture: Architecture, mouse_x: int, mouse_y: int):
 	else:
 		($Content/Faction/Color as ColorRect).color = Color(1, 1, 1)
 		($Content/Faction/Text as Label).text = "----"
-	($Content/PersonCount as Label).text = str(architecture.get_persons().size())
+	($Content/PersonCount as Label).text = str(architecture.get_idling_persons().size()) + "/" + str(architecture.get_workable_persons().size()) + "/" + str(architecture.get_faction_persons().size())
 	var section = architecture.get_belonged_section()
 	if section:
 		($Content/Section as Label).text = section.get_name()
