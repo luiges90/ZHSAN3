@@ -425,6 +425,9 @@ func _on_day_passed():
 	emit_signal("current_faction_set", current_faction)
 	for faction in factions.values():
 		faction.day_event()
+		
+	for troop in troops.values():
+		troop.day_event()
 	
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")

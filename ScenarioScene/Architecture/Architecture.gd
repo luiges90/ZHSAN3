@@ -256,6 +256,12 @@ func month_event():
 func receive_attack_damage(damage):
 	endurance -= damage
 
+func consume_food(amount) -> bool:
+	if food >= amount:
+		food -= amount
+		return true
+	else:
+		return false
 
 ####################################
 #            Set command           #

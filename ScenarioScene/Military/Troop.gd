@@ -27,6 +27,8 @@ var _current_path setget forbidden
 var _current_path_index = 0 setget forbidden
 var _remaining_movement = 0 setget forbidden
 
+var _food_shortage: bool = false
+
 var _orientation = "e" setget forbidden
 
 onready var pathfinder: PathFinder = PathFinder.new(self)
@@ -68,6 +70,7 @@ func load_data(json: Dictionary):
 	_orientation = json["_Orientation"]
 	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
+	_food_shortage = json["_FoodShortage"]
 
 	
 func save_data() -> Dictionary:
@@ -94,6 +97,7 @@ func save_data() -> Dictionary:
 		"Quantity": quantity,
 		"Morale": morale,
 		"Combativity": combativity,
+		"_FoodShortage": _food_shortage,
 		"_Orientation": _orientation,
 		"_CurrentOrderType": order_type,
 		"_CurrentOrderTarget": order_target,
@@ -441,6 +445,16 @@ func after_order_cleanup():
 	if current_order != null and current_order.type == OrderType.MOVE and current_order.target == map_position:
 		current_order = null
 	pathfinder.after_order_cleanup()
+	
+func day_event():
+	var food_required = int((1 + military_kind.food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.1)
+	if not _starting_arch.consume_food(food_required):
+		if not _food_shortage:
+			_food_shortage = true
+		else:
+			quantity = int(quantity * 0.9)
+	else:
+		_food_shortage = false
 
 ####################################
 #                UI                #
