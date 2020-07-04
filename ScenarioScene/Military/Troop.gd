@@ -313,7 +313,7 @@ func get_order_target_text():
 		
 func occupy():
 	var arch = scenario.get_architecture_at_position(map_position)
-	arch.change_faction(get_belonged_faction())
+	arch.change_faction(get_belonged_section())
 
 ####################################
 #          Order Execution         #

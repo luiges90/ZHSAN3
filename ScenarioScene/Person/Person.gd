@@ -88,8 +88,8 @@ func get_status_str() -> String:
 		Status.WILD: return tr('STATUS_WILD')
 		_: return '--'
 	
-func set_status(status):
-	_status = status
+func become_wild():
+	_status = Status.WILD
 	
 func get_agriculture_ability():
 	return 0.25 * intelligence + 0.5 * politics + 0.25 * glamour

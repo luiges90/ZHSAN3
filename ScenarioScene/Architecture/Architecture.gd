@@ -255,6 +255,8 @@ func month_event():
 ####################################
 func receive_attack_damage(damage):
 	endurance -= damage
+	if endurance < 0:
+		endurance = 0
 
 func consume_food(amount) -> bool:
 	if food >= amount:
@@ -278,8 +280,34 @@ func add_person(p, force: bool = false):
 func remove_person(p):
 	Util.remove_object(_person_list, p)
 	
-func change_faction(to_faction):
-	pass
+func change_faction(to_section):
+	# forcibly move persons away
+	var move_to
+	var min_dist = 9e9
+	for arch in get_belonged_faction().get_architectures():
+		if arch == self:
+			 continue
+		var dist = Util.m_dist(map_position, arch.map_position)
+		if dist < min_dist:
+			min_dist = dist
+			move_to = arch
+	if move_to != null:
+		for person in get_persons():
+			person.move_to_architecture(move_to)
+	else:
+		for person in get_persons():
+			person.become_wild()
+	
+	# burn the treasury
+	fund = fund / 10
+	food = food / 10
+	for k in equipments:
+		equipments[k] = equipments[k] / 10
+	
+	# switch faction
+	get_belonged_section().remove_architecture(self)
+	to_section.add_architecture(self)
+	
 
 ####################################
 #          Order Execution         #

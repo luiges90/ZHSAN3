@@ -35,6 +35,11 @@ func add_architecture(arch, force: bool = false):
 	_architecture_list.append(arch)
 	if not force:
 		arch.set_belonged_section(self, true)
+		
+func remove_architecture(arch, force: bool = false):
+	_architecture_list.erase(arch)
+	if not force:
+		arch.set_belonged_section(null, true)
 
 func get_troops():
 	return _troop_list
