@@ -9,6 +9,10 @@ func _init(ai):
 func run_troop(troop, scenario):
 	if consider_retreat(troop):
 		troop._ai_state = Troop.AIState.RETREAT
+		
+	var on_arch = scenario.get_architecture_at_position(troop.map_position)
+	if on_arch != null and troop.get_belonged_faction().is_enemy_to(on_arch.get_belonged_faction()):
+		troop.occupy()
 	
 	if troop._ai_state == Troop.AIState.COMBAT:
 		var enemy_troops = []
@@ -36,10 +40,16 @@ func run_troop(troop, scenario):
 		var movement_area = troop.get_movement_area()
 		var done = false
 		for p in movement_area:
-			if troop._ai_path.find_last(p) > 0:
-				troop.set_move_order(p)
+			if p == troop._ai_destination_architecture.map_position:
+				troop.set_enter_order(troop._ai_destination_architecture)
 				done = true
 				break
+		if not done:
+			for p in movement_area:
+				if troop._ai_path.find_last(p) > 0:
+					troop.set_move_order(p)
+					done = true
+					break
 	
 	if troop._ai_state == Troop.AIState.RETREAT:
 		if Util.m_dist(troop.map_position, troop.get_starting_architecture().map_position) < 1:
