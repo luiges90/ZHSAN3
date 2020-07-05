@@ -7,6 +7,8 @@ var _ai_allocation: AIAllocation
 var _ai_campaign: AICampaign
 var _ai_troop: AITroop
 
+var _scenario
+
 func _init():
 	_ai_architecture = AIArchitecture.new(self)
 	_ai_campaign = AICampaign.new(self)
@@ -14,6 +16,7 @@ func _init():
 	_ai_troop = AITroop.new(self)
 
 func run_faction(faction: Faction, scenario):
+	_scenario = scenario
 	for sect in faction.get_sections():
 		run_section(faction, sect, scenario)
 		
@@ -25,12 +28,23 @@ func run_section(faction: Faction, section: Section, scenario):
 			_ai_architecture._assign_task(arch, scenario)
 	for arch in section.get_architectures():
 		if not faction.player_controlled:
-			_ai_campaign.defence(arch, scenario)
+			_ai_campaign.defence(arch, section, scenario)
+			_ai_campaign.offence(arch, section, scenario)
 	for troop in section.get_troops():
 		if not faction.player_controlled:
 			_ai_troop.run_troop(troop, scenario)
-
-func military_kind_power(military_kind: MilitaryKind) -> float:
+			
+func _unequipped_military_kind_power() -> float:
+	var max_power = 0
+	for k in _scenario.military_kinds:
+		var kind = _scenario.military_kinds[k]
+		if not kind.has_equipments():
+			var power = _military_kind_power(kind)
+			if power > max_power:
+				max_power = power
+	return max_power
+		
+func _military_kind_power(military_kind: MilitaryKind) -> float:
 	var offence_factor = military_kind.offence * (sqrt(military_kind.range_max) - sqrt(military_kind.range_min - 1))
 	var defence_factor = military_kind.defence
 	return offence_factor + defence_factor
@@ -38,7 +52,39 @@ func military_kind_power(military_kind: MilitaryKind) -> float:
 func _frontline_connected_archs(arch: Architecture) -> Array:
 	var archs = []
 	for arch_id in arch.adjacent_archs:
-		var other_faction = arch.scenario.architectures[arch_id].get_belonged_faction()
+		var other_faction = _scenario.architectures[arch_id].get_belonged_faction()
 		if other_faction != null and other_faction.is_enemy_to(arch.get_belonged_faction()):
-			archs.append(arch.scenario.architectures[arch_id])
+			archs.append(_scenario.architectures[arch_id])
 	return archs
+	
+func __compare_by_person_leader_value_desc(p, q):
+	return p.leader_value() > q.leader_value
+
+func _estimated_arch_military_power(arch) -> float:
+	if arch.troop <= 0:
+		return 0.0
+	
+	var troop_power = 0.0
+	var total_equipment = 0
+	for mk in arch.equipments:
+		var kind = _scenario.military_kinds[mk]
+		troop_power += arch.equipments[mk] * _military_kind_power(kind)
+	if total_equipment > arch.troop:
+		troop_power *= float(arch.troop) / total_equipment
+	else:
+		troop_power += (arch.troop - total_equipment) * _unequipped_military_kind_power()
+	
+	var person_power = 0.0
+	var persons = arch.get_persons().duplicate()
+	persons.sort_custom(self, "__compare_by_person_military_power_desc")
+	
+	var total_power = 0
+	var troop_left = arch.troop
+	for p in persons:
+		var use_troop = p.get_max_troop_quantity()
+		total_power += p.get_leader_value() * min(troop_left, use_troop) * (troop_power * (float(use_troop) / arch.troop))
+		troop_left -= use_troop
+		if troop_left <= 0:
+			break
+	
+	return total_power

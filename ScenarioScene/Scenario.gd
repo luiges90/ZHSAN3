@@ -295,9 +295,6 @@ func __load_item(instance, item, add_to_list):
 	if instance is Architecture or instance is Troop:
 		instance.add_to_group(GROUP_GAME_INSTANCES)
 		add_child(instance)
-
-func remove_troop(item):
-	troops.erase(item.id)
 	
 
 ########################################
@@ -352,7 +349,7 @@ func on_architecture_toggle_auto_task(current_architecture):
 func _on_PositionSelector_create_troop(arch, troop, position):
 	create_troop(arch, troop, position)
 	
-func create_troop(arch, troop, position):
+func create_troop(arch, troop, position) -> Troop:
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
 	instance.connect("troop_clicked", self, "_on_troop_clicked")
@@ -371,6 +368,8 @@ func create_troop(arch, troop, position):
 	troops[instance.id] = instance
 	add_child(instance)
 	instance.add_to_group(GROUP_GAME_INSTANCES)
+	
+	return instance
 	
 
 func _on_PositionSelector_move_troop(troop, position):
@@ -479,6 +478,12 @@ func get_terrain_at_position(position):
 			if int(id) == int(terrain_id):
 				return terrain_details[t]
 	assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
+	
+func get_ai_path(movement_kind_id, start_arch, end_arch):
+	var paths = ai_paths[movement_kind_id]
+	for p in paths.list:
+		if p.start_architecture == start_arch.id and p.end_architecture == end_arch.id:
+			return p.path
 
 # TODO may need cache
 func get_troop_at_position(position):
@@ -494,4 +499,11 @@ func get_architecture_at_position(position):
 			return architectures[a]
 	return null
 
+	
+########################################
+#          Data Management             #
+########################################
+
+func remove_troop(item):
+	troops.erase(item.id)
 

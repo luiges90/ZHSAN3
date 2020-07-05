@@ -6,6 +6,7 @@ const SPRITE_SHEET_FRAMES = 10
 const ANIMATION_SPEED = 30
 
 enum OrderType { MOVE, FOLLOW, ATTACK, ENTER }
+enum AIState { MARCH, COMBAT, RETREAT }
 
 var id: int setget forbidden
 var scenario
@@ -31,11 +32,17 @@ var _food_shortage: bool = false
 
 var _orientation = "e" setget forbidden
 
+var _ai_state
+var _ai_destination_architecture
+var _ai_path
+
 onready var pathfinder: PathFinder = PathFinder.new(self)
 
 signal troop_clicked
 signal animation_step_finished
 signal animation_attack_finished
+
+signal starting_architecture_changed
 
 func forbidden(x):
 	assert(false)
@@ -71,6 +78,13 @@ func load_data(json: Dictionary):
 	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
 	_food_shortage = json["_FoodShortage"]
+	
+	_ai_state = json["_AIState"]
+	_ai_destination_architecture = scenario.Architecture[int(json["_AIDestinationArchitecture"])]
+	if _starting_arch.id == _ai_destination_architecture.id:
+		_ai_path = [_starting_arch.map_position]
+	else:
+		_ai_path = scenario.get_ai_path(military_kind.movement_kind.id, _starting_arch, _ai_destination_architecture)
 
 	
 func save_data() -> Dictionary:
@@ -101,7 +115,9 @@ func save_data() -> Dictionary:
 		"_Orientation": _orientation,
 		"_CurrentOrderType": order_type,
 		"_CurrentOrderTarget": order_target,
-		"_CurrentOrderTargetType": order_target_type
+		"_CurrentOrderTargetType": order_target_type,
+		"_AIState": _ai_state,
+		"_AIDestination": _ai_destination_architecture.id
 	}
 	
 func _on_scenario_loaded():
@@ -447,6 +463,12 @@ func after_order_cleanup():
 	pathfinder.after_order_cleanup()
 	
 func day_event():
+	if get_starting_architecture().get_belonged_faction() != get_belonged_faction():
+		var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position)
+		if move_to != null:
+			_starting_arch = move_to
+			emit_signal("starting_architecture_changed")
+	
 	var food_required = int((1 + military_kind.food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.1)
 	if not _starting_arch.consume_food(food_required):
 		if not _food_shortage:
@@ -455,6 +477,7 @@ func day_event():
 			quantity = int(quantity * 0.9)
 	else:
 		_food_shortage = false
+		
 
 ####################################
 #                UI                #

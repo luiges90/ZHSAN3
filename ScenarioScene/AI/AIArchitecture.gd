@@ -30,7 +30,7 @@ func _selected_equipment(arch: Architecture, scenario) -> MilitaryKind:
 	var result
 	for mk in arch.equipments:
 		var military_kind = scenario.military_kinds[mk]
-		var value = arch.equipments[mk] / ai.military_kind_power(military_kind) * military_kind.equipment_cost
+		var value = arch.equipments[mk] / ai._military_kind_power(military_kind) * military_kind.equipment_cost
 		if value < min_value:
 			min_value = value
 			result = military_kind

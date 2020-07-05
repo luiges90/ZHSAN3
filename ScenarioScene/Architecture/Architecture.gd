@@ -282,15 +282,7 @@ func remove_person(p):
 	
 func change_faction(to_section):
 	# forcibly move persons away
-	var move_to
-	var min_dist = 9e9
-	for arch in get_belonged_faction().get_architectures():
-		if arch == self:
-			 continue
-		var dist = Util.m_dist(map_position, arch.map_position)
-		if dist < min_dist:
-			min_dist = dist
-			move_to = arch
+	var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position, self)
 	if move_to != null:
 		for person in get_persons():
 			person.move_to_architecture(move_to)
