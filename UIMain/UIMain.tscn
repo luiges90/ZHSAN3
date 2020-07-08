@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -15,6 +15,12 @@
 [ext_resource path="res://UIMain/ContextMenu/TroopMenu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://UIMain/ContextMenu/ArchitectureAndTroopMenu.tscn" type="PackedScene" id=14]
 [ext_resource path="res://UIMain/TroopDetail/TroopDetail.tscn" type="PackedScene" id=15]
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=16]
+[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=17]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 17 )
 
 [node name="UIMain" type="Control"]
 anchor_right = 1.0
@@ -134,12 +140,28 @@ margin_left = -390.0
 margin_top = -240.0
 margin_right = 390.0
 margin_bottom = 240.0
+
+[node name="TileInfo" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource( 16 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "草原 (123, 456)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
 [connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
-[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
 [connection signal="troop_clicked" from="ArchitectureAndTroopMenu" to="TroopMenu" method="_on_ArchitectureAndTroopMenu_troop_clicked"]

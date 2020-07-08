@@ -24,8 +24,8 @@ script = ExtResource( 3 )
 [node name="PositionSelector" parent="." instance=ExtResource( 6 )]
 z_index = 99
 [connection signal="scenario_loaded" from="." to="DateRunner" method="_on_Scenario_scenario_loaded"]
-[connection signal="camera_moved" from="MainCamera" to="." method="_on_MainCamera_camera_moved"]
 [connection signal="camera_moved" from="MainCamera" to="Map" method="_on_MainCamera_camera_moved"]
+[connection signal="camera_moved" from="MainCamera" to="." method="_on_MainCamera_camera_moved"]
 [connection signal="attack_troop" from="PositionSelector" to="." method="_on_PositionSelector_attack_troop"]
 [connection signal="create_troop" from="PositionSelector" to="." method="_on_PositionSelector_create_troop"]
 [connection signal="enter_troop" from="PositionSelector" to="." method="_on_PositionSelector_enter_troop"]

@@ -40,6 +40,7 @@ signal architecture_and_troop_clicked
 signal all_faction_finished
 
 signal camera_moved
+signal mouse_moved_to_map_position
 
 func forbidden(x):
 	assert(false)
@@ -507,3 +508,18 @@ func get_architecture_at_position(position):
 func remove_troop(item):
 	troops.erase(item.id)
 
+########################################
+#                Misc.                 #
+########################################
+
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		var pos = event.position
+		var rect = get_camera_viewing_rect()
+		var map_x = int((rect.position.x + pos.x) / tile_size)
+		var map_y = int((rect.position.y + pos.y) / tile_size)
+		
+		var map_pos = Vector2(map_x, map_y)
+		var terrain = get_terrain_at_position(map_pos)
+		emit_signal("mouse_moved_to_map_position", map_pos, terrain)
+		
