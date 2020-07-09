@@ -351,10 +351,11 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	create_troop(arch, troop, position)
 	
 func create_troop(arch, troop, position) -> Troop:
+	print("1: " + str(OS.get_unix_time()))
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
 	instance.connect("troop_clicked", self, "_on_troop_clicked")
-	
+	print("2: " + str(OS.get_unix_time()))
 	for p in troop.persons:
 		instance.add_person(p)
 
@@ -365,11 +366,11 @@ func create_troop(arch, troop, position) -> Troop:
 		id = id + 1
 	instance.scenario = self
 	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
-	
+	print("3: " + str(OS.get_unix_time()))
 	troops[instance.id] = instance
 	add_child(instance)
 	instance.add_to_group(GROUP_GAME_INSTANCES)
-	
+	print("4: " + str(OS.get_unix_time()))
 	return instance
 	
 
