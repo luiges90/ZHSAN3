@@ -233,13 +233,15 @@ func get_movement_cost(position, ignore_troops):
 		return [INF, arch]
 	
 	var terrain = scenario.get_terrain_at_position(position)
-	return [military_kind.movement_kind.movement_cost[terrain.id], null]
+	if terrain != null:
+		return [military_kind.movement_kind.movement_cost[terrain.id], null]
+	return [INF, null]
 	
 func enemy_troop_in_range(distance: int):
 	var results = []
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
-		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position):
+		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance:
 			results.append(troop)
 	return results
 	
@@ -247,7 +249,7 @@ func friendly_troop_in_range(distance: int):
 	var results = []
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
-		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position):
+		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance:
 			results.append(troop)
 	return results
 	

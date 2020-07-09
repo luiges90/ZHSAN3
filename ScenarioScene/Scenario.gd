@@ -474,12 +474,14 @@ func get_player_factions():
 
 func get_terrain_at_position(position):
 	var terrain_id = $Map._get_terrain_id_at_position(position)
-	for t in terrain_details:
-		for id in terrain_details[t].terrain_ids:
-			if int(id) == int(terrain_id):
-				return terrain_details[t]
-	assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
-	
+	if terrain_id >= 0:
+		for t in terrain_details:
+			for id in terrain_details[t].terrain_ids:
+				if int(id) == int(terrain_id):
+					return terrain_details[t]
+		assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
+	return null
+
 func get_ai_path(movement_kind_id, start_arch, end_arch):
 	var paths = ai_paths[movement_kind_id]
 	for p in paths.list:
@@ -521,5 +523,6 @@ func _unhandled_input(event):
 		
 		var map_pos = Vector2(map_x, map_y)
 		var terrain = get_terrain_at_position(map_pos)
-		emit_signal("mouse_moved_to_map_position", map_pos, terrain)
+		if terrain != null:
+			emit_signal("mouse_moved_to_map_position", map_pos, terrain)
 		
