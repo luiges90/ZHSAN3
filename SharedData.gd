@@ -2,6 +2,10 @@ extends Node
 
 const TILE_SIZE = 50
 
+const TROOP_ANIMATION_SPEED = 30
+const TROOP_SPRITE_SIZE = 128
+const TROOP_SPRITE_SHEET_FRAMES = 10
+
 var loading_file_path
 
 ###########################
@@ -9,6 +13,7 @@ var loading_file_path
 ###########################
 var troop_images = {}
 var troop_sounds = {}
+var troop_sprite_frames = {}
 
 func _init():
 	_load_troop_images()
@@ -34,6 +39,31 @@ func _load_troop_images():
 					"move": move
 				}
 				troop_images[int(in_dir_name)] = textures
+				
+func _load_troop_sprite_frames(military_kinds):
+	for military_kind in military_kinds:
+		var textures = SharedData.troop_images.get(military_kind.id, null)
+		if textures != null:
+			var sprite_frame = SpriteFrames.new()
+			var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
+			for i in range(0, 8):
+				__set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), TROOP_SPRITE_SIZE * i)
+				__set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), TROOP_SPRITE_SIZE * i)
+				__set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), TROOP_SPRITE_SIZE * i)
+			troop_sprite_frames[military_kind.id] = sprite_frame
+			
+func __set_frames(sprite_frame, animation, texture, spritesheet_offset):
+	sprite_frame.add_animation(animation)
+	sprite_frame.set_animation_speed(animation, TROOP_ANIMATION_SPEED)
+	for i in range(0, TROOP_SPRITE_SHEET_FRAMES):
+		var sprite = Image.new()
+		sprite.create(TROOP_SPRITE_SIZE, TROOP_SPRITE_SIZE, false, texture.get_format())
+		sprite.blit_rect(texture, Rect2(i * TROOP_SPRITE_SIZE, spritesheet_offset, TROOP_SPRITE_SIZE, TROOP_SPRITE_SIZE), Vector2(0, 0))
+		
+		var image = ImageTexture.new()
+		image.create_from_image(sprite)
+		
+		sprite_frame.add_frame(animation, image)
 
 func _load_troop_sounds():
 	var dir = Directory.new()

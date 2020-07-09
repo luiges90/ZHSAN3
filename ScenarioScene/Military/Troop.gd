@@ -1,10 +1,6 @@
 extends Node2D
 class_name Troop
 
-const SPRITE_SIZE = 128
-const SPRITE_SHEET_FRAMES = 10
-const ANIMATION_SPEED = 30
-
 enum OrderType { MOVE, FOLLOW, ATTACK, ENTER }
 enum AIState { MARCH, COMBAT, RETREAT }
 
@@ -493,33 +489,14 @@ func _update_military_kind_sprite():
 	if animated_sprite != null:
 		var textures = SharedData.troop_images.get(military_kind.id, null)
 		if textures != null:
-			var sprite_frame = SpriteFrames.new()
-			
-			var directions = ['ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'n']
-			for i in range(0, 8):
-				_set_frames(sprite_frame, "move_" + directions[i], textures["move"].get_data(), SPRITE_SIZE * i)
-				_set_frames(sprite_frame, "be_attacked_" + directions[i], textures["be_attacked"].get_data(), SPRITE_SIZE * i)
-				_set_frames(sprite_frame, "attack_" + directions[i], textures["attack"].get_data(), SPRITE_SIZE * i)
-				
-			animated_sprite.frames = sprite_frame
+			animated_sprite.frames = SharedData.troop_sprite_frames[military_kind.id]
 
 	var sounds = SharedData.troop_sounds.get(military_kind.id, null)
 	if sounds != null:
 		$MovingSound.stream = sounds["moving"]
 		$AttackSound.stream = sounds["attack"]
 	
-func _set_frames(sprite_frame, animation, texture, spritesheet_offset):
-	sprite_frame.add_animation(animation)
-	sprite_frame.set_animation_speed(animation, ANIMATION_SPEED)
-	for i in range(0, SPRITE_SHEET_FRAMES):
-		var sprite = Image.new()
-		sprite.create(SPRITE_SIZE, SPRITE_SIZE, false, texture.get_format())
-		sprite.blit_rect(texture, Rect2(i * SPRITE_SIZE, spritesheet_offset, SPRITE_SIZE, SPRITE_SIZE), Vector2(0, 0))
-		
-		var image = ImageTexture.new()
-		image.create_from_image(sprite)
-		
-		sprite_frame.add_frame(animation, image)
+
 		
 func _animate_position(old_position, destination_position):
 	_orientation = _get_animation_orientation(old_position, destination_position)
