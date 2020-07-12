@@ -33,16 +33,19 @@ func _physics_process(delta):
 	zoom.y = clamp(zoom.y, 0.3, 2)
 	
 	if _moving_camera_x != 0 or _moving_camera_y != 0 or _zooming_camera != 0:
-		emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom, zoom)
+		emit_signal("camera_moved", get_viewing_rect(), zoom)
 		
 func get_viewing_rect() -> Rect2:
-	return Rect2(get_camera_position(), get_viewport_rect().size * zoom)
+	var size = get_viewport_rect().size * zoom
+	var top = position.x - size.x / 2
+	var left = position.y - size.y / 2
+	return Rect2(Vector2(top, left), size)
 	
 func move_to(map_position):
 	var viewport_rect = get_viewport_rect()
-	position.x = map_position.x * scenario.tile_size - viewport_rect.size.x / 2
-	position.y = map_position.y * scenario.tile_size - viewport_rect.size.y / 2
-	emit_signal("camera_moved", position, position + viewport_rect.size * zoom, zoom)
+	position.x = map_position.x * scenario.tile_size
+	position.y = map_position.y * scenario.tile_size
+	emit_signal("camera_moved", get_viewing_rect(), zoom)
 	
 func _unhandled_input(event):
 	var mouse_position = get_viewport().get_mouse_position()
@@ -67,14 +70,14 @@ func _unhandled_input(event):
 				zoom.y -= zoom_speed
 				zoom.x = clamp(zoom.x, 0.3, 2)
 				zoom.y = clamp(zoom.y, 0.3, 2)
-				emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom, zoom)
+				emit_signal("camera_moved", get_viewing_rect(), zoom)
 		elif event.button_index == BUTTON_WHEEL_DOWN:
 			if event.is_pressed():
 				zoom.x += zoom_speed
 				zoom.y += zoom_speed
 				zoom.x = clamp(zoom.x, 0.3, 2)
 				zoom.y = clamp(zoom.y, 0.3, 2)
-				emit_signal("camera_moved", get_camera_position(), get_camera_position() + viewport_rect.size * zoom, zoom)
+				emit_signal("camera_moved", get_viewing_rect(), zoom)
 	else:
 		if event.is_action("ui_up"):
 			if event.is_pressed():

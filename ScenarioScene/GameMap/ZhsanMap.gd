@@ -6,9 +6,9 @@ onready var map_size = Vector2(390, 390)
 
 var quadrant_size = Vector2(100, 100)
 
-func _on_MainCamera_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
-	var top_left = (find_node('*') as TileMap).world_to_map(camera_top_left)
-	var bottom_right = (find_node('*') as TileMap).world_to_map(camera_bottom_right)
+func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
+	var top_left = (find_node('*') as TileMap).world_to_map(camera_rect.position)
+	var bottom_right = (find_node('*') as TileMap).world_to_map(camera_rect.position + camera_rect.size)
 
 	var quadrant_left = int(top_left.x / quadrant_size.x)
 	var quadrant_right = int(bottom_right.x / quadrant_size.x)

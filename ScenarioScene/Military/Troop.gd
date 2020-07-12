@@ -150,7 +150,7 @@ func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in
 	_update_military_kind_sprite()
 	update_troop_title()
 	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
-	_on_camera_moved(camera_rect.position, camera_rect.position + camera_rect.size, scenario.get_camera_zoom())
+	_on_camera_moved(camera_rect, scenario.get_camera_zoom())
 
 ####################################
 #             Get stat             #
@@ -566,7 +566,7 @@ func _on_AnimatedSprite_animation_finished():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")
 	
-func _on_camera_moved(camera_top_left: Vector2, camera_bottom_right: Vector2, zoom: Vector2):
+func _on_camera_moved(camera_rect: Rect2, zoom: Vector2):
 	if zoom.x >= 1.5 or zoom.y >= 1.5:
 		$TroopTitle.visible = false
 	else:
