@@ -34,6 +34,7 @@ func _register_troop_ui():
 	
 func _register_game_record_ui():
 	$Scenario/GameRecordCreator.connect("add_game_record", $UICanvas/UIMain/GameRecord, "add_text")
+	$UICanvas/UIMain/GameRecord.connect("focus_camera", $Scenario, "_on_focus_camera")
 
 func _register_date_runner():
 	$Scenario/DateRunner.connect("date_updated", $UICanvas/UIMain/ScreenBlind, "show_date")

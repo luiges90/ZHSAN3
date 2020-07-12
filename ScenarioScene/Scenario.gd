@@ -407,6 +407,9 @@ func _on_troop_enter_clicked(troop):
 func _on_troop_occupy_clicked(troop):
 	troop.occupy()
 	
+func _on_focus_camera(position):
+	$MainCamera.move_to(position)
+	
 ########################################
 #         Other signal Logic           #
 ########################################

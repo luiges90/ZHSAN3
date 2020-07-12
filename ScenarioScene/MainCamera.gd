@@ -38,6 +38,12 @@ func _physics_process(delta):
 func get_viewing_rect() -> Rect2:
 	return Rect2(get_camera_position(), get_viewport_rect().size * zoom)
 	
+func move_to(map_position):
+	var viewport_rect = get_viewport_rect()
+	position.x = map_position.x * scenario.tile_size - viewport_rect.size.x / 2
+	position.y = map_position.y * scenario.tile_size - viewport_rect.size.y / 2
+	emit_signal("camera_moved", position, position + viewport_rect.size * zoom, zoom)
+	
 func _unhandled_input(event):
 	var mouse_position = get_viewport().get_mouse_position()
 	var viewport_rect = get_viewport_rect()
