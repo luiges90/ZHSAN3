@@ -13,7 +13,8 @@ func _register_click(func_name, text) -> String:
 	return "[url=\"" + func_name + "\"]" + text + "[/url]"
 	
 func create_troop(troop, position):
-	emit_signal("add_game_record", _register_click("create_troop(" + position.x + "," + position.y + ")",
+	emit_signal("add_game_record", _register_click(
+		"focus(" + str(position.x) + "," + str(position.y) + ")",
 		tr("GAME_RECORD_CREATE_TROOP") % [
 			_color_text(GREEN, troop.get_name()), 
 			_color_text(CYAN, troop.get_starting_architecture().get_name())
