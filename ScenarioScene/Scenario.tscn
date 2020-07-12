@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ScenarioScene/GameMap/ZhsanMap.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ScenarioScene/Scenario.gd" type="Script" id=2]
 [ext_resource path="res://ScenarioScene/GameRecordCreator.gd" type="Script" id=2]
 [ext_resource path="res://ScenarioScene/GameMap/ZhsanMap.gd" type="Script" id=3]
 [ext_resource path="res://ScenarioScene/MainCamera.gd" type="Script" id=4]
