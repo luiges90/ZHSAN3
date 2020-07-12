@@ -524,8 +524,9 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		var pos = event.position
 		var rect = get_camera_viewing_rect()
-		var map_x = int((rect.position.x + pos.x) / tile_size)
-		var map_y = int((rect.position.y + pos.y) / tile_size)
+		var zoom = get_camera_zoom()
+		var map_x = int(rect.position.x / tile_size + pos.x * zoom.x / tile_size)
+		var map_y = int(rect.position.y / tile_size + pos.y * zoom.y / tile_size)
 		
 		var map_pos = Vector2(map_x, map_y)
 		var terrain = get_terrain_at_position(map_pos)
