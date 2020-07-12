@@ -94,6 +94,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Faction/Faction.gd"
 }, {
+"base": "Panel",
+"class": "GameRecord",
+"language": "GDScript",
+"path": "res://UIMain/GameRecord/GameRecord.gd"
+}, {
+"base": "Node",
+"class": "GameRecordCreator",
+"language": "GDScript",
+"path": "res://ScenarioScene/GameRecordCreator.gd"
+}, {
 "base": "ContextMenu",
 "class": "InfoMenu",
 "language": "GDScript",
@@ -247,6 +257,8 @@ _global_script_class_icons={
 "CreatingTroop": "",
 "DateRunner": "",
 "Faction": "",
+"GameRecord": "",
+"GameRecordCreator": "",
 "InfoMenu": "",
 "Main": "",
 "MainCamera": "",

@@ -6,6 +6,7 @@ var _running = false
 signal start_date_runner
 signal stop_date_runner
 signal system_clicked
+signal game_record_clicked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -159,3 +160,7 @@ func _on_day_passed():
 func _on_System_pressed():
 	$Select.play()
 	emit_signal("system_clicked")
+
+
+func _on_GameRecord_pressed():
+	emit_signal("game_record_clicked")

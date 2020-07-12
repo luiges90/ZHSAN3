@@ -102,3 +102,5 @@ WILD_PERSON_COUNT,Non-officers,在野數,在野數
 STATUS,Status,狀態,狀態
 STATUS_NORMAL,Normal,一般,一般
 STATUS_WILD,Wild,在野,在野
+GAME_RECORD,Record,信息欄,信息欄
+GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s從%s出征,%s從%s出征

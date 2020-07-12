@@ -142,6 +142,21 @@ texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 10 )
 stretch_mode = 3
 
+[node name="MarginContainer" type="MarginContainer" parent="DateRunner"]
+margin_left = 126.0
+margin_right = 270.415
+margin_bottom = 45.0
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="GameRecord" type="Button" parent="DateRunner/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 144.415
+margin_bottom = 41.0
+text = "GAME_RECORD"
+
 [node name="EndContainer" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -171,4 +186,5 @@ stream = ExtResource( 14 )
 [connection signal="pressed" from="DateRunner/UnitDigit/Down" to="." method="_on_Down_pressed"]
 [connection signal="pressed" from="DateRunner/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="DateRunner/Stop" to="." method="_on_Stop_pressed"]
+[connection signal="pressed" from="DateRunner/MarginContainer/GameRecord" to="." method="_on_GameRecord_pressed"]
 [connection signal="pressed" from="EndContainer/System" to="." method="_on_System_pressed"]

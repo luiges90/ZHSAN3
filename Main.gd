@@ -12,6 +12,7 @@ func _ready():
 	_register_date_runner()
 	_register_architecture_ui()
 	_register_troop_ui()
+	_register_game_record_ui()
 	_register_lists()
 	_register_menus()
 	
@@ -30,6 +31,9 @@ func _register_architecture_ui():
 func _register_troop_ui():
 	$Scenario.connect("troop_clicked", $UICanvas/UIMain/TroopMenu, "show_menu")
 	$Scenario.connect("architecture_and_troop_clicked", $UICanvas/UIMain/ArchitectureAndTroopMenu, "show_menu")
+	
+func _register_game_record_ui():
+	$Scenario/GameRecordCreator.connect("add_game_record", $UICanvas/UIMain/GameRecord, "add_text")
 
 func _register_date_runner():
 	$Scenario/DateRunner.connect("date_updated", $UICanvas/UIMain/ScreenBlind, "show_date")

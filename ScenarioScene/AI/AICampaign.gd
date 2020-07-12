@@ -66,7 +66,6 @@ func offence(arch, section, scenario):
 	if selected_target != null:
 		var troops = _create_troops(arch, scenario)
 		for troop in troops:
-			print("offense camapign from " + arch.get_name() + "(" + str(arch.map_position) + ")")
 			troop._ai_state = Troop.AIState.MARCH
 			troop._ai_destination_architecture = selected_target
 			troop._ai_path = scenario.get_ai_path(troop.military_kind.movement_kind.id, troop.get_starting_architecture(), troop._ai_destination_architecture)

@@ -72,6 +72,7 @@ func _ready():
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
 	
+	
 func get_camera_viewing_rect() -> Rect2:
 	var camera = $MainCamera as MainCamera
 	return camera.get_viewing_rect()
@@ -369,6 +370,9 @@ func create_troop(arch, troop, position) -> Troop:
 	troops[instance.id] = instance
 	add_child(instance)
 	instance.add_to_group(GROUP_GAME_INSTANCES)
+	
+	$GameRecordCreator.create_troop(instance, position)
+	
 	return instance
 	
 
