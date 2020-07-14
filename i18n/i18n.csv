@@ -104,3 +104,4 @@ STATUS_NORMAL,Normal,一般,一般
 STATUS_WILD,Wild,在野,在野
 GAME_RECORD,Record,信息欄,信息欄
 GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s從%s出征,%s從%s出征
+GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,%s has taken over %s,%s佔領了%s,%s佔領了%s

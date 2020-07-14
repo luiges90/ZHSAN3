@@ -40,6 +40,8 @@ signal animation_attack_finished
 
 signal starting_architecture_changed
 
+signal occupy_architecture
+
 func forbidden(x):
 	assert(false)
 	
@@ -328,6 +330,7 @@ func get_order_target_text():
 func occupy():
 	var arch = scenario.get_architecture_at_position(map_position)
 	arch.change_faction(get_belonged_section())
+	emit_signal("occupy_architecture", self, arch)
 
 ####################################
 #          Order Execution         #

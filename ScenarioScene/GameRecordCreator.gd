@@ -20,3 +20,12 @@ func create_troop(troop, position):
 			_color_text(CYAN, troop.get_starting_architecture().get_name())
 		])
 	)
+
+func _on_troop_occupy_architecture(troop, architecture):
+	emit_signal("add_game_record", _register_click(
+		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
+		tr("GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE") % [
+			_color_text(GREEN, troop.get_name()), 
+			_color_text(CYAN, architecture.get_name())
+		])
+	)
