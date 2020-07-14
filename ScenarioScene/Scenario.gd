@@ -73,6 +73,7 @@ func _ready():
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
 	
 	
+	
 func get_camera_viewing_rect() -> Rect2:
 	var camera = $MainCamera as MainCamera
 	return camera.get_viewing_rect()
@@ -390,6 +391,7 @@ func _on_PositionSelector_attack_troop(troop, position):
 
 func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
 	emit_signal("camera_moved", camera_rect, zoom)
+	_update_position_label(get_viewport().get_mouse_position())
 	
 
 func _on_troop_move_clicked(troop):
@@ -520,16 +522,19 @@ func remove_troop(item):
 #                Misc.                 #
 ########################################
 
+func _update_position_label(mouse_position):
+	var rect = get_camera_viewing_rect()
+	var zoom = get_camera_zoom()
+	var map_x = int(rect.position.x / tile_size + mouse_position.x * zoom.x / tile_size)
+	var map_y = int(rect.position.y / tile_size + mouse_position.y * zoom.y / tile_size)
+	
+	var map_pos = Vector2(map_x, map_y)
+	var terrain = get_terrain_at_position(map_pos)
+	if terrain != null:
+		emit_signal("mouse_moved_to_map_position", map_pos, terrain)
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		var pos = event.position
-		var rect = get_camera_viewing_rect()
-		var zoom = get_camera_zoom()
-		var map_x = int(rect.position.x / tile_size + pos.x * zoom.x / tile_size)
-		var map_y = int(rect.position.y / tile_size + pos.y * zoom.y / tile_size)
+		_update_position_label(event.position)
 		
-		var map_pos = Vector2(map_x, map_y)
-		var terrain = get_terrain_at_position(map_pos)
-		if terrain != null:
-			emit_signal("mouse_moved_to_map_position", map_pos, terrain)
 		

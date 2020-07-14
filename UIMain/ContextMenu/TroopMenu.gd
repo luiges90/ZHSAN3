@@ -14,12 +14,14 @@ signal occupy_clicked
 func show_menu(troop, mouse_x, mouse_y): 
 	showing_troop = troop
 	
-	$VBoxContainer/Occupy.disabled = !troop.can_occupy()
-	
-	margin_left = mouse_x
-	margin_top = mouse_y
-	
-	show()
+	var is_player = troop.get_belonged_faction().player_controlled
+	if is_player:
+		$VBoxContainer/Occupy.disabled = !troop.can_occupy()
+		
+		margin_left = mouse_x
+		margin_top = mouse_y
+		
+		show()
 
 
 func _on_ArchitectureAndTroopMenu_troop_clicked(troop, mx, my):
