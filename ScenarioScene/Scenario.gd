@@ -490,12 +490,17 @@ func get_terrain_at_position(position):
 					return terrain_details[t]
 		assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
 	return null
+	
+func get_ai_path_available_movement_kinds(start_arch, end_arch):
+	var paths = start_arch.adjacent_archs[end_arch.id]
+	return paths.keys()
 
 func get_ai_path(movement_kind_id, start_arch, end_arch):
-	var paths = ai_paths[movement_kind_id]
-	for p in paths.list:
-		if p.start_architecture == start_arch.id and p.end_architecture == end_arch.id:
-			return p.path
+	var paths = start_arch.adjacent_archs[end_arch.id]
+	for mk in paths:
+		if mk == movement_kind_id:
+			return paths[mk]
+	assert(false, 'Cannot find AIPath from ' + start_arch.get_name() + ' to ' + end_arch.get_name() + ' for movement kind ' + str(movement_kind_id))
 
 # TODO may need cache
 func get_troop_at_position(position):

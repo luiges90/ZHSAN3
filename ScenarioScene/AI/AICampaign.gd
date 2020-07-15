@@ -6,13 +6,25 @@ var ai
 func _init(ai):
 	self.ai = ai
 	
-func _create_troops(from_architecture, scenario) -> Array:
+func _create_troops(from_architecture, target, scenario) -> Array:
 	var troops_created = []
 	var stop_creating_troop = false
 	while !stop_creating_troop:
 		var avail_positions = from_architecture.create_troop_positions()
 		var persons = from_architecture.get_workable_persons()
-		var equipment_id = Util.dict_max(from_architecture.equipments)
+		
+		var avail_military_kinds
+		if from_architecture == target:
+			avail_military_kinds = from_architecture.equipments
+		else:
+			var avail_movement_kinds = scenario.get_ai_path_available_movement_kinds(from_architecture, target)
+			avail_military_kinds = {}
+			for mk in scenario.military_kinds:
+				if avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments.has(mk):
+					avail_military_kinds[mk] = from_architecture.equipments[mk]
+		if avail_military_kinds.size() <= 0:
+			break
+		var equipment_id = Util.dict_max(avail_military_kinds)
 		
 		if avail_positions.size() > 0 and from_architecture.equipments[equipment_id] > 100 and persons.size() > 0:
 			var leader = Util.max_by(persons, "get_leader_value")[1]
@@ -46,7 +58,7 @@ func _setup_starting_architecture_changed_signal(troop):
 func defence(arch, section, scenario):
 	var enemy_troops = arch.enemy_troop_in_range(6)
 	if enemy_troops.size() > 0:
-		var troops = _create_troops(arch, scenario)
+		var troops = _create_troops(arch, arch, scenario)
 		for troop in troops:
 			troop._ai_state = Troop.AIState.COMBAT
 			troop._ai_destination_architecture = arch
@@ -64,7 +76,7 @@ func offence(arch, section, scenario):
 			selected_target_power = target_power
 	
 	if selected_target != null:
-		var troops = _create_troops(arch, scenario)
+		var troops = _create_troops(arch, selected_target, scenario)
 		for troop in troops:
 			troop._ai_state = Troop.AIState.MARCH
 			troop._ai_destination_architecture = selected_target

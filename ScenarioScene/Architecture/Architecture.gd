@@ -124,7 +124,9 @@ func set_adjacency(archs, ai_paths):
 	for kind in ai_paths:
 		for path in ai_paths[kind].list:
 			if path.start_architecture == id:
-				adjacent_archs[path.end_architecture] = path.path
+				if not adjacent_archs.has(path.end_architecture):
+					adjacent_archs[path.end_architecture] = {}
+				adjacent_archs[path.end_architecture][kind] = path.path
 
 ####################################
 #             Get stat             #
