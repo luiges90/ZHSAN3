@@ -78,7 +78,7 @@ func load_data(json: Dictionary):
 	_food_shortage = json["_FoodShortage"]
 	
 	_ai_state = json["_AIState"]
-	_ai_destination_architecture = scenario.Architecture[int(json["_AIDestinationArchitecture"])]
+	_ai_destination_architecture = scenario.architectures[int(json["_AIDestinationArchitecture"])]
 	if _starting_arch.id == _ai_destination_architecture.id:
 		_ai_path = [_starting_arch.map_position]
 	else:
@@ -115,7 +115,7 @@ func save_data() -> Dictionary:
 		"_CurrentOrderTarget": order_target,
 		"_CurrentOrderTargetType": order_target_type,
 		"_AIState": _ai_state,
-		"_AIDestination": _ai_destination_architecture.id
+		"_AIDestinationArchitecture": _ai_destination_architecture.id
 	}
 	
 func _on_scenario_loaded():
