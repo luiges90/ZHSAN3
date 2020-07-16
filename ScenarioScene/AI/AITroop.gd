@@ -26,8 +26,13 @@ func run_troop(troop, scenario):
 				var target = troop._ai_destination_architecture
 				var set_target = false
 				if Util.m_dist(troop.map_position, target.map_position) <= troop.military_kind.range_max:
-					troop.set_attack_order(null, target)
-					set_target = true
+					if target.endurance > 0:
+						troop.set_attack_order(null, target)
+						set_target = true
+					else:
+						troop.get_movement_area()
+						troop.set_move_order(target.map_position)
+						set_target = true
 				else:
 					var movement_area = troop.get_movement_area().duplicate()
 					movement_area.shuffle()

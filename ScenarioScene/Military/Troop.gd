@@ -267,6 +267,7 @@ func can_occupy():
 #             Set order            #
 ####################################
 func set_move_order(position):
+	assert(pathfinder.has_stored_path_to(position), "cannot find stored path to " + str(position) + ". Please run get_movement_area() first")
 	current_order = {
 		"type": OrderType.MOVE,
 		"target": position
@@ -344,10 +345,10 @@ func prepare_orders():
 	_current_path_index = 0
 	__step_retry = 0
 	_attack_count_in_turn = 0
+	pathfinder.prepare_orders()
 	if current_order != null:
 		if current_order.type == OrderType.MOVE:
 			_current_path = pathfinder.get_stored_path_to(current_order.target)
-	pathfinder.prepare_orders()
 
 
 enum ExecuteStepType { MOVED, BLOCKED, STOPPED }

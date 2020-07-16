@@ -44,6 +44,13 @@ func get_movement_area() -> Array:
 		area_pos.append(a.position)
 	return area_pos
 	
+func has_stored_path_to(position) -> Array:
+	if _stored_paths.size() > 0:
+		return _stored_paths.has(position)
+	else:
+		get_movement_area()
+		return _stored_paths.has(position)
+	
 func get_stored_path_to(position) -> Array:
 	if _stored_paths.size() > 0:
 		return _stored_paths[position] 
