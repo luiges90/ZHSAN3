@@ -359,6 +359,8 @@ func _develop_morale(p: Person):
 			morale += Util.f2ri(p.get_morale_ability() * 0.04 / max(1, float(morale) / kind.morale))
 	
 func _develop_endurance(p: Person):
+	if enemy_troop_in_range(1).size() > 0:
+		return
 	if fund > 20:
 		fund -= 20
 		if kind.endurance > 0:

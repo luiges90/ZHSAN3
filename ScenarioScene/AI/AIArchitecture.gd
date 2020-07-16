@@ -45,11 +45,12 @@ func _assign_task(arch: Architecture, scenario):
 	var target_troop_morale = _target_troop_morale(arch)
 	var min_equipment = _selected_equipment(arch, scenario)
 	var has_enemy_troop_in_range = arch.enemy_troop_in_range(4).size() > 0
+	var has_enemy_troop_next_to_city = arch.enemy_troop_in_range(1).size() > 0
 	var has_enemy_troop_in_city = arch.enemy_troop_in_architecture() != null
 	var a = -9e9 if arch.kind.agriculture <= 0 or fund < 20 or has_enemy_troop_in_range or has_enemy_troop_in_city else arch.kind.agriculture / float(arch.agriculture + 1)
 	var c = -9e9 if arch.kind.commerce <= 0 or fund < 20 or has_enemy_troop_in_range or has_enemy_troop_in_city else arch.kind.commerce / float(arch.commerce + 1)
 	var m = -9e9 if arch.kind.morale <= 0 or fund < 20 or has_enemy_troop_in_city else arch.kind.morale / float(arch.morale + 1)
-	var e = -9e9 if arch.kind.endurance <= 0 or fund < 20 or has_enemy_troop_in_city else arch.kind.endurance / float(arch.endurance + 1)
+	var e = -9e9 if arch.kind.endurance <= 0 or fund < 20 or has_enemy_troop_next_to_city else arch.kind.endurance / float(arch.endurance + 1)
 	var r = -9e9 if arch.population <= 0 or fund < 50 or arch.morale <= 100 or arch.military_population <= 0 or not enough_food else _target_troop_quantity(arch) / (arch.troop + 1)
 	var t = -9e9 if arch.troop <= 0 or fund < 20 or arch.troop_morale >= target_troop_morale else (target_troop_morale * 2 / (arch.troop_morale + 10.0) - 1)
 	var q = -9e9 if arch.troop <= 0 or fund < 100 or not enough_fund or not enough_food else _target_equipment_quantity(arch) / (arch.equipments[min_equipment.id] + 1)
