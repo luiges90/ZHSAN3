@@ -41,6 +41,7 @@ signal animation_attack_finished
 signal starting_architecture_changed
 
 signal occupy_architecture
+signal destroyed
 
 func forbidden(x):
 	assert(false)
@@ -449,6 +450,7 @@ func receive_attack_damage(damage):
 			
 func check_destroy():
 	if quantity <= 0:
+		emit_signal("destroyed", map_position, get_name())
 		var return_to = get_starting_architecture()
 		if return_to.get_belonged_faction() != self.get_belonged_faction():
 			return_to = self.get_belonged_faction().get_architectures()[0]

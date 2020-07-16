@@ -359,6 +359,7 @@ func create_troop(arch, troop, position) -> Troop:
 	var instance = scene.instance()
 	instance.connect("troop_clicked", self, "_on_troop_clicked")
 	instance.connect("occupy_architecture", $GameRecordCreator, "_on_troop_occupy_architecture")
+	instance.connect("destroyed", $GameRecordCreator, "_on_troop_destroyed")
 	for p in troop.persons:
 		instance.add_person(p)
 
