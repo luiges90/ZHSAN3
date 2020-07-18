@@ -16,13 +16,16 @@ func run_troop(troop, scenario):
 	
 	if troop._ai_state == Troop.AIState.COMBAT:
 		var enemy_troops = []
-		var targets = troop.enemy_troop_in_range(6)
-		var allies = troop.friendly_troop_in_range(6)
+		var targets = troop.enemy_troop_in_range(troop.military_kind.range_max)
 		if targets.size() > 0:
 			var target = Util.max_by(targets, "get_offence_over_defence")[1]
 			troop.set_attack_order(target, null)
 		else:
-			if troop.get_belonged_faction().is_enemy_to(troop._ai_destination_architecture.get_belonged_faction()):
+			targets = troop.enemy_troop_in_range(6)
+			if targets.size() > 0:
+				var target = Util.max_by(targets, "get_offence_over_defence")[1]
+				troop.set_attack_order(target, null)
+			elif troop.get_belonged_faction().is_enemy_to(troop._ai_destination_architecture.get_belonged_faction()):
 				var target = troop._ai_destination_architecture
 				var set_target = false
 				if Util.m_dist(troop.map_position, target.map_position) <= troop.military_kind.range_max:
@@ -43,6 +46,8 @@ func run_troop(troop, scenario):
 							break
 				if not set_target:
 					troop._ai_state = Troop.AIState.MARCH
+			elif troop.get_belonged_faction() == troop._ai_destination_architecture.get_belonged_faction():
+				troop._ai_state = Troop.AIState.MARCH
 			else:
 				troop._ai_state = Troop.AIState.RETREAT
 				
@@ -51,7 +56,7 @@ func run_troop(troop, scenario):
 		var done = false
 		for p in movement_area:
 			if p == troop._ai_destination_architecture.map_position:
-				troop.set_enter_order(troop._ai_destination_architecture)
+				troop.set_enter_order(troop._ai_destination_architecture.map_position)
 				done = true
 				break
 			else:

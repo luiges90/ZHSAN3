@@ -34,6 +34,6 @@ func _on_troop_destroyed(map_position, name):
 	emit_signal("add_game_record", _register_click(
 		"focus(" + str(map_position.x) + "," + str(map_position.y) + ")",
 		tr("GAME_RECORD_TROOP_DESTROYED") % [
-			_color_text(GREEN, get_name()), 
+			_color_text(GREEN, name), 
 		])
 	)
