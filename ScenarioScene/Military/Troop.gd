@@ -429,7 +429,7 @@ func execute_attack():
 					damage = int(damage)
 					counter_damage = int(counter_damage)
 				
-					quantity -= counter_damage
+					receive_attack_damage(counter_damage)
 					if target is Architecture:
 						target.receive_attack_damage(damage)
 					else:
@@ -551,6 +551,10 @@ func _animate_attack(target, self_damage, target_damage):
 			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
 			target.find_node("NumberFlashText").find_node('Timer').start()
 	else:
+		update_troop_title()
+		check_destroy()
+		if !(target is Architecture):
+			target.check_destroy()
 		yield()
 	
 func _on_AnimatedSprite_animation_finished():

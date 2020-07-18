@@ -7,6 +7,8 @@ func _init(ai):
 	self.ai = ai
 	
 func _create_troops(from_architecture, target, scenario) -> Array:
+	if from_architecture.troop <= 0 || from_architecture.troop_morale <= 0: 
+		return []
 	var troops_created = []
 	var stop_creating_troop = false
 	while !stop_creating_troop:
@@ -36,8 +38,9 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 			troop.quantity = min(from_architecture.equipments[equipment_id] / 100 * 100, leader.get_max_troop_quantity())
 			troop.morale = from_architecture.troop_morale
 			troop.combativity = from_architecture.troop_combativity
+			assert(troop.quantity > 0)
 			
-			if ai._ai_troop.consider_make_troop(troop):
+			if from_architecture.endurance <= 50 || ai._ai_troop.consider_make_troop(troop):
 				var position = Util.random_from(avail_positions)
 				if position != null:
 					troops_created.append(scenario.create_troop(from_architecture, troop, position))
