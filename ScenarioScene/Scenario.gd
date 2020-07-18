@@ -206,7 +206,8 @@ func _load_data(path):
 		var instance = MilitaryKind.new()
 		__load_item(instance, item, military_kinds)
 	file.close()
-			
+	SharedData._load_troop_sprite_frames(military_kinds.values())
+	
 	file.open(path + "/ArchitectureKinds.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
@@ -287,8 +288,6 @@ func _load_data(path):
 			
 	current_faction = factions[int(current_faction_id)]
 	file.close()
-	
-	SharedData._load_troop_sprite_frames(military_kinds.values())
 	
 	emit_signal("scenario_loaded")
 
