@@ -302,6 +302,9 @@ func change_faction(to_section):
 	get_belonged_section().remove_architecture(self)
 	to_section.add_architecture(self)
 	
+	# update UI
+	($Flag as Sprite).modulate = to_section.get_belonged_faction().color
+	
 
 ####################################
 #          Order Execution         #
