@@ -12,6 +12,8 @@ enum Status { NONE,
 var id: int setget forbidden
 var scenario
 
+var gender: bool setget forbidden
+
 var surname: String setget forbidden
 var given_name: String setget forbidden
 var courtesy_name: String setget forbidden
@@ -38,6 +40,7 @@ func forbidden(x):
 func load_data(json: Dictionary):
 	id = json["_Id"]
 	_status = int(json["Status"])
+	gender = json["Gender"]
 	surname = json["Surname"]
 	given_name = json["GivenName"]
 	courtesy_name = json["CourtesyName"]
@@ -53,6 +56,7 @@ func save_data() -> Dictionary:
 	return {
 		"_Id": id,
 		"Status": _status,
+		"Gender": gender,
 		"Surname": surname,
 		"GivenName": given_name,
 		"CourtesyName": courtesy_name,
@@ -142,7 +146,27 @@ func get_producing_equipment_name():
 
 func get_max_troop_quantity() -> int:
 	return 5000
-		
+	
+func get_portrait():
+	if SharedData.person_portraits.has(id):
+		return SharedData.person_portraits[id]
+	else:
+		if gender:
+			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_FEMALE):
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_FEMALE]
+			else:
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
+		elif command + strength > intelligence + politics:
+			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL):
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL]
+			else:
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
+		else:
+			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER):
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER]
+			else:
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
+	
 func move_to_architecture(arch):
 	var old_location = get_location()
 	set_location(arch)

@@ -11,6 +11,12 @@ var loading_file_path
 ###########################
 #        Resources        #
 ###########################
+const PERSON_PORTRAIT_DEFAULT_MALE_OFFICER = -1
+const PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL = -2
+const PERSON_PORTRAIT_DEFAULT_FEMALE = -3
+const PERSON_PORTRAIT_BLANK = -9999
+var person_portraits = {}
+
 var troop_images = {}
 var troop_sounds = {}
 var troop_sprite_frames = {}
@@ -18,6 +24,7 @@ var troop_sprite_frames = {}
 func _init():
 	_load_troop_images()
 	_load_troop_sounds()
+	_load_person_portraits()
 	
 func _load_troop_images():
 	var dir = Directory.new()
@@ -95,3 +102,29 @@ func __load_sound_file(file):
 	stream.stereo = true
 	wav_file.close()
 	return stream
+
+func _load_person_portraits():
+	var dir = Directory.new()
+	var path = "res://Images/PersonPortrait"
+	dir.open(path)
+	dir.list_dir_begin()
+	while true:
+		var in_file_name = dir.get_next()
+		if in_file_name == "":
+			break
+		elif not in_file_name.begins_with("."):
+			if int(in_file_name) > 0:
+				var portrait = load(path + "/" + in_file_name)
+				person_portraits[int(in_file_name)] = portrait
+			elif in_file_name == 'default-male-martial.jpg':
+				var portrait = load(path + "/" + in_file_name)
+				person_portraits[PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL] = portrait
+			elif in_file_name == 'default-male-officer.jpg':
+				var portrait = load(path + "/" + in_file_name)
+				person_portraits[PERSON_PORTRAIT_DEFAULT_MALE_OFFICER] = portrait
+			elif in_file_name == 'default-female.jpg':
+				var portrait = load(path + "/" + in_file_name)
+				person_portraits[PERSON_PORTRAIT_DEFAULT_FEMALE] = portrait
+			elif in_file_name == 'blank.jpg':
+				var portrait = load(path + "/" + in_file_name)
+				person_portraits[PERSON_PORTRAIT_BLANK] = portrait
