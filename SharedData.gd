@@ -112,7 +112,7 @@ func _load_person_portraits():
 		var in_file_name = dir.get_next()
 		if in_file_name == "":
 			break
-		elif not in_file_name.begins_with("."):
+		elif not in_file_name.begins_with(".") and in_file_name.ends_with('.jpg'):
 			if int(in_file_name) > 0:
 				var portrait = load(path + "/" + in_file_name)
 				person_portraits[int(in_file_name)] = portrait
