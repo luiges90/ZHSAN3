@@ -1,109 +1,110 @@
 ﻿keys,en,zh_CN,zh_TW
-ZHSAN3,ZHSAN3.0 alpha-1,中華三國志3.0 alpha-1,中華三國志3.0 alpha-1
-FACTION,Faction,勢力,勢力
+ZHSAN3,ZHSAN3.0 alpha-1,中华三国志3.0 alpha-1,中華三國志3.0 alpha-1
+FACTION,Faction,势力,勢力
 OFFICERS,Officers,人物,人物
 DATE,Date,公元,公元
 YEAR,-,年,年
 MONTH,-,月,月
 DAY,,日,日
 POPULATION,Population,人口,人口
-FUND,Fund,資金,資金
-FOOD,Food,糧草,糧草
-AGRICULTURE,Agriculture,農業,農業
-COMMERCE,Commerce,商業,商業
+FUND,Fund,资金,資金
+FOOD,Food,粮草,糧草
+AGRICULTURE,Agriculture,农业,農業
+COMMERCE,Commerce,商业,商業
 MORALE,Morale,民心,民心
 ENDURANCE,Endurance,耐久,耐久
 PERSON_LIST,Person List,人物列表,人物列表
 PERSON_NAME,Name,姓名,姓名
-NAME,Name,名稱,名稱
+NAME,Name,名称,名稱
 ABILITY,Ability,能力,能力
-COMMAND,Command,統兵,統兵
-STRENGTH,Strength,武藝,武藝
-INTELLIGENCE,Intelligence,智謀,智謀
+COMMAND,Command,统兵,統兵
+STRENGTH,Strength,武艺,武藝
+INTELLIGENCE,Intelligence,智谋,智謀
 POLITICS,Politics,政略,政略
 GLAMOUR,Glamour,魅力,魅力
-INTERNAL,Internal,內政,內政
-ARCHITECTURE_LIST,Architecture List,建築列表,建築列表
-AGRICULTURE_ABILITY,Agriculture,農業能力,農業能力
-COMMERCE_ABILITY,Commerce,商業能力,商業能力
+INTERNAL,Internal,内政,內政
+ARCHITECTURE_LIST,Architecture List,建筑列表,建築列表
+AGRICULTURE_ABILITY,Agriculture,农业能力,農業能力
+COMMERCE_ABILITY,Commerce,商业能力,商業能力
 MORALE_ABILITY,Morale,民心能力,民心能力
 ENDURANCE_ABILITY,Endurance,耐久能力,耐久能力
 TASK,Task,工作,工作
-NONE,None,無,無
-CONFIRM,Confirm,確定,確定
+NONE,None,无,無
+CONFIRM,Confirm,确定,確定
 CANCEL,Cancel,取消,取消
-SELECT_ALL,Select All,全選,全選
-UNSELECT_ALL,Unselect All,全不選,全不選
-SYSTEM,System,系統,系統
-SAVE_GAME,Save,儲存遊戲,儲存遊戲
-LOAD_GAME,Load,讀取遊戲,讀取遊戲
-QUIT_GAME,Quit,離開,離開
+SELECT_ALL,Select All,全选,全選
+UNSELECT_ALL,Unselect All,全不选,全不選
+SYSTEM,System,系统,系統
+SAVE_GAME,Save,储存游戏,儲存遊戲
+LOAD_GAME,Load,读取游戏,讀取遊戲
+QUIT_GAME,Quit,离开,離開
 FILE_BLANK,<Blank>,＜空白＞,＜空白＞
-NEW_GAME,New Game,新遊戲,新遊戲
-OPTIONS,Options,設置,設置
+NEW_GAME,New Game,新游戏,新遊戲
+OPTIONS,Options,设置,設置
 OTHER_FEATURES,Other Features,其他功能,其他功能
-CREDITS,Credits,製作人員,製作人員
-IMPORT_SCENARIO,Import Scenario,導入劇本,導入劇本
+CREDITS,Credits,制作人员,製作人員
+IMPORT_SCENARIO,Import Scenario,导入剧本,導入劇本
 BACK,Back,返回,返回
-MOVE,Move,移動,移動
-CALL,Call,召喚,召喚
+MOVE,Move,移动,移動
+CALL,Call,召唤,召喚
 BASIC,Basic,基本,基本
-FACTION_NAME,Faction,勢力,勢力
-KIND_NAME,Kind,種類,種類
-ARCHITECTURE_DETAILS,Architecture Details,建築情報,建築情報
-PERSON_COUNT,Officers,武將數,武將數
-BELONGED_ARCHITECTURE,Architecture,所屬,所屬
-TASK_DAYS,Task Days,天數,天數
+FACTION_NAME,Faction,势力,勢力
+KIND_NAME,Kind,种类,種類
+ARCHITECTURE_DETAILS,Architecture Details,建筑情报,建築情報
+PERSON_COUNT,Officers,武将数,武將數
+BELONGED_ARCHITECTURE,Architecture,所属,所屬
+TASK_DAYS,Task Days,天数,天數
 DAY_UNIT," Days",天,天
-SECTION,Section,軍區,軍區
-MILITARY,Military,軍事,軍事
+SECTION,Section,军区,軍區
+MILITARY,Military,军事,軍事
 TROOP,Troop,士兵,士兵
-TROOP_MORALE,Morale,士氣,士氣
-COMBATIVITY,Combativity,戰意,戰意
+TROOP_MORALE,Morale,士气,士氣
+COMBATIVITY,Combativity,战意,戰意
 RECRUIT_TROOP,Recruit Army,募兵,募兵
-TRAIN_TROOP,Train Army,訓練,訓練
+TRAIN_TROOP,Train Army,训练,訓練
 RECRUIT_ABILITY,Recruit Army Ability,募兵能力,募兵能力
-TRAIN_ABILITY,Train Army Ability,訓練能力,訓練能力
+TRAIN_ABILITY,Train Army Ability,训练能力,訓練能力
 MILITARY_POPULATION,Leviable Pop.,兵役人口,兵役人口
-PRODUCE_EQUIPMENT,Produce Equip.,生產兵裝,生產兵裝
-PRODUCE_EQUIPMENT_ABILITY,Produce Equip. Ability,生產兵裝能力,生產兵裝能力
-PRODUCING_EQUIPMENT_TYPE,Producing Type,兵裝類,兵裝類
-MILITARY_KIND_LIST,Military Kinds,兵種列表,兵種列表
-MOVEMENT_DETAILS,Movement,地型移動,地型移動
+PRODUCE_EQUIPMENT,Produce Equip.,生产兵装,生產兵裝
+PRODUCE_EQUIPMENT_ABILITY,Produce Equip. Ability,生产兵装能力,生產兵裝能力
+PRODUCING_EQUIPMENT_TYPE,Producing Type,兵装类,兵裝類
+MILITARY_KIND_LIST,Military Kinds,兵种列表,兵種列表
+MOVEMENT_DETAILS,Movement,地型移动,地型移動
 TERRAIN_STRENGTH,Terrain,地型能力,地型能力
-COST,Cost,所需資金,所需資金
-OFFENCE,Attack,攻擊力,攻擊力
-DEFENCE,Defense,防禦力,防禦力
-RANGE,Range,攻擊距離,攻擊距離
+COST,Cost,所需资金,所需資金
+OFFENCE,Attack,攻击力,攻擊力
+DEFENCE,Defense,防御力,防禦力
+RANGE,Range,攻击距离,攻擊距離
 SPEED,Speed,速度,速度
 INITIATIVE,Initiative,先行,先行
 MAX_QUANTITY_MULITPLIER,Max Quantity,兵力上限,兵力上限
 QUANTITY,Quantity,兵力,兵力
-GAME_INFO,Information,各項信息,各項信息
-EQUIPMENTS,Equipments,兵裝,兵裝
-FACTION_ARCHITECTURES,Faction Architectures,勢力建築,勢力建築
-TOGGLE_AUTO_TASK,Auto Task,委任內政,委任內政
-TOGGLE_MANUAL_TASK,Manual Task,手動內政,手動內政
-PERSON_TROOP,"'s Troop",隊,隊
+GAME_INFO,Information,各项信息,各項信息
+EQUIPMENTS,Equipments,兵装,兵裝
+FACTION_ARCHITECTURES,Faction Architectures,势力建筑,勢力建築
+TOGGLE_AUTO_TASK,Auto Task,委任内政,委任內政
+TOGGLE_MANUAL_TASK,Manual Task,手动内政,手動內政
+PERSON_TROOP,"'s Troop",队,隊
 CREATE_TROOP,Create Troop,出征,出征
-PERSONS,Persons,武將,武將
-LEADER,Leader,主將,主將
-MILITARY_KIND,Military Kind,兵裝,兵裝
-SELECT_TROOP_PERSON,Select Person,選擇武將,選擇武將
-SELECT_TROOP_LEADER,Select Leader,選擇主將,選擇主將
-SELECT_TROOP_MILITARY_KIND,Select Military Kind,選擇兵種,選擇兵種
-ATTACK,Attack,攻擊,攻擊
+PERSONS,Persons,武将,武將
+LEADER,Leader,主将,主將
+MILITARY_KIND,Military Kind,兵装,兵裝
+SELECT_TROOP_PERSON,Select Person,选择武将,選擇武將
+SELECT_TROOP_LEADER,Select Leader,选择主将,選擇主將
+SELECT_TROOP_MILITARY_KIND,Select Military Kind,选择兵种,選擇兵種
+ATTACK,Attack,攻击,攻擊
 ENTER,Enter,入城,入城
-FOLLOW,Follow,跟隨,跟隨
-TROOP_DETAIL,Troop Details,部隊情報,部隊情報
+FOLLOW,Follow,跟随,跟隨
+TROOP_DETAIL,Troop Details,部队情报,部隊情報
 ORDER,Order,指令,指令
-TARGET,Target,目標,目標
-OCCUPY,Occupy,佔領,佔領
-WILD_PERSON_COUNT,Non-officers,在野數,在野數
-STATUS,Status,狀態,狀態
+TARGET,Target,目标,目標
+OCCUPY,Occupy,占领,佔領
+WILD_PERSON_COUNT,Non-officers,在野数,在野數
+STATUS,Status,状态,狀態
 STATUS_NORMAL,Normal,一般,一般
 STATUS_WILD,Wild,在野,在野
-GAME_RECORD,Record,信息欄,信息欄
-GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s從%s出征,%s從%s出征
-GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,%s has taken over %s,%s佔領了%s,%s佔領了%s
-GAME_RECORD_TROOP_DESTROYED,%s has been routed,%s潰散了,%s潰散了
+GAME_RECORD,Record,信息栏,信息欄
+GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s从%s出征,%s從%s出征
+GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,%s has taken over %s,%s占领了%s,%s佔領了%s
+GAME_RECORD_TROOP_DESTROYED,%s has been routed,%s溃散了,%s潰散了
+SELECT_SCENARIO,Select scenario,选择剧本,選擇劇本
