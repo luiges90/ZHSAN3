@@ -33,6 +33,8 @@ var equipments = {} setget forbidden
 
 var auto_task: bool
 
+var _destroyed: bool = false
+
 signal architecture_clicked
 signal architecture_survey_updated
 

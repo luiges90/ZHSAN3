@@ -40,7 +40,7 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 			troop.combativity = from_architecture.troop_combativity
 			assert(troop.quantity > 0)
 			
-			if from_architecture.endurance <= 50 || ai._ai_troop.consider_make_troop(troop):
+			if ai._ai_troop.consider_make_troop(troop, from_architecture == target):
 				var position = Util.random_from(avail_positions)
 				if position != null:
 					troops_created.append(scenario.create_troop(from_architecture, troop, position))

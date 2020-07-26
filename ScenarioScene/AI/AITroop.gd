@@ -62,7 +62,11 @@ func run_troop(troop, scenario):
 			else:
 				var d = Util.m_dist(p, troop._ai_destination_architecture.map_position)
 				if d <= troop.military_kind.range_max:
-					troop._ai_state = Troop.AIState.COMBAT
+					if troop._ai_destination_architecture.get_belonged_faction() == troop.get_belonged_faction():
+						troop.set_enter_order(troop._ai_destination_architecture.map_position)
+					else:
+						troop._ai_state = Troop.AIState.COMBAT
+						troop.set_attack_order(null, troop._ai_destination_architecture)
 					done = true
 					break
 		if not done:
@@ -76,6 +80,8 @@ func run_troop(troop, scenario):
 						break
 				if done:
 					break
+		if not done:
+			troop._ai_state = Troop.AIState.RETREAT
 	
 	if troop._ai_state == Troop.AIState.RETREAT:
 		if Util.m_dist(troop.map_position, troop.get_starting_architecture().map_position) < 1:
@@ -93,11 +99,16 @@ func run_troop(troop, scenario):
 					break
 			if not done:
 				troop.set_enter_order(troop.get_starting_architecture().map_position)
+	
+	assert(troop.current_order != null)
 
 
 
 func consider_retreat(troop):
 	return troop.quantity < 1000
 
-func consider_make_troop(troop):
-	return troop.quantity > 3000
+func consider_make_troop(troop, defend: bool):
+	if defend:
+		return troop.quantity > 1000
+	else:
+		return troop.quantity > 3000

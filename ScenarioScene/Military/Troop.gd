@@ -32,6 +32,8 @@ var _ai_state
 var _ai_destination_architecture
 var _ai_path
 
+var _destroyed = false
+
 onready var pathfinder: PathFinder = PathFinder.new(self)
 
 signal troop_clicked
@@ -266,6 +268,9 @@ func can_occupy():
 ####################################
 #             Set order            #
 ####################################
+func _clear_order():
+	current_order = null
+
 func set_move_order(position):
 	current_order = {
 		"type": OrderType.MOVE,
@@ -380,7 +385,7 @@ func execute_step() -> ExecuteStepResult:
 			return ExecuteStepType.STOPPED
 	elif current_order != null and (current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK || current_order.type == OrderType.ENTER):
 		var target = current_order.target
-		if is_instance_valid(target):
+		if is_instance_valid(target) and not target._destroyed:
 			var step_result = pathfinder.stupid_path_to_step(target.map_position)
 			
 			if step_result == null:
@@ -406,12 +411,13 @@ func execute_enter():
 		if Util.m_dist(map_position, architecture.map_position) <= 1:
 			architecture.accept_entering_troop(self)
 			get_belonged_section().remove_troop(self)
+			_destroyed = true
 			queue_free()
 		
 func execute_attack():
 	if current_order != null and current_order.type == OrderType.ATTACK and _attack_count_in_turn < 1:
 		var target = current_order.target
-		if is_instance_valid(self) and is_instance_valid(target):
+		if is_instance_valid(self) and is_instance_valid(target) and not self._destroyed and not target._destroyed:
 			var dist = Util.m_dist(map_position, current_order.target.map_position)
 			if dist >= military_kind.range_min and dist <= military_kind.range_max:
 				var target_valid = target is Architecture or target.quantity > 0
@@ -457,8 +463,12 @@ func check_destroy():
 		for p in get_persons():
 			p.move_to_architecture(return_to)
 		get_belonged_section().remove_troop(self)
+		for t in scenario.troops:
+			var troop = scenario.troops[t]
+			if troop.current_order != null and troop.current_order.type == OrderType.ATTACK and troop.current_order.target == self:
+				troop._clear_order()
 		queue_free()
-			
+
 
 func after_order_cleanup():
 	if current_order != null and current_order.type == OrderType.MOVE and current_order.target == map_position:
