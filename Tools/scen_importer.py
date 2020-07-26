@@ -1,9 +1,10 @@
 import json
 
-dev = True
+dev = False
 
 file_name = '194QXGJ-qh'
-with open('CommonData.json', mode='r', encoding='utf-8') as cfin: 
+with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
+	all_factions = []
 	common = json.loads(cfin.read(), strict=False)
 	with open(file_name + '.json', mode='r', encoding='utf-8') as fin:
 		obj = json.loads(fin.read(), strict=False)
@@ -162,13 +163,21 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				  "SectionList": sects,
 				  "PlayerControlled": False
 				})
+				all_factions.append({
+					"_Id": k['ID'],
+					"Name": k['Name']
+				})
 			if dev:
 				r.append({
 					"_Id": 100,
 					"Name": '耒火',
 					"Color": [255, 0, 255],
 					"SectionList": [500],
-					"PlayerControlled": True
+					"PlayerControlled": False
+				})
+				all_factions.append({
+					"_Id": 100,
+					"Name": '耒火'
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 		
@@ -209,6 +218,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				"Year": obj['Date']['Year'],
 				"Month": obj['Date']['Month'],
 				"Day": obj['Date']['Day']
-			  }
+			  },
+			  "Name": obj['ScenarioTitle'],
+			  "Factions": all_factions
 			}, indent=2, ensure_ascii=False, sort_keys=True))
 

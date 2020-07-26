@@ -12,11 +12,15 @@ func _on_LoadGame_pressed():
 
 
 func _on_NewGame_pressed():
-	# TODO create scenario selection
-	SharedData.loading_file_path = "user://Scenarios/194QXGJ-qh"
-	get_tree().change_scene("res://Main.tscn")
+	$ScenarioSelector.show()
 
 
 func _on_SaveLoadMenu_file_slot_clicked(mode, path):
 	SharedData.loading_file_path = path
 	get_tree().change_scene("res://Main.tscn")
+
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) and event.pressed:
+			$SaveLoadMenu.hide()

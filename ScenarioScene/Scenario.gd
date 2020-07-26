@@ -285,10 +285,9 @@ func _load_data(path):
 		__load_item(instance, item, factions)
 		for id in item["SectionList"]:
 			instance.add_section(sections[int(id)])
-			
-	current_faction = factions[int(current_faction_id)]
 	file.close()
 	
+	__handle_player_faction(current_faction_id)
 	emit_signal("scenario_loaded")
 
 	
@@ -300,6 +299,12 @@ func __load_item(instance, item, add_to_list):
 		instance.add_to_group(GROUP_GAME_INSTANCES)
 		add_child(instance)
 	
+func __handle_player_faction(current_faction_id):
+	if SharedData.starting_faction_id != null:
+		current_faction = factions[int(SharedData.starting_faction_id)]
+		current_faction.player_controlled = true
+	else:
+		current_faction = factions[int(current_faction_id)]
 
 ########################################
 #           UI signal handling         #
