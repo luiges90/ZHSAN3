@@ -1,9 +1,9 @@
 [
   {
     "Color": [
-      160,
-      0,
-      0
+      0.627,
+      0.0,
+      0.0
     ],
     "Name": "曹操",
     "PlayerControlled": false,
@@ -14,9 +14,9 @@
   },
   {
     "Color": [
-      0,
-      0,
-      255
+      0.0,
+      0.0,
+      1.0
     ],
     "Name": "刘备",
     "PlayerControlled": false,
@@ -27,9 +27,9 @@
   },
   {
     "Color": [
-      120,
-      240,
-      0
+      0.471,
+      0.941,
+      0.0
     ],
     "Name": "孙策",
     "PlayerControlled": false,
@@ -40,9 +40,9 @@
   },
   {
     "Color": [
-      0,
-      255,
-      255
+      0.0,
+      1.0,
+      1.0
     ],
     "Name": "袁绍",
     "PlayerControlled": false,
@@ -53,9 +53,9 @@
   },
   {
     "Color": [
-      0,
-      0,
-      0
+      0.0,
+      0.0,
+      0.0
     ],
     "Name": "李傕",
     "PlayerControlled": false,
@@ -66,9 +66,9 @@
   },
   {
     "Color": [
-      34,
-      105,
-      253
+      0.133,
+      0.412,
+      0.992
     ],
     "Name": "公孙瓒",
     "PlayerControlled": false,
@@ -79,9 +79,9 @@
   },
   {
     "Color": [
-      155,
-      0,
-      78
+      0.608,
+      0.0,
+      0.306
     ],
     "Name": "刘焉",
     "PlayerControlled": false,
@@ -92,9 +92,9 @@
   },
   {
     "Color": [
-      207,
-      228,
-      20
+      0.812,
+      0.894,
+      0.078
     ],
     "Name": "刘表",
     "PlayerControlled": false,
@@ -105,9 +105,9 @@
   },
   {
     "Color": [
-      0,
-      0,
-      0
+      0.0,
+      0.0,
+      0.0
     ],
     "Name": "吕布",
     "PlayerControlled": false,
@@ -118,9 +118,9 @@
   },
   {
     "Color": [
-      0,
-      64,
-      128
+      0.0,
+      0.251,
+      0.502
     ],
     "Name": "马腾",
     "PlayerControlled": false,
@@ -131,9 +131,9 @@
   },
   {
     "Color": [
-      204,
-      147,
-      200
+      0.8,
+      0.576,
+      0.784
     ],
     "Name": "韩遂",
     "PlayerControlled": false,
@@ -144,9 +144,9 @@
   },
   {
     "Color": [
-      160,
-      0,
-      0
+      0.627,
+      0.0,
+      0.0
     ],
     "Name": "士燮",
     "PlayerControlled": false,
@@ -157,9 +157,9 @@
   },
   {
     "Color": [
-      83,
-      166,
-      0
+      0.325,
+      0.651,
+      0.0
     ],
     "Name": "陶谦",
     "PlayerControlled": false,
@@ -170,9 +170,9 @@
   },
   {
     "Color": [
-      192,
-      128,
-      255
+      0.753,
+      0.502,
+      1.0
     ],
     "Name": "袁术",
     "PlayerControlled": false,
@@ -183,9 +183,9 @@
   },
   {
     "Color": [
-      151,
-      75,
-      0
+      0.592,
+      0.294,
+      0.0
     ],
     "Name": "孔融",
     "PlayerControlled": false,
@@ -196,9 +196,9 @@
   },
   {
     "Color": [
-      85,
-      170,
-      170
+      0.333,
+      0.667,
+      0.667
     ],
     "Name": "公孙度",
     "PlayerControlled": false,
@@ -209,9 +209,9 @@
   },
   {
     "Color": [
-      255,
-      68,
-      68
+      1.0,
+      0.267,
+      0.267
     ],
     "Name": "刘繇",
     "PlayerControlled": false,
@@ -222,9 +222,9 @@
   },
   {
     "Color": [
-      192,
-      128,
-      128
+      0.753,
+      0.502,
+      0.502
     ],
     "Name": "王朗",
     "PlayerControlled": false,
@@ -235,9 +235,9 @@
   },
   {
     "Color": [
-      210,
-      191,
-      205
+      0.824,
+      0.749,
+      0.804
     ],
     "Name": "严白虎",
     "PlayerControlled": false,
@@ -248,9 +248,9 @@
   },
   {
     "Color": [
-      192,
-      128,
-      255
+      0.753,
+      0.502,
+      1.0
     ],
     "Name": "张鲁",
     "PlayerControlled": false,
@@ -261,9 +261,9 @@
   },
   {
     "Color": [
-      120,
-      240,
-      0
+      0.471,
+      0.941,
+      0.0
     ],
     "Name": "张邈",
     "PlayerControlled": false,
@@ -274,9 +274,9 @@
   },
   {
     "Color": [
-      40,
-      0,
-      81
+      0.157,
+      0.0,
+      0.318
     ],
     "Name": "张济",
     "PlayerControlled": false,
@@ -287,9 +287,9 @@
   },
   {
     "Color": [
-      98,
-      98,
-      98
+      0.384,
+      0.384,
+      0.384
     ],
     "Name": "张燕",
     "PlayerControlled": false,
@@ -300,9 +300,9 @@
   },
   {
     "Color": [
-      120,
-      240,
-      0
+      0.471,
+      0.941,
+      0.0
     ],
     "Name": "张杨",
     "PlayerControlled": false,
@@ -313,9 +313,9 @@
   },
   {
     "Color": [
-      155,
-      0,
-      78
+      0.608,
+      0.0,
+      0.306
     ],
     "Name": "乌丸",
     "PlayerControlled": false,
@@ -326,9 +326,9 @@
   },
   {
     "Color": [
-      255,
-      68,
-      68
+      1.0,
+      0.267,
+      0.267
     ],
     "Name": "氐族",
     "PlayerControlled": false,
@@ -339,9 +339,9 @@
   },
   {
     "Color": [
-      125,
-      0,
-      0
+      0.49,
+      0.0,
+      0.0
     ],
     "Name": "东部鲜卑",
     "PlayerControlled": false,
@@ -352,9 +352,9 @@
   },
   {
     "Color": [
-      255,
-      68,
-      68
+      1.0,
+      0.267,
+      0.267
     ],
     "Name": "夫余",
     "PlayerControlled": false,
@@ -365,9 +365,9 @@
   },
   {
     "Color": [
-      255,
-      255,
-      128
+      1.0,
+      1.0,
+      0.502
     ],
     "Name": "高句丽",
     "PlayerControlled": false,
@@ -378,9 +378,9 @@
   },
   {
     "Color": [
-      120,
-      240,
-      0
+      0.471,
+      0.941,
+      0.0
     ],
     "Name": "南蛮",
     "PlayerControlled": false,
@@ -391,9 +391,9 @@
   },
   {
     "Color": [
-      136,
-      0,
-      0
+      0.533,
+      0.0,
+      0.0
     ],
     "Name": "羌",
     "PlayerControlled": false,
@@ -404,9 +404,9 @@
   },
   {
     "Color": [
-      207,
-      228,
-      20
+      0.812,
+      0.894,
+      0.078
     ],
     "Name": "山越",
     "PlayerControlled": false,
@@ -417,9 +417,9 @@
   },
   {
     "Color": [
-      160,
-      0,
-      0
+      0.627,
+      0.0,
+      0.0
     ],
     "Name": "拓跋鲜卑",
     "PlayerControlled": false,
@@ -430,9 +430,9 @@
   },
   {
     "Color": [
-      0,
-      255,
-      255
+      0.0,
+      1.0,
+      1.0
     ],
     "Name": "匈奴",
     "PlayerControlled": false,
@@ -443,9 +443,9 @@
   },
   {
     "Color": [
-      128,
-      0,
-      255
+      0.502,
+      0.0,
+      1.0
     ],
     "Name": "刘宠",
     "PlayerControlled": false,
@@ -456,9 +456,9 @@
   },
   {
     "Color": [
-      0,
-      255,
-      255
+      0.0,
+      1.0,
+      1.0
     ],
     "Name": "宋建",
     "PlayerControlled": false,
@@ -469,9 +469,9 @@
   },
   {
     "Color": [
-      207,
-      228,
-      20
+      0.812,
+      0.894,
+      0.078
     ],
     "Name": "臧霸",
     "PlayerControlled": false,
@@ -482,9 +482,9 @@
   },
   {
     "Color": [
-      0,
-      255,
-      255
+      0.0,
+      1.0,
+      1.0
     ],
     "Name": "陈瑀",
     "PlayerControlled": false,
@@ -495,9 +495,9 @@
   },
   {
     "Color": [
-      40,
-      0,
-      81
+      0.157,
+      0.0,
+      0.318
     ],
     "Name": "许贡",
     "PlayerControlled": false,
@@ -508,9 +508,9 @@
   },
   {
     "Color": [
-      125,
-      0,
-      0
+      0.49,
+      0.0,
+      0.0
     ],
     "Name": "华歆",
     "PlayerControlled": false,

@@ -158,7 +158,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 				  "_Id": k['ID'],
 				  "Name": k['Name'],
-				  "Color": [colors[k['ColorIndex']]['R'], colors[k['ColorIndex']]['G'], colors[k['ColorIndex']]['B']],
+				  "Color": [round(colors[k['ColorIndex']]['R'] / 255.0, 3), round(colors[k['ColorIndex']]['G'] / 255.0, 3), round(colors[k['ColorIndex']]['B'] / 255.0, 3)],
 				  "SectionList": sects,
 				  "PlayerControlled": False
 				})
