@@ -54,10 +54,6 @@ __meta__ = {
 }
 
 [node name="Scenarios" type="VBoxContainer" parent="ScenarioContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 8.0
-margin_bottom = 8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,10 +72,6 @@ __meta__ = {
 }
 
 [node name="Factions" type="VBoxContainer" parent="FactionContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 8.0
-margin_bottom = 8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
