@@ -3,9 +3,10 @@ class_name GameRecord
 
 signal focus_camera
 
-
 func add_text(text):
 	$Records.append_bbcode(text + "\n")
+	if $Records.get_line_count() > GameConfig.game_record_limit:
+		$Records.remove_line(0)
 	$Pop.play()
 
 
