@@ -20,8 +20,8 @@ func _ready():
 			var file = File.new()
 			file.open(scen_path, File.READ)
 			var obj = parse_json(file.get_as_text())
-			obj['__FileName'] = in_dir_name
 			if obj != null:
+				obj['__FileName'] = in_dir_name
 				_scenario_data.append(obj)
 			file.close()
 			

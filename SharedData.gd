@@ -111,21 +111,21 @@ func _load_person_portraits():
 	dir.list_dir_begin()
 	while true:
 		var in_file_name = dir.get_next()
+		# https://godotengine.org/qa/59637/cannot-traverse-asset-directory-in-android?show=59637#q59637
+		in_file_name = in_file_name.replace('.import', '')
 		if in_file_name == "":
 			break
 		elif not in_file_name.begins_with(".") and in_file_name.ends_with('.jpg'):
 			if int(in_file_name) > 0:
-				var portrait = load(path + "/" + in_file_name)
-				person_portraits[int(in_file_name)] = portrait
+				__load_portrait(path + "/" + in_file_name, int(in_file_name))
 			elif in_file_name == 'default-male-martial.jpg':
-				var portrait = load(path + "/" + in_file_name)
-				person_portraits[PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL] = portrait
+				__load_portrait(path + "/" + in_file_name, PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL)
 			elif in_file_name == 'default-male-officer.jpg':
-				var portrait = load(path + "/" + in_file_name)
-				person_portraits[PERSON_PORTRAIT_DEFAULT_MALE_OFFICER] = portrait
+				__load_portrait(path + "/" + in_file_name, PERSON_PORTRAIT_DEFAULT_MALE_OFFICER)
 			elif in_file_name == 'default-female.jpg':
-				var portrait = load(path + "/" + in_file_name)
-				person_portraits[PERSON_PORTRAIT_DEFAULT_FEMALE] = portrait
+				__load_portrait(path + "/" + in_file_name, PERSON_PORTRAIT_DEFAULT_FEMALE)
 			elif in_file_name == 'blank.jpg':
-				var portrait = load(path + "/" + in_file_name)
-				person_portraits[PERSON_PORTRAIT_BLANK] = portrait
+				__load_portrait(path + "/" + in_file_name, PERSON_PORTRAIT_BLANK)
+				
+func __load_portrait(path, id):
+	person_portraits[id] = ResourceLoader.load(path)
