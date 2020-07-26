@@ -8,7 +8,7 @@ var _selected_faction
 
 func _ready():
 	var dir = Directory.new()
-	var path = "user://Scenarios"
+	var path = "res://Scenarios"
 	dir.open(path)
 	dir.list_dir_begin()
 	while true:
@@ -16,7 +16,7 @@ func _ready():
 		if in_dir_name == "":
 			break
 		elif not in_dir_name.begins_with(".") and dir.current_is_dir():
-			var scen_path = "user://Scenarios/" + in_dir_name + "/Scenario.json"
+			var scen_path = "res://Scenarios/" + in_dir_name + "/Scenario.json"
 			var file = File.new()
 			file.open(scen_path, File.READ)
 			var obj = parse_json(file.get_as_text())
@@ -79,6 +79,6 @@ func _on_Cancel_pressed():
 
 
 func _on_Confirm_pressed():
-	SharedData.loading_file_path = "user://Scenarios/" + _selected_scenario
+	SharedData.loading_file_path = "res://Scenarios/" + _selected_scenario
 	SharedData.starting_faction_id = _selected_faction
 	get_tree().change_scene("res://Main.tscn")

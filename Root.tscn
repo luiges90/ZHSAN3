@@ -149,4 +149,3 @@ visible = false
 [connection signal="pressed" from="MainMenu/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="OtherMenu/ImportScenario" to="." method="_on_ImportScenario_pressed"]
 [connection signal="pressed" from="OtherMenu/Back" to="." method="_on_Back_pressed"]
-[connection signal="file_slot_clicked" from="SaveLoadMenu" to="." method="_on_SaveLoadMenu_file_slot_clicked"]

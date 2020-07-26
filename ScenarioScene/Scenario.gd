@@ -55,7 +55,7 @@ func _ready():
 	($DateRunner as DateRunner).scenario = self
 	
 	if SharedData.loading_file_path == null:
-		SharedData.loading_file_path = "user://Scenarios/194QXGJ-qh"
+		SharedData.loading_file_path = "res://Scenarios/194QXGJ-qh"
 		current_scenario_name = "194QXGJ-qh"
 	else: 
 		var pos = SharedData.loading_file_path.find('Scenarios')
@@ -193,7 +193,7 @@ func _load_data(path):
 	for kind in movement_kinds:
 		var err = file.open(path + "/paths/" + str(kind) + '.json', File.READ)
 		if err != OK:
-			file.open("user://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)
+			file.open("res://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)
 		obj = parse_json(file.get_as_text())
 		var ai_path = AIPaths.new()
 		ai_path.load_data(obj)
