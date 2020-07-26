@@ -16,6 +16,9 @@ func set_data():
 	
 	$Title.text = current_troop.get_name()
 	
+	$Faction.text = current_troop.get_belonged_faction().get_name()
+	$Section.text = current_troop.get_belonged_section().get_name()
+	
 	$Morale.text = str(current_troop.morale)
 	$Combativity.text = str(current_troop.combativity)
 

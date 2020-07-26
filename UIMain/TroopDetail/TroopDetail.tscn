@@ -35,40 +35,92 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_left = 16.0
-margin_top = 64.0
-margin_right = 120.0
-margin_bottom = 82.0
+margin_top = 114.0
+margin_right = 136.0
+margin_bottom = 138.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "PERSON_LIST"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PersonList" type="VBoxContainer" parent="."]
 margin_left = 16.0
-margin_top = 86.0
-margin_right = 120.0
-margin_bottom = 150.0
+margin_top = 138.0
+margin_right = 136.0
+margin_bottom = 266.0
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label10" type="Label" parent="."]
-margin_left = 128.0
+margin_left = 256.0
 margin_top = 64.0
-margin_right = 248.0
-margin_bottom = 82.0
+margin_right = 376.0
+margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "LEADER"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Leader" type="Label" parent="."]
-margin_left = 128.0
+margin_left = 256.0
 margin_top = 86.0
-margin_right = 248.0
+margin_right = 376.0
+margin_bottom = 110.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label13" type="Label" parent="."]
+margin_left = 136.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "SECTION"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Section" type="Label" parent="."]
+margin_left = 136.0
+margin_top = 86.0
+margin_right = 256.0
+margin_bottom = 110.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label14" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 136.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "FACTION"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Faction" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 86.0
+margin_right = 136.0
 margin_bottom = 110.0
 align = 1
 valign = 1
@@ -77,21 +129,22 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="."]
-margin_left = 248.0
+margin_left = 376.0
 margin_top = 64.0
-margin_right = 368.0
-margin_bottom = 82.0
+margin_right = 496.0
+margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "QUANTITY"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Quantity" type="Label" parent="."]
-margin_left = 248.0
+margin_left = 376.0
 margin_top = 86.0
-margin_right = 368.0
+margin_right = 496.0
 margin_bottom = 110.0
 text = "0"
 align = 1
@@ -101,21 +154,22 @@ __meta__ = {
 }
 
 [node name="Label11" type="Label" parent="."]
-margin_left = 368.0
+margin_left = 496.0
 margin_top = 64.0
-margin_right = 488.0
-margin_bottom = 82.0
+margin_right = 616.0
+margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "ORDER"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Order" type="Label" parent="."]
-margin_left = 368.0
+margin_left = 496.0
 margin_top = 86.0
-margin_right = 488.0
+margin_right = 616.0
 margin_bottom = 110.0
 align = 1
 valign = 1
@@ -124,21 +178,22 @@ __meta__ = {
 }
 
 [node name="Label12" type="Label" parent="."]
-margin_left = 488.0
+margin_left = 616.0
 margin_top = 64.0
-margin_right = 608.0
-margin_bottom = 82.0
+margin_right = 736.0
+margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "TARGET"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Target" type="Label" parent="."]
-margin_left = 488.0
+margin_left = 616.0
 margin_top = 86.0
-margin_right = 608.0
+margin_right = 736.0
 margin_bottom = 110.0
 align = 1
 valign = 1
@@ -147,9 +202,9 @@ __meta__ = {
 }
 
 [node name="Label9" type="Label" parent="."]
-margin_left = 128.0
+margin_left = 136.0
 margin_top = 114.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 138.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "MILITARY_KIND"
@@ -160,9 +215,9 @@ __meta__ = {
 }
 
 [node name="MilitaryKind" type="Label" parent="."]
-margin_left = 128.0
+margin_left = 136.0
 margin_top = 138.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 162.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
 text = "----"
@@ -173,9 +228,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 248.0
+margin_left = 256.0
 margin_top = 114.0
-margin_right = 368.0
+margin_right = 376.0
 margin_bottom = 138.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "OFFENCE"
@@ -186,9 +241,9 @@ __meta__ = {
 }
 
 [node name="Offence" type="Label" parent="."]
-margin_left = 248.0
+margin_left = 256.0
 margin_top = 138.0
-margin_right = 368.0
+margin_right = 376.0
 margin_bottom = 162.0
 text = "0"
 align = 1
@@ -198,9 +253,9 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 368.0
+margin_left = 376.0
 margin_top = 114.0
-margin_right = 488.0
+margin_right = 496.0
 margin_bottom = 138.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "DEFENCE"
@@ -211,9 +266,9 @@ __meta__ = {
 }
 
 [node name="Defence" type="Label" parent="."]
-margin_left = 368.0
+margin_left = 376.0
 margin_top = 138.0
-margin_right = 488.0
+margin_right = 496.0
 margin_bottom = 162.0
 text = "0"
 align = 1
@@ -223,9 +278,9 @@ __meta__ = {
 }
 
 [node name="Label5" type="Label" parent="."]
-margin_left = 128.0
+margin_left = 136.0
 margin_top = 162.0
-margin_right = 254.0
+margin_right = 262.0
 margin_bottom = 186.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "TROOP_MORALE"
@@ -236,9 +291,9 @@ __meta__ = {
 }
 
 [node name="Morale" type="Label" parent="."]
-margin_left = 128.0
+margin_left = 136.0
 margin_top = 186.0
-margin_right = 248.0
+margin_right = 256.0
 margin_bottom = 210.0
 text = "0"
 align = 1
@@ -248,9 +303,9 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="."]
-margin_left = 248.0
+margin_left = 256.0
 margin_top = 162.0
-margin_right = 368.0
+margin_right = 376.0
 margin_bottom = 186.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "COMBATIVITY"
@@ -261,9 +316,9 @@ __meta__ = {
 }
 
 [node name="Combativity" type="Label" parent="."]
-margin_left = 248.0
+margin_left = 256.0
 margin_top = 186.0
-margin_right = 368.0
+margin_right = 376.0
 margin_bottom = 210.0
 text = "0"
 align = 1
@@ -273,9 +328,9 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="."]
-margin_left = 488.0
+margin_left = 496.0
 margin_top = 114.0
-margin_right = 608.0
+margin_right = 616.0
 margin_bottom = 138.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "SPEED"
@@ -286,9 +341,9 @@ __meta__ = {
 }
 
 [node name="Speed" type="Label" parent="."]
-margin_left = 488.0
+margin_left = 496.0
 margin_top = 138.0
-margin_right = 608.0
+margin_right = 616.0
 margin_bottom = 162.0
 text = "0"
 align = 1
@@ -298,9 +353,9 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="."]
-margin_left = 608.0
+margin_left = 616.0
 margin_top = 114.0
-margin_right = 728.0
+margin_right = 736.0
 margin_bottom = 138.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "INITIATIVE"
@@ -311,9 +366,9 @@ __meta__ = {
 }
 
 [node name="Initiative" type="Label" parent="."]
-margin_left = 608.0
+margin_left = 616.0
 margin_top = 138.0
-margin_right = 728.0
+margin_right = 736.0
 margin_bottom = 162.0
 text = "0"
 align = 1
