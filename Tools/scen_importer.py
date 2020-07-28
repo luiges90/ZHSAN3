@@ -1,7 +1,8 @@
 import json
 
-dev = False
+dev = True
 
+output_folder = '../Scenarios/194QXGJ-qh'
 file_name = '194QXGJ-qh'
 with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 	all_factions = []
@@ -9,7 +10,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 	with open(file_name + '.json', mode='r', encoding='utf-8') as fin:
 		obj = json.loads(fin.read(), strict=False)
 		
-		with open(file_name + '/TerrainDetails.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/TerrainDetails.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllTerrainDetails']['TerrainDetails']:
 				k = i['Value']
@@ -24,7 +25,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 		movement_set = {}
 		movement_mapping = {}
 		movement_mapping_reverse = {}
-		with open(file_name + '/MovementKinds.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/MovementKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllMilitaryKinds']['MilitaryKinds']:
 				k = i['Value']
@@ -54,7 +55,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					movement_to_save.append(costs)
 			fout.write(json.dumps(movement_to_save, indent=2, ensure_ascii=False, sort_keys=True))
 
-		with open(file_name + '/MilitaryKinds.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/MilitaryKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllMilitaryKinds']['MilitaryKinds']:
 				k = i['Value']
@@ -88,7 +89,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 		"""
-		with open(file_name + '/ArchitectureKinds.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/ArchitectureKinds.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for i in common['AllArchitectureKinds']['ArchitectureKinds']:
 				k = i['Value']
@@ -108,7 +109,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 		no_faction_person_ids = []
 		if dev:
 			faction_person_ids += [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388]
-		with open(file_name + '/Architectures.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/Architectures.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			states = {x['ID']: x['Name'] for x in obj['States']['GameObjects']}
 			for k in obj['Architectures']['GameObjects']:
@@ -139,7 +140,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 			
-		with open(file_name + '/Sections.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/Sections.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for k in obj["Sections"]["GameObjects"]:
 				archs = [int(x) for x in k['ArchitecturesString'].split(' ') if x]
@@ -151,7 +152,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
-		with open(file_name + '/Factions.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/Factions.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			colors = common['AllColors']
 			for k in obj["Factions"]["GameObjects"]:
@@ -181,7 +182,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 		
-		with open(file_name + '/Persons.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/Persons.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for k in obj['Persons']['GameObjects']:
 				if k['ID'] in faction_person_ids:
@@ -207,10 +208,10 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
-		with open(file_name + '/Troops.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/Troops.json', mode='w', encoding='utf-8') as fout:
 			fout.write(json.dumps([], indent=2, ensure_ascii=False, sort_keys=True))
 		
-		with open(file_name + '/Scenario.json', mode='w', encoding='utf-8') as fout:
+		with open(output_folder + '/Scenario.json', mode='w', encoding='utf-8') as fout:
 			fout.write(json.dumps({
 			  "CurrentFactionId": 1,
 			  "GameData":

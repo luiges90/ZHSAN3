@@ -518,5 +518,18 @@
       39
     ],
     "_Id": 88
+  },
+  {
+    "Color": [
+      255,
+      0,
+      255
+    ],
+    "Name": "耒火",
+    "PlayerControlled": false,
+    "SectionList": [
+      500
+    ],
+    "_Id": 100
   }
 ]
