@@ -29,7 +29,7 @@ func show_menu(arch, mouse_x, mouse_y):
 	
 	$MainMenu/ToggleAutoTask.text = tr('TOGGLE_MANUAL_TASK') if arch.auto_task else tr('TOGGLE_AUTO_TASK')
 	
-	var has_only_one_arch =  arch.get_belonged_faction().get_architectures().size() < 2
+	var has_only_one_arch = arch.get_belonged_faction() != null and arch.get_belonged_faction().get_architectures().size() < 2
 	$OfficersMenu/Move.disabled = has_only_one_arch
 	$OfficersMenu/Call.disabled = has_only_one_arch
 	
