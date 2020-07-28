@@ -1,61 +1,28 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd" type="Script" id=2]
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://UIMain/ArchitectureSurvey/Title.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 1 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
-Label/colors/font_color = Color( 1, 1, 1, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
-Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
-Label/constants/line_spacing = 3
-Label/constants/shadow_as_outline = 0
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_offset_y = 1
-Label/fonts/font = null
-Label/styles/normal = null
-Panel/styles/panel = null
-
-[sub_resource type="StreamTexture" id=3]
-flags = 4
-load_path = "res://.import/Background.png-063586f8af63d2c3dd30e09e1cec0359.stex"
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = SubResource( 3 )
-region_rect = Rect2( 0, 0, 60, 60 )
-margin_left = 20.0
-margin_right = 20.0
-margin_top = 20.0
-margin_bottom = 20.0
-
-[sub_resource type="StreamTexture" id=5]
-flags = 4
-load_path = "res://.import/Title.png-2fc1da8047d1acc29155c8b2860847c6.stex"
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = SubResource( 5 )
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 142, 42 )
-margin_left = 30.0
-margin_right = 112.0
-margin_top = 20.0
-margin_bottom = 22.0
+margin_left = 44.0
+margin_right = 41.0
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 size = 28
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=4]
 size = 24
 font_data = ExtResource( 1 )
 
 [node name="ArchitectureSurvey" type="Panel"]
 margin_right = 300.0
 margin_bottom = 500.0
-theme = SubResource( 2 )
-custom_styles/panel = SubResource( 4 )
+theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,7 +34,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
 margin_bottom = 60.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -75,7 +42,7 @@ __meta__ = {
 [node name="Title" type="Label" parent="TitlePanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 text = "西北"
 align = 1
 valign = 1
@@ -154,7 +121,7 @@ margin_top = 66.0
 margin_right = 177.0
 margin_bottom = 93.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "INTERNAL"
 __meta__ = {
@@ -296,7 +263,7 @@ margin_top = 273.0
 margin_right = 177.0
 margin_bottom = 300.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "MILITARY"
 __meta__ = {
