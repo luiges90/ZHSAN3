@@ -309,13 +309,6 @@ GameConfig="*res://GameConfig.gd"
 ScenarioUtil="*res://ScenarioUtil.gd"
 SharedData="*res://SharedData.gd"
 
-[debug]
-
-gdscript/warnings/unsafe_property_access=true
-gdscript/warnings/unsafe_method_access=true
-gdscript/warnings/unsafe_cast=true
-gdscript/warnings/unsafe_call_argument=true
-
 [display]
 
 window/size/width=1366
@@ -359,6 +352,10 @@ ui_down={
 [locale]
 
 translations=PoolStringArray( "res://i18n/i18n.en.translation", "res://i18n/i18n.zh_CN.translation", "res://i18n/i18n.zh_TW.translation" )
+
+[logging]
+
+file_logging/enable_file_logging=true
 
 [mono]
 

@@ -179,12 +179,23 @@ margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -8.0
 grow_horizontal = 0
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" type="Button" parent="EndContainer"]
+margin_right = 57.4148
+margin_bottom = 32.0
+grow_horizontal = 0
+text = "MAP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="System" type="Button" parent="EndContainer"]
-margin_right = 86.4148
+margin_left = 73.0
+margin_right = 159.415
 margin_bottom = 32.0
 grow_horizontal = 0
 text = "SYSTEM"
@@ -201,4 +212,5 @@ stream = ExtResource( 14 )
 [connection signal="pressed" from="DateRunner/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="DateRunner/Stop" to="." method="_on_Stop_pressed"]
 [connection signal="pressed" from="DateRunner/MarginContainer/GameRecord" to="." method="_on_GameRecord_pressed"]
+[connection signal="pressed" from="EndContainer/Map" to="." method="_on_Map_pressed"]
 [connection signal="pressed" from="EndContainer/System" to="." method="_on_System_pressed"]

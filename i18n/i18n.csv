@@ -108,3 +108,4 @@ GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s从%s出征,%s從%s出征
 GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,%s has taken over %s,%s占领了%s,%s佔領了%s
 GAME_RECORD_TROOP_DESTROYED,%s has been routed,%s溃散了,%s潰散了
 SELECT_SCENARIO,Select scenario,选择剧本,選擇劇本
+MAP,Map,地圖,地圖

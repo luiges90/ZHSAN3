@@ -7,6 +7,7 @@ signal start_date_runner
 signal stop_date_runner
 signal system_clicked
 signal game_record_clicked
+signal map_clicked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -164,3 +165,7 @@ func _on_System_pressed():
 
 func _on_GameRecord_pressed():
 	emit_signal("game_record_clicked")
+
+
+func _on_Map_pressed():
+	emit_signal("map_clicked")
