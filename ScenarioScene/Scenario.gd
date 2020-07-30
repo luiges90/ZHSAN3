@@ -68,6 +68,7 @@ func _ready():
 		var fid = player_factions[0]
 		camera.position = factions[fid].get_architectures()[0].position
 		camera.emit_signal("camera_moved", camera.get_viewing_rect(), camera.zoom)
+		emit_signal("scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
@@ -453,6 +454,8 @@ func _on_month_passed():
 
 func _on_all_loaded():
 	emit_signal("current_faction_set", current_faction)
+	var camera = $MainCamera as MainCamera
+	emit_signal("scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
 
 
 ########################################

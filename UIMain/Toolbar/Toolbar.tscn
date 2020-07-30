@@ -188,6 +188,8 @@ __meta__ = {
 margin_right = 57.4148
 margin_bottom = 32.0
 grow_horizontal = 0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "MAP"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -198,6 +200,8 @@ margin_left = 73.0
 margin_right = 159.415
 margin_bottom = 32.0
 grow_horizontal = 0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "SYSTEM"
 __meta__ = {
 "_edit_use_anchors_": false
