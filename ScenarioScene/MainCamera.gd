@@ -19,8 +19,8 @@ func _physics_process(delta):
 	var viewport_rect = get_viewport_rect()
 	limit_left = 0
 	limit_top = 0
-	limit_right = scenario.tile_size * scenario.map_size.x
-	limit_bottom = scenario.tile_size * scenario.map_size.y + bottom_margin * (zoom.y - 1)
+	limit_right = scenario.tile_size * scenario.map_size.x + viewport_rect.size.x * zoom.x / 2
+	limit_bottom = scenario.tile_size * scenario.map_size.y + bottom_margin * (zoom.y - 1) + viewport_rect.size.y * zoom.y / 2
 	
 	position.x += _moving_camera_x
 	position.y += _moving_camera_y
