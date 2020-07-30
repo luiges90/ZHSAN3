@@ -42,6 +42,8 @@ signal all_faction_finished
 signal scenario_camera_moved
 signal mouse_moved_to_map_position
 
+signal scenario_architecture_faction_changed
+
 func forbidden(x):
 	assert(false)
 
@@ -230,10 +232,11 @@ func _load_data(path):
 		var instance = architecture_scene.instance()
 		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
 		instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
+		instance.connect("faction_changed", self, "_on_architecture_faction_changed")
 		__load_item(instance, item, architectures)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
-		
+		instance.setup_after_load()
 		instance.setup_after_load()
 	file.close()
 	for item in architectures:
@@ -317,6 +320,9 @@ func _on_architecture_clicked(arch, mx, my):
 	
 func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
+	
+func _on_architecture_faction_changed(arch):
+	emit_signal("scenario_architecture_faction_changed", arch, self)
 	
 func _on_troop_clicked(troop, mx, my):
 	_troop_clicked = troop
@@ -456,6 +462,8 @@ func _on_all_loaded():
 	emit_signal("current_faction_set", current_faction)
 	var camera = $MainCamera as MainCamera
 	emit_signal("scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
+	for a in architectures:
+		_on_architecture_faction_changed(architectures[a])
 
 
 ########################################

@@ -20,6 +20,7 @@ func _ready():
 	$UICanvas/UIMain.connect("cancel_ui", $Scenario/PositionSelector, "_on_cancel_ui")
 	
 	$Scenario.connect("scenario_camera_moved", $UICanvas/UIMain/Map, "_on_camera_moved")
+	$Scenario.connect("scenario_architecture_faction_changed", $UICanvas/UIMain/Map, "_on_architecture_faction_changed")
 	
 	$Scenario.connect("mouse_moved_to_map_position", $UICanvas/UIMain, "_on_mouse_moved_to_map_posiiton")
 	

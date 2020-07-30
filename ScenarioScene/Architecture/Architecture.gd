@@ -38,6 +38,8 @@ var _destroyed: bool = false
 signal architecture_clicked
 signal architecture_survey_updated
 
+signal faction_changed
+
 func forbidden(x):
 	assert(false)
 	
@@ -305,7 +307,11 @@ func change_faction(to_section):
 	to_section.add_architecture(self)
 	
 	# update UI
-	($Flag as Sprite).modulate = to_section.get_belonged_faction().color
+	var faction = to_section.get_belonged_faction()
+	if faction != null:
+		($Flag as Sprite).modulate = faction.color
+	
+	emit_signal('faction_changed', self)
 	
 
 ####################################
