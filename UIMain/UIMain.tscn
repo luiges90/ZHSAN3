@@ -150,6 +150,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -500.0
+margin_top = -548.0
 margin_bottom = -48.0
 
 [node name="Toolbar" parent="." instance=ExtResource( 4 )]
@@ -176,9 +178,9 @@ __meta__ = {
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
 [connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
-[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
 [connection signal="troop_clicked" from="ArchitectureAndTroopMenu" to="TroopMenu" method="_on_ArchitectureAndTroopMenu_troop_clicked"]

@@ -19,6 +19,8 @@ func _ready():
 	$UICanvas/UIMain/CreateTroop.connect("create_troop_select_position", $Scenario/PositionSelector, "_on_create_troop")
 	$UICanvas/UIMain.connect("cancel_ui", $Scenario/PositionSelector, "_on_cancel_ui")
 	
+	$Scenario.connect("scenario_camera_moved", $UICanvas/UIMain/Map, "_on_camera_moved")
+	
 	$Scenario.connect("mouse_moved_to_map_position", $UICanvas/UIMain, "_on_mouse_moved_to_map_posiiton")
 	
 	_all_loaded()

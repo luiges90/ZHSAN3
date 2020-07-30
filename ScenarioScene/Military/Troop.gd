@@ -59,7 +59,7 @@ func _ready():
 		scale.x = SharedData.TILE_SIZE / 128.0
 		scale.y = SharedData.TILE_SIZE / 128.0
 		scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
-		scenario.connect("camera_moved", self, "_on_camera_moved")
+		scenario.connect("scenario_camera_moved", self, "_on_camera_moved")
 	
 
 ####################################
@@ -155,7 +155,7 @@ func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in
 	_update_military_kind_sprite()
 	update_troop_title()
 	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
-	_on_camera_moved(camera_rect, scenario.get_camera_zoom())
+	_on_camera_moved(camera_rect, scenario.get_camera_zoom(), scenario)
 
 ####################################
 #             Get stat             #
@@ -585,7 +585,7 @@ func _on_AnimatedSprite_animation_finished():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")
 	
-func _on_camera_moved(camera_rect: Rect2, zoom: Vector2):
+func _on_camera_moved(camera_rect: Rect2, zoom: Vector2, scen):
 	if zoom.x >= 1.5 or zoom.y >= 1.5:
 		$TroopTitle.visible = false
 	else:

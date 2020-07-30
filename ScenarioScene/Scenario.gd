@@ -39,7 +39,7 @@ signal architecture_and_troop_clicked
 
 signal all_faction_finished
 
-signal camera_moved
+signal scenario_camera_moved
 signal mouse_moved_to_map_position
 
 func forbidden(x):
@@ -396,7 +396,7 @@ func _on_PositionSelector_attack_troop(troop, position):
 	troop.set_attack_order(get_troop_at_position(position), get_architecture_at_position(position))
 
 func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
-	emit_signal("camera_moved", camera_rect, zoom)
+	emit_signal("scenario_camera_moved", camera_rect, zoom, self)
 	_update_position_label(get_viewport().get_mouse_position())
 	
 

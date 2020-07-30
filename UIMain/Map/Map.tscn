@@ -12,12 +12,8 @@ __meta__ = {
 }
 
 [node name="MapTexture" type="TextureRect" parent="."]
-margin_left = -500.0
-margin_top = -500.0
-margin_right = 500.0
-margin_bottom = 500.0
-grow_horizontal = 0
-grow_vertical = 0
+margin_right = 1000.0
+margin_bottom = 1000.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 __meta__ = {
