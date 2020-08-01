@@ -19,8 +19,7 @@ func _ready():
 	$UICanvas/UIMain/CreateTroop.connect("create_troop_select_position", $Scenario/PositionSelector, "_on_create_troop")
 	$UICanvas/UIMain.connect("cancel_ui", $Scenario/PositionSelector, "_on_cancel_ui")
 	
-	$Scenario.connect("scenario_camera_moved", $UICanvas/UIMain/Map, "_on_camera_moved")
-	$Scenario.connect("scenario_architecture_faction_changed", $UICanvas/UIMain/Map, "_on_architecture_faction_changed")
+	_register_map_ui()
 	
 	$Scenario.connect("mouse_moved_to_map_position", $UICanvas/UIMain, "_on_mouse_moved_to_map_posiiton")
 	
@@ -64,6 +63,13 @@ func _register_menus():
 	$UICanvas/UIMain/TroopMenu.connect("follow_clicked", $Scenario, "_on_troop_follow_clicked")
 	$UICanvas/UIMain/TroopMenu.connect("occupy_clicked", $Scenario, "_on_troop_occupy_clicked")
 
+func _register_map_ui():
+	$Scenario.connect("scenario_camera_moved", $UICanvas/UIMain/Map, "_on_camera_moved")
+	$Scenario.connect("scenario_architecture_faction_changed", $UICanvas/UIMain/Map, "_on_architecture_faction_changed")
+	
+	$Scenario.connect("scenario_troop_position_changed", $UICanvas/UIMain/Map, "_on_troop_position_changed")
+	$Scenario.connect("scenario_troop_created", $UICanvas/UIMain/Map, "_on_troop_created")
+	$Scenario.connect("scenario_troop_removed", $UICanvas/UIMain/Map, "_on_troop_removed")
 
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")

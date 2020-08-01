@@ -44,6 +44,8 @@ signal starting_architecture_changed
 
 signal occupy_architecture
 signal destroyed
+signal removed
+signal position_changed
 
 func forbidden(x):
 	assert(false)
@@ -313,6 +315,7 @@ func get_movement_area():
 func set_position(pos):
 	var old_position = map_position
 	map_position = pos
+	emit_signal("position_changed", self, old_position, map_position)
 	return _animate_position(old_position, map_position)
 	
 func get_order_text():
@@ -410,9 +413,8 @@ func execute_enter():
 		var architecture = current_order.target
 		if Util.m_dist(map_position, architecture.map_position) <= 1:
 			architecture.accept_entering_troop(self)
-			get_belonged_section().remove_troop(self)
-			_destroyed = true
-			queue_free()
+			_remove()
+			
 		
 func execute_attack():
 	if current_order != null and current_order.type == OrderType.ATTACK and _attack_count_in_turn < 1:
@@ -456,18 +458,23 @@ func receive_attack_damage(damage):
 			
 func check_destroy():
 	if quantity <= 0:
-		emit_signal("destroyed", map_position, get_name())
+		emit_signal("destroyed", self)
 		var return_to = get_starting_architecture()
 		if return_to.get_belonged_faction() != self.get_belonged_faction():
 			return_to = self.get_belonged_faction().get_architectures()[0]
 		for p in get_persons():
 			p.move_to_architecture(return_to)
-		get_belonged_section().remove_troop(self)
-		for t in scenario.troops:
-			var troop = scenario.troops[t]
-			if troop.current_order != null and troop.current_order.type == OrderType.ATTACK and troop.current_order.target == self:
-				troop._clear_order()
-		queue_free()
+		_remove()
+		
+func _remove():
+	_destroyed = true
+	emit_signal("removed", self)
+	get_belonged_section().remove_troop(self)
+	for t in scenario.troops:
+		var troop = scenario.troops[t]
+		if troop.current_order != null and troop.current_order.type == OrderType.ATTACK and troop.current_order.target == self:
+			troop._clear_order()
+	queue_free()
 
 
 func after_order_cleanup():

@@ -4,6 +4,7 @@ onready var map_size = Vector2($MapTexture.rect_size.x, $MapTexture.rect_size.y)
 
 var view_rectangle = Rect2(0, 0, 0, 0)
 var architecture_positions = {}
+var troop_positions = {}
 
 func _ready():
 	$PaintLayer.map = self
@@ -42,3 +43,21 @@ func _on_architecture_faction_changed(arch, scen):
 		"position": __scen_position_to_map_position(arch.map_position, scen),
 		"color": color
 	}
+	
+func _on_troop_position_changed(scen, troop, old_position, new_position):
+	troop_positions[troop.id]['position'] = __scen_position_to_map_position(new_position, scen)
+	
+func _on_troop_created(scen, troop):
+	var faction = troop.get_belonged_faction()
+	var color
+	if faction != null:
+		color = faction.color
+	else:
+		color = Color.white
+	troop_positions[troop.id] = {
+		"position": __scen_position_to_map_position(troop.map_position, scen),
+		"color": color
+	}
+	
+func _on_troop_removed(scen, troop):
+	troop_positions.erase(troop.id)

@@ -30,10 +30,10 @@ func _on_troop_occupy_architecture(troop, architecture):
 		])
 	)
 
-func _on_troop_destroyed(map_position, name):
+func _on_troop_destroyed(troop):
 	emit_signal("add_game_record", _register_click(
-		"focus(" + str(map_position.x) + "," + str(map_position.y) + ")",
+		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
 		tr("GAME_RECORD_TROOP_DESTROYED") % [
-			_color_text(GREEN, name), 
+			_color_text(GREEN, troop.get_name()), 
 		])
 	)

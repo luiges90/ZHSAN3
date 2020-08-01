@@ -44,6 +44,10 @@ signal mouse_moved_to_map_position
 
 signal scenario_architecture_faction_changed
 
+signal scenario_troop_created
+signal scenario_troop_removed
+signal scenario_troop_position_changed
+
 func forbidden(x):
 	assert(false)
 
@@ -248,11 +252,11 @@ func _load_data(path):
 	var troop_json = {}
 	for item in obj:
 		var instance = troop_scene.instance()
-		instance.connect("troop_clicked", self, "_on_troop_clicked")
 		__load_item(instance, item, troops)
 		for id in item["PersonList"]:
 			instance.add_person(persons[int(id)])
 		troop_json[instance.id] = item
+		__connect_signals_for_creating_troop(instance)
 	for tid in troops:
 		var order_type = troop_json[tid]["_CurrentOrderType"]
 		var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
@@ -327,7 +331,6 @@ func _on_architecture_faction_changed(arch):
 func _on_troop_clicked(troop, mx, my):
 	_troop_clicked = troop
 	_clicked_at = Vector2(mx, my)
-
 	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
 	var selected_persons = []
@@ -368,9 +371,6 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 func create_troop(arch, troop, position) -> Troop:
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
-	instance.connect("troop_clicked", self, "_on_troop_clicked")
-	instance.connect("occupy_architecture", $GameRecordCreator, "_on_troop_occupy_architecture")
-	instance.connect("destroyed", $GameRecordCreator, "_on_troop_destroyed")
 	for p in troop.persons:
 		instance.add_person(p)
 
@@ -385,9 +385,17 @@ func create_troop(arch, troop, position) -> Troop:
 	add_child(instance)
 	instance.add_to_group(GROUP_GAME_INSTANCES)
 	
-	$GameRecordCreator.create_troop(instance, position)
+	__connect_signals_for_creating_troop(instance)
+	_on_troop_created(instance, position)
 	
 	return instance
+	
+func __connect_signals_for_creating_troop(troop):
+	troop.connect("troop_clicked", self, "_on_troop_clicked")
+	troop.connect("occupy_architecture", $GameRecordCreator, "_on_troop_occupy_architecture")
+	troop.connect("position_changed", self, "_on_troop_position_changed")
+	troop.connect("removed", self, "_on_troop_removed")
+	troop.connect("destroyed", $GameRecordCreator, "_on_troop_destroyed")
 	
 
 func _on_PositionSelector_move_troop(troop, position):
@@ -464,6 +472,16 @@ func _on_all_loaded():
 	emit_signal("scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
 	for a in architectures:
 		_on_architecture_faction_changed(architectures[a])
+		
+func _on_troop_position_changed(troop, old_pos, new_pos):
+	emit_signal("scenario_troop_position_changed", self, troop, old_pos, new_pos)
+	
+func _on_troop_created(troop, position):
+	$GameRecordCreator.create_troop(troop, position)
+	emit_signal("scenario_troop_created", self, troop)
+	
+func _on_troop_removed(troop):
+	emit_signal("scenario_troop_removed", self, troop)
 
 
 ########################################
