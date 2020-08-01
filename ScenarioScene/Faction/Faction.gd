@@ -11,13 +11,14 @@ var _section_list = Array() setget forbidden, get_sections
 
 var player_controlled: bool
 
+var _destroyed: bool = false setget forbidden
+
+signal destroyed
+
 func forbidden(x):
 	assert(false)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-	
+
 func get_name():
 	return gname
 
@@ -69,3 +70,9 @@ func is_friend_to(faction):
 	
 func is_enemy_to(faction):
 	return self != faction
+
+func destroy():
+	scenario.remove_faction(self)
+	_destroyed = true
+	emit_signal("destroyed", self)
+	

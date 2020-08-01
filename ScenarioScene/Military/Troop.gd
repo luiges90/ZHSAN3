@@ -7,6 +7,8 @@ enum AIState { MARCH, COMBAT, RETREAT }
 var id: int setget forbidden
 var scenario
 
+var gname: String setget forbidden
+
 var map_position: Vector2 setget forbidden
 
 var military_kind setget forbidden
@@ -127,7 +129,9 @@ func _on_scenario_loaded():
 	update_troop_title()
 
 func get_name() -> String:
-	return _person_list[0].get_name() + tr('PERSON_TROOP')
+	if gname == null or gname.length() <= 0:
+		gname = _person_list[0].get_name() + tr('PERSON_TROOP')
+	return gname
 
 func get_persons() -> Array:
 	return _person_list

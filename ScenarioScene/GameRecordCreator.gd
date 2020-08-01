@@ -5,6 +5,7 @@ signal add_game_record
 
 const GREEN = "#00FF00"
 const CYAN = "#00FFFF"
+const RED = "#FF0000"
 
 func _color_text(color, text) -> String:
 	return "[color=" + color + "]" + text + "[/color]"
@@ -37,3 +38,10 @@ func _on_troop_destroyed(troop):
 			_color_text(GREEN, troop.get_name()), 
 		])
 	)
+
+func _on_faction_destroyed(faction):
+	emit_signal("add_game_record", 
+		tr("GAME_RECORD_FACTION_DESTROYED") % [
+			_color_text(RED, faction.get_name())
+		])
+	

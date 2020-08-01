@@ -290,6 +290,7 @@ func _load_data(path):
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = Faction.new()
+		instance.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
 		__load_item(instance, item, factions)
 		for id in item["SectionList"]:
 			instance.add_section(sections[int(id)])
@@ -313,6 +314,16 @@ func __handle_player_faction(current_faction_id):
 		current_faction.player_controlled = true
 	else:
 		current_faction = factions[int(current_faction_id)]
+		
+func __connect_signals_for_creating_troop(troop):
+	troop.connect("troop_clicked", self, "_on_troop_clicked")
+	troop.connect("occupy_architecture", $GameRecordCreator, "_on_troop_occupy_architecture")
+	troop.connect("position_changed", self, "_on_troop_position_changed")
+	troop.connect("removed", self, "_on_troop_removed")
+	troop.connect("destroyed", $GameRecordCreator, "_on_troop_destroyed")
+	
+	_on_troop_created(troop, troop.map_position)
+	
 
 ########################################
 #           UI signal handling         #
@@ -386,17 +397,9 @@ func create_troop(arch, troop, position) -> Troop:
 	instance.add_to_group(GROUP_GAME_INSTANCES)
 	
 	__connect_signals_for_creating_troop(instance)
-	_on_troop_created(instance, position)
 	
 	return instance
-	
-func __connect_signals_for_creating_troop(troop):
-	troop.connect("troop_clicked", self, "_on_troop_clicked")
-	troop.connect("occupy_architecture", $GameRecordCreator, "_on_troop_occupy_architecture")
-	troop.connect("position_changed", self, "_on_troop_position_changed")
-	troop.connect("removed", self, "_on_troop_removed")
-	troop.connect("destroyed", $GameRecordCreator, "_on_troop_destroyed")
-	
+
 
 func _on_PositionSelector_move_troop(troop, position):
 	troop.set_move_order(position)
@@ -447,16 +450,20 @@ func _on_day_passed():
 	# run Factions
 	var last_faction = current_faction
 	for faction in factions.values():
+		if faction._destroyed:
+			continue
 		current_faction = faction
 		emit_signal("current_faction_set", current_faction)
 		ai.run_faction(faction, self)
 	current_faction = last_faction
 	emit_signal("current_faction_set", current_faction)
 	for faction in factions.values():
-		faction.day_event()
+		if not faction._destroyed:
+			faction.day_event()
 		
 	for troop in troops.values():
-		troop.day_event()
+		if not troop._destroyed:
+			troop.day_event()
 	
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")
@@ -470,8 +477,12 @@ func _on_all_loaded():
 	emit_signal("current_faction_set", current_faction)
 	var camera = $MainCamera as MainCamera
 	emit_signal("scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
+	
 	for a in architectures:
 		_on_architecture_faction_changed(architectures[a])
+	
+	for t in troops:
+		emit_signal("scenario_troop_created", self, troops[t])
 		
 func _on_troop_position_changed(troop, old_pos, new_pos):
 	emit_signal("scenario_troop_position_changed", self, troop, old_pos, new_pos)
@@ -557,6 +568,11 @@ func get_architecture_at_position(position):
 
 func remove_troop(item):
 	troops.erase(item.id)
+	
+func remove_faction(item):
+	for s in item.get_sections():
+		sections.erase(s.id)
+	factions.erase(item.id)
 
 ########################################
 #                Misc.                 #

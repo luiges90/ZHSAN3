@@ -287,6 +287,8 @@ func remove_person(p):
 	Util.remove_object(_person_list, p)
 	
 func change_faction(to_section):
+	var target_faction_destroyed = false
+	var old_faction = get_belonged_faction()
 	# forcibly move persons away
 	var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position, self)
 	if move_to != null:
@@ -295,6 +297,7 @@ func change_faction(to_section):
 	else:
 		for person in get_persons():
 			person.become_wild()
+		target_faction_destroyed = true
 	
 	# burn the treasury
 	fund = fund / 10
@@ -305,6 +308,10 @@ func change_faction(to_section):
 	# switch faction
 	get_belonged_section().remove_architecture(self)
 	to_section.add_architecture(self)
+	
+	# if old faction has no more archs, destroy it
+	if target_faction_destroyed:
+		old_faction.destroy()
 	
 	# update UI
 	var faction = to_section.get_belonged_faction()
