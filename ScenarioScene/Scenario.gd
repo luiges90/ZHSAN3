@@ -35,6 +35,7 @@ signal scenario_loaded
 signal architecture_clicked
 signal architecture_survey_updated
 signal troop_clicked
+signal troop_survey_updated
 signal architecture_and_troop_clicked
 
 signal all_faction_finished
@@ -317,6 +318,7 @@ func __handle_player_faction(current_faction_id):
 		
 func __connect_signals_for_creating_troop(troop):
 	troop.connect("troop_clicked", self, "_on_troop_clicked")
+	troop.connect("troop_survey_updated", self, "_on_troop_survey_updated")
 	troop.connect("occupy_architecture", $GameRecordCreator, "_on_troop_occupy_architecture")
 	troop.connect("position_changed", self, "_on_troop_position_changed")
 	troop.connect("removed", self, "_on_troop_removed")
@@ -342,6 +344,9 @@ func _on_architecture_faction_changed(arch):
 func _on_troop_clicked(troop, mx, my):
 	_troop_clicked = troop
 	_clicked_at = Vector2(mx, my)
+	
+func _on_troop_survey_updated(troop):
+	emit_signal("troop_survey_updated", troop)
 	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
 	var selected_persons = []

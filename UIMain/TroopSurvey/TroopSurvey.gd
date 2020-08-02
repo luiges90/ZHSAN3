@@ -8,10 +8,22 @@ func show_data(troop: Troop, mouse_x: int, mouse_y: int):
 	
 	$TitlePanel/Title.text = troop.get_name()
 	
+	$Content/MilitaryKind.text = troop.military_kind.get_name()
+	$Content/Quantity.text = Util.nstr(troop.quantity)
+	$Content/Morale.text = str(troop.morale)
+	$Content/Combativity.text = str(troop.combativity)
+	
+	$Content/Offence.text = Util.nstr(troop.get_offence())
+	$Content/Defence.text = Util.nstr(troop.get_defence())
+	
 	show()
 	
 
-
+func update_data(troop: Troop):
+	if showing_troop == null:
+		return
+	if troop.id == showing_troop.id:
+		show_data(troop, 0, 0)
 
 func _on_TroopSurvey_hide():
 	showing_troop = null

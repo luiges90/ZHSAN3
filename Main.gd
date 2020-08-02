@@ -35,6 +35,7 @@ func _register_troop_ui():
 	$Scenario.connect("architecture_and_troop_clicked", $UICanvas/UIMain/ArchitectureAndTroopMenu, "show_menu")
 	
 	$Scenario.connect("troop_clicked", $UICanvas/UIMain/TroopSurvey, "show_data")
+	$Scenario.connect("troop_survey_updated", $UICanvas/UIMain/TroopSurvey, "update_data")
 	
 func _register_game_record_ui():
 	$Scenario/GameRecordCreator.connect("add_game_record", $UICanvas/UIMain/GameRecord, "add_text")

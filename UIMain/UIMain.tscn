@@ -56,6 +56,16 @@ anchor_bottom = 1.0
 margin_top = -348.0
 margin_bottom = -48.0
 
+[node name="Map" parent="." instance=ExtResource( 19 )]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -500.0
+margin_top = -548.0
+margin_bottom = -48.0
+
 [node name="ArchitectureSurvey" parent="." instance=ExtResource( 1 )]
 visible = false
 anchor_top = 0.5
@@ -154,16 +164,6 @@ margin_right = 300.0
 margin_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Map" parent="." instance=ExtResource( 19 )]
-visible = false
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -500.0
-margin_top = -548.0
-margin_bottom = -48.0
 
 [node name="Toolbar" parent="." instance=ExtResource( 4 )]
 anchor_top = 1.0

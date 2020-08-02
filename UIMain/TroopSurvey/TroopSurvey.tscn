@@ -49,7 +49,96 @@ margin_left = 20.0
 margin_top = 75.0
 margin_right = -20.0
 margin_bottom = -20.0
+columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label4" type="Label" parent="Content"]
+margin_right = 128.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "MILITARY_KIND"
+
+[node name="MilitaryKind" type="Label" parent="Content"]
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+text = "步兵"
+
+[node name="Label" type="Label" parent="Content"]
+margin_top = 22.0
+margin_right = 128.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "QUANTITY"
+
+[node name="Quantity" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 22.0
+margin_right = 260.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "10000"
+
+[node name="Label2" type="Label" parent="Content"]
+margin_top = 44.0
+margin_right = 128.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+text = "TROOP_MORALE"
+
+[node name="Morale" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 44.0
+margin_right = 260.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+text = "100"
+
+[node name="Label3" type="Label" parent="Content"]
+margin_top = 66.0
+margin_right = 128.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+text = "COMBATIVITY"
+
+[node name="Combativity" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 66.0
+margin_right = 260.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+text = "100"
+
+[node name="Label5" type="Label" parent="Content"]
+margin_top = 88.0
+margin_right = 128.0
+margin_bottom = 106.0
+size_flags_horizontal = 3
+text = "OFFENCE"
+
+[node name="Offence" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 88.0
+margin_right = 260.0
+margin_bottom = 106.0
+size_flags_horizontal = 3
+text = "100"
+
+[node name="Label6" type="Label" parent="Content"]
+margin_top = 110.0
+margin_right = 128.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+text = "DEFENCE"
+
+[node name="Defence" type="Label" parent="Content"]
+margin_left = 132.0
+margin_top = 110.0
+margin_right = 260.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+text = "100"
 [connection signal="hide" from="." to="." method="_on_TroopSurvey_hide"]

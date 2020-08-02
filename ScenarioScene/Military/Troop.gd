@@ -43,6 +43,7 @@ signal animation_step_finished
 signal animation_attack_finished
 
 signal starting_architecture_changed
+signal troop_survey_updated
 
 signal occupy_architecture
 signal destroyed
@@ -501,6 +502,8 @@ func day_event():
 			quantity = int(quantity * 0.9)
 	else:
 		_food_shortage = false
+		
+	emit_signal("troop_survey_updated", self)
 		
 
 ####################################
