@@ -70,6 +70,8 @@ func _register_map_ui():
 	$Scenario.connect("scenario_troop_position_changed", $UICanvas/UIMain/Map, "_on_troop_position_changed")
 	$Scenario.connect("scenario_troop_created", $UICanvas/UIMain/Map, "_on_troop_created")
 	$Scenario.connect("scenario_troop_removed", $UICanvas/UIMain/Map, "_on_troop_removed")
+	
+	$UICanvas/UIMain/Map.connect("focus_camera", $Scenario, "_on_focus_camera")
 
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")

@@ -2,6 +2,8 @@ extends Control
 
 var map
 
+signal mouse_down
+
 func _draw():
 	draw_rect(map.view_rectangle, Color.white, false, 2.0, false)
 	
@@ -19,3 +21,6 @@ func _draw():
 
 func _process(delta):
 	update()
+
+func _gui_input(event):
+	emit_signal('mouse_down', event)

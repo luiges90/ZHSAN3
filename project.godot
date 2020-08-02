@@ -309,6 +309,10 @@ GameConfig="*res://GameConfig.gd"
 ScenarioUtil="*res://ScenarioUtil.gd"
 SharedData="*res://SharedData.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1366

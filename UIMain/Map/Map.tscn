@@ -29,3 +29,4 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="mouse_down" from="PaintLayer" to="." method="_on_PaintLayer_mouse_down"]
