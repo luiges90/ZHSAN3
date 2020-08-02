@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UIMain/ArchitectureSurvey/Title.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://UIMain/TroopSurvey/TroopSurvey.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 142, 42 )
+margin_left = 47.0
+margin_right = 44.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 3 )
+
+[node name="TroopSurvey" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1066.0
+margin_bottom = -268.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="TitlePanel" type="Panel" parent="."]
+anchor_right = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 60.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="TitlePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+text = "耒火隊"
+align = 1
+valign = 1
+
+[node name="Content" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 75.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="hide" from="." to="." method="_on_TroopSurvey_hide"]

@@ -229,6 +229,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Military/TroopQueue.gd"
 }, {
+"base": "Panel",
+"class": "TroopSurvey",
+"language": "GDScript",
+"path": "res://UIMain/TroopSurvey/TroopSurvey.gd"
+}, {
 "base": "Control",
 "class": "TroopTitle",
 "language": "GDScript",
@@ -289,6 +294,7 @@ _global_script_class_icons={
 "TroopDetail": "",
 "TroopMenu": "",
 "TroopQueue": "",
+"TroopSurvey": "",
 "TroopTitle": "",
 "UIMain": "",
 "ZhsanMap": ""

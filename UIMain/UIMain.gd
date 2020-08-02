@@ -15,6 +15,7 @@ func _unhandled_input(event):
 		if (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) and event.pressed:
 			($ArchitectureSurvey as ArchitectureSurvey).hide()
 			($ArchitectureMenu as ArchitectureMenu).hide()
+			($TroopSurvey as TroopSurvey).hide()
 			($TroopMenu as TroopMenu).hide()
 			($ArchitectureAndTroopMenu as ArchitectureAndTroopMenu).hide()
 			($PersonList as PersonList).hide()
