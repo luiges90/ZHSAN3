@@ -584,6 +584,11 @@ func _update_position_label(mouse_position):
 	var map_x = int(rect.position.x / tile_size + mouse_position.x * zoom.x / tile_size)
 	var map_y = int(rect.position.y / tile_size + mouse_position.y * zoom.y / tile_size)
 	
+	if map_x < 0 or map_x > map_size.x: 
+		return
+	if map_y < -1 or map_y > map_size.y:
+		return
+	
 	var map_pos = Vector2(map_x, map_y)
 	var terrain = get_terrain_at_position(map_pos)
 	if terrain != null:
