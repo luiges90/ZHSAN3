@@ -57,6 +57,11 @@ anchor_bottom = 1.0
 margin_top = -348.0
 margin_bottom = -48.0
 
+[node name="FactionSurvey" parent="." instance=ExtResource( 21 )]
+anchor_bottom = 0.0
+margin_bottom = 400.0
+full_size = 360
+
 [node name="Map" parent="." instance=ExtResource( 19 )]
 visible = false
 anchor_left = 1.0
@@ -66,8 +71,6 @@ anchor_bottom = 1.0
 margin_left = -500.0
 margin_top = -548.0
 margin_bottom = -48.0
-
-[node name="FactionSurvey" parent="." instance=ExtResource( 21 )]
 
 [node name="ArchitectureSurvey" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -190,8 +193,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
