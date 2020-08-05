@@ -463,13 +463,16 @@ func receive_attack_damage(damage):
 			
 func check_destroy():
 	if quantity <= 0:
-		emit_signal("destroyed", self)
-		var return_to = get_starting_architecture()
-		if return_to.get_belonged_faction() != self.get_belonged_faction():
-			return_to = self.get_belonged_faction().get_architectures()[0]
-		for p in get_persons():
-			p.move_to_architecture(return_to)
-		_remove()
+		destroy()
+		
+func destroy():
+	emit_signal("destroyed", self)
+	var return_to = get_starting_architecture()
+	if return_to.get_belonged_faction() != self.get_belonged_faction():
+		return_to = self.get_belonged_faction().get_architectures()[0]
+	for p in get_persons():
+		p.move_to_architecture(return_to)
+	_remove()
 		
 func _remove():
 	_destroyed = true
@@ -492,7 +495,7 @@ func day_event():
 		var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position)
 		if move_to != null:
 			_starting_arch = move_to
-			emit_signal("starting_architecture_changed")
+			emit_signal("starting_architecture_changed", self)
 	
 	var food_required = int((1 + military_kind.food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.1)
 	if not _starting_arch.consume_food(food_required):

@@ -17,6 +17,7 @@ func _ready():
 	_register_menus()
 	
 	$UICanvas/UIMain/FactionSurvey.connect("focus_camera", $Scenario, "_on_focus_camera")
+	$Scenario.connect("faction_survey_updated", $UICanvas/UIMain/FactionSurvey, "update_data")
 	
 	$UICanvas/UIMain/CreateTroop.connect("create_troop_select_position", $Scenario/PositionSelector, "_on_create_troop")
 	$UICanvas/UIMain.connect("cancel_ui", $Scenario/PositionSelector, "_on_cancel_ui")

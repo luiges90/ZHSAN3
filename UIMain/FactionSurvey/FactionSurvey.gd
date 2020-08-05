@@ -5,6 +5,7 @@ export var full_size = 632
 export var minimize_size = 60
 var hidden = false
 
+var current_faction
 signal focus_camera
 
 func _ready():
@@ -14,6 +15,7 @@ func _ready():
 	$Tabs.remove_child($Tabs/Tab4)
 
 func show_data(faction):
+	current_faction = faction
 	$Title.text = faction.get_name()
 	
 	_populate_architecture_data(faction.get_architectures())
@@ -26,7 +28,7 @@ func _populate_architecture_data(arch_list):
 	item_list.add_child(_title(tr('PERSON_COUNT')))
 	for arch in arch_list:
 		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_label_click", arch))
-		var person_text = str(arch.get_workable_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())
+		var person_text = str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())
 		item_list.add_child(_clickable_label(person_text, self, "__on_label_click", arch))
 
 func __on_label_click(label, arch):
@@ -35,6 +37,11 @@ func __on_label_click(label, arch):
 
 func _on_current_faction_set(faction):
 	show_data(faction)
+
+
+func update_data():
+	if current_faction != null:
+		show_data(current_faction)
 
 
 func _on_Minimize_pressed():

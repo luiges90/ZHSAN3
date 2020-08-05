@@ -295,6 +295,8 @@ func change_faction(to_section):
 		for person in get_persons():
 			person.move_to_architecture(move_to)
 	else:
+		for t in old_faction.get_troops():
+			t.destroy()
 		for person in get_persons():
 			person.become_wild()
 		target_faction_destroyed = true

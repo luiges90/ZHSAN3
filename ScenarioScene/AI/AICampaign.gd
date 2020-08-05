@@ -54,7 +54,10 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 func __starting_architecture_changed(troop):
 	troop._ai_state = Troop.AIState.RETREAT
 	troop._ai_destination_architecture = troop.get_starting_architecture()
-	troop._ai_path = troop.scenario.get_ai_path(troop.military_kind.movement_kind.id, troop.get_starting_architecture(), troop._ai_destination_architecture)
+	if troop.get_starting_architecture() == troop._ai_destination_architecture:
+		troop._ai_path = [troop._ai_destination_architecture.map_position]
+	else:
+		troop._ai_path = troop.scenario.get_ai_path(troop.military_kind.movement_kind.id, troop.get_starting_architecture(), troop._ai_destination_architecture)
 	
 func _setup_starting_architecture_changed_signal(troop):
 	troop.connect("starting_architecture_changed", self, "__starting_architecture_changed")

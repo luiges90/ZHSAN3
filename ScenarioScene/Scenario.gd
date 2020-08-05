@@ -37,6 +37,7 @@ signal architecture_survey_updated
 signal troop_clicked
 signal troop_survey_updated
 signal architecture_and_troop_clicked
+signal faction_survey_updated
 
 signal all_faction_finished
 
@@ -337,9 +338,11 @@ func _on_architecture_clicked(arch, mx, my):
 	
 func _on_architecture_survey_updated(arch):
 	emit_signal("architecture_survey_updated", arch)
+	emit_signal("faction_survey_updated")
 	
 func _on_architecture_faction_changed(arch):
 	emit_signal("scenario_architecture_faction_changed", arch, self)
+	emit_signal("faction_survey_updated")
 	
 func _on_troop_clicked(troop, mx, my):
 	_troop_clicked = troop
