@@ -10,7 +10,7 @@ var _confirming
 
 var _max_selection = -1
 
-func show_data(list: Array):
+func show_data(list):
 	# Subclasses should override this
 	pass
 

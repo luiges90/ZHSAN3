@@ -23,6 +23,8 @@ func _ready():
 	
 	$Scenario.connect("mouse_moved_to_map_position", $UICanvas/UIMain, "_on_mouse_moved_to_map_posiiton")
 	
+	$Scenario.connect("current_faction_set", $UICanvas/UIMain/FactionSurvey, "_on_current_faction_set")
+	
 	_all_loaded()
 
 func _register_architecture_ui():

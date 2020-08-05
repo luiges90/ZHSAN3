@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://UIMain/GameRecord/GameRecord.tscn" type="PackedScene" id=18]
 [ext_resource path="res://UIMain/Map/Map.tscn" type="PackedScene" id=19]
 [ext_resource path="res://UIMain/TroopSurvey/TroopSurvey.tscn" type="PackedScene" id=20]
+[ext_resource path="res://UIMain/FactionSurvey/FactionSurvey.tscn" type="PackedScene" id=21]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -65,6 +66,8 @@ anchor_bottom = 1.0
 margin_left = -500.0
 margin_top = -548.0
 margin_bottom = -48.0
+
+[node name="FactionSurvey" parent="." instance=ExtResource( 21 )]
 
 [node name="ArchitectureSurvey" parent="." instance=ExtResource( 1 )]
 visible = false

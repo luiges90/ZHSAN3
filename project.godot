@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Faction/Faction.gd"
 }, {
+"base": "TabList",
+"class": "FactionSurvey",
+"language": "GDScript",
+"path": "res://UIMain/FactionSurvey/FactionSurvey.gd"
+}, {
 "base": "Panel",
 "class": "GameRecord",
 "language": "GDScript",
@@ -267,6 +272,7 @@ _global_script_class_icons={
 "CreatingTroop": "",
 "DateRunner": "",
 "Faction": "",
+"FactionSurvey": "",
 "GameRecord": "",
 "GameRecordCreator": "",
 "InfoMenu": "",
