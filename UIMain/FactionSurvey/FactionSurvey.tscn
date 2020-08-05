@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UIMain/TabList/TabList.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/FactionSurvey/FactionSurvey.gd" type="Script" id=2]
+[ext_resource path="res://UIMain/FactionSurvey/Collapse.png" type="Texture" id=3]
+[ext_resource path="res://UIMain/FactionSurvey/CollapseSelected.png" type="Texture" id=4]
 
 [node name="FactionSurvey" instance=ExtResource( 1 )]
 anchor_left = 1.0
@@ -9,11 +11,29 @@ margin_left = -340.0
 margin_bottom = -96.0
 script = ExtResource( 2 )
 
-[node name="Title" parent="." index="0"]
+[node name="Minimize" type="TextureButton" parent="." index="0"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -34.0
+margin_top = 16.0
+margin_right = -10.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" parent="." index="1"]
+margin_right = -34.0
 text = "FACTION_NAME"
 
-[node name="ActionButtons" parent="." index="2"]
+[node name="ActionButtons" parent="." index="3"]
 visible = false
 
-[node name="SelectionButtons" parent="." index="3"]
+[node name="SelectionButtons" parent="." index="4"]
 visible = false
+[connection signal="pressed" from="Minimize" to="." method="_on_Minimize_pressed"]
