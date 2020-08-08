@@ -28,12 +28,15 @@ static func id_list(list: Array) -> Array:
 
 static func nstr(n: int) -> String:
 	var s = str(n)
-	if s.length() > 3:
-		s = s.insert(s.length() - 3, ',')
-	if s.length() > 7:
-		s = s.insert(s.length() - 7, ',')
-	if s.length() > 12:
-		s = s.insert(s.length() - 12, ',')
+	var negative_shift = 1 if n < 0 else 0
+	if s.length() > 3 + negative_shift:
+		s = s.insert(s.length() - 3 - negative_shift, ',')
+	if s.length() > 7 + negative_shift:
+		s = s.insert(s.length() - 7 - negative_shift, ',')
+	if s.length() > 12 + negative_shift:
+		s = s.insert(s.length() - 12 - negative_shift, ',')
+	if s.length() > 18 + negative_shift:
+		s = s.insert(s.length() - 18 - negative_shift, ',')
 	return s
 	
 static func snstr(n: int) -> String:

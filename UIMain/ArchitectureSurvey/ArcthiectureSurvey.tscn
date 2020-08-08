@@ -1,23 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd" type="Script" id=2]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://UIMain/ArchitectureSurvey/Title.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 142, 42 )
 margin_left = 44.0
 margin_right = 41.0
-
-[sub_resource type="DynamicFont" id=2]
-size = 28
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 24
-font_data = ExtResource( 1 )
 
 [node name="ArchitectureSurvey" type="Panel"]
 margin_right = 300.0
@@ -30,10 +23,10 @@ __meta__ = {
 
 [node name="TitlePanel" type="Panel" parent="."]
 anchor_right = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = 60.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 64.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -42,7 +35,7 @@ __meta__ = {
 [node name="Title" type="Label" parent="TitlePanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 text = "西北"
 align = 1
 valign = 1
@@ -55,8 +48,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 75.0
-margin_right = -20.0
-margin_bottom = -20.0
+margin_right = -16.0
+margin_bottom = -16.0
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,7 +63,7 @@ text = "FACTION"
 
 [node name="Faction" type="HBoxContainer" parent="Content"]
 margin_left = 181.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 
@@ -81,7 +74,7 @@ rect_min_size = Vector2( 18, 0 )
 
 [node name="Text" type="Label" parent="Content/Faction"]
 margin_left = 22.0
-margin_right = 79.0
+margin_right = 83.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 text = "----"
@@ -96,7 +89,7 @@ text = "OFFICERS"
 [node name="PersonCount" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 22.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 text = "----"
@@ -111,7 +104,7 @@ text = "SECTION"
 [node name="Section" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 44.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 text = "----"
@@ -121,7 +114,7 @@ margin_top = 66.0
 margin_right = 177.0
 margin_bottom = 93.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "INTERNAL"
 __meta__ = {
@@ -131,7 +124,7 @@ __meta__ = {
 [node name="Label11" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 70.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 88.0
 size_flags_horizontal = 3
 __meta__ = {
@@ -148,7 +141,7 @@ text = "POPULATION"
 [node name="Population" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 97.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 115.0
 size_flags_horizontal = 3
 text = "----"
@@ -163,7 +156,7 @@ text = "MILITARY_POPULATION"
 [node name="MilitaryPopulation" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 119.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 137.0
 size_flags_horizontal = 3
 text = "----"
@@ -178,7 +171,7 @@ text = "FUND"
 [node name="Fund" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 141.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 159.0
 size_flags_horizontal = 3
 text = "----"
@@ -193,7 +186,7 @@ text = "FOOD"
 [node name="Food" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 163.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 181.0
 size_flags_horizontal = 3
 text = "----"
@@ -208,7 +201,7 @@ text = "AGRICULTURE"
 [node name="Agriculture" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 185.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 203.0
 size_flags_horizontal = 3
 text = "----"
@@ -223,7 +216,7 @@ text = "COMMERCE"
 [node name="Commerce" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 207.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 225.0
 size_flags_horizontal = 3
 text = "----"
@@ -238,7 +231,7 @@ text = "MORALE"
 [node name="Morale" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 229.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 247.0
 size_flags_horizontal = 3
 text = "----"
@@ -253,7 +246,7 @@ text = "ENDURANCE"
 [node name="Endurance" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 251.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 269.0
 size_flags_horizontal = 3
 text = "----"
@@ -263,7 +256,7 @@ margin_top = 273.0
 margin_right = 177.0
 margin_bottom = 300.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "MILITARY"
 __meta__ = {
@@ -273,7 +266,7 @@ __meta__ = {
 [node name="Label13" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 277.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 295.0
 size_flags_horizontal = 3
 
@@ -287,7 +280,7 @@ text = "TROOP"
 [node name="Troop" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 304.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 322.0
 size_flags_horizontal = 3
 text = "----"
@@ -302,7 +295,7 @@ text = "TROOP_MORALE"
 [node name="TroopMorale" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 326.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 344.0
 size_flags_horizontal = 3
 text = "----"
@@ -317,7 +310,7 @@ text = "COMBATIVITY"
 [node name="Combativity" type="Label" parent="Content"]
 margin_left = 181.0
 margin_top = 348.0
-margin_right = 260.0
+margin_right = 264.0
 margin_bottom = 366.0
 size_flags_horizontal = 3
 text = "----"

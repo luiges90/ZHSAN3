@@ -52,6 +52,7 @@ margin_right = 260.0
 margin_bottom = 90.0
 
 [node name="GameRecord" parent="." instance=ExtResource( 18 )]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -348.0
@@ -71,6 +72,27 @@ anchor_bottom = 1.0
 margin_left = -500.0
 margin_top = -548.0
 margin_bottom = -48.0
+
+[node name="CreateTroop" parent="." instance=ExtResource( 12 )]
+visible = false
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+margin_left = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="TroopDetail" parent="." instance=ExtResource( 15 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -390.0
+margin_top = -240.0
+margin_right = 390.0
+margin_bottom = 240.0
 
 [node name="ArchitectureSurvey" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -103,27 +125,6 @@ margin_bottom = -88.0
 [node name="MilitaryKindList" parent="." instance=ExtResource( 11 )]
 visible = false
 margin_bottom = -88.0
-
-[node name="CreateTroop" parent="." instance=ExtResource( 12 )]
-visible = false
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
-margin_left = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
-
-[node name="TroopDetail" parent="." instance=ExtResource( 15 )]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -390.0
-margin_top = -240.0
-margin_right = 390.0
-margin_bottom = 240.0
 
 [node name="ArchitectureAndTroopMenu" parent="." instance=ExtResource( 14 )]
 visible = false
@@ -196,13 +197,13 @@ text = "草原 (123, 456)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
-[connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
 [connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
+[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
+[connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
 [connection signal="troop_clicked" from="ArchitectureAndTroopMenu" to="TroopMenu" method="_on_ArchitectureAndTroopMenu_troop_clicked"]
 [connection signal="architecture_create_troop" from="ArchitectureMenu" to="CreateTroop" method="_on_ArchitectureMenu_architecture_create_troop"]

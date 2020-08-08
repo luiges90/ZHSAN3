@@ -1,15 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UIMain/CreateTroop/CreateTroop.gd" type="Script" id=3]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
 [ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=5]
 [ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=6]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 2 )
 
 [node name="CreateTroop" type="Panel"]
 margin_left = -1.0
@@ -21,120 +17,166 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TroopName" type="Label" parent="."]
+[node name="All" type="VBoxContainer" parent="."]
 anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 16.0
 margin_top = 16.0
 margin_right = -16.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = -16.0
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TroopName" type="Label" parent="All"]
+margin_right = 749.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 text = "CREATE_TROOP"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectPersons" type="Button" parent="."]
-margin_left = 16.0
-margin_top = 64.0
-margin_right = 196.0
-margin_bottom = 96.0
+[node name="Buttons" type="HBoxContainer" parent="All"]
+margin_top = 52.0
+margin_right = 749.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+custom_constants/separation = 8
+alignment = 1
+
+[node name="SelectPersons" type="Button" parent="All/Buttons"]
+margin_right = 181.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
 text = "PERSONS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectLeader" type="Button" parent="."]
-margin_left = 204.0
-margin_top = 64.0
-margin_right = 384.0
-margin_bottom = 96.0
+[node name="SelectLeader" type="Button" parent="All/Buttons"]
+margin_left = 189.0
+margin_right = 370.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
 disabled = true
 text = "LEADER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectMilitaryKind" type="Button" parent="."]
-margin_left = 392.0
-margin_top = 64.0
-margin_right = 572.0
-margin_bottom = 96.0
+[node name="SelectMilitaryKind" type="Button" parent="All/Buttons"]
+margin_left = 378.0
+margin_right = 559.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
 text = "MILITARY_KIND"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Create" type="Button" parent="."]
-anchor_right = 1.0
-margin_left = 582.0
-margin_top = 64.0
-margin_right = -16.0
-margin_bottom = 96.0
+[node name="Create" type="Button" parent="All/Buttons"]
+margin_left = 567.0
+margin_right = 749.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
 disabled = true
 text = "CREATE_TROOP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 110.0
-margin_right = 120.0
-margin_bottom = 128.0
+[node name="H1" type="HBoxContainer" parent="All"]
+margin_top = 104.0
+margin_right = 749.0
+margin_bottom = 234.0
+custom_constants/separation = 8
+
+[node name="V1" type="VBoxContainer" parent="All/H1"]
+margin_right = 103.0
+margin_bottom = 130.0
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="All/H1/V1"]
+margin_right = 103.0
+margin_bottom = 18.0
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "PERSON_LIST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label4" type="Label" parent="."]
-margin_left = 131.0
-margin_top = 110.0
-margin_right = 235.0
-margin_bottom = 128.0
+[node name="PersonList" type="VBoxContainer" parent="All/H1/V1"]
+margin_top = 26.0
+margin_right = 103.0
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V2" type="VBoxContainer" parent="All/H1"]
+margin_left = 111.0
+margin_right = 749.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+
+[node name="H2" type="VBoxContainer" parent="All/H1/V2"]
+margin_right = 638.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 36 )
+
+[node name="H3" type="HBoxContainer" parent="All/H1/V2/H2"]
+margin_right = 638.0
+margin_bottom = 18.0
+
+[node name="Label4" type="Label" parent="All/H1/V2/H2/H3"]
+margin_right = 610.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "QUANTITY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PersonList" type="VBoxContainer" parent="."]
-margin_left = 16.0
-margin_top = 132.0
-margin_right = 120.0
-margin_bottom = 196.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="QuantitySlider" type="HSlider" parent="."]
-anchor_right = 1.0
-margin_left = 128.0
-margin_top = 132.0
-margin_right = -16.0
-margin_bottom = 148.0
-max_value = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Quantity" type="Label" parent="."]
-anchor_right = 1.0
-margin_left = 682.0
-margin_top = 110.0
-margin_right = -16.0
-margin_bottom = 128.0
+[node name="Quantity" type="Label" parent="All/H1/V2/H2/H3"]
+margin_left = 614.0
+margin_right = 638.0
+margin_bottom = 18.0
+grow_horizontal = 0
 text = "0/0"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label9" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 160.0
-margin_right = 248.0
-margin_bottom = 184.0
+[node name="QuantitySlider" type="HSlider" parent="All/H1/V2/H2"]
+margin_top = 22.0
+margin_right = 638.0
+margin_bottom = 38.0
+grow_vertical = 0
+max_value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="GridContainer" parent="All/H1/V2"]
+margin_top = 46.0
+margin_right = 638.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 4
+custom_constants/hseparation = 8
+columns = 5
+
+[node name="Label9" type="Label" parent="All/H1/V2/C"]
+margin_right = 120.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "MILITARY_KIND"
 align = 1
@@ -143,24 +185,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MilitaryKind" type="Label" parent="."]
+[node name="Label2" type="Label" parent="All/H1/V2/C"]
 margin_left = 128.0
-margin_top = 184.0
 margin_right = 248.0
-margin_bottom = 208.0
-custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "----"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 248.0
-margin_top = 160.0
-margin_right = 368.0
-margin_bottom = 184.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "OFFENCE"
 align = 1
@@ -169,23 +198,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Offence" type="Label" parent="."]
-margin_left = 248.0
-margin_top = 184.0
-margin_right = 368.0
-margin_bottom = 208.0
-text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="."]
-margin_left = 368.0
-margin_top = 160.0
-margin_right = 488.0
-margin_bottom = 184.0
+[node name="Label3" type="Label" parent="All/H1/V2/C"]
+margin_left = 256.0
+margin_right = 376.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "DEFENCE"
 align = 1
@@ -194,23 +211,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Defence" type="Label" parent="."]
-margin_left = 368.0
-margin_top = 184.0
-margin_right = 488.0
-margin_bottom = 208.0
-text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label5" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 208.0
-margin_right = 248.0
-margin_bottom = 232.0
+[node name="Label5" type="Label" parent="All/H1/V2/C"]
+margin_left = 384.0
+margin_right = 510.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "TROOP_MORALE"
 align = 1
@@ -219,23 +224,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Morale" type="Label" parent="."]
-margin_left = 128.0
-margin_top = 232.0
-margin_right = 248.0
-margin_bottom = 256.0
-text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label6" type="Label" parent="."]
-margin_left = 248.0
-margin_top = 208.0
-margin_right = 368.0
-margin_bottom = 232.0
+[node name="Label6" type="Label" parent="All/H1/V2/C"]
+margin_left = 518.0
+margin_right = 638.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "COMBATIVITY"
 align = 1
@@ -244,11 +237,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Combativity" type="Label" parent="."]
-margin_left = 248.0
-margin_top = 232.0
-margin_right = 368.0
-margin_bottom = 256.0
+[node name="MilitaryKind" type="Label" parent="All/H1/V2/C"]
+margin_top = 22.0
+margin_right = 120.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "----"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Offence" type="Label" parent="All/H1/V2/C"]
+margin_left = 128.0
+margin_top = 22.0
+margin_right = 248.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
 text = "0"
 align = 1
 valign = 1
@@ -256,11 +263,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label7" type="Label" parent="."]
-margin_left = 488.0
-margin_top = 160.0
-margin_right = 608.0
-margin_bottom = 184.0
+[node name="Defence" type="Label" parent="All/H1/V2/C"]
+margin_left = 256.0
+margin_top = 22.0
+margin_right = 376.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Morale" type="Label" parent="All/H1/V2/C"]
+margin_left = 384.0
+margin_top = 22.0
+margin_right = 510.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Combativity" type="Label" parent="All/H1/V2/C"]
+margin_left = 518.0
+margin_top = 22.0
+margin_right = 638.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="All/H1/V2/C"]
+margin_top = 44.0
+margin_right = 120.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "SPEED"
 align = 1
@@ -269,23 +315,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Speed" type="Label" parent="."]
-margin_left = 488.0
-margin_top = 184.0
-margin_right = 608.0
-margin_bottom = 208.0
-text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label8" type="Label" parent="."]
-margin_left = 608.0
-margin_top = 160.0
-margin_right = 728.0
-margin_bottom = 184.0
+[node name="Label8" type="Label" parent="All/H1/V2/C"]
+margin_left = 128.0
+margin_top = 44.0
+margin_right = 248.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "INITIATIVE"
 align = 1
@@ -294,12 +329,103 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Initiative" type="Label" parent="."]
-margin_left = 608.0
-margin_top = 184.0
-margin_right = 728.0
-margin_bottom = 208.0
+[node name="B1" type="Label" parent="All/H1/V2/C"]
+margin_left = 256.0
+margin_top = 44.0
+margin_right = 376.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="B2" type="Label" parent="All/H1/V2/C"]
+margin_left = 384.0
+margin_top = 44.0
+margin_right = 510.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="B3" type="Label" parent="All/H1/V2/C"]
+margin_left = 518.0
+margin_top = 44.0
+margin_right = 638.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speed" type="Label" parent="All/H1/V2/C"]
+margin_top = 66.0
+margin_right = 120.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
 text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Initiative" type="Label" parent="All/H1/V2/C"]
+margin_left = 128.0
+margin_top = 66.0
+margin_right = 248.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="B4" type="Label" parent="All/H1/V2/C"]
+margin_left = 256.0
+margin_top = 66.0
+margin_right = 376.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="B5" type="Label" parent="All/H1/V2/C"]
+margin_left = 384.0
+margin_top = 66.0
+margin_right = 510.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="B6" type="Label" parent="All/H1/V2/C"]
+margin_left = 518.0
+margin_top = 66.0
+margin_right = 638.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
@@ -315,8 +441,8 @@ stream = ExtResource( 5 )
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 [connection signal="hide" from="." to="." method="_on_CreateTroop_hide"]
-[connection signal="pressed" from="SelectPersons" to="." method="_on_SelectPersons_pressed"]
-[connection signal="pressed" from="SelectLeader" to="." method="_on_SelectLeader_pressed"]
-[connection signal="pressed" from="SelectMilitaryKind" to="." method="_on_SelectMilitaryKind_pressed"]
-[connection signal="pressed" from="Create" to="." method="_on_Create_pressed"]
-[connection signal="value_changed" from="QuantitySlider" to="." method="_on_QuantitySlider_value_changed"]
+[connection signal="pressed" from="All/Buttons/SelectPersons" to="." method="_on_SelectPersons_pressed"]
+[connection signal="pressed" from="All/Buttons/SelectLeader" to="." method="_on_SelectLeader_pressed"]
+[connection signal="pressed" from="All/Buttons/SelectMilitaryKind" to="." method="_on_SelectMilitaryKind_pressed"]
+[connection signal="pressed" from="All/Buttons/Create" to="." method="_on_Create_pressed"]
+[connection signal="value_changed" from="All/H1/V2/H2/QuantitySlider" to="." method="_on_QuantitySlider_value_changed"]

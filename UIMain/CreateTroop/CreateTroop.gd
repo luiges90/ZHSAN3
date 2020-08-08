@@ -19,7 +19,7 @@ func _on_ArchitectureMenu_architecture_create_troop(arch, persons, military_kind
 	eligible_persons = persons
 	eligible_military_kinds = military_kinds
 	
-	$QuantitySlider.value = 0
+	$All/H1/V2/H2/QuantitySlider.value = 0
 	
 	current_troop = CreatingTroop.new()
 	current_troop.morale = current_architecture.troop_morale
@@ -42,36 +42,36 @@ func _on_SelectPersons_pressed():
 
 	
 func set_data():
-	Util.delete_all_children($PersonList)
+	Util.delete_all_children($All/H1/V1/PersonList)
 	
-	$SelectLeader.disabled = current_troop.persons.size() <= 1
-	$Morale.text = str(current_troop.morale)
-	$Combativity.text = str(current_troop.combativity)
+	$All/Buttons/SelectLeader.disabled = current_troop.persons.size() <= 1
+	$All/H1/V2/C/Morale.text = str(current_troop.morale)
+	$All/H1/V2/C/Combativity.text = str(current_troop.combativity)
 	
 	if current_troop.persons.size() > 0:
 		for p in current_troop.persons:
 			var label = Label.new()
 			label.text = p.get_name()
-			$PersonList.add_child(label)
+			$All/H1/V1/PersonList.add_child(label)
 	if current_troop.military_kind != null:
-		$MilitaryKind.text = current_troop.military_kind.get_name()
+		$All/H1/V2/C/MilitaryKind.text = current_troop.military_kind.get_name()
 	
-	$Create.disabled = true
+	$All/Buttons/Create.disabled = true
 	if current_troop.persons.size() > 0 and current_troop.military_kind != null:
 		var max_quantity = current_troop.military_kind.max_quantity_multiplier * current_troop.persons[0].get_max_troop_quantity()
 		max_quantity = int(max_quantity)
 		max_quantity = min(max_quantity, floor(current_architecture.troop / 100) * 100)
 		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].has_equipments():
 			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / 100) * 100)
-		$Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
-		$QuantitySlider.step = 100
-		$QuantitySlider.min_value = 0
-		$QuantitySlider.max_value = max_quantity
-		$Offence.text = str(current_troop.get_offence())
-		$Defence.text = str(current_troop.get_defence())
-		$Speed.text = str(current_troop.get_speed())
-		$Initiative.text = str(current_troop.get_initiative())
-		$Create.disabled = current_troop.quantity <= 0
+		$All/H1/V2/H2/H3/Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
+		$All/H1/V2/H2/QuantitySlider.step = 100
+		$All/H1/V2/H2/QuantitySlider.min_value = 0
+		$All/H1/V2/H2/QuantitySlider.max_value = max_quantity
+		$All/H1/V2/C/Offence.text = str(current_troop.get_offence())
+		$All/H1/V2/C/Defence.text = str(current_troop.get_defence())
+		$All/H1/V2/C/Speed.text = str(current_troop.get_speed())
+		$All/H1/V2/C/Initiative.text = str(current_troop.get_initiative())
+		$All/Buttons/Create.disabled = current_troop.quantity <= 0
 
 
 func get_available_kinds():
