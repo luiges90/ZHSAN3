@@ -16,6 +16,8 @@ func show_menu(arch, mouse_x, mouse_y):
 		$MainMenu/Military.visible = false
 		$MainMenu/Officers.visible = false
 		$MainMenu/ToggleAutoTask.visible = false
+		$MainMenu/FactionDetail.visible = false
+		$MainMenu/FactionArchitectures.visible = false
 	else:
 		var is_player = arch.get_belonged_faction().player_controlled
 		$MainMenu/Internal.visible = is_player

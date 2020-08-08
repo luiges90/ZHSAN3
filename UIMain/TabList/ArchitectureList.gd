@@ -52,7 +52,7 @@ func _populate_basic_data(arch_list: Array, action):
 		item_list.add_child(_label(arch.get_belonged_faction().get_name()))
 		item_list.add_child(_label(Util.nstr(arch.food) + "(" + Util.snstr(arch.expected_food_income()) + ")"))
 		item_list.add_child(_label(Util.nstr(arch.fund) + "(" + Util.snstr(arch.expected_fund_income()) + ")"))
-		item_list.add_child(_label(str(arch.get_workable_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())))
+		item_list.add_child(_label(str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())))
 		item_list.add_child(_label(str(arch.get_wild_persons().size())))
 	
 func _populate_internal_data(arch_list: Array, action):
