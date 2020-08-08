@@ -25,9 +25,9 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
 custom_fonts/font = SubResource( 1 )
 text = "PERSON_LIST"
 align = 1
@@ -38,10 +38,10 @@ __meta__ = {
 [node name="Tabs" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 50.0
-margin_right = -10.0
-margin_bottom = -70.0
+margin_left = 16.0
+margin_top = 56.0
+margin_right = -16.0
+margin_bottom = -64.0
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,9 +87,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -42.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_top = -48.0
+margin_right = -16.0
+margin_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 __meta__ = {
@@ -121,9 +121,9 @@ __meta__ = {
 [node name="SelectionButtons" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = -42.0
-margin_bottom = -10.0
+margin_left = 16.0
+margin_top = -48.0
+margin_bottom = -16.0
 grow_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
