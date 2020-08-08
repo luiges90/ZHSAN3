@@ -107,9 +107,14 @@ WILD_PERSON_COUNT,Non-officers,在野数,在野數
 STATUS,Status,状态,狀態
 STATUS_NORMAL,Normal,一般,一般
 STATUS_WILD,Wild,在野,在野
+STATUS_FACTION_LEADER,Leader,君主,君主
 GAME_RECORD,Record,信息栏,信息欄
 GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s从%s出征,%s從%s出征
 GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,%s has taken over %s,%s占领了%s,%s佔領了%s
 GAME_RECORD_TROOP_DESTROYED,%s has been routed,%s溃散了,%s潰散了
 GAME_RECORD_FACTION_DESTROYED,%s has been eliminated,%s滅亡了,%s滅亡了
 FACTION_LIST,Faction List,勢力列表,勢力列表
+GENDER,Gender,性別,性別
+MALE,Male,男,男
+FEMALE,Female,女,女
+LOCATION,Location,位置,位置

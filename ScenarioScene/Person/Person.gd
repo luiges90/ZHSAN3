@@ -36,6 +36,9 @@ var task_days = 0 setget forbidden
 func forbidden(x):
 	assert(false)
 
+####################################
+#           Save / Load            #
+####################################
 
 func load_data(json: Dictionary):
 	id = json["_Id"]
@@ -68,33 +71,56 @@ func save_data() -> Dictionary:
 		"Task": working_task,
 		"ProducingEquipment": producing_equipment
 	}
+	
+####################################
+#              Getters             #
+####################################
+func get_gender_str() -> String:
+	return tr('FEMALE') if gender else tr('MALE')
 
 func get_name() -> String:
 	return surname + given_name
 	
+func get_full_name() -> String:
+	return surname + given_name + "(" + courtesy_name + ")"
+	
 func get_location(): 
 	return _location
-	
-func set_location(item, force = false):
-	if _location != null:
-		_location.remove_person(self)
-	_location = item
-	if not force:
-		item.add_person(self, true)
-		
+
+func get_location_str():
+	var location = get_location_str()
+	return location.get_name() if location != null else '----'
+
 func get_status():
 	return _status
 	
 func get_status_str() -> String:
+	if is_faction_leader():
+		return tr('STATUS_FACTION_LEADER')
 	match _status:
 		Status.NONE: return '--'
 		Status.NORMAL: return tr('STATUS_NORMAL')
 		Status.WILD: return tr('STATUS_WILD')
 		_: return '--'
+
+func get_belonged_faction():
+	return get_location().get_belonged_faction()
 	
-func become_wild():
-	_status = Status.WILD
+func get_belonged_faction_str():
+	var faction = get_belonged_faction()
+	return faction.get_name() if faction != null else '----'
 	
+func get_belonged_section():
+	return get_location().get_belonged_section()
+	
+func get_belonged_section_str():
+	var section = get_belonged_section()
+	return section.get_name() if section != null else '----'
+	
+func is_faction_leader():
+	var faction = get_belonged_faction()
+	return faction != null and faction.get_leader().id == id
+
 func get_agriculture_ability():
 	return 0.25 * intelligence + 0.5 * politics + 0.25 * glamour
 	
@@ -122,12 +148,6 @@ func get_merit():
 func get_troop_leader_merit():
 	return command * 1.7 + strength * 0.3
 	
-func set_working_task(work):
-	working_task = work
-	producing_equipment = null
-	
-func set_produce_equipment(equipment: int):
-	producing_equipment = equipment
 	
 func get_working_task_str():
 	match working_task:
@@ -169,6 +189,27 @@ func get_portrait():
 				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER]
 			else:
 				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
+	
+####################################
+#           Manipulation           #
+####################################
+	
+func set_location(item, force = false):
+	if _location != null:
+		_location.remove_person(self)
+	_location = item
+	if not force:
+		item.add_person(self, true)
+
+func become_wild():
+	_status = Status.WILD
+
+func set_working_task(work):
+	working_task = work
+	producing_equipment = null
+	
+func set_produce_equipment(equipment: int):
+	producing_equipment = equipment
 	
 func move_to_architecture(arch):
 	var old_location = get_location()

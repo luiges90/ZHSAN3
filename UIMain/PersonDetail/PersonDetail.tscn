@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Images/PersonPortrait/default-male-martial.jpg" type="Texture" id=2]
-[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 3 )
+[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UIMain/PersonDetail/PersonDetail.gd" type="Script" id=4]
+[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=5]
 
 [node name="PersonDetail" type="Panel"]
 anchor_right = 1.0
@@ -14,6 +12,7 @@ anchor_bottom = 1.0
 margin_right = -342.0
 margin_bottom = -168.0
 theme = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,14 +29,155 @@ __meta__ = {
 [node name="Name" type="Label" parent="."]
 margin_left = 288.0
 margin_top = 16.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "耒火(字字)"
 
-[node name="Label" type="Label" parent="."]
+[node name="Status" type="GridContainer" parent="."]
+anchor_right = 1.0
 margin_left = 288.0
 margin_top = 64.0
-margin_right = 384.0
-margin_bottom = 82.0
+margin_right = -16.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label10" type="Label" parent="Status"]
+margin_right = 137.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "GENDER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Status"]
+margin_left = 145.0
+margin_right = 282.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "FACTION"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Status"]
+margin_left = 290.0
+margin_right = 427.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "SECTION"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Status"]
+margin_left = 435.0
+margin_right = 572.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "LOCATION"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Status"]
+margin_left = 580.0
+margin_right = 717.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "STATUS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gender" type="Label" parent="Status"]
+margin_top = 26.0
+margin_right = 137.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "男"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Faction" type="Label" parent="Status"]
+margin_left = 145.0
+margin_top = 26.0
+margin_right = 282.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "耒火"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Section" type="Label" parent="Status"]
+margin_left = 290.0
+margin_top = 26.0
+margin_right = 427.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "耒火"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Location" type="Label" parent="Status"]
+margin_left = 435.0
+margin_top = 26.0
+margin_right = 572.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "耒火"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="Label" parent="Status"]
+margin_left = 580.0
+margin_top = 26.0
+margin_right = 717.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "耒火"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Abilities" type="GridContainer" parent="."]
+margin_left = 288.0
+margin_top = 128.0
+margin_right = 448.0
+margin_bottom = 148.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Abilities"]
+margin_right = 118.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "COMMAND"
 align = 1
@@ -45,22 +185,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Command" type="Label" parent="."]
-margin_left = 288.0
-margin_top = 86.0
-margin_right = 384.0
-margin_bottom = 82.0
+[node name="Command" type="Label" parent="Abilities"]
+margin_left = 126.0
+margin_right = 160.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
 text = "60"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 392.0
-margin_top = 64.0
-margin_right = 488.0
-margin_bottom = 82.0
+[node name="Label2" type="Label" parent="Abilities"]
+margin_top = 26.0
+margin_right = 118.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "STRENGTH"
 align = 1
@@ -68,22 +208,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Strength" type="Label" parent="."]
-margin_left = 392.0
-margin_top = 86.0
-margin_right = 488.0
-margin_bottom = 104.0
+[node name="Strength" type="Label" parent="Abilities"]
+margin_left = 126.0
+margin_top = 26.0
+margin_right = 160.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
 text = "60"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 496.0
-margin_top = 64.0
-margin_right = 592.0
-margin_bottom = 82.0
+[node name="Label3" type="Label" parent="Abilities"]
+margin_top = 52.0
+margin_right = 118.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "INTELLIGENCE"
 align = 1
@@ -91,13 +232,66 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Intelligence" type="Label" parent="."]
-margin_left = 496.0
-margin_top = 86.0
-margin_right = 592.0
-margin_bottom = 104.0
+[node name="Intelligence" type="Label" parent="Abilities"]
+margin_left = 126.0
+margin_top = 52.0
+margin_right = 160.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
 text = "60"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label4" type="Label" parent="Abilities"]
+margin_top = 78.0
+margin_right = 118.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "POLITICS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Politics" type="Label" parent="Abilities"]
+margin_left = 126.0
+margin_top = 78.0
+margin_right = 160.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+text = "60"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Abilities"]
+margin_top = 104.0
+margin_right = 118.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "GLAMOUR"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Glamour" type="Label" parent="Abilities"]
+margin_left = 126.0
+margin_top = 104.0
+margin_right = 160.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+text = "60"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+[connection signal="hide" from="." to="." method="_on_PersonDetail_hide"]

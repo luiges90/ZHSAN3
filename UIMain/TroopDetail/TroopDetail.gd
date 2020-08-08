@@ -1,7 +1,7 @@
 extends Panel
 class_name TroopDetail
 
-var current_troop
+var current_troop: Troop
 
 func _on_CreateTroop_hide():
 	$Cancel.play()
