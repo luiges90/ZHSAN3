@@ -50,7 +50,7 @@ __meta__ = {
 [node name="Tab1" type="ScrollContainer" parent="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 34.0
+margin_top = 40.0
 
 [node name="Grid" type="GridContainer" parent="Tabs/Tab1"]
 columns = 6
@@ -59,7 +59,7 @@ columns = 6
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 34.0
+margin_top = 40.0
 
 [node name="Grid" type="GridContainer" parent="Tabs/Tab2"]
 columns = 6
@@ -68,7 +68,7 @@ columns = 6
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 34.0
+margin_top = 40.0
 
 [node name="Grid" type="GridContainer" parent="Tabs/Tab3"]
 columns = 6
@@ -77,7 +77,7 @@ columns = 6
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 34.0
+margin_top = 40.0
 
 [node name="Grid" type="GridContainer" parent="Tabs/Tab4"]
 columns = 6

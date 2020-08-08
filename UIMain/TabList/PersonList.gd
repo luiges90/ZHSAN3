@@ -24,7 +24,7 @@ func _ready():
 	$Tabs.set_tab_title(1, tr('ABILITY'))
 	$Tabs.set_tab_title(2, tr('INTERNAL'))
 	$Tabs.set_tab_title(3, tr('MILITARY'))
-	
+
 
 func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
 	current_action = action
