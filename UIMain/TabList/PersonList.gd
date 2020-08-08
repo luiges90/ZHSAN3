@@ -17,6 +17,7 @@ enum Action {
 }
 
 signal person_selected
+signal person_row_clicked
 
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
@@ -94,11 +95,11 @@ func _populate_basic_data(person_list: Array, action):
 	for person in person_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_label(person.get_name()))
-		item_list.add_child(_label(person.get_location().get_name()))
-		item_list.add_child(_label(person.get_status_str()))
-		item_list.add_child(_label(person.get_working_task_str()))
-		item_list.add_child(_label(str(person.task_days) + tr('DAY_UNIT')))
+		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_location().get_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_status_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_working_task_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.task_days) + tr('DAY_UNIT'), self, "__on_clickable_label_click", person))
 
 func _populate_ability_data(person_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
@@ -117,12 +118,12 @@ func _populate_ability_data(person_list: Array, action):
 	for person in person_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_label(person.get_name()))
-		item_list.add_child(_label(str(person.command)))
-		item_list.add_child(_label(str(person.strength)))
-		item_list.add_child(_label(str(person.intelligence)))
-		item_list.add_child(_label(str(person.politics)))
-		item_list.add_child(_label(str(person.glamour)))
+		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.command), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.strength), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.intelligence), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.politics), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.glamour), self, "__on_clickable_label_click", person))
 		
 func _populate_internal_data(person_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer
@@ -141,12 +142,12 @@ func _populate_internal_data(person_list: Array, action):
 	for person in person_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_label(person.get_name()))
-		item_list.add_child(_label(person.get_working_task_str()))
-		item_list.add_child(_label(str(round(person.get_agriculture_ability()))))
-		item_list.add_child(_label(str(round(person.get_commerce_ability()))))
-		item_list.add_child(_label(str(round(person.get_morale_ability()))))
-		item_list.add_child(_label(str(round(person.get_endurance_ability()))))
+		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_working_task_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(round(person.get_agriculture_ability())), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(round(person.get_commerce_ability())), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(round(person.get_morale_ability())), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(round(person.get_endurance_ability())), self, "__on_clickable_label_click", person))
 		
 		
 func _populate_military_data(person_list: Array, action):
@@ -166,12 +167,12 @@ func _populate_military_data(person_list: Array, action):
 	for person in person_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_label(person.get_name()))
-		item_list.add_child(_label(person.get_working_task_str()))
-		item_list.add_child(_label(person.get_producing_equipment_name()))
-		item_list.add_child(_label(str(round(person.get_recruit_troop_ability()))))
-		item_list.add_child(_label(str(round(person.get_train_troop_ability()))))
-		item_list.add_child(_label(str(round(person.get_produce_equipment_ability()))))
+		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_working_task_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_producing_equipment_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(round(person.get_recruit_troop_ability())), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(round(person.get_train_troop_ability())), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(round(person.get_produce_equipment_ability())), self, "__on_clickable_label_click", person))
 
 
 func _on_Confirm_pressed():
@@ -190,3 +191,8 @@ func _on_CreateTroop_select_leader(arch, persons):
 	current_action = Action.SELECT_TROOP_LEADER
 	current_architecture = arch
 	show_data(persons)
+
+
+func __on_clickable_label_click(label, person):
+	emit_signal('person_row_clicked', person)
+	

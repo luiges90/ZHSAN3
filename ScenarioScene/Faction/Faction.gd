@@ -7,6 +7,8 @@ var scenario
 var gname: String setget forbidden
 var color: Color setget forbidden
 
+var leader setget forbidden, get_leader
+
 var _section_list = Array() setget forbidden, get_sections
 
 var player_controlled: bool
@@ -36,6 +38,7 @@ func save_data() -> Dictionary:
 	return {
 		"_Id": id,
 		"Name": gname,
+		"Leader": leader.id,
 		"Color": Util.save_color(color),
 		"PlayerControlled": player_controlled,
 		"SectionList": Util.id_list(get_sections())
@@ -89,15 +92,20 @@ func is_friend_to(faction):
 	
 func is_enemy_to(faction):
 	return self != faction
+	
+func get_leader():
+	return leader
 
 ####################################
 #           Manipulation           #
 ####################################
+func _set_leader(person):
+	leader = person
+
 func add_section(section, force: bool = false):
 	_section_list.append(section)
 	if not force:
 		section.set_belonged_faction(self, true)
-		
 
 func destroy():
 	scenario.remove_faction(self)

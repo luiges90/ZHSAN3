@@ -160,6 +160,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 				  "_Id": k['ID'],
 				  "Name": k['Name'],
+				  "Leader": k['LeaderID'],
 				  "Color": [round(colors[k['ColorIndex']]['R'] / 255.0, 3), round(colors[k['ColorIndex']]['G'] / 255.0, 3), round(colors[k['ColorIndex']]['B'] / 255.0, 3)],
 				  "SectionList": sects,
 				  "PlayerControlled": False
@@ -172,6 +173,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 					"_Id": 100,
 					"Name": '耒火',
+					"Leader": 1376,
 					"Color": [255, 0, 255],
 					"SectionList": [500],
 					"PlayerControlled": False

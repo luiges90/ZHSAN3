@@ -10,6 +10,11 @@ func _on_TroopMenu_troop_detail_clicked(troop):
 	current_troop = troop
 	set_data()
 	show()
+	
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			hide()
 
 func set_data():
 	Util.delete_all_children($A/H1/V1/PersonList)

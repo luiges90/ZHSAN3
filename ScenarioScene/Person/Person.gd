@@ -82,13 +82,16 @@ func get_name() -> String:
 	return surname + given_name
 	
 func get_full_name() -> String:
-	return surname + given_name + "(" + courtesy_name + ")"
+	var name = surname + given_name
+	if courtesy_name.length() > 0:
+		name += "(" + courtesy_name + ")"
+	return name
 	
 func get_location(): 
 	return _location
 
 func get_location_str():
-	var location = get_location_str()
+	var location = get_location()
 	return location.get_name() if location != null else '----'
 
 func get_status():

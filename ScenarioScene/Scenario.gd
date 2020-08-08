@@ -296,6 +296,7 @@ func _load_data(path):
 		__load_item(instance, item, factions)
 		for id in item["SectionList"]:
 			instance.add_section(sections[int(id)])
+		instance._set_leader(persons[int(item["Leader"])])
 	file.close()
 	
 	__handle_player_faction(current_faction_id)
