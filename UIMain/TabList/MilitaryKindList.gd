@@ -21,7 +21,7 @@ func _on_InfoMenu_military_kind_clicked(scenario):
 func show_data(list: Array):
 	match current_action:
 		Action.LIST: 
-			$Title.text = tr('PERSON_LIST')
+			$Title.text = tr('MILITARY_KIND_LIST')
 			_max_selection = 0
 		Action.PRODUCE_EQUIPMENT: 
 			$Title.text = tr('PRODUCE_EQUIPMENT')
@@ -30,7 +30,7 @@ func show_data(list: Array):
 			$Title.text = tr('SELECT_TROOP_MILITARY_KIND')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
-	$Title.text = tr('MILITARY_KIND_LIST')
+
 	_populate_basic_data(list, current_action)
 	_populate_movement_details_data(list, current_action)
 	_populate_terrain_strength_data(list, current_action)

@@ -50,10 +50,16 @@ margin_right = 246.0
 margin_bottom = 208.123
 text = "ARCHITECTURE_DETAILS"
 
-[node name="FactionArchitectures" type="Button" parent="MainMenu" index="6"]
+[node name="FactionDetail" type="Button" parent="MainMenu" index="6"]
 margin_top = 204.0
 margin_right = 246.0
 margin_bottom = 242.123
+text = "FACTION_DETAIL"
+
+[node name="FactionArchitectures" type="Button" parent="MainMenu" index="7"]
+margin_top = 238.0
+margin_right = 246.0
+margin_bottom = 276.123
 text = "FACTION_ARCHITECTURES"
 
 [node name="InternalMenu" type="VBoxContainer" parent="." index="4"]
@@ -138,6 +144,7 @@ text = "CALL"
 [connection signal="pressed" from="MainMenu/ToggleAutoTask" to="." method="_on_ToggleAutoTask_pressed"]
 [connection signal="pressed" from="MainMenu/PersonList" to="." method="_on_PersonList_pressed"]
 [connection signal="pressed" from="MainMenu/ArchitectureDetail" to="." method="_on_ArchitectureDetail_pressed"]
+[connection signal="pressed" from="MainMenu/FactionDetail" to="." method="_on_FactionDetail_pressed"]
 [connection signal="pressed" from="MainMenu/FactionArchitectures" to="." method="_on_FactionArchitectures_pressed"]
 [connection signal="pressed" from="InternalMenu/Agriculture" to="." method="_on_Agriculture_pressed"]
 [connection signal="pressed" from="InternalMenu/Commerce" to="." method="_on_Commerce_pressed"]

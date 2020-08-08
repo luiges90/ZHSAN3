@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://UIMain/Map/Map.tscn" type="PackedScene" id=19]
 [ext_resource path="res://UIMain/TroopSurvey/TroopSurvey.tscn" type="PackedScene" id=20]
 [ext_resource path="res://UIMain/FactionSurvey/FactionSurvey.tscn" type="PackedScene" id=21]
+[ext_resource path="res://UIMain/TabList/FactionList.tscn" type="PackedScene" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -95,6 +96,9 @@ margin_bottom = 250.0
 visible = false
 
 [node name="ArchitectureList" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="FactionList" parent="." instance=ExtResource( 22 )]
 visible = false
 
 [node name="MilitaryKindList" parent="." instance=ExtResource( 11 )]
@@ -203,6 +207,7 @@ __meta__ = {
 [connection signal="troop_clicked" from="ArchitectureAndTroopMenu" to="TroopMenu" method="_on_ArchitectureAndTroopMenu_troop_clicked"]
 [connection signal="architecture_create_troop" from="ArchitectureMenu" to="CreateTroop" method="_on_ArchitectureMenu_architecture_create_troop"]
 [connection signal="architecture_list_clicked" from="ArchitectureMenu" to="ArchitectureList" method="_on_ArchitectureMenu_architecture_list_clicked"]
+[connection signal="faction_list_clicked" from="ArchitectureMenu" to="FactionList" method="_on_ArchitectureMenu_faction_list_clicked"]
 [connection signal="person_list_clicked" from="ArchitectureMenu" to="PersonList" method="_on_ArchitectureMenu_person_list_clicked"]
 [connection signal="troop_detail_clicked" from="TroopMenu" to="TroopDetail" method="_on_TroopMenu_troop_detail_clicked"]
 [connection signal="info_clicked" from="SystemMenu" to="InfoMenu" method="_on_SystemMenu_info_clicked"]

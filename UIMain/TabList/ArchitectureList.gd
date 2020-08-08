@@ -16,13 +16,13 @@ func _ready():
 func show_data(arch_list: Array):
 	match current_action:
 		Action.LIST: 
-			$Title.text = tr('PERSON_LIST')
+			$Title.text = tr('ARCHITECTURE_LIST')
 			_max_selection = 0
 		Action.MOVE_TO: 
 			$Title.text = tr('MOVE')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
-	$Title.text = tr('ARCHITECTURE_LIST')
+
 	_populate_basic_data(arch_list, current_action)
 	_populate_internal_data(arch_list, current_action)
 	_populate_military_data(arch_list, current_action)

@@ -3,6 +3,7 @@ class_name ArchitectureMenu
 
 signal person_list_clicked
 signal architecture_list_clicked
+signal faction_list_clicked
 signal architecture_toggle_auto_task
 signal architecture_create_troop
 
@@ -136,3 +137,8 @@ func _on_StartCampaign_pressed():
 
 func _on_ArchitectureAndTroopMenu_architecture_clicked(arch, mx, my):
 	show_menu(arch, mx, my)
+
+
+func _on_FactionDetail_pressed():
+	_select_item()
+	emit_signal("faction_list_clicked", showing_architecture, [showing_architecture.get_belonged_faction()], FactionList.Action.LIST)
