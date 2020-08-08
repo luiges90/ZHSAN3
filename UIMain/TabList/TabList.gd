@@ -60,11 +60,15 @@ func _checkbox_changed(in_cb: CheckBox):
 				checkbox.set_pressed(in_cb.is_pressed())
 	$ActionButtons/Confirm.disabled = not any_checked
 
-
-func _input(event):
+# Override-able method to handle input
+# https://godotengine.org/qa/9244/can-override-the-_ready-and-_process-functions-child-classes
+func handle_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_RIGHT and event.pressed:
 			hide()
+
+func _input(event):
+	handle_input(event)
 
 
 func _get_selected_list() -> Array:

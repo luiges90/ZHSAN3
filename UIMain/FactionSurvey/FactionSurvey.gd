@@ -14,6 +14,10 @@ func _ready():
 	$Tabs.remove_child($Tabs/Tab3)
 	$Tabs.remove_child($Tabs/Tab4)
 
+func handle_input(event):
+	# do nothing
+	pass
+
 func show_data(faction):
 	current_faction = faction
 	$Title.text = faction.get_name()
