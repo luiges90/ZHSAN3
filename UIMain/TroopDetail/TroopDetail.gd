@@ -12,30 +12,30 @@ func _on_TroopMenu_troop_detail_clicked(troop):
 	show()
 
 func set_data():
-	Util.delete_all_children($PersonList)
+	Util.delete_all_children($A/H1/V1/PersonList)
 	
-	$Title.text = current_troop.get_name()
+	$A/Title.text = current_troop.get_name()
 	
-	$Faction.text = current_troop.get_belonged_faction().get_name()
-	$Section.text = current_troop.get_belonged_section().get_name()
+	$A/H1/Content/Faction.text = current_troop.get_belonged_faction().get_name()
+	$A/H1/Content/Section.text = current_troop.get_belonged_section().get_name()
 	
-	$Morale.text = str(current_troop.morale)
-	$Combativity.text = str(current_troop.combativity)
+	$A/H1/Content/Morale.text = str(current_troop.morale)
+	$A/H1/Content/Combativity.text = str(current_troop.combativity)
 
 	for p in current_troop.get_persons():
 		var label = Label.new()
 		label.text = p.get_name()
-		$PersonList.add_child(label)
+		$A/H1/V1/PersonList.add_child(label)
 	
-	$Leader.text = current_troop.get_leader().get_name()
-	$MilitaryKind.text = current_troop.military_kind.get_name()
+	$A/H1/V1/Leader.text = current_troop.get_leader().get_name()
+	$A/H1/Content/MilitaryKind.text = current_troop.military_kind.get_name()
 	
-	$Order.text = tr(current_troop.get_order_text())
-	$Target.text = current_troop.get_order_target_text()
+	$A/H1/Content/Order.text = tr(current_troop.get_order_text())
+	$A/H1/Content/Target.text = current_troop.get_order_target_text()
 
-	$Quantity.text = str(current_troop.quantity)
-	$Offence.text = str(current_troop.get_offence())
-	$Defence.text = str(current_troop.get_defence())
-	$Speed.text = str(current_troop.get_speed())
-	$Initiative.text = str(current_troop.get_initiative())
+	$A/H1/Content/Quantity.text = str(current_troop.quantity)
+	$A/H1/Content/Offence.text = str(current_troop.get_offence())
+	$A/H1/Content/Defence.text = str(current_troop.get_defence())
+	$A/H1/Content/Speed.text = str(current_troop.get_speed())
+	$A/H1/Content/Initiative.text = str(current_troop.get_initiative())
 

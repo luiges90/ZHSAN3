@@ -92,12 +92,12 @@ __meta__ = {
 [node name="H1" type="HBoxContainer" parent="All"]
 margin_top = 104.0
 margin_right = 749.0
-margin_bottom = 234.0
+margin_bottom = 246.0
 custom_constants/separation = 8
 
 [node name="V1" type="VBoxContainer" parent="All/H1"]
 margin_right = 103.0
-margin_bottom = 130.0
+margin_bottom = 142.0
 custom_constants/separation = 8
 
 [node name="Label" type="Label" parent="All/H1/V1"]
@@ -120,7 +120,7 @@ __meta__ = {
 [node name="V2" type="VBoxContainer" parent="All/H1"]
 margin_left = 111.0
 margin_right = 749.0
-margin_bottom = 130.0
+margin_bottom = 142.0
 size_flags_horizontal = 3
 custom_constants/separation = 8
 
@@ -167,9 +167,9 @@ __meta__ = {
 [node name="C" type="GridContainer" parent="All/H1/V2"]
 margin_top = 46.0
 margin_right = 638.0
-margin_bottom = 130.0
+margin_bottom = 142.0
 size_flags_horizontal = 3
-custom_constants/vseparation = 4
+custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 columns = 5
 
@@ -238,9 +238,9 @@ __meta__ = {
 }
 
 [node name="MilitaryKind" type="Label" parent="All/H1/V2/C"]
-margin_top = 22.0
+margin_top = 26.0
 margin_right = 120.0
-margin_bottom = 40.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 1, 1, 0, 1 )
 text = "----"
@@ -252,9 +252,9 @@ __meta__ = {
 
 [node name="Offence" type="Label" parent="All/H1/V2/C"]
 margin_left = 128.0
-margin_top = 22.0
+margin_top = 26.0
 margin_right = 248.0
-margin_bottom = 40.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
 align = 1
@@ -265,9 +265,9 @@ __meta__ = {
 
 [node name="Defence" type="Label" parent="All/H1/V2/C"]
 margin_left = 256.0
-margin_top = 22.0
+margin_top = 26.0
 margin_right = 376.0
-margin_bottom = 40.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
 align = 1
@@ -278,9 +278,9 @@ __meta__ = {
 
 [node name="Morale" type="Label" parent="All/H1/V2/C"]
 margin_left = 384.0
-margin_top = 22.0
+margin_top = 26.0
 margin_right = 510.0
-margin_bottom = 40.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
 align = 1
@@ -291,9 +291,9 @@ __meta__ = {
 
 [node name="Combativity" type="Label" parent="All/H1/V2/C"]
 margin_left = 518.0
-margin_top = 22.0
+margin_top = 26.0
 margin_right = 638.0
-margin_bottom = 40.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
 align = 1
@@ -303,9 +303,9 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="All/H1/V2/C"]
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 120.0
-margin_bottom = 62.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "SPEED"
@@ -317,9 +317,9 @@ __meta__ = {
 
 [node name="Label8" type="Label" parent="All/H1/V2/C"]
 margin_left = 128.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 248.0
-margin_bottom = 62.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "INITIATIVE"
@@ -331,9 +331,9 @@ __meta__ = {
 
 [node name="B1" type="Label" parent="All/H1/V2/C"]
 margin_left = 256.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 376.0
-margin_bottom = 62.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
@@ -344,9 +344,9 @@ __meta__ = {
 
 [node name="B2" type="Label" parent="All/H1/V2/C"]
 margin_left = 384.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 510.0
-margin_bottom = 62.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
@@ -357,9 +357,9 @@ __meta__ = {
 
 [node name="B3" type="Label" parent="All/H1/V2/C"]
 margin_left = 518.0
-margin_top = 44.0
+margin_top = 52.0
 margin_right = 638.0
-margin_bottom = 62.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
@@ -369,9 +369,9 @@ __meta__ = {
 }
 
 [node name="Speed" type="Label" parent="All/H1/V2/C"]
-margin_top = 66.0
+margin_top = 78.0
 margin_right = 120.0
-margin_bottom = 84.0
+margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
 align = 1
@@ -382,50 +382,11 @@ __meta__ = {
 
 [node name="Initiative" type="Label" parent="All/H1/V2/C"]
 margin_left = 128.0
-margin_top = 66.0
+margin_top = 78.0
 margin_right = 248.0
-margin_bottom = 84.0
+margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="B4" type="Label" parent="All/H1/V2/C"]
-margin_left = 256.0
-margin_top = 66.0
-margin_right = 376.0
-margin_bottom = 84.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="B5" type="Label" parent="All/H1/V2/C"]
-margin_left = 384.0
-margin_top = 66.0
-margin_right = 510.0
-margin_bottom = 84.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="B6" type="Label" parent="All/H1/V2/C"]
-margin_left = 518.0
-margin_top = 66.0
-margin_right = 638.0
-margin_bottom = 84.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
 valign = 1
 __meta__ = {
