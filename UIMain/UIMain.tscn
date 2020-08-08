@@ -94,15 +94,19 @@ margin_bottom = 250.0
 
 [node name="PersonList" parent="." instance=ExtResource( 5 )]
 visible = false
+margin_bottom = -88.0
 
 [node name="ArchitectureList" parent="." instance=ExtResource( 9 )]
 visible = false
+margin_bottom = -88.0
 
 [node name="FactionList" parent="." instance=ExtResource( 22 )]
 visible = false
+margin_bottom = -88.0
 
 [node name="MilitaryKindList" parent="." instance=ExtResource( 11 )]
 visible = false
+margin_bottom = -88.0
 
 [node name="CreateTroop" parent="." instance=ExtResource( 12 )]
 visible = false
@@ -196,9 +200,9 @@ text = "草原 (123, 456)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
