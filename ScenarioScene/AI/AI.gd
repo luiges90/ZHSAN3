@@ -23,13 +23,16 @@ func run_faction(faction: Faction, scenario):
 func run_section(faction: Faction, section: Section, scenario):
 	if not faction.player_controlled:
 		_ai_allocation._allocate_person(section)
+
 	for arch in section.get_architectures():
 		if not faction.player_controlled or arch.auto_task:
 			_ai_architecture._assign_task(arch, scenario)
+	
 	for arch in section.get_architectures():
 		if not faction.player_controlled:
 			_ai_campaign.defence(arch, section, scenario)
 			_ai_campaign.offence(arch, section, scenario)
+	
 	for troop in section.get_troops():
 		if not faction.player_controlled:
 			_ai_troop.run_troop(troop, scenario)
@@ -56,9 +59,6 @@ func _frontline_connected_archs(arch: Architecture) -> Array:
 		if other_faction != null and other_faction.is_enemy_to(arch.get_belonged_faction()):
 			archs.append(_scenario.architectures[arch_id])
 	return archs
-	
-func __compare_by_person_leader_value_desc(p, q):
-	return p.leader_value() > q.leader_value
 
 func _estimated_arch_military_power(arch) -> float:
 	if arch.troop <= 0:
@@ -82,9 +82,15 @@ func _estimated_arch_military_power(arch) -> float:
 	var troop_left = arch.troop
 	for p in persons:
 		var use_troop = p.get_max_troop_quantity()
-		total_power += p.get_leader_value() * min(troop_left, use_troop) * (troop_power * (float(use_troop) / arch.troop))
+		total_power += p.get_troop_leader_merit() * min(troop_left, use_troop) * (troop_power * (float(use_troop) / arch.troop))
 		troop_left -= use_troop
 		if troop_left <= 0:
 			break
 	
 	return total_power
+
+func __compare_by_person_troop_leader_merit_desc(p, q):
+	return p.get_troop_leader_merit() > q.get_troop_leader_merit()
+	
+func __compare_by_person_troop_leader_merit_asc(p, q):
+	return p.get_troop_leader_merit() < q.get_troop_leader_merit()

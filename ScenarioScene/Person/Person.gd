@@ -116,7 +116,10 @@ func get_train_troop_ability():
 func get_produce_equipment_ability():
 	return 0.5 * intelligence + 0.5 * politics
 	
-func get_leader_value():
+func get_merit():
+	return command + strength + intelligence + politics + glamour
+	
+func get_troop_leader_merit():
 	return command * 1.7 + strength * 0.3
 	
 func set_working_task(work):

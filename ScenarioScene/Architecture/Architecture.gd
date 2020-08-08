@@ -137,7 +137,7 @@ func set_adjacency(archs, ai_paths):
 ####################################
 func is_frontline() -> bool:
 	for arch_id in adjacent_archs:
-		if scenario.architectures[arch_id].get_belonged_faction().is_enemy_to(get_belonged_faction()):
+		if scenario.architectures[arch_id].get_belonged_faction() == null or scenario.architectures[arch_id].get_belonged_faction().is_enemy_to(get_belonged_faction()):
 			return true
 	return false
 
