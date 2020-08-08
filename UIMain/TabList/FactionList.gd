@@ -11,6 +11,10 @@ func _ready():
 	$Tabs.remove_child($Tabs/Tab3)
 	$Tabs.remove_child($Tabs/Tab4)
 	
+func _on_InfoMenu_factions_clicked(scenario):
+	current_action = Action.LIST
+	show_data(scenario.factions.values())
+	
 func show_data(list: Array):
 	match current_action:
 		Action.LIST: 

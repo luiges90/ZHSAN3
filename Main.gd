@@ -64,6 +64,7 @@ func _register_menus():
 	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
 	
 	$UICanvas/UIMain/InfoMenu.connect("military_kind_clicked", $UICanvas/UIMain/MilitaryKindList, "_on_InfoMenu_military_kind_clicked", [$Scenario])
+	$UICanvas/UIMain/InfoMenu.connect("factions_clicked", $UICanvas/UIMain/FactionList, "_on_InfoMenu_factions_clicked", [$Scenario])
 	
 	$UICanvas/UIMain/TroopMenu.connect("move_clicked", $Scenario, "_on_troop_move_clicked")
 	$UICanvas/UIMain/TroopMenu.connect("attack_clicked", $Scenario, "_on_troop_attack_clicked")
