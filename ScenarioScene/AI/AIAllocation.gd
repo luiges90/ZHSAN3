@@ -1,30 +1,40 @@
 extends Node
 class_name AIAllocation
 
+enum _ARCH_CLASS {
+	BACKLINE, FRONTLINE_BLANK, FRONTLINE, UNDER_ATTACK
+}
+
 var _ai
 
 var __section
 var __backline_archs
+var __frontline_blank_archs
 var __frontline_archs
+var __under_attack_archs
 
 func _init(ai):
 	_ai = ai
 
 func _allocate_person(section: Section):
-	if randf() > 1 / 30.0:
-		return
 	if section.get_architectures().size() <= 1:
 		return
 	
 	__section = section
 	__backline_archs = []
+	__frontline_blank_archs = []
 	__frontline_archs = []
+	__under_attack_archs = []
 	
 	for a in section.get_architectures():
-		if a.is_frontline():
-			__frontline_archs.append(a)
-		else:
-			__backline_archs.append(a)
+		match __arch_class(a):
+			_ARCH_CLASS.UNDER_ATTACK: __under_attack_archs.append(a)
+			_ARCH_CLASS.FRONTLINE: __frontline_archs.append(a)
+			_ARCH_CLASS.FRONTLINE_BLANK: __frontline_blank_archs.append(a)
+			_: __backline_archs.append(a)
+			
+	if randf() > 1 / 10.0 and __under_attack_archs.size() <= 0:
+		return
 	
 	var sha = section.get_architectures()
 	sha.shuffle()
@@ -55,24 +65,44 @@ func _allocate_person(section: Section):
 func __needed_person_state(a):
 	var total_person_count = __section.get_persons().size()
 	
-	var frontline_person_to_backline_ratio = 3.0
-	var max_backline_person_count = 3
+	var under_attack_person_to_backline_ratio = 7.0
+	var frontline_person_to_backline_ratio = 5.0
+	var frontline_blank_person_to_backline_ratio = 2.0
 	
-	var arch_count_unit = __frontline_archs.size() * frontline_person_to_backline_ratio + __backline_archs.size()
-	var person_count_unit = min(max_backline_person_count, max(total_person_count / arch_count_unit, 1))
-	if person_count_unit >= max_backline_person_count:
-		frontline_person_to_backline_ratio = (total_person_count - __backline_archs.size() * max_backline_person_count) / __frontline_archs.size() / person_count_unit
+	var arch_count_unit = __backline_archs.size()
+	arch_count_unit += __frontline_blank_archs.size() * frontline_blank_person_to_backline_ratio
+	arch_count_unit += __frontline_archs.size() * frontline_person_to_backline_ratio
+	arch_count_unit += __under_attack_archs.size() * under_attack_person_to_backline_ratio
+
+	var person_count_unit = total_person_count / arch_count_unit
 
 	var count
 	var frontline
-	if a.is_frontline():
-		count = person_count_unit * frontline_person_to_backline_ratio
-		frontline = true
-	else:
-		count = person_count_unit
-		frontline = false
+	match __arch_class(a):
+		_ARCH_CLASS.UNDER_ATTACK:
+			count = person_count_unit * under_attack_person_to_backline_ratio
+			frontline = true
+		_ARCH_CLASS.FRONTLINE:
+			count = person_count_unit * frontline_person_to_backline_ratio
+			frontline = true
+		_ARCH_CLASS.FRONTLINE_BLANK: 
+			count = person_count_unit * frontline_blank_person_to_backline_ratio
+			frontline = false
+		_:
+			count = person_count_unit
+			frontline = false
+
 	return {
 		"count": count,
 		"frontline": frontline
 	}
 
+func __arch_class(a):
+	if a.enemy_troop_in_range(6):
+		return _ARCH_CLASS.UNDER_ATTACK
+	elif a.is_frontline():
+		return _ARCH_CLASS.FRONTLINE
+	elif a.is_frontline_including_blank():
+		return _ARCH_CLASS.FRONTLINE_BLANK
+	else:
+		return _ARCH_CLASS.BACKLINE

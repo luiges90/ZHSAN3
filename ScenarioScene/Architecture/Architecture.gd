@@ -46,7 +46,7 @@ func forbidden(x):
 func _draw():
 	pass
 	# TODO create debug draw
-	# for a in adjacent_archs:
+	#for a in adjacent_archs:
 	#	var arch = scenario.architectures[a]
 	#	var dest = arch.get_global_transform_with_canvas().origin - get_global_transform_with_canvas().origin
 	#	draw_line(Vector2(0, 0), dest, Color(255, 0, 0), 5, true)
@@ -136,6 +136,12 @@ func set_adjacency(archs, ai_paths):
 #             Get stat             #
 ####################################
 func is_frontline() -> bool:
+	for arch_id in adjacent_archs:
+		if scenario.architectures[arch_id].get_belonged_faction() != null and scenario.architectures[arch_id].get_belonged_faction().is_enemy_to(get_belonged_faction()):
+			return true
+	return false
+	
+func is_frontline_including_blank() -> bool:
 	for arch_id in adjacent_archs:
 		if scenario.architectures[arch_id].get_belonged_faction() == null or scenario.architectures[arch_id].get_belonged_faction().is_enemy_to(get_belonged_faction()):
 			return true
