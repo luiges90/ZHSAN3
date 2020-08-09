@@ -14,6 +14,7 @@ var terrain_details = Dictionary() setget forbidden
 var movement_kinds = Dictionary() setget forbidden
 var architecture_kinds = Dictionary() setget forbidden
 var military_kinds = Dictionary() setget forbidden
+var skills = Dictionary() setget forbidden
 
 var ai_paths = Dictionary() setget forbidden
 
@@ -122,6 +123,10 @@ func _save_data(path):
 	))
 	file.close()
 	
+	file.open(path + "/Skills.json", File.WRITE)
+	file.store_line(to_json(__save_items(skills)))
+	file.close()
+	
 	file.open(path + "/TerrainDetails.json", File.WRITE)
 	file.store_line(to_json(__save_items(terrain_details)))
 	file.close()
@@ -183,6 +188,13 @@ func _load_data(path):
 	var current_name = obj.get("Scenario")
 	if current_name != null:
 		current_scenario_name = current_name
+	file.close()
+	
+	file.open(path + "/Skills.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = Skill.new()
+		__load_item(instance, item, skills)
 	file.close()
 	
 	file.open(path + "/TerrainDetails.json", File.READ)

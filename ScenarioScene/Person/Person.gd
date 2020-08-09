@@ -32,6 +32,7 @@ var producing_equipment setget forbidden
 
 var task_days = 0 setget forbidden
 
+var skills = [] setget forbidden
 
 func forbidden(x):
 	assert(false)
@@ -69,7 +70,8 @@ func save_data() -> Dictionary:
 		"Politics": politics,
 		"Glamour": glamour,
 		"Task": working_task,
-		"ProducingEquipment": producing_equipment
+		"ProducingEquipment": producing_equipment,
+		"Skills": Util.id_list(skills)
 	}
 	
 ####################################

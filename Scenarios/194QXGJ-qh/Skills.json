@@ -1,0 +1,44 @@
+[
+  {
+    "_Id": 10,
+	"Name": "農政",
+	"Operation": "modify_person_agriculture_ability",
+	"Value": 1.5
+  },
+    {
+    "_Id": 20,
+	"Name": "商政",
+	"Operation": "modify_person_commerce_ability",
+	"Value": 1.5
+  },
+    {
+    "_Id": 30,
+	"Name": "民心",
+	"Operation": "modify_person_morale_ability",
+	"Value": 1.5
+  },
+  {
+    "_Id": 40,
+	"Name": "修補",
+	"Operation": "modify_person_endurance_ability",
+	"Value": 1.5
+  },
+    {
+    "_Id": 50,
+	"Name": "召兵",
+	"Operation": "modify_person_recruit_ability",
+	"Value": 1.5
+  },
+    {
+    "_Id": 60,
+	"Name": "操練",
+	"Operation": "modify_person_training_ability",
+	"Value": 1.5
+  },
+    {
+    "_Id": 70,
+	"Name": "生產",
+	"Operation": "modify_person_produce_equipment_ability",
+	"Value": 1.5
+  }
+]
