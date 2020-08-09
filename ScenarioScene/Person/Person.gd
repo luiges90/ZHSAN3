@@ -129,25 +129,39 @@ func is_faction_leader():
 	return faction != null and faction.get_leader().id == id
 
 func get_agriculture_ability():
-	return 0.25 * intelligence + 0.5 * politics + 0.25 * glamour
+	var base = 0.25 * intelligence + 0.5 * politics + 0.25 * glamour
+	base = apply_influence('modify_person_agriculture_ability', {"value": base})
+	return base
 	
 func get_commerce_ability():
-	return 0.5 * intelligence + 0.25 * politics + 0.25 * glamour
+	var base = 0.5 * intelligence + 0.25 * politics + 0.25 * glamour
+	base = apply_influence('modify_person_commerce_ability', {"value": base})
+	return base
 	
 func get_morale_ability():
-	return 0.25 * command + 0.25 * strength + 0.5 * glamour
+	var base = 0.25 * command + 0.25 * strength + 0.5 * glamour
+	base = apply_influence('modify_person_morale_ability', {"value": base})
+	return base
 	
 func get_endurance_ability():
-	return 0.25 * command + 0.25 * strength + 0.25 * intelligence + 0.25 * politics
+	var base = 0.25 * command + 0.25 * strength + 0.25 * intelligence + 0.25 * politics
+	base = apply_influence('modify_person_endurance_ability', {"value": base})
+	return base
 	
 func get_recruit_troop_ability():
-	return 0.5 * strength + 0.5 * glamour
+	var base = 0.5 * strength + 0.5 * glamour
+	base = apply_influence('modify_person_recruit_ability', {"value": base})
+	return base
 	
 func get_train_troop_ability():
-	return 0.5 * command + 0.5 * strength
+	var base = 0.5 * command + 0.5 * strength
+	base = apply_influence('modify_person_training_ability', {"value": base})
+	return base
 	
 func get_produce_equipment_ability():
-	return 0.5 * intelligence + 0.5 * politics
+	var base = 0.5 * intelligence + 0.5 * politics
+	base = apply_influence('modify_person_produce_equipment_ability', {"value": base})
+	return base
 	
 func get_merit():
 	return command + strength + intelligence + politics + glamour
@@ -196,7 +210,17 @@ func get_portrait():
 				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER]
 			else:
 				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
-	
+
+####################################
+#         Infleunce System         #
+####################################
+func apply_influence(operation, object):
+	if object.has("value"):
+		var value = object["value"]
+		for skill in skills:
+			value = skill.apply_influence(operation, {"value": value})
+		return value
+
 ####################################
 #           Manipulation           #
 ####################################

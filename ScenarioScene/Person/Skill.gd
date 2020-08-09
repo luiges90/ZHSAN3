@@ -28,3 +28,9 @@ func save_data() -> Dictionary:
 
 func get_name() -> String:
 	return gname
+
+func apply_influence(in_operation, objects):
+	if objects.has("value"):
+		if in_operation == operation:
+			return objects["value"] * value
+		return objects["value"]
