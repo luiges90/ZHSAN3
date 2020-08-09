@@ -195,37 +195,37 @@ func get_karma_str():
 
 func get_agriculture_ability():
 	var base = 0.25 * get_intelligence() + 0.5 * get_politics() + 0.25 * get_glamour()
-	base = apply_influence('modify_person_agriculture_ability', {"value": base})
+	base = apply_influences('modify_person_agriculture_ability', {"value": base})
 	return base
 	
 func get_commerce_ability():
 	var base = 0.5 * get_intelligence() + 0.25 * get_politics() + 0.25 * get_glamour()
-	base = apply_influence('modify_person_commerce_ability', {"value": base})
+	base = apply_influences('modify_person_commerce_ability', {"value": base})
 	return base
 	
 func get_morale_ability():
 	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.5 * get_glamour()
-	base = apply_influence('modify_person_morale_ability', {"value": base})
+	base = apply_influences('modify_person_morale_ability', {"value": base})
 	return base
 	
 func get_endurance_ability():
 	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.25 * get_intelligence() + 0.25 * get_politics()
-	base = apply_influence('modify_person_endurance_ability', {"value": base})
+	base = apply_influences('modify_person_endurance_ability', {"value": base})
 	return base
 	
 func get_recruit_troop_ability():
 	var base = 0.5 * get_strength() + 0.5 * get_glamour()
-	base = apply_influence('modify_person_recruit_ability', {"value": base})
+	base = apply_influences('modify_person_recruit_ability', {"value": base})
 	return base
 	
 func get_train_troop_ability():
 	var base = 0.5 * get_command() + 0.5 * get_strength()
-	base = apply_influence('modify_person_training_ability', {"value": base})
+	base = apply_influences('modify_person_training_ability', {"value": base})
 	return base
 	
 func get_produce_equipment_ability():
 	var base = 0.5 * get_intelligence() + 0.5 * get_politics()
-	base = apply_influence('modify_person_produce_equipment_ability', {"value": base})
+	base = apply_influences('modify_person_produce_equipment_ability', {"value": base})
 	return base
 	
 func get_merit():
@@ -279,11 +279,11 @@ func get_portrait():
 ####################################
 #         Infleunce System         #
 ####################################
-func apply_influence(operation, object):
-	if object.has("value"):
-		var value = object["value"]
+func apply_influences(operation, params):
+	if params.has("value"):
+		var value = params["value"]
 		for skill in skills:
-			value = skill.apply_influence(operation, {"value": value})
+			value = skill.apply_influences(operation, {"value": value})
 		return value
 
 ####################################
