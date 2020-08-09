@@ -13,6 +13,8 @@ func _input(event):
 			hide()
 
 func set_data():
+	$Description.bbcode_text = ""
+	
 	$Portrait.texture = current_person.get_portrait()
 	$Name.text = current_person.get_full_name()
 	
@@ -27,9 +29,29 @@ func set_data():
 	$Abilities/Intelligence.text = str(current_person.intelligence)
 	$Abilities/Politics.text = str(current_person.politics)
 	$Abilities/Glamour.text = str(current_person.glamour)
+	
+	Util.delete_all_children($Skills)
+	for skill in current_person.skills:
+		var label = LinkButton.new()
+		label.text = skill.get_name()
+		label.add_color_override("font_color", skill.color)
+		label.underline = LinkButton.UNDERLINE_MODE_NEVER
+		label.mouse_default_cursor_shape = Control.CURSOR_ARROW
+		label.connect("pressed", self, "_on_skill_clicked", [skill])
+		label.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		$Skills.add_child(label)
 
 
 func _on_PersonList_person_row_clicked(person):
 	current_person = person
 	set_data()
 	show()
+
+func _on_skill_clicked(skill):
+	var description = $Description as RichTextLabel
+	var bbcode = ""
+	bbcode += "[color=#FF7700]" + tr("SKILLS") + "[/color] "
+	bbcode += "[color=#" + skill.color.to_html() + "]" + skill.get_name() + "[/color]\n"
+	bbcode += skill.description
+	description.bbcode_text = bbcode

@@ -12,6 +12,5 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 
-userdata/Saves/*
-Tools/*
-!Tools/*.py
+Tools/*.json
+*.lnk

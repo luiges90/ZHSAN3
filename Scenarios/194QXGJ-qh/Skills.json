@@ -2,42 +2,56 @@
   {
     "_Id": 10,
 	"Name": "農政",
+	"Description": "農業能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
 	"Operation": "modify_person_agriculture_ability",
 	"Value": 1.5
   },
     {
     "_Id": 20,
 	"Name": "商政",
+	"Description": "商業能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
 	"Operation": "modify_person_commerce_ability",
 	"Value": 1.5
   },
     {
     "_Id": 30,
 	"Name": "民心",
+	"Description": "民心能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
 	"Operation": "modify_person_morale_ability",
 	"Value": 1.5
   },
   {
     "_Id": 40,
 	"Name": "修補",
+	"Description": "耐久能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
 	"Operation": "modify_person_endurance_ability",
 	"Value": 1.5
   },
     {
     "_Id": 50,
 	"Name": "召兵",
+	"Description": "徵兵能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
 	"Operation": "modify_person_recruit_ability",
 	"Value": 1.5
   },
     {
     "_Id": 60,
 	"Name": "操練",
+	"Description": "訓練能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
 	"Operation": "modify_person_training_ability",
 	"Value": 1.5
   },
     {
     "_Id": 70,
 	"Name": "生產",
+	"Description": "生產兵裝能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
 	"Operation": "modify_person_produce_equipment_ability",
 	"Value": 1.5
   }
