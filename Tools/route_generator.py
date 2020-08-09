@@ -10,10 +10,10 @@ import json
 from io import StringIO
 
 map_file_path = '../ScenarioScene/GameMap/Zhsan2.tmx'
-scen_file_path = '194QXGJ-qh'
+scen_file_path = '../Scenarios/194QXGJ-qh'
 MAX_DISTANCE = 100
-MAX_RUNS = 5000
-ARCH_EXCLUSION_RANGE = 50
+MAX_RUNS = [200, 400, 800, 1600]
+ARCH_EXCLUSION_RANGE = 6
 ARCH_EXCLUSION_RANGE_SELF = 6
 
 print('ZHSan route generator. Scenario file path:', scen_file_path)
@@ -94,60 +94,73 @@ for a in architectures:
 			arch_exclusion_self[r][c].append(a)
 
 print('Calculating paths')
-created_paths_summary = {}
 for kind in movement_kinds:
 	kind_paths = []
+	path_founds = {}
 	print('Calulcating path for Movement Kind',kind,'Data',movement_kinds[kind])
 	for a1 in architectures:
-		for a2 in architectures:
-			if a1 < a2:
-				if abs(architectures[a1][0] - architectures[a2][0]) + abs(architectures[a1][1] - architectures[a2][1]) > MAX_DISTANCE:
-					# print('SKIP Architecture',a1,'to',a2,'Straight line distance too long')
-					continue
-					
-				print('Finding path for Architecture',a1,'to',a2)
-				grid_data = []
-				for r in range(0, len(map_data)):
-					grid_r = []
-					for c in range(0, len(map_data[r])):
-						if len(arch_exclusion[r][c]) == 0 or a1 in arch_exclusion_self[r][c] or a2 in arch_exclusion_self[r][c]:
-							grid_r.append(movement_kinds[kind][str(map_data[r][c])])
-						else:
-							grid_r.append(-1)
-					grid_data.append(grid_r)
-				grid = Grid(matrix=grid_data)
+		path_found = 0
+		if not a1 in path_founds:
+			path_founds[a1] = [0, 0]
+		step_level = path_founds[a1][1]
+		print('Current path founds for ' + str(a1) + ' = ' + str(path_founds[a1][0]) + ' with step_level ' + str(path_founds[a1][1]))
+		while (path_founds[a1][0] == 0 or path_founds[a1][1] >= step_level) and step_level < len(MAX_RUNS):
+			print("Step level " + str(step_level) + "(MAX_RUNS = " + str(MAX_RUNS[step_level]) + ")")
+			for a2 in architectures:
+				if a1 < a2:
+					if abs(architectures[a1][0] - architectures[a2][0]) + abs(architectures[a1][1] - architectures[a2][1]) > MAX_DISTANCE:
+						# print('SKIP Architecture',a1,'to',a2,'Straight line distance too long')
+						continue
+						
+					print('Finding path for Architecture',a1,'to',a2)
+					grid_data = []
+					for r in range(0, len(map_data)):
+						grid_r = []
+						for c in range(0, len(map_data[r])):
+							if len(arch_exclusion[r][c]) == 0 or a1 in arch_exclusion_self[r][c] or a2 in arch_exclusion_self[r][c]:
+								grid_r.append(movement_kinds[kind][str(map_data[r][c])])
+							else:
+								grid_r.append(-1)
+						grid_data.append(grid_r)
+					grid = Grid(matrix=grid_data)
 
-				start = grid.node(architectures[a1][0], architectures[a1][1])
-				end = grid.node(architectures[a2][0], architectures[a2][1])
-				try:
-					finder = AStarFinder(diagonal_movement=DiagonalMovement.never, max_runs=MAX_RUNS)
-					path, runs = finder.find_path(start, end, grid)
-					print('operations:', runs, 'path length:', len(path))
-					# print(grid.grid_str(path=path, start=start, end=end))
-					print('found path:', path)
-				except ExecutionRunsException:
-					print('Path too long')
-					path = []
-				
-				if len(path) > 0:
-					kind_paths.append({
-						'MovementKind': kind,
-						'StartArchitecture': a1,
-						'EndArchitecture': a2,
-						'Path': path
-					})
-					kind_paths.append({
-						'MovementKind': kind,
-						'StartArchitecture': a2,
-						'EndArchitecture': a1,
-						'Path': list(reversed(path))
-					})
-					if a1 in created_paths_summary:
-						created_paths_summary[a1] += [a2]
-					else:
-						created_paths_summary[a1] = [a2]
-				grid.cleanup()
-		print('Created paths',created_paths_summary)
-	print('Created paths',created_paths_summary)
+					start = grid.node(architectures[a1][0], architectures[a1][1])
+					end = grid.node(architectures[a2][0], architectures[a2][1])
+					try:
+						finder = AStarFinder(diagonal_movement=DiagonalMovement.never, max_runs=MAX_RUNS[step_level])
+						path, runs = finder.find_path(start, end, grid)
+						print('operations:', runs, 'path length:', len(path))
+						# print(grid.grid_str(path=path, start=start, end=end))
+						print('found path:', path)
+					except ExecutionRunsException:
+						print('Path too long')
+						path = []
+					
+					if len(path) > 0:
+						path_found += 1
+						kind_paths.append({
+							'MovementKind': kind,
+							'StartArchitecture': a1,
+							'EndArchitecture': a2,
+							'Path': path
+						})
+						kind_paths.append({
+							'MovementKind': kind,
+							'StartArchitecture': a2,
+							'EndArchitecture': a1,
+							'Path': list(reversed(path))
+						})
+						
+						path_founds[a1] = [path_founds[a1][0] + 1, max(path_founds[a1][1], step_level)]
+						if not a2 in path_founds:
+							path_founds[a2] = [0, 0]
+						path_founds[a2] = [path_founds[a2][0] + 1, max(path_founds[a2][1], step_level)]
+						print('Current path founds for ' + str(a1) + ' = ' + str(path_founds[a1][0]) + ' with step_level ' + str(path_founds[a1][1]))
+						print('Current path founds for ' + str(a2) + ' = ' + str(path_founds[a2][0]) + ' with step_level ' + str(path_founds[a2][1]))
+					grid.cleanup()			
+					
+			step_level += 1
+			
+					
 	with open(scen_file_path + '/Paths/' + str(kind) + '.json', mode='w', encoding='utf-8') as fout:
 		fout.write(json.dumps(kind_paths, indent=0, separators=(',',':'), ensure_ascii=False, sort_keys=True))
