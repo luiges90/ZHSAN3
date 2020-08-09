@@ -41,7 +41,7 @@ func forbidden(x):
 #           Save / Load            #
 ####################################
 
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	_status = int(json["Status"])
 	gender = json["Gender"]
@@ -55,6 +55,8 @@ func load_data(json: Dictionary):
 	glamour = int(json["Glamour"])
 	working_task = int(json["Task"])
 	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
+	for id in json["Skills"]:
+		skills.append(objects["skills"][int(id)])
 	
 func save_data() -> Dictionary:
 	return {

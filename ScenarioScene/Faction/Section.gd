@@ -16,9 +16,14 @@ func forbidden(x):
 ####################################
 #             Save / Load          #
 ####################################
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	gname = json["Name"]
+	
+	for id in json["ArchitectureList"]:
+		add_architecture(objects["architectures"][int(id)])
+	for id in json["TroopList"]:
+		add_troop(objects["troops"][int(id)])
 	
 func save_data() -> Dictionary:
 	return {

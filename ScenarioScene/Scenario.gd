@@ -194,21 +194,21 @@ func _load_data(path):
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = Skill.new()
-		__load_item(instance, item, skills)
+		__load_item(instance, item, skills, {})
 	file.close()
 	
 	file.open(path + "/TerrainDetails.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = TerrainDetail.new()
-		__load_item(instance, item, terrain_details)
+		__load_item(instance, item, terrain_details, {})
 	file.close()
 	
 	file.open(path + "/MovementKinds.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = MovementKind.new()
-		__load_item(instance, item, movement_kinds)
+		__load_item(instance, item, movement_kinds, {})
 	file.close()
 	
 	for kind in movement_kinds:
@@ -225,7 +225,7 @@ func _load_data(path):
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = MilitaryKind.new()
-		__load_item(instance, item, military_kinds)
+		__load_item(instance, item, military_kinds, {})
 	file.close()
 	SharedData._load_troop_sprite_frames(military_kinds.values())
 	
@@ -233,14 +233,14 @@ func _load_data(path):
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = ArchitectureKind.new()
-		__load_item(instance, item, architecture_kinds)
+		__load_item(instance, item, architecture_kinds, {})
 	file.close()
 
 	file.open(path + "/Persons.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = Person.new()
-		__load_item(instance, item, persons)
+		__load_item(instance, item, persons, {"skills": skills})
 	file.close()
 	
 	file.open(path + "/Architectures.json", File.READ)
@@ -251,10 +251,7 @@ func _load_data(path):
 		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
 		instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
 		instance.connect("faction_changed", self, "_on_architecture_faction_changed")
-		__load_item(instance, item, architectures)
-		for id in item["PersonList"]:
-			instance.add_person(persons[int(id)])
-		instance.setup_after_load()
+		__load_item(instance, item, architectures, {"persons": persons})
 		instance.setup_after_load()
 	file.close()
 	for item in architectures:
@@ -266,9 +263,7 @@ func _load_data(path):
 	var troop_json = {}
 	for item in obj:
 		var instance = troop_scene.instance()
-		__load_item(instance, item, troops)
-		for id in item["PersonList"]:
-			instance.add_person(persons[int(id)])
+		__load_item(instance, item, troops, {"persons": persons})
 		troop_json[instance.id] = item
 		__connect_signals_for_creating_troop(instance)
 	for tid in troops:
@@ -286,28 +281,20 @@ func _load_data(path):
 				troops[tid].set_attack_order(troop, null)
 			elif order_type == Troop.OrderType.FOLLOW:
 				troops[tid].set_follow_order(troop)
-		
-	
 	file.close()
 	
 	file.open(path + "/Sections.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = Section.new()
-		__load_item(instance, item, sections)
-		for id in item["ArchitectureList"]:
-			instance.add_architecture(architectures[int(id)])
-		for id in item["TroopList"]:
-			instance.add_troop(troops[int(id)])
+		__load_item(instance, item, sections, {"architectures": architectures, "troops": troops})
 	
 	file.open(path + "/Factions.json", File.READ)
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = Faction.new()
 		instance.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
-		__load_item(instance, item, factions)
-		for id in item["SectionList"]:
-			instance.add_section(sections[int(id)])
+		__load_item(instance, item, factions, {"sections": sections})
 		instance._set_leader(persons[int(item["Leader"])])
 	file.close()
 	
@@ -315,9 +302,9 @@ func _load_data(path):
 	emit_signal("scenario_loaded")
 
 	
-func __load_item(instance, item, add_to_list):
+func __load_item(instance, item, add_to_list, objects):
 	instance.scenario = self
-	instance.load_data(item)
+	instance.load_data(item, objects)
 	add_to_list[int(instance.id)] = instance
 	if instance is Architecture or instance is Troop:
 		instance.add_to_group(GROUP_GAME_INSTANCES)

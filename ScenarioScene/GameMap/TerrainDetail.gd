@@ -11,7 +11,7 @@ var terrain_ids = [] setget forbidden
 func forbidden(x):
 	assert(false)
 
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	gname = json["Name"]
 	terrain_ids = json["TerrainIds"]

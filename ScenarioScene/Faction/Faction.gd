@@ -28,11 +28,13 @@ func get_name():
 #           Save / Load            #
 ####################################
 
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	gname = json["Name"]
 	color = Util.load_color(json["Color"])
 	player_controlled = json["PlayerControlled"]
+	for id in json["SectionList"]:
+		add_section(objects["sections"][int(id)])
 	
 func save_data() -> Dictionary:
 	return {

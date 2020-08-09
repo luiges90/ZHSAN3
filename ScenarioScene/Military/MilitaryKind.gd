@@ -27,7 +27,7 @@ var equipment_cost: float setget forbidden
 func forbidden(x):
 	assert(false)
 
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	gname = json["Name"]
 	base_offence = json["BaseOffence"]

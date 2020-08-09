@@ -9,7 +9,7 @@ var movement_cost = {} setget forbidden
 func forbidden(x):
 	assert(false)
 
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	movement_cost = Util.convert_dict_to_int_key(json["MovementCosts"])
 	

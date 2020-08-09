@@ -12,7 +12,7 @@ var value: float setget forbidden
 func forbidden(x):
 	assert(false)
 
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	gname = json["Name"]
 	operation = json["Operation"]

@@ -60,12 +60,15 @@ func _ready():
 ####################################
 #            Save / Load           #
 ####################################
-func load_data(json: Dictionary):
+func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	gname = json["Name"]
 	title = json["Title"]
 	kind = scenario.architecture_kinds[int(json["Kind"])]
 	map_position = Util.load_position(json["MapPosition"])
+	
+	for id in json["PersonList"]:
+		add_person(objects["persons"][int(id)])
 	
 	population = int(json["Population"])
 	military_population = int(json["MilitaryPopulation"])
