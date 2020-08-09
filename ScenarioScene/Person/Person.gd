@@ -34,6 +34,7 @@ var politics_exp: int setget forbidden
 var glamour_exp: int setget forbidden
 
 var popularity: int setget forbidden
+var prestige: int setget forbidden
 var karma: int setget forbidden
 
 var working_task setget forbidden
@@ -68,6 +69,7 @@ func load_data(json: Dictionary, objects):
 	politics_exp = int(json["PoliticsExperience"])
 	glamour_exp = int(json["GlamourExperience"])
 	popularity = int(json["Popularity"])
+	prestige = int(json["Prestige"])
 	karma = int(json["Karma"])
 	working_task = int(json["Task"])
 	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
@@ -93,6 +95,7 @@ func save_data() -> Dictionary:
 		"PoliticsExperience": politics_exp,
 		"GlamourExperience": glamour_exp,
 		"Popularity": popularity,
+		"Prestige": prestige,
 		"Karma": karma,
 		"Task": working_task,
 		"ProducingEquipment": producing_equipment,
@@ -125,6 +128,12 @@ func get_karma():
 	
 func get_karma_str():
 	return str(karma)
+	
+func get_prestige():
+	return prestige
+	
+func get_prestige_str():
+	return str(prestige)
 	
 func get_portrait():
 	if SharedData.person_portraits.has(id):
@@ -291,6 +300,43 @@ func apply_influences(operation, params):
 			value = skill.apply_influences(operation, {"value": value})
 		return value
 
+####################################
+#       Manipulation / Basic       #
+####################################
+func add_popularity(delta):
+	if delta > 0:
+		popularity = Util.f2ri(popularity + delta * (1.0 - popularity / 10000.0))
+	elif delta < 0:
+		popularity = max(0, Util.f2ri(popularity - delta))
+		
+func add_prestige(delta):
+	if delta > 0:
+		prestige = Util.f2ri(prestige + delta * (1.0 - max(0, prestige) / 10000.0))
+	elif delta < 0:
+		if prestige > 0:
+			if abs(delta) <= prestige:
+				prestige = prestige + Util.f2ri(delta)
+				delta = 0
+			else:
+				delta = delta + prestige
+				prestige = 0
+		if delta < 0:
+			prestige = Util.f2ri(prestige + delta * (1.0 - abs(prestige) / 10000.0))
+	
+func add_karma(delta):
+	if delta > 0:
+		karma = Util.f2ri(karma + delta * (1.0 - abs(karma) / 10000.0))
+	elif delta < 0:
+		if karma > 0:
+			if abs(delta) <= karma:
+				karma = karma + Util.f2ri(delta)
+				delta = 0
+			else:
+				delta = delta + karma
+				karma = 0
+		if delta < 0:
+			karma = Util.f2ri(karma + delta * (1.0 - abs(karma) / 10000.0))
+
 #####################################
 # Manipulation / Tasks and Statuses #
 #####################################
@@ -318,7 +364,26 @@ func move_to_architecture(arch):
 	working_task = Task.MOVE
 	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
 		
-		
+####################################
+#     Manipulation / Abilities     #
+####################################
+
+func add_command_exp(delta):
+	command_exp = Util.f2ri(command_exp + delta * (50.0 / (get_command() + 50)))
+	
+func add_strength_exp(delta):
+	strength_exp = Util.f2ri(strength_exp + delta * (50.0 / (get_strength() + 50)))
+	
+func add_intelligence_exp(delta):
+	intelligence_exp = Util.f2ri(intelligence_exp + delta * (50.0 / (get_intelligence() + 50)))
+	
+func add_politics_exp(delta):
+	politics_exp = Util.f2ri(politics_exp + delta * (50.0 / (get_politics() + 50)))
+	
+func add_glamour_exp(delta):
+	glamour_exp = Util.f2ri(glamour_exp + delta * (50.0 / (get_glamour() + 50)))
+	
+
 ####################################
 #             Day event            #
 ####################################

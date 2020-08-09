@@ -373,28 +373,57 @@ func _develop_agriculture(p: Person):
 	if fund > 20:
 		fund -= 20
 		if kind.agriculture > 0:
-			agriculture += Util.f2ri(p.get_agriculture_ability() * 0.04 / max(1, float(agriculture) / kind.agriculture))
+			var delta = Util.f2ri(p.get_agriculture_ability() * 0.04 / max(1, float(agriculture) / kind.agriculture))
+			agriculture += delta
+			p.add_intelligence_exp(5)
+			p.add_politics_exp(10)
+			p.add_glamour_exp(5)
+			p.add_popularity(0.05 * delta)
+			p.add_prestige(0.05 * delta)
+			p.add_karma(0.05 * delta)
 	
 func _develop_commerce(p: Person):
 	if fund > 20:
 		fund -= 20
 		if kind.commerce > 0:
-			commerce += Util.f2ri(p.get_commerce_ability() * 0.04 / max(1, float(commerce) / kind.commerce))
+			var delta = Util.f2ri(p.get_commerce_ability() * 0.04 / max(1, float(commerce) / kind.commerce))
+			commerce += delta
+			p.add_intelligence_exp(10)
+			p.add_politics_exp(5)
+			p.add_glamour_exp(5)
+			p.add_popularity(0.075 * delta)
+			p.add_prestige(0.05 * delta)
+			p.add_karma(0.025 * delta)
 	
 func _develop_morale(p: Person):
 	if fund > 20:
 		fund -= 20
 		if kind.morale > 0:
-			morale += Util.f2ri(p.get_morale_ability() * 0.04 / max(1, float(morale) / kind.morale))
-	
+			var delta = Util.f2ri(p.get_morale_ability() * 0.04 / max(1, float(morale) / kind.morale))
+			morale += delta
+			p.add_command_exp(5)
+			p.add_strength_exp(5)
+			p.add_glamour_exp(10)
+			p.add_popularity(0.075 * delta)
+			p.add_prestige(0.075 * delta)
+			p.add_karma(0.075 * delta)
+			
 func _develop_endurance(p: Person):
 	if enemy_troop_in_range(1).size() > 0:
 		return
 	if fund > 20:
 		fund -= 20
 		if kind.endurance > 0:
-			endurance += Util.f2ri(p.get_endurance_ability() * 0.04 / max(1, float(endurance) / kind.endurance))
-
+			var delta = Util.f2ri(p.get_endurance_ability() * 0.04 / max(1, float(endurance) / kind.endurance))
+			endurance += delta
+			p.add_command_exp(5)
+			p.add_strength_exp(5)
+			p.add_intelligence_exp(5)
+			p.add_politics_exp(5)
+			p.add_popularity(0.05 * delta)
+			p.add_prestige(0.075 * delta)
+			p.add_karma(0.025 * delta)
+			
 func _recruit_troop(p: Person):
 	if fund > 50 and military_population > 0 and morale > 100:
 		fund -= 50
@@ -407,12 +436,22 @@ func _recruit_troop(p: Person):
 			troop_morale = Util.f2ri(troop_morale * old_quantity / float(troop))
 			troop_combativity = Util.f2ri(troop_combativity * old_quantity / float(troop))
 			morale -= Util.f2ri(quantity / 50.0)
+			p.add_strength_exp(10)
+			p.add_glamour_exp(10)
+			p.add_popularity(0.001 * quantity)
+			p.add_prestige(0.001 * quantity)
 	
 func _train_troop(p: Person):
 	if fund > 20:
 		fund -= 20
-		troop_morale += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.2))
-		troop_combativity += min(100, Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_combativity + 10.0) - 1) * 0.2))
+		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1)
+		var delta2 = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.2)
+		troop_morale = min(100, troop_morale + delta)
+		troop_combativity = min(100, troop_combativity + delta2)
+		p.add_command_exp(10)
+		p.add_strength_exp(10)
+		p.add_popularity(0.1)
+		p.add_prestige(0.1)
 
 func _produce_equipment(p: Person):
 	var equipment = p.producing_equipment
@@ -423,6 +462,10 @@ func _produce_equipment(p: Person):
 			amount = floor(fund / cost)
 		fund -= amount * cost
 		equipments[equipment] += amount
+		p.add_intelligence_exp(10)
+		p.add_politics_exp(10)
+		p.add_popularity(0.003 * amount)
+		p.add_prestige(0.002 * amount)
 		
 func accept_entering_troop(in_troop):
 	troop_morale = int((troop * troop_morale + in_troop.quantity * in_troop.morale) / (troop + in_troop.quantity))

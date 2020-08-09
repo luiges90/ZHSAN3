@@ -53,13 +53,13 @@ margin_top = 64.0
 margin_right = -16.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
-columns = 7
+columns = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label10" type="Label" parent="Status"]
-margin_right = 95.0
+margin_right = 80.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -70,8 +70,8 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="Status"]
-margin_left = 103.0
-margin_right = 198.0
+margin_left = 88.0
+margin_right = 168.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -82,8 +82,8 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="Status"]
-margin_left = 206.0
-margin_right = 301.0
+margin_left = 176.0
+margin_right = 256.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -94,8 +94,8 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="Status"]
-margin_left = 309.0
-margin_right = 404.0
+margin_left = 264.0
+margin_right = 344.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -106,8 +106,8 @@ __meta__ = {
 }
 
 [node name="Label9" type="Label" parent="Status"]
-margin_left = 412.0
-margin_right = 507.0
+margin_left = 352.0
+margin_right = 432.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -118,8 +118,8 @@ __meta__ = {
 }
 
 [node name="Label12" type="Label" parent="Status"]
-margin_left = 515.0
-margin_right = 616.0
+margin_left = 440.0
+margin_right = 541.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -129,9 +129,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label13" type="Label" parent="Status"]
+margin_left = 549.0
+margin_right = 630.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "PRESTIGE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label11" type="Label" parent="Status"]
-margin_left = 624.0
-margin_right = 719.0
+margin_left = 638.0
+margin_right = 718.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -143,7 +155,7 @@ __meta__ = {
 
 [node name="Gender" type="Label" parent="Status"]
 margin_top = 26.0
-margin_right = 95.0
+margin_right = 80.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "男"
@@ -153,9 +165,9 @@ __meta__ = {
 }
 
 [node name="Faction" type="Label" parent="Status"]
-margin_left = 103.0
+margin_left = 88.0
 margin_top = 26.0
-margin_right = 198.0
+margin_right = 168.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火"
@@ -165,9 +177,9 @@ __meta__ = {
 }
 
 [node name="Section" type="Label" parent="Status"]
-margin_left = 206.0
+margin_left = 176.0
 margin_top = 26.0
-margin_right = 301.0
+margin_right = 256.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火軍團"
@@ -177,9 +189,9 @@ __meta__ = {
 }
 
 [node name="Location" type="Label" parent="Status"]
-margin_left = 309.0
+margin_left = 264.0
 margin_top = 26.0
-margin_right = 404.0
+margin_right = 344.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒陽"
@@ -189,9 +201,9 @@ __meta__ = {
 }
 
 [node name="Status" type="Label" parent="Status"]
-margin_left = 412.0
+margin_left = 352.0
 margin_top = 26.0
-margin_right = 507.0
+margin_right = 432.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "君主"
@@ -201,9 +213,21 @@ __meta__ = {
 }
 
 [node name="Popularity" type="Label" parent="Status"]
-margin_left = 515.0
+margin_left = 440.0
 margin_top = 26.0
-margin_right = 616.0
+margin_right = 541.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prestige" type="Label" parent="Status"]
+margin_left = 549.0
+margin_top = 26.0
+margin_right = 630.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
@@ -213,9 +237,9 @@ __meta__ = {
 }
 
 [node name="Karma" type="Label" parent="Status"]
-margin_left = 624.0
+margin_left = 638.0
 margin_top = 26.0
-margin_right = 719.0
+margin_right = 718.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "10"

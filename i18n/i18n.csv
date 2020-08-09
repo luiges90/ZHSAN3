@@ -120,4 +120,10 @@ FEMALE,Female,女,女
 LOCATION,Location,位置,位置
 SKILLS,Skills,技能,技能
 POPULARITY,Popularity,名聲,名聲
+PRESTIGE,Prestige,聲望,聲望
 KARMA,Karma,善名,善名
+COMMAND_EXPERIENCE,Command Exp.,统兵經驗,統兵經驗
+STRENGTH_EXPERIENCE,Strength Exp.,武艺經驗,武藝經驗
+INTELLIGENCE_EXPERIENCE,Intelligence Exp.,智略經驗,智略經驗
+POLITICS_EXPERIENCE,Politics Exp.,政略經驗,政略經驗
+GLAMOUR_EXPERIENCE,Glamour Exp.,人德經驗,人德經驗
