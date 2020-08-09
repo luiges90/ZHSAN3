@@ -2,6 +2,29 @@ import json
 
 dev = True
 
+def convert_skills(object):
+	ids = object['SkillsString'].split(' ')
+	skills = []
+	for sid in ids:
+		if len(sid) > 0:
+			id = int(sid)
+			if id == 10:
+				skills.append(10)
+			elif id == 11:
+				skills.append(20)
+			elif id == 14:
+				skills.append(30)
+			elif id == 15:
+				skills.append(40)
+			elif id == 16:
+				skills.append(50)
+			elif id == 6:
+				skills.append(60)
+			elif id == 12:
+				skills.append(70)
+	return skills
+
+
 output_folder = '../Scenarios/194QXGJ-qh'
 file_name = '194QXGJ-qh'
 with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
@@ -206,7 +229,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Politics": k['BasePolitics'],
 					"Glamour": k['BaseGlamour'],
 					"Task": 0,
-					"ProducingEquipment": None
+					"ProducingEquipment": None,
+					"Skills": convert_skills(k)
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
