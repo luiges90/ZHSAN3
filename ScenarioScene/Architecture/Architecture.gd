@@ -49,7 +49,7 @@ func _draw():
 	for a in adjacent_archs:
 		var arch = scenario.architectures[a]
 		var dest = arch.get_global_transform_with_canvas().origin - get_global_transform_with_canvas().origin
-		draw_line(Vector2(0, 0), dest, Color(255, 0, 0), 5, true)
+		draw_line(Vector2(56, 56), dest, Color(255, 0, 0), 5, true)
 
 func _ready():
 	if scenario:
