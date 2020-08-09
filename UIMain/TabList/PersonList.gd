@@ -19,11 +19,21 @@ enum Action {
 signal person_selected
 signal person_row_clicked
 
+var _detail_showing = false
+
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('ABILITY'))
 	$Tabs.set_tab_title(2, tr('INTERNAL'))
 	$Tabs.set_tab_title(3, tr('MILITARY'))
+	
+func handle_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			if _detail_showing:
+				_detail_showing = false
+			else:
+				.handle_input(event)
 
 
 func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
@@ -199,4 +209,4 @@ func _on_CreateTroop_select_leader(arch, persons):
 
 func __on_clickable_label_click(label, person):
 	emit_signal('person_row_clicked', person)
-	
+	_detail_showing = true
