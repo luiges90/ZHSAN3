@@ -83,13 +83,15 @@ func _populate_basic_data(person_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 6
+		item_list.columns = 8
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 5
+		item_list.columns = 7
 	item_list.add_child(_title(tr('PERSON_NAME')))
 	item_list.add_child(_title(tr('BELONGED_ARCHITECTURE')))
 	item_list.add_child(_title(tr('STATUS')))
+	item_list.add_child(_title(tr('POPULARITY')))
+	item_list.add_child(_title(tr('KARMA')))
 	item_list.add_child(_title(tr('TASK')))
 	item_list.add_child(_title(tr('TASK_DAYS')))
 	for person in person_list:
@@ -98,6 +100,8 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_location().get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_status_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_popularity()), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_karma()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_working_task_str(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.task_days) + tr('DAY_UNIT'), self, "__on_clickable_label_click", person))
 
@@ -119,11 +123,11 @@ func _populate_ability_data(person_list: Array, action):
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.command), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.strength), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.intelligence), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.politics), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.glamour), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_command()), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_strength()), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_intelligence()), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_politics()), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_glamour()), self, "__on_clickable_label_click", person))
 		
 func _populate_internal_data(person_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer

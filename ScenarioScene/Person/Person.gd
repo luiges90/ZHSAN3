@@ -27,6 +27,15 @@ var intelligence: int setget forbidden
 var politics: int setget forbidden
 var glamour: int setget forbidden
 
+var command_exp: int setget forbidden
+var strength_exp: int setget forbidden
+var intelligence_exp: int setget forbidden
+var politics_exp: int setget forbidden
+var glamour_exp: int setget forbidden
+
+var popularity: int setget forbidden
+var karma: int setget forbidden
+
 var working_task setget forbidden
 var producing_equipment setget forbidden
 
@@ -53,6 +62,13 @@ func load_data(json: Dictionary, objects):
 	intelligence = int(json["Intelligence"])
 	politics = int(json["Politics"])
 	glamour = int(json["Glamour"])
+	command_exp = int(json["CommandExperience"])
+	strength_exp = int(json["StrengthExperience"])
+	intelligence_exp = int(json["IntelligenceExperience"])
+	politics_exp = int(json["PoliticsExperience"])
+	glamour_exp = int(json["GlamourExperience"])
+	popularity = int(json["Popularity"])
+	karma = int(json["Karma"])
 	working_task = int(json["Task"])
 	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
 	for id in json["Skills"]:
@@ -71,6 +87,13 @@ func save_data() -> Dictionary:
 		"Intelligence": intelligence,
 		"Politics": politics,
 		"Glamour": glamour,
+		"CommandExperience": command_exp,
+		"StrengthExperience": strength_exp,
+		"IntelligenceExperience": intelligence_exp,
+		"PoliticsExperience": politics_exp,
+		"GlamourExperience": glamour_exp,
+		"Popularity": popularity,
+		"Karma": karma,
 		"Task": working_task,
 		"ProducingEquipment": producing_equipment,
 		"Skills": Util.id_list(skills)
@@ -127,47 +150,89 @@ func get_belonged_section_str():
 func is_faction_leader():
 	var faction = get_belonged_faction()
 	return faction != null and faction.get_leader().id == id
+	
+func get_command():
+	return command + command_exp / 1000
+	
+func get_command_detail_str():
+	return str(command) + "(+" + str(command_exp / 1000) + ")"
+	
+func get_strength():
+	return strength + strength_exp / 1000
+	
+func get_strength_detail_str():
+	return str(strength) + "(+" + str(strength_exp / 1000) + ")"
+	
+func get_intelligence():
+	return intelligence + intelligence_exp / 1000
+	
+func get_intelligence_detail_str():
+	return str(intelligence) + "(+" + str(intelligence_exp / 1000) + ")"
+	
+func get_politics():
+	return politics + politics_exp / 1000
+	
+func get_politics_detail_str():
+	return str(politics) + "(+" + str(politics_exp / 1000) + ")"
+	
+func get_glamour():
+	return glamour + glamour_exp / 1000
+	
+func get_glamour_detail_str():
+	return str(glamour) + "(+" + str(glamour_exp / 1000) + ")"
+	
+func get_popularity():
+	return popularity
+	
+func get_popularity_str():
+	return str(popularity)
+	
+func get_karma():
+	return karma
+	
+func get_karma_str():
+	return str(karma)
 
 func get_agriculture_ability():
-	var base = 0.25 * intelligence + 0.5 * politics + 0.25 * glamour
+	var base = 0.25 * get_intelligence() + 0.5 * get_politics() + 0.25 * get_glamour()
 	base = apply_influence('modify_person_agriculture_ability', {"value": base})
 	return base
 	
 func get_commerce_ability():
-	var base = 0.5 * intelligence + 0.25 * politics + 0.25 * glamour
+	var base = 0.5 * get_intelligence() + 0.25 * get_politics() + 0.25 * get_glamour()
 	base = apply_influence('modify_person_commerce_ability', {"value": base})
 	return base
 	
 func get_morale_ability():
-	var base = 0.25 * command + 0.25 * strength + 0.5 * glamour
+	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.5 * get_glamour()
 	base = apply_influence('modify_person_morale_ability', {"value": base})
 	return base
 	
 func get_endurance_ability():
-	var base = 0.25 * command + 0.25 * strength + 0.25 * intelligence + 0.25 * politics
+	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.25 * get_intelligence() + 0.25 * get_politics()
 	base = apply_influence('modify_person_endurance_ability', {"value": base})
 	return base
 	
 func get_recruit_troop_ability():
-	var base = 0.5 * strength + 0.5 * glamour
+	var base = 0.5 * get_strength() + 0.5 * get_glamour()
 	base = apply_influence('modify_person_recruit_ability', {"value": base})
 	return base
 	
 func get_train_troop_ability():
-	var base = 0.5 * command + 0.5 * strength
+	var base = 0.5 * get_command() + 0.5 * get_strength()
 	base = apply_influence('modify_person_training_ability', {"value": base})
 	return base
 	
 func get_produce_equipment_ability():
-	var base = 0.5 * intelligence + 0.5 * politics
+	var base = 0.5 * get_intelligence() + 0.5 * get_politics()
 	base = apply_influence('modify_person_produce_equipment_ability', {"value": base})
 	return base
 	
 func get_merit():
-	return command + strength + intelligence + politics + glamour
+	return get_command() + get_strength() + get_intelligence() + get_politics() + get_glamour()
 	
 func get_troop_leader_merit():
-	return command * 1.7 + strength * 0.3
+	return get_command() * 1.7 + get_strength() * 0.3
 	
 	
 func get_working_task_str():

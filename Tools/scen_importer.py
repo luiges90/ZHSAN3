@@ -24,7 +24,6 @@ def convert_skills(object):
 				skills.append(70)
 	return skills
 
-
 output_folder = '../Scenarios/194QXGJ-qh'
 file_name = '194QXGJ-qh'
 with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
@@ -228,6 +227,13 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Intelligence": k['BaseIntelligence'],
 					"Politics": k['BasePolitics'],
 					"Glamour": k['BaseGlamour'],
+					"CommandExperience": 0,
+					"StrengthExperience": 0,
+					"IntelligenceExperience": 0,
+					"PoliticsExperience": 0,
+					"GlamourExperience": 0,
+					"Popularity": int(min(1000, k['Reputation'] / 50)),
+					"Karma": k['Karma'] * 10,
 					"Task": 0,
 					"ProducingEquipment": None,
 					"Skills": convert_skills(k)

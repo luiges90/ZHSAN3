@@ -16,20 +16,22 @@ func get_leader():
 	return get_persons()[0]
 
 func get_strength():
-	var strength = get_leader().strength
+	var strength = get_leader().get_strength()
 	var max_strength = 0
 	for p in get_persons():
-		if p.strength > max_strength:
-			max_strength = p.strength
+		var sub_strength = p.get_strength()
+		if p.get_strength() > max_strength:
+			max_strength = p.get_strength()
 	strength = max(strength, max_strength * 0.7)
 	return strength
 	
 func get_command():
-	var command = get_leader().command
+	var command = get_leader().get_command()
 	var max_command = 0
 	for p in get_persons():
-		if p.command > max_command:
-			max_command = p.command
+		var sub_command = p.get_command()
+		if sub_command > max_command:
+			max_command = sub_command
 	command = max(command, max_command * 0.7)
 	return command
 

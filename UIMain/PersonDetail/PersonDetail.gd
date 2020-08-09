@@ -23,12 +23,14 @@ func set_data():
 	$Status/Section.text = current_person.get_belonged_section_str()
 	$Status/Location.text = current_person.get_location_str()
 	$Status/Status.text = current_person.get_status_str()
+	$Status/Popularity.text = current_person.get_popularity_str()
+	$Status/Karma.text = current_person.get_karma_str()
 
-	$Abilities/Command.text = str(current_person.command)
-	$Abilities/Strength.text = str(current_person.strength)
-	$Abilities/Intelligence.text = str(current_person.intelligence)
-	$Abilities/Politics.text = str(current_person.politics)
-	$Abilities/Glamour.text = str(current_person.glamour)
+	$Abilities/Command.text = current_person.get_command_detail_str()
+	$Abilities/Strength.text = current_person.get_strength_detail_str()
+	$Abilities/Intelligence.text = current_person.get_intelligence_detail_str()
+	$Abilities/Politics.text = current_person.get_politics_detail_str()
+	$Abilities/Glamour.text = current_person.get_glamour_detail_str()
 	
 	Util.delete_all_children($Skills)
 	for skill in current_person.skills:
