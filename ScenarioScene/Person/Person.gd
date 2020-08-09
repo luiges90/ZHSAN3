@@ -99,9 +99,9 @@ func save_data() -> Dictionary:
 		"Skills": Util.id_list(skills)
 	}
 	
-####################################
-#              Getters             #
-####################################
+#####################################
+#          Getters / Basic          #
+#####################################
 func get_gender_str() -> String:
 	return tr('FEMALE') if gender else tr('MALE')
 
@@ -114,6 +114,41 @@ func get_full_name() -> String:
 		name += "(" + courtesy_name + ")"
 	return name
 	
+func get_popularity():
+	return popularity
+	
+func get_popularity_str():
+	return str(popularity)
+	
+func get_karma():
+	return karma
+	
+func get_karma_str():
+	return str(karma)
+	
+func get_portrait():
+	if SharedData.person_portraits.has(id):
+		return SharedData.person_portraits[id]
+	else:
+		if gender:
+			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_FEMALE):
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_FEMALE]
+			else:
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
+		elif command + strength > intelligence + politics:
+			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL):
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL]
+			else:
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
+		else:
+			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER):
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER]
+			else:
+				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
+
+#####################################
+#    Getters / Tasks and Statuses   #
+#####################################
 func get_location(): 
 	return _location
 
@@ -151,6 +186,27 @@ func is_faction_leader():
 	var faction = get_belonged_faction()
 	return faction != null and faction.get_leader().id == id
 	
+func get_working_task_str():
+	match working_task:
+		Task.NONE: return tr('NONE')
+		Task.AGRICULTURE: return tr('AGRICULTURE')
+		Task.COMMERCE: return tr('COMMERCE')
+		Task.MORALE: return tr('MORALE')
+		Task.ENDURANCE: return tr('ENDURANCE')
+		Task.RECRUIT_TROOP: return tr('RECRUIT_TROOP')
+		Task.TRAIN_TROOP: return tr('TRAIN_TROOP')
+		Task.PRODUCE_EQUIPMENT: return tr('PRODUCE_EQUIPMENT')
+		_: return tr('NONE')
+		
+func get_producing_equipment_name():
+	if producing_equipment == null:
+		return "--"
+	else:
+		return scenario.military_kinds[int(producing_equipment)].get_name()
+
+#####################################
+#         Getters / Abilities       #
+#####################################
 func get_command():
 	return command + command_exp / 1000
 	
@@ -181,18 +237,6 @@ func get_glamour():
 func get_glamour_detail_str():
 	return str(glamour) + "(+" + str(glamour_exp / 1000) + ")"
 	
-func get_popularity():
-	return popularity
-	
-func get_popularity_str():
-	return str(popularity)
-	
-func get_karma():
-	return karma
-	
-func get_karma_str():
-	return str(karma)
-
 func get_agriculture_ability():
 	var base = 0.25 * get_intelligence() + 0.5 * get_politics() + 0.25 * get_glamour()
 	base = apply_influences('modify_person_agriculture_ability', {"value": base})
@@ -234,50 +278,11 @@ func get_merit():
 func get_troop_leader_merit():
 	return get_command() * 1.7 + get_strength() * 0.3
 	
-	
-func get_working_task_str():
-	match working_task:
-		Task.NONE: return tr('NONE')
-		Task.AGRICULTURE: return tr('AGRICULTURE')
-		Task.COMMERCE: return tr('COMMERCE')
-		Task.MORALE: return tr('MORALE')
-		Task.ENDURANCE: return tr('ENDURANCE')
-		Task.RECRUIT_TROOP: return tr('RECRUIT_TROOP')
-		Task.TRAIN_TROOP: return tr('TRAIN_TROOP')
-		Task.PRODUCE_EQUIPMENT: return tr('PRODUCE_EQUIPMENT')
-		_: return tr('NONE')
-		
-func get_producing_equipment_name():
-	if producing_equipment == null:
-		return "--"
-	else:
-		return scenario.military_kinds[int(producing_equipment)].get_name()
-
 func get_max_troop_quantity() -> int:
 	return 5000
-	
-func get_portrait():
-	if SharedData.person_portraits.has(id):
-		return SharedData.person_portraits[id]
-	else:
-		if gender:
-			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_FEMALE):
-				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_FEMALE]
-			else:
-				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
-		elif command + strength > intelligence + politics:
-			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL):
-				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL]
-			else:
-				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
-		else:
-			if SharedData.person_portraits.has(SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER):
-				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_DEFAULT_MALE_OFFICER]
-			else:
-				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
 
 ####################################
-#         Infleunce System         #
+#         Influence System         #
 ####################################
 func apply_influences(operation, params):
 	if params.has("value"):
@@ -286,9 +291,9 @@ func apply_influences(operation, params):
 			value = skill.apply_influences(operation, {"value": value})
 		return value
 
-####################################
-#           Manipulation           #
-####################################
+#####################################
+# Manipulation / Tasks and Statuses #
+#####################################
 	
 func set_location(item, force = false):
 	if _location != null:
@@ -313,6 +318,10 @@ func move_to_architecture(arch):
 	working_task = Task.MOVE
 	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
 		
+		
+####################################
+#             Day event            #
+####################################
 func day_event():
 	if task_days > 0:
 		task_days -= 1
