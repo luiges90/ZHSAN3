@@ -10,53 +10,65 @@ signal architecture_create_troop
 var showing_architecture
 var _opening_list
 
+func _ready():
+	$H/MilitaryMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Military.rect_position.y)
+	$H/OfficersMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Officers.rect_position.y)
+	$H/FactionMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y)
+
 func show_menu(arch, mouse_x, mouse_y):
 	if arch.get_belonged_faction() == null:
-		$MainMenu/Internal.visible = false
-		$MainMenu/Military.visible = false
-		$MainMenu/Officers.visible = false
-		$MainMenu/ToggleAutoTask.visible = false
-		$MainMenu/FactionDetail.visible = false
-		$MainMenu/FactionArchitectures.visible = false
+		$H/MainMenu/Internal.visible = false
+		$H/MainMenu/Military.visible = false
+		$H/MainMenu/Officers.visible = false
+		$H/MainMenu/ToggleAutoTask.visible = false
+		$H/MainMenu/FactionDetail.visible = false
+		$H/MainMenu/FactionArchitectures.visible = false
+		$H/MainMenu/FactionPersons.visible = false
 	else:
 		var is_player = arch.get_belonged_faction().player_controlled
-		$MainMenu/Internal.visible = is_player
-		$MainMenu/Military.visible = is_player
-		$MainMenu/Officers.visible = is_player
-		$MainMenu/ToggleAutoTask.visible = is_player
+		$H/MainMenu/Internal.visible = is_player
+		$H/MainMenu/Military.visible = is_player
+		$H/MainMenu/Officers.visible = is_player
+		$H/MainMenu/ToggleAutoTask.visible = is_player
 
 	showing_architecture = arch
 	
 	margin_left = mouse_x
 	margin_top = mouse_y
 	
-	$MainMenu/ToggleAutoTask.text = tr('TOGGLE_MANUAL_TASK') if arch.auto_task else tr('TOGGLE_AUTO_TASK')
+	$H/MainMenu/ToggleAutoTask.text = tr('TOGGLE_MANUAL_TASK') if arch.auto_task else tr('TOGGLE_AUTO_TASK')
 	
 	var has_only_one_arch = arch.get_belonged_faction() != null and arch.get_belonged_faction().get_architectures().size() < 2
-	$OfficersMenu/Move.disabled = has_only_one_arch
-	$OfficersMenu/Call.disabled = has_only_one_arch
+	$H/OfficersMenu/Move.disabled = has_only_one_arch
+	$H/OfficersMenu/Call.disabled = has_only_one_arch
 	
 	show()
 	
 func _hide_submenus():
-	$InternalMenu.hide()
-	$MilitaryMenu.hide()
-	$OfficersMenu.hide()
+	$H/InternalMenu.hide()
+	$H/MilitaryMenu.hide()
+	$H/OfficersMenu.hide()
+	$H/FactionMenu.hide()
 
 
 func _on_Internal_pressed():
 	_open_submenu()
-	$InternalMenu.show()
+	$H/InternalMenu.show()
 	
 	
 func _on_Military_pressed():
 	_open_submenu()
-	$MilitaryMenu.show()
+	$H/MilitaryMenu.show()
 
 
 func _on_Officers_pressed():
 	_open_submenu()
-	$OfficersMenu.show()
+	$H/OfficersMenu.show()
+	
+
+func _on_Main_FactionDetail_pressed():
+	_open_submenu()
+	$H/FactionMenu.show()
 
 
 func _on_PersonList_pressed():
@@ -144,3 +156,9 @@ func _on_ArchitectureAndTroopMenu_architecture_clicked(arch, mx, my):
 func _on_FactionDetail_pressed():
 	_select_item()
 	emit_signal("faction_list_clicked", showing_architecture, [showing_architecture.get_belonged_faction()], FactionList.Action.LIST)
+
+
+func _on_FactionPersons_pressed():
+	_select_item()
+	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_persons(), PersonList.Action.LIST)
+

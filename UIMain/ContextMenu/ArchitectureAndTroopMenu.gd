@@ -20,8 +20,8 @@ func show_menu(arch, troop, mouse_x, mouse_y):
 	mx = mouse_x
 	my = mouse_y
 	
-	$Architecture.text = showing_arch.get_name()
-	$Troop.text = showing_troop.get_name()
+	$V/Architecture.text = showing_arch.get_name()
+	$V/Troop.text = showing_troop.get_name()
 	
 	show()
 

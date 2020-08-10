@@ -53,7 +53,7 @@ BASIC,Basic,基本,基本
 FACTION_NAME,Faction,势力,勢力
 KIND_NAME,Kind,种类,種類
 ARCHITECTURE_DETAILS,Architecture Details,建筑情报,建築情報
-PERSON_COUNT,Officers,武将数,武將數
+PERSON_COUNT,Officers,人物数,人物數
 ARCHITECTURE_COUNT,Architectures,建築數,建築數
 BELONGED_ARCHITECTURE,Assignment,所属,所屬
 TASK_DAYS,Task Days,天数,天數
@@ -86,14 +86,15 @@ GAME_INFO,Information,各项信息,各項信息
 EQUIPMENTS,Equipments,兵装,兵裝
 FACTION_DETAIL,Faction Details,勢力信息,勢力信息
 FACTION_ARCHITECTURES,Faction Architectures,势力建筑,勢力建築
+FACTION_PERSONS,Faction Persons,势力人物,勢力人物
 TOGGLE_AUTO_TASK,Auto Task,委任内政,委任內政
 TOGGLE_MANUAL_TASK,Manual Task,手动内政,手動內政
 PERSON_TROOP,"'s Troop",队,隊
 CREATE_TROOP,Create Troop,出征,出征
-PERSONS,Persons,武将,武將
+PERSONS,Persons,人物,人物
 LEADER,Leader,主将,主將
 MILITARY_KIND,Military Kind,兵装,兵裝
-SELECT_TROOP_PERSON,Select Person,选择武将,選擇武將
+SELECT_TROOP_PERSON,Select Person,选择人物,選擇人物
 SELECT_TROOP_LEADER,Select Leader,选择主将,選擇主將
 SELECT_TROOP_MILITARY_KIND,Select Military Kind,选择兵种,選擇兵種
 ATTACK,Attack,攻击,攻擊

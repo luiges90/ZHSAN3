@@ -8,15 +8,22 @@ margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 5 )
 
-[node name="Architecture" type="Button" parent="." index="3"]
+[node name="V" type="VBoxContainer" parent="." index="3"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Architecture" type="Button" parent="V" index="0"]
 margin_right = 167.0
 margin_bottom = 38.1229
 text = "ARCHITECTURE"
 
-[node name="Troop" type="Button" parent="." index="4"]
+[node name="Troop" type="Button" parent="V" index="1"]
 margin_top = 34.0
 margin_right = 167.0
 margin_bottom = 72.1229
 text = "TROOP"
-[connection signal="pressed" from="Architecture" to="." method="_on_Architecture_pressed"]
-[connection signal="pressed" from="Troop" to="." method="_on_Troop_pressed"]
+[connection signal="pressed" from="V/Architecture" to="." method="_on_Architecture_pressed"]
+[connection signal="pressed" from="V/Troop" to="." method="_on_Troop_pressed"]
