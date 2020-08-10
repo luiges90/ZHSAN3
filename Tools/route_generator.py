@@ -12,8 +12,8 @@ from io import StringIO
 map_file_path = '../ScenarioScene/GameMap/Zhsan2.tmx'
 scen_file_path = '../Scenarios/194QXGJ-qh'
 MAX_DISTANCE = 100
-MAX_RUNS = [200, 400, 800, 1600]
-ARCH_EXCLUSION_RANGE = 6
+MAX_RUNS = [1000, 2000, 5000]
+ARCH_EXCLUSION_RANGE = 12
 ARCH_EXCLUSION_RANGE_SELF = 6
 
 print('ZHSan route generator. Scenario file path:', scen_file_path)
@@ -117,7 +117,8 @@ for kind in movement_kinds:
 					for r in range(0, len(map_data)):
 						grid_r = []
 						for c in range(0, len(map_data[r])):
-							if len(arch_exclusion[r][c]) == 0 or a1 in arch_exclusion_self[r][c] or a2 in arch_exclusion_self[r][c]:
+							arch_exclusion_not_self = [x for x in arch_exclusion[r][c] if x != a1 and x != a2]
+							if len(arch_exclusion_not_self) == 0 or a1 in arch_exclusion_self[r][c] or a2 in arch_exclusion_self[r][c]:
 								grid_r.append(movement_kinds[kind][str(map_data[r][c])])
 							else:
 								grid_r.append(-1)
