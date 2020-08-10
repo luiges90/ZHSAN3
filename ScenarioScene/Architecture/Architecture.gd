@@ -156,8 +156,16 @@ func get_name() -> String:
 func get_belonged_faction():
 	return _belonged_section.get_belonged_faction() if _belonged_section != null else null
 	
+func get_belonged_faction_str():
+	var f = get_belonged_faction()
+	return f.get_name() if f != null else '----'
+	
 func get_belonged_section(): 
 	return _belonged_section
+
+func get_belonged_section_str():
+	var f = get_belonged_section()
+	return f.get_name() if f != null else '----'
 	
 func set_belonged_section(section, force = false):
 	_belonged_section = section

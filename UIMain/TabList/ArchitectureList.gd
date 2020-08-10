@@ -12,6 +12,10 @@ func _ready():
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
 	$Tabs.set_tab_title(2, tr('MILITARY'))
 	$Tabs.set_tab_title(3, tr('EQUIPMENTS'))
+	
+func _on_InfoMenu_architectures_clicked(scenario):
+	current_action = Action.LIST
+	show_data(scenario.architectures.values())
 
 func show_data(arch_list: Array):
 	match current_action:
@@ -49,7 +53,7 @@ func _populate_basic_data(arch_list: Array, action):
 			item_list.add_child(_checkbox(arch.id))
 		item_list.add_child(_label(arch.get_name()))
 		item_list.add_child(_label(arch.kind.get_name()))
-		item_list.add_child(_label(arch.get_belonged_faction().get_name()))
+		item_list.add_child(_label(arch.get_belonged_faction_str()))
 		item_list.add_child(_label(Util.nstr(arch.food) + "(" + Util.snstr(arch.expected_food_income()) + ")"))
 		item_list.add_child(_label(Util.nstr(arch.fund) + "(" + Util.snstr(arch.expected_fund_income()) + ")"))
 		item_list.add_child(_label(str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())))

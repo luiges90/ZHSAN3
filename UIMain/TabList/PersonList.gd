@@ -36,6 +36,11 @@ func handle_input(event):
 				.handle_input(event)
 
 
+func _on_InfoMenu_persons_clicked(scenario):
+	current_action = Action.LIST
+	show_data(scenario.get_living_persons())
+
+
 func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
 	current_action = action
 	current_architecture = arch

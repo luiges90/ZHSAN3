@@ -517,9 +517,9 @@ func _process(delta):
 	_architecture_clicked = null
 	_troop_clicked = null
 	
-########################################
-#           Data Retrieval             #
-########################################
+######################################
+#               Getters              #
+######################################
 
 func get_persons_from_ids(ids):
 	var result = []
@@ -569,6 +569,13 @@ func get_architecture_at_position(position):
 			return architectures[a]
 	return null
 
+func get_living_persons():
+	var list = []
+	for i in persons:
+		var p = persons[i]
+		if p.get_location() != null:
+			list.append(p)
+	return list
 	
 ########################################
 #          Data Management             #
