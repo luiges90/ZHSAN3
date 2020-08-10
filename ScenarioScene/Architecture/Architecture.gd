@@ -386,9 +386,9 @@ func _develop_agriculture(p: Person):
 			p.add_intelligence_exp(5)
 			p.add_politics_exp(10)
 			p.add_glamour_exp(5)
-			p.add_popularity(0.05 * delta)
-			p.add_prestige(0.05 * delta)
-			p.add_karma(0.05 * delta)
+			p.add_popularity(0.1 * delta)
+			p.add_prestige(0.1 * delta)
+			p.add_karma(0.1 * delta)
 	
 func _develop_commerce(p: Person):
 	if fund > 20:
@@ -399,9 +399,9 @@ func _develop_commerce(p: Person):
 			p.add_intelligence_exp(10)
 			p.add_politics_exp(5)
 			p.add_glamour_exp(5)
-			p.add_popularity(0.075 * delta)
-			p.add_prestige(0.05 * delta)
-			p.add_karma(0.025 * delta)
+			p.add_popularity(0.15 * delta)
+			p.add_prestige(0.1 * delta)
+			p.add_karma(0.05 * delta)
 	
 func _develop_morale(p: Person):
 	if fund > 20:
@@ -412,9 +412,13 @@ func _develop_morale(p: Person):
 			p.add_command_exp(5)
 			p.add_strength_exp(5)
 			p.add_glamour_exp(10)
-			p.add_popularity(0.075 * delta)
-			p.add_prestige(0.075 * delta)
-			p.add_karma(0.075 * delta)
+			p.add_popularity(0.15 * delta)
+			if p.get_strength() >= p.get_glamour():
+				p.add_prestige(0.15 * delta)
+				p.add_karma(0.05 * delta)
+			else:
+				p.add_prestige(0.05 * delta)
+				p.add_karma(0.15 * delta)
 			
 func _develop_endurance(p: Person):
 	if enemy_troop_in_range(1).size() > 0:
@@ -428,9 +432,9 @@ func _develop_endurance(p: Person):
 			p.add_strength_exp(5)
 			p.add_intelligence_exp(5)
 			p.add_politics_exp(5)
-			p.add_popularity(0.05 * delta)
-			p.add_prestige(0.075 * delta)
-			p.add_karma(0.025 * delta)
+			p.add_popularity(0.1 * delta)
+			p.add_prestige(0.15 * delta)
+			p.add_karma(0.05 * delta)
 			
 func _recruit_troop(p: Person):
 	if fund > 50 and military_population > 0 and morale > 100:
@@ -446,8 +450,8 @@ func _recruit_troop(p: Person):
 			morale -= Util.f2ri(quantity / 50.0)
 			p.add_strength_exp(10)
 			p.add_glamour_exp(10)
-			p.add_popularity(0.001 * quantity)
-			p.add_prestige(0.001 * quantity)
+			p.add_popularity(0.002 * quantity)
+			p.add_prestige(0.002 * quantity)
 	
 func _train_troop(p: Person):
 	if fund > 20:
@@ -458,8 +462,8 @@ func _train_troop(p: Person):
 		troop_combativity = min(100, troop_combativity + delta2)
 		p.add_command_exp(10)
 		p.add_strength_exp(10)
-		p.add_popularity(0.1)
-		p.add_prestige(0.1)
+		p.add_popularity(0.2)
+		p.add_prestige(0.2)
 
 func _produce_equipment(p: Person):
 	var equipment = p.producing_equipment
@@ -472,8 +476,8 @@ func _produce_equipment(p: Person):
 		equipments[equipment] += amount
 		p.add_intelligence_exp(10)
 		p.add_politics_exp(10)
-		p.add_popularity(0.003 * amount)
-		p.add_prestige(0.002 * amount)
+		p.add_popularity(0.006 * amount)
+		p.add_prestige(0.004 * amount)
 		
 func accept_entering_troop(in_troop):
 	troop_morale = int((troop * troop_morale + in_troop.quantity * in_troop.morale) / (troop + in_troop.quantity))
