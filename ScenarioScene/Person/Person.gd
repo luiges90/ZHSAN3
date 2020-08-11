@@ -281,10 +281,10 @@ func get_produce_equipment_ability():
 	base = apply_influences('modify_person_produce_equipment_ability', {"value": base})
 	return base
 	
-func get_merit():
+func get_ability():
 	return get_command() + get_strength() + get_intelligence() + get_politics() + get_glamour()
 	
-func get_troop_leader_merit():
+func get_troop_leader_ability():
 	return get_command() * 1.7 + get_strength() * 0.3
 	
 func get_max_troop_quantity() -> int:

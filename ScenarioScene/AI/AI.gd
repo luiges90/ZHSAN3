@@ -82,15 +82,15 @@ func _estimated_arch_military_power(arch) -> float:
 	var troop_left = arch.troop
 	for p in persons:
 		var use_troop = p.get_max_troop_quantity()
-		total_power += p.get_troop_leader_merit() * min(troop_left, use_troop) * (troop_power * (float(use_troop) / arch.troop))
+		total_power += p.get_troop_leader_ability() * min(troop_left, use_troop) * (troop_power * (float(use_troop) / arch.troop))
 		troop_left -= use_troop
 		if troop_left <= 0:
 			break
 	
 	return total_power
 
-func __compare_by_person_troop_leader_merit_desc(p, q):
-	return p.get_troop_leader_merit() > q.get_troop_leader_merit()
+func __compare_by_person_troop_leader_ability_desc(p, q):
+	return p.get_troop_leader_ability() > q.get_troop_leader_ability()
 	
-func __compare_by_person_troop_leader_merit_asc(p, q):
-	return p.get_troop_leader_merit() < q.get_troop_leader_merit()
+func __compare_by_person_troop_leader_ability_asc(p, q):
+	return p.get_troop_leader_ability() < q.get_troop_leader_ability()

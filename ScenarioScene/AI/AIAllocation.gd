@@ -50,9 +50,9 @@ func _allocate_person(section: Section):
 				var call_from_expected_state = __needed_person_state(call_from)
 				var persons = call_from.get_workable_persons()
 				if expected_state['frontline'] and not call_from_expected_state['frontline']:
-					persons.sort_custom(_ai, "__compare_by_person_troop_leader_merit_desc")
+					persons.sort_custom(_ai, "__compare_by_person_troop_leader_ability_desc")
 				elif not expected_state['frontline'] and call_from_expected_state['frontline']:
-					persons.sort_custom(_ai, "__compare_by_person_troop_leader_merit_asc")
+					persons.sort_custom(_ai, "__compare_by_person_troop_leader_ability_asc")
 				else:
 					persons.shuffle()
 				
