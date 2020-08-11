@@ -235,6 +235,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Popularity": int(min(10000, k['Reputation'] / 5)),
 					"Prestige": int(min(10000, k['Reputation'] / 5)),
 					"Karma": k['Karma'] * 100,
+					"Merit": 0,
 					"Task": 0,
 					"ProducingEquipment": None,
 					"Skills": convert_skills(k)

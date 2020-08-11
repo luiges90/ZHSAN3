@@ -26,6 +26,7 @@ func set_data():
 	$Status/Popularity.text = current_person.get_popularity_str()
 	$Status/Prestige.text = current_person.get_prestige_str()
 	$Status/Karma.text = current_person.get_karma_str()
+	$Status/Merit.text = current_person.get_merit_str()
 
 	$Abilities/Command.text = current_person.get_command_detail_str()
 	$Abilities/Strength.text = current_person.get_strength_detail_str()

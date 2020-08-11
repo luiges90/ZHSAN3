@@ -30,7 +30,7 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 		var equipment_id = Util.random_from(avail_military_kinds.keys())
 		
 		if avail_positions.size() > 0 and from_architecture.equipments[equipment_id] > 100 and persons.size() > 0:
-			var leader = Util.max_by(persons, "get_troop_leader_merit")[1]
+			var leader = Util.max_by(persons, "get_troop_leader_ability")[1]
 			
 			var troop = CreatingTroop.new()
 			troop.persons = [leader]

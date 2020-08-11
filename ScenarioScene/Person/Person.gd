@@ -36,6 +36,7 @@ var glamour_exp: int setget forbidden
 var popularity: int setget forbidden
 var prestige: int setget forbidden
 var karma: int setget forbidden
+var merit: int setget forbidden
 
 var working_task setget forbidden
 var producing_equipment setget forbidden
@@ -71,6 +72,7 @@ func load_data(json: Dictionary, objects):
 	popularity = int(json["Popularity"])
 	prestige = int(json["Prestige"])
 	karma = int(json["Karma"])
+	merit = int(json["Merit"])
 	working_task = int(json["Task"])
 	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
 	for id in json["Skills"]:
@@ -97,6 +99,7 @@ func save_data() -> Dictionary:
 		"Popularity": popularity,
 		"Prestige": prestige,
 		"Karma": karma,
+		"Merit": merit,
 		"Task": working_task,
 		"ProducingEquipment": producing_equipment,
 		"Skills": Util.id_list(skills)
@@ -134,6 +137,12 @@ func get_prestige():
 	
 func get_prestige_str():
 	return str(prestige)
+	
+func get_merit():
+	return merit
+	
+func get_merit_str():
+	return str(merit)
 	
 func get_portrait():
 	if SharedData.person_portraits.has(id):
@@ -336,6 +345,9 @@ func add_karma(delta):
 				karma = 0
 		if delta < 0:
 			karma = Util.f2ri(karma + delta * (1.0 - abs(karma) / 10000.0))
+			
+func add_merit(delta):
+	merit = Util.f2ri(merit + delta)
 
 #####################################
 # Manipulation / Tasks and Statuses #

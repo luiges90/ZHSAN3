@@ -98,13 +98,14 @@ func _populate_basic_data(person_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 9
+		item_list.columns = 10
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 8
+		item_list.columns = 9
 	item_list.add_child(_title(tr('PERSON_NAME')))
 	item_list.add_child(_title(tr('BELONGED_ARCHITECTURE')))
 	item_list.add_child(_title(tr('STATUS')))
+	item_list.add_child(_title(tr('MERIT')))
 	item_list.add_child(_title(tr('POPULARITY')))
 	item_list.add_child(_title(tr('PRESTIGE')))
 	item_list.add_child(_title(tr('KARMA')))
@@ -116,6 +117,7 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_location().get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_status_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_merit()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_popularity()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_prestige()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_karma()), self, "__on_clickable_label_click", person))
