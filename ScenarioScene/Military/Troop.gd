@@ -347,6 +347,14 @@ func get_order_target_text():
 		return current_order.target.get_name()
 		
 func occupy():
+	for p in get_persons():
+		if p == get_leader():
+			p.add_popularity(2)
+			p.add_prestige(4)
+		else:
+			p.add_popularity(1)
+			p.add_prestige(2)
+	
 	var arch = scenario.get_architecture_at_position(map_position)
 	arch.change_faction(get_belonged_section())
 	emit_signal("occupy_architecture", self, arch)
@@ -453,6 +461,36 @@ func execute_attack():
 					else:
 						target.receive_attack_damage(damage)
 					
+					var merit_rate = min(sqrt(damage / (counter_damage + 100.0)), 5) + damage / 1000.0
+					for p in get_persons():
+						if p == get_leader():
+							p.add_command_exp(40)
+							p.add_strength_exp(60)
+							p.add_merit((merit_rate - 0.5) * 25)
+							p.add_popularity(merit_rate / 2)
+							p.add_prestige(merit_rate - 1.25)
+						else:
+							p.add_command_exp(20)
+							p.add_strength_exp(30)
+							p.add_merit((merit_rate - 0.5) * 12.5)
+							p.add_popularity(merit_rate / 4)
+							p.add_prestige(merit_rate / 2 - 0.625)
+					
+					var other_merit_rate = min(sqrt(counter_damage / (damage + 100.0)), 5) + counter_damage / 1000.0
+					for p in target.get_persons():
+						if p == get_leader():
+							p.add_command_exp(80)
+							p.add_strength_exp(20)
+							p.add_merit((merit_rate - 0.5) * 25)
+							p.add_popularity(other_merit_rate / 2)
+							p.add_prestige(other_merit_rate - 1.25)
+						else:
+							p.add_command_exp(40)
+							p.add_strength_exp(10)
+							p.add_merit((merit_rate - 0.5) * 12.5)
+							p.add_popularity(other_merit_rate / 4)
+							p.add_prestige(other_merit_rate / 2 - 0.625)
+					
 					return _animate_attack(target, counter_damage, damage)
 				else:
 					return yield()
@@ -476,6 +514,12 @@ func destroy():
 	if return_to.get_belonged_faction() != self.get_belonged_faction():
 		return_to = self.get_belonged_faction().get_architectures()[0]
 	for p in get_persons():
+		if p == get_leader():
+			p.add_merit(-40)
+			p.add_prestige(-2)
+		else:
+			p.add_merit(-20)
+			p.add_prestige(-1)
 		p.move_to_architecture(return_to)
 	_remove()
 		

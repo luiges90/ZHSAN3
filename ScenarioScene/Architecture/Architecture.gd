@@ -454,7 +454,7 @@ func _recruit_troop(p: Person):
 			morale -= Util.f2ri(quantity / 50.0)
 			p.add_strength_exp(10)
 			p.add_glamour_exp(10)
-			p.add_merit(0.02 * quantity)
+			p.add_merit(0.1 * quantity)
 			p.add_popularity(0.002 * quantity)
 			p.add_prestige(0.002 * quantity)
 	
@@ -467,7 +467,7 @@ func _train_troop(p: Person):
 		troop_combativity = min(100, troop_combativity + delta2)
 		p.add_command_exp(10)
 		p.add_strength_exp(10)
-		p.add_merit(5)
+		p.add_merit(10)
 		p.add_popularity(0.2)
 		p.add_prestige(0.2)
 
@@ -482,7 +482,7 @@ func _produce_equipment(p: Person):
 		equipments[equipment] += amount
 		p.add_intelligence_exp(10)
 		p.add_politics_exp(10)
-		p.add_merit(0.05 * amount)
+		p.add_merit(0.25 * amount)
 		p.add_popularity(0.006 * amount)
 		p.add_prestige(0.004 * amount)
 		
