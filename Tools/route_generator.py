@@ -12,9 +12,9 @@ from io import StringIO
 map_file_path = '../ScenarioScene/GameMap/Zhsan2.tmx'
 scen_file_path = '../Scenarios/194QXGJ-qh'
 MAX_DISTANCE = 100
-MAX_RUNS = [1000, 2000, 5000]
-ARCH_EXCLUSION_RANGE = 12
-ARCH_EXCLUSION_RANGE_SELF = 6
+MAX_RUNS = [2000, 5000]
+ARCH_EXCLUSION_RANGE = 9
+ARCH_EXCLUSION_RANGE_SELF = 9
 
 print('ZHSan route generator. Scenario file path:', scen_file_path)
 print('Max architecture distance', MAX_DISTANCE)
