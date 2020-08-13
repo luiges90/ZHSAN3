@@ -8,13 +8,22 @@ static func load_position(v: Array) -> Vector2:
 	return Vector2(v[0], v[1])
 
 static func load_color(v: Array) -> Color:
-	return Color(v[0], v[1], v[2])
+	if len(v) == 3:
+		return Color(v[0], v[1], v[2])
+	elif len(v) == 4:
+		return Color(v[0], v[1], v[2], v[3])
+	else:
+		assert('Load color array size must be either 3 or 4.')
+		return Color(0, 0, 0)
 	
 static func save_position(v: Vector2) -> Array:
 	return [v.x, v.y]
 	
 static func save_color(c: Color) -> Array:
-	 return [c.r, c.g, c.b]
+	if c.a == 1:
+		return [c.r, c.g, c.b]
+	else:
+		return [c.r, c.g, c.b, c.a]
 	
 static func id_list(list: Array) -> Array:
 	var s = []

@@ -205,23 +205,48 @@ func get_idling_persons() -> Array:
 	
 func expected_fund_income():
 	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
-	var officer_expenditure = get_faction_persons().size() * 10
-	return int(income - officer_expenditure)
+	for p in get_workable_persons():
+		income = p.apply_influences('modify_person_fund_income', {"value": income, "person": p, "architecture": self})
+	
+	var officer_expenditure = 0
+	for p in get_faction_persons():
+		officer_expenditure += p.get_salary()
+	
+	return income - officer_expenditure
 	
 func expected_food_income():
 	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+	for p in get_workable_persons():
+		income = p.apply_influences('modify_person_food_income', {"value": income, "person": p, "architecture": self})
+	
 	var soldier_expenditure = troop
+	
 	var equipment_expenditure = 0
 	for equipment in equipments:
 		var kind = scenario.military_kinds[equipment]
 		equipment_expenditure += equipments[equipment] * kind.food_per_soldier
-	return int(income - soldier_expenditure - equipment_expenditure)
+	
+	return income - soldier_expenditure - equipment_expenditure
+	
+func expected_population_gain():
+	var base = population * ((morale - 200) / 600000.0 * (float(kind.population - population) / kind.population)) + 10
+
+	for p in get_workable_persons():
+		base = p.apply_influences('modify_person_population_gain', {"value": base, "person": p, "architecture": self})
+	
+	return base
 	
 func get_defence():
-	return 500 + endurance + morale * 3
+	var base = 1500 + endurance + morale * 3
+	for p in get_workable_persons():
+		base = p.apply_influences('modify_person_architecture_defence', {"value": base, "person": p, "architecture": self})
+	return base
 	
 func get_offence():
-	return endurance + morale * 0.5
+	var base = endurance + morale * 0.5
+	for p in get_workable_persons():
+		base = p.apply_influences('modify_person_architecture_offence', {"value": base, "person": p, "architecture": self})
+	return base
 
 	
 ####################################
@@ -235,6 +260,12 @@ func enemy_troop_in_range(distance: int):
 		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance:
 			results.append(troop)
 	return results
+	
+func enemy_troop_quantity_in_range(distance: int):
+	var result = 0
+	for t in enemy_troop_in_range(distance):
+		result += t.quantity
+	return result
 	
 func enemy_troop_in_architecture():
 	var troop = scenario.get_troop_at_position(map_position)
@@ -266,6 +297,7 @@ func day_event():
 	for p in get_persons():
 		p.day_event()
 	_develop_internal()
+	_develop_population()
 	_develop_military()
 	emit_signal("architecture_survey_updated", self)
 		
@@ -343,19 +375,34 @@ func change_faction(to_section):
 ####################################
 #          Order Execution         #
 ####################################
-func _develop_resources():
-	fund += expected_fund_income()
-	food += expected_food_income()
+func _develop_population():
+	var population_increase = expected_population_gain()
 	
-	var population_increase = population * ((morale - 200) / 20000.0 * (float(kind.population - population) / kind.population)) + 10
-	population += population_increase
-	military_population += population_increase * 0.4
+	var decrease = 0
+	var enemy_troop = enemy_troop_in_architecture()
+	if enemy_troop != null:
+		decrease += enemy_troop.quantity / 200.0
+	decrease += enemy_troop_quantity_in_range(4) / 2000.0
+	for p in get_workable_persons():
+		p.apply_influences("modify_person_architecture_population_loss", {"value": decrease, "person": p, "architecture": self})
+	
+	population = Util.f2ri(population + population_increase - decrease)
+	military_population += Util.f2ri(population_increase * 0.4)
+	
+
+func _develop_resources():
+	fund = Util.f2ri(fund + expected_fund_income())
+	food = Util.f2ri(food + expected_food_income())
 	
 func _decay_internal():
 	var factor = 1
 	var enemy_troop = enemy_troop_in_architecture()
 	if enemy_troop != null:
-		factor = 1 + enemy_troop.quantity / 2000.0
+		factor += enemy_troop.quantity / 1000.0
+	factor += enemy_troop_quantity_in_range(4) / 5000.0
+	for p in get_workable_persons():
+		p.apply_influences("modify_person_architecture_internal_decay", {"value": factor, "person": p, "architecture": self})
+		
 	agriculture -= Util.f2ri(agriculture * 0.005 * factor)
 	commerce -= Util.f2ri(commerce * 0.005 * factor)
 	morale -= Util.f2ri(morale * 0.01 * factor)
@@ -376,10 +423,16 @@ func _develop_military():
 			Person.Task.RECRUIT_TROOP: _recruit_troop(p)
 			Person.Task.TRAIN_TROOP: _train_troop(p)
 			Person.Task.PRODUCE_EQUIPMENT: _produce_equipment(p)
+			
+func _develop_cost(p):
+	var base = 20
+	p.apply_influences("modify_person_develop_internal_cost", {"value": base, "person": p, "architecture": self})
+	return base
 
 func _develop_agriculture(p: Person):
-	if fund > 20:
-		fund -= 20
+	var cost = _develop_cost(p)
+	if fund > cost:
+		fund -= cost
 		if kind.agriculture > 0:
 			var delta = Util.f2ri(p.get_agriculture_ability() * 0.04 / max(1, float(agriculture) / kind.agriculture))
 			agriculture += delta
@@ -392,8 +445,9 @@ func _develop_agriculture(p: Person):
 			p.add_karma(0.1 * delta)
 	
 func _develop_commerce(p: Person):
-	if fund > 20:
-		fund -= 20
+	var cost = _develop_cost(p)
+	if fund > cost:
+		fund -= cost
 		if kind.commerce > 0:
 			var delta = Util.f2ri(p.get_commerce_ability() * 0.04 / max(1, float(commerce) / kind.commerce))
 			commerce += delta
@@ -406,8 +460,9 @@ func _develop_commerce(p: Person):
 			p.add_karma(0.05 * delta)
 	
 func _develop_morale(p: Person):
-	if fund > 20:
-		fund -= 20
+	var cost = _develop_cost(p)
+	if fund > cost:
+		fund -= cost
 		if kind.morale > 0:
 			var delta = Util.f2ri(p.get_morale_ability() * 0.04 / max(1, float(morale) / kind.morale))
 			morale += delta
@@ -426,8 +481,9 @@ func _develop_morale(p: Person):
 func _develop_endurance(p: Person):
 	if enemy_troop_in_range(1).size() > 0:
 		return
-	if fund > 20:
-		fund -= 20
+	var cost = _develop_cost(p)
+	if fund > cost:
+		fund -= cost
 		if kind.endurance > 0:
 			var delta = Util.f2ri(p.get_endurance_ability() * 0.04 / max(1, float(endurance) / kind.endurance))
 			endurance += delta

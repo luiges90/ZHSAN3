@@ -4,6 +4,7 @@
 	"Name": "農政",
 	"Description": "農業能力增加50%",
 	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
 	"Influences": [
 		{
 			"Operation": "modify_person_agriculture_ability",
@@ -11,11 +12,12 @@
 		}
 	]
   },
-    {
+  {
     "_Id": 20,
-	"Name": "商政",
+	"Name": "商才",
 	"Description": "商業能力增加50%",
 	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
 	"Influences": [
 		{
 			"Operation": "modify_person_commerce_ability",
@@ -23,11 +25,12 @@
 		}
 	]
   },
-    {
+  {
     "_Id": 30,
 	"Name": "民心",
 	"Description": "民心能力增加50%",
 	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
 	"Influences": [
 		{
 			"Operation": "modify_person_morale_ability",
@@ -40,6 +43,7 @@
 	"Name": "修補",
 	"Description": "耐久能力增加50%",
 	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
 	"Influences": [
 		{
 			"Operation": "modify_person_endurance_ability",
@@ -47,11 +51,12 @@
 		}
 	]
   },
-    {
+  {
     "_Id": 50,
-	"Name": "召兵",
+	"Name": "招兵",
 	"Description": "徵兵能力增加50%",
 	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
 	"Influences": [
 		{
 			"Operation": "modify_person_recruit_ability",
@@ -59,11 +64,12 @@
 		}
 	]
   },
-    {
+  {
     "_Id": 60,
 	"Name": "操練",
 	"Description": "訓練能力增加50%",
 	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
 	"Influences": [
 		{
 			"Operation": "modify_person_training_ability",
@@ -71,14 +77,574 @@
 		}
 	]
   },
-    {
+  {
     "_Id": 70,
 	"Name": "生產",
 	"Description": "生產兵裝能力增加50%",
 	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
 	"Influences": [
 		{
 			"Operation": "modify_person_produce_equipment_ability",
+			"Value": 1.5
+		}
+	]
+  },
+  {
+    "_Id": 100,
+	"Name": "富豪",
+	"Description": "城池資金收入增加50%",
+	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_fund_income",
+			"Value": 1.5
+		}
+	]
+  },
+  {
+    "_Id": 101,
+	"Name": "貪污",
+	"Description": "城池資金收入減少25%",
+	"Color": [0.13, 0.56, 0.82, 0.4],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_fund_income",
+			"Value": 0.75
+		}
+	]
+  },
+  {
+    "_Id": 110,
+	"Name": "開發",
+	"Description": "城池糧草收入增加50%",
+	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_food_income",
+			"Value": 1.5
+		}
+	]
+  },
+  {
+    "_Id": 111,
+	"Name": "貪瀆",
+	"Description": "城池糧草收入減少25%",
+	"Color": [0.13, 0.56, 0.82, 0.4],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_food_income",
+			"Value": 0.75
+		}
+	]
+  },
+  {
+    "_Id": 120,
+	"Name": "招攬",
+	"Description": "城池人口增長增加25%",
+	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_population_gain",
+			"Value": 1.25
+		}
+	]
+  },
+  {
+    "_Id": 121,
+	"Name": "野蠻",
+	"Description": "城池人口增長減少10%",
+	"Color": [0.13, 0.56, 0.82, 0.4],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_population_gain",
+			"Value": 0.9
+		}
+	]
+  }, 
+  {
+    "_Id": 130,
+	"Name": "師君",
+	"Description": "城池的人口在戰爭的狀態下不會下降",
+	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_architecture_population_loss",
+			"Value": 0
+		}
+	]
+  },
+  {
+    "_Id": 140,
+	"Name": "行曹",
+	"Description": "減緩城池內政數值的自然下降50%",
+	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_architecture_internal_decay",
+			"Value": 0.5
+		}
+	]
+  },
+  {
+    "_Id": 150,
+	"Name": "眾望",
+	"Description": "執行內政時不需資金",
+	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_develop_internal_cost",
+			"Value": 0
+		}
+	]
+  },
+  {
+    "_Id": 10000,
+	"Name": "動員",
+	"Description": "領兵數上限增加50%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_max_troop_quantity",
+			"Value": 1.5
+		}
+	]
+  },
+  {
+    "_Id": 10100,
+	"Name": "城守",
+	"Description": "在城池內時，城池防禦增加50%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_architecture_defence",
+			"Value": 1.5
+		}
+	]
+  },
+  {
+    "_Id": 10110,
+	"Name": "墨守",
+	"Description": "在城池內時，城池反擊力增加200%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_architecture_offence",
+			"Value": 3
+		}
+	]
+  },
+  {
+    "_Id": 10200,
+	"Name": "步攻",
+	"Description": "作為主將時，步兵攻擊力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 0
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10210,
+	"Name": "步守",
+	"Description": "作為主將時，步兵防禦力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 0
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10220,
+	"Name": "步速",
+	"Description": "作為主將時，步兵行動力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 0
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10230,
+	"Name": "步行",
+	"Description": "作為主將時，步兵先行值增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 0
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10240,
+	"Name": "步將",
+	"Description": "作為主將時，步兵各項能力增加10%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 0
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.1
+		}
+	]
+  },
+  {
+    "_Id": 10300,
+	"Name": "弓攻",
+	"Description": "作為主將時，弓兵攻擊力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10310,
+	"Name": "弓守",
+	"Description": "作為主將時，弓兵防禦力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10320,
+	"Name": "弓速",
+	"Description": "作為主將時，弓兵行動力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10330,
+	"Name": "弓行",
+	"Description": "作為主將時，弓兵先行值增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10340,
+	"Name": "弓將",
+	"Description": "作為主將時，弓兵各項能力增加10%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.1
+		}
+	]
+  },
+  {
+    "_Id": 10400,
+	"Name": "騎攻",
+	"Description": "作為主將時，騎兵攻擊力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10410,
+	"Name": "騎守",
+	"Description": "作為主將時，騎兵防禦力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10420,
+	"Name": "騎速",
+	"Description": "作為主將時，騎兵行動力增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10430,
+	"Name": "騎行",
+	"Description": "作為主將時，騎兵先行值增加20%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10440,
+	"Name": "騎將",
+	"Description": "作為主將時，騎兵各項能力增加10%",
+	"Color": [0.61, 0.16, 0.1],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_military_type",
+			"Id": 1
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.1
+		},
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.1
+		}
+	]
+  },
+  {
+    "_Id": 20000,
+	"Name": "傳令",
+	"Description": "自身調動所需時間減少50%",
+	"Color": [0, 0.4, 0],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_movement_time",
+			"Value": 0.5
+		}
+	]
+  },
+  {
+    "_Id": 20010,
+	"Name": "寡欲",
+	"Description": "自身俸祿減少50%",
+	"Color": [0, 0.4, 0],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_salary",
+			"Value": 0.5
+		}
+	]
+  },
+  {
+    "_Id": 20011,
+	"Name": "強欲",
+	"Description": "自身俸祿增加100%",
+	"Color": [0, 0.4, 0, 0.4],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_salary",
+			"Value": 2.0
+		}
+	]
+  },
+  {
+    "_Id": 20020,
+	"Name": "潛在",
+	"Description": "自身經驗增加50%",
+	"Color": [0, 0.4, 0],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_experience_gain",
 			"Value": 1.5
 		}
 	]

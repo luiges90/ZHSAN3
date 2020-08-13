@@ -164,6 +164,11 @@ func get_portrait():
 			else:
 				return SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
 
+func get_salary():
+	var base = 10
+	base = apply_influences("modify_person_salary", {"value": base, "person": self})
+	return base
+
 #####################################
 #    Getters / Tasks and Statuses   #
 #####################################
@@ -229,84 +234,83 @@ func get_command():
 	return command + command_exp / 1000
 	
 func get_command_detail_str():
-	return str(command) + "(+" + str(command_exp / 1000) + ")"
+	return str(get_command()) + "(+" + str(command_exp / 1000) + ")"
 	
 func get_strength():
 	return strength + strength_exp / 1000
 	
 func get_strength_detail_str():
-	return str(strength) + "(+" + str(strength_exp / 1000) + ")"
+	return str(get_strength()) + "(+" + str(strength_exp / 1000) + ")"
 	
 func get_intelligence():
 	return intelligence + intelligence_exp / 1000
 	
 func get_intelligence_detail_str():
-	return str(intelligence) + "(+" + str(intelligence_exp / 1000) + ")"
+	return str(get_intelligence()) + "(+" + str(intelligence_exp / 1000) + ")"
 	
 func get_politics():
 	return politics + politics_exp / 1000
 	
 func get_politics_detail_str():
-	return str(politics) + "(+" + str(politics_exp / 1000) + ")"
+	return str(get_politics()) + "(+" + str(politics_exp / 1000) + ")"
 	
 func get_glamour():
 	return glamour + glamour_exp / 1000
 	
 func get_glamour_detail_str():
-	return str(glamour) + "(+" + str(glamour_exp / 1000) + ")"
+	return str(get_glamour()) + "(+" + str(glamour_exp / 1000) + ")"
 	
 func get_agriculture_ability():
 	var base = 0.25 * get_intelligence() + 0.5 * get_politics() + 0.25 * get_glamour()
-	base = apply_influences('modify_person_agriculture_ability', {"value": base})
+	base = apply_influences('modify_person_agriculture_ability', {"value": base, "person": self})
 	return base
 	
 func get_commerce_ability():
 	var base = 0.5 * get_intelligence() + 0.25 * get_politics() + 0.25 * get_glamour()
-	base = apply_influences('modify_person_commerce_ability', {"value": base})
+	base = apply_influences('modify_person_commerce_ability', {"value": base, "person": self})
 	return base
 	
 func get_morale_ability():
 	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.5 * get_glamour()
-	base = apply_influences('modify_person_morale_ability', {"value": base})
+	base = apply_influences('modify_person_morale_ability', {"value": base, "person": self})
 	return base
 	
 func get_endurance_ability():
 	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.25 * get_intelligence() + 0.25 * get_politics()
-	base = apply_influences('modify_person_endurance_ability', {"value": base})
+	base = apply_influences('modify_person_endurance_ability', {"value": base, "person": self})
 	return base
 	
 func get_recruit_troop_ability():
 	var base = 0.5 * get_strength() + 0.5 * get_glamour()
-	base = apply_influences('modify_person_recruit_ability', {"value": base})
+	base = apply_influences('modify_person_recruit_ability', {"value": base, "person": self})
 	return base
 	
 func get_train_troop_ability():
 	var base = 0.5 * get_command() + 0.5 * get_strength()
-	base = apply_influences('modify_person_training_ability', {"value": base})
+	base = apply_influences('modify_person_training_ability', {"value": base, "person": self})
 	return base
 	
 func get_produce_equipment_ability():
 	var base = 0.5 * get_intelligence() + 0.5 * get_politics()
-	base = apply_influences('modify_person_produce_equipment_ability', {"value": base})
+	base = apply_influences('modify_person_produce_equipment_ability', {"value": base, "person": self})
 	return base
-	
-func get_ability():
-	return get_command() + get_strength() + get_intelligence() + get_politics() + get_glamour()
-	
+
 func get_troop_leader_ability():
 	return get_command() * 1.7 + get_strength() * 0.3
 	
 func get_max_troop_quantity() -> int:
-	return 5000
+	var base = 5000
+	base = apply_influences('modify_person_max_troop_quantity', {"value": base, "person": self})
+	return base
 
 ####################################
 #         Influence System         #
 ####################################
-func apply_influences(operation, params):
+func apply_influences(operation, params: Dictionary):
 	if params.has("value"):
 		var value = params["value"]
 		for skill in skills:
-			value = skill.apply_influences(operation, {"value": value})
+			value = skill.apply_influences(operation, {"value": value, "person": self})
 		return value
 
 ####################################
@@ -375,24 +379,30 @@ func move_to_architecture(arch):
 	set_location(arch)
 	working_task = Task.MOVE
 	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
+	task_days = apply_influences("modify_person_movement_time", {"value": task_days, "person": self})
 		
 ####################################
 #     Manipulation / Abilities     #
 ####################################
 
 func add_command_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	command_exp = Util.f2ri(command_exp + delta * (50.0 / (get_command() + 50)))
 	
 func add_strength_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	strength_exp = Util.f2ri(strength_exp + delta * (50.0 / (get_strength() + 50)))
 	
 func add_intelligence_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	intelligence_exp = Util.f2ri(intelligence_exp + delta * (50.0 / (get_intelligence() + 50)))
 	
 func add_politics_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	politics_exp = Util.f2ri(politics_exp + delta * (50.0 / (get_politics() + 50)))
 	
 func add_glamour_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	glamour_exp = Util.f2ri(glamour_exp + delta * (50.0 / (get_glamour() + 50)))
 	
 

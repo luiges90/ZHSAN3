@@ -1,6 +1,10 @@
 extends Node
 class_name MilitaryKind
 
+enum MilitaryType {
+	INFANTRY, BOWMAN, CALVARY, SIEGE
+}
+
 var id: int setget forbidden
 var scenario
 
@@ -12,6 +16,7 @@ var offence: float setget forbidden
 var defence: float setget forbidden
 var range_min: int setget forbidden
 var range_max: int setget forbidden
+var type setget forbidden
 
 var speed: int setget forbidden
 var initiative: int setget forbidden
@@ -30,6 +35,7 @@ func forbidden(x):
 func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	gname = json["Name"]
+	type = json["Type"]
 	base_offence = json["BaseOffence"]
 	base_defence = json["BaseDefence"]
 	offence = json["Offence"]
@@ -50,6 +56,7 @@ func save_data() -> Dictionary:
 	return {
 		"_Id": id,
 		"Name": gname,
+		"Type": type,
 		"BaseOffence": base_offence,
 		"BaseDefence": base_defence,
 		"Offence": offence,

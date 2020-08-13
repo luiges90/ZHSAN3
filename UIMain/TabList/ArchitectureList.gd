@@ -37,13 +37,14 @@ func _populate_basic_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 8
+		item_list.columns = 9
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 7
+		item_list.columns = 8
 	item_list.add_child(_title(tr('NAME')))
 	item_list.add_child(_title(tr('KIND_NAME')))
 	item_list.add_child(_title(tr('FACTION_NAME')))
+	item_list.add_child(_title(tr('POPULATION')))
 	item_list.add_child(_title(tr('FOOD')))
 	item_list.add_child(_title(tr('FUND')))
 	item_list.add_child(_title(tr('PERSON_COUNT')))
@@ -54,8 +55,9 @@ func _populate_basic_data(arch_list: Array, action):
 		item_list.add_child(_label(arch.get_name()))
 		item_list.add_child(_label(arch.kind.get_name()))
 		item_list.add_child(_label(arch.get_belonged_faction_str()))
-		item_list.add_child(_label(Util.nstr(arch.food) + "(" + Util.snstr(arch.expected_food_income()) + ")"))
-		item_list.add_child(_label(Util.nstr(arch.fund) + "(" + Util.snstr(arch.expected_fund_income()) + ")"))
+		item_list.add_child(_label(Util.nstr(arch.population)))
+		item_list.add_child(_label(Util.nstr(arch.food)))
+		item_list.add_child(_label(Util.nstr(arch.fund)))
 		item_list.add_child(_label(str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())))
 		item_list.add_child(_label(str(arch.get_wild_persons().size())))
 	

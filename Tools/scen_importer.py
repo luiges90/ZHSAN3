@@ -1,28 +1,80 @@
 import json
+import importlib
+skill_data = importlib.import_module('scen_importer_skill_data')
 
 dev = True
 
 def convert_skills(object):
-	ids = object['SkillsString'].split(' ')
-	skills = []
-	for sid in ids:
-		if len(sid) > 0:
-			id = int(sid)
-			if id == 10:
-				skills.append(10)
-			elif id == 11:
-				skills.append(20)
-			elif id == 14:
-				skills.append(30)
-			elif id == 15:
-				skills.append(40)
-			elif id == 16:
-				skills.append(50)
-			elif id == 6:
-				skills.append(60)
-			elif id == 12:
-				skills.append(70)
-	return skills
+	if k['ID'] in skill_data.SKILLS_LIST:
+		return skill_data.SKILLS_LIST[k['ID']]
+	else:
+		skill_ids = [int(x) if len(x) > 0 else -1 for x in object['SkillsString'].split(' ')]
+		title_ids = [int(x) if len(x) > 0 else -1 for x in object['RealTitlesString'].split(' ')]
+		skills = []
+		if 10 in skill_ids:
+			skills.append(10)
+		if 11 in skill_ids:
+			skills.append(20)
+		if 14 in skill_ids:
+			skills.append(30)
+		if 15 in skill_ids:
+			skills.append(40)
+		if 16 in skill_ids:
+			skills.append(50)
+		if 6 in skill_ids:
+			skills.append(60)
+		if 12 in skill_ids:
+			skills.append(70)
+		if 71 in title_ids:
+			skills.append(100)
+		if 70 in title_ids:
+			skills.append(110)
+		if 74 in title_ids:
+			skills.append(120)
+		if 42 in title_ids:
+			skills.append(130)
+		if 11030 in title_ids:
+			skills.append(150)
+		if 20 in skill_ids:
+			skills.append(10240)
+		if 230 in title_ids:
+			skills.append(10100)
+		if 34 in skill_ids:
+			skills.append(10200)
+		if 35 in skill_ids:
+			skills.append(10210)
+		if 320 in title_ids:
+			skills.append(10240)
+		if 300 in title_ids:
+			skills.append(10200)
+			skills.append(10210)
+			skills.append(10230)
+			skills.append(10240)
+		if 44 in skill_ids:
+			skills.append(10300)
+		if 45 in skill_ids:
+			skills.append(10310)
+		if 321 in title_ids:
+			skills.append(10340)
+		if 301 in title_ids:
+			skills.append(10300)
+			skills.append(10310)
+			skills.append(10330)
+			skills.append(10340)
+		if 54 in skill_ids:
+			skills.append(10400)
+		if 55 in skill_ids:
+			skills.append(10410)
+		if 322 in title_ids:
+			skills.append(10440)
+		if 302 in title_ids:
+			skills.append(10400)
+			skills.append(10410)
+			skills.append(10430)
+			skills.append(10440)
+		if 80 in title_ids:
+			skills.append(20020)
+		return skills
 
 output_folder = '../Scenarios/194QXGJ-qh'
 file_name = '194QXGJ-qh'

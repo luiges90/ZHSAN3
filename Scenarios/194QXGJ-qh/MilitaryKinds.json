@@ -1,5 +1,6 @@
 [
   {
+	"Type": 0,
     "BaseDefence": 50.0,
 	"Defence": 0.5,
     "EquipmentCost": 0.0,
@@ -30,6 +31,7 @@
     "_Id": 1
   },
   {
+	"Type": 0,
     "BaseDefence": 100.0,
 	"Defence": 1.0,
     "EquipmentCost": 0.6,
@@ -60,6 +62,7 @@
     "_Id": 2
   },
   {
+	"Type": 1,
     "BaseDefence": 70.0,
 	"Defence": 0.7,
     "EquipmentCost": 1.0,
@@ -90,6 +93,7 @@
     "_Id": 3
   },
   {
+	"Type": 2,
     "BaseDefence": 100.0,
 	"Defence": 1.0,
     "EquipmentCost": 0.6,

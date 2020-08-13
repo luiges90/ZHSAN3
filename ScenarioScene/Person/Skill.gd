@@ -9,6 +9,7 @@ var color: Color setget forbidden
 var description: String setget forbidden
 
 var influences setget forbidden
+var conditions setget forbidden
 
 func forbidden(x):
 	assert(false)
@@ -18,6 +19,7 @@ func load_data(json: Dictionary, objects):
 	gname = json["Name"]
 	description = json["Description"]
 	color = Util.load_color(json["Color"])
+	conditions = json["Conditions"]
 	influences = json["Influences"]
 	
 func save_data() -> Dictionary:
@@ -26,16 +28,12 @@ func save_data() -> Dictionary:
 		"Name": gname,
 		"Description": description,
 		"Color": Util.save_color(color),
+		"Conditions": conditions,
 		"Influences": influences
 	}
 
 func get_name() -> String:
 	return gname
 
-func apply_influences(in_operation, params):
-	if params.has("value"):
-		var value = params['value']
-		for influence in influences:
-			if in_operation == influence['Operation']:
-				value = influence["Value"] * value
-		return value
+func apply_influences(in_operation, params: Dictionary):
+	return ScenarioUtil.apply_influences(self, in_operation, params)
