@@ -505,8 +505,8 @@ func _recruit_troop(p: Person):
 			troop += quantity
 			population -= quantity
 			military_population -= quantity
-			troop_morale = Util.f2ri(troop_morale * old_quantity / float(troop))
-			troop_combativity = Util.f2ri(troop_combativity * old_quantity / float(troop))
+			troop_morale = Util.f2ri((troop_morale * old_quantity + 50 * quantity) / float(troop))
+			troop_combativity = Util.f2ri((troop_combativity * old_quantity + 50 * quantity) / float(troop))
 			morale -= Util.f2ri(quantity / 50.0)
 			p.add_strength_exp(10)
 			p.add_glamour_exp(10)
