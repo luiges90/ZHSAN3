@@ -29,14 +29,15 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 		var equipment_id = Util.random_from(avail_military_kinds.keys())
 		
 		if avail_positions.size() > 0 and persons.size() > 0:
-			var leader = Util.max_by(persons, "get_troop_leader_ability")[1]
-			
 			var troop = CreatingTroop.new()
-			troop.persons = [leader]
 			troop.military_kind = scenario.military_kinds[equipment_id]
-			troop.quantity = min(from_architecture.equipments[equipment_id] / 100 * 100, leader.get_max_troop_quantity())
+			
+			var leader = Util.max_by(persons, "get_troop_leader_ability", {"military_kind": troop.military_kind})[1]
+			troop.persons = [leader]
+			
 			troop.morale = from_architecture.troop_morale
 			troop.combativity = from_architecture.troop_combativity
+			troop.quantity = min(from_architecture.equipments[equipment_id] / 100 * 100, leader.get_max_troop_quantity())
 			assert(troop.quantity > 0)
 			
 			if ai._ai_troop.consider_make_troop(troop, from_architecture == target):

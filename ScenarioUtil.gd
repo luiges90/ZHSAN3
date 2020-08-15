@@ -29,7 +29,7 @@ static func apply_influences(influence_container, in_operation, params: Dictiona
 				elif influence['Operation'].begins_with('add'):
 					value = influence["Value"] + value
 				else:
-					assert('Value Operation shall starts with add or modify')
+					assert('Value Operation shall start with add or modify')
 		return value
 	else:
 		assert('Applying influences must provide value in params')
@@ -49,4 +49,32 @@ static func _check_conditions(influence_container, params: Dictionary):
 					else:
 						if params['troop'].military_kind.type != condition['Id']:
 							return false
+				elif params.has('military_kind'):
+					if condition['Id'] is Array:
+						if not (params['military_kind'].type in condition['Id']):
+							return false
+					else:
+						if params['military_kind'].type != condition['Id']:
+							return false
 	return true
+
+static func influence_troop_leader_offensive_factor(influence_container, params: Dictionary):
+	if not _check_conditions(influence_container, params):
+		return 1
+	
+	for influence in influence_container.influences:
+		if influence['Operation'] == "modify_person_troop_offence":
+			return influence["Value"]
+	
+	return 1
+
+static func influence_troop_leader_defensive_factor(influence_container, params: Dictionary):
+	if not _check_conditions(influence_container, params):
+		return 1
+	
+	for influence in influence_container.influences:
+		if influence['Operation'] == "modify_person_troop_defence":
+			return influence["Value"]
+	
+	return 1
+

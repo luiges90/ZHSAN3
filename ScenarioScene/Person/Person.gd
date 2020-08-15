@@ -302,8 +302,18 @@ func get_produce_equipment_ability():
 	base = apply_influences('modify_person_produce_equipment_ability', {"value": base, "person": self})
 	return base
 
-func get_troop_leader_ability():
-	return get_command() * 1.7 + get_strength() * 0.3
+func get_troop_leader_ability(params):
+	var mk = params["military_kind"]
+	var command = get_command()
+	var strength = get_strength()
+	
+	var command_factor = 1
+	var strength_factor = 1
+	for s in skills:
+		command_factor *= ScenarioUtil.influence_troop_leader_defensive_factor(s, {"person": self, "military_kind": mk})
+		strength_factor *= ScenarioUtil.influence_troop_leader_offensive_factor(s, {"person": self, "military_kind": mk})
+	
+	return command * 1.7 + strength * 0.3
 	
 func get_max_troop_quantity() -> int:
 	var base = 5000
