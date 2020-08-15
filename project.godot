@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd"
 }, {
+"base": "Node",
+"class": "Biography",
+"language": "GDScript",
+"path": "res://ScenarioScene/Person/Biography.gd"
+}, {
 "base": "Control",
 "class": "ContextMenu",
 "language": "GDScript",
@@ -282,6 +287,7 @@ _global_script_class_icons={
 "ArchitectureList": "",
 "ArchitectureMenu": "",
 "ArchitectureSurvey": "",
+"Biography": "",
 "ContextMenu": "",
 "CreateTroop": "",
 "CreatingTroop": "",

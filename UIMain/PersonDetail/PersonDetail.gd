@@ -13,7 +13,7 @@ func _input(event):
 			hide()
 
 func set_data():
-	$Description.bbcode_text = ""
+	$Description.bbcode_text = current_person.get_biography_text()
 	
 	$Portrait.texture = current_person.get_portrait()
 	$Name.text = current_person.get_full_name()

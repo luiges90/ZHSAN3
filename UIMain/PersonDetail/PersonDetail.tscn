@@ -36,9 +36,9 @@ text = "耒火(字字)"
 
 [node name="Description" type="RichTextLabel" parent="."]
 anchor_bottom = 1.0
-margin_left = 16.0
+margin_left = 17.0
 margin_top = 288.0
-margin_right = 272.0
+margin_right = 448.0
 margin_bottom = -16.0
 bbcode_enabled = true
 meta_underlined = false

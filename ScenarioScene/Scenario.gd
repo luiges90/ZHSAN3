@@ -24,6 +24,8 @@ var architectures = Dictionary() setget forbidden
 var persons = Dictionary() setget forbidden
 var troops = Dictionary() setget forbidden
 
+var biographies = Dictionary() setget forbidden
+
 var current_scenario_name = null
 
 var _architecture_clicked
@@ -162,6 +164,10 @@ func _save_data(path):
 	file.open(path + "/Persons.json", File.WRITE)
 	file.store_line(to_json(__save_items(persons)))
 	file.close()
+	
+	file.open(path + "/Biographies.json", File.WRITE)
+	file.store_line(to_json(__save_items(biographies)))
+	file.close()
 
 	
 func __save_items(d: Dictionary):
@@ -234,6 +240,13 @@ func _load_data(path):
 	for item in obj:
 		var instance = ArchitectureKind.new()
 		__load_item(instance, item, architecture_kinds, {})
+	file.close()
+	
+	file.open(path + "/Biographies.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	for item in obj:
+		var instance = Biography.new()
+		__load_item(instance, item, biographies, {})
 	file.close()
 
 	file.open(path + "/Persons.json", File.READ)

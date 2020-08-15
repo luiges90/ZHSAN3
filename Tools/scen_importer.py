@@ -293,6 +293,15 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Skills": convert_skills(k)
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
+			
+		with open(output_folder + '/Biographies.json', mode='w', encoding='utf-8') as fout:
+			r = []
+			for k in obj['AllBiographies']['Biographys']:
+				r.append({
+					"_Id": k['Value']['ID'],
+					"Text": k['Value']['Brief'] + "\n[color=green]演義：[/color]" + k['Value']['Romance'] + "\n[color=red]史實：[/color]" + k['Value']['History']
+				})
+			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 				
 		with open(output_folder + '/Troops.json', mode='w', encoding='utf-8') as fout:
 			fout.write(json.dumps([], indent=2, ensure_ascii=False, sort_keys=True))

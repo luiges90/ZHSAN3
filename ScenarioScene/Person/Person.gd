@@ -226,6 +226,13 @@ func get_producing_equipment_name():
 		return "--"
 	else:
 		return scenario.military_kinds[int(producing_equipment)].get_name()
+		
+func get_biography_text():
+	var bio = scenario.biographies
+	if bio.has(id):
+		return bio[id].text
+	else:
+		return ""
 
 #####################################
 #         Getters / Abilities       #
