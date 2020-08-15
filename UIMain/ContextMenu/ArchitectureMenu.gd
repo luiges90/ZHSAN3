@@ -10,11 +10,6 @@ signal architecture_create_troop
 var showing_architecture
 var _opening_list
 
-func _ready():
-	$H/MilitaryMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Military.rect_position.y)
-	$H/OfficersMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Officers.rect_position.y)
-	$H/FactionMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y)
-
 func show_menu(arch, mouse_x, mouse_y):
 	if arch.get_belonged_faction() == null:
 		$H/MainMenu/Internal.visible = false
@@ -41,6 +36,12 @@ func show_menu(arch, mouse_x, mouse_y):
 	$H/OfficersMenu/Call.disabled = has_only_one_arch
 	
 	show()
+	
+func _open_submenu():
+	$H/MilitaryMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Military.rect_position.y)
+	$H/OfficersMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Officers.rect_position.y)
+	$H/FactionMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y)
+	._open_submenu()
 	
 func _hide_submenus():
 	$H/InternalMenu.hide()
