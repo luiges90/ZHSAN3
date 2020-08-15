@@ -107,7 +107,7 @@
     "_Id": 101,
 	"Name": "貪污",
 	"Description": "城池資金收入減少25%",
-	"Color": [0.13, 0.56, 0.82, 0.4],
+	"Color": [0.81, 0.04, 0.0],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -133,7 +133,7 @@
     "_Id": 111,
 	"Name": "貪瀆",
 	"Description": "城池糧草收入減少25%",
-	"Color": [0.13, 0.56, 0.82, 0.4],
+	"Color": [0.81, 0.04, 0.0],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -159,7 +159,7 @@
     "_Id": 121,
 	"Name": "野蠻",
 	"Description": "城池人口增長減少10%",
-	"Color": [0.13, 0.56, 0.82, 0.4],
+	"Color": [0.81, 0.04, 0.0],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -211,7 +211,7 @@
     "_Id": 10000,
 	"Name": "動員",
 	"Description": "領兵數上限增加50%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -224,7 +224,7 @@
     "_Id": 10100,
 	"Name": "城守",
 	"Description": "在城池內時，城池防禦增加50%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -237,7 +237,7 @@
     "_Id": 10110,
 	"Name": "墨守",
 	"Description": "在城池內時，城池反擊力增加200%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -250,7 +250,7 @@
     "_Id": 10200,
 	"Name": "步攻",
 	"Description": "作為主將時，步兵攻擊力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -271,7 +271,7 @@
     "_Id": 10210,
 	"Name": "步守",
 	"Description": "作為主將時，步兵防禦力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -292,7 +292,7 @@
     "_Id": 10220,
 	"Name": "步速",
 	"Description": "作為主將時，步兵行動力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -313,7 +313,7 @@
     "_Id": 10230,
 	"Name": "步行",
 	"Description": "作為主將時，步兵先行值增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -334,7 +334,7 @@
     "_Id": 10240,
 	"Name": "步將",
 	"Description": "作為主將時，步兵各項能力增加10%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -367,7 +367,7 @@
     "_Id": 10300,
 	"Name": "弓攻",
 	"Description": "作為主將時，弓兵攻擊力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -388,7 +388,7 @@
     "_Id": 10310,
 	"Name": "弓守",
 	"Description": "作為主將時，弓兵防禦力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -409,7 +409,7 @@
     "_Id": 10320,
 	"Name": "弓速",
 	"Description": "作為主將時，弓兵行動力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -430,7 +430,7 @@
     "_Id": 10330,
 	"Name": "弓行",
 	"Description": "作為主將時，弓兵先行值增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -451,7 +451,7 @@
     "_Id": 10340,
 	"Name": "弓將",
 	"Description": "作為主將時，弓兵各項能力增加10%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -484,7 +484,7 @@
     "_Id": 10400,
 	"Name": "騎攻",
 	"Description": "作為主將時，騎兵攻擊力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -505,7 +505,7 @@
     "_Id": 10410,
 	"Name": "騎守",
 	"Description": "作為主將時，騎兵防禦力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -526,7 +526,7 @@
     "_Id": 10420,
 	"Name": "騎速",
 	"Description": "作為主將時，騎兵行動力增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -547,7 +547,7 @@
     "_Id": 10430,
 	"Name": "騎行",
 	"Description": "作為主將時，騎兵先行值增加20%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -568,7 +568,7 @@
     "_Id": 10440,
 	"Name": "騎將",
 	"Description": "作為主將時，騎兵各項能力增加10%",
-	"Color": [0.61, 0.16, 0.1],
+	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -627,7 +627,7 @@
     "_Id": 20011,
 	"Name": "強欲",
 	"Description": "自身俸祿增加100%",
-	"Color": [0, 0.4, 0, 0.4],
+	"Color": [0.81, 0.04, 0.0],
 	"Conditions": [],
 	"Influences": [
 		{
