@@ -107,7 +107,7 @@
     "_Id": 101,
 	"Name": "貪污",
 	"Description": "城池資金收入減少25%",
-	"Color": [0.81, 0.04, 0.0],
+	"Color": [1, 0.24, 0.24],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -133,7 +133,7 @@
     "_Id": 111,
 	"Name": "貪瀆",
 	"Description": "城池糧草收入減少25%",
-	"Color": [0.81, 0.04, 0.0],
+	"Color": [1, 0.24, 0.24],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -159,7 +159,7 @@
     "_Id": 121,
 	"Name": "野蠻",
 	"Description": "城池人口增長減少10%",
-	"Color": [0.81, 0.04, 0.0],
+	"Color": [1, 0.24, 0.24],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -311,27 +311,6 @@
   },
   {
     "_Id": 10230,
-	"Name": "步行",
-	"Description": "作為主將時，步兵先行值增加20%",
-	"Color": [0.96, 0.69, 0.13],
-	"Conditions": [
-		{
-			"Operation": "is_leader"
-		},
-		{
-			"Operation": "is_military_type",
-			"Id": 0
-		}
-	],
-	"Influences": [
-		{
-			"Operation": "modify_person_troop_initiative",
-			"Value": 1.2
-		}
-	]
-  },
-  {
-    "_Id": 10240,
 	"Name": "步將",
 	"Description": "作為主將時，步兵各項能力增加10%",
 	"Color": [0.96, 0.69, 0.13],
@@ -428,27 +407,6 @@
   },
   {
     "_Id": 10330,
-	"Name": "弓行",
-	"Description": "作為主將時，弓兵先行值增加20%",
-	"Color": [0.96, 0.69, 0.13],
-	"Conditions": [
-		{
-			"Operation": "is_leader"
-		},
-		{
-			"Operation": "is_military_type",
-			"Id": 1
-		}
-	],
-	"Influences": [
-		{
-			"Operation": "modify_person_troop_initiative",
-			"Value": 1.2
-		}
-	]
-  },
-  {
-    "_Id": 10340,
 	"Name": "弓將",
 	"Description": "作為主將時，弓兵各項能力增加10%",
 	"Color": [0.96, 0.69, 0.13],
@@ -545,27 +503,6 @@
   },
   {
     "_Id": 10430,
-	"Name": "騎行",
-	"Description": "作為主將時，騎兵先行值增加20%",
-	"Color": [0.96, 0.69, 0.13],
-	"Conditions": [
-		{
-			"Operation": "is_leader"
-		},
-		{
-			"Operation": "is_military_type",
-			"Id": 1
-		}
-	],
-	"Influences": [
-		{
-			"Operation": "modify_person_troop_initiative",
-			"Value": 1.2
-		}
-	]
-  },
-  {
-    "_Id": 10440,
 	"Name": "騎將",
 	"Description": "作為主將時，騎兵各項能力增加10%",
 	"Color": [0.96, 0.69, 0.13],
@@ -627,7 +564,7 @@
     "_Id": 20011,
 	"Name": "強欲",
 	"Description": "自身俸祿增加100%",
-	"Color": [0.81, 0.04, 0.0],
+	"Color": [1, 0.24, 0.24],
 	"Conditions": [],
 	"Influences": [
 		{
