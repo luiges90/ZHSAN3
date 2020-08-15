@@ -73,7 +73,7 @@ static func influence_troop_leader_defensive_factor(influence_container, params:
 		return 1
 	
 	for influence in influence_container.influences:
-		if influence['Operation'] == "modify_person_troop_defence":
+		if influence['Operation'] == "modify_person_troop_de56fence":
 			return influence["Value"]
 	
 	return 1

@@ -302,16 +302,22 @@ func get_produce_equipment_ability():
 	base = apply_influences('modify_person_produce_equipment_ability', {"value": base, "person": self})
 	return base
 
-func get_troop_leader_ability(params):
-	var mk = params["military_kind"]
+func get_troop_leader_ability(params = null):
+	var mk = params["military_kind"] if params != null else null
+	var out_params = {
+		"person": self
+	}
+	if mk != null:
+		out_params['military_kind'] = mk
+	
 	var command = get_command()
 	var strength = get_strength()
 	
 	var command_factor = 1
 	var strength_factor = 1
 	for s in skills:
-		command_factor *= ScenarioUtil.influence_troop_leader_defensive_factor(s, {"person": self, "military_kind": mk})
-		strength_factor *= ScenarioUtil.influence_troop_leader_offensive_factor(s, {"person": self, "military_kind": mk})
+		command_factor *= ScenarioUtil.influence_troop_leader_defensive_factor(s, out_params)
+		strength_factor *= ScenarioUtil.influence_troop_leader_offensive_factor(s, out_params)
 	
 	return command * 1.7 + strength * 0.3
 	
