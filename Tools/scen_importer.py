@@ -36,7 +36,9 @@ def convert_skills(object):
 		if 11030 in title_ids:
 			skills.append(150)
 		if 20 in skill_ids:
-			skills.append(10240)
+			skills.append(10500)
+		if 24 in skill_ids:
+			skills.append(10501)
 		if 230 in title_ids:
 			skills.append(10100)
 		if 34 in skill_ids:
@@ -44,34 +46,31 @@ def convert_skills(object):
 		if 35 in skill_ids:
 			skills.append(10210)
 		if 320 in title_ids:
-			skills.append(10240)
+			skills.append(10220)
 		if 300 in title_ids:
 			skills.append(10200)
 			skills.append(10210)
 			skills.append(10220)
-			skills.append(10230)
 		if 44 in skill_ids:
 			skills.append(10300)
 		if 45 in skill_ids:
 			skills.append(10310)
 		if 321 in title_ids:
-			skills.append(10330)
+			skills.append(10320)
 		if 301 in title_ids:
 			skills.append(10300)
 			skills.append(10310)
 			skills.append(10320)
-			skills.append(10330)
 		if 54 in skill_ids:
 			skills.append(10400)
 		if 55 in skill_ids:
 			skills.append(10410)
 		if 322 in title_ids:
-			skills.append(10430)
+			skills.append(10420)
 		if 302 in title_ids:
 			skills.append(10400)
 			skills.append(10410)
 			skills.append(10420)
-			skills.append(10430)
 		if 80 in title_ids:
 			skills.append(20020)
 		return skills

@@ -43,6 +43,10 @@ static func _check_conditions(influence_container, params: Dictionary):
 						return false
 			'is_military_type':
 				if params.has('troop'):
-					if params['troop'].military_kind.type != condition['Id']:
-						return false
+					if condition['Id'] is Array:
+						if not (params['troop'].military_kind.type in condition['Id']):
+							return false
+					else:
+						if params['troop'].military_kind.type != condition['Id']:
+							return false
 	return true

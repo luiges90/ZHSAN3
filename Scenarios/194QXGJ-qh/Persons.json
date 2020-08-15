@@ -379,9 +379,9 @@
     "Prestige": 300,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10400,
-      10440
+      10420
     ],
     "Status": 1,
     "Strength": 84,
@@ -1928,7 +1928,7 @@
     "Prestige": 300,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 67,
@@ -2009,9 +2009,9 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240,
+      10500,
       10400,
-      10440
+      10420
     ],
     "Status": 0,
     "Strength": 78,
@@ -2064,7 +2064,8 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240,
+      10500,
+      10501,
       10300,
       10400
     ],
@@ -2196,7 +2197,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10300,
-      10340
+      10320
     ],
     "Status": 0,
     "Strength": 72,
@@ -2249,9 +2250,9 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240,
+      10500,
       10400,
-      10440
+      10420
     ],
     "Status": 1,
     "Strength": 90,
@@ -2507,7 +2508,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 92,
@@ -2664,7 +2665,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10440
+      10420
     ],
     "Status": 0,
     "Strength": 74,
@@ -2872,7 +2873,7 @@
     "Prestige": 900,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10410
     ],
     "Status": 1,
@@ -3182,7 +3183,7 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 82,
@@ -3287,7 +3288,7 @@
     "Prestige": 700,
     "ProducingEquipment": null,
     "Skills": [
-      10340
+      10320
     ],
     "Status": 1,
     "Strength": 78,
@@ -4024,7 +4025,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10340
+      10320
     ],
     "Status": 1,
     "Strength": 83,
@@ -4233,7 +4234,7 @@
     "Skills": [
       50,
       10310,
-      10340
+      10320
     ],
     "Status": 1,
     "Strength": 73,
@@ -4699,7 +4700,7 @@
     "Skills": [
       40,
       50,
-      10240,
+      10500,
       10400
     ],
     "Status": 1,
@@ -4752,8 +4753,8 @@
     "Prestige": 600,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
-      10440
+      10500,
+      10420
     ],
     "Status": 1,
     "Strength": 71,
@@ -4780,7 +4781,7 @@
     "Prestige": 200,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 69,
@@ -4837,8 +4838,7 @@
       10310,
       10300,
       10310,
-      10330,
-      10340
+      10320
     ],
     "Status": 1,
     "Strength": 93,
@@ -5557,7 +5557,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 67,
@@ -5862,6 +5862,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
+      10501,
       10210,
       10310,
       10410
@@ -7189,7 +7190,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 72,
@@ -7581,8 +7582,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
-      10440
+      10500,
+      10420
     ],
     "Status": 0,
     "Strength": 83,
@@ -7688,7 +7689,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 77,
@@ -8120,7 +8121,7 @@
     "Prestige": 200,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 72,
@@ -8147,7 +8148,7 @@
     "Prestige": 100,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 71,
@@ -8578,7 +8579,7 @@
     "Prestige": 100,
     "ProducingEquipment": null,
     "Skills": [
-      10340
+      10320
     ],
     "Status": 1,
     "Strength": 75,
@@ -8730,9 +8731,9 @@
     "Prestige": 200,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10400,
-      10440
+      10420
     ],
     "Status": 1,
     "Strength": 86,
@@ -8759,7 +8760,7 @@
     "Prestige": 160,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10400
     ],
     "Status": 0,
@@ -9313,7 +9314,7 @@
     "ProducingEquipment": null,
     "Skills": [
       40,
-      10340
+      10320
     ],
     "Status": 0,
     "Strength": 73,
@@ -9569,7 +9570,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10210,
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 72,
@@ -9597,7 +9598,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240,
+      10500,
       10200,
       10400
     ],
@@ -9726,7 +9727,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10340
+      10320
     ],
     "Status": 0,
     "Strength": 86,
@@ -9906,7 +9907,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10200,
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 78,
@@ -9958,7 +9959,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 81,
@@ -10238,7 +10239,7 @@
     "Prestige": 200,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10210,
       10400
     ],
@@ -10317,8 +10318,8 @@
     "Prestige": 400,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
-      10440
+      10500,
+      10420
     ],
     "Status": 1,
     "Strength": 81,
@@ -10653,7 +10654,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 92,
@@ -10756,8 +10757,8 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240,
-      10440
+      10500,
+      10420
     ],
     "Status": 1,
     "Strength": 73,
@@ -10967,7 +10968,7 @@
     "Skills": [
       50,
       10310,
-      10340
+      10320
     ],
     "Status": 1,
     "Strength": 84,
@@ -11071,7 +11072,7 @@
     "Skills": [
       40,
       10310,
-      10340
+      10320
     ],
     "Status": 0,
     "Strength": 54,
@@ -11379,7 +11380,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240,
+      10500,
       10200,
       10210,
       10400,
@@ -11818,7 +11819,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10210,
-      10240
+      10220
     ],
     "Status": 1,
     "Strength": 85,
@@ -11873,7 +11874,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10200,
-      10240
+      10220
     ],
     "Status": 1,
     "Strength": 87,
@@ -12229,7 +12230,7 @@
     "Prestige": 400,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 65,
@@ -12282,7 +12283,7 @@
     "ProducingEquipment": null,
     "Skills": [
       30,
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 66,
@@ -12463,6 +12464,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10,
+      10501,
       10200,
       10210
     ],
@@ -12800,7 +12802,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 85,
@@ -13081,7 +13083,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10440
+      10420
     ],
     "Status": 0,
     "Strength": 88,
@@ -13261,9 +13263,9 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240,
+      10500,
       10410,
-      10440
+      10420
     ],
     "Status": 0,
     "Strength": 85,
@@ -13316,7 +13318,7 @@
     "ProducingEquipment": null,
     "Skills": [
       30,
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 72,
@@ -13344,12 +13346,11 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240,
+      10500,
       10400,
       10400,
       10410,
-      10430,
-      10440
+      10420
     ],
     "Status": 1,
     "Strength": 97,
@@ -13376,7 +13377,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 62,
@@ -13403,8 +13404,8 @@
     "Prestige": 1000,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
-      10440
+      10500,
+      10420
     ],
     "Status": 1,
     "Strength": 80,
@@ -13585,7 +13586,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 80,
@@ -14073,7 +14074,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10440
+      10420
     ],
     "Status": 0,
     "Strength": 83,
@@ -14126,7 +14127,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240,
+      10500,
       10400
     ],
     "Status": 1,
@@ -14381,7 +14382,7 @@
     "Prestige": 200,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 67,
@@ -14458,7 +14459,7 @@
     "Prestige": 200,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 94,
@@ -14767,7 +14768,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10220
     ],
     "Status": 1,
     "Strength": 73,
@@ -15100,7 +15101,7 @@
     "Prestige": 200,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 64,
@@ -15411,7 +15412,7 @@
     "ProducingEquipment": null,
     "Skills": [
       40,
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 71,
@@ -15771,7 +15772,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10210,
-      10240
+      10220
     ],
     "Status": 1,
     "Strength": 81,
@@ -16079,7 +16080,7 @@
     "Prestige": 160,
     "ProducingEquipment": null,
     "Skills": [
-      10340
+      10320
     ],
     "Status": 0,
     "Strength": 75,
@@ -16568,7 +16569,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10200,
-      10240
+      10220
     ],
     "Status": 0,
     "Strength": 79,
@@ -16854,7 +16855,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 89,
@@ -17085,7 +17086,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10300,
       10400
     ],
@@ -17139,9 +17141,9 @@
     "Prestige": 40,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10400,
-      10440
+      10420
     ],
     "Status": 0,
     "Strength": 89,
@@ -17459,7 +17461,7 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240,
+      10500,
       10400
     ],
     "Status": 1,
@@ -17548,7 +17550,8 @@
       20,
       30,
       50,
-      10240,
+      10500,
+      10501,
       10410
     ],
     "Status": 1,
@@ -17605,7 +17608,7 @@
     "ProducingEquipment": null,
     "Skills": [
       20,
-      10240,
+      10500,
       10400
     ],
     "Status": 1,
@@ -17717,7 +17720,7 @@
     "ProducingEquipment": null,
     "Skills": [
       70,
-      10240,
+      10500,
       10400,
       10410
     ],
@@ -17918,6 +17921,7 @@
       30,
       40,
       70,
+      10501,
       10210
     ],
     "Status": 0,
@@ -18081,7 +18085,7 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240,
+      10500,
       10200,
       10400
     ],
@@ -18167,7 +18171,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10400
     ],
@@ -18436,7 +18441,7 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240,
+      10500,
       10200,
       10400,
       10410
@@ -18467,7 +18472,7 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240,
+      10500,
       10200,
       10400,
       10410
@@ -18639,7 +18644,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10300,
       10400,
       10410
@@ -18675,6 +18680,7 @@
       40,
       50,
       70,
+      10501,
       10310
     ],
     "Status": 0,
@@ -18948,6 +18954,7 @@
     "Skills": [
       30,
       50,
+      10501,
       10200
     ],
     "Status": 0,
@@ -19031,7 +19038,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10
+      10,
+      10501
     ],
     "Status": 0,
     "Strength": 67,
@@ -19059,7 +19067,8 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10240,
+      10500,
+      10501,
       10410
     ],
     "Status": 0,
@@ -19087,7 +19096,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10410
     ],
     "Status": 0,
@@ -19170,7 +19179,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10400
     ],
     "Status": 0,
@@ -19254,6 +19263,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
+      10501,
       10200,
       10210
     ],
@@ -19336,7 +19346,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 88,
@@ -19446,6 +19456,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
+      10501,
       10200
     ],
     "Status": 0,
@@ -19474,6 +19485,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
+      10501,
       10210,
       10410
     ],
@@ -19964,7 +19976,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10300,
       10400
     ],
@@ -20491,6 +20504,7 @@
     "Skills": [
       50,
       70,
+      10501,
       10300,
       10310
     ],
@@ -20556,7 +20570,8 @@
       50,
       60,
       70,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -20622,7 +20637,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -20660,7 +20676,8 @@
       40,
       50,
       60,
-      70
+      70,
+      10501
     ],
     "Status": 0,
     "Strength": 58,
@@ -20721,7 +20738,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -20758,7 +20776,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -20793,7 +20812,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -20855,7 +20875,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10400,
@@ -20891,7 +20912,8 @@
       40,
       50,
       60,
-      10240
+      10500,
+      10501
     ],
     "Status": 0,
     "Strength": 66,
@@ -20924,6 +20946,7 @@
       40,
       50,
       70,
+      10501,
       10300,
       10310
     ],
@@ -20956,7 +20979,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -20991,7 +21015,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -21026,7 +21051,8 @@
     "Skills": [
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -21035,8 +21061,7 @@
       10410,
       10400,
       10410,
-      10430,
-      10440
+      10420
     ],
     "Status": 0,
     "Strength": 93,
@@ -21067,7 +21092,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -21104,7 +21130,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10300,
       10310,
       10400,
@@ -21138,7 +21165,8 @@
       30,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -21176,7 +21204,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -21213,7 +21242,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10400,
@@ -21248,13 +21278,13 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10200,
       10210,
-      10230,
-      10240,
+      10220,
       10400,
       10410
     ],
@@ -21287,7 +21317,8 @@
       40,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -21323,7 +21354,8 @@
       30,
       50,
       60,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10300,
@@ -21361,7 +21393,8 @@
       50,
       60,
       70,
-      10240,
+      10500,
+      10501,
       10200,
       10210,
       10400,
@@ -21399,6 +21432,7 @@
       50,
       60,
       70,
+      10501,
       10300,
       10310
     ],
@@ -21465,12 +21499,12 @@
       50,
       60,
       70,
+      10501,
       10300,
       10310,
       10300,
       10310,
-      10330,
-      10340
+      10320
     ],
     "Status": 0,
     "Strength": 50,
@@ -21504,6 +21538,7 @@
       50,
       60,
       70,
+      10501,
       10200,
       10210,
       10300,
@@ -21621,7 +21656,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 80,
@@ -21959,7 +21994,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 72,
@@ -21986,7 +22021,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 68,
@@ -22627,7 +22662,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
+      10500,
       10400
     ],
     "Status": 0,
@@ -22932,6 +22967,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
+      10501,
       10400
     ],
     "Status": 1,
@@ -23543,7 +23579,7 @@
       20,
       50,
       10400,
-      10440
+      10420
     ],
     "Status": 1,
     "Strength": 73,
@@ -23953,7 +23989,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 69,
@@ -24030,7 +24066,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 67,
@@ -24264,7 +24300,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 64,
@@ -24316,7 +24352,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 70,
@@ -24343,7 +24379,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 69,
@@ -24776,7 +24812,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 63,
@@ -28826,7 +28862,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 64,
@@ -29284,7 +29320,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 62,
@@ -30585,7 +30621,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 63,
@@ -33335,7 +33371,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 63,
@@ -34222,7 +34258,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 61,
@@ -34275,7 +34311,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 63,
@@ -34328,7 +34364,7 @@
     "ProducingEquipment": null,
     "Skills": [
       50,
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 58,
@@ -34408,7 +34444,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 59,
@@ -34665,7 +34701,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 1,
     "Strength": 36,
@@ -34692,7 +34728,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 26,
@@ -34771,7 +34807,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 61,
@@ -35722,7 +35758,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 69,
@@ -35750,7 +35786,7 @@
     "ProducingEquipment": null,
     "Skills": [
       10300,
-      10340
+      10320
     ],
     "Status": 1,
     "Strength": 62,
@@ -35777,8 +35813,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240,
-      10440
+      10500,
+      10420
     ],
     "Status": 0,
     "Strength": 75,
@@ -35805,7 +35841,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 72,
@@ -36238,7 +36274,7 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10240
+      10500
     ],
     "Status": 0,
     "Strength": 68,
