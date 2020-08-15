@@ -5,6 +5,7 @@ signal military_kind_clicked
 signal factions_clicked
 signal architectures_clicked
 signal persons_clicked
+signal skills_clicked
 
 func _on_MilitaryKind_pressed():
 	_select_item()
@@ -30,3 +31,8 @@ func _on_Persons_pressed():
 	_select_item()
 	emit_signal("persons_clicked")
 
+
+
+func _on_Skill_pressed():
+	_select_item()
+	emit_signal("skills_clicked")

@@ -34,6 +34,9 @@ func save_data() -> Dictionary:
 
 func get_name() -> String:
 	return gname
+	
+func get_color() -> Color:
+	return color
 
 func apply_influences(in_operation, params: Dictionary):
 	return ScenarioUtil.apply_influences(self, in_operation, params)

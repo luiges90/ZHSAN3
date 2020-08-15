@@ -601,7 +601,7 @@
     "_Id": 20000,
 	"Name": "傳令",
 	"Description": "自身調動所需時間減少50%",
-	"Color": [0, 0.4, 0],
+	"Color": [0, 0.78, 0.11],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -614,7 +614,7 @@
     "_Id": 20010,
 	"Name": "寡欲",
 	"Description": "自身俸祿減少50%",
-	"Color": [0, 0.4, 0],
+	"Color": [0, 0.78, 0.11],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -640,7 +640,7 @@
     "_Id": 20020,
 	"Name": "潛在",
 	"Description": "自身經驗增加50%",
-	"Color": [0, 0.4, 0],
+	"Color": [0, 0.78, 0.11],
 	"Conditions": [],
 	"Influences": [
 		{

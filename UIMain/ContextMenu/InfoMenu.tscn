@@ -49,7 +49,17 @@ text = "MILITARY_KIND_LIST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Skill" type="Button" parent="VBoxContainer" index="4"]
+margin_top = 136.0
+margin_right = 205.0
+margin_bottom = 174.123
+text = "SKILL_LIST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="VBoxContainer/Factions" to="." method="_on_Factions_pressed"]
 [connection signal="pressed" from="VBoxContainer/Architectures" to="." method="_on_Architectures_pressed"]
 [connection signal="pressed" from="VBoxContainer/Persons" to="." method="_on_Persons_pressed"]
 [connection signal="pressed" from="VBoxContainer/MilitaryKind" to="." method="_on_MilitaryKind_pressed"]
+[connection signal="pressed" from="VBoxContainer/Skill" to="." method="_on_Skill_pressed"]

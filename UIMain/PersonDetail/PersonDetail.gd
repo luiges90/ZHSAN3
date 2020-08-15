@@ -13,6 +13,7 @@ func _input(event):
 			hide()
 
 func set_data():
+	$_Id.text = str(current_person.id)
 	$Description.bbcode_text = current_person.get_biography_text()
 	
 	$Portrait.texture = current_person.get_portrait()

@@ -22,9 +22,11 @@ func show_data(list):
 ####################################
 # Control generation for subclass  #
 ####################################
-func _label(text: String):
+func _label(text: String, color = null):
 	var label = Label.new()
 	label.text = text
+	if color != null:
+		label.add_color_override('font_color', color)
 	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label

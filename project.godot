@@ -119,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/GameRecordCreator.gd"
 }, {
+"base": "TabList",
+"class": "InfoList",
+"language": "GDScript",
+"path": "res://UIMain/TabList/InfoList.gd"
+}, {
 "base": "ContextMenu",
 "class": "InfoMenu",
 "language": "GDScript",
@@ -297,6 +302,7 @@ _global_script_class_icons={
 "FactionSurvey": "",
 "GameRecord": "",
 "GameRecordCreator": "",
+"InfoList": "",
 "InfoMenu": "",
 "Main": "",
 "MainCamera": "",
