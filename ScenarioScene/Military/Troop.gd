@@ -458,10 +458,16 @@ func execute_attack():
 				var self_valid = quantity > 0
 				if self_valid and target_valid:
 					_attack_count_in_turn += 1
-					var damage = exp(0.693147 * log(float(get_offence()) / target.get_defence()) + 6.21461) + 1
+					
+					var actual_offence = get_offence() * military_kind.get_type_offensive_effectivenss(target.military_kind)
+					var actual_defence = get_defence() * military_kind.get_type_defensive_effectivenss(target.military_kind)
+					var actual_target_offence = target.get_offence() * target.military_kind.get_type_offensive_effectivenss(military_kind)
+					var actual_target_defence = target.get_defence() * target.military_kind.get_type_defensive_effectivenss(military_kind)
+					
+					var damage = exp(0.693147 * log(float(actual_offence) / actual_target_defence) + 6.21461) + 1
 					var counter_damage
 					if military_kind.receive_counter_attacks:
-						counter_damage = exp(0.693147 * log(float(target.get_offence()) / get_defence()) + 6.21461) * 0.5 + 1
+						counter_damage = exp(0.693147 * log(float(actual_target_offence) / actual_defence) + 6.21461) * 0.5 + 1
 					else:
 						counter_damage = 0
 					if target is Architecture:

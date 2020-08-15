@@ -26,6 +26,12 @@
       "9": 0.6,
       "10": 0.4
     },
+	"TypeDefensiveEffectiveness": {
+		
+	},
+	"TypeOffensiveEffectiveness": {
+	
+	},
 	"ReceiveCounterAttacks": true,
 	"ArchitectureAttackFactor": 0.005,
     "_Id": 1
@@ -57,6 +63,12 @@
       "9": 0.6,
       "10": 0.4
     },
+	"TypeDefensiveEffectiveness": {
+		"1": 1.5
+	},
+	"TypeOffensiveEffectiveness": {
+		"1": 1.5
+	},
 	"ReceiveCounterAttacks": true,
 	"ArchitectureAttackFactor": 0.01,
     "_Id": 2
@@ -88,6 +100,12 @@
       "9": 0.7,
       "10": 0.4
     },
+	"TypeDefensiveEffectiveness": {
+		
+	},
+	"TypeOffensiveEffectiveness": {
+		"2": 1.5
+	},
 	"ReceiveCounterAttacks": false,
 	"ArchitectureAttackFactor": 0.002,
     "_Id": 3
@@ -119,6 +137,13 @@
       "9": 0.3,
       "10": 0.2
     },
+	"TypeDefensiveEffectiveness": {
+		"0": 1.5
+	},
+	"TypeOffensiveEffectiveness": {
+		"0": 1.5,
+		"1": 1.5
+	},
 	"ReceiveCounterAttacks": true,
 	"ArchitectureAttackFactor": 0.004,
     "_Id": 4

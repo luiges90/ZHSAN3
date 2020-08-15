@@ -17,6 +17,8 @@ var defence: float setget forbidden
 var range_min: int setget forbidden
 var range_max: int setget forbidden
 var type setget forbidden
+var type_offensive_effectiveness setget forbidden
+var type_defensive_effectiveness setget forbidden
 
 var speed: int setget forbidden
 var initiative: int setget forbidden
@@ -51,6 +53,8 @@ func load_data(json: Dictionary, objects):
 	terrain_strength = json["TerrainStrength"]
 	receive_counter_attacks = json["ReceiveCounterAttacks"]
 	architecture_attack_factor = json["ArchitectureAttackFactor"]
+	type_offensive_effectiveness = Util.convert_dict_to_int_key(json["TypeOffensiveEffectiveness"])
+	type_defensive_effectiveness = Util.convert_dict_to_int_key(json["TypeDefensiveEffectiveness"])
 	
 func save_data() -> Dictionary:
 	return {
@@ -71,7 +75,9 @@ func save_data() -> Dictionary:
 		"MovementKind": movement_kind.id,
 		"TerrainStrength": terrain_strength,
 		"ReceiveCounterAttacks": receive_counter_attacks,
-		"ArchitectureAttackFactor": architecture_attack_factor
+		"ArchitectureAttackFactor": architecture_attack_factor,
+		"TypeOffensiveEffectiveness": type_offensive_effectiveness,
+		"TypeDefensiveEffectiveness": type_defensive_effectiveness
 	}
 	
 func get_name():
@@ -92,3 +98,12 @@ func get_terrain_strength_with_name():
 	
 func has_equipments():
 	return equipment_cost > 0
+	
+func get_type_offensive_effectivenss(other_kind):
+	var other_type = other_kind.type
+	return type_offensive_effectiveness[other_type] if type_offensive_effectiveness.has(other_type) else 1
+
+func get_type_defensive_effectivenss(other_kind):
+	var other_type = other_kind.type
+	return type_defensive_effectiveness[other_type] if type_defensive_effectiveness.has(other_type) else 1
+	
