@@ -22,14 +22,13 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 			var avail_movement_kinds = scenario.get_ai_path_available_movement_kinds(from_architecture, target)
 			avail_military_kinds = {}
 			for mk in scenario.military_kinds:
-				if avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments.has(mk):
+				if avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments[mk] > 100:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
 		if avail_military_kinds.size() <= 0:
 			break
-		# var equipment_id = Util.dict_max(avail_military_kinds)
 		var equipment_id = Util.random_from(avail_military_kinds.keys())
 		
-		if avail_positions.size() > 0 and from_architecture.equipments[equipment_id] > 100 and persons.size() > 0:
+		if avail_positions.size() > 0 and persons.size() > 0:
 			var leader = Util.max_by(persons, "get_troop_leader_ability")[1]
 			
 			var troop = CreatingTroop.new()
