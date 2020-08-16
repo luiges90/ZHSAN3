@@ -245,7 +245,7 @@ func get_initiative():
 	var base = military_kind.initiative
 	for p in get_persons():
 		base = p.apply_influences("modify_person_troop_initiative", {"value": base, "person": p, "troop": self})
-	return int()
+	return int(base)
 	
 static func cmp_initiative(a, b):
 	return a.get_initiative() > b.get_initiative()
