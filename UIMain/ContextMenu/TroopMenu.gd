@@ -10,6 +10,7 @@ signal enter_clicked
 signal follow_clicked
 signal troop_detail_clicked
 signal occupy_clicked
+signal troop_person_clicked
 
 func show_menu(troop, mouse_x, mouse_y): 
 	showing_troop = troop
@@ -61,3 +62,8 @@ func _on_TroopDetail_pressed():
 func _on_Occupy_pressed():
 	_select_item()
 	emit_signal("occupy_clicked", showing_troop)
+
+
+func _on_TroopPerson_pressed():
+	_select_item()
+	emit_signal("troop_person_clicked", showing_troop)

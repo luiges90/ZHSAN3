@@ -389,6 +389,10 @@ func set_location(item, force = false):
 
 func become_wild():
 	_status = Status.WILD
+	
+func clear_working_task():
+	working_task = null
+	producing_equipment = null
 
 func set_working_task(work):
 	working_task = work

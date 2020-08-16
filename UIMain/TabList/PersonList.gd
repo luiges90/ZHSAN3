@@ -229,3 +229,8 @@ func _on_CreateTroop_select_leader(arch, persons):
 func __on_clickable_label_click(label, person):
 	emit_signal('person_row_clicked', person)
 	_detail_showing = true
+
+
+func _on_TroopMenu_troop_person_clicked(troop):
+	current_action = Action.LIST
+	show_data(troop.get_persons())

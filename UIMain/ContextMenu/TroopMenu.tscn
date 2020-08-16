@@ -16,42 +16,49 @@ __meta__ = {
 }
 
 [node name="Move" type="Button" parent="VBoxContainer" index="0"]
-margin_right = 157.0
+margin_right = 172.0
 margin_bottom = 38.1229
 text = "MOVE"
 
 [node name="Follow" type="Button" parent="VBoxContainer" index="1"]
 margin_top = 34.0
-margin_right = 157.0
+margin_right = 172.0
 margin_bottom = 72.1229
 text = "FOLLOW"
 
 [node name="Attack" type="Button" parent="VBoxContainer" index="2"]
 margin_top = 68.0
-margin_right = 157.0
+margin_right = 172.0
 margin_bottom = 106.123
 text = "ATTACK"
 
 [node name="Enter" type="Button" parent="VBoxContainer" index="3"]
 margin_top = 102.0
-margin_right = 157.0
+margin_right = 172.0
 margin_bottom = 140.123
 text = "ENTER"
 
 [node name="Occupy" type="Button" parent="VBoxContainer" index="4"]
 margin_top = 136.0
-margin_right = 157.0
+margin_right = 172.0
 margin_bottom = 174.123
 text = "OCCUPY"
 
 [node name="TroopDetail" type="Button" parent="VBoxContainer" index="5"]
 margin_top = 170.0
-margin_right = 157.0
+margin_right = 172.0
 margin_bottom = 208.123
 text = "TROOP_DETAIL"
+
+[node name="TroopPerson" type="Button" parent="VBoxContainer" index="6"]
+margin_top = 204.0
+margin_right = 172.0
+margin_bottom = 242.123
+text = "TROOP_PERSON"
 [connection signal="pressed" from="VBoxContainer/Move" to="." method="_on_Move_pressed"]
 [connection signal="pressed" from="VBoxContainer/Follow" to="." method="_on_Follow_pressed"]
 [connection signal="pressed" from="VBoxContainer/Attack" to="." method="_on_Attack_pressed"]
 [connection signal="pressed" from="VBoxContainer/Enter" to="." method="_on_Enter_pressed"]
 [connection signal="pressed" from="VBoxContainer/Occupy" to="." method="_on_Occupy_pressed"]
 [connection signal="pressed" from="VBoxContainer/TroopDetail" to="." method="_on_TroopDetail_pressed"]
+[connection signal="pressed" from="VBoxContainer/TroopPerson" to="." method="_on_TroopPerson_pressed"]

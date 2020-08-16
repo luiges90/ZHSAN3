@@ -405,6 +405,7 @@ func create_troop(arch, troop, position) -> Troop:
 	var instance = scene.instance()
 	for p in troop.persons:
 		instance.add_person(p)
+		p.clear_working_task()
 
 	var id = troops.keys().max()
 	if id == null:

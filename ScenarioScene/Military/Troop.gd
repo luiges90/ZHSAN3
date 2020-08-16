@@ -89,11 +89,15 @@ func load_data(json: Dictionary, objects):
 	_food_shortage = json["_FoodShortage"]
 	
 	_ai_state = json["_AIState"]
-	_ai_destination_architecture = scenario.architectures[int(json["_AIDestinationArchitecture"])]
-	if _starting_arch.id == _ai_destination_architecture.id:
-		_ai_path = [_starting_arch.map_position]
+	var __arch = json["_AIDestinationArchitecture"]
+	if __arch != null:
+		_ai_destination_architecture = scenario.architectures[int(__arch)]
+		if _starting_arch.id == _ai_destination_architecture.id:
+			_ai_path = [_starting_arch.map_position]
+		else:
+			_ai_path = scenario.get_ai_path(military_kind.movement_kind.id, _starting_arch, _ai_destination_architecture)
 	else:
-		_ai_path = scenario.get_ai_path(military_kind.movement_kind.id, _starting_arch, _ai_destination_architecture)
+		_ai_destination_architecture = null
 
 	
 func save_data() -> Dictionary:
@@ -126,7 +130,7 @@ func save_data() -> Dictionary:
 		"_CurrentOrderTarget": order_target,
 		"_CurrentOrderTargetType": order_target_type,
 		"_AIState": _ai_state,
-		"_AIDestinationArchitecture": _ai_destination_architecture.id
+		"_AIDestinationArchitecture": _ai_destination_architecture.id if _ai_destination_architecture != null else null
 	}
 	
 func _on_scenario_loaded():
