@@ -35,7 +35,7 @@ static func id_list(list: Array) -> Array:
 #                 Formatting                 #
 ##############################################
 
-static func nstr(n: int) -> String:
+static func nstr (n: int) -> String:
 	var s = str(n)
 	var negative_shift = 1 if n < 0 else 0
 	if s.length() > 3 + negative_shift:
@@ -57,6 +57,9 @@ static func snstr(n: int) -> String:
 static func current_date_str() -> String:
 	var now = OS.get_datetime()
 	return str(now['year']) + '-' + str(now['month']) + '-' + str(now['day']) + " " + str(now['hour']) + ":" + str(now['minute'])
+	
+static func bstr(b: bool) -> String:
+	return "○" if b else "×"
 
 ##############################################
 #                     Math                   #

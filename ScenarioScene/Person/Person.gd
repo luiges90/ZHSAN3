@@ -391,7 +391,7 @@ func become_wild():
 	_status = Status.WILD
 	
 func clear_working_task():
-	working_task = null
+	working_task = Task.NONE
 	producing_equipment = null
 
 func set_working_task(work):

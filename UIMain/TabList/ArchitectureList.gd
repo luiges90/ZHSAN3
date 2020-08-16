@@ -4,14 +4,25 @@ class_name ArchitectureList
 enum Action { LIST, MOVE_TO }
 
 signal architecture_selected
+signal architecture_row_clicked
 
 var _selected_person_ids
+
+var _detail_showing = false
 
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
 	$Tabs.set_tab_title(2, tr('MILITARY'))
 	$Tabs.set_tab_title(3, tr('EQUIPMENTS'))
+	
+func handle_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			if _detail_showing:
+				_detail_showing = false
+			else:
+				.handle_input(event)
 	
 func _on_InfoMenu_architectures_clicked(scenario):
 	current_action = Action.LIST
@@ -52,14 +63,14 @@ func _populate_basic_data(arch_list: Array, action):
 	for arch in arch_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
-		item_list.add_child(_label(arch.get_name()))
-		item_list.add_child(_label(arch.kind.get_name()))
-		item_list.add_child(_label(arch.get_belonged_faction_str()))
-		item_list.add_child(_label(Util.nstr(arch.population)))
-		item_list.add_child(_label(Util.nstr(arch.food)))
-		item_list.add_child(_label(Util.nstr(arch.fund)))
-		item_list.add_child(_label(str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())))
-		item_list.add_child(_label(str(arch.get_wild_persons().size())))
+		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(arch.kind.get_name(), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(arch.get_belonged_faction_str(), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(Util.nstr(arch.population), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(Util.nstr(arch.food), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(Util.nstr(arch.fund), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size()), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.get_wild_persons().size()), self, "__on_clickable_label_click", arch))
 	
 func _populate_internal_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
@@ -79,13 +90,13 @@ func _populate_internal_data(arch_list: Array, action):
 	for arch in arch_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
-		item_list.add_child(_label(arch.get_name()))
-		item_list.add_child(_label(str(arch.population)))
-		item_list.add_child(_label(str(arch.military_population)))
-		item_list.add_child(_label(str(arch.agriculture)))
-		item_list.add_child(_label(str(arch.commerce)))
-		item_list.add_child(_label(str(arch.morale)))
-		item_list.add_child(_label(str(arch.endurance)))
+		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.population), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.military_population), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.agriculture), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.commerce), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.morale), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.endurance), self, "__on_clickable_label_click", arch))
 		
 func _populate_military_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer
@@ -102,10 +113,10 @@ func _populate_military_data(arch_list: Array, action):
 	for arch in arch_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
-		item_list.add_child(_label(arch.get_name()))
-		item_list.add_child(_label(str(arch.troop)))
-		item_list.add_child(_label(str(arch.troop_morale)))
-		item_list.add_child(_label(str(arch.troop_combativity)))
+		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.troop), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.troop_morale), self, "__on_clickable_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.troop_combativity), self, "__on_clickable_label_click", arch))
 		
 func _populate_equipments_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab4/Grid as GridContainer
@@ -129,9 +140,9 @@ func _populate_equipments_data(arch_list: Array, action):
 	for arch in arch_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
-		item_list.add_child(_label(arch.get_name()))
+		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
 		for k in kinds:
-			item_list.add_child(_label(str(arch.equipments[k.id])))
+			item_list.add_child(_clickable_label(str(arch.equipments[k.id]), self, "__on_clickable_label_click", arch))
 	
 
 func _on_Confirm_pressed():
@@ -148,6 +159,11 @@ func _on_ArchitectureMenu_architecture_list_clicked(arch, archs: Array, action):
 	current_action = action
 	current_architecture = arch
 	show_data(archs)
+
+
+func __on_clickable_label_click(label, person):
+	emit_signal('person_row_clicked', person)
+	_detail_showing = true
 
 
 func _on_PersonList_person_selected(task, arch, selected_person_ids):

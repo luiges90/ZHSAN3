@@ -156,6 +156,10 @@ func get_name() -> String:
 func get_belonged_faction():
 	return _belonged_section.get_belonged_faction() if _belonged_section != null else null
 	
+func get_belonged_faction_color():
+	var f = get_belonged_faction()
+	return f.color if f != null else Color(1, 1, 1)
+	
 func get_belonged_faction_str():
 	var f = get_belonged_faction()
 	return f.get_name() if f != null else '----'
@@ -248,6 +252,11 @@ func get_offence():
 		base = p.apply_influences('modify_person_architecture_offence', {"value": base, "person": p, "architecture": self})
 	return base
 
+func get_total_equipments():
+	var r = 0
+	for t in equipments:
+		r += equipments[t]
+	return r
 	
 ####################################
 #           GÌ°èet function           #

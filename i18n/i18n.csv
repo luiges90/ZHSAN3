@@ -133,3 +133,9 @@ MERIT,Merit,功績,功績
 SKILL_LIST,Skill list,技能列表,技能列表
 ID,ID,ID,ID
 DESCRIPTION,Description,說明,說明
+IDLING_PERSONS,Idling Officers,待命武將,待命武將
+WORKABLE_PERSONS,Active Officers,建築武將,建築武將
+PERSONS,Total Officers,勢力武將,勢力武將
+WILD_PERSONS,Unaffilated Officers,在野武將,在野武將
+FRONTLINE,Front line,前線,前線
+TOTAL_EQUIPMENT,Equipment,兵裝數,兵裝數
