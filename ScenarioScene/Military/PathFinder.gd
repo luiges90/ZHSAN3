@@ -82,7 +82,7 @@ func prepare_orders():
 func stupid_path_to_step(target_position):
 	var x = target_position.x - troop.map_position.x
 	var y = target_position.y - troop.map_position.y
-	if abs(x) + abs(y) <= 0:
+	if abs(x) + abs(y) <= 1:
 		return null
 	
 	var new_position = troop.map_position
