@@ -162,7 +162,7 @@ func _on_ArchitectureMenu_architecture_list_clicked(arch, archs: Array, action):
 
 
 func __on_clickable_label_click(label, person):
-	emit_signal('person_row_clicked', person)
+	emit_signal('architecture_row_clicked', person)
 	_detail_showing = true
 
 

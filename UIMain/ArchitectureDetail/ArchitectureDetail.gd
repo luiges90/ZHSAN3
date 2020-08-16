@@ -28,3 +28,9 @@ func set_data():
 	$Data/TroopCombativity.text = Util.nstr(current_architecture.troop_combativity)
 	$Data/Frontline.text = Util.bstr(current_architecture.is_frontline())
 	$Data/TotalEquipment.text = Util.nstr(current_architecture.get_total_equipments())
+
+
+func _on_ArchitectureList_architecture_row_clicked(arch):
+	current_architecture = arch
+	set_data()
+	show()

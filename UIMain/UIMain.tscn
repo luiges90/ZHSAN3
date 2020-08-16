@@ -235,6 +235,7 @@ __meta__ = {
 [connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
+[connection signal="architecture_row_clicked" from="ArchitectureList" to="ArchitectureDetail" method="_on_ArchitectureList_architecture_row_clicked"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
 [connection signal="troop_clicked" from="ArchitectureAndTroopMenu" to="TroopMenu" method="_on_ArchitectureAndTroopMenu_troop_clicked"]
