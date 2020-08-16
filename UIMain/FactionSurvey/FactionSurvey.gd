@@ -39,8 +39,8 @@ func __on_label_click(label, arch):
 	emit_signal('focus_camera', arch.map_position)
 
 
-func _on_current_faction_set(faction):
-	show_data(faction)
+func _on_all_loaded(scenario):
+	show_data(scenario.current_faction)
 
 
 func update_data():

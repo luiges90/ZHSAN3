@@ -26,8 +26,6 @@ func _ready():
 	
 	$Scenario.connect("mouse_moved_to_map_position", $UICanvas/UIMain, "_on_mouse_moved_to_map_posiiton")
 	
-	$Scenario.connect("current_faction_set", $UICanvas/UIMain/FactionSurvey, "_on_current_faction_set")
-	
 	_all_loaded()
 
 func _register_architecture_ui():
@@ -88,5 +86,6 @@ func _register_map_ui():
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")
 	connect("all_loaded", $Scenario/DateRunner, "_on_all_loaded")
+	connect("all_loaded", $UICanvas/UIMain/FactionSurvey, "_on_all_loaded", [$Scenario])
 	
 	emit_signal("all_loaded")

@@ -461,13 +461,17 @@ func _on_focus_camera(position):
 ########################################
 #         Other signal Logic           #
 ########################################
-
+var __day_passed_sec = OS.get_ticks_msec()
+const DAY_PASSED_DELAY = 1
 func _on_day_passed():
 	# run Troops
 	var troop_queue = TroopQueue.new(troops.values())
 	var troop_queue_result = troop_queue.execute()
 	if troop_queue_result:
 		yield(troop_queue_result, "completed")
+	if OS.get_ticks_msec() - __day_passed_sec >= DAY_PASSED_DELAY:
+		yield(get_tree(), "idle_frame")
+	__day_passed_sec = OS.get_ticks_msec()
 	
 	# run Factions
 	var last_faction = current_faction
@@ -477,6 +481,10 @@ func _on_day_passed():
 		current_faction = faction
 		emit_signal("current_faction_set", current_faction)
 		ai.run_faction(faction, self)
+		if OS.get_ticks_msec() - __day_passed_sec >= DAY_PASSED_DELAY:
+			yield(get_tree(), "idle_frame")
+		__day_passed_sec = OS.get_ticks_msec()
+		
 	current_faction = last_faction
 	emit_signal("current_faction_set", current_faction)
 	for faction in factions.values():
