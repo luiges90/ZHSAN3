@@ -37,6 +37,10 @@ def convert_skills(object):
 			skills.append(150)
 		if 20 in skill_ids:
 			skills.append(10500)
+		if 21 in skill_ids:
+			skills.append(10600)
+		if 22 in skill_ids:
+			skills.append(10610)
 		if 24 in skill_ids:
 			skills.append(10501)
 		if 230 in title_ids:

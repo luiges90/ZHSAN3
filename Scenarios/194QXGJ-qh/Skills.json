@@ -474,7 +474,7 @@
   {
     "_Id": 10500,
 	"Name": "馳騁",
-	"Description": "作為主將時，騎兵速度增加20%",
+	"Description": "作為主將時，在平地的騎兵速度增加20%、先行增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
@@ -483,6 +483,10 @@
 		{
 			"Operation": "is_military_type",
 			"Id": 2
+		},
+		{
+			"Operation": "is_terrain",
+			"Id": [1, 2, 8]
 		}
 	],
 	"Influences": [
@@ -499,15 +503,11 @@
   {
     "_Id": 10501,
 	"Name": "速行",
-	"Description": "作為主將時，步兵及弓兵速度增加20%",
+	"Description": "作為主將時，部隊速度增加20%、先行增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
-		},
-		{
-			"Operation": "is_military_type",
-			"Id": [0, 1]
 		}
 	],
 	"Influences": [
@@ -518,6 +518,72 @@
 		{
 			"Operation": "modify_person_troop_initiative",
 			"Value": 1.1
+		}
+	]
+  },
+  {
+    "_Id": 10600,
+	"Name": "林戰",
+	"Description": "作為主將時，在森林裡部隊各項能力增加20%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_terrain",
+			"Id": 3
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.2
+		}
+	]
+  },
+   {
+    "_Id": 10610,
+	"Name": "山戰",
+	"Description": "作為主將時，在山地裡部隊各項能力增加20%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_terrain",
+			"Id": 5
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.2
 		}
 	]
   },

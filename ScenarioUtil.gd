@@ -56,6 +56,14 @@ static func _check_conditions(influence_container, params: Dictionary):
 					else:
 						if params['military_kind'].type != condition['Id']:
 							return false
+			'is_terrain':
+				if params.has('troop'):
+					if condition['Id'] is Array:
+						if not (params['troop'].get_current_terrain().id in condition['Id']):
+							return false
+					else:
+						if params['troop'].get_current_terrain().id != condition['Id']:
+							return false
 	return true
 
 static func influence_troop_leader_offensive_factor(influence_container, params: Dictionary):

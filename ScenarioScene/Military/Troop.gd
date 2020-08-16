@@ -249,6 +249,9 @@ func get_initiative():
 	
 static func cmp_initiative(a, b):
 	return a.get_initiative() > b.get_initiative()
+	
+func get_current_terrain():
+	return scenario.get_terrain_at_position(map_position)
 
 # returns [cost, blocked by object]
 func get_movement_cost(position, ignore_troops):
