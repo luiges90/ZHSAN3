@@ -213,23 +213,24 @@ func get_offence():
 	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
 	var morale_factor = (morale + 5) / 100.0
 	
-	var influence_factor = 1
+	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
+
 	for p in get_persons():
-		influence_factor = p.apply_influences("modify_person_troop_offence", {"value": influence_factor, "person": p, "troop": self})
+		base = p.apply_influences("modify_person_troop_offence", {"value": base, "person": p, "troop": self})
 	
-	return int((troop_base + troop_quantity) * ability_factor * morale_factor * influence_factor)
+	return int(base)
 	
 func get_defence():
 	var troop_base = military_kind.base_defence
 	var troop_quantity = military_kind.defence * quantity / military_kind.max_quantity_multiplier
 	var ability_factor = (get_command() + 10) / 100.0
 	var morale_factor = (morale + 10) / 100.0
-	
-	var influence_factor = 1
+
+	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 	for p in get_persons():
-		influence_factor = p.apply_influences("modify_person_troop_defence", {"value": influence_factor, "person": p, "troop": self})
+		base = p.apply_influences("modify_person_troop_defence", {"value": base, "person": p, "troop": self})
 		
-	return int((troop_base + troop_quantity) * ability_factor * morale_factor * influence_factor)
+	return int(base)
 	
 func get_offence_over_defence():
 	return get_offence() / get_defence()
@@ -237,14 +238,14 @@ func get_offence_over_defence():
 func get_speed():
 	var base = military_kind.speed
 	for p in get_persons():
-		base *= p.apply_influences("modify_person_troop_speed", {"value": base, "person": p, "troop": self})
-	return base
+		base = p.apply_influences("modify_person_troop_speed", {"value": base, "person": p, "troop": self})
+	return int(base)
 	
 func get_initiative():
 	var base = military_kind.initiative
 	for p in get_persons():
-		base *= p.apply_influences("modify_person_troop_initiative", {"value": base, "person": p, "troop": self})
-	return base
+		base = p.apply_influences("modify_person_troop_initiative", {"value": base, "person": p, "troop": self})
+	return int()
 	
 static func cmp_initiative(a, b):
 	return a.get_initiative() > b.get_initiative()
@@ -459,10 +460,15 @@ func execute_attack():
 				if self_valid and target_valid:
 					_attack_count_in_turn += 1
 					
-					var actual_offence = get_offence() * military_kind.get_type_offensive_effectivenss(target.military_kind)
-					var actual_defence = get_defence() * military_kind.get_type_defensive_effectivenss(target.military_kind)
-					var actual_target_offence = target.get_offence() * target.military_kind.get_type_offensive_effectivenss(military_kind)
-					var actual_target_defence = target.get_defence() * target.military_kind.get_type_defensive_effectivenss(military_kind)
+					var actual_offence = get_offence()
+					var actual_defence = get_defence()
+					var actual_target_offence = target.get_offence()
+					var actual_target_defence = target.get_defence()
+					if not (target is Architecture):
+						actual_offence *= military_kind.get_type_offensive_effectivenss(target.military_kind)
+						actual_defence *= military_kind.get_type_defensive_effectivenss(target.military_kind)
+						actual_target_offence *= target.military_kind.get_type_offensive_effectivenss(military_kind)
+						actual_target_defence *= target.military_kind.get_type_defensive_effectivenss(military_kind)
 					
 					var damage = exp(0.693147 * log(float(actual_offence) / actual_target_defence) + 6.21461) + 1
 					var counter_damage

@@ -15,12 +15,13 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 		var avail_positions = from_architecture.create_troop_positions()
 		var persons = from_architecture.get_workable_persons()
 		
-		var avail_military_kinds
+		var avail_military_kinds = {}
 		if from_architecture == target:
-			avail_military_kinds = from_architecture.equipments
+			for mk in from_architecture.equipments:
+				if from_architecture.equipments[mk] > 100:
+					avail_military_kinds[mk] = from_architecture.equipments[mk]
 		else:
 			var avail_movement_kinds = scenario.get_ai_path_available_movement_kinds(from_architecture, target)
-			avail_military_kinds = {}
 			for mk in scenario.military_kinds:
 				if avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments.has(mk) and from_architecture.equipments[mk] > 100:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
