@@ -15,12 +15,9 @@ signal day_passed
 signal month_passed
 signal season_passed
 signal year_passed
+signal date_runner_stopped
 
 var stop_date_runner = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
 func get_season():
 	if month >= 3 and month <= 5:
@@ -51,6 +48,7 @@ func _on_start_date_runner(day_count):
 		emit_signal("date_updated", year, month, day, get_season())
 		yield(scenario, "all_faction_finished")
 	stop_date_runner = false
+	emit_signal("date_runner_stopped")
 	
 func _on_stop_date_runner():
 	stop_date_runner = true

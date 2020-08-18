@@ -30,3 +30,6 @@ func _unhandled_input(event):
 
 func _on_mouse_moved_to_map_posiiton(position, terrain):
 	$TileInfo.text = terrain.get_name() + str(position)
+
+func _on_date_runner_stopped():
+	$PlayerTurn.play()

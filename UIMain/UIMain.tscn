@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://UIMain/PersonDetail/PersonDetail.tscn" type="PackedScene" id=23]
 [ext_resource path="res://UIMain/TabList/InfoList.tscn" type="PackedScene" id=24]
 [ext_resource path="res://UIMain/ArchitectureDetail/ArchitectureDetail.tscn" type="PackedScene" id=25]
+[ext_resource path="res://UIMain/Control.wav" type="AudioStream" id=26]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -228,13 +229,16 @@ text = "草原 (123, 456)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PlayerTurn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
 [connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
 [connection signal="person_row_clicked" from="PersonList" to="PersonDetail" method="_on_PersonList_person_row_clicked"]
+[connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
 [connection signal="architecture_row_clicked" from="ArchitectureList" to="ArchitectureDetail" method="_on_ArchitectureList_architecture_row_clicked"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
