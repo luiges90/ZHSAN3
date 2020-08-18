@@ -241,13 +241,13 @@ func expected_population_gain():
 	return base
 	
 func get_defence():
-	var base = 1500 + endurance + morale * 3
+	var base = 1500 + endurance + morale * 3 + troop * 0.05
 	for p in get_workable_persons():
 		base = p.apply_influences('modify_person_architecture_defence', {"value": base, "person": p, "architecture": self})
 	return base
 	
 func get_offence():
-	var base = endurance + morale * 0.5
+	var base = endurance + morale * 0.5 + troop * 0.1
 	for p in get_workable_persons():
 		base = p.apply_influences('modify_person_architecture_offence', {"value": base, "person": p, "architecture": self})
 	return base

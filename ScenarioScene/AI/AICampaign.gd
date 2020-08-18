@@ -23,13 +23,13 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 		else:
 			var avail_movement_kinds = scenario.get_ai_path_available_movement_kinds(from_architecture, target)
 			for mk in scenario.military_kinds:
-				if avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments.has(mk) and from_architecture.equipments[mk] > 100:
+				if avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments.has(mk) and from_architecture.equipments[mk] > 1000:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
 		if avail_military_kinds.size() <= 0:
 			break
-		var equipment_id = Util.random_from(avail_military_kinds.keys())
 		
-		if avail_positions.size() > 0 and persons.size() > 0:
+		var candidates = []
+		for equipment_id in avail_military_kinds:
 			var troop = CreatingTroop.new()
 			troop.military_kind = scenario.military_kinds[equipment_id]
 			
@@ -41,15 +41,26 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 			troop.quantity = min(from_architecture.equipments[equipment_id] / 100 * 100, leader.get_max_troop_quantity())
 			assert(troop.quantity > 0)
 			
-			if ai._ai_troop.consider_make_troop(troop, from_architecture == target):
-				var position = Util.random_from(avail_positions)
-				if position != null:
-					troops_created.append(scenario.create_troop(from_architecture, troop, position))
+			candidates.append(troop)
+		
+		candidates.sort_custom(self, "__compare_troop_ai_value")
+		var inner_troops_created = false
+		for troop in candidates:
+			if avail_positions.size() > 0 and persons.size() > 0:
+				var valid = true
+				for p in troop.persons:
+					if p.get_location() != from_architecture:
+						valid = false
+				if valid and ai._ai_troop.consider_make_troop(troop, from_architecture == target):
+					inner_troops_created = true
+					var position = Util.random_from(avail_positions)
+					if position != null:
+						troops_created.append(scenario.create_troop(from_architecture, troop, position))
 			else:
 				stop_creating_troop = true
-		else:
+		if not inner_troops_created:
 			stop_creating_troop = true
-			
+		
 	return troops_created
 	
 func __starting_architecture_changed(troop):
@@ -90,5 +101,8 @@ func offence(arch, section, scenario):
 			troop._ai_destination_architecture = selected_target
 			troop._ai_path = scenario.get_ai_path(troop.military_kind.movement_kind.id, troop.get_starting_architecture(), troop._ai_destination_architecture)
 			_setup_starting_architecture_changed_signal(troop)
-		
-	
+			
+func __compare_troop_ai_value(a, b):
+	if a.ai_value() > b.ai_value():
+		return true
+	return false

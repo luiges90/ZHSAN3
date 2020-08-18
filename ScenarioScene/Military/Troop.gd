@@ -174,6 +174,9 @@ func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in
 ####################################
 #             Get stat             #
 ####################################
+func ai_value():
+	return get_offence() + get_defence()
+
 func get_belonged_section():
 	return _belonged_section
 	
