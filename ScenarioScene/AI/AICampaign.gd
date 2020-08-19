@@ -15,6 +15,9 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 		var avail_positions = from_architecture.create_troop_positions()
 		var persons = from_architecture.get_workable_persons()
 		
+		if persons.size() <= 0:
+			break
+		
 		var avail_military_kinds = {}
 		if from_architecture == target:
 			for mk in from_architecture.equipments:
