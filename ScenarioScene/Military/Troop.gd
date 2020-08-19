@@ -725,7 +725,8 @@ func _on_TroopArea_input_event(viewport, event, shape_idx):
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("troop_clicked", self, event.global_position.x, event.global_position.y)
 
-
+func get_screen_position():
+	return get_global_transform_with_canvas().origin
 
 
 

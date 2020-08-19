@@ -1,0 +1,361 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://UIMain/MainTheme/CheckBox.png" type="Texture" id=1]
+[ext_resource path="res://UIMain/MainTheme/UpperArrow.png" type="Texture" id=2]
+[ext_resource path="res://UIMain/MainTheme/RightArrow.png" type="Texture" id=3]
+[ext_resource path="res://UIMain/MainTheme/TabButtonSelected.png" type="Texture" id=4]
+[ext_resource path="res://UIMain/MainTheme/ScrollButton.png" type="Texture" id=5]
+[ext_resource path="res://UIMain/MainTheme/CheckBoxSelected.png" type="Texture" id=6]
+[ext_resource path="res://UIMain/MainTheme/LeftArrow.png" type="Texture" id=7]
+[ext_resource path="res://UIMain/MainTheme/TabButton.png" type="Texture" id=8]
+[ext_resource path="res://UIMain/MainTheme/Button.png" type="Texture" id=9]
+[ext_resource path="res://UIMain/MainTheme/ButtonPressed.png" type="Texture" id=10]
+[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=11]
+[ext_resource path="res://UIMain/MainTheme/DownArrow.png" type="Texture" id=12]
+[ext_resource path="res://UIMain/MainTheme/ButtonSelected.png" type="Texture" id=13]
+[ext_resource path="res://UIMain/MainTheme/ButtonDisabled.png" type="Texture" id=14]
+[ext_resource path="res://UIMain/MainTheme/RoundCheckBoxSelected.png" type="Texture" id=15]
+[ext_resource path="res://UIMain/MainTheme/RoundCheckBox.png" type="Texture" id=16]
+[ext_resource path="res://UIMain/PersonBubble/Background.png" type="Texture" id=17]
+[ext_resource path="res://Images/PersonPortrait/default-male-martial.jpg" type="Texture" id=18]
+[ext_resource path="res://UIMain/PersonBubble/PersonBubble.gd" type="Script" id=19]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 14 )
+region_rect = Rect2( 0, 0, 95, 32 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 95, 32 )
+margin_left = 28.1292
+margin_right = 27.6535
+margin_top = 16.0
+margin_bottom = 15.9026
+
+[sub_resource type="StyleBoxTexture" id=3]
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 95, 32 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 95, 32 )
+margin_left = 28.0
+margin_right = 28.0
+margin_top = 16.0
+margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 2, 280, 70 )
+margin_bottom = 8.0
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="StyleBoxTexture" id=20]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id=21]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id=22]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id=23]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 92, 32 )
+margin_left = 15.0
+margin_right = 15.0
+margin_top = 15.0
+margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id=24]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 7.54698
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 50, 25 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=29]
+font_data = ExtResource( 11 )
+
+[sub_resource type="Theme" id=30]
+default_font = SubResource( 29 )
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = SubResource( 1 )
+Button/styles/focus = null
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
+CheckBox/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 4
+CheckBox/fonts/font = null
+CheckBox/icons/checked = ExtResource( 6 )
+CheckBox/icons/radio_checked = ExtResource( 15 )
+CheckBox/icons/radio_unchecked = ExtResource( 16 )
+CheckBox/icons/unchecked = ExtResource( 1 )
+CheckBox/styles/disabled = SubResource( 5 )
+CheckBox/styles/focus = SubResource( 6 )
+CheckBox/styles/hover = SubResource( 7 )
+CheckBox/styles/hover_pressed = SubResource( 8 )
+CheckBox/styles/normal = SubResource( 9 )
+CheckBox/styles/pressed = SubResource( 10 )
+HScrollBar/icons/decrement = ExtResource( 7 )
+HScrollBar/icons/decrement_highlight = ExtResource( 7 )
+HScrollBar/icons/increment = ExtResource( 3 )
+HScrollBar/icons/increment_highlight = ExtResource( 3 )
+HScrollBar/styles/grabber = SubResource( 11 )
+HScrollBar/styles/grabber_highlight = SubResource( 12 )
+HScrollBar/styles/grabber_pressed = SubResource( 13 )
+HScrollBar/styles/scroll = SubResource( 14 )
+HScrollBar/styles/scroll_focus = SubResource( 15 )
+ItemList/colors/font_color = Color( 0.933333, 0.933333, 0.933333, 1 )
+ItemList/colors/font_color_selected = Color( 1, 1, 1, 1 )
+ItemList/colors/guide_color = Color( 0, 0, 0, 0.1 )
+ItemList/constants/hseparation = 4
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 2
+ItemList/constants/vseparation = 2
+ItemList/fonts/font = null
+ItemList/styles/bg = SubResource( 16 )
+ItemList/styles/bg_focus = null
+ItemList/styles/cursor = null
+ItemList/styles/cursor_unfocused = null
+ItemList/styles/selected = null
+ItemList/styles/selected_focus = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+Panel/styles/panel = SubResource( 17 )
+RichTextLabel/colors/default_color = Color( 1, 1, 1, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.49, 0.49, 0.49, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = SubResource( 18 )
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+TabContainer/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )
+TabContainer/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+TabContainer/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )
+TabContainer/constants/hseparation = 4
+TabContainer/constants/label_valign_bg = 2
+TabContainer/constants/label_valign_fg = 0
+TabContainer/constants/side_margin = 0
+TabContainer/constants/top_margin = 24
+TabContainer/fonts/font = null
+TabContainer/icons/decrement = null
+TabContainer/icons/decrement_highlight = null
+TabContainer/icons/increment = null
+TabContainer/icons/increment_highlight = null
+TabContainer/icons/menu = null
+TabContainer/icons/menu_highlight = null
+TabContainer/styles/panel = SubResource( 19 )
+TabContainer/styles/tab_bg = SubResource( 20 )
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_fg = SubResource( 21 )
+Tabs/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )
+Tabs/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Tabs/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )
+Tabs/constants/hseparation = 4
+Tabs/constants/label_valign_bg = 2
+Tabs/constants/label_valign_fg = 0
+Tabs/constants/top_margin = 24
+Tabs/fonts/font = null
+Tabs/icons/close = null
+Tabs/icons/decrement = null
+Tabs/icons/decrement_highlight = null
+Tabs/icons/increment = null
+Tabs/icons/increment_highlight = null
+Tabs/styles/button = null
+Tabs/styles/button_pressed = null
+Tabs/styles/panel = null
+Tabs/styles/tab_bg = SubResource( 22 )
+Tabs/styles/tab_disabled = null
+Tabs/styles/tab_fg = SubResource( 23 )
+VScrollBar/icons/decrement = ExtResource( 2 )
+VScrollBar/icons/decrement_highlight = ExtResource( 2 )
+VScrollBar/icons/increment = ExtResource( 12 )
+VScrollBar/icons/increment_highlight = ExtResource( 12 )
+VScrollBar/styles/grabber = SubResource( 24 )
+VScrollBar/styles/grabber_highlight = SubResource( 25 )
+VScrollBar/styles/grabber_pressed = SubResource( 26 )
+VScrollBar/styles/scroll = SubResource( 27 )
+VScrollBar/styles/scroll_focus = SubResource( 28 )
+
+[node name="PersonBubble" type="Panel"]
+margin_right = 320.0
+margin_bottom = 80.0
+theme = SubResource( 30 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 520.0
+margin_bottom = 520.0
+rect_scale = Vector2( 0.125, 0.125 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 80.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+bbcode_enabled = true
+bbcode_text = "往[color=#0FF]耒阳[/color]前進！"
+text = "往耒阳前進！"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+[connection signal="visibility_changed" from="." to="." method="_on_PersonBubble_visibility_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

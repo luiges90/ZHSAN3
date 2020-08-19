@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://UIMain/TabList/InfoList.tscn" type="PackedScene" id=24]
 [ext_resource path="res://UIMain/ArchitectureDetail/ArchitectureDetail.tscn" type="PackedScene" id=25]
 [ext_resource path="res://UIMain/Control.wav" type="AudioStream" id=26]
+[ext_resource path="res://UIMain/PersonBubble/PersonBubble.tscn" type="PackedScene" id=27]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -194,6 +195,9 @@ margin_right = 90.0
 margin_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PersonBubble" parent="." instance=ExtResource( 27 )]
+visible = false
 
 [node name="SaveLoadMenu" parent="." instance=ExtResource( 8 )]
 visible = false

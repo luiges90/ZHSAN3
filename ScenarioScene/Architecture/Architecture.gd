@@ -570,3 +570,6 @@ func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			emit_signal("architecture_clicked", self, event.global_position.x, event.global_position.y)
 			get_tree().set_input_as_handled()
+			
+func get_screen_position():
+	return get_global_transform_with_canvas().origin
