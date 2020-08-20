@@ -133,7 +133,7 @@ func save_data() -> Dictionary:
 		"_AIDestinationArchitecture": _ai_destination_architecture.id if _ai_destination_architecture != null else null
 	}
 	
-func _on_scenario_loaded():
+func _on_scenario_loaded(scenario):
 	update_troop_title()
 
 func get_name() -> String:

@@ -119,7 +119,7 @@ func setup_after_load():
 			if not equipments.has(kind):
 				equipments[kind] = 0
 	
-func _on_scenario_loaded():
+func _on_scenario_loaded(scenario):
 	($SpriteArea/Sprite as Sprite).texture = kind.image
 	($SpriteArea/Sprite/Title/Label as Label).text = title
 	
