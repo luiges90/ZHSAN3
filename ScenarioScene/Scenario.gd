@@ -462,7 +462,7 @@ func _on_focus_camera(position):
 #         Other signal Logic           #
 ########################################
 var __day_passed_sec = OS.get_ticks_msec()
-const DAY_PASSED_DELAY = 1
+const DAY_PASSED_DELAY = 9999
 
 # TODO Put this function in new thread
 func _on_day_passed():
