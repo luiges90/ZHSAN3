@@ -14,12 +14,17 @@ static func nearest_architecture_of_faction(faction, map_position, exclude = nul
 			min_dist = dist
 			result = arch
 	return result
+	
+class InfluenceContainer:
+	var influences: Array
+	var conditions: Array
+	
 
 static func apply_influences(influence_container, in_operation, params: Dictionary):
 	if params.has("value"):
 		var value = params['value']
 		
-		if not _check_conditions(influence_container, params):
+		if not check_conditions(influence_container, params):
 			return value
 		
 		for influence in influence_container.influences:
@@ -34,7 +39,7 @@ static func apply_influences(influence_container, in_operation, params: Dictiona
 	else:
 		assert('Applying influences must provide value in params')
 
-static func _check_conditions(influence_container, params: Dictionary):
+static func check_conditions(influence_container, params: Dictionary):
 	for condition in influence_container.conditions:
 		match condition['Operation']:
 			'is_leader': 
@@ -67,7 +72,7 @@ static func _check_conditions(influence_container, params: Dictionary):
 	return true
 
 static func influence_troop_leader_offensive_factor(influence_container, params: Dictionary):
-	if not _check_conditions(influence_container, params):
+	if not check_conditions(influence_container, params):
 		return 1
 	
 	for influence in influence_container.influences:
@@ -77,7 +82,7 @@ static func influence_troop_leader_offensive_factor(influence_container, params:
 	return 1
 
 static func influence_troop_leader_defensive_factor(influence_container, params: Dictionary):
-	if not _check_conditions(influence_container, params):
+	if not check_conditions(influence_container, params):
 		return 1
 	
 	for influence in influence_container.influences:

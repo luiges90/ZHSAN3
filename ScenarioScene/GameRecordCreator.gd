@@ -1,7 +1,7 @@
 extends Node
 class_name GameRecordCreator
 
-var _speeches = {}
+var _speeches
 var _scenario
 
 signal add_game_record
@@ -14,20 +14,19 @@ const RED = "#FF0000"
 func _init():
 	var file = File.new()
 	file.open("res://i18n/PersonSpeeches.json", File.READ)
-	var obj = parse_json(file.get_as_text())
-	for item in obj:
-		_speeches[item] = Util.convert_dict_to_int_key(obj[item])
+	_speeches = parse_json(file.get_as_text())
 	file.close()
 	
 
 	
-func _get_speech(key, person_id):
+func _get_speech(key, person):
 	var speech = _speeches[key]
-	if speech.has(person_id):
-		return speech[person_id]
-	else:
-		return speech[-1]
-
+	for s in speech:
+		var container = ScenarioUtil.InfluenceContainer.new()
+		container.conditions = s['Conditions']
+		if ScenarioUtil.check_conditions(container, {'person': person}):
+			return s['Text']
+	return ''
 
 func _color_text(color, text) -> String:
 	return "[color=" + color + "]" + text + "[/color]"
@@ -73,7 +72,7 @@ func _on_DateRunner_date_runner_stopped():
 	var location = leader.get_location()
 	if location != null:
 		emit_signal("add_person_bubble", location,
-			 _get_speech("player_turn", leader.id) % [
+			 _get_speech("player_turn", leader) % [
 				_color_text(CYAN, leader.get_name())
 			])
 

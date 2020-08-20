@@ -1,5 +1,8 @@
 {
-	"player_turn": {
-		"-1": "終於輪到我%s了。"
-	}
+	"player_turn": [
+		{
+			"Conditions": [],
+			"Text": "終於輪到我%s了。"
+		}
+	]
 }
