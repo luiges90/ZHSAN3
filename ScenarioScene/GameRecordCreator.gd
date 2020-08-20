@@ -79,3 +79,35 @@ func _on_DateRunner_date_runner_stopped():
 
 func _on_Scenario_scenario_loaded(scenario):
 	_scenario = scenario
+
+
+func _on_PositionSelector_move_troop(current_troop, position):
+	var leader = current_troop.get_leader()
+	emit_signal("add_person_bubble", current_troop,
+		 _get_speech("troop_move", leader) % [
+			_color_text(CYAN, _scenario.describe_position(position))
+		])
+
+
+func _on_PositionSelector_attack_troop(current_troop, position):
+	var leader = current_troop.get_leader()
+	emit_signal("add_person_bubble", current_troop,
+		 _get_speech("troop_attack", leader) % [
+			_color_text(CYAN, _scenario.describe_position(position))
+		])
+		
+
+func _on_PositionSelector_follow_troop(current_troop, position):
+	var leader = current_troop.get_leader()
+	emit_signal("add_person_bubble", current_troop,
+		 _get_speech("troop_follow", leader) % [
+			_color_text(CYAN, _scenario.describe_position(position))
+		])
+
+
+func _on_PositionSelector_enter_troop(current_troop, position):
+	var leader = current_troop.get_leader()
+	emit_signal("add_person_bubble", current_troop,
+		 _get_speech("troop_enter", leader) % [
+			_color_text(CYAN, _scenario.describe_position(position))
+		])

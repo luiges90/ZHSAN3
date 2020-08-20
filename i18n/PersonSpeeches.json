@@ -4,5 +4,29 @@
 			"Conditions": [],
 			"Text": "終於輪到我%s了。"
 		}
+	],
+	"troop_move": [
+		{
+			"Conditions": [],
+			"Text": "往%s前進。"
+		}
+	],
+	"troop_attack": [
+		{
+			"Conditions": [],
+			"Text": "攻擊%s。"
+		}
+	],
+	"troop_follow": [
+		{
+			"Conditions": [],
+			"Text": "跟隨%s。"
+		}
+	],
+	"troop_enter": [
+		{
+			"Conditions": [],
+			"Text": "進入%s。"
+		}
 	]
 }

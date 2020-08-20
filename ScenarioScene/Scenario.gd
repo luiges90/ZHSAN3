@@ -463,7 +463,6 @@ func _on_focus_camera(position):
 ########################################
 var __day_passed_sec = OS.get_ticks_msec()
 
-# TODO Put this function in new thread
 func _on_day_passed():
 	# run Troops
 	var troop_queue = TroopQueue.new(troops.values())
@@ -591,6 +590,16 @@ func get_architecture_at_position(position):
 		if architectures[a].map_position == position:
 			return architectures[a]
 	return null
+	
+func describe_position(position):
+	var a = get_architecture_at_position(position)
+	if a != null:
+		return a.get_name()
+	var t = get_troop_at_position(position)
+	if t != null:
+		return t.get_name()
+	var terrain = get_terrain_at_position(position)
+	return terrain.get_name() + str(position)
 
 func get_living_persons():
 	var list = []
