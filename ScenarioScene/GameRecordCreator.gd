@@ -2,6 +2,7 @@ extends Node
 class_name GameRecordCreator
 
 var _speeches = {}
+var _scenario
 
 signal add_game_record
 signal add_person_bubble
@@ -17,6 +18,8 @@ func _init():
 	for item in obj:
 		_speeches[item] = Util.convert_dict_to_int_key(obj[item])
 	file.close()
+	
+
 	
 func _get_speech(key, person_id):
 	var speech = _speeches[key]
@@ -64,12 +67,16 @@ func _on_faction_destroyed(faction):
 			_color_text(RED, faction.get_name())
 		])
 	
-func _on_date_runner_stopped(scenario: Scenario):
-	var leader = scenario.current_faction.get_leader()
+
+func _on_DateRunner_date_runner_stopped():
+	var leader = _scenario.current_faction.get_leader()
 	var location = leader.get_location()
 	if location != null:
 		emit_signal("add_person_bubble", location,
 			 _get_speech("player_turn", leader.id) % [
 				_color_text(CYAN, leader.get_name())
 			])
-	
+
+
+func _on_Scenario_scenario_loaded(scenario):
+	_scenario = scenario

@@ -54,5 +54,5 @@ func _on_stop_date_runner():
 	stop_date_runner = true
 
 
-func _on_Scenario_scenario_loaded():
+func _on_Scenario_scenario_loaded(scenario):
 	emit_signal("date_updated", year, month, day, get_season())

@@ -17,3 +17,5 @@ func show_bubble(scenario_location, text: String):
 	rect_position = Vector2(x, y)
 	$Text.bbcode_text = text
 	show()
+
+

@@ -312,7 +312,7 @@ func _load_data(path):
 	file.close()
 	
 	__handle_player_faction(current_faction_id)
-	emit_signal("scenario_loaded")
+	emit_signal("scenario_loaded", self)
 
 	
 func __load_item(instance, item, add_to_list, objects):

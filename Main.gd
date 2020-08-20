@@ -52,7 +52,6 @@ func _register_date_runner():
 	$UICanvas/UIMain/Toolbar.connect("stop_date_runner", $Scenario/DateRunner, "_on_stop_date_runner")
 	$Scenario/DateRunner.connect("day_passed", $UICanvas/UIMain/Toolbar, "_on_day_passed")
 	$Scenario/DateRunner.connect("date_runner_stopped", $UICanvas/UIMain, "_on_date_runner_stopped")
-	$Scenario/DateRunner.connect("date_runner_stopped", $Scenario/GameRecordCreator, "_on_date_runner_stopped", [$Scenario])
 	
 func _register_lists():
 	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_person_selected")
