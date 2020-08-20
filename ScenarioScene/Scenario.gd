@@ -462,7 +462,6 @@ func _on_focus_camera(position):
 #         Other signal Logic           #
 ########################################
 var __day_passed_sec = OS.get_ticks_msec()
-const DAY_PASSED_DELAY = 9999
 
 # TODO Put this function in new thread
 func _on_day_passed():
@@ -471,7 +470,7 @@ func _on_day_passed():
 	var troop_queue_result = troop_queue.execute()
 	if troop_queue_result:
 		yield(troop_queue_result, "completed")
-	if OS.get_ticks_msec() - __day_passed_sec >= DAY_PASSED_DELAY:
+	if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
 		yield(get_tree(), "idle_frame")
 	__day_passed_sec = OS.get_ticks_msec()
 	
@@ -483,7 +482,7 @@ func _on_day_passed():
 		current_faction = faction
 		emit_signal("current_faction_set", current_faction)
 		ai.run_faction(faction, self)
-		if OS.get_ticks_msec() - __day_passed_sec >= DAY_PASSED_DELAY:
+		if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
 			yield(get_tree(), "idle_frame")
 		__day_passed_sec = OS.get_ticks_msec()
 		
