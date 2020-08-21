@@ -5,16 +5,22 @@
 			"Text": "終於輪到我%s了。"
 		}
 	],
+	"troop_create": [
+		{
+			"Conditions": [],
+			"Text": "跟著我%s出發。"
+		}
+	],
 	"troop_move": [
 		{
 			"Conditions": [],
-			"Text": "往%s前進。"
+			"Text": "前進！目標%s"
 		}
 	],
 	"troop_attack": [
 		{
 			"Conditions": [],
-			"Text": "攻擊%s。"
+			"Text": "以%s為目標開展行動。"
 		}
 	],
 	"troop_follow": [

@@ -111,3 +111,11 @@ func _on_PositionSelector_enter_troop(current_troop, position):
 		 _get_speech("troop_enter", leader) % [
 			_color_text(CYAN, _scenario.describe_position(position))
 		])
+
+
+func _on_PositionSelector_create_troop(current_troop, position):
+	var leader = current_troop.get_leader()
+	emit_signal("add_person_bubble", current_troop,
+		 _get_speech("troop_create", leader) % [
+			_color_text(CYAN, leader.get_name())
+		])

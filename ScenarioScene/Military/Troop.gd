@@ -692,8 +692,8 @@ func _on_camera_moved(camera_rect: Rect2, zoom: Vector2, scen):
 		$TroopTitle.visible = false
 	else:
 		$TroopTitle.visible = true
-		$TroopTitle.rect_scale.x = min(1, zoom.x) + 0.5 / min(1, zoom.x)
-		$TroopTitle.rect_scale.y = min(1, zoom.y) + 0.5 / min(1, zoom.y)
+		$TroopTitle.rect_scale.x = min(1, min(1, zoom.x) + 0.5 / min(1, zoom.x))
+		$TroopTitle.rect_scale.y = min(1, min(1, zoom.y) + 0.5 / min(1, zoom.y))
 
 func _get_animation_orientation(from: Vector2, to: Vector2):
 	if from.x == to.x:
