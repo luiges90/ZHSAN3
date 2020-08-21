@@ -556,6 +556,7 @@ func _produce_equipment(p: Person):
 		p.add_prestige(0.004 * amount)
 		
 func accept_entering_troop(in_troop):
+	assert(in_troop.quantity > 0)
 	troop_morale = int((troop * troop_morale + in_troop.quantity * in_troop.morale) / (troop + in_troop.quantity))
 	troop_combativity = int((troop * troop_combativity + in_troop.quantity * in_troop.combativity) / (troop + in_troop.quantity))
 	troop += in_troop.quantity

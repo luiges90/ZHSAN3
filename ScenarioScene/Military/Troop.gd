@@ -539,6 +539,7 @@ func execute_attack():
 		
 func receive_attack_damage(damage):
 	quantity -= damage
+	check_destroy()
 			
 func check_destroy():
 	if quantity <= 0:
