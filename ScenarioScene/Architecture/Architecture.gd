@@ -318,9 +318,13 @@ func month_event():
 #           Manipulation           #
 ####################################
 func receive_attack_damage(damage):
+	if endurance < 0:
+		endurance = 0
+		return
 	endurance -= damage
 	if endurance < 0:
 		endurance = 0
+		_play_destroyed_animation()
 
 func consume_food(amount) -> bool:
 	if food >= amount:
@@ -573,3 +577,12 @@ func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 			
 func get_screen_position():
 	return get_global_transform_with_canvas().origin
+	
+func _play_destroyed_animation():
+	$SpriteArea/Routed.show()
+	$SpriteArea/Routed.play()
+	$SpriteArea/Routed/RoutedSound.play()
+
+
+func _on_Routed_animation_finished():
+	$SpriteArea/Routed.hide()
