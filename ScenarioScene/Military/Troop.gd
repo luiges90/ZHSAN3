@@ -280,7 +280,7 @@ func enemy_troop_in_range(distance: int):
 	var results = []
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
-		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance:
+		if troop.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance and not troop._destroyed:
 			results.append(troop)
 	return results
 	
@@ -288,7 +288,7 @@ func friendly_troop_in_range(distance: int):
 	var results = []
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
-		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance:
+		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance and not troop._destroyed:
 			results.append(troop)
 	return results
 	
@@ -457,6 +457,7 @@ func execute_enter():
 		var architecture = current_order.target
 		if Util.m_dist(map_position, architecture.map_position) <= 1:
 			architecture.accept_entering_troop(self)
+			_destroyed = true
 			_remove()
 			
 		
@@ -560,10 +561,9 @@ func destroy():
 			p.add_merit(-20)
 			p.add_prestige(-1)
 		p.move_to_architecture(return_to)
-	_remove()
+	_destroyed = true
 		
 func _remove():
-	_destroyed = true
 	emit_signal("removed", self)
 	get_belonged_section().remove_troop(self)
 	for t in scenario.troops:
@@ -656,17 +656,22 @@ func _animate_attack(target, self_damage, target_damage):
 		
 		$AttackSound.play()
 		
-		var area_node = target.find_node("TroopArea")
-		if area_node != null:
+		if target is Architecture:
+			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
+			target.find_node("NumberFlashText").find_node('Timer').start()
+		else:
+			var area_node = target.find_node("TroopArea")
 			var target_animated_sprite = area_node.find_node("AnimatedSprite") as AnimatedSprite
 			if target_animated_sprite != null:
 				target_animated_sprite.animation = "be_attacked_" + reverse_orientation
 				target.__anim_self_damage = target_damage
-		else:
-			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
-			target.find_node("NumberFlashText").find_node('Timer').start()
+			
 	else:
 		update_troop_title()
+		if _destroyed:
+			_remove()
+		if target._destroyed:
+			target._remove()
 		yield()
 	
 func _on_AnimatedSprite_animation_finished():
@@ -675,13 +680,24 @@ func _on_AnimatedSprite_animation_finished():
 		update_troop_title()
 		animated_sprite.animation = "move_" + _orientation
 		
-		if __anim_self_damage > 0:
+		if __anim_self_damage > 0 and not _destroyed:
 			find_node("NumberFlashText").text = "↓" + str(__anim_self_damage)
 			find_node("NumberFlashText").find_node('Timer').start()
 			__anim_self_damage = 0
+		
+		if _destroyed:
+			$TroopArea/AnimatedSprite.hide()
+			$TroopArea/ClickArea.hide()
+			$TroopArea/Routed.show()
+			$TroopArea/Routed.play()
+			$TroopArea/Routed/RoutedSound.play()
+		else:
+			emit_signal("animation_attack_finished")
 	
-		emit_signal("animation_attack_finished")
-	
+func _on_Routed_animation_finished():
+	emit_signal("animation_attack_finished")
+	_remove()
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	emit_signal("animation_step_finished")
 	
@@ -725,6 +741,5 @@ func _on_TroopArea_input_event(viewport, event, shape_idx):
 
 func get_screen_position():
 	return get_global_transform_with_canvas().origin
-
 
 
