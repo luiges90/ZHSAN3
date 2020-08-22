@@ -530,13 +530,13 @@ func execute_attack():
 					
 					return _animate_attack(target, counter_damage, damage)
 				else:
-					return yield()
+					return false
 			else:
-				return yield()
+				return false
 		else:
-			return yield()
+			return false
 	else:
-		return yield()
+		return false
 		
 func receive_attack_damage(damage):
 	quantity -= damage
@@ -638,9 +638,10 @@ func _animate_position(old_position, destination_position):
 		animation.audio_track_insert_key(sound_track_idx, 0, $MovingSound.stream)
 		$AnimationPlayer.add_animation("Move", animation)
 		$AnimationPlayer.play("Move")
+		return true
 	else:
 		position = destination
-		yield()
+		return false
 
 var __anim_self_damage = 0
 func _animate_attack(target, self_damage, target_damage):
@@ -665,14 +666,14 @@ func _animate_attack(target, self_damage, target_damage):
 			if target_animated_sprite != null:
 				target_animated_sprite.animation = "be_attacked_" + reverse_orientation
 				target.__anim_self_damage = target_damage
-			
+		return true
 	else:
 		update_troop_title()
 		if _destroyed:
 			_remove()
 		if target._destroyed:
 			target._remove()
-		yield()
+		return false
 	
 func _on_AnimatedSprite_animation_finished():
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
