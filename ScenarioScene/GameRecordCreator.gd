@@ -7,9 +7,10 @@ var _scenario
 signal add_game_record
 signal add_person_bubble
 
-const GREEN = "#00FF00"
-const CYAN = "#00FFFF"
-const RED = "#FF0000"
+const GREEN = "#00FF00" # troop
+const CYAN = "#00FFFF" # architecture, positions
+const RED = "#FF0000" # faction
+const YELLOW = "#FFFF00" # person
 
 func _init():
 	var file = File.new()
@@ -34,6 +35,7 @@ func _color_text(color, text) -> String:
 func _register_click(func_name, text) -> String:
 	return "[url=\"" + func_name + "\"]" + text + "[/url]"
 	
+
 func create_troop(troop, position):
 	emit_signal("add_game_record", _register_click(
 		"focus(" + str(position.x) + "," + str(position.y) + ")",
@@ -59,6 +61,19 @@ func _on_troop_destroyed(troop):
 			_color_text(GREEN, troop.get_name()), 
 		])
 	)
+	
+func _on_troop_target_destroyed(current_troop, target):
+	var leader = current_troop.get_leader()
+	if target is Architecture:
+		emit_signal("add_person_bubble", target,
+			 _get_speech("destroyed_target_architecture", leader) % [
+				_color_text(CYAN, target.get_name())
+			])
+	elif target is Troop:
+		emit_signal("add_person_bubble", target,
+			 _get_speech("destroyed_target_troop", leader) % [
+				_color_text(GREEN, target.get_name())
+			])
 
 func _on_faction_destroyed(faction):
 	emit_signal("add_game_record", 
@@ -73,7 +88,7 @@ func _on_DateRunner_date_runner_stopped():
 	if location != null:
 		emit_signal("add_person_bubble", location,
 			 _get_speech("player_turn", leader) % [
-				_color_text(CYAN, leader.get_name())
+				_color_text(YELLOW, leader.get_name())
 			])
 
 
@@ -117,5 +132,5 @@ func _on_PositionSelector_create_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", current_troop,
 		 _get_speech("troop_create", leader) % [
-			_color_text(CYAN, leader.get_name())
+			_color_text(YELLOW, leader.get_name())
 		])

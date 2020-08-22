@@ -47,6 +47,7 @@ signal troop_survey_updated
 
 signal occupy_architecture
 signal destroyed
+signal target_destroyed
 signal removed
 signal position_changed
 
@@ -523,6 +524,8 @@ func execute_attack():
 				
 					receive_attack_damage(counter_damage)
 					var target_destroyed = target.receive_attack_damage(damage)
+					if target_destroyed:
+						emit_signal("target_destroyed", self, target)
 					
 					return _animate_attack(target, counter_damage, damage)
 				else:

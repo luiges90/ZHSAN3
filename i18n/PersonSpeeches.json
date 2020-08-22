@@ -34,5 +34,17 @@
 			"Conditions": [],
 			"Text": "進入%s。"
 		}
+	],
+	"destroyed_target_troop": [
+		{
+			"Conditions": [],
+			"Text": "擊破了%s！"
+		}
+	],
+	"destroyed_target_architecture": [
+		{
+			"Conditions": [],
+			"Text": "攻破了%s的城防了！"
+		}
 	]
 }

@@ -337,6 +337,7 @@ func __connect_signals_for_creating_troop(troop):
 	troop.connect("position_changed", self, "_on_troop_position_changed")
 	troop.connect("removed", self, "_on_troop_removed")
 	troop.connect("destroyed", $GameRecordCreator, "_on_troop_destroyed")
+	troop.connect("target_destroyed", $GameRecordCreator, "_on_troop_target_destroyed")
 	
 	_on_troop_created(troop, troop.map_position)
 	
