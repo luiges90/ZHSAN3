@@ -62,18 +62,19 @@ func _on_troop_destroyed(troop):
 		])
 	)
 	
-func _on_troop_target_destroyed(current_troop, target):
+func _on_troop_target_architecture_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
-	if target is Architecture:
-		emit_signal("add_person_bubble", leader, current_troop,
-			 _get_speech("destroyed_target_architecture", leader) % [
-				_color_text(CYAN, target.get_name())
-			])
-	elif target is Troop:
-		emit_signal("add_person_bubble", leader, current_troop,
-			 _get_speech("destroyed_target_troop", leader) % [
-				_color_text(GREEN, target.get_name())
-			])
+	emit_signal("add_person_bubble", leader, current_troop,
+		 _get_speech("destroyed_target_architecture", leader) % [
+			_color_text(CYAN, target.get_name())
+		])
+			
+func _on_troop_target_troop_destroyed(current_troop, target):
+	var leader = current_troop.get_leader()
+	emit_signal("add_person_bubble", leader, current_troop,
+		 _get_speech("destroyed_target_troop", leader) % [
+			_color_text(GREEN, target.get_name())
+		])
 
 func _on_faction_destroyed(faction):
 	emit_signal("add_game_record", 

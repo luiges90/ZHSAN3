@@ -47,9 +47,11 @@ signal troop_survey_updated
 
 signal occupy_architecture
 signal destroyed
-signal target_destroyed
 signal removed
 signal position_changed
+
+signal target_troop_destroyed
+signal target_architecture_destroyed
 
 func forbidden(x):
 	assert(false)
@@ -524,9 +526,7 @@ func execute_attack():
 							p.add_prestige(other_merit_rate / 2 - 0.625)
 				
 					receive_attack_damage(counter_damage)
-					var target_destroyed = target.receive_attack_damage(damage)
-					if target_destroyed:
-						emit_signal("target_destroyed", self, target)
+					target.receive_attack_damage(damage)
 					
 					return _animate_attack(target, counter_damage, damage)
 				else:
@@ -658,14 +658,21 @@ func _animate_attack(target, self_damage, target_damage):
 		$AttackSound.play()
 		
 		if target is Architecture:
+			yield($TroopArea/AnimatedSprite, "animation_finished")
 			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
 			target.find_node("NumberFlashText").find_node('Timer').start()
+			if target.endurance <= 0:
+				emit_signal("target_architecture_destroyed", self, target)
 		else:
 			var area_node = target.find_node("TroopArea")
 			var target_animated_sprite = area_node.find_node("AnimatedSprite") as AnimatedSprite
 			if target_animated_sprite != null:
 				target_animated_sprite.animation = "be_attacked_" + reverse_orientation
 				target.__anim_self_damage = target_damage
+			if target._destroyed:
+				yield($TroopArea/AnimatedSprite, "animation_finished")
+				emit_signal("target_troop_destroyed", self, target)
+		
 		return true
 	else:
 		update_troop_title()
