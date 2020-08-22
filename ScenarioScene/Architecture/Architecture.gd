@@ -318,9 +318,6 @@ func month_event():
 #           Manipulation           #
 ####################################
 func receive_attack_damage(damage):
-	if endurance < 0:
-		endurance = 0
-		return
 	endurance -= damage
 	if endurance < 0:
 		endurance = 0

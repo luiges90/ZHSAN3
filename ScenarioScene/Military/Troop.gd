@@ -465,7 +465,7 @@ func execute_attack():
 		if is_instance_valid(self) and is_instance_valid(target) and not self._destroyed and not target._destroyed:
 			var dist = Util.m_dist(map_position, current_order.target.map_position)
 			if dist >= military_kind.range_min and dist <= military_kind.range_max:
-				var target_valid = target is Architecture or target.quantity > 0
+				var target_valid = (target is Architecture and target.endurance > 0) or (not target is Architecture and target.quantity > 0)
 				var self_valid = quantity > 0
 				if self_valid and target_valid:
 					_attack_count_in_turn += 1
