@@ -115,11 +115,12 @@ func _on_Play_pressed():
 			emit_signal("start_date_runner", value)
 		
 func _on_Stop_pressed():
-	_running = false
-	$DateRunner/TensDigit/Text10.text = '0'
-	$DateRunner/UnitDigit/Text.text = '0'
-	_set_play_button_texture_to_play()
-	emit_signal("stop_date_runner")
+	if _running:
+		_running = false
+		$DateRunner/TensDigit/Text10.text = '0'
+		$DateRunner/UnitDigit/Text.text = '0'
+		_set_play_button_texture_to_play()
+		emit_signal("stop_date_runner")
 
 
 func _set_play_button_texture_to_play():
