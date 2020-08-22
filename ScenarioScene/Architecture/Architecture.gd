@@ -319,9 +319,12 @@ func month_event():
 ####################################
 func receive_attack_damage(damage):
 	endurance -= damage
-	if endurance < 0:
+	if endurance <= 0:
 		endurance = 0
 		_play_destroyed_animation()
+		return true
+	else:
+		return false
 
 func consume_food(amount) -> bool:
 	if food >= amount:

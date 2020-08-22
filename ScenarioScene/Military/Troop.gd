@@ -491,12 +491,6 @@ func execute_attack():
 					damage = int(damage)
 					counter_damage = int(counter_damage)
 				
-					receive_attack_damage(counter_damage)
-					if target is Architecture:
-						target.receive_attack_damage(damage)
-					else:
-						target.receive_attack_damage(damage)
-					
 					var merit_rate = min(sqrt(damage / (counter_damage + 100.0)), 5) + damage / 1000.0
 					for p in get_persons():
 						if p == get_leader():
@@ -526,6 +520,9 @@ func execute_attack():
 							p.add_merit((merit_rate - 0.5) * 12.5)
 							p.add_popularity(other_merit_rate / 4)
 							p.add_prestige(other_merit_rate / 2 - 0.625)
+				
+					receive_attack_damage(counter_damage)
+					var target_destroyed = target.receive_attack_damage(damage)
 					
 					return _animate_attack(target, counter_damage, damage)
 				else:
@@ -539,11 +536,13 @@ func execute_attack():
 		
 func receive_attack_damage(damage):
 	quantity -= damage
-	check_destroy()
+	return check_destroy()
 			
 func check_destroy():
 	if quantity <= 0:
 		destroy()
+		return true
+	return false
 		
 func destroy():
 	emit_signal("destroyed", self)
@@ -665,9 +664,6 @@ func _animate_attack(target, self_damage, target_damage):
 			target.find_node("NumberFlashText").find_node('Timer').start()
 	else:
 		update_troop_title()
-		check_destroy()
-		if !(target is Architecture):
-			target.check_destroy()
 		yield()
 	
 func _on_AnimatedSprite_animation_finished():
@@ -680,8 +676,6 @@ func _on_AnimatedSprite_animation_finished():
 			find_node("NumberFlashText").text = "↓" + str(__anim_self_damage)
 			find_node("NumberFlashText").find_node('Timer').start()
 			__anim_self_damage = 0
-			
-			check_destroy()
 	
 		emit_signal("animation_attack_finished")
 	
