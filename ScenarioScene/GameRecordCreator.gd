@@ -65,12 +65,12 @@ func _on_troop_destroyed(troop):
 func _on_troop_target_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
 	if target is Architecture:
-		emit_signal("add_person_bubble", target,
+		emit_signal("add_person_bubble", leader, current_troop,
 			 _get_speech("destroyed_target_architecture", leader) % [
 				_color_text(CYAN, target.get_name())
 			])
 	elif target is Troop:
-		emit_signal("add_person_bubble", target,
+		emit_signal("add_person_bubble", leader, current_troop,
 			 _get_speech("destroyed_target_troop", leader) % [
 				_color_text(GREEN, target.get_name())
 			])
@@ -86,7 +86,7 @@ func _on_DateRunner_date_runner_stopped():
 	var leader = _scenario.current_faction.get_leader()
 	var location = leader.get_location()
 	if location != null:
-		emit_signal("add_person_bubble", location,
+		emit_signal("add_person_bubble", leader, location,
 			 _get_speech("player_turn", leader) % [
 				_color_text(YELLOW, leader.get_name())
 			])
@@ -98,7 +98,7 @@ func _on_Scenario_scenario_loaded(scenario):
 
 func _on_PositionSelector_move_troop(current_troop, position):
 	var leader = current_troop.get_leader()
-	emit_signal("add_person_bubble", current_troop,
+	emit_signal("add_person_bubble", leader, current_troop,
 		 _get_speech("troop_move", leader) % [
 			_color_text(CYAN, _scenario.describe_position(position))
 		])
@@ -106,7 +106,7 @@ func _on_PositionSelector_move_troop(current_troop, position):
 
 func _on_PositionSelector_attack_troop(current_troop, position):
 	var leader = current_troop.get_leader()
-	emit_signal("add_person_bubble", current_troop,
+	emit_signal("add_person_bubble", leader, current_troop,
 		 _get_speech("troop_attack", leader) % [
 			_color_text(CYAN, _scenario.describe_position(position))
 		])
@@ -114,7 +114,7 @@ func _on_PositionSelector_attack_troop(current_troop, position):
 
 func _on_PositionSelector_follow_troop(current_troop, position):
 	var leader = current_troop.get_leader()
-	emit_signal("add_person_bubble", current_troop,
+	emit_signal("add_person_bubble", leader, current_troop,
 		 _get_speech("troop_follow", leader) % [
 			_color_text(CYAN, _scenario.describe_position(position))
 		])
@@ -122,7 +122,7 @@ func _on_PositionSelector_follow_troop(current_troop, position):
 
 func _on_PositionSelector_enter_troop(current_troop, position):
 	var leader = current_troop.get_leader()
-	emit_signal("add_person_bubble", current_troop,
+	emit_signal("add_person_bubble", leader, current_troop,
 		 _get_speech("troop_enter", leader) % [
 			_color_text(CYAN, _scenario.describe_position(position))
 		])
@@ -130,7 +130,7 @@ func _on_PositionSelector_enter_troop(current_troop, position):
 
 func _on_PositionSelector_create_troop(current_troop, position):
 	var leader = current_troop.get_leader()
-	emit_signal("add_person_bubble", current_troop,
+	emit_signal("add_person_bubble", leader, current_troop,
 		 _get_speech("troop_create", leader) % [
 			_color_text(YELLOW, leader.get_name())
 		])
