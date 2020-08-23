@@ -585,7 +585,7 @@ func day_event():
 			_starting_arch = move_to
 			emit_signal("starting_architecture_changed", self)
 	
-	var food_required = int((1 + military_kind.food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.1)
+	var food_required = int((1 + military_kind.food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.25)
 	if not _starting_arch.consume_food(food_required):
 		if not _food_shortage:
 			_food_shortage = true
