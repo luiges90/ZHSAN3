@@ -352,16 +352,17 @@ func change_faction(to_section):
 	var target_faction_destroyed = false
 	var old_faction = get_belonged_faction()
 	# forcibly move persons away
-	var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position, self)
-	if move_to != null:
-		for person in get_persons():
-			person.move_to_architecture(move_to)
-	else:
-		for t in old_faction.get_troops():
-			t.destroy()
-		for person in get_persons():
-			person.become_wild()
-		target_faction_destroyed = true
+	if old_faction != null:
+		var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position, self)
+		if move_to != null:
+			for person in get_persons():
+				person.move_to_architecture(move_to)
+		else:
+			for t in old_faction.get_troops():
+				t.destroy()
+			for person in get_persons():
+				person.become_wild()
+			target_faction_destroyed = true
 	
 	# burn the treasury
 	fund = fund / 10
@@ -370,7 +371,9 @@ func change_faction(to_section):
 		equipments[k] = equipments[k] / 10
 	
 	# switch faction
-	get_belonged_section().remove_architecture(self)
+	var old_section = get_belonged_section()
+	if old_section != null:
+		old_section.remove_architecture(self)
 	to_section.add_architecture(self)
 	
 	# if old faction has no more archs, destroy it

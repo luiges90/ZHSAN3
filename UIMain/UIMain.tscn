@@ -78,6 +78,9 @@ margin_left = -500.0
 margin_top = -548.0
 margin_bottom = -48.0
 
+[node name="PersonBubble" parent="." instance=ExtResource( 27 )]
+visible = false
+
 [node name="CreateTroop" parent="." instance=ExtResource( 12 )]
 visible = false
 anchor_left = 0.5
@@ -195,9 +198,6 @@ margin_right = 90.0
 margin_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="PersonBubble" parent="." instance=ExtResource( 27 )]
-visible = false
 
 [node name="SaveLoadMenu" parent="." instance=ExtResource( 8 )]
 visible = false
