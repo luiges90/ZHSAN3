@@ -19,6 +19,11 @@ enum Action {
 signal person_selected
 signal person_row_clicked
 
+# table sorting 
+var sorting_order = ""
+const TypeOrder = [TYPE_STRING, TYPE_INT]
+var clicked_label = ""
+
 var _detail_showing = false
 
 func _ready():
@@ -96,22 +101,25 @@ func show_data(person_list: Array):
 
 func _populate_basic_data(person_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
+	var sorted_list = person_list # sorted person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 10
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 9
-	item_list.add_child(_title(tr('PERSON_NAME')))
-	item_list.add_child(_title(tr('BELONGED_ARCHITECTURE')))
-	item_list.add_child(_title(tr('STATUS')))
-	item_list.add_child(_title(tr('MERIT')))
-	item_list.add_child(_title(tr('POPULARITY')))
-	item_list.add_child(_title(tr('PRESTIGE')))
-	item_list.add_child(_title(tr('KARMA')))
-	item_list.add_child(_title(tr('TASK')))
-	item_list.add_child(_title(tr('TASK_DAYS')))
-	for person in person_list:
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('STATUS'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('MERIT'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('POPULARITY'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('PRESTIGE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('KARMA'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK_DAYS'), self, "__on_title_sorting_click", person_list))
+	if sorting_order != "":
+		sorted_list = sorting_list(person_list.duplicate())
+	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
@@ -126,24 +134,27 @@ func _populate_basic_data(person_list: Array, action):
 
 func _populate_ability_data(person_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
+	var sorted_list = person_list # sorted person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 12
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 11
-	item_list.add_child(_title(tr('PERSON_NAME')))
-	item_list.add_child(_title(tr('COMMAND')))
-	item_list.add_child(_title(tr('STRENGTH')))
-	item_list.add_child(_title(tr('INTELLIGENCE')))
-	item_list.add_child(_title(tr('POLITICS')))
-	item_list.add_child(_title(tr('GLAMOUR')))
-	item_list.add_child(_title(tr('COMMAND_EXPERIENCE')))
-	item_list.add_child(_title(tr('STRENGTH_EXPERIENCE')))
-	item_list.add_child(_title(tr('INTELLIGENCE_EXPERIENCE')))
-	item_list.add_child(_title(tr('POLITICS_EXPERIENCE')))
-	item_list.add_child(_title(tr('GLAMOUR_EXPERIENCE')))
-	for person in person_list:
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('COMMAND'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('STRENGTH'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('INTELLIGENCE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('POLITICS'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('GLAMOUR'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('COMMAND_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('STRENGTH_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('INTELLIGENCE_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('POLITICS_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('GLAMOUR_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
+	if sorting_order != "":
+		sorted_list = sorting_list(person_list.duplicate())
+	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
@@ -160,19 +171,22 @@ func _populate_ability_data(person_list: Array, action):
 		
 func _populate_internal_data(person_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer
+	var sorted_list = person_list # sorted person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 7
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title(tr('PERSON_NAME')))
-	item_list.add_child(_title(tr('TASK')))
-	item_list.add_child(_title(tr('AGRICULTURE_ABILITY')))
-	item_list.add_child(_title(tr('COMMERCE_ABILITY')))
-	item_list.add_child(_title(tr('MORALE_ABILITY')))
-	item_list.add_child(_title(tr('ENDURANCE_ABILITY')))
-	for person in person_list:
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('AGRICULTURE_ABILITY'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('COMMERCE_ABILITY'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('MORALE_ABILITY'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('ENDURANCE_ABILITY'), self, "__on_title_sorting_click", person_list))
+	if sorting_order != "":
+		sorted_list = sorting_list(person_list.duplicate())
+	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
@@ -185,19 +199,22 @@ func _populate_internal_data(person_list: Array, action):
 		
 func _populate_military_data(person_list: Array, action):
 	var item_list = $Tabs/Tab4/Grid as GridContainer
+	var sorted_list = person_list # sorted person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 7
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title(tr('PERSON_NAME')))
-	item_list.add_child(_title(tr('TASK')))
-	item_list.add_child(_title(tr('PRODUCING_EQUIPMENT_TYPE')))
-	item_list.add_child(_title(tr('RECRUIT_ABILITY')))
-	item_list.add_child(_title(tr('TRAIN_ABILITY')))
-	item_list.add_child(_title(tr('PRODUCE_EQUIPMENT_ABILITY')))
-	for person in person_list:
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('PRODUCING_EQUIPMENT_TYPE'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('RECRUIT_ABILITY'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TRAIN_ABILITY'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('PRODUCE_EQUIPMENT_ABILITY'), self, "__on_title_sorting_click", person_list))
+	if sorting_order != "":
+		sorted_list = sorting_list(person_list.duplicate())
+	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
@@ -230,7 +247,736 @@ func __on_clickable_label_click(label, person):
 	emit_signal('person_row_clicked', person)
 	_detail_showing = true
 
-
 func _on_TroopMenu_troop_person_clicked(troop):
 	current_action = Action.LIST
 	show_data(troop.get_persons())
+	
+
+func __on_title_sorting_click(label, object):
+	# get clicked title
+	clicked_label = label.text
+	# click again to change ordering
+	if sorting_order == "desc":
+		sorting_order = "asc"
+	else:
+		sorting_order = "desc"
+	# update the list
+	show_data(object)	
+
+func sorting_list(person_list_copy):	
+	var sort_list = []
+	if person_list_copy.size() != 0:
+		sort_list.append(person_list_copy.pop_front())
+		if clicked_label == tr("PERSON_NAME"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_name(), item.get_name()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_name(), item.get_name()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("BELONGED_ARCHITECTURE"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_location().get_name(), item.get_location().get_name()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_location().get_name(), item.get_location().get_name()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("STATUS"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_status_str(), item.get_status_str()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_status_str(), item.get_status_str()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("MERIT"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_merit(), item.get_merit()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_merit(), item.get_merit()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("POPULARITY"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_popularity(), item.get_popularity()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_popularity(), item.get_popularity()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("PRESTIGE"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_prestige(), item.get_prestige()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_prestige(), item.get_prestige()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("KARMA"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_karma(), item.get_karma()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_karma(), item.get_karma()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("TASK"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_working_task_str(), item.get_working_task_str()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_working_task_str(), item.get_working_task_str()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("TASK_DAYS"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.task_days, item.task_days):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.task_days, item.task_days):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("COMMAND"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_command(), item.get_command()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_command(), item.get_command()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("STRENGTH"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_strength(), item.get_strength()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_strength(), item.get_strength()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("INTELLIGENCE"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_intelligence(), item.get_intelligence()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_intelligence(), item.get_intelligence()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("POLITICS"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_politics(), item.get_politics()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_politics(), item.get_politics()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("GLAMOUR"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_glamour(), item.get_glamour()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_glamour(), item.get_glamour()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("COMMAND_EXPERIENCE"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.command_exp, item.command_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.command_exp, item.command_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("STRENGTH_EXPERIENCE"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.strength_exp, item.strength_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.strength_exp, item.strength_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("INTELLIGENCE_EXPERIENCE"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.intelligence_exp, item.intelligence_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.intelligence_exp, item.intelligence_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("POLITICS_EXPERIENCE"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.politics_exp, item.politics_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.politics_exp, item.politics_exp):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("GLAMOUR_EXPERIENCE"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.glamour_exp, item.glamour_exp):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.glamour_exp, item.glamour_exp):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+		elif clicked_label == tr("AGRICULTURE_ABILITY"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_agriculture_ability(), item.get_agriculture_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_agriculture_ability(), item.get_agriculture_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("COMMERCE_ABILITY"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_commerce_ability(), item.get_commerce_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_commerce_ability(), item.get_commerce_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("MORALE_ABILITY"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_morale_ability(), item.get_morale_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_morale_ability(), item.get_morale_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("ENDURANCE_ABILITY"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_endurance_ability(), item.get_endurance_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_endurance_ability(), item.get_endurance_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("PRODUCING_EQUIPMENT_TYPE"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_producing_equipment_name(), item.get_producing_equipment_name()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_producing_equipment_name(), item.get_producing_equipment_name()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("RECRUIT_ABILITY"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_recruit_troop_ability(), item.get_recruit_troop_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_recruit_troop_ability(), item.get_recruit_troop_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("TRAIN_ABILITY"):
+				for person in person_list_copy:
+					var count = 0
+					var list_sorted = false
+					for item in sort_list:
+						# if person added, switch to new one
+						if list_sorted:
+							break
+						if sorting_order == "desc":
+							if !customComparison(person.get_train_troop_ability(), item.get_train_troop_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+						elif sorting_order == "asc":
+							if customComparison(person.get_train_troop_ability(), item.get_train_troop_ability()):
+								sort_list.insert(count,person)
+								list_sorted = true
+							else:
+								if count == sort_list.size() - 1:
+									sort_list.insert(count+1,person)
+									list_sorted = true
+								count += 1
+		elif clicked_label == tr("PRODUCE_EQUIPMENT_ABILITY"):
+			for person in person_list_copy:
+				var count = 0
+				var list_sorted = false
+				for item in sort_list:
+					# if person added, switch to new one
+					if list_sorted:
+						break
+					if sorting_order == "desc":
+						if !customComparison(person.get_produce_equipment_ability(), item.get_produce_equipment_ability()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+					elif sorting_order == "asc":
+						if customComparison(person.get_produce_equipment_ability(), item.get_produce_equipment_ability()):
+							sort_list.insert(count,person)
+							list_sorted = true
+						else:
+							if count == sort_list.size() - 1:
+								sort_list.insert(count+1,person)
+								list_sorted = true
+							count += 1
+	return sort_list
+	
+# comparison
+func customComparison(a, b):
+	if typeof(a) != typeof(b):
+		if typeof(a) in TypeOrder and typeof(b) in TypeOrder:
+			return TypeOrder.find( typeof(a) ) < TypeOrder.find( typeof(b) )
+		else:
+			return typeof(a) < typeof(b)
+	else:
+		return a < b

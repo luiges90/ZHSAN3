@@ -41,6 +41,17 @@ func _clickable_label(text: String, on_click_func, on_click_func_name, object):
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label
 	
+# for title 
+func _title_sorting(text: String, on_click_func, on_click_func_name, object):
+	var label = LinkButton.new()
+	label.text = text
+	label.underline = LinkButton.UNDERLINE_MODE_NEVER
+	label.mouse_default_cursor_shape = Control.CURSOR_ARROW
+	label.connect("pressed", on_click_func, on_click_func_name, [label, object])
+	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
+	label.mouse_filter = Control.MOUSE_FILTER_STOP
+	return label
+	
 func _title(text: String):
 	var label = Label.new()
 	label.text = text
