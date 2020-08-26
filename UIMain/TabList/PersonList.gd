@@ -275,7 +275,7 @@ func sorting_list(person_list_copy):
 func customComparison(a, b):
 	var a1 = ""
 	var b1 = ""
-	if clicked_label == tr("COMMAND"):
+	if clicked_label == tr("PERSON_NAME"):
 		a1 = a.get_name()
 		b1 = b.get_name()
 	elif clicked_label == tr("BELONGED_ARCHITECTURE"):
