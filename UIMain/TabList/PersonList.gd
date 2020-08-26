@@ -252,7 +252,7 @@ func _on_TroopMenu_troop_person_clicked(troop):
 	show_data(troop.get_persons())
 	
 
-func __on_title_sorting_click(label, object):
+func _on_title_sorting_click(label, object):
 	# get clicked title
 	clicked_label = label.text
 	# click again to change ordering
