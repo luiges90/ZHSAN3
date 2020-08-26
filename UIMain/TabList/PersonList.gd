@@ -20,9 +20,9 @@ signal person_selected
 signal person_row_clicked
 
 # table sorting 
-var sorting_order = ""
-const TypeOrder = [TYPE_STRING, TYPE_INT]
-var clicked_label = ""
+var _sorting_order = ""
+const _TYPE_ORDER = [TYPE_STRING, TYPE_INT]
+var _clicked_label = ""
 
 var _detail_showing = false
 
@@ -117,8 +117,8 @@ func _populate_basic_data(person_list: Array, action):
 	item_list.add_child(_title_sorting(tr('KARMA'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TASK'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TASK_DAYS'), self, "_on_title_sorting_click", person_list))
-	if sorting_order != "":
-		sorted_list = sorting_list(person_list.duplicate())
+	if _sorting_order != "":
+		sorted_list = _sorting_list(person_list.duplicate())
 	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -141,19 +141,19 @@ func _populate_ability_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 11
-	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('COMMAND'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('STRENGTH'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('INTELLIGENCE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('POLITICS'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('GLAMOUR'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('COMMAND_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('STRENGTH_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('INTELLIGENCE_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('POLITICS_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('GLAMOUR_EXPERIENCE'), self, "__on_title_sorting_click", person_list))
-	if sorting_order != "":
-		sorted_list = sorting_list(person_list.duplicate())
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('COMMAND'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('STRENGTH'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('INTELLIGENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('POLITICS'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('GLAMOUR'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('COMMAND_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('STRENGTH_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('INTELLIGENCE_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('POLITICS_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('GLAMOUR_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	if _sorting_order != "":
+		sorted_list = _sorting_list(person_list.duplicate())
 	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -178,14 +178,14 @@ func _populate_internal_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('TASK'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('AGRICULTURE_ABILITY'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('COMMERCE_ABILITY'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('MORALE_ABILITY'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('ENDURANCE_ABILITY'), self, "__on_title_sorting_click", person_list))
-	if sorting_order != "":
-		sorted_list = sorting_list(person_list.duplicate())
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('AGRICULTURE_ABILITY'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('COMMERCE_ABILITY'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('MORALE_ABILITY'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('ENDURANCE_ABILITY'), self, "_on_title_sorting_click", person_list))
+	if _sorting_order != "":
+		sorted_list = _sorting_list(person_list.duplicate())
 	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -206,14 +206,14 @@ func _populate_military_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('TASK'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('PRODUCING_EQUIPMENT_TYPE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('RECRUIT_ABILITY'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('TRAIN_ABILITY'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('PRODUCE_EQUIPMENT_ABILITY'), self, "__on_title_sorting_click", person_list))
-	if sorting_order != "":
-		sorted_list = sorting_list(person_list.duplicate())
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('PRODUCING_EQUIPMENT_TYPE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('RECRUIT_ABILITY'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TRAIN_ABILITY'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('PRODUCE_EQUIPMENT_ABILITY'), self, "_on_title_sorting_click", person_list))
+	if _sorting_order != "":
+		sorted_list = _sorting_list(person_list.duplicate())
 	for person in sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -254,12 +254,12 @@ func _on_TroopMenu_troop_person_clicked(troop):
 
 func _on_title_sorting_click(label, object):
 	# get clicked title
-	clicked_label = label.text
+	_clicked_label = label.text
 	# click again to change ordering
-	if sorting_order == "desc":
-		sorting_order = "asc"
+	if _sorting_order == "desc":
+		_sorting_order = "asc"
 	else:
-		sorting_order = "desc"
+		_sorting_order = "desc"
 	# update the list
 	show_data(object)	
 
@@ -267,9 +267,9 @@ func _on_title_sorting_click(label, object):
 func _sorting_list(person_list_copy):	
 	var sort_list = []
 	if person_list_copy.size() != 0:
-		person_list_copy.sort_custom(self,"custom_comparison")
+		person_list_copy.sort_custom(self,"_custom_comparison")
 		# default comparison is in ascending order
-		if sorting_order == "desc":
+		if _sorting_order == "desc":
 			person_list_copy.invert()
 	return person_list_copy
 	
@@ -277,97 +277,97 @@ func _sorting_list(person_list_copy):
 func _get_compare_value(a, b):
 	var a1 = ""
 	var b1 = ""
-	if clicked_label == tr("PERSON_NAME"):
+	if _clicked_label == tr("PERSON_NAME"):
 		a1 = a.get_name()
 		b1 = b.get_name()
-	elif clicked_label == tr("BELONGED_ARCHITECTURE"):
+	elif _clicked_label == tr("BELONGED_ARCHITECTURE"):
 		a1 = a.get_location().get_name()
 		b1 = b.get_location().get_name()
-	elif clicked_label == tr("STATUS"):
+	elif _clicked_label == tr("STATUS"):
 		a1 = a.get_status_str()
 		b1 = b.get_status_str()
-	elif clicked_label == tr("MERIT"):
+	elif _clicked_label == tr("MERIT"):
 		a1 = a.get_merit()
 		b1 = b.get_merit()
-	elif clicked_label == tr("POPULARITY"):
+	elif _clicked_label == tr("POPULARITY"):
 		a1 = a.get_popularity()
 		b1 = b.get_popularity()
-	elif clicked_label == tr("PRESTIGE"):
+	elif _clicked_label == tr("PRESTIGE"):
 		a1 = a.get_prestige()
 		b1 = b.get_prestige()
-	elif clicked_label == tr("KARMA"):
+	elif _clicked_label == tr("KARMA"):
 		a1 = a.get_karma()
 		b1 = b.get_karma()
-	elif clicked_label == tr("TASK"):
+	elif _clicked_label == tr("TASK"):
 		a1 = a.get_working_task_str()
 		b1 = b.get_working_task_str()
-	elif clicked_label == tr("TASK_DAYS"):
+	elif _clicked_label == tr("TASK_DAYS"):
 		a1 = a.task_days
 		b1 = b.task_days
-	elif clicked_label == tr("COMMAND"):
+	elif _clicked_label == tr("COMMAND"):
 		a1 = a.get_command()
 		b1 = b.get_command()
-	elif clicked_label == tr("STRENGTH"):
+	elif _clicked_label == tr("STRENGTH"):
 		a1 = a.get_strength()
 		b1 = b.get_strength()
-	elif clicked_label == tr("INTELLIGENCE"):
+	elif _clicked_label == tr("INTELLIGENCE"):
 		a1 = a.get_intelligence()
 		b1 = b.get_intelligence()
-	elif clicked_label == tr("POLITICS"):
+	elif _clicked_label == tr("POLITICS"):
 		a1 = a.get_politics()
 		b1 = b.get_politics()
-	elif clicked_label == tr("GLAMOUR"):
+	elif _clicked_label == tr("GLAMOUR"):
 		a1 = a.get_glamour()
 		b1 = b.get_glamour()
-	elif clicked_label == tr("COMMAND_EXPERIENCE"):
+	elif _clicked_label == tr("COMMAND_EXPERIENCE"):
 		a1 = a.command_exp
 		b1 = b.command_exp
-	elif clicked_label == tr("STRENGTH_EXPERIENCE"):
+	elif _clicked_label == tr("STRENGTH_EXPERIENCE"):
 		a1 = a.strength_exp
 		b1 = b.strength_exp
-	elif clicked_label == tr("INTELLIGENCE_EXPERIENCE"):
+	elif _clicked_label == tr("INTELLIGENCE_EXPERIENCE"):
 		a1 = a.intelligence_exp
 		b1 = b.intelligence_exp
-	elif clicked_label == tr("POLITICS_EXPERIENCE"):
+	elif _clicked_label == tr("POLITICS_EXPERIENCE"):
 		a1 = a.politics_exp
 		b1 = b.politics_exp
-	elif clicked_label == tr("GLAMOUR_EXPERIENCE"):
+	elif _clicked_label == tr("GLAMOUR_EXPERIENCE"):
 		a1 = a.glamour_exp
 		b1 = b.glamour_exp
-	elif clicked_label == tr("AGRICULTURE_ABILITY"):
+	elif _clicked_label == tr("AGRICULTURE_ABILITY"):
 		a1 = a.get_agriculture_ability()
 		b1 = b.get_agriculture_ability()
-	elif clicked_label == tr("COMMERCE_ABILITY"):
+	elif _clicked_label == tr("COMMERCE_ABILITY"):
 		a1 = a.get_commerce_ability()
 		b1 = b.get_commerce_ability()
-	elif clicked_label == tr("MORALE_ABILITY"):
+	elif _clicked_label == tr("MORALE_ABILITY"):
 		a1 = a.get_morale_ability()
 		b1 = b.get_morale_ability()
-	elif clicked_label == tr("ENDURANCE_ABILITY"):
+	elif _clicked_label == tr("ENDURANCE_ABILITY"):
 		a1 = a.get_endurance_ability()
 		b1 = b.get_endurance_ability()
-	elif clicked_label == tr("PRODUCING_EQUIPMENT_TYPE"):
+	elif _clicked_label == tr("PRODUCING_EQUIPMENT_TYPE"):
 		a1 = a.get_producing_equipment_name()
 		b1 = b.get_producing_equipment_name()
-	elif clicked_label == tr("RECRUIT_ABILITY"):
+	elif _clicked_label == tr("RECRUIT_ABILITY"):
 		a1 = a.get_recruit_troop_ability()
 		b1 = b.get_recruit_troop_ability()
-	elif clicked_label == tr("TRAIN_ABILITY"):
+	elif _clicked_label == tr("TRAIN_ABILITY"):
 		a1 = a.get_train_troop_ability()
 		b1 = b.get_train_troop_ability()
-	elif clicked_label == tr("PRODUCE_EQUIPMENT_ABILITY"):
+	elif _clicked_label == tr("PRODUCE_EQUIPMENT_ABILITY"):
 		a1 = a.get_produce_equipment_ability()
 		b1 = b.get_produce_equipment_ability()
 	return [a1, b1]
 	
 # ascending comparison
 func _custom_comparison(a, b):
-	var a1 = get_compare_value(a, b)[0]
-	var b1 = get_compare_value(a, b)[1]
+	var a1 = _get_compare_value(a, b)[0]
+	var b1 = _get_compare_value(a, b)[1]
 	# actual comparison
 	if typeof(a1) != typeof(b1):
-		if typeof(a1) in TypeOrder and typeof(b1) in TypeOrder:
-			return TypeOrder.find( typeof(a1) ) < TypeOrder.find( typeof(b1) )
+		if typeof(a1) in _TYPE_ORDER and typeof(b1) in _TYPE_ORDER:
+			return _TYPE_ORDER.find( typeof(a1) ) < _TYPE_ORDER.find( typeof(b1) )
 		else:
 			return typeof(a1) < typeof(b1)
 	else:
