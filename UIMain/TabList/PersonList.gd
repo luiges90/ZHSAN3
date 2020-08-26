@@ -264,17 +264,17 @@ func __on_title_sorting_click(label, object):
 	show_data(object)	
 
 # sort the list
-func sorting_list(person_list_copy):	
+func _sorting_list(person_list_copy):	
 	var sort_list = []
 	if person_list_copy.size() != 0:
-		person_list_copy.sort_custom(self,"customComparison")
+		person_list_copy.sort_custom(self,"custom_comparison")
 		# default comparison is in ascending order
 		if sorting_order == "desc":
 			person_list_copy.invert()
 	return person_list_copy
 	
 # get value that need to be compared
-func get_compare_value(a, b):
+func _get_compare_value(a, b):
 	var a1 = ""
 	var b1 = ""
 	if clicked_label == tr("PERSON_NAME"):
@@ -361,7 +361,7 @@ func get_compare_value(a, b):
 	return [a1, b1]
 	
 # ascending comparison
-func customComparison(a, b):
+func _custom_comparison(a, b):
 	var a1 = get_compare_value(a, b)[0]
 	var b1 = get_compare_value(a, b)[1]
 	# actual comparison
