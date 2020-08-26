@@ -108,15 +108,15 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 9
-	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('STATUS'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('MERIT'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('POPULARITY'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('PRESTIGE'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('KARMA'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('TASK'), self, "__on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('TASK_DAYS'), self, "__on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('MERIT'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('POPULARITY'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('PRESTIGE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('KARMA'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('TASK_DAYS'), self, "_on_title_sorting_click", person_list))
 	if sorting_order != "":
 		sorted_list = sorting_list(person_list.duplicate())
 	for person in sorted_list:
