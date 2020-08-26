@@ -8,6 +8,7 @@ enum Task { NONE,
 enum Status { NONE,
 	NORMAL, WILD
 }
+enum DeadReason { NATURAL, UNNNATURAL }
 
 var id: int setget forbidden
 var scenario
@@ -38,12 +39,20 @@ var prestige: int setget forbidden
 var karma: int setget forbidden
 var merit: int setget forbidden
 
+var available_year: int setget forbidden
+var born_year: int setget forbidden
+var death_year: int setget forbidden
+var available_architecture_id: int setget forbidden
+var dead_reason setget forbidden
+
 var working_task setget forbidden
 var producing_equipment setget forbidden
 
 var task_days = 0 setget forbidden
 
 var skills = [] setget forbidden
+
+signal person_died
 
 func forbidden(x):
 	assert(false)
@@ -59,6 +68,10 @@ func load_data(json: Dictionary, objects):
 	surname = json["Surname"]
 	given_name = json["GivenName"]
 	courtesy_name = json["CourtesyName"]
+	available_year = json['AvailableYear']
+	born_year = json['BornYear']
+	death_year = json['DeathYear']
+	available_architecture_id = json['AvailableArchitectureId']
 	command = int(json["Command"])
 	strength = int(json["Strength"])
 	intelligence = int(json["Intelligence"])
@@ -86,6 +99,10 @@ func save_data() -> Dictionary:
 		"Surname": surname,
 		"GivenName": given_name,
 		"CourtesyName": courtesy_name,
+		"AvailableYear": available_year,
+		"BornYear": born_year,
+		"DeathYear": death_year,
+		"AvailableArchitectureId": available_architecture_id,
 		"Command": command,
 		"Strength": strength,
 		"Intelligence": intelligence,
@@ -168,6 +185,12 @@ func get_salary():
 	var base = 10
 	base = apply_influences("modify_person_salary", {"value": base, "person": self})
 	return base
+	
+func get_age():
+	return scenario.get_year() - born_year + 1
+	
+func get_expected_death_year():
+	return death_year if dead_reason == DeadReason.NATURAL else death_year + 10 + get_strength() / 10
 
 #####################################
 #    Getters / Tasks and Statuses   #
@@ -382,7 +405,7 @@ func add_merit(delta):
 	
 func set_location(item, force = false):
 	if _location != null:
-		_location.remove_person(self)
+		_location.remove_person(self, true)
 	_location = item
 	if not force:
 		item.add_person(self, true)
@@ -407,6 +430,13 @@ func move_to_architecture(arch):
 	working_task = Task.MOVE
 	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
 	task_days = apply_influences("modify_person_movement_time", {"value": task_days, "person": self})
+	
+func die():
+	if is_faction_leader():
+		get_belonged_faction().change_leader()
+	get_location().remove_person(self)
+	_status = Status.NONE
+	emit_signal('person_died', self)
 		
 ####################################
 #     Manipulation / Abilities     #
@@ -437,6 +467,18 @@ func add_glamour_exp(delta):
 #             Day event            #
 ####################################
 func day_event():
-	if task_days > 0:
-		task_days -= 1
-	
+	# task days
+	if get_location() != null:
+		if task_days > 0:
+			task_days -= 1
+			
+	# check death
+	if scenario.get_year() >= get_expected_death_year() and randf() < 1 / 720.0:
+		die()
+
+func month_event():
+	# try to be available
+	if get_location() == null and scenario.get_year() >= available_year and randf() < 0.2:
+		var arch = scenario.architectures[available_architecture_id]
+		_status = Status.WILD
+		arch.add_person(self)

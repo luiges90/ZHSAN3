@@ -114,6 +114,10 @@ func destroy():
 	_destroyed = true
 	emit_signal("destroyed", self)
 	
+func change_leader():
+	# TODO
+	var successor = Util.random_from(get_persons())
+	leader = successor
 
 ####################################
 #               Events             #

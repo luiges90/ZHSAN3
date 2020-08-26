@@ -253,6 +253,7 @@ func _load_data(path):
 	obj = parse_json(file.get_as_text())
 	for item in obj:
 		var instance = Person.new()
+		instance.connect('person_died', self, '_on_person_died')
 		__load_item(instance, item, persons, {"skills": skills})
 	file.close()
 	
@@ -496,6 +497,9 @@ func _on_day_passed():
 	for troop in troops.values():
 		if not troop._destroyed:
 			troop.day_event()
+			
+	for person in persons.values():
+		person.day_event()
 	
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")
@@ -503,6 +507,9 @@ func _on_day_passed():
 func _on_month_passed():
 	for faction in factions.values():
 		faction.month_event()
+		
+	for person in persons.values():
+		person.month_event()
 	
 
 func _on_all_loaded():
@@ -526,6 +533,8 @@ func _on_troop_created(troop, position):
 func _on_troop_removed(troop):
 	emit_signal("scenario_troop_removed", self, troop)
 
+func _on_person_died(person):
+	$GameRecordCreator.person_died(person)
 
 ########################################
 #                Process               #
@@ -610,6 +619,9 @@ func get_living_persons():
 		if p.get_location() != null:
 			list.append(p)
 	return list
+	
+func get_year():
+	return ($DateRunner as DateRunner).year
 	
 ########################################
 #          Data Management             #

@@ -303,8 +303,6 @@ func create_troop_positions() -> Array:
 ####################################
 
 func day_event():
-	for p in get_persons():
-		p.day_event()
 	_develop_internal()
 	_develop_population()
 	_develop_military()
@@ -345,7 +343,7 @@ func add_person(p, force: bool = false):
 	if not force:
 		p.set_location(self, true)
 		
-func remove_person(p):
+func remove_person(p, force: bool = false):
 	Util.remove_object(_person_list, p)
 	
 func change_faction(to_section):
