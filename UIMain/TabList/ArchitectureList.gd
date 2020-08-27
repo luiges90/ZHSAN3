@@ -8,6 +8,9 @@ signal architecture_row_clicked
 
 var _selected_person_ids
 
+# sorted architecture list
+var _sorted_list
+
 var _detail_showing = false
 
 func _ready():
@@ -38,6 +41,7 @@ func show_data(arch_list: Array):
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
+	_selected_table = "architecture_list" 
 	_populate_basic_data(arch_list, current_action)
 	_populate_internal_data(arch_list, current_action)
 	_populate_military_data(arch_list, current_action)
@@ -46,21 +50,24 @@ func show_data(arch_list: Array):
 
 func _populate_basic_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
+	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 9
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 8
-	item_list.add_child(_title(tr('NAME')))
-	item_list.add_child(_title(tr('KIND_NAME')))
-	item_list.add_child(_title(tr('FACTION_NAME')))
-	item_list.add_child(_title(tr('POPULATION')))
-	item_list.add_child(_title(tr('FOOD')))
-	item_list.add_child(_title(tr('FUND')))
-	item_list.add_child(_title(tr('PERSON_COUNT')))
-	item_list.add_child(_title(tr('WILD_PERSON_COUNT')))
-	for arch in arch_list:
+	item_list.add_child(_title_sorting(tr('NAME'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('KIND_NAME'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('FACTION_NAME'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('POPULATION'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('FOOD'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('FUND'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('WILD_PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
+	if _sorting_order != "":
+		_sorted_list = _sorting_list(arch_list.duplicate())
+	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
 		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
@@ -74,20 +81,23 @@ func _populate_basic_data(arch_list: Array, action):
 	
 func _populate_internal_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
+	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 8
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 7
-	item_list.add_child(_title(tr('NAME')))
-	item_list.add_child(_title(tr('POPULATION')))
-	item_list.add_child(_title(tr('MILITARY_POPULATION')))
-	item_list.add_child(_title(tr('AGRICULTURE')))
-	item_list.add_child(_title(tr('COMMERCE')))
-	item_list.add_child(_title(tr('MORALE')))
-	item_list.add_child(_title(tr('ENDURANCE')))
-	for arch in arch_list:
+	item_list.add_child(_title_sorting(tr('NAME'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('POPULATION'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('MILITARY_POPULATION'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('AGRICULTURE'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('COMMERCE'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('MORALE'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('ENDURANCE'), self, "_on_title_sorting_click", arch_list))
+	if _sorting_order != "":
+		_sorted_list = _sorting_list(arch_list.duplicate())
+	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
 		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
@@ -100,17 +110,20 @@ func _populate_internal_data(arch_list: Array, action):
 		
 func _populate_military_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer
+	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 5
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 4
-	item_list.add_child(_title(tr('NAME')))
-	item_list.add_child(_title(tr('TROOP')))
-	item_list.add_child(_title(tr('TROOP_MORALE')))
-	item_list.add_child(_title(tr('COMBATIVITY')))
-	for arch in arch_list:
+	item_list.add_child(_title_sorting(tr('NAME'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('TROOP'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('TROOP_MORALE'), self, "_on_title_sorting_click", arch_list))
+	item_list.add_child(_title_sorting(tr('COMBATIVITY'), self, "_on_title_sorting_click", arch_list))
+	if _sorting_order != "":
+		_sorted_list = _sorting_list(arch_list.duplicate())
+	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
 		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
@@ -120,6 +133,7 @@ func _populate_military_data(arch_list: Array, action):
 		
 func _populate_equipments_data(arch_list: Array, action):
 	var item_list = $Tabs/Tab4/Grid as GridContainer
+	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	
 	var all_kinds = arch_list[0].scenario.military_kinds.values()
@@ -136,8 +150,9 @@ func _populate_equipments_data(arch_list: Array, action):
 	item_list.add_child(_title(tr('NAME')))
 	for kind in kinds:
 		item_list.add_child(_title(kind.get_name()))
-		
-	for arch in arch_list:
+	if _sorting_order != "":
+		_sorted_list = _sorting_list(arch_list.duplicate())	
+	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
 		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))

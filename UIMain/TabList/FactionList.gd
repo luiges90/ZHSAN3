@@ -5,6 +5,9 @@ enum Action {
 	LIST
 }
 
+# sorted faction list
+var _sorted_list
+
 func _ready():
 	$Tabs.set_tab_title(0, tr('BASIC'))
 	$Tabs.remove_child($Tabs/Tab2)
@@ -22,24 +25,28 @@ func show_data(list: Array):
 			_max_selection = 0
 	$SelectionButtons.visible = _max_selection != 0
 
+	_selected_table = "faction_list" 
 	_populate_basic_data(list, current_action)
 	show()
 
 func _populate_basic_data(list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
+	_sorted_list = list # default faction list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 7
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 6
-	item_list.add_child(_title(tr('NAME')))
-	item_list.add_child(_title(tr('PERSON_COUNT')))
-	item_list.add_child(_title(tr('ARCHITECTURE_COUNT')))
-	item_list.add_child(_title(tr('FUND')))
-	item_list.add_child(_title(tr('FOOD')))
-	item_list.add_child(_title(tr('TROOP')))
-	for f in list:
+	item_list.add_child(_title_sorting(tr('FACTION_NAME'), self, "_on_title_sorting_click", list))
+	item_list.add_child(_title_sorting(tr('PERSON_COUNT'), self, "_on_title_sorting_click", list))
+	item_list.add_child(_title_sorting(tr('ARCHITECTURE_COUNT'), self, "_on_title_sorting_click", list))
+	item_list.add_child(_title_sorting(tr('TOTAL_FUND'), self, "_on_title_sorting_click", list))
+	item_list.add_child(_title_sorting(tr('TOTAL_FOOD'), self, "_on_title_sorting_click", list))
+	item_list.add_child(_title_sorting(tr('TOTAL_TROOP'), self, "_on_title_sorting_click", list))
+	if _sorting_order != "":
+		_sorted_list = _sorting_list(list.duplicate())
+	for f in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(f.id))
 		item_list.add_child(_label(f.get_name()))
