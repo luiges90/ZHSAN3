@@ -489,7 +489,7 @@ func set_mother(other):
 func add_spouse(other):
 	if not spouses.has(other):
 		spouses.append(other)
-	if not other.spoouses.has(self):
+	if not other.spouses.has(self):
 		other.spouses.append(self)
 	
 func add_brother(other):

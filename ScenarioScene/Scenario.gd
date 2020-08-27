@@ -259,18 +259,18 @@ func _load_data(path):
 		person_json[instance.id] = item
 	file.close()
 	for pid in persons:
-		var father_id = persons[pid]["FatherId"]
+		var father_id = int(person_json[pid]["FatherId"])
 		if father_id >= 0:
 			persons[pid].set_father(persons[father_id])
-		var mother_id = persons[pid]["MotherId"]
+		var mother_id = int(person_json[pid]["MotherId"])
 		if mother_id >= 0:
 			persons[pid].set_father(persons[mother_id])
-		var spouse_ids = persons[pid]["SpouseIds"]
+		var spouse_ids = person_json[pid]["SpouseIds"]
 		for s in spouse_ids:
-			persons[pid].add_spouse(persons[s])
-		var brother_ids = persons[pid]["BrotherIds"]
+			persons[pid].add_spouse(persons[int(s)])
+		var brother_ids = person_json[pid]["BrotherIds"]
 		for b in brother_ids:
-			persons[pid].add_brother(persons[b])
+			persons[pid].add_brother(persons[int(b)])
 	
 	file.open(path + "/Architectures.json", File.READ)
 	var architecture_scene = preload("Architecture/Architecture.tscn")
