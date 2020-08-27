@@ -251,11 +251,26 @@ func _load_data(path):
 
 	file.open(path + "/Persons.json", File.READ)
 	obj = parse_json(file.get_as_text())
+	var person_json = {}
 	for item in obj:
 		var instance = Person.new()
 		instance.connect('person_died', self, '_on_person_died')
 		__load_item(instance, item, persons, {"skills": skills})
+		person_json[instance.id] = item
 	file.close()
+	for pid in persons:
+		var father_id = persons[pid]["FatherId"]
+		if father_id >= 0:
+			persons[pid].set_father(persons[father_id])
+		var mother_id = persons[pid]["MotherId"]
+		if mother_id >= 0:
+			persons[pid].set_father(persons[mother_id])
+		var spouse_ids = persons[pid]["SpouseIds"]
+		for s in spouse_ids:
+			persons[pid].add_spouse(persons[s])
+		var brother_ids = persons[pid]["BrotherIds"]
+		for b in brother_ids:
+			persons[pid].add_brother(persons[b])
 	
 	file.open(path + "/Architectures.json", File.READ)
 	var architecture_scene = preload("Architecture/Architecture.tscn")
@@ -280,6 +295,7 @@ func _load_data(path):
 		__load_item(instance, item, troops, {"persons": persons})
 		troop_json[instance.id] = item
 		__connect_signals_for_creating_troop(instance)
+	file.close()
 	for tid in troops:
 		var order_type = troop_json[tid]["_CurrentOrderType"]
 		var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
@@ -295,7 +311,6 @@ func _load_data(path):
 				troops[tid].set_attack_order(troop, null)
 			elif order_type == Troop.OrderType.FOLLOW:
 				troops[tid].set_follow_order(troop)
-	file.close()
 	
 	file.open(path + "/Sections.json", File.READ)
 	obj = parse_json(file.get_as_text())
@@ -534,6 +549,7 @@ func _on_troop_removed(troop):
 	emit_signal("scenario_troop_removed", self, troop)
 
 func _on_person_died(person):
+	# TODO add person dialog
 	$GameRecordCreator.person_died(person)
 
 ########################################

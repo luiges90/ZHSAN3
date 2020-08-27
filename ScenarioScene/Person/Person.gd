@@ -52,6 +52,11 @@ var task_days = 0 setget forbidden
 
 var skills = [] setget forbidden
 
+var father setget forbidden
+var mother setget forbidden
+var spouses = [] setget forbidden
+var brothers = [] setget forbidden
+
 signal person_died
 
 func forbidden(x):
@@ -91,6 +96,7 @@ func load_data(json: Dictionary, objects):
 	for id in json["Skills"]:
 		skills.append(objects["skills"][int(id)])
 	
+	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
@@ -119,7 +125,11 @@ func save_data() -> Dictionary:
 		"Merit": merit,
 		"Task": working_task,
 		"ProducingEquipment": producing_equipment,
-		"Skills": Util.id_list(skills)
+		"Skills": Util.id_list(skills),
+		"FatherId": father.id,
+		"MotherId": mother.id,
+		"SpouseIds": Util.id_list(spouses),
+		"BrotherIds": Util.id_list(brothers)
 	}
 	
 #####################################
@@ -431,6 +441,11 @@ func move_to_architecture(arch):
 	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
 	task_days = apply_influences("modify_person_movement_time", {"value": task_days, "person": self})
 	
+func become_available():
+	var arch = scenario.architectures[available_architecture_id]
+	_status = Status.WILD
+	arch.add_person(self)
+	
 func die():
 	if is_faction_leader():
 		get_belonged_faction().change_leader()
@@ -462,6 +477,26 @@ func add_glamour_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	glamour_exp = Util.f2ri(glamour_exp + delta * (50.0 / (get_glamour() + 50)))
 	
+####################################
+#     Manipulation / Relations     #
+####################################
+func set_father(other):
+	father = other
+	
+func set_mother(other):
+	mother = other
+	
+func add_spouse(other):
+	if not spouses.has(other):
+		spouses.append(other)
+	if not other.spoouses.has(self):
+		other.spouses.append(self)
+	
+func add_brother(other):
+	if not brothers.has(other):
+		brothers.append(other)
+	if not other.brothers.has(self):
+		other.brothers.append(self)
 
 ####################################
 #             Day event            #
@@ -479,6 +514,4 @@ func day_event():
 func month_event():
 	# try to be available
 	if get_location() == null and scenario.get_year() >= available_year and randf() < 0.2:
-		var arch = scenario.architectures[available_architecture_id]
-		_status = Status.WILD
-		arch.add_person(self)
+		become_available()
