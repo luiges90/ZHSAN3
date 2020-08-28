@@ -4,3 +4,4 @@
 頭像：睿画三国
 地圖數據：柒
 地圖素材：韋諾之戰 (Battle of Wesnoth)
+代碼貢獻：cheps55
