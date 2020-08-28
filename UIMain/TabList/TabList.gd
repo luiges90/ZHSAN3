@@ -11,7 +11,13 @@ var _confirming
 var _max_selection = -1
 
 # for title sorting
-var _sorting_order = "" # asc / desc
+enum _sorting_order {
+	ASC,
+	DESC, 
+	DEFAULT
+}
+# current title order
+var _current_order = _sorting_order.DEFAULT
 var _clicked_label = "" # title to be sorted
 var _selected_table = "" # table being selected
 const _TYPE_ORDER = [TYPE_STRING, TYPE_INT]
@@ -173,10 +179,13 @@ func _on_title_sorting_click(label, object):
 	# get clicked title
 	_clicked_label = label.text
 	# click again to change ordering
-	if _sorting_order == "desc":
-		_sorting_order = "asc"
-	else:
-		_sorting_order = "desc"
+	match _current_order:
+		_sorting_order.DEFAULT:
+			_current_order = _sorting_order.DESC
+		_sorting_order.DESC:
+			_current_order = _sorting_order.ASC
+		_sorting_order.ASC:
+			_current_order = _sorting_order.DESC
 	# update the list
 	show_data(object)	
 
@@ -185,8 +194,9 @@ func _sorting_list(list_copy):
 	if list_copy.size() != 0:
 		list_copy.sort_custom(self,"_custom_comparison")
 		# default comparison is in ascending order
-		if _sorting_order == "desc":
-			list_copy.invert()
+		match _current_order:
+			_sorting_order.DESC:
+				list_copy.invert()
 	return list_copy
 
 # get value that need to be compared
