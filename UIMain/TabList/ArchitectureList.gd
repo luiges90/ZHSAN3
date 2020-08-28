@@ -65,8 +65,11 @@ func _populate_basic_data(arch_list: Array, action):
 	item_list.add_child(_title_sorting(tr('FUND'), self, "_on_title_sorting_click", arch_list))
 	item_list.add_child(_title_sorting(tr('PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
 	item_list.add_child(_title_sorting(tr('WILD_PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(arch_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
 	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
