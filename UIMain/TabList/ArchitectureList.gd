@@ -95,8 +95,11 @@ func _populate_internal_data(arch_list: Array, action):
 	item_list.add_child(_title_sorting(tr('COMMERCE'), self, "_on_title_sorting_click", arch_list))
 	item_list.add_child(_title_sorting(tr('MORALE'), self, "_on_title_sorting_click", arch_list))
 	item_list.add_child(_title_sorting(tr('ENDURANCE'), self, "_on_title_sorting_click", arch_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(arch_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
 	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
@@ -121,8 +124,11 @@ func _populate_military_data(arch_list: Array, action):
 	item_list.add_child(_title_sorting(tr('TROOP'), self, "_on_title_sorting_click", arch_list))
 	item_list.add_child(_title_sorting(tr('TROOP_MORALE'), self, "_on_title_sorting_click", arch_list))
 	item_list.add_child(_title_sorting(tr('COMBATIVITY'), self, "_on_title_sorting_click", arch_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(arch_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
 	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
@@ -150,8 +156,11 @@ func _populate_equipments_data(arch_list: Array, action):
 	item_list.add_child(_title(tr('NAME')))
 	for kind in kinds:
 		item_list.add_child(_title(kind.get_name()))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(arch_list.duplicate())	
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(arch_list.duplicate())
 	for arch in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(arch.id))
