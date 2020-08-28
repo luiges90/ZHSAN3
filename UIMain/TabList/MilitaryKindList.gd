@@ -57,8 +57,11 @@ func _populate_basic_data(mk_list: Array, action):
 	item_list.add_child(_title_sorting(tr('SPEED'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('INITIATIVE'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('MAX_QUANTITY_MULITPLIER'), self, "_on_title_sorting_click", mk_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(mk_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
 	for mk in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
@@ -87,8 +90,11 @@ func _populate_movement_details_data(mk_list: Array, action):
 	item_list.add_child(_title(tr('KIND_NAME')))
 	for t in terrains:
 		item_list.add_child(_title(t))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(mk_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
 	for mk in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
@@ -114,8 +120,11 @@ func _populate_terrain_strength_data(mk_list: Array, action):
 	item_list.add_child(_title(tr('KIND_NAME')))
 	for t in terrains:
 		item_list.add_child(_title(t))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(mk_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
 	for mk in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
