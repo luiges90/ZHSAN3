@@ -44,8 +44,11 @@ func _populate_basic_data(list: Array, action):
 	item_list.add_child(_title_sorting(tr('TOTAL_FUND'), self, "_on_title_sorting_click", list))
 	item_list.add_child(_title_sorting(tr('TOTAL_FOOD'), self, "_on_title_sorting_click", list))
 	item_list.add_child(_title_sorting(tr('TOTAL_TROOP'), self, "_on_title_sorting_click", list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(list.duplicate())
 	for f in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(f.id))
