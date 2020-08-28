@@ -76,15 +76,16 @@ func _checkbox_changed(in_cb: CheckBox):
 			checkbox.set_pressed(false)
 		in_cb.set_pressed(true)
 	
+	for group in in_cb.get_groups():
+		if group.find("id_") >= 0:
+			for checkbox in get_tree().get_nodes_in_group(group):
+				checkbox.set_pressed(in_cb.is_pressed())
+				
 	var any_checked = false
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		if checkbox.is_pressed():
 			any_checked = true
 			break
-	for group in in_cb.get_groups():
-		if group.find("id_") >= 0:
-			for checkbox in get_tree().get_nodes_in_group(group):
-				checkbox.set_pressed(in_cb.is_pressed())
 	$ActionButtons/Confirm.disabled = not any_checked
 
 
