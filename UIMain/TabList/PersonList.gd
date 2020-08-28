@@ -31,6 +31,7 @@ func _ready():
 	$Tabs.set_tab_title(1, tr('ABILITY'))
 	$Tabs.set_tab_title(2, tr('INTERNAL'))
 	$Tabs.set_tab_title(3, tr('MILITARY'))
+	$Tabs.set_tab_title(4, tr('PERSONAL_RELATIONS'))
 	
 func handle_input(event):
 	if event is InputEventMouseButton:
@@ -96,6 +97,7 @@ func show_data(person_list: Array):
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)
 	_populate_military_data(person_list, current_action)
+	_populate_personal_relation_data(person_list, current_action)
 	show()
 	
 
@@ -104,13 +106,15 @@ func _populate_basic_data(person_list: Array, action):
 	var sorted_list = person_list # sorted person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 10
+		item_list.columns = 12
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 9
+		item_list.columns = 11
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('GENDER'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('MERIT'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('POPULARITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('PRESTIGE'), self, "_on_title_sorting_click", person_list))
@@ -125,6 +129,8 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_location().get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_status_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_gender_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_age()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_merit()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_popularity()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_prestige()), self, "__on_clickable_label_click", person))
@@ -224,6 +230,31 @@ func _populate_military_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(str(round(person.get_train_troop_ability())), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(round(person.get_produce_equipment_ability())), self, "__on_clickable_label_click", person))
 
+func _populate_personal_relation_data(person_list: Array, action):
+	var item_list = $Tabs/Tab5/Grid as GridContainer
+	var sorted_list = person_list # sorted person list
+	Util.delete_all_children(item_list)
+	if action != Action.LIST:
+		item_list.columns = 6
+		item_list.add_child(_title(''))
+	else:
+		item_list.columns = 5
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('FATHER'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('MOTHER'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('SPOUSE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('BROTHER'), self, "_on_title_sorting_click", person_list))
+	if _sorting_order != "":
+		sorted_list = _sorting_list(person_list.duplicate())
+	for person in sorted_list:
+		if action != Action.LIST:
+			item_list.add_child(_checkbox(person.id))
+		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_father_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_mother_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_spouse_names(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_brother_names(), self, "__on_clickable_label_click", person))
+		
 
 func _on_Confirm_pressed():
 	var selected = _get_selected_list()
@@ -286,6 +317,12 @@ func _get_compare_value(a, b):
 	elif _clicked_label == tr("STATUS"):
 		a1 = a.get_status_str()
 		b1 = b.get_status_str()
+	elif _clicked_label == tr("GENDER"):
+		a1 = a.get_gender_str()
+		b1 = b.get_gender_str()
+	elif _clicked_label == tr("AGE"):
+		a1 = a.get_age()
+		b1 = b.get_age()
 	elif _clicked_label == tr("MERIT"):
 		a1 = a.get_merit()
 		b1 = b.get_merit()

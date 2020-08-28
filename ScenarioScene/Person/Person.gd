@@ -359,6 +359,36 @@ func get_max_troop_quantity() -> int:
 	base = apply_influences('modify_person_max_troop_quantity', {"value": base, "person": self})
 	return base
 
+#####################################
+#         Getters / Relations       #
+#####################################
+func get_father_name():
+	return father.get_name() if father != null else '----'
+	
+func get_mother_name():
+	return mother.get_name() if mother != null else '----'
+	
+func get_spouse_names():
+	var result = ''
+	for s in spouses:
+		result += "‧" + s.get_name()
+	if len(result) > 0:
+		result = result.substr(1)
+	else:
+		result = "----"
+	return result
+
+func get_brother_names():
+	var result = ''
+	for s in brothers:
+		result += "‧" + s.get_name()
+	if len(result) > 0:
+		result = result.substr(1)
+	else:
+		result = "----"
+	return result
+
+
 ####################################
 #         Influence System         #
 ####################################

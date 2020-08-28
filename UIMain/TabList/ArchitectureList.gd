@@ -15,6 +15,7 @@ func _ready():
 	$Tabs.set_tab_title(1, tr('INTERNAL'))
 	$Tabs.set_tab_title(2, tr('MILITARY'))
 	$Tabs.set_tab_title(3, tr('EQUIPMENTS'))
+	$Tabs.remove_child($Tabs/Tab5)
 	
 func handle_input(event):
 	if event is InputEventMouseButton:

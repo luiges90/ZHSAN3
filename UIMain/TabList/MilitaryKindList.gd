@@ -13,6 +13,7 @@ func _ready():
 	$Tabs.set_tab_title(1, tr('MOVEMENT_DETAILS'))
 	$Tabs.set_tab_title(2, tr('TERRAIN_STRENGTH'))
 	$Tabs.remove_child($Tabs/Tab4)
+	$Tabs.remove_child($Tabs/Tab5)
 	
 func _on_InfoMenu_military_kind_clicked(scenario):
 	current_action = Action.LIST
