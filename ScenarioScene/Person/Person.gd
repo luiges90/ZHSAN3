@@ -211,6 +211,15 @@ func get_location():
 func get_location_str():
 	var location = get_location()
 	return location.get_name() if location != null else '----'
+	
+func get_belonged_architecture():
+	var loc = get_location()
+	if loc != null:
+		if loc.has_method("get_starting_architecture"):
+			return loc.get_starting_architecture()
+		else:
+			return loc
+	return null
 
 func get_status():
 	return _status
@@ -472,6 +481,34 @@ func move_to_architecture(arch):
 	task_days = apply_influences("modify_person_movement_time", {"value": task_days, "person": self})
 	
 func become_available():
+	for b in brothers:
+		if b._status == Status.NORMAL or b._status == Status.WILD:
+			var arch = b.get_belonged_architecture()
+			_status = b._status
+			arch.add_person(self)
+			return
+	
+	for s in spouses:
+		if s._status == Status.NORMAL or s._status == Status.WILD:
+			var arch = s.get_belonged_architecture()
+			_status = s._status
+			arch.add_person(self)
+			return
+	
+	if father != null:
+		if father._status != Status.NONE:
+			var arch = father.get_belonged_architecture()
+			_status = father._status
+			arch.add_person(self)
+			return
+			
+	if mother != null:
+		if mother._status != Status.NONE:
+			var arch = mother.get_belonged_architecture()
+			_status = mother._status
+			arch.add_person(self)
+			return
+	
 	var arch = scenario.architectures[available_architecture_id]
 	_status = Status.WILD
 	arch.add_person(self)
