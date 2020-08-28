@@ -126,8 +126,8 @@ func save_data() -> Dictionary:
 		"Task": working_task,
 		"ProducingEquipment": producing_equipment,
 		"Skills": Util.id_list(skills),
-		"FatherId": father.id,
-		"MotherId": mother.id,
+		"FatherId": father.id if father != null else -1,
+		"MotherId": mother.id if mother != null else -1,
 		"SpouseIds": Util.id_list(spouses),
 		"BrotherIds": Util.id_list(brothers)
 	}
