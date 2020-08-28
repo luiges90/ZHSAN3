@@ -116,8 +116,11 @@ func _populate_basic_data(person_list: Array, action):
 	item_list.add_child(_title_sorting(tr('KARMA'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TASK'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TASK_DAYS'), self, "_on_title_sorting_click", person_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(person_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(person_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -151,8 +154,11 @@ func _populate_ability_data(person_list: Array, action):
 	item_list.add_child(_title_sorting(tr('INTELLIGENCE_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('POLITICS_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('GLAMOUR_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(person_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(person_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -183,8 +189,11 @@ func _populate_internal_data(person_list: Array, action):
 	item_list.add_child(_title_sorting(tr('COMMERCE_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('MORALE_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('ENDURANCE_ABILITY'), self, "_on_title_sorting_click", person_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(person_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(person_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
@@ -211,8 +220,11 @@ func _populate_military_data(person_list: Array, action):
 	item_list.add_child(_title_sorting(tr('RECRUIT_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TRAIN_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('PRODUCE_EQUIPMENT_ABILITY'), self, "_on_title_sorting_click", person_list))
-	if _sorting_order != "":
-		_sorted_list = _sorting_list(person_list.duplicate())
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(person_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
