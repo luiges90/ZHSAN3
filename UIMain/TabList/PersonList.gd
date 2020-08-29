@@ -260,7 +260,7 @@ func _populate_personal_relation_data(person_list: Array, action):
 			_sorted_list = _sorting_list(person_list.duplicate())
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
-	for person in sorted_list:
+	for person in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(person.id))
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
