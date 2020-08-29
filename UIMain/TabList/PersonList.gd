@@ -29,6 +29,7 @@ func _ready():
 	$Tabs.set_tab_title(1, tr('ABILITY'))
 	$Tabs.set_tab_title(2, tr('INTERNAL'))
 	$Tabs.set_tab_title(3, tr('MILITARY'))
+	$Tabs.set_tab_title(4, tr('PERSONAL_RELATIONS'))
 	
 func handle_input(event):
 	if event is InputEventMouseButton:
@@ -95,6 +96,7 @@ func show_data(person_list: Array):
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)
 	_populate_military_data(person_list, current_action)
+	_populate_personal_relation_data(person_list, current_action)
 	show()
 	
 
@@ -103,13 +105,15 @@ func _populate_basic_data(person_list: Array, action):
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 10
+		item_list.columns = 12
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 9
+		item_list.columns = 11
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('GENDER'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('MERIT'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('POPULARITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('PRESTIGE'), self, "_on_title_sorting_click", person_list))
@@ -127,6 +131,8 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_location().get_name(), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(person.get_status_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_gender_str(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(str(person.get_age()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_merit()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_popularity()), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(person.get_prestige()), self, "__on_clickable_label_click", person))

@@ -114,6 +114,54 @@ func destroy():
 	_destroyed = true
 	emit_signal("destroyed", self)
 	
+func change_leader():
+	if get_persons().size() <= 1:
+		destroy()
+		return
+	
+	var successor = null
+	
+	if successor == null:
+		var candidates = leader.get_children()
+		candidates.sort_custom("Person", "cmp_age_desc")
+		for p in candidates:
+			if not p.gender and p.get_belonged_faction() == self:
+				successor = p
+				break
+				
+	if successor == null:
+		var candidates = leader.get_siblings()
+		candidates.sort_custom("Person", "cmp_age_desc")
+		for p in candidates:
+			if not p.gender and p.get_belonged_faction() == self:
+				successor = p
+				break
+	
+	if successor == null:
+		var candidates = leader.get_persons_with_same_strain()
+		candidates.sort_custom("Person", "cmp_age_desc")
+		for p in candidates:
+			if not p.gender and p.get_belonged_faction() == self:
+				successor = p
+				break
+				
+	if successor == null:
+		var candidates = leader.brothers
+		candidates.sort_custom("Person", "cmp_age_desc")
+		for p in candidates:
+			if not p.gender and p.get_belonged_faction() == self:
+				successor = p
+				break
+	
+	if successor == null:
+		var candidates = leader.brothers
+		candidates.sort_custom("Person", "cmp_prestige_desc")
+		for p in candidates:
+			if not p.gender and p.get_belonged_faction() == self:
+				successor = p
+				break
+		
+	leader = successor
 
 ####################################
 #               Events             #

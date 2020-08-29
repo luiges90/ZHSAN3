@@ -1,5 +1,5 @@
 ﻿keys,en,zh_CN,zh_TW
-ZHSAN3,ZHSAN3.0 alpha-2,中华三国志3.0 alpha-2,中華三國志3.0 alpha-2
+ZHSAN3,ZHSAN3.0 alpha-3,中华三国志3.0 alpha-3,中華三國志3.0 alpha-3
 SELECT_SCENARIO,Select scenario,选择剧本,選擇劇本
 MAP,Map,地圖,地圖
 FACTION,Faction,势力,勢力
@@ -142,3 +142,10 @@ FACTION_PERSONS,Total Officers,勢力武將,勢力武將
 WILD_PERSONS,Unaffilated Officers,在野武將,在野武將
 FRONTLINE,Front line,前線,前線
 TOTAL_EQUIPMENT,Equipment,兵裝數,兵裝數
+GAME_RECORD_PERSON_DIED,%s has died,%s離開了人世,%s離開了人世
+AGE,Age,年齡,年齡
+PERSONAL_RELATIONS,Personal Relations,人物關系,人物關系
+FATHER,Father,父親,父親
+MOTHER,Mother,母親,母親
+SPOUSE,Spouse,配偶,配偶
+BROTHER,Brother,義兄弟,義兄弟

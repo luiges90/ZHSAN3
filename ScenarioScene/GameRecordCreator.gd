@@ -35,6 +35,9 @@ func _color_text(color, text) -> String:
 func _register_click(func_name, text) -> String:
 	return "[url=\"" + func_name + "\"]" + text + "[/url]"
 	
+func _on_Scenario_scenario_loaded(scenario):
+	_scenario = scenario
+
 
 func create_troop(troop, position):
 	emit_signal("add_game_record", _register_click(
@@ -93,9 +96,6 @@ func _on_DateRunner_date_runner_stopped():
 			])
 
 
-func _on_Scenario_scenario_loaded(scenario):
-	_scenario = scenario
-
 
 func _on_PositionSelector_move_troop(current_troop, position):
 	var leader = current_troop.get_leader()
@@ -135,3 +135,10 @@ func _on_PositionSelector_create_troop(current_troop, position):
 		 _get_speech("troop_create", leader) % [
 			_color_text(YELLOW, leader.get_name())
 		])
+
+func person_died(person):
+	emit_signal("add_game_record", 
+		tr("GAME_RECORD_PERSON_DIED") % [
+			_color_text(YELLOW, person.get_name())
+		])
+	

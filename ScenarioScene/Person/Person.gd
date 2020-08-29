@@ -8,10 +8,12 @@ enum Task { NONE,
 enum Status { NONE,
 	NORMAL, WILD
 }
+enum DeadReason { NATURAL, UNNNATURAL }
 
 var id: int setget forbidden
 var scenario
 
+var alive: bool setget forbidden
 var gender: bool setget forbidden
 
 var surname: String setget forbidden
@@ -38,12 +40,26 @@ var prestige: int setget forbidden
 var karma: int setget forbidden
 var merit: int setget forbidden
 
+var available_year: int setget forbidden
+var born_year: int setget forbidden
+var death_year: int setget forbidden
+var available_architecture_id: int setget forbidden
+var dead_reason setget forbidden
+
 var working_task setget forbidden
 var producing_equipment setget forbidden
 
 var task_days = 0 setget forbidden
 
 var skills = [] setget forbidden
+
+var strain: int
+var father setget forbidden
+var mother setget forbidden
+var spouses = [] setget forbidden
+var brothers = [] setget forbidden
+
+signal person_died
 
 func forbidden(x):
 	assert(false)
@@ -55,10 +71,15 @@ func forbidden(x):
 func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	_status = int(json["Status"])
+	alive = json["Alive"]
 	gender = json["Gender"]
 	surname = json["Surname"]
 	given_name = json["GivenName"]
 	courtesy_name = json["CourtesyName"]
+	available_year = json['AvailableYear']
+	born_year = json['BornYear']
+	death_year = json['DeathYear']
+	available_architecture_id = json['AvailableArchitectureId']
 	command = int(json["Command"])
 	strength = int(json["Strength"])
 	intelligence = int(json["Intelligence"])
@@ -75,17 +96,24 @@ func load_data(json: Dictionary, objects):
 	merit = int(json["Merit"])
 	working_task = int(json["Task"])
 	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
+	strain = int(json["Strain"])
 	for id in json["Skills"]:
 		skills.append(objects["skills"][int(id)])
+	
 	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,
 		"Status": _status,
+		"Alive": alive,
 		"Gender": gender,
 		"Surname": surname,
 		"GivenName": given_name,
 		"CourtesyName": courtesy_name,
+		"AvailableYear": available_year,
+		"BornYear": born_year,
+		"DeathYear": death_year,
+		"AvailableArchitectureId": available_architecture_id,
 		"Command": command,
 		"Strength": strength,
 		"Intelligence": intelligence,
@@ -102,7 +130,12 @@ func save_data() -> Dictionary:
 		"Merit": merit,
 		"Task": working_task,
 		"ProducingEquipment": producing_equipment,
-		"Skills": Util.id_list(skills)
+		"Skills": Util.id_list(skills),
+		"FatherId": father.id if father != null else -1,
+		"MotherId": mother.id if mother != null else -1,
+		"SpouseIds": Util.id_list(spouses),
+		"BrotherIds": Util.id_list(brothers),
+		"Strain": strain
 	}
 	
 #####################################
@@ -138,6 +171,9 @@ func get_prestige():
 func get_prestige_str():
 	return str(prestige)
 	
+static func cmp_prestige_desc(a, b):
+	return a.get_prestige() > b.get_prestige()
+	
 func get_merit():
 	return merit
 	
@@ -168,6 +204,15 @@ func get_salary():
 	var base = 10
 	base = apply_influences("modify_person_salary", {"value": base, "person": self})
 	return base
+	
+func get_age():
+	return scenario.get_year() - born_year + 1
+	
+static func cmp_age_desc(a, b):
+	return a.get_age() > b.get_age()
+	
+func get_expected_death_year():
+	return death_year if dead_reason == DeadReason.NATURAL else death_year + 10 + get_strength() / 10
 
 #####################################
 #    Getters / Tasks and Statuses   #
@@ -178,6 +223,15 @@ func get_location():
 func get_location_str():
 	var location = get_location()
 	return location.get_name() if location != null else '----'
+	
+func get_belonged_architecture():
+	var loc = get_location()
+	if loc != null:
+		if loc.has_method("get_starting_architecture"):
+			return loc.get_starting_architecture()
+		else:
+			return loc
+	return null
 
 func get_status():
 	return _status
@@ -326,6 +380,59 @@ func get_max_troop_quantity() -> int:
 	base = apply_influences('modify_person_max_troop_quantity', {"value": base, "person": self})
 	return base
 
+#####################################
+#         Getters / Relations       #
+#####################################
+func get_father_name():
+	return father.get_name() if father != null else '----'
+	
+func get_mother_name():
+	return mother.get_name() if mother != null else '----'
+	
+func get_spouse_names():
+	var result = ''
+	for s in spouses:
+		result += "‧" + s.get_name()
+	if len(result) > 0:
+		result = result.substr(1)
+	else:
+		result = "----"
+	return result
+
+func get_brother_names():
+	var result = ''
+	for s in brothers:
+		result += "‧" + s.get_name()
+	if len(result) > 0:
+		result = result.substr(1)
+	else:
+		result = "----"
+	return result
+	
+func get_children():
+	var result = []
+	for id in scenario.persons:
+		var p = scenario.persons[id]
+		if p.father == self or p.mother == self:
+			result.append(p)
+	return result
+	
+func get_siblings():
+	var result = []
+	for id in scenario.persons:
+		var p = scenario.persons[id]
+		if p.father == self.father or p.mother == self.mother:
+			result.append(p)
+	return result
+
+func get_persons_with_same_strain():
+	var result = []
+	for id in scenario.persons:
+		var p = scenario.persons[id]
+		if p.strain == self.strain:
+			result.append(p)
+	return result
+
 ####################################
 #         Influence System         #
 ####################################
@@ -382,7 +489,7 @@ func add_merit(delta):
 	
 func set_location(item, force = false):
 	if _location != null:
-		_location.remove_person(self)
+		_location.remove_person(self, true)
 	_location = item
 	if not force:
 		item.add_person(self, true)
@@ -407,6 +514,47 @@ func move_to_architecture(arch):
 	working_task = Task.MOVE
 	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
 	task_days = apply_influences("modify_person_movement_time", {"value": task_days, "person": self})
+	
+func become_available():
+	for b in brothers:
+		if b._status == Status.NORMAL or b._status == Status.WILD:
+			var arch = b.get_belonged_architecture()
+			_status = b._status
+			arch.add_person(self)
+			return
+	
+	for s in spouses:
+		if s._status == Status.NORMAL or s._status == Status.WILD:
+			var arch = s.get_belonged_architecture()
+			_status = s._status
+			arch.add_person(self)
+			return
+	
+	if father != null:
+		if father._status != Status.NONE:
+			var arch = father.get_belonged_architecture()
+			_status = father._status
+			arch.add_person(self)
+			return
+			
+	if mother != null:
+		if mother._status != Status.NONE:
+			var arch = mother.get_belonged_architecture()
+			_status = mother._status
+			arch.add_person(self)
+			return
+	
+	var arch = scenario.architectures[available_architecture_id]
+	_status = Status.WILD
+	arch.add_person(self)
+	
+func die():
+	if is_faction_leader():
+		get_belonged_faction().change_leader()
+	get_location().remove_person(self)
+	_status = Status.NONE
+	alive = false
+	emit_signal('person_died', self)
 		
 ####################################
 #     Manipulation / Abilities     #
@@ -432,11 +580,41 @@ func add_glamour_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	glamour_exp = Util.f2ri(glamour_exp + delta * (50.0 / (get_glamour() + 50)))
 	
+####################################
+#     Manipulation / Relations     #
+####################################
+func set_father(other):
+	father = other
+	
+func set_mother(other):
+	mother = other
+	
+func add_spouse(other):
+	if not spouses.has(other):
+		spouses.append(other)
+	if not other.spouses.has(self):
+		other.spouses.append(self)
+	
+func add_brother(other):
+	if not brothers.has(other):
+		brothers.append(other)
+	if not other.brothers.has(self):
+		other.brothers.append(self)
 
 ####################################
 #             Day event            #
 ####################################
 func day_event():
-	if task_days > 0:
-		task_days -= 1
-	
+	# task days
+	if get_location() != null:
+		if task_days > 0:
+			task_days -= 1
+			
+	# check death
+	if scenario.get_year() >= get_expected_death_year() and randf() < 1 / 720.0:
+		die()
+
+func month_event():
+	# try to be available
+	if alive and get_location() == null and scenario.get_year() >= available_year and randf() < 0.2:
+		become_available()

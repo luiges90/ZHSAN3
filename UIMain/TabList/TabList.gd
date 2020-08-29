@@ -88,15 +88,16 @@ func _checkbox_changed(in_cb: CheckBox):
 			checkbox.set_pressed(false)
 		in_cb.set_pressed(true)
 	
+	for group in in_cb.get_groups():
+		if group.find("id_") >= 0:
+			for checkbox in get_tree().get_nodes_in_group(group):
+				checkbox.set_pressed(in_cb.is_pressed())
+				
 	var any_checked = false
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		if checkbox.is_pressed():
 			any_checked = true
 			break
-	for group in in_cb.get_groups():
-		if group.find("id_") >= 0:
-			for checkbox in get_tree().get_nodes_in_group(group):
-				checkbox.set_pressed(in_cb.is_pressed())
 	$ActionButtons/Confirm.disabled = not any_checked
 
 
@@ -214,6 +215,12 @@ func _get_compare_value(a, b):
 		elif _clicked_label == tr("STATUS"):
 			a1 = a.get_status_str()
 			b1 = b.get_status_str()
+		elif _clicked_label == tr("GENDER"):
+			a1 = a.get_gender_str()
+			b1 = b.get_gender_str()
+		elif _clicked_label == tr("AGE"):
+			a1 = a.get_age()
+			b1 = b.get_age()
 		elif _clicked_label == tr("MERIT"):
 			a1 = a.get_merit()
 			b1 = b.get_merit()

@@ -264,24 +264,36 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 		with open(output_folder + '/Persons.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for k in obj['Persons']['GameObjects']:
+				if k['ID'] >= 7000 and k['ID'] < 9000:
+					continue
 				if k['ID'] in faction_person_ids:
 					status = 1
 				elif k['ID'] in no_faction_person_ids:
 					status = 2
 				else:
 					status = 0
+				father_id_list = [x for x in obj['FatherIds'] if x['Key'] == k['ID']]
+				mother_id_list = [x for x in obj['MotherIds'] if x['Key'] == k['ID']]
+				spouse_id_list = [x for x in obj['SpouseIds'] if x['Key'] == k['ID']]
+				brother_id_list = [x for x in obj['BrotherIds'] if x['Key'] == k['ID']]
 				r.append({
 					"_Id": k['ID'],
 					"Status": status,
+					"Alive": k['Alive'],
 					"Gender": k['Sex'],
 					"Surname": k['SurName'],
 					"GivenName": k['GivenName'],
 					"CourtesyName": k['CalledName'],
+					"AvailableYear": k['YearAvailable'],
+					"BornYear": k['YearBorn'],
+					"DeathYear": k['YearDead'],
+					"DeadReason": 1 if k['DeadReason'] == 1 else 0,
 					"Command": k['BaseCommand'],
 					"Strength": k['BaseStrength'],
 					"Intelligence": k['BaseIntelligence'],
 					"Politics": k['BasePolitics'],
 					"Glamour": k['BaseGlamour'],
+					"AvailableArchitectureId": k['AvailableLocation'],
 					"CommandExperience": 0,
 					"StrengthExperience": 0,
 					"IntelligenceExperience": 0,
@@ -293,7 +305,12 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Merit": 0,
 					"Task": 0,
 					"ProducingEquipment": None,
-					"Skills": convert_skills(k)
+					"Skills": convert_skills(k),
+					"FatherId": father_id_list[0]['Value'] if len(father_id_list) > 0 else -1,
+					"MotherId": mother_id_list[0]['Value'] if len(mother_id_list) > 0 else -1,
+					"SpouseIds": [spouse_id_list[0]['Value']] if len(spouse_id_list) > 0 and spouse_id_list[0]['Value'] >= 0 else [],
+					"BrotherIds": brother_id_list[0]['Value'] if len(brother_id_list) > 0 else [],
+					"Strain": k['Strain']
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 			

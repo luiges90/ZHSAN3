@@ -251,10 +251,26 @@ func _load_data(path):
 
 	file.open(path + "/Persons.json", File.READ)
 	obj = parse_json(file.get_as_text())
+	var person_json = {}
 	for item in obj:
 		var instance = Person.new()
+		instance.connect('person_died', self, '_on_person_died')
 		__load_item(instance, item, persons, {"skills": skills})
+		person_json[instance.id] = item
 	file.close()
+	for pid in persons:
+		var father_id = int(person_json[pid]["FatherId"])
+		if father_id >= 0:
+			persons[pid].set_father(persons[father_id])
+		var mother_id = int(person_json[pid]["MotherId"])
+		if mother_id >= 0:
+			persons[pid].set_father(persons[mother_id])
+		var spouse_ids = person_json[pid]["SpouseIds"]
+		for s in spouse_ids:
+			persons[pid].add_spouse(persons[int(s)])
+		var brother_ids = person_json[pid]["BrotherIds"]
+		for b in brother_ids:
+			persons[pid].add_brother(persons[int(b)])
 	
 	file.open(path + "/Architectures.json", File.READ)
 	var architecture_scene = preload("Architecture/Architecture.tscn")
@@ -279,6 +295,7 @@ func _load_data(path):
 		__load_item(instance, item, troops, {"persons": persons})
 		troop_json[instance.id] = item
 		__connect_signals_for_creating_troop(instance)
+	file.close()
 	for tid in troops:
 		var order_type = troop_json[tid]["_CurrentOrderType"]
 		var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
@@ -294,7 +311,6 @@ func _load_data(path):
 				troops[tid].set_attack_order(troop, null)
 			elif order_type == Troop.OrderType.FOLLOW:
 				troops[tid].set_follow_order(troop)
-	file.close()
 	
 	file.open(path + "/Sections.json", File.READ)
 	obj = parse_json(file.get_as_text())
@@ -496,6 +512,9 @@ func _on_day_passed():
 	for troop in troops.values():
 		if not troop._destroyed:
 			troop.day_event()
+			
+	for person in persons.values():
+		person.day_event()
 	
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")
@@ -503,6 +522,9 @@ func _on_day_passed():
 func _on_month_passed():
 	for faction in factions.values():
 		faction.month_event()
+		
+	for person in persons.values():
+		person.month_event()
 	
 
 func _on_all_loaded():
@@ -526,6 +548,9 @@ func _on_troop_created(troop, position):
 func _on_troop_removed(troop):
 	emit_signal("scenario_troop_removed", self, troop)
 
+func _on_person_died(person):
+	# TODO add person dialog
+	$GameRecordCreator.person_died(person)
 
 ########################################
 #                Process               #
@@ -610,6 +635,9 @@ func get_living_persons():
 		if p.get_location() != null:
 			list.append(p)
 	return list
+	
+func get_year():
+	return ($DateRunner as DateRunner).year
 	
 ########################################
 #          Data Management             #

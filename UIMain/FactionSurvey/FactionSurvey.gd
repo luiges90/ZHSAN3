@@ -13,6 +13,7 @@ func _ready():
 	$Tabs.remove_child($Tabs/Tab2)
 	$Tabs.remove_child($Tabs/Tab3)
 	$Tabs.remove_child($Tabs/Tab4)
+	$Tabs.remove_child($Tabs/Tab5)
 
 func handle_input(event):
 	# do nothing
