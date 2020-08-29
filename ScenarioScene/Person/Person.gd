@@ -53,6 +53,7 @@ var task_days = 0 setget forbidden
 
 var skills = [] setget forbidden
 
+var strain: int
 var father setget forbidden
 var mother setget forbidden
 var spouses = [] setget forbidden
@@ -95,6 +96,7 @@ func load_data(json: Dictionary, objects):
 	merit = int(json["Merit"])
 	working_task = int(json["Task"])
 	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
+	strain = int(json["Strain"])
 	for id in json["Skills"]:
 		skills.append(objects["skills"][int(id)])
 	
@@ -132,7 +134,8 @@ func save_data() -> Dictionary:
 		"FatherId": father.id if father != null else -1,
 		"MotherId": mother.id if mother != null else -1,
 		"SpouseIds": Util.id_list(spouses),
-		"BrotherIds": Util.id_list(brothers)
+		"BrotherIds": Util.id_list(brothers),
+		"Strain": strain
 	}
 	
 #####################################
@@ -168,6 +171,9 @@ func get_prestige():
 func get_prestige_str():
 	return str(prestige)
 	
+static func cmp_prestige_desc(a, b):
+	return a.get_prestige() > b.get_prestige()
+	
 func get_merit():
 	return merit
 	
@@ -201,6 +207,9 @@ func get_salary():
 	
 func get_age():
 	return scenario.get_year() - born_year + 1
+	
+static func cmp_age_desc(a, b):
+	return a.get_age() > b.get_age()
 	
 func get_expected_death_year():
 	return death_year if dead_reason == DeadReason.NATURAL else death_year + 10 + get_strength() / 10
@@ -399,7 +408,30 @@ func get_brother_names():
 	else:
 		result = "----"
 	return result
+	
+func get_children():
+	var result = []
+	for id in scenario.persons:
+		var p = scenario.persons[id]
+		if p.father == self or p.mother == self:
+			result.append(p)
+	return result
+	
+func get_siblings():
+	var result = []
+	for id in scenario.persons:
+		var p = scenario.persons[id]
+		if p.father == self.father or p.mother == self.mother:
+			result.append(p)
+	return result
 
+func get_persons_with_same_strain():
+	var result = []
+	for id in scenario.persons:
+		var p = scenario.persons[id]
+		if p.strain == self.strain:
+			result.append(p)
+	return result
 
 ####################################
 #         Influence System         #

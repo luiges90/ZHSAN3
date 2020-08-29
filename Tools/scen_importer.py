@@ -310,6 +310,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"MotherId": mother_id_list[0]['Value'] if len(mother_id_list) > 0 else -1,
 					"SpouseIds": [spouse_id_list[0]['Value']] if len(spouse_id_list) > 0 and spouse_id_list[0]['Value'] >= 0 else [],
 					"BrotherIds": brother_id_list[0]['Value'] if len(brother_id_list) > 0 else [],
+					"Strain": k['Strain']
 				})
 			fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
 			
