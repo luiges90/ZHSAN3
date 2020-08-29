@@ -241,6 +241,34 @@ func _populate_military_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(str(round(person.get_train_troop_ability())), self, "__on_clickable_label_click", person))
 		item_list.add_child(_clickable_label(str(round(person.get_produce_equipment_ability())), self, "__on_clickable_label_click", person))
 
+func _populate_personal_relation_data(person_list: Array, action):
+	var item_list = $Tabs/Tab5/Grid as GridContainer
+	var sorted_list = person_list # sorted person list
+	Util.delete_all_children(item_list)
+	if action != Action.LIST:
+		item_list.columns = 6
+		item_list.add_child(_title(''))
+	else:
+		item_list.columns = 5
+	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('FATHER'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('MOTHER'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('SPOUSE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('BROTHER'), self, "_on_title_sorting_click", person_list))
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(person_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(person_list.duplicate())
+	for person in sorted_list:
+		if action != Action.LIST:
+			item_list.add_child(_checkbox(person.id))
+		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_father_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_mother_name(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_spouse_names(), self, "__on_clickable_label_click", person))
+		item_list.add_child(_clickable_label(person.get_brother_names(), self, "__on_clickable_label_click", person))
+		
 
 func _on_Confirm_pressed():
 	var selected = _get_selected_list()
