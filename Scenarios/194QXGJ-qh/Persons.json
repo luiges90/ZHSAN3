@@ -28358,7 +28358,7 @@
     "_Id": 7002
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 181,
@@ -28399,7 +28399,7 @@
     "_Id": 7003
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 27,
     "AvailableYear": 184,
     "BornYear": 131,
@@ -28435,7 +28435,7 @@
     "_Id": 7004
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 5,
     "AvailableYear": 184,
     "BornYear": 151,
@@ -28473,7 +28473,7 @@
     "_Id": 7005
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 2,
     "AvailableYear": 214,
     "BornYear": 200,
@@ -28509,7 +28509,7 @@
     "_Id": 7006
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 18,
     "AvailableYear": 184,
     "BornYear": 150,
@@ -28545,7 +28545,7 @@
     "_Id": 7007
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 4,
     "AvailableYear": 184,
     "BornYear": 157,
@@ -28581,7 +28581,7 @@
     "_Id": 7008
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 6,
     "AvailableYear": 192,
     "BornYear": 173,
@@ -28617,7 +28617,7 @@
     "_Id": 7009
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 21,
     "AvailableYear": 187,
     "BornYear": 173,
@@ -28653,7 +28653,7 @@
     "_Id": 7010
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 6,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -28689,7 +28689,7 @@
     "_Id": 7011
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 36,
     "AvailableYear": 184,
     "BornYear": 158,
@@ -28725,7 +28725,7 @@
     "_Id": 7012
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 179,
     "AvailableYear": 184,
     "BornYear": 184,
@@ -28761,7 +28761,7 @@
     "_Id": 7013
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 107,
     "AvailableYear": 184,
     "BornYear": 184,
@@ -28869,7 +28869,7 @@
     "_Id": 7016
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 139,
     "AvailableYear": 184,
     "BornYear": 161,
@@ -28910,7 +28910,7 @@
     "_Id": 7022
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 190,
     "BornYear": 156,
@@ -28955,7 +28955,7 @@
     "_Id": 7033
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 190,
     "BornYear": 137,
@@ -28994,7 +28994,7 @@
     "_Id": 7034
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 191,
     "BornYear": 176,
@@ -29030,7 +29030,7 @@
     "_Id": 7035
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 190,
     "BornYear": 139,
@@ -29068,7 +29068,7 @@
     "_Id": 7036
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29104,7 +29104,7 @@
     "_Id": 7100
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29140,7 +29140,7 @@
     "_Id": 7101
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29176,7 +29176,7 @@
     "_Id": 7102
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29212,7 +29212,7 @@
     "_Id": 7103
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29248,7 +29248,7 @@
     "_Id": 7104
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29284,7 +29284,7 @@
     "_Id": 7105
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29320,7 +29320,7 @@
     "_Id": 7106
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 165,
@@ -29356,7 +29356,7 @@
     "_Id": 7107
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 184,
@@ -29392,7 +29392,7 @@
     "_Id": 7108
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 184,
@@ -29428,7 +29428,7 @@
     "_Id": 7200
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 184,
@@ -29464,7 +29464,7 @@
     "_Id": 7201
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 132,
@@ -29502,7 +29502,7 @@
     "_Id": 7202
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 161,
@@ -29549,7 +29549,7 @@
     "_Id": 7203
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 188,
     "BornYear": 169,
@@ -29591,7 +29591,7 @@
     "_Id": 7204
   },
   {
-    "Alive": true,
+    "Alive": false,
     "AvailableArchitectureId": 0,
     "AvailableYear": 184,
     "BornYear": 153,
