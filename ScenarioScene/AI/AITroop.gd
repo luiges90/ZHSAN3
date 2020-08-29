@@ -84,7 +84,7 @@ func run_troop(troop, scenario):
 			troop._ai_state = Troop.AIState.RETREAT
 	
 	if troop._ai_state == Troop.AIState.RETREAT:
-		if Util.m_dist(troop.map_position, troop.get_starting_architecture().map_position) < 1:
+		if Util.m_dist(troop.map_position, troop.get_starting_architecture().map_position) <= 1:
 			troop.set_enter_order(troop.get_starting_architecture().map_position)
 		else:
 			var movement_area = troop.get_movement_area()
