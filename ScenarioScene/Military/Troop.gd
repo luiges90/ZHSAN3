@@ -56,6 +56,9 @@ signal target_architecture_destroyed
 func forbidden(x):
 	assert(false)
 	
+func object_type():
+	return ScenarioUtil.ObjectType.TROOP
+	
 func _ready():
 	_update_military_kind_sprite()
 	$TroopArea/AnimatedSprite.animation = "move_e"
@@ -272,6 +275,9 @@ static func cmp_initiative(a, b):
 	
 func get_current_terrain():
 	return scenario.get_terrain_at_position(map_position)
+	
+func get_on_architecture():
+	return scenario.get_architecture_at_position(map_position)
 
 # returns [cost, blocked by object]
 func get_movement_cost(position, ignore_troops):
@@ -502,6 +508,12 @@ func execute_attack():
 						counter_damage = 0
 					if target is Architecture:
 						damage = damage * military_kind.architecture_attack_factor
+						
+					for p in get_persons():
+						damage = p.apply_influences("modify_person_troop_damage", {"value": damage, "person": p, "troop": self, "target": target})
+					for p in get_persons():
+						counter_damage = p.apply_influences("modify_person_troop_counter_damage", {"value": counter_damage, "person": p, "troop": self, "target": target})
+						
 					damage = int(damage)
 					counter_damage = int(counter_damage)
 				

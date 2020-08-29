@@ -10,6 +10,7 @@ def convert_skills(object):
 	else:
 		skill_ids = [int(x) if len(x) > 0 else -1 for x in object['SkillsString'].split(' ')]
 		title_ids = [int(x) if len(x) > 0 else -1 for x in object['RealTitlesString'].split(' ')]
+		stunt_ids = [int(x) if len(x) > 0 else -1 for x in object['StuntsString'].split(' ')]
 		skills = []
 		if 10 in skill_ids:
 			skills.append(10)
@@ -77,6 +78,10 @@ def convert_skills(object):
 			skills.append(10420)
 		if 80 in title_ids:
 			skills.append(20020)
+		if 13 in stunt_ids:
+			skills.append(10700)
+		if 230 in title_ids:
+			skills.append(10710)
 		return skills
 
 output_folder = '../Scenarios/194QXGJ-qh'

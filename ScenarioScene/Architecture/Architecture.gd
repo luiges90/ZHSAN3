@@ -43,6 +43,9 @@ signal faction_changed
 func forbidden(x):
 	assert(false)
 	
+func object_type():
+	return ScenarioUtil.ObjectType.ARCHITECTURE
+	
 func _draw():
 	pass
 	# TODO create debug draw

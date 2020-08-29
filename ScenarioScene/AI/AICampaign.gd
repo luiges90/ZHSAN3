@@ -41,7 +41,7 @@ func _create_troops(from_architecture, target, scenario) -> Array:
 			
 			troop.morale = from_architecture.troop_morale
 			troop.combativity = from_architecture.troop_combativity
-			troop.quantity = min(from_architecture.equipments[equipment_id] / 100 * 100, leader.get_max_troop_quantity())
+			troop.quantity = min(from_architecture.equipments[equipment_id] / 100 * 100, leader.get_max_troop_quantity() * troop.military_kind.max_quantity_multiplier)
 			assert(troop.quantity > 0)
 			
 			candidates.append(troop)

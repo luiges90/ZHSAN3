@@ -502,7 +502,7 @@
   },
   {
     "_Id": 10501,
-	"Name": "速行",
+	"Name": "強行",
 	"Description": "作為主將時，部隊速度增加20%、先行增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
@@ -554,7 +554,7 @@
 		}
 	]
   },
-   {
+  {
     "_Id": 10610,
 	"Name": "山戰",
 	"Description": "作為主將時，在山地裡部隊各項能力增加20%",
@@ -566,6 +566,58 @@
 		{
 			"Operation": "is_terrain",
 			"Id": 5
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_offence",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_defence",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_speed",
+			"Value": 1.2
+		},
+		{
+			"Operation": "modify_person_troop_initiative",
+			"Value": 1.2
+		}
+	]
+  },
+  {
+    "_Id": 10700,
+	"Name": "攻城",
+	"Description": "作為主將攻擊城池時，傷害增加50%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "target_is_architecture"
+		}
+	],
+	"Influences": [
+		{
+			"Operation": "modify_person_troop_damage",
+			"Value": 1.5
+		}
+	]
+  },
+  {
+    "_Id": 10710,
+	"Name": "守戰",
+	"Description": "作為主將守城時，部隊各項能力增加20%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "is_on_own_architecture"
 		}
 	],
 	"Influences": [

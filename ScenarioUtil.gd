@@ -1,5 +1,9 @@
 extends Node
 
+enum ObjectType {
+	ARCHITECTURE, TROOP, PERSON
+}
+
 static func object_distance(a, b) -> int:
 	return a.map_position.distance_to(b.map_position)
 
@@ -69,6 +73,24 @@ static func check_conditions(influence_container, params: Dictionary):
 					else:
 						if params['troop'].get_current_terrain().id != condition['Id']:
 							return false
+			'is_on_own_architecture':
+				if params.has('troop'):
+					var arch = params['troop'].get_on_architecture()
+					if arch == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction()):
+						return false
+			'is_on_enemy_architecture':
+				if params.has('troop'):
+					var arch = params['troop'].get_on_architecture()
+					if arch == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction()):
+						return false
+			'target_is_troop':
+				if params.has('target'):
+					if params['target'].object_type() != ObjectType.TROOP:
+						return false
+			'target_is_architecture':
+				if params.has('target'):
+					if params['target'].object_type() != ObjectType.ARCHITECTURE:
+						return false
 	return true
 
 static func influence_troop_leader_offensive_factor(influence_container, params: Dictionary):

@@ -701,7 +701,8 @@
     "Prestige": 3000,
     "ProducingEquipment": null,
     "Skills": [
-      50
+      50,
+      10700
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -2532,7 +2533,8 @@
       60,
       10100,
       10210,
-      10310
+      10310,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -2572,7 +2574,8 @@
     "Skills": [
       40,
       10100,
-      10310
+      10310,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -2611,7 +2614,8 @@
     "ProducingEquipment": null,
     "Skills": [
       10600,
-      10200
+      10200,
+      10700
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -2835,7 +2839,8 @@
     "Skills": [
       10610,
       10100,
-      10210
+      10210,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -6349,7 +6354,8 @@
     "Skills": [
       60,
       10600,
-      10200
+      10200,
+      10700
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -6464,7 +6470,8 @@
     "ProducingEquipment": null,
     "Skills": [
       10100,
-      10310
+      10310,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -7552,7 +7559,8 @@
     "Skills": [
       10,
       30,
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -9370,7 +9378,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -10727,7 +10736,8 @@
     "ProducingEquipment": null,
     "Skills": [
       60,
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -10765,7 +10775,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -11338,7 +11349,8 @@
     "ProducingEquipment": null,
     "Skills": [
       40,
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -11556,7 +11568,8 @@
     "Prestige": 300,
     "ProducingEquipment": null,
     "Skills": [
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -12582,7 +12595,8 @@
     "Skills": [
       10500,
       10400,
-      10420
+      10420,
+      10700
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -12698,7 +12712,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -12821,7 +12836,8 @@
       10600,
       10610,
       10200,
-      10210
+      10210,
+      10700
     ],
     "SpouseIds": [
       548
@@ -13828,7 +13844,8 @@
       10600,
       10610,
       10200,
-      10400
+      10400,
+      10700
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -17006,7 +17023,8 @@
       60,
       10600,
       10100,
-      10210
+      10210,
+      10710
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -17830,7 +17848,8 @@
     "ProducingEquipment": null,
     "Skills": [
       10,
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -19734,7 +19753,8 @@
     "Skills": [
       10100,
       10210,
-      10310
+      10310,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -21111,7 +21131,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -21644,7 +21665,8 @@
     "ProducingEquipment": null,
     "Skills": [
       10610,
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -21942,7 +21964,8 @@
     "Skills": [
       10100,
       10210,
-      10310
+      10310,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -22545,7 +22568,8 @@
       50,
       10600,
       10610,
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 1,
@@ -23288,7 +23312,8 @@
     "ProducingEquipment": null,
     "Skills": [
       10100,
-      10210
+      10210,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -24040,7 +24065,8 @@
     "Prestige": 0,
     "ProducingEquipment": null,
     "Skills": [
-      10100
+      10100,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,
@@ -25260,7 +25286,8 @@
       10610,
       10200,
       10210,
-      10310
+      10310,
+      10700
     ],
     "SpouseIds": [
       1392
@@ -25846,7 +25873,8 @@
       60,
       10600,
       10300,
-      10310
+      10310,
+      10700
     ],
     "SpouseIds": [
       1378
@@ -25892,7 +25920,8 @@
       70,
       10610,
       10501,
-      10210
+      10210,
+      10700
     ],
     "SpouseIds": [
       1380
@@ -25931,7 +25960,9 @@
     "Popularity": 0,
     "Prestige": 0,
     "ProducingEquipment": null,
-    "Skills": [],
+    "Skills": [
+      10700
+    ],
     "SpouseIds": [
       1397
     ],
@@ -26012,7 +26043,8 @@
     "Skills": [
       20,
       40,
-      10210
+      10210,
+      10700
     ],
     "SpouseIds": [
       1395
@@ -26138,7 +26170,8 @@
       10500,
       10610,
       10200,
-      10400
+      10400,
+      10700
     ],
     "SpouseIds": [
       1413
@@ -27016,7 +27049,8 @@
       70,
       10610,
       10501,
-      10310
+      10310,
+      10700
     ],
     "SpouseIds": [
       1411
@@ -29544,7 +29578,8 @@
       60,
       10600,
       10100,
-      10210
+      10210,
+      10710
     ],
     "SpouseIds": [],
     "Status": 0,

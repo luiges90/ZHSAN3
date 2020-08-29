@@ -64,6 +64,9 @@ signal person_died
 func forbidden(x):
 	assert(false)
 
+func object_type():
+	return ScenarioUtil.ObjectType.PERSON
+
 ####################################
 #           Save / Load            #
 ####################################
@@ -227,7 +230,7 @@ func get_location_str():
 func get_belonged_architecture():
 	var loc = get_location()
 	if loc != null:
-		if loc.has_method("get_starting_architecture"):
+		if loc.object_type() == ScenarioUtil.ObjectType.TROOP:
 			return loc.get_starting_architecture()
 		else:
 			return loc
