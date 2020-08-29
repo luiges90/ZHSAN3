@@ -1,0 +1,163 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
+[ext_resource path="res://RootScene/GameConfiguration.gd" type="Script" id=3]
+
+[node name="GameConfiguration" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+custom_fonts/font = ExtResource( 2 )
+text = "GAME_CONFIGURATION"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 56.0
+margin_right = -16.0
+margin_bottom = -64.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CONFIG_DIFFICULTY" type="MarginContainer" parent="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 34.0
+
+[node name="G" type="GridContainer" parent="Tabs/CONFIG_DIFFICULTY"]
+margin_right = 1334.0
+margin_bottom = 614.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 2
+
+[node name="Label" type="Label" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_top = 5.0
+margin_right = 146.0
+margin_bottom = 23.0
+text = "AI_FUND_RATE"
+
+[node name="AIFundRate" type="LineEdit" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_left = 154.0
+margin_right = 212.0
+margin_bottom = 28.0
+text = "1.0"
+
+[node name="Label2" type="Label" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_top = 41.0
+margin_right = 146.0
+margin_bottom = 59.0
+text = "AI_FOOD_RATE"
+
+[node name="AIFoodRate" type="LineEdit" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_left = 154.0
+margin_top = 36.0
+margin_right = 212.0
+margin_bottom = 64.0
+text = "1.0"
+
+[node name="Label3" type="Label" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_top = 77.0
+margin_right = 146.0
+margin_bottom = 95.0
+text = "AI_RECRUIT_RATE"
+
+[node name="AIRecruitRate" type="LineEdit" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_left = 154.0
+margin_top = 72.0
+margin_right = 212.0
+margin_bottom = 100.0
+text = "1.0"
+
+[node name="Label4" type="Label" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_top = 113.0
+margin_right = 146.0
+margin_bottom = 131.0
+text = "AI_TRAINING_RATE"
+
+[node name="AITrainingRate" type="LineEdit" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_left = 154.0
+margin_top = 108.0
+margin_right = 212.0
+margin_bottom = 136.0
+text = "1.0"
+
+[node name="Label5" type="Label" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_top = 149.0
+margin_right = 146.0
+margin_bottom = 167.0
+text = "AI_OFFENCE_RATE"
+
+[node name="AIOffenceRate" type="LineEdit" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_left = 154.0
+margin_top = 144.0
+margin_right = 212.0
+margin_bottom = 172.0
+text = "1.0"
+
+[node name="Label6" type="Label" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_top = 185.0
+margin_right = 146.0
+margin_bottom = 203.0
+text = "AI_DEFENCE_RATE"
+
+[node name="AIDefenceRate" type="LineEdit" parent="Tabs/CONFIG_DIFFICULTY/G"]
+margin_left = 154.0
+margin_top = 180.0
+margin_right = 212.0
+margin_bottom = 208.0
+text = "1.0"
+
+[node name="Confirm" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -140.0
+margin_top = -56.0
+margin_right = -16.0
+margin_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CONFIRM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -272.0
+margin_top = -56.0
+margin_right = -148.0
+margin_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]

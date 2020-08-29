@@ -6,6 +6,8 @@ var _scenario_data = []
 var _selected_scenario
 var _selected_faction
 
+signal confirmed_scenario
+
 func _ready():
 	var dir = Directory.new()
 	var path = "res://Scenarios"
@@ -81,4 +83,5 @@ func _on_Cancel_pressed():
 func _on_Confirm_pressed():
 	SharedData.loading_file_path = "res://Scenarios/" + _selected_scenario
 	SharedData.starting_faction_id = _selected_faction
-	get_tree().change_scene("res://Main.tscn")
+	emit_signal("confirmed_scenario")
+

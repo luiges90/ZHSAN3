@@ -32,6 +32,8 @@ var _architecture_clicked
 var _troop_clicked
 var _clicked_at: Vector2
 
+var scenario_config setget forbidden
+
 signal current_faction_set
 signal scenario_loaded
 
