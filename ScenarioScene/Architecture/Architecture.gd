@@ -215,6 +215,10 @@ func expected_fund_income():
 	var officer_expenditure = 0
 	for p in get_faction_persons():
 		officer_expenditure += p.get_salary()
+		
+	var f = get_belonged_faction()
+	if f != null and not f.player_controlled:
+		income *= scenario.scenario_config.ai_fund_rate
 	
 	return income - officer_expenditure
 	
@@ -229,6 +233,10 @@ func expected_food_income():
 	for equipment in equipments:
 		var kind = scenario.military_kinds[equipment]
 		equipment_expenditure += equipments[equipment] * kind.food_per_soldier
+		
+	var f = get_belonged_faction()
+	if f != null and not f.player_controlled:
+		income *= scenario.scenario_config.ai_food_rate
 	
 	return income - soldier_expenditure - equipment_expenditure
 	
@@ -244,12 +252,22 @@ func get_defence():
 	var base = 1500 + endurance + morale * 3 + troop * 0.05
 	for p in get_workable_persons():
 		base = p.apply_influences('modify_person_architecture_defence', {"value": base, "person": p, "architecture": self})
+		
+	var f = get_belonged_faction()
+	if f != null and not f.player_controlled:
+		base *= scenario.scenario_config.ai_troop_defence_rate
+		
 	return base
 	
 func get_offence():
 	var base = endurance + morale * 0.5 + troop * 0.1
 	for p in get_workable_persons():
 		base = p.apply_influences('modify_person_architecture_offence', {"value": base, "person": p, "architecture": self})
+		
+	var f = get_belonged_faction()
+	if f != null and not f.player_controlled:
+		base *= scenario.scenario_config.ai_troop_offence_rate
+		
 	return base
 
 func get_total_equipments():
@@ -515,6 +533,10 @@ func _recruit_troop(p: Person):
 		fund -= 50
 		var quantity = min(min(Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(military_population)) * morale * 0.001), population), military_population)
 		if quantity > 0:
+			var f = get_belonged_faction()
+			if f != null and not f.player_controlled:
+				quantity *= scenario.scenario_config.ai_troop_recruit_rate
+			
 			var old_quantity = troop
 			troop += quantity
 			population -= quantity
@@ -533,6 +555,12 @@ func _train_troop(p: Person):
 		fund -= 20
 		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1)
 		var delta2 = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.2)
+		
+		var f = get_belonged_faction()
+		if f != null and not f.player_controlled:
+			delta *= scenario.scenario_config.ai_troop_training_rate
+			delta2 *= scenario.scenario_config.ai_troop_training_rate
+		
 		troop_morale = min(100, troop_morale + delta)
 		troop_combativity = min(100, troop_combativity + delta2)
 		p.add_command_exp(10)

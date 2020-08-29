@@ -32,7 +32,7 @@ var _architecture_clicked
 var _troop_clicked
 var _clicked_at: Vector2
 
-var scenario_config setget forbidden
+var scenario_config: ScenarioConfig setget forbidden
 
 signal current_faction_set
 signal scenario_loaded
@@ -170,6 +170,17 @@ func _save_data(path):
 	file.open(path + "/Biographies.json", File.WRITE)
 	file.store_line(to_json(__save_items(biographies)))
 	file.close()
+	
+	file.open(path + "/ScenarioConfig.json", File.WRITE)
+	file.store_line(to_json({
+		"AIFundRate": scenario_config.ai_fund_rate,
+		"AIFoodRate": scenario_config.ai_food_rate,
+		"AITroopRecruitRate": scenario_config.ai_troop_recruit_rate,
+		"AITroopTrainingRate": scenario_config.ai_troop_training_rate,
+		"AITroopOffenceRate": scenario_config.ai_troop_offence_rate,
+		"AITroopDefenceRate": scenario_config.ai_troop_defence_rate
+	}))
+	file.close()
 
 	
 func __save_items(d: Dictionary):
@@ -185,7 +196,6 @@ func _load_data(path):
 	
 	var file = File.new()
 	file.open(path + "/Scenario.json", File.READ)
-	
 	var obj = parse_json(file.get_as_text())
 	
 	var date = $DateRunner as DateRunner
@@ -196,6 +206,17 @@ func _load_data(path):
 	var current_name = obj.get("Scenario")
 	if current_name != null:
 		current_scenario_name = current_name
+	file.close()
+	
+	file.open(path + "/ScenarioConfig.json", File.READ)
+	obj = parse_json(file.get_as_text())
+	scenario_config = ScenarioConfig.new()
+	scenario_config.ai_fund_rate = float(obj['AIFundRate'])
+	scenario_config.ai_food_rate = float(obj['AIFoodRate'])
+	scenario_config.ai_troop_recruit_rate = float(obj['AITroopRecruitRate'])
+	scenario_config.ai_troop_training_rate = float(obj['AITroopTrainingRate'])
+	scenario_config.ai_troop_offence_rate = float(obj['AITroopOffenceRate'])
+	scenario_config.ai_troop_defence_rate = float(obj['AITroopDefenceRate'])
 	file.close()
 	
 	file.open(path + "/Skills.json", File.READ)
@@ -329,7 +350,7 @@ func _load_data(path):
 		instance._set_leader(persons[int(item["Leader"])])
 	file.close()
 	
-	__handle_player_faction(current_faction_id)
+	__handle_game_start(current_faction_id)
 	emit_signal("scenario_loaded", self)
 
 	
@@ -341,12 +362,15 @@ func __load_item(instance, item, add_to_list, objects):
 		instance.add_to_group(GROUP_GAME_INSTANCES)
 		add_child(instance)
 	
-func __handle_player_faction(current_faction_id):
+func __handle_game_start(current_faction_id):
 	if SharedData.starting_faction_id != null:
 		current_faction = factions[int(SharedData.starting_faction_id)]
 		current_faction.player_controlled = true
 	else:
 		current_faction = factions[int(current_faction_id)]
+		
+	if SharedData.starting_scenario_config != null:
+		scenario_config = SharedData.starting_scenario_config
 		
 func __connect_signals_for_creating_troop(troop):
 	troop.connect("troop_clicked", self, "_on_troop_clicked")

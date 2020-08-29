@@ -229,7 +229,11 @@ func get_offence():
 
 	for p in get_persons():
 		base = p.apply_influences("modify_person_troop_offence", {"value": base, "person": p, "troop": self})
-	
+		
+	var f = get_belonged_faction()
+	if f != null and not f.player_controlled:
+		base *= scenario.scenario_config.ai_troop_offence_rate
+
 	return int(base)
 	
 func get_defence():
@@ -241,6 +245,10 @@ func get_defence():
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 	for p in get_persons():
 		base = p.apply_influences("modify_person_troop_defence", {"value": base, "person": p, "troop": self})
+		
+	var f = get_belonged_faction()
+	if f != null and not f.player_controlled:
+		base *= scenario.scenario_config.ai_troop_defence_rate
 		
 	return int(base)
 	

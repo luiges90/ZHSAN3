@@ -8,6 +8,7 @@ const TROOP_SPRITE_SHEET_FRAMES = 10
 
 var loading_file_path
 var starting_faction_id
+var starting_scenario_config
 
 ###########################
 #        Resources        #
