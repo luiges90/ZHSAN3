@@ -293,6 +293,18 @@ func _get_compare_value(a, b):
 		elif _clicked_label == tr("PRODUCE_EQUIPMENT_ABILITY"):
 			a1 = a.get_produce_equipment_ability()
 			b1 = b.get_produce_equipment_ability()
+		elif _clicked_label == tr("FATHER"):
+			a1 = a.get_father_name()
+			b1 = b.get_father_name()
+		elif _clicked_label == tr("MOTHER"):
+			a1 = a.get_mother_name()
+			b1 = b.get_mother_name()
+		elif _clicked_label == tr("SPOUSE"):
+			a1 = a.get_spouse_names()
+			b1 = b.get_spouse_names()
+		elif _clicked_label == tr("BROTHER"):
+			a1 = a.get_brother_names()
+			b1 = b.get_brother_names()
 	elif _selected_table == "architecture_list":
 		# Architecture List
 		if _clicked_label == tr("NAME"):
