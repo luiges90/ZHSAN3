@@ -36,6 +36,7 @@ CONFIRM,Confirm,确定,確定
 CANCEL,Cancel,取消,取消
 SELECT_ALL,Select All,全选,全選
 UNSELECT_ALL,Unselect All,全不选,全不選
+REVERSE_SELECT,Reverse All,反选,反選
 SYSTEM,System,系统,系統
 SAVE_GAME,Save,储存游戏,儲存遊戲
 LOAD_GAME,Load,读取游戏,讀取遊戲

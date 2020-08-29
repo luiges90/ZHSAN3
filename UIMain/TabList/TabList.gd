@@ -169,11 +169,21 @@ func _on_SelectAll_pressed():
 		checkbox.set_pressed(true)
 	$ActionButtons/Confirm.disabled = false
 
-
 func _on_UnselectAll_pressed():
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		checkbox.set_pressed(false)
 	$ActionButtons/Confirm.disabled = true
+	
+func _on_ReverseSelect_pressed():
+	var selected = _get_selected_list()
+	if selected.size() != 0:
+		var test = get_tree().get_nodes_in_group("checkboxes")
+		for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+			checkbox.set_pressed(true)
+			for i in range(len(selected)):
+				if checkbox.get_meta("id") == selected[i]:
+					checkbox.set_pressed(false)
+	$ActionButtons/Confirm.disabled = false
 
 # title to be sorted
 func _on_title_sorting_click(label, object):

@@ -149,6 +149,12 @@ margin_right = 342.0
 margin_bottom = 32.0
 text = "UNSELECT_ALL"
 
+[node name="ReverseSelect" type="Button" parent="SelectionButtons"]
+margin_left = 346.0
+margin_right = 551.0
+margin_bottom = 32.0
+text = "REVERSE_SELECT"
+
 [node name="CloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
@@ -159,3 +165,4 @@ stream = ExtResource( 5 )
 [connection signal="pressed" from="ActionButtons/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="SelectionButtons/SelectAll" to="." method="_on_SelectAll_pressed"]
 [connection signal="pressed" from="SelectionButtons/UnselectAll" to="." method="_on_UnselectAll_pressed"]
+[connection signal="pressed" from="SelectionButtons/ReverseSelect" to="." method="_on_ReverseSelect_pressed"]
