@@ -55,6 +55,9 @@ KIND_NAME,Kind,种类,種類
 ARCHITECTURE_DETAILS,Architecture Details,建筑情报,建築情報
 PERSON_COUNT,Officers,人物数,人物數
 ARCHITECTURE_COUNT,Architectures,建築數,建築數
+TOTAL_FUND,Total Fund,总资金,總資金
+TOTAL_FOOD,Total Food,总粮草,總糧草
+TOTAL_TROOP,Total Troop,总士兵,總士兵
 BELONGED_ARCHITECTURE,Assignment,所属,所屬
 TASK_DAYS,Task Days,天数,天數
 DAY_UNIT," Days",天,天

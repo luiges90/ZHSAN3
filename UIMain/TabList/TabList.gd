@@ -10,6 +10,18 @@ var _confirming
 
 var _max_selection = -1
 
+# for title sorting
+enum _sorting_order {
+	ASC,
+	DESC, 
+	DEFAULT
+}
+# current title order
+var _current_order = _sorting_order.DEFAULT
+var _clicked_label = "" # title to be sorted
+var _selected_table = "" # table being selected
+const _TYPE_ORDER = [TYPE_STRING, TYPE_INT]
+
 var _current_mouseover_rect
 
 func _ready():
@@ -162,3 +174,240 @@ func _on_UnselectAll_pressed():
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		checkbox.set_pressed(false)
 	$ActionButtons/Confirm.disabled = true
+
+# title to be sorted
+func _on_title_sorting_click(label, object):
+	# get clicked title
+	_clicked_label = label.text
+	# click again to change ordering
+	match _current_order:
+		_sorting_order.DEFAULT:
+			_current_order = _sorting_order.DESC
+		_sorting_order.DESC:
+			_current_order = _sorting_order.ASC
+		_sorting_order.ASC:
+			_current_order = _sorting_order.DESC
+	# update the list
+	show_data(object)	
+
+# sort the list
+func _sorting_list(list_copy):	
+	if list_copy.size() != 0:
+		list_copy.sort_custom(self,"_custom_comparison")
+		# default comparison is in ascending order
+		match _current_order:
+			_sorting_order.DESC:
+				list_copy.invert()
+	return list_copy
+
+# get value that need to be compared
+func _get_compare_value(a, b):
+	var a1 = ""
+	var b1 = ""
+	# Person List
+	if _selected_table == "person_list":
+		if _clicked_label == tr("PERSON_NAME"):
+			a1 = a.get_name()
+			b1 = b.get_name()
+		elif _clicked_label == tr("BELONGED_ARCHITECTURE"):
+			a1 = a.get_location().get_name()
+			b1 = b.get_location().get_name()
+		elif _clicked_label == tr("STATUS"):
+			a1 = a.get_status_str()
+			b1 = b.get_status_str()
+		elif _clicked_label == tr("GENDER"):
+			a1 = a.get_gender_str()
+			b1 = b.get_gender_str()
+		elif _clicked_label == tr("AGE"):
+			a1 = a.get_age()
+			b1 = b.get_age()
+		elif _clicked_label == tr("MERIT"):
+			a1 = a.get_merit()
+			b1 = b.get_merit()
+		elif _clicked_label == tr("POPULARITY"):
+			a1 = a.get_popularity()
+			b1 = b.get_popularity()
+		elif _clicked_label == tr("PRESTIGE"):
+			a1 = a.get_prestige()
+			b1 = b.get_prestige()
+		elif _clicked_label == tr("KARMA"):
+			a1 = a.get_karma()
+			b1 = b.get_karma()
+		elif _clicked_label == tr("TASK"):
+			a1 = a.get_working_task_str()
+			b1 = b.get_working_task_str()
+		elif _clicked_label == tr("TASK_DAYS"):
+			a1 = a.task_days
+			b1 = b.task_days
+		elif _clicked_label == tr("COMMAND"):
+			a1 = a.get_command()
+			b1 = b.get_command()
+		elif _clicked_label == tr("STRENGTH"):
+			a1 = a.get_strength()
+			b1 = b.get_strength()
+		elif _clicked_label == tr("INTELLIGENCE"):
+			a1 = a.get_intelligence()
+			b1 = b.get_intelligence()
+		elif _clicked_label == tr("POLITICS"):
+			a1 = a.get_politics()
+			b1 = b.get_politics()
+		elif _clicked_label == tr("GLAMOUR"):
+			a1 = a.get_glamour()
+			b1 = b.get_glamour()
+		elif _clicked_label == tr("COMMAND_EXPERIENCE"):
+			a1 = a.command_exp
+			b1 = b.command_exp
+		elif _clicked_label == tr("STRENGTH_EXPERIENCE"):
+			a1 = a.strength_exp
+			b1 = b.strength_exp
+		elif _clicked_label == tr("INTELLIGENCE_EXPERIENCE"):
+			a1 = a.intelligence_exp
+			b1 = b.intelligence_exp
+		elif _clicked_label == tr("POLITICS_EXPERIENCE"):
+			a1 = a.politics_exp
+			b1 = b.politics_exp
+		elif _clicked_label == tr("GLAMOUR_EXPERIENCE"):
+			a1 = a.glamour_exp
+			b1 = b.glamour_exp
+		elif _clicked_label == tr("AGRICULTURE_ABILITY"):
+			a1 = a.get_agriculture_ability()
+			b1 = b.get_agriculture_ability()
+		elif _clicked_label == tr("COMMERCE_ABILITY"):
+			a1 = a.get_commerce_ability()
+			b1 = b.get_commerce_ability()
+		elif _clicked_label == tr("MORALE_ABILITY"):
+			a1 = a.get_morale_ability()
+			b1 = b.get_morale_ability()
+		elif _clicked_label == tr("ENDURANCE_ABILITY"):
+			a1 = a.get_endurance_ability()
+			b1 = b.get_endurance_ability()
+		elif _clicked_label == tr("PRODUCING_EQUIPMENT_TYPE"):
+			a1 = a.get_producing_equipment_name()
+			b1 = b.get_producing_equipment_name()
+		elif _clicked_label == tr("RECRUIT_ABILITY"):
+			a1 = a.get_recruit_troop_ability()
+			b1 = b.get_recruit_troop_ability()
+		elif _clicked_label == tr("TRAIN_ABILITY"):
+			a1 = a.get_train_troop_ability()
+			b1 = b.get_train_troop_ability()
+		elif _clicked_label == tr("PRODUCE_EQUIPMENT_ABILITY"):
+			a1 = a.get_produce_equipment_ability()
+			b1 = b.get_produce_equipment_ability()
+	elif _selected_table == "architecture_list":
+		# Architecture List
+		if _clicked_label == tr("NAME"):
+			a1 = a.get_name()
+			b1 = b.get_name()
+		elif _clicked_label == tr("KIND_NAME"):
+			a1 = a.kind
+			b1 = b.kind
+		elif _clicked_label == tr("FACTION_NAME"):
+			a1 = a.get_belonged_faction_str()
+			b1 = b.get_belonged_faction_str()
+		elif _clicked_label == tr("POPULATION"):
+			a1 = a.population
+			b1 = b.population
+		elif _clicked_label == tr("FOOD"):
+			a1 = a.food
+			b1 = b.food
+		elif _clicked_label == tr("FUND"):
+			a1 = a.fund
+			b1 = b.fund
+		elif _clicked_label == tr("PERSON_COUNT"):
+			a1 = a.get_persons().size()
+			b1 = b.get_persons().size()
+		elif _clicked_label == tr("WILD_PERSON_COUNT"):
+			a1 = a.get_wild_persons().size()
+			b1 = b.get_wild_persons().size()
+		elif _clicked_label == tr("MILITARY_POPULATION"):
+			a1 = a.military_population
+			b1 = b.military_population
+		elif _clicked_label == tr("AGRICULTURE"):
+			a1 = a.agriculture
+			b1 = b.agriculture
+		elif _clicked_label == tr("COMMERCE"):
+			a1 = a.commerce
+			b1 = b.commerce
+		elif _clicked_label == tr("MORALE"):
+			a1 = a.morale
+			b1 = b.morale
+		elif _clicked_label == tr("ENDURANCE"):
+			a1 = a.endurance
+			b1 = b.endurance
+		elif _clicked_label == tr("TROOP"):
+			a1 = a.troop
+			b1 = b.troop
+		elif _clicked_label == tr("TROOP_MORALE"):
+			a1 = a.troop_morale
+			b1 = b.troop_morale
+		elif _clicked_label == tr("COMBATIVITY"):
+			a1 = a.troop_combativity
+			b1 = b.troop_combativity
+		elif _clicked_label == tr("TROOP"):
+			a1 = a.troop
+			b1 = b.troop
+		elif _clicked_label == tr("TROOP_MORALE"):
+			a1 = a.troop_morale
+			b1 = b.troop_morale
+		elif _clicked_label == tr("COMBATIVITY"):
+			a1 = a.troop_combativity
+			b1 = b.troop_combativity
+	elif _selected_table == "faction_list":
+		# Faction List
+		if _clicked_label == tr("FACTION_NAME"):
+			a1 = a.get_name()
+			b1 = b.get_name()
+		elif _clicked_label == tr("PERSON_COUNT"):
+			a1 = a.get_persons().size()
+			b1 = b.get_persons().size()
+		elif _clicked_label == tr("ARCHITECTURE_COUNT"):
+			a1 = a.get_architectures().size()
+			b1 = b.get_architectures().size()
+		elif _clicked_label == tr("TOTAL_FUND"):
+			a1 = a.get_total_fund()
+			b1 = b.get_total_fund()
+		elif _clicked_label == tr("TOTAL_FOOD"):
+			a1 = a.get_total_food()
+			b1 = b.get_total_food()
+		elif _clicked_label == tr("TOTAL_TROOP"):
+			a1 = a.get_total_troop()
+			b1 = b.get_total_troop()
+	elif _selected_table == "military_kind_list":
+		# Military Kind List
+		if _clicked_label == tr("KIND_NAME"):
+			a1 = a.get_name()
+			b1 = b.get_name()
+		elif _clicked_label == tr("COST"):
+			a1 = a.equipment_cost
+			b1 = b.equipment_cost
+		elif _clicked_label == tr("OFFENCE"):
+			a1 = a.offence
+			b1 = b.offence
+		elif _clicked_label == tr("DEFENCE"):
+			a1 = a.defence
+			b1 = b.defence
+		elif _clicked_label == tr("RANGE"):
+			a1 = a.range_max
+			b1 = b.range_max
+		elif _clicked_label == tr("SPEED"):
+			a1 = a.speed
+			b1 = b.speed
+		elif _clicked_label == tr("INITIATIVE"):
+			a1 = a.initiative
+			b1 = b.initiative
+		elif _clicked_label == tr("MAX_QUANTITY_MULITPLIER"):
+			a1 = a.max_quantity_multiplier
+			b1 = b.max_quantity_multiplier
+	return [a1, b1]
+	
+# ascending comparison
+func _custom_comparison(a, b):
+	var a1 = _get_compare_value(a, b)[0]
+	var b1 = _get_compare_value(a, b)[1]
+	if typeof(a1) != typeof(b1):
+		if typeof(a1) in _TYPE_ORDER and typeof(b1) in _TYPE_ORDER:
+			return _TYPE_ORDER.find( typeof(a1) ) < _TYPE_ORDER.find( typeof(b1) )
+		else:
+			return typeof(a1) < typeof(b1)
+	else:
+		return a1 < b1

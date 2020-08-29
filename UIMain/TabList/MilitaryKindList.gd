@@ -6,6 +6,9 @@ enum Action { LIST, PRODUCE_EQUIPMENT, SELECT_TROOP_MILITARY_KIND }
 signal military_kind_selected
 signal military_kind_selected_for_troop
 
+# sorted military kind list
+var _sorted_list
+
 var _selected_person_ids
 
 func _ready():
@@ -32,6 +35,7 @@ func show_data(list: Array):
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
+	_selected_table = "military_kind_list" 
 	_populate_basic_data(list, current_action)
 	_populate_movement_details_data(list, current_action)
 	_populate_terrain_strength_data(list, current_action)
@@ -39,21 +43,27 @@ func show_data(list: Array):
 
 func _populate_basic_data(mk_list: Array, action):
 	var item_list = $Tabs/Tab1/Grid as GridContainer
+	_sorted_list = mk_list # default military kind list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
 		item_list.columns = 9
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 8
-	item_list.add_child(_title(tr('NAME')))
-	item_list.add_child(_title(tr('COST')))
-	item_list.add_child(_title(tr('OFFENCE')))
-	item_list.add_child(_title(tr('DEFENCE')))
-	item_list.add_child(_title(tr('RANGE')))
-	item_list.add_child(_title(tr('SPEED')))
-	item_list.add_child(_title(tr('INITIATIVE')))
-	item_list.add_child(_title(tr('MAX_QUANTITY_MULITPLIER')))
-	for mk in mk_list:
+	item_list.add_child(_title_sorting(tr('KIND_NAME'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('COST'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('OFFENCE'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('DEFENCE'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('RANGE'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('SPEED'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('INITIATIVE'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('MAX_QUANTITY_MULITPLIER'), self, "_on_title_sorting_click", mk_list))
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+	for mk in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
 		item_list.add_child(_label(mk.get_name()))
@@ -69,6 +79,7 @@ func _populate_movement_details_data(mk_list: Array, action):
 	if mk_list.size() <= 0: 
 		return
 	var item_list = $Tabs/Tab2/Grid as GridContainer
+	_sorted_list = mk_list # default military kind list
 	Util.delete_all_children(item_list)
 	
 	var terrains = mk_list[0].get_movement_kind_with_name()
@@ -77,11 +88,15 @@ func _populate_movement_details_data(mk_list: Array, action):
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = terrains.size() + 1
-		
-	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('KIND_NAME')))
 	for t in terrains:
 		item_list.add_child(_title(t))
-	for mk in mk_list:
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+	for mk in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
 		item_list.add_child(_label(mk.get_name()))
@@ -93,6 +108,7 @@ func _populate_terrain_strength_data(mk_list: Array, action):
 	if mk_list.size() <= 0: 
 		return
 	var item_list = $Tabs/Tab3/Grid as GridContainer
+	_sorted_list = mk_list # default military kind list
 	Util.delete_all_children(item_list)
 	
 	var terrains = mk_list[0].get_terrain_strength_with_name()
@@ -102,10 +118,15 @@ func _populate_terrain_strength_data(mk_list: Array, action):
 	else:
 		item_list.columns = terrains.size() + 1
 		
-	item_list.add_child(_title(tr('NAME')))
+	item_list.add_child(_title(tr('KIND_NAME')))
 	for t in terrains:
 		item_list.add_child(_title(t))
-	for mk in mk_list:
+	match _current_order:
+		_sorting_order.DESC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+		_sorting_order.ASC:
+			_sorted_list = _sorting_list(mk_list.duplicate())
+	for mk in _sorted_list:
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(mk.id))
 		item_list.add_child(_label(mk.get_name()))
