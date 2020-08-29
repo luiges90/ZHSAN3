@@ -264,7 +264,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 		with open(output_folder + '/Persons.json', mode='w', encoding='utf-8') as fout:
 			r = []
 			for k in obj['Persons']['GameObjects']:
-				if k['ID'] >= 7000 and k['ID'] < 9000:
+				if k['ID'] >= 8000 and k['ID'] < 9000:
 					continue
 				if k['ID'] in faction_person_ids:
 					status = 1
