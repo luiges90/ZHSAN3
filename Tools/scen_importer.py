@@ -284,7 +284,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 					"_Id": k['ID'],
 					"Status": status,
-					"Alive": k['Alive'],
+					"Alive": False if k['ID'] >= 7000 and k['ID'] < 8000 else k['Alive'],
 					"Gender": k['Sex'],
 					"Surname": k['SurName'],
 					"GivenName": k['GivenName'],
