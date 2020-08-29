@@ -232,3 +232,14 @@ static func resize_texture(texture, old_size: Vector2, new_size: Vector2):
 	image.create_from_image(sprite)
 	return image
 	
+static func random_shift_position(pos: Vector2) -> Vector2:
+	if randf() < 0.5:
+		if randf() < 0.5:
+			return Vector2(pos.x - 1, pos.y)
+		else:
+			return Vector2(pos.x + 1, pos.y)
+	else:
+		if randf() < 0.5:
+			return Vector2(pos.x, pos.y - 1)
+		else:
+			return Vector2(pos.x, pos.y + 1)

@@ -441,7 +441,14 @@ func execute_step() -> ExecuteStepResult:
 			if __step_retry <= 3:
 				return ExecuteStepResult.new(ExecuteStepType.BLOCKED, null)
 			else:
-				return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+				var random_position = Util.random_shift_position(new_position)
+				var random_movement_cost = get_movement_cost(random_position, false)
+				if _remaining_movement >= random_movement_cost[0]:
+					_remaining_movement -= random_movement_cost[0]
+					__step_retry = 0
+					return ExecuteStepResult.new(ExecuteStepType.MOVED, random_position)
+				else:
+					return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 		elif _remaining_movement >= movement_cost[0]:
 			_remaining_movement -= movement_cost[0]
 			__step_retry = 0
