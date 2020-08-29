@@ -13,6 +13,7 @@ enum DeadReason { NATURAL, UNNNATURAL }
 var id: int setget forbidden
 var scenario
 
+var alive: bool setget forbidden
 var gender: bool setget forbidden
 
 var surname: String setget forbidden
@@ -69,6 +70,7 @@ func forbidden(x):
 func load_data(json: Dictionary, objects):
 	id = json["_Id"]
 	_status = int(json["Status"])
+	alive = json["Alive"]
 	gender = json["Gender"]
 	surname = json["Surname"]
 	given_name = json["GivenName"]
@@ -101,6 +103,7 @@ func save_data() -> Dictionary:
 	return {
 		"_Id": id,
 		"Status": _status,
+		"Alive": alive,
 		"Gender": gender,
 		"Surname": surname,
 		"GivenName": given_name,
@@ -518,6 +521,7 @@ func die():
 		get_belonged_faction().change_leader()
 	get_location().remove_person(self)
 	_status = Status.NONE
+	alive = false
 	emit_signal('person_died', self)
 		
 ####################################
@@ -580,5 +584,5 @@ func day_event():
 
 func month_event():
 	# try to be available
-	if get_location() == null and scenario.get_year() >= available_year and randf() < 0.2:
+	if alive and get_location() == null and scenario.get_year() >= available_year and randf() < 0.2:
 		become_available()

@@ -279,6 +279,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				r.append({
 					"_Id": k['ID'],
 					"Status": status,
+					"Alive": k['Alive'],
 					"Gender": k['Sex'],
 					"Surname": k['SurName'],
 					"GivenName": k['GivenName'],
