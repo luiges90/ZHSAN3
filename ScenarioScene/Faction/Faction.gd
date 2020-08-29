@@ -154,7 +154,7 @@ func change_leader():
 				break
 	
 	if successor == null:
-		var candidates = leader.brothers
+		var candidates = get_persons()
 		candidates.sort_custom("Person", "cmp_prestige_desc")
 		for p in candidates:
 			if not p.gender and p.get_belonged_faction() == self:
