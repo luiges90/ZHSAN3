@@ -1,0 +1,8 @@
+{
+	"faction_destroyed": [
+		{
+			"Conditions": [],
+			"Text": "%s滅亡了。"
+		}
+	],
+}

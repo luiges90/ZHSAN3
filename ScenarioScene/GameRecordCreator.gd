@@ -2,6 +2,8 @@ extends Node
 class_name GameRecordCreator
 
 var _speeches
+var _dialogs
+
 var _scenario
 
 signal add_game_record
@@ -15,10 +17,14 @@ const YELLOW = "#FFFF00" # person
 
 func _init():
 	var file = File.new()
-	file.open("res://i18n/PersonSpeeches.json", File.READ)
+	file.open("res://i18n/PersonBubbles.json", File.READ)
 	_speeches = parse_json(file.get_as_text())
 	file.close()
 	
+	file = File.new()
+	file.open("res://i18n/PersonDialogs.json", File.READ)
+	_dialogs = parse_json(file.get_as_text())
+	file.close()
 
 	
 func _get_speech(key, person):
@@ -27,6 +33,18 @@ func _get_speech(key, person):
 		var container = ScenarioUtil.InfluenceContainer.new()
 		container.conditions = s['Conditions']
 		if ScenarioUtil.check_conditions(container, {'person': person}):
+			return s['Text']
+	return ''
+	
+func _get_dialog(key, person, objects):
+	var speech = _dialogs[key]
+	for s in speech:
+		var container = ScenarioUtil.InfluenceContainer.new()
+		container.conditions = s['Conditions']
+		
+		var params = objects.duplicate()
+		params['person'] = person
+		if ScenarioUtil.check_conditions(container, params):
 			return s['Text']
 	return ''
 
@@ -76,13 +94,17 @@ func _on_troop_target_architecture_destroyed(current_troop, target):
 func _on_troop_target_troop_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("destroyed_target_troop", leader) % [
+		_get_speech("destroyed_target_troop", leader) % [
 			_color_text(GREEN, target.get_name())
 		])
 
 func _on_faction_destroyed(faction):
 	emit_signal("add_game_record", 
 		tr("GAME_RECORD_FACTION_DESTROYED") % [
+			_color_text(RED, faction.get_name())
+		])
+	emit_signal("add_person_dialog", null,
+		_get_dialog("faction_destroyed", null, {'faction': faction}) % [
 			_color_text(RED, faction.get_name())
 		])
 	
