@@ -174,6 +174,14 @@ func _on_UnselectAll_pressed():
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		checkbox.set_pressed(false)
 	$ActionButtons/Confirm.disabled = true
+	
+func _on_InverseSelect_pressed():
+	var disable = true
+	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+		checkbox.set_pressed(!checkbox.is_pressed())
+		if checkbox.is_pressed():
+			disable = false
+	$ActionButtons/Confirm.disabled = disable
 
 # title to be sorted
 func _on_title_sorting_click(label, object):

@@ -60,7 +60,7 @@ TOTAL_FOOD,Total Food,总粮草,總糧草
 TOTAL_TROOP,Total Troop,总士兵,總士兵
 BELONGED_ARCHITECTURE,Assignment,所属,所屬
 TASK_DAYS,Task Days,天数,天數
-DAY_UNIT," Days",天,天
+DAY_UNIT, Days,天,天
 SECTION,Section,军区,軍區
 MILITARY,Military,军事,軍事
 TROOP,Troop,士兵,士兵
@@ -87,12 +87,12 @@ MAX_QUANTITY_MULITPLIER,Max Quantity,兵力上限,兵力上限
 QUANTITY,Quantity,兵力,兵力
 GAME_INFO,Information,各项信息,各項信息
 EQUIPMENTS,Equipments,兵装,兵裝
-FACTION_DETAIL,Faction Details,勢力信息,勢力信息
+FACTION_DETAIL,Faction Details,势力信息,勢力信息
 FACTION_ARCHITECTURES,Faction Architectures,势力建筑,勢力建築
 FACTION_PERSONS,Faction Persons,势力人物,勢力人物
 TOGGLE_AUTO_TASK,Auto Task,委任内政,委任內政
 TOGGLE_MANUAL_TASK,Manual Task,手动内政,手動內政
-PERSON_TROOP,"'s Troop",队,隊
+PERSON_TROOP,'s Troop,队,隊
 CREATE_TROOP,Create Troop,出征,出征
 PERSONS,Persons,人物,人物
 LEADER,Leader,主将,主將
@@ -117,43 +117,44 @@ GAME_RECORD,Record,信息栏,信息欄
 GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s从%s出征,%s從%s出征
 GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,%s has taken over %s,%s占领了%s,%s佔領了%s
 GAME_RECORD_TROOP_DESTROYED,%s has been routed,%s溃散了,%s潰散了
-GAME_RECORD_FACTION_DESTROYED,%s has been eliminated,%s滅亡了,%s滅亡了
-FACTION_LIST,Faction List,勢力列表,勢力列表
+GAME_RECORD_FACTION_DESTROYED,%s has been eliminated,%s灭亡了,%s滅亡了
+FACTION_LIST,Faction List,势力列表,勢力列表
 GENDER,Gender,性別,性別
 MALE,Male,男,男
 FEMALE,Female,女,女
 LOCATION,Location,位置,位置
 SKILLS,Skills,技能,技能
-POPULARITY,Popularity,名聲,名聲
-PRESTIGE,Prestige,聲望,聲望
+POPULARITY,Popularity,名声,名聲
+PRESTIGE,Prestige,声望,聲望
 KARMA,Karma,善名,善名
-COMMAND_EXPERIENCE,Command Exp.,统兵經驗,統兵經驗
-STRENGTH_EXPERIENCE,Strength Exp.,武艺經驗,武藝經驗
-INTELLIGENCE_EXPERIENCE,Intelligence Exp.,智略經驗,智略經驗
-POLITICS_EXPERIENCE,Politics Exp.,政略經驗,政略經驗
-GLAMOUR_EXPERIENCE,Glamour Exp.,人德經驗,人德經驗
-MERIT,Merit,功績,功績
+COMMAND_EXPERIENCE,Command Exp.,统兵经验,統兵經驗
+STRENGTH_EXPERIENCE,Strength Exp.,武艺经验,武藝經驗
+INTELLIGENCE_EXPERIENCE,Intelligence Exp.,智略经验,智略經驗
+POLITICS_EXPERIENCE,Politics Exp.,政略经验,政略經驗
+GLAMOUR_EXPERIENCE,Glamour Exp.,人德经验,人德經驗
+MERIT,Merit,功绩,功績
 SKILL_LIST,Skill list,技能列表,技能列表
 ID,ID,ID,ID
-DESCRIPTION,Description,說明,說明
+DESCRIPTION,Description,说明,說明
 IDLING_PERSONS,Idling Officers,待命武將,待命武將
-WORKABLE_PERSONS,Active Officers,建築武將,建築武將
-FACTION_PERSONS,Total Officers,勢力武將,勢力武將
+WORKABLE_PERSONS,Active Officers,建筑武将,建築武將
+FACTION_PERSONS,Total Officers,势力武将,勢力武將
 WILD_PERSONS,Unaffilated Officers,在野武將,在野武將
-FRONTLINE,Front line,前線,前線
-TOTAL_EQUIPMENT,Equipment,兵裝數,兵裝數
-GAME_RECORD_PERSON_DIED,%s has died,%s離開了人世,%s離開了人世
-AGE,Age,年齡,年齡
-PERSONAL_RELATIONS,Personal Relations,人物關系,人物關系
-FATHER,Father,父親,父親
-MOTHER,Mother,母親,母親
+FRONTLINE,Front line,前线,前線
+TOTAL_EQUIPMENT,Equipment,兵装数,兵裝數
+GAME_RECORD_PERSON_DIED,%s has died,%s离开了人世,%s離開了人世
+AGE,Age,年龄,年齡
+PERSONAL_RELATIONS,Personal Relations,人物关系,人物關系
+FATHER,Father,父亲,父親
+MOTHER,Mother,母亲,母親
 SPOUSE,Spouse,配偶,配偶
-BROTHER,Brother,義兄弟,義兄弟
-GAME_CONFIGURATION,Game Configratuion,遊戲設置,遊戲設置
-CONFIG_DIFFICULTY,Difficulty,難度,難度
-AI_FUND_RATE,AI Fund Rate,電腦資金收入率,電腦資金收入率
-AI_FOOD_RATE,AI Food Rate,電腦糧草收入率,電腦糧草收入率
-AI_RECRUIT_RATE,AI Recruit Rate,電腦徵兵率,電腦徵兵率
-AI_TRAINING_RATE,AI Training Rate,電腦訓練率,電腦訓練率
-AI_OFFENCE_RATE,AI Offence Rate,電腦部隊攻擊力乘數,電腦部隊攻擊力乘數
-AI_DEFENCE_RATE,AI Defence Rate,電腦部隊防禦力乘數,電腦部隊防禦力乘數
+BROTHER,Brother,义兄弟,義兄弟
+GAME_CONFIGURATION,Game Configratuion,游戏设置,遊戲設置
+CONFIG_DIFFICULTY,Difficulty,难度,難度
+AI_FUND_RATE,AI Fund Rate,电脑资金收入率,電腦資金收入率
+AI_FOOD_RATE,AI Food Rate,电脑粮草收入率,電腦糧草收入率
+AI_RECRUIT_RATE,AI Recruit Rate,电脑征兵率,電腦徵兵率
+AI_TRAINING_RATE,AI Training Rate,电脑训练率,電腦訓練率
+AI_OFFENCE_RATE,AI Offence Rate,电脑部队攻击力乘数,電腦部隊攻擊力乘數
+AI_DEFENCE_RATE,AI Defence Rate,电脑部队防御力乘数,電腦部隊防禦力乘數
+INVERSE_SELECT,INVERSE SELECT,反选,反選
