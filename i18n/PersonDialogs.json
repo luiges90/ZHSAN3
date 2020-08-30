@@ -2,7 +2,49 @@
 	"faction_destroyed": [
 		{
 			"Conditions": [],
-			"Text": "%s滅亡了。"
+			"Text": "{faction}滅亡了。"
+		}
+	],
+	"person_died": [
+		{
+			"Conditions": [],
+			"Text": "{person}離開了人世。"
+		}
+	],
+	"person_available_by_brother": [
+		{
+			"Conditions": [],
+			"Text": "经{other_person}介绍，臣今日将加入将军麾下。看我在{location}的表现吧！"
+		}
+	],
+	"person_available_by_spouse": [
+		{
+			"Conditions": [
+				{
+					"Operation": "gender_male"
+				}
+			],
+			"Text": "臣的夫君{other_person}介绍，效力于将军，臣今日也加入将军麾下，与夫君并肩作战。"
+		},
+		{
+			"Conditions": [
+				{
+					"Operation": "gender_female"
+				}
+			],
+			"Text": "臣的妻室{other_person}效力于将军，臣今日也加入将军麾下，与妻室并肩作战。"
+		}
+	],
+	"person_available_by_children": [
+		{
+			"Conditions": [],
+			"Text": "我绝不会辜负父母的期望，看我在{location}的表现吧！"
+		}
+	],
+	"person_available_by_sibling": [
+		{
+			"Conditions": [],
+			"Text": "我绝不会辜负大家的期望，看我在{location}的表现吧！"
 		}
 	],
 }

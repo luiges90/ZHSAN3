@@ -278,6 +278,7 @@ func _load_data(path):
 	for item in obj:
 		var instance = Person.new()
 		instance.connect('person_died', self, '_on_person_died')
+		instance.connect("person_available", self, "_on_person_available")
 		__load_item(instance, item, persons, {"skills": skills})
 		person_json[instance.id] = item
 	file.close()
@@ -576,8 +577,17 @@ func _on_troop_removed(troop):
 	emit_signal("scenario_troop_removed", self, troop)
 
 func _on_person_died(person):
-	# TODO add person dialog
 	$GameRecordCreator.person_died(person)
+	
+func _on_person_available(person, reason, reason_person):
+	if reason == Person.AvailableReason.BROTHER:
+		$GameRecordCreator.person_available_by_brother(person, reason_person)
+	elif reason == Person.AvailableReason.SPOUSE:
+		$GameRecordCreator.person_available_by_spouse(person, reason_person)
+	elif reason == Person.AvailableReason.CHILDREN:
+		$GameRecordCreator.person_available_by_children(person, reason_person)
+	elif reason == Person.AvailableReason.SIBLING:
+		$GameRecordCreator.person_available_by_sibling(person, reason_person)
 
 ########################################
 #                Process               #

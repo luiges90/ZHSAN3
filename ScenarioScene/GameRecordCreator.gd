@@ -61,52 +61,52 @@ func _on_Scenario_scenario_loaded(scenario):
 func create_troop(troop, position):
 	emit_signal("add_game_record", _register_click(
 		"focus(" + str(position.x) + "," + str(position.y) + ")",
-		tr("GAME_RECORD_CREATE_TROOP") % [
-			_color_text(GREEN, troop.get_name()), 
-			_color_text(CYAN, troop.get_starting_architecture().get_name())
-		])
-	)
+		tr("GAME_RECORD_CREATE_TROOP").format({
+			"troop": _color_text(GREEN, troop.get_name()), 
+			"architecture": _color_text(CYAN, troop.get_starting_architecture().get_name())
+		})
+	))
 
 func _on_troop_occupy_architecture(troop, architecture):
 	emit_signal("add_game_record", _register_click(
 		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
-		tr("GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE") % [
-			_color_text(GREEN, troop.get_name()), 
-			_color_text(CYAN, architecture.get_name())
-		])
-	)
+		tr("GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE").format({
+			"troop": _color_text(GREEN, troop.get_name()), 
+			"architecture": _color_text(CYAN, architecture.get_name())
+		})
+	))
 
 func _on_troop_destroyed(troop):
 	emit_signal("add_game_record", _register_click(
 		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
-		tr("GAME_RECORD_TROOP_DESTROYED") % [
-			_color_text(GREEN, troop.get_name()), 
-		])
-	)
+		tr("GAME_RECORD_TROOP_DESTROYED").format({
+			"troop": _color_text(GREEN, troop.get_name())
+		})
+	))
 	
 func _on_troop_target_architecture_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("destroyed_target_architecture", leader) % [
-			_color_text(CYAN, target.get_name())
-		])
+		 _get_speech("destroyed_target_architecture", leader).format({
+			"architecture": _color_text(CYAN, target.get_name())
+		}))
 			
 func _on_troop_target_troop_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		_get_speech("destroyed_target_troop", leader) % [
-			_color_text(GREEN, target.get_name())
-		])
+		_get_speech("destroyed_target_troop", leader).format({
+			"troop": _color_text(GREEN, target.get_name())
+		}))
 
 func _on_faction_destroyed(faction):
 	emit_signal("add_game_record", 
-		tr("GAME_RECORD_FACTION_DESTROYED") % [
-			_color_text(RED, faction.get_name())
-		])
+		tr("GAME_RECORD_FACTION_DESTROYED").format({
+			"faction": _color_text(RED, faction.get_name())
+		}))
 	emit_signal("add_person_dialog", null,
-		_get_dialog("faction_destroyed", null, {'faction': faction}) % [
-			_color_text(RED, faction.get_name())
-		])
+		_get_dialog("faction_destroyed", faction.get_leader(), {'faction': faction}).format({
+			"faction": _color_text(RED, faction.get_name())
+		}))
 	
 
 func _on_DateRunner_date_runner_stopped():
@@ -114,54 +114,93 @@ func _on_DateRunner_date_runner_stopped():
 	var location = leader.get_location()
 	if location != null:
 		emit_signal("add_person_bubble", leader, location,
-			 _get_speech("player_turn", leader) % [
-				_color_text(YELLOW, leader.get_name())
-			])
+			 _get_speech("player_turn", leader).format({
+				"person": _color_text(YELLOW, leader.get_name())
+			}))
 
 
 
 func _on_PositionSelector_move_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_move", leader) % [
-			_color_text(CYAN, _scenario.describe_position(position))
-		])
+		 _get_speech("troop_move", leader).format({
+			"position": _color_text(CYAN, _scenario.describe_position(position))
+		}))
 
 
 func _on_PositionSelector_attack_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_attack", leader) % [
-			_color_text(CYAN, _scenario.describe_position(position))
-		])
+		 _get_speech("troop_attack", leader).format({
+			"position": _color_text(CYAN, _scenario.describe_position(position))
+		}))
 		
 
 func _on_PositionSelector_follow_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_follow", leader) % [
-			_color_text(CYAN, _scenario.describe_position(position))
-		])
+		 _get_speech("troop_follow", leader).format({
+			"position": _color_text(CYAN, _scenario.describe_position(position))
+		}))
 
 
 func _on_PositionSelector_enter_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_enter", leader) % [
-			_color_text(CYAN, _scenario.describe_position(position))
-		])
+		 _get_speech("troop_enter", leader).format({
+			"position": _color_text(CYAN, _scenario.describe_position(position))
+		}))
 
 
 func _on_PositionSelector_create_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_create", leader) % [
-			_color_text(YELLOW, leader.get_name())
-		])
+		 _get_speech("troop_create", leader).format({
+			"person": _color_text(YELLOW, leader.get_name())
+		}))
 
 func person_died(person):
 	emit_signal("add_game_record", 
-		tr("GAME_RECORD_PERSON_DIED") % [
-			_color_text(YELLOW, person.get_name())
-		])
-	
+		tr("GAME_RECORD_PERSON_DIED").format({
+			"person": _color_text(YELLOW, person.get_name())
+		}))
+	emit_signal("add_person_dialog", null,
+		_get_dialog("person_died", person, {}).format({
+			"person": _color_text(YELLOW, person.get_name())
+		}))
+
+func person_available_by_brother(person, other_person):
+	if person.get_belonged_faction().player_controlled:
+		emit_signal("add_person_dialog", person,
+			_get_dialog("person_available_by_brother", person, {'other': other_person}).format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"other_person": _color_text(YELLOW, other_person.get_name()),
+				"location": _color_text(CYAN, person.get_location().get_name())
+			}))
+
+func person_available_by_spouse(person, other_person):
+	if person.get_belonged_faction().player_controlled:
+		emit_signal("add_person_dialog", person,
+			_get_dialog("person_available_by_spouse", person, {'other': other_person}).format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"other_person": _color_text(YELLOW, other_person.get_name()),
+				"location": _color_text(CYAN, person.get_location().get_name())
+			}))
+
+func person_available_by_children(person, other_person):
+	if person.get_belonged_faction().player_controlled:
+		emit_signal("add_person_dialog", person,
+			_get_dialog("person_available_by_children", person, {'other': other_person}).format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"other_person": _color_text(YELLOW, other_person.get_name()),
+				"location": _color_text(CYAN, person.get_location().get_name())
+			}))
+		
+func person_available_by_sibling(person, other_person):
+	if person.get_belonged_faction().player_controlled:
+		emit_signal("add_person_dialog", person,
+			_get_dialog("person_available_by_sibling", person, {'other': other_person}).format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"other_person": _color_text(YELLOW, other_person.get_name()),
+				"location": _color_text(CYAN, person.get_location().get_name())
+			}))

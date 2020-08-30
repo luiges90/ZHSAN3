@@ -1,7 +1,7 @@
 extends Control
 class_name PersonDialog
 
-func _init():
+func _ready():
 	$Timer.wait_time = GameConfig.dialog_show_time
 
 

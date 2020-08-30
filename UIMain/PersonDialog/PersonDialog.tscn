@@ -7,7 +7,7 @@
 
 [node name="PersonDialog" type="Control"]
 margin_right = 800.0
-margin_bottom = 256.0
+margin_bottom = 192.0
 theme = ExtResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -17,12 +17,12 @@ __meta__ = {
 [node name="Portrait" type="TextureRect" parent="."]
 margin_right = 512.0
 margin_bottom = 512.0
-rect_scale = Vector2( 0.5, 0.5 )
+rect_scale = Vector2( 0.375, 0.375 )
 texture = ExtResource( 2 )
 
 [node name="SpeakerPanel" type="Panel" parent="."]
-margin_left = 256.0
-margin_right = 376.0
+margin_left = 192.0
+margin_right = 312.0
 margin_bottom = 36.0
 
 [node name="Speaker" type="Label" parent="SpeakerPanel"]
@@ -39,7 +39,7 @@ __meta__ = {
 [node name="DialogPanel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 256.0
+margin_left = 192.0
 margin_top = 36.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -56,6 +56,9 @@ custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[color=red]劉表軍[/color]滅亡了"
 text = "劉表軍滅亡了"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

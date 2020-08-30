@@ -114,10 +114,6 @@ STATUS_NORMAL,Normal,一般,一般
 STATUS_WILD,Wild,在野,在野
 STATUS_FACTION_LEADER,Leader,君主,君主
 GAME_RECORD,Record,信息栏,信息欄
-GAME_RECORD_CREATE_TROOP,%s has been created from %s,%s从%s出征,%s從%s出征
-GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,%s has taken over %s,%s占领了%s,%s佔領了%s
-GAME_RECORD_TROOP_DESTROYED,%s has been routed,%s溃散了,%s潰散了
-GAME_RECORD_FACTION_DESTROYED,%s has been eliminated,%s灭亡了,%s滅亡了
 FACTION_LIST,Faction List,势力列表,勢力列表
 GENDER,Gender,性別,性別
 MALE,Male,男,男
@@ -142,7 +138,6 @@ FACTION_PERSONS,Total Officers,势力武将,勢力武將
 WILD_PERSONS,Unaffilated Officers,在野武將,在野武將
 FRONTLINE,Front line,前线,前線
 TOTAL_EQUIPMENT,Equipment,兵装数,兵裝數
-GAME_RECORD_PERSON_DIED,%s has died,%s离开了人世,%s離開了人世
 AGE,Age,年龄,年齡
 PERSONAL_RELATIONS,Personal Relations,人物关系,人物關系
 FATHER,Father,父亲,父親
@@ -158,3 +153,8 @@ AI_TRAINING_RATE,AI Training Rate,电脑训练率,電腦訓練率
 AI_OFFENCE_RATE,AI Offence Rate,电脑部队攻击力乘数,電腦部隊攻擊力乘數
 AI_DEFENCE_RATE,AI Defence Rate,电脑部队防御力乘数,電腦部隊防禦力乘數
 INVERSE_SELECT,INVERSE SELECT,反选,反選
+GAME_RECORD_CREATE_TROOP,{troop} has been created from {architecture},{troop}从{architecture}出征,{troop}從{architecture}出征
+GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,{troop} has taken over {architecture},{troop}占领了{architecture},{troop}佔領了{architecture}
+GAME_RECORD_TROOP_DESTROYED,{troop} has been routed,{troop}溃散了,{troop}潰散了
+GAME_RECORD_FACTION_DESTROYED,{faction} has been eliminated,{faction}灭亡了,{faction}滅亡了
+GAME_RECORD_PERSON_DIED,{person} has died,{person}离开了人世,{person}離開了人世

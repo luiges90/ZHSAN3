@@ -2,49 +2,49 @@
 	"player_turn": [
 		{
 			"Conditions": [],
-			"Text": "終於輪到我%s了。"
+			"Text": "終於輪到我{person}了。"
 		}
 	],
 	"troop_create": [
 		{
 			"Conditions": [],
-			"Text": "跟著我%s出發。"
+			"Text": "跟著我{person}出發。"
 		}
 	],
 	"troop_move": [
 		{
 			"Conditions": [],
-			"Text": "前進！目標%s"
+			"Text": "前進！目標{position}"
 		}
 	],
 	"troop_attack": [
 		{
 			"Conditions": [],
-			"Text": "以%s為目標開展行動。"
+			"Text": "以{position}為目標開展行動。"
 		}
 	],
 	"troop_follow": [
 		{
 			"Conditions": [],
-			"Text": "跟隨%s。"
+			"Text": "跟隨{position}。"
 		}
 	],
 	"troop_enter": [
 		{
 			"Conditions": [],
-			"Text": "進入%s。"
+			"Text": "進入{position}。"
 		}
 	],
 	"destroyed_target_troop": [
 		{
 			"Conditions": [],
-			"Text": "擊破了%s！"
+			"Text": "擊破了{troop}！"
 		}
 	],
 	"destroyed_target_architecture": [
 		{
 			"Conditions": [],
-			"Text": "攻破了%s的城防了！"
+			"Text": "攻破了{architecture}的城防了！"
 		}
 	]
 }

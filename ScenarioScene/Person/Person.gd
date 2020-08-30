@@ -9,6 +9,7 @@ enum Status { NONE,
 	NORMAL, WILD
 }
 enum DeadReason { NATURAL, UNNNATURAL }
+enum AvailableReason { BROTHER, SPOUSE, CHILDREN, SIBLING, NONE }
 
 var id: int setget forbidden
 var scenario
@@ -60,6 +61,7 @@ var spouses = [] setget forbidden
 var brothers = [] setget forbidden
 
 signal person_died
+signal person_available
 
 func forbidden(x):
 	assert(false)
@@ -174,7 +176,7 @@ func get_prestige():
 func get_prestige_str():
 	return str(prestige)
 	
-static func cmp_prestige_desc(a, b):
+func cmp_prestige_desc(a, b):
 	return a.get_prestige() > b.get_prestige()
 	
 func get_merit():
@@ -211,7 +213,7 @@ func get_salary():
 func get_age():
 	return scenario.get_year() - born_year + 1
 	
-static func cmp_age_desc(a, b):
+func cmp_age_desc(a, b):
 	return a.get_age() > b.get_age()
 	
 func get_expected_death_year():
@@ -519,18 +521,24 @@ func move_to_architecture(arch):
 	task_days = apply_influences("modify_person_movement_time", {"value": task_days, "person": self})
 	
 func become_available():
-	for b in brothers:
+	var brother_sorted = brothers.duplicate()
+	brother_sorted.sort_custom(self, "cmp_age_desc")
+	for b in brother_sorted:
 		if b._status == Status.NORMAL or b._status == Status.WILD:
 			var arch = b.get_belonged_architecture()
 			_status = b._status
 			arch.add_person(self)
+			emit_signal("person_available", self, AvailableReason.BROTHER, b)
 			return
 	
-	for s in spouses:
+	var spouses_sorted = spouses.duplicate()
+	spouses_sorted.sort_custom(self, "cmp_age_desc")
+	for s in spouses_sorted:
 		if s._status == Status.NORMAL or s._status == Status.WILD:
 			var arch = s.get_belonged_architecture()
 			_status = s._status
 			arch.add_person(self)
+			emit_signal("person_available", self, AvailableReason.SPOUSE, s)
 			return
 	
 	if father != null:
@@ -538,6 +546,7 @@ func become_available():
 			var arch = father.get_belonged_architecture()
 			_status = father._status
 			arch.add_person(self)
+			emit_signal("person_available", self, AvailableReason.CHILDREN, father)
 			return
 			
 	if mother != null:
@@ -545,11 +554,23 @@ func become_available():
 			var arch = mother.get_belonged_architecture()
 			_status = mother._status
 			arch.add_person(self)
+			emit_signal("person_available", self, AvailableReason.CHILDREN, mother)
+			return
+	
+	var siblings_sorted = get_siblings().duplicate()
+	siblings_sorted.sort_custom(self, "cmp_age_desc")
+	for p in siblings_sorted:
+		if p._status != Status.NONE:
+			var arch = p.get_belonged_architecture()
+			_status = p._status
+			arch.add_person(self)
+			emit_signal("person_available", self, AvailableReason.SIBLING, p)
 			return
 	
 	var arch = scenario.architectures[available_architecture_id]
 	_status = Status.WILD
 	arch.add_person(self)
+	emit_signal("person_available", self, AvailableReason.NONE, null)
 	
 func die():
 	if is_faction_leader():

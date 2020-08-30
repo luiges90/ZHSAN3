@@ -46,6 +46,14 @@ static func apply_influences(influence_container, in_operation, params: Dictiona
 static func check_conditions(influence_container, params: Dictionary):
 	for condition in influence_container.conditions:
 		match condition['Operation']:
+			'gender_male':
+				if params.has('person'):
+					if params['person'].gender:
+						return false
+			'gender_female':
+				if params.has('person'):
+					if not params['person'].gender:
+						return false
 			'is_leader': 
 				if params.has('troop') and params.has('person'):
 					if params['troop'].get_leader() != params['person']:
