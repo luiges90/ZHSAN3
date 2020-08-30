@@ -2,6 +2,8 @@ extends Panel
 class_name TabList
 
 const TITLE_COLOR = Color(0.04, 0.53, 0.79)
+# 長按計算時間，單位：毫秒
+const LONG_PRESSED_TIME = 500
 
 var current_action
 var current_architecture
@@ -9,6 +11,16 @@ var current_architecture
 var _confirming
 
 var _max_selection = -1
+
+# 記錄長按事件作用物體id，用於實現長按動作
+var long_pressed_object_id = -1
+# 記錄長按事件開始時間，用於實現長按動作
+var long_pressed_start_time = -1
+
+# 長按信號
+signal long_pressed_signal
+# 單擊信號
+signal single_pressed_signal
 
 # for title sorting
 enum _sorting_order {
@@ -49,6 +61,18 @@ func _clickable_label(text: String, on_click_func, on_click_func_name, object):
 	label.underline = LinkButton.UNDERLINE_MODE_NEVER
 	label.mouse_default_cursor_shape = Control.CURSOR_ARROW
 	label.connect("pressed", on_click_func, on_click_func_name, [label, object])
+	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
+	label.mouse_filter = Control.MOUSE_FILTER_STOP
+	return label
+
+# 帶有長點擊事件的按鈕	
+func _clickable_label_with_long_pressed_event(text: String, on_click_func, test, test2, object, checkbox):
+	var label = LinkButton.new()
+	label.text = text
+	label.underline = LinkButton.UNDERLINE_MODE_NEVER
+	label.mouse_default_cursor_shape = Control.CURSOR_ARROW
+	label.connect("button_down", self, "_long_pressed_down_event", [label])
+	label.connect("button_up", self, "_long_pressed_up_event", [label, on_click_func, object, checkbox])
 	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label
@@ -130,6 +154,18 @@ func _on_TabList_mouse_entered():
 	_current_mouseover_rect = null
 	update()
 
+func _long_pressed_down_event(label):
+	long_pressed_object_id = label.get_instance_id()
+	long_pressed_start_time = OS.get_system_time_msecs()
+	
+func _long_pressed_up_event(label, receiver, object, checkbox):
+	if long_pressed_start_time > 0 and long_pressed_object_id > 0:
+		if OS.get_system_time_msecs() - long_pressed_start_time > LONG_PRESSED_TIME:
+			emit_signal("long_pressed_signal", label, receiver, object, checkbox)
+		else:
+			emit_signal("single_pressed_signal", label, receiver, object, checkbox)
+		long_pressed_start_time = -1
+		long_pressed_object_id = -1
 
 ####################################
 #             Get list             #
