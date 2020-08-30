@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://UIMain/ArchitectureDetail/ArchitectureDetail.tscn" type="PackedScene" id=25]
 [ext_resource path="res://UIMain/Control.wav" type="AudioStream" id=26]
 [ext_resource path="res://UIMain/PersonBubble/PersonBubble.tscn" type="PackedScene" id=27]
+[ext_resource path="res://UIMain/PersonDialog/PersonDialog.tscn" type="PackedScene" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -161,6 +162,17 @@ margin_left = -512.0
 margin_top = -300.0
 margin_right = 512.0
 margin_bottom = 300.0
+
+[node name="PersonDialog" parent="." instance=ExtResource( 28 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -400.0
+margin_top = -336.0
+margin_right = 400.0
+margin_bottom = -80.0
 
 [node name="ArchitectureAndTroopMenu" parent="." instance=ExtResource( 14 )]
 visible = false

@@ -507,6 +507,7 @@ func _on_focus_camera(position):
 ########################################
 var __day_passed_sec = OS.get_ticks_msec()
 
+# TODO run computation on separate thread
 func _on_day_passed():
 	# run Troops
 	var troop_queue = TroopQueue.new(troops.values())

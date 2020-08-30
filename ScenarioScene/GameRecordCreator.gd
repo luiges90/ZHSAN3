@@ -6,6 +6,7 @@ var _scenario
 
 signal add_game_record
 signal add_person_bubble
+signal add_person_dialog
 
 const GREEN = "#00FF00" # troop
 const CYAN = "#00FFFF" # architecture, positions

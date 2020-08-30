@@ -26,6 +26,7 @@ func _unhandled_input(event):
 			($TroopDetail as TroopDetail).hide()
 			($PersonDetail as PersonDetail).hide()
 			($ArchitectureDetail as ArchitectureDetail).hide()
+			($PersonDialog as PersonDialog).hide()
 			emit_signal("cancel_ui")
 
 func _on_mouse_moved_to_map_posiiton(position, terrain):

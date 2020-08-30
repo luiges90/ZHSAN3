@@ -45,6 +45,8 @@ func _register_game_record_ui():
 	$UICanvas/UIMain/GameRecord.connect("focus_camera", $Scenario, "_on_focus_camera")
 	
 	$Scenario/GameRecordCreator.connect("add_person_bubble", $UICanvas/UIMain/PersonBubble, "show_bubble")
+	
+	$Scenario/GameRecordCreator.connect("add_person_dialog", $UICanvas/UIMain/PersonDialogm "show_dialog")
 
 func _register_date_runner():
 	$Scenario/DateRunner.connect("date_updated", $UICanvas/UIMain/ScreenBlind, "show_date")

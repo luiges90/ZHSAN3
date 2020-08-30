@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Images/PersonPortrait/default-male-officer.jpg" type="Texture" id=2]
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://UIMain/PersonDialog/PersonDialog.gd" type="Script" id=4]
+
+[node name="PersonDialog" type="Control"]
+margin_right = 800.0
+margin_bottom = 256.0
+theme = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="TextureRect" parent="."]
+margin_right = 512.0
+margin_bottom = 512.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="SpeakerPanel" type="Panel" parent="."]
+margin_left = 256.0
+margin_right = 376.0
+margin_bottom = 36.0
+
+[node name="Speaker" type="Label" parent="SpeakerPanel"]
+margin_right = 120.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 1 )
+text = "旁白"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogPanel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_top = 36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog" type="RichTextLabel" parent="DialogPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[color=red]劉表軍[/color]滅亡了"
+text = "劉表軍滅亡了"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
