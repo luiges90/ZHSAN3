@@ -66,7 +66,7 @@ func _clickable_label(text: String, on_click_func, on_click_func_name, object):
 	return label
 
 # 帶有長點擊事件的按鈕	
-func _clickable_label_with_long_pressed_event(text: String, on_click_func, test, test2, object, checkbox):
+func _clickable_label_with_long_pressed_event(text: String, on_click_func, object, checkbox):
 	var label = LinkButton.new()
 	label.text = text
 	label.underline = LinkButton.UNDERLINE_MODE_NEVER

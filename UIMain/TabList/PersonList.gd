@@ -131,17 +131,17 @@ func _populate_basic_data(person_list: Array, action):
 		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
 			item_list.add_child(checkbox)
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_merit()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_popularity()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_prestige()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_karma()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.task_days) + tr('DAY_UNIT'), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_merit()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_popularity()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_prestige()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_karma()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.task_days) + tr('DAY_UNIT'), self, person, checkbox))
 
 func _populate_ability_data(person_list: Array, action):
 	var item_list = $Tabs/Tab2/Grid as GridContainer
@@ -172,17 +172,17 @@ func _populate_ability_data(person_list: Array, action):
 		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
 			item_list.add_child(checkbox)
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_command()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_strength()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_intelligence()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_politics()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_glamour()), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.command_exp), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.strength_exp), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.intelligence_exp), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.politics_exp), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.glamour_exp), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_command()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_strength()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_intelligence()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_politics()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_glamour()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.command_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.strength_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.intelligence_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.politics_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.glamour_exp), self, person, checkbox))
 		
 func _populate_internal_data(person_list: Array, action):
 	var item_list = $Tabs/Tab3/Grid as GridContainer
@@ -208,12 +208,12 @@ func _populate_internal_data(person_list: Array, action):
 		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
 			item_list.add_child(checkbox)
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_agriculture_ability())), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_commerce_ability())), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_morale_ability())), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_endurance_ability())), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_agriculture_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_commerce_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_morale_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_endurance_ability())), self, person, checkbox))
 		
 		
 func _populate_military_data(person_list: Array, action):
@@ -240,12 +240,12 @@ func _populate_military_data(person_list: Array, action):
 		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
 			item_list.add_child(checkbox)
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_producing_equipment_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_recruit_troop_ability())), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_train_troop_ability())), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_produce_equipment_ability())), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_producing_equipment_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_recruit_troop_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_train_troop_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_produce_equipment_ability())), self, person, checkbox))
 
 func _populate_personal_relation_data(person_list: Array, action):
 	var item_list = $Tabs/Tab5/Grid as GridContainer
@@ -270,11 +270,11 @@ func _populate_personal_relation_data(person_list: Array, action):
 		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
 			item_list.add_child(checkbox)
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_father_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_mother_name(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_spouse_names(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_brother_names(), self, "__on_clickable_label_click", "__on_clickable_label_long_pressed", person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_father_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_mother_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_spouse_names(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_brother_names(), self, person, checkbox))
 		
 
 func _on_Confirm_pressed():
