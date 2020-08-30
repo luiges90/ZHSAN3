@@ -123,6 +123,10 @@ func _checkbox_changed(in_cb: CheckBox):
 			any_checked = true
 			break
 	$ActionButtons/Confirm.disabled = not any_checked
+	
+func _checkbox_change_status(checkbox: CheckBox):
+	checkbox.set_pressed(!checkbox.is_pressed())
+	_checkbox_changed(checkbox)
 
 
 ####################################

@@ -302,7 +302,7 @@ func __on_clickable_label_long_pressed(label, receiver, object, checkbox):
 func __on_clickable_label_click(label, receiver, object, checkbox):
 	if receiver == self:
 		if checkbox != null:
-			checkbox.set_pressed(!checkbox.is_pressed())
+			_checkbox_change_status(checkbox)
 
 func _on_TroopMenu_troop_person_clicked(troop):
 	current_action = Action.LIST
