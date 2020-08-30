@@ -19,4 +19,5 @@ func _on_Timer_timeout():
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		hide()
+		if (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) and event.pressed:
+			hide()
