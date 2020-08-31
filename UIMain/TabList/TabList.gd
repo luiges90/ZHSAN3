@@ -176,13 +176,17 @@ func _on_UnselectAll_pressed():
 	$ActionButtons/Confirm.disabled = true
 	
 func _on_InverseSelect_pressed():
-	var disable = true
-	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
-		checkbox.set_pressed(!checkbox.is_pressed())
-		if checkbox.is_pressed():
-			disable = false
-	$ActionButtons/Confirm.disabled = disable
+	if _max_selection > 1:
+		var disable = true
+		for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+			checkbox.set_pressed(!checkbox.is_pressed())
+			if checkbox.is_pressed():
+				disable = false
+		$ActionButtons/Confirm.disabled = disable
 
+#######################
+#       Sorting       #
+#######################
 # title to be sorted
 func _on_title_sorting_click(label, object):
 	# get clicked title
