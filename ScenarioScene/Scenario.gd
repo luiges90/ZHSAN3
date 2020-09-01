@@ -546,6 +546,7 @@ func _on_day_passed():
 	
 	yield(get_tree(), "idle_frame")
 	emit_signal("all_faction_finished")
+	_on_architecture_survey_updated(null)
 	
 func _on_month_passed():
 	for faction in factions.values():
