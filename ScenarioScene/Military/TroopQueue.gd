@@ -17,7 +17,7 @@ func execute():
 		var troop = queue.pop_front()
 		if is_instance_valid(troop) and not troop._destroyed:
 			var step = troop.execute_step()
-			
+
 			if step.type == Troop.ExecuteStepType.MOVED:
 				var result = troop.set_position(step.new_position)
 				if result:

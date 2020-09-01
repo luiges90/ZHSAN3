@@ -454,7 +454,7 @@ func execute_step() -> ExecuteStepResult:
 			__step_retry = 0
 			return ExecuteStepResult.new(ExecuteStepType.MOVED, new_position)
 		else:
-			return ExecuteStepType.STOPPED
+			return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 	elif current_order != null and (current_order.type == OrderType.FOLLOW || current_order.type == OrderType.ATTACK || current_order.type == OrderType.ENTER):
 		var target = current_order.target
 		if is_instance_valid(target) and not target._destroyed:
