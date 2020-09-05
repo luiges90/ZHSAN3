@@ -435,6 +435,10 @@ translations=PoolStringArray( "res://i18n/i18n.en.translation", "res://i18n/i18n
 
 file_logging/enable_file_logging=true
 
+[memory]
+
+limits/message_queue/max_size_kb=1048576
+
 [mono]
 
 debugger_agent/port=11000

@@ -58,7 +58,7 @@ func run_troop(troop, scenario):
 			if p == troop._ai_destination_architecture.map_position:
 				troop.set_enter_order(troop._ai_destination_architecture.map_position)
 				done = true
-				break
+				break 
 			else:
 				var d = Util.m_dist(p, troop._ai_destination_architecture.map_position)
 				if d <= troop.military_kind.range_max:

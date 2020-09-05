@@ -23,6 +23,7 @@ func show_menu(arch, mouse_x, mouse_y):
 		$H/MainMenu/Military.visible = is_player
 		$H/MainMenu/Officers.visible = is_player
 		$H/MainMenu/ToggleAutoTask.visible = is_player
+		$H/MainMenu/FactionDetail.visible = true
 
 	showing_architecture = arch
 	

@@ -130,26 +130,27 @@ for kind in movement_kinds:
 					try:
 						finder = AStarFinder(diagonal_movement=DiagonalMovement.never, max_runs=MAX_RUNS[step_level])
 						path, runs = finder.find_path(start, end, grid)
-						print('operations:', runs, 'path length:', len(path))
+						actual_path = [[p[0], p[1] - 1] for p in path]
+						print('operations:', runs, 'path length:', len(actual_path))
 						# print(grid.grid_str(path=path, start=start, end=end))
-						print('found path:', path)
+						print('found path:', actual_path)
 					except ExecutionRunsException:
 						print('Path too long')
-						path = []
+						actual_path = []
 					
-					if len(path) > 0:
+					if len(actual_path) > 0:
 						path_found += 1
 						kind_paths.append({
 							'MovementKind': kind,
 							'StartArchitecture': a1,
 							'EndArchitecture': a2,
-							'Path': path
+							'Path': actual_path
 						})
 						kind_paths.append({
 							'MovementKind': kind,
 							'StartArchitecture': a2,
 							'EndArchitecture': a1,
-							'Path': list(reversed(path))
+							'Path': list(reversed(actual_path))
 						})
 						
 						path_founds[a1] = [path_founds[a1][0] + 1, max(path_founds[a1][1], step_level)]

@@ -635,7 +635,7 @@ func day_event():
 			task_days -= 1
 			
 	# check death
-	if scenario.get_year() >= get_expected_death_year() and randf() < 1 / 720.0:
+	if get_location() != null and scenario.get_year() >= get_expected_death_year() and randf() < 1 / 240.0:
 		die()
 
 func month_event():

@@ -158,3 +158,4 @@ GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,{troop} has taken over {architecture},{tro
 GAME_RECORD_TROOP_DESTROYED,{troop} has been routed,{troop}溃散了,{troop}潰散了
 GAME_RECORD_FACTION_DESTROYED,{faction} has been eliminated,{faction}灭亡了,{faction}滅亡了
 GAME_RECORD_PERSON_DIED,{person} has died,{person}离开了人世,{person}離開了人世
+NARRATOR,Narrator,旁白,旁白

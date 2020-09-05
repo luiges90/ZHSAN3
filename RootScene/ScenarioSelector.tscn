@@ -4,10 +4,10 @@
 [ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
 [ext_resource path="res://RootScene/ScenarioSelector.gd" type="Script" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.376471 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.376471 )
 
 [node name="ScenarioSelector" type="Panel"]
@@ -40,7 +40,7 @@ margin_left = 16.0
 margin_top = 64.0
 margin_right = -8.0
 margin_bottom = -8.0
-custom_styles/bg = SubResource( 2 )
+custom_styles/bg = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -58,7 +58,7 @@ margin_left = 8.0
 margin_top = 64.0
 margin_right = -16.0
 margin_bottom = -64.0
-custom_styles/bg = SubResource( 3 )
+custom_styles/bg = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

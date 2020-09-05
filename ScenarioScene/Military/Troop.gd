@@ -523,8 +523,9 @@ func execute_attack():
 						
 					damage = int(damage)
 					counter_damage = int(counter_damage)
-				
-					var merit_rate = min(sqrt(damage / (counter_damage + 100.0)), 5) + damage / 1000.0
+					
+					var damage_for_merit = damage * (10 if target is Architecture else 1)
+					var merit_rate = min(sqrt(damage_for_merit / (counter_damage + 100.0)), 5) + damage_for_merit / 1000.0
 					for p in get_persons():
 						if p == get_leader():
 							p.add_command_exp(40)
@@ -540,19 +541,20 @@ func execute_attack():
 							p.add_prestige(merit_rate / 2 - 0.625)
 					
 					var other_merit_rate = min(sqrt(counter_damage / (damage + 100.0)), 5) + counter_damage / 1000.0
-					for p in target.get_persons():
-						if p == get_leader():
-							p.add_command_exp(80)
-							p.add_strength_exp(20)
-							p.add_merit((merit_rate - 0.5) * 25)
-							p.add_popularity(other_merit_rate / 2)
-							p.add_prestige(other_merit_rate - 1.25)
-						else:
-							p.add_command_exp(40)
-							p.add_strength_exp(10)
-							p.add_merit((merit_rate - 0.5) * 12.5)
-							p.add_popularity(other_merit_rate / 4)
-							p.add_prestige(other_merit_rate / 2 - 0.625)
+					if not target is Architecture:
+						for p in target.get_persons():
+							if p == get_leader():
+								p.add_command_exp(80)
+								p.add_strength_exp(20)
+								p.add_merit((merit_rate - 0.5) * 25)
+								p.add_popularity(other_merit_rate / 2)
+								p.add_prestige(other_merit_rate - 1.25)
+							else:
+								p.add_command_exp(40)
+								p.add_strength_exp(10)
+								p.add_merit((merit_rate - 0.5) * 12.5)
+								p.add_popularity(other_merit_rate / 4)
+								p.add_prestige(other_merit_rate / 2 - 0.625)
 				
 					receive_attack_damage(counter_damage)
 					target.receive_attack_damage(damage)

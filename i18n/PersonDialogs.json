@@ -21,7 +21,7 @@
 		{
 			"Conditions": [
 				{
-					"Operation": "gender_male"
+					"Operation": "gender_female"
 				}
 			],
 			"Text": "臣的夫君{other_person}介绍，效力于将军，臣今日也加入将军麾下，与夫君并肩作战。"
@@ -29,7 +29,7 @@
 		{
 			"Conditions": [
 				{
-					"Operation": "gender_female"
+					"Operation": "gender_male"
 				}
 			],
 			"Text": "臣的妻室{other_person}效力于将军，臣今日也加入将军麾下，与妻室并肩作战。"
