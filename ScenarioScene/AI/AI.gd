@@ -17,6 +17,12 @@ func _init():
 
 func run_faction(faction: Faction, scenario):
 	_scenario = scenario
+	
+	if faction.get_advisor() == null or randf() < 0.1:
+		var candidates = faction.get_advisor_candidates()
+		if candidates.size() > 0:
+			faction._set_advisor(Util.max_by(candidates, "get_intelligence")[1])
+	
 	for sect in faction.get_sections():
 		run_section(faction, sect, scenario)
 		

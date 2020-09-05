@@ -27,7 +27,7 @@ __meta__ = {
 
 [node name="MainMenu" type="VBoxContainer" parent="H" index="0"]
 margin_right = 239.0
-margin_bottom = 242.0
+margin_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,29 +49,35 @@ margin_right = 239.0
 margin_bottom = 106.123
 text = "OFFICERS"
 
-[node name="ToggleAutoTask" type="Button" parent="H/MainMenu" index="3"]
+[node name="Faction" type="Button" parent="H/MainMenu" index="3"]
 margin_top = 102.0
 margin_right = 239.0
 margin_bottom = 140.123
-text = "TOGGLE_AUTO_TASK"
+text = "FACTION"
 
-[node name="PersonList" type="Button" parent="H/MainMenu" index="4"]
+[node name="ToggleAutoTask" type="Button" parent="H/MainMenu" index="4"]
 margin_top = 136.0
 margin_right = 239.0
 margin_bottom = 174.123
-text = "PERSON_LIST"
+text = "TOGGLE_AUTO_TASK"
 
-[node name="ArchitectureDetail" type="Button" parent="H/MainMenu" index="5"]
+[node name="PersonList" type="Button" parent="H/MainMenu" index="5"]
 margin_top = 170.0
 margin_right = 239.0
 margin_bottom = 208.123
-text = "ARCHITECTURE_DETAILS"
+text = "PERSON_LIST"
 
-[node name="FactionDetail" type="Button" parent="H/MainMenu" index="6"]
+[node name="ArchitectureDetail" type="Button" parent="H/MainMenu" index="6"]
 margin_top = 204.0
 margin_right = 239.0
 margin_bottom = 242.123
-text = "FACTION_DETAIL"
+text = "ARCHITECTURE_DETAILS"
+
+[node name="FactionDetail" type="Button" parent="H/MainMenu" index="7"]
+margin_top = 238.0
+margin_right = 239.0
+margin_bottom = 276.123
+text = "FACTION_DETAILS"
 
 [node name="InternalMenu" type="VBoxContainer" parent="H" index="1"]
 visible = false
@@ -144,12 +150,12 @@ text = "PRODUCE_EQUIPMENT"
 
 [node name="OfficersMenu" type="VBoxContainer" parent="H" index="3"]
 visible = false
-margin_left = 242.0
-margin_right = 327.0
-margin_bottom = 310.0
+margin_left = 235.0
+margin_right = 415.0
+margin_bottom = 242.0
 
 [node name="Blank" type="Button" parent="H/OfficersMenu" index="0"]
-margin_right = 85.0
+margin_right = 180.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 0, 72 )
 custom_styles/hover = SubResource( 1 )
@@ -160,23 +166,51 @@ custom_styles/normal = SubResource( 5 )
 
 [node name="Move" type="Button" parent="H/OfficersMenu" index="1"]
 margin_top = 68.0
-margin_right = 85.0
+margin_right = 180.0
 margin_bottom = 106.123
 text = "MOVE"
 
 [node name="Call" type="Button" parent="H/OfficersMenu" index="2"]
 margin_top = 102.0
-margin_right = 85.0
+margin_right = 180.0
 margin_bottom = 140.123
 text = "CALL"
 
 [node name="FactionMenu" type="VBoxContainer" parent="H" index="4"]
 visible = false
 margin_left = 235.0
-margin_right = 481.0
-margin_bottom = 318.0
+margin_right = 415.0
+margin_bottom = 310.0
 
 [node name="Blank" type="Button" parent="H/FactionMenu" index="0"]
+margin_right = 180.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 0, 108 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+
+[node name="AssignAdvisor" type="Button" parent="H/FactionMenu" index="1"]
+margin_top = 104.0
+margin_right = 180.0
+margin_bottom = 142.123
+text = "ASSIGN_ADVISOR"
+
+[node name="RemoveAdvisor" type="Button" parent="H/FactionMenu" index="2"]
+margin_top = 138.0
+margin_right = 180.0
+margin_bottom = 176.123
+text = "REMOVE_ADVISOR"
+
+[node name="FactionDetailsMenu" type="VBoxContainer" parent="H" index="5"]
+visible = false
+margin_left = 235.0
+margin_right = 481.0
+margin_bottom = 310.0
+
+[node name="Blank" type="Button" parent="H/FactionDetailsMenu" index="0"]
 margin_right = 246.0
 margin_bottom = 208.0
 rect_min_size = Vector2( 0, 208 )
@@ -186,19 +220,19 @@ custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 
-[node name="FactionDetail" type="Button" parent="H/FactionMenu" index="1"]
+[node name="FactionDetail" type="Button" parent="H/FactionDetailsMenu" index="1"]
 margin_top = 204.0
 margin_right = 246.0
 margin_bottom = 242.123
-text = "FACTION_DETAIL"
+text = "FACTION_DETAILS"
 
-[node name="FactionArchitectures" type="Button" parent="H/FactionMenu" index="2"]
+[node name="FactionArchitectures" type="Button" parent="H/FactionDetailsMenu" index="2"]
 margin_top = 238.0
 margin_right = 246.0
 margin_bottom = 276.123
 text = "FACTION_ARCHITECTURES"
 
-[node name="FactionPersons" type="Button" parent="H/FactionMenu" index="3"]
+[node name="FactionPersons" type="Button" parent="H/FactionDetailsMenu" index="3"]
 margin_top = 272.0
 margin_right = 246.0
 margin_bottom = 310.123
@@ -206,6 +240,7 @@ text = "FACTION_PERSONS"
 [connection signal="pressed" from="H/MainMenu/Internal" to="." method="_on_Internal_pressed"]
 [connection signal="pressed" from="H/MainMenu/Military" to="." method="_on_Military_pressed"]
 [connection signal="pressed" from="H/MainMenu/Officers" to="." method="_on_Officers_pressed"]
+[connection signal="pressed" from="H/MainMenu/Faction" to="." method="_on_Faction_pressed"]
 [connection signal="pressed" from="H/MainMenu/ToggleAutoTask" to="." method="_on_ToggleAutoTask_pressed"]
 [connection signal="pressed" from="H/MainMenu/PersonList" to="." method="_on_PersonList_pressed"]
 [connection signal="pressed" from="H/MainMenu/ArchitectureDetail" to="." method="_on_ArchitectureDetail_pressed"]
@@ -220,6 +255,8 @@ text = "FACTION_PERSONS"
 [connection signal="pressed" from="H/MilitaryMenu/ProduceEquipment" to="." method="_on_ProduceEquipment_pressed"]
 [connection signal="pressed" from="H/OfficersMenu/Move" to="." method="_on_Move_pressed"]
 [connection signal="pressed" from="H/OfficersMenu/Call" to="." method="_on_Call_pressed"]
-[connection signal="pressed" from="H/FactionMenu/FactionDetail" to="." method="_on_FactionDetail_pressed"]
-[connection signal="pressed" from="H/FactionMenu/FactionArchitectures" to="." method="_on_FactionArchitectures_pressed"]
-[connection signal="pressed" from="H/FactionMenu/FactionPersons" to="." method="_on_FactionPersons_pressed"]
+[connection signal="pressed" from="H/FactionMenu/AssignAdvisor" to="." method="_on_AssignAdvisor_pressed"]
+[connection signal="pressed" from="H/FactionMenu/RemoveAdvisor" to="." method="_on_RemoveAdvisor_pressed"]
+[connection signal="pressed" from="H/FactionDetailsMenu/FactionDetail" to="." method="_on_FactionDetail_pressed"]
+[connection signal="pressed" from="H/FactionDetailsMenu/FactionArchitectures" to="." method="_on_FactionArchitectures_pressed"]
+[connection signal="pressed" from="H/FactionDetailsMenu/FactionPersons" to="." method="_on_FactionPersons_pressed"]

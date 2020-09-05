@@ -64,6 +64,13 @@ func get_persons() -> Array:
 		Util.append_all(result, s.get_persons())
 	return result
 	
+func get_advisor_candidates() -> Array:
+	var result = []
+	for p in get_persons():
+		if p.get_status() == Person.Status.NORMAL and p.intelligence >= 70:
+			result.append(p)
+	return result
+	
 func get_troops() -> Array:
 	var result = []
 	for s in get_sections():
@@ -107,7 +114,8 @@ func get_advisor():
 	return advisor
 	
 func get_advisor_name():
-	return advisor.get_name() if advisor != null else "----"
+	var a = get_advisor()
+	return a.get_name() if a != null else "----"
 
 ####################################
 #           Manipulation           #
@@ -117,7 +125,7 @@ func _set_leader(person):
 	leader = person
 
 func _set_advisor(person):
-	assert(person == null or advisor.get_belonged_faction() == self)
+	assert(person == null or person.get_belonged_faction() == self)
 	advisor = person
 
 func add_section(section, force: bool = false):

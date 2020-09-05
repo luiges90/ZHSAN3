@@ -62,7 +62,9 @@ func _register_lists():
 	
 func _register_menus():
 	$Scenario.connect("current_faction_set", $UICanvas/UIMain/SaveLoadMenu, "_on_faction_updated")
+	
 	$UICanvas/UIMain/ArchitectureMenu.connect("architecture_toggle_auto_task", $Scenario, "on_architecture_toggle_auto_task")
+	$UICanvas/UIMain/ArchitectureMenu.connect("remove_advisor", $Scenario, "on_architecture_remove_advisor")
 	
 	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
 	

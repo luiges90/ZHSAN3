@@ -13,7 +13,8 @@ enum Action {
 	TRAIN_TROOP, 
 	PRODUCE_EQUIPMENT,
 	SELECT_TROOP_PERSON,
-	SELECT_TROOP_LEADER
+	SELECT_TROOP_LEADER,
+	SELECT_ADVISOR
 }
 
 signal person_selected
@@ -88,6 +89,9 @@ func show_data(person_list: Array):
 			_max_selection = 3
 		Action.SELECT_TROOP_LEADER:
 			$Title.text = tr('SELECT_TROOP_LEADER')
+			_max_selection = 1
+		Action.SELECT_ADVISOR:
+			$Title.text = tr('ASSIGN_ADVISOR')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 

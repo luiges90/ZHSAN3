@@ -136,6 +136,7 @@ static func dict_max(dict: Dictionary):
 			most = dict[k]
 	return result
 
+# Returns item and object
 static func min_pos(list: Array) -> Array:
 	var value = list[0]
 	var result = list[0]
@@ -150,6 +151,7 @@ static func min_pos(list: Array) -> Array:
 		index += 1
 	return [result_index, result]
 	
+# Returns item and object
 static func max_pos(list: Array) -> Array:
 	var value = list[0]
 	var result = list[0]
@@ -164,6 +166,7 @@ static func max_pos(list: Array) -> Array:
 		index += 1
 	return [result_index, result]
 	
+# Returns item and object
 static func min_by(list: Array, criteria_func: String, params = null) -> Array:
 	var value = 9e99
 	var result = list[0]
@@ -182,6 +185,7 @@ static func min_by(list: Array, criteria_func: String, params = null) -> Array:
 		index += 1
 	return [result_index, result]
 
+# Returns item and object
 static func max_by(list: Array, criteria_func: String, params = null) -> Array:
 	var value = -9e99
 	var result = list[0]

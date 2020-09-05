@@ -411,6 +411,9 @@ func _on_troop_clicked(troop, mx, my):
 func _on_troop_survey_updated(troop):
 	emit_signal("troop_survey_updated", troop)
 	
+func on_architecture_remove_advisor(current_architecture):
+	current_architecture.get_belonged_faction()._set_advisor(null)
+	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
 	var selected_persons = []
 	for id in selected_person_ids:
@@ -425,6 +428,9 @@ func _on_person_selected(task, current_architecture, selected_person_ids, other 
 		PersonList.Action.CALL:
 			for p in selected_persons:
 				p.move_to_architecture(current_architecture)
+		PersonList.Action.SELECT_ADVISOR:
+			current_architecture.get_belonged_faction()._set_advisor(selected_persons[0])
+			
 
 func _on_architecture_selected(task, current_architecture, selected_arch_ids, other = {}):
 	var selected_person_ids = other['selected_person_ids']

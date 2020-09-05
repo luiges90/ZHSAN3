@@ -87,7 +87,7 @@ MAX_QUANTITY_MULITPLIER,Max Quantity,兵力上限,兵力上限
 QUANTITY,Quantity,兵力,兵力
 GAME_INFO,Information,各项信息,各項信息
 EQUIPMENTS,Equipments,兵装,兵裝
-FACTION_DETAIL,Faction Details,势力信息,勢力信息
+FACTION_DETAILS,Faction Details,势力信息,勢力信息
 FACTION_ARCHITECTURES,Faction Architectures,势力建筑,勢力建築
 FACTION_PERSONS,Faction Persons,势力人物,勢力人物
 TOGGLE_AUTO_TASK,Auto Task,委任内政,委任內政
@@ -161,3 +161,5 @@ GAME_RECORD_PERSON_DIED,{person} has died,{person}离开了人世,{person}離開
 NARRATOR,Narrator,旁白,旁白
 LEADER_NAME,Leader,君主,君主
 ADVISOR_NAME,Advisor,軍師,軍師
+ASSIGN_ADVISOR,Assign Advisor,委任軍師,委任軍師
+REMOVE_ADVISOR,Remove Advisor,解任軍師,解任軍師

@@ -6,6 +6,7 @@ signal architecture_list_clicked
 signal faction_list_clicked
 signal architecture_toggle_auto_task
 signal architecture_create_troop
+signal remove_advisor
 
 var showing_architecture
 var _opening_list
@@ -41,14 +42,14 @@ func show_menu(arch, mouse_x, mouse_y):
 func _open_submenu():
 	$H/MilitaryMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Military.rect_position.y)
 	$H/OfficersMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Officers.rect_position.y)
-	$H/FactionMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y)
+	$H/FactionDetailsMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y)
 	._open_submenu()
 	
 func _hide_submenus():
 	$H/InternalMenu.hide()
 	$H/MilitaryMenu.hide()
 	$H/OfficersMenu.hide()
-	$H/FactionMenu.hide()
+	$H/FactionDetailsMenu.hide()
 
 
 func _on_Internal_pressed():
@@ -66,9 +67,14 @@ func _on_Officers_pressed():
 	$H/OfficersMenu.show()
 	
 
-func _on_Main_FactionDetail_pressed():
+func _on_Faction_pressed():
 	_open_submenu()
 	$H/FactionMenu.show()
+	
+
+func _on_Main_FactionDetail_pressed():
+	_open_submenu()
+	$H/FactionDetailsMenu.show()
 
 
 func _on_PersonList_pressed():
@@ -161,4 +167,16 @@ func _on_FactionDetail_pressed():
 func _on_FactionPersons_pressed():
 	_select_item()
 	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_persons(), PersonList.Action.LIST)
+
+
+
+func _on_AssignAdvisor_pressed():
+	_select_item()
+	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_advisor_candidates(), PersonList.Action.SELECT_ADVISOR)
+
+
+
+func _on_RemoveAdvisor_pressed():
+	_select_item()
+	emit_signal("remove_advisor", showing_architecture)
 
