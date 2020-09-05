@@ -69,55 +69,55 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 100, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 200, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 300, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 400, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 500, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 600, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 700, 0, 100, 100 )
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=21]
 animations = [ {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
 } ]
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=22]
 size = 32
 outline_size = 1
 outline_color = Color( 1, 0, 0, 1 )
@@ -143,7 +143,7 @@ frames = SubResource( 12 )
 
 [node name="Routed" type="AnimatedSprite" parent="TroopArea"]
 visible = false
-frames = SubResource( 22 )
+frames = SubResource( 21 )
 
 [node name="RoutedSound" type="AudioStreamPlayer" parent="TroopArea/Routed"]
 stream = ExtResource( 7 )
@@ -165,7 +165,7 @@ rect_min_size = Vector2( 90, 56 )
 margin_right = 128.0
 margin_bottom = 128.0
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1

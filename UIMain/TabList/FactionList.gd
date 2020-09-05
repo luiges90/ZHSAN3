@@ -35,11 +35,13 @@ func _populate_basic_data(list: Array, action):
 	_sorted_list = list # default faction list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 7
+		item_list.columns = 9
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 6
+		item_list.columns = 8
 	item_list.add_child(_title_sorting(tr('FACTION_NAME'), self, "_on_title_sorting_click", list))
+	item_list.add_child(_title_sorting(tr('LEADER_NAME'), self, "_on_title_sorting_click", list))
+	item_list.add_child(_title_sorting(tr('ADVISOR_NAME'), self, "_on_title_sorting_click", list))
 	item_list.add_child(_title_sorting(tr('PERSON_COUNT'), self, "_on_title_sorting_click", list))
 	item_list.add_child(_title_sorting(tr('ARCHITECTURE_COUNT'), self, "_on_title_sorting_click", list))
 	item_list.add_child(_title_sorting(tr('TOTAL_FUND'), self, "_on_title_sorting_click", list))
@@ -54,6 +56,8 @@ func _populate_basic_data(list: Array, action):
 		if action != Action.LIST:
 			item_list.add_child(_checkbox(f.id))
 		item_list.add_child(_label(f.get_name()))
+		item_list.add_child(_label(f.get_leader_name()))
+		item_list.add_child(_label(f.get_advisor_name()))
 		item_list.add_child(_label(str(f.get_persons().size())))
 		item_list.add_child(_label(str(f.get_architectures().size())))
 		item_list.add_child(_label(str(f.get_total_fund())))

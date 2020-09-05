@@ -349,6 +349,8 @@ func _load_data(path):
 		instance.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
 		__load_item(instance, item, factions, {"sections": sections})
 		instance._set_leader(persons[int(item["Leader"])])
+		if item["Advisor"] >= 0:
+			instance._set_advisor(persons[int(item["Advisor"])])
 	file.close()
 	
 	__handle_game_start(current_faction_id)

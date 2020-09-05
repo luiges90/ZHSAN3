@@ -381,6 +381,12 @@ func _get_compare_value(a, b):
 		if _clicked_label == tr("FACTION_NAME"):
 			a1 = a.get_name()
 			b1 = b.get_name()
+		elif _clicked_label == tr("LEADER_NAME"):
+			a1 = a.get_leader_name()
+			b1 = b.get_leader_name()
+		elif _clicked_label == tr("ADVISOR_NAME"):
+			a1 = a.get_advisor_name()
+			b1 = b.get_advisor_name()
 		elif _clicked_label == tr("PERSON_COUNT"):
 			a1 = a.get_persons().size()
 			b1 = b.get_persons().size()

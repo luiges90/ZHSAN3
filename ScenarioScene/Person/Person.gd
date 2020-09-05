@@ -489,7 +489,7 @@ func add_merit(delta):
 	merit = Util.f2ri(merit + delta)
 
 #####################################
-# Manipulation / Tasks and Statuses #
+#      Manipulation / Statuses      #
 #####################################
 	
 func set_location(item, force = false):
@@ -502,17 +502,7 @@ func set_location(item, force = false):
 func become_wild():
 	_status = Status.WILD
 	
-func clear_working_task():
-	working_task = Task.NONE
-	producing_equipment = null
 
-func set_working_task(work):
-	working_task = work
-	producing_equipment = null
-	
-func set_produce_equipment(equipment: int):
-	producing_equipment = equipment
-	
 func move_to_architecture(arch):
 	var old_location = get_location()
 	set_location(arch)
@@ -579,6 +569,21 @@ func die():
 	_status = Status.NONE
 	alive = false
 	emit_signal('person_died', self)
+	
+#####################################
+#      Manipulation / Domestic      #
+#####################################
+	
+func clear_working_task():
+	working_task = Task.NONE
+	producing_equipment = null
+
+func set_working_task(work):
+	working_task = work
+	producing_equipment = null
+	
+func set_produce_equipment(equipment: int):
+	producing_equipment = equipment
 		
 ####################################
 #     Manipulation / Abilities     #

@@ -8,6 +8,7 @@ var gname: String setget forbidden
 var color: Color setget forbidden
 
 var leader setget forbidden, get_leader
+var advisor setget forbidden, get_advisor
 
 var _section_list = Array() setget forbidden, get_sections
 
@@ -41,6 +42,7 @@ func save_data() -> Dictionary:
 		"_Id": id,
 		"Name": gname,
 		"Leader": leader.id,
+		"Advisor": advisor.id if advisor != null else -1,
 		"Color": Util.save_color(color),
 		"PlayerControlled": player_controlled,
 		"SectionList": Util.id_list(get_sections())
@@ -97,12 +99,26 @@ func is_enemy_to(faction):
 	
 func get_leader():
 	return leader
+	
+func get_leader_name():
+	return leader.get_name()
+	
+func get_advisor():
+	return advisor
+	
+func get_advisor_name():
+	return advisor.get_name() if advisor != null else "----"
 
 ####################################
 #           Manipulation           #
 ####################################
 func _set_leader(person):
+	assert(person != null and person.get_belonged_faction() == self)
 	leader = person
+
+func _set_advisor(person):
+	assert(person == null or advisor.get_belonged_faction() == self)
+	advisor = person
 
 func add_section(section, force: bool = false):
 	_section_list.append(section)
