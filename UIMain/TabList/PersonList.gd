@@ -31,6 +31,9 @@ func _ready():
 	_add_tab('INTERNAL')
 	_add_tab('MILITARY')
 	_add_tab('PERSONAL_RELATIONS')
+
+	self.connect("single_pressed_signal", self, "__on_clickable_label_click")
+	self.connect("long_pressed_signal", self, "__on_clickable_label_long_pressed")
 	
 func handle_input(event):
 	if event is InputEventMouseButton:
@@ -130,19 +133,20 @@ func _populate_basic_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
+		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
-			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_location().get_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_status_str(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_gender_str(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_age()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_merit()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_popularity()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_prestige()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_karma()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_working_task_str(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.task_days) + tr('DAY_UNIT'), self, "__on_clickable_label_click", person))
+			item_list.add_child(checkbox)
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_merit()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_popularity()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_prestige()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_karma()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.task_days) + tr('DAY_UNIT'), self, person, checkbox))
 
 func _populate_ability_data(person_list: Array, action):
 	var item_list = tabs['ABILITY'] as GridContainer
@@ -170,19 +174,20 @@ func _populate_ability_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
+		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
-			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_command()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_strength()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_intelligence()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_politics()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.get_glamour()), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.command_exp), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.strength_exp), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.intelligence_exp), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.politics_exp), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(person.glamour_exp), self, "__on_clickable_label_click", person))
+			item_list.add_child(checkbox)
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_command()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_strength()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_intelligence()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_politics()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_glamour()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.command_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.strength_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.intelligence_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.politics_exp), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.glamour_exp), self, person, checkbox))
 		
 func _populate_internal_data(person_list: Array, action):
 	var item_list = tabs['INTERNAL'] as GridContainer
@@ -205,14 +210,15 @@ func _populate_internal_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
+		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
-			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_working_task_str(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(round(person.get_agriculture_ability())), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(round(person.get_commerce_ability())), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(round(person.get_morale_ability())), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(round(person.get_endurance_ability())), self, "__on_clickable_label_click", person))
+			item_list.add_child(checkbox)
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_agriculture_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_commerce_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_morale_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_endurance_ability())), self, person, checkbox))
 		
 		
 func _populate_military_data(person_list: Array, action):
@@ -236,14 +242,15 @@ func _populate_military_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
+		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
-			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_working_task_str(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_producing_equipment_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(round(person.get_recruit_troop_ability())), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(round(person.get_train_troop_ability())), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(str(round(person.get_produce_equipment_ability())), self, "__on_clickable_label_click", person))
+			item_list.add_child(checkbox)
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_producing_equipment_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_recruit_troop_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_train_troop_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_produce_equipment_ability())), self, person, checkbox))
 
 func _populate_personal_relation_data(person_list: Array, action):
 	var item_list = tabs['PERSONAL_RELATIONS'] as GridContainer
@@ -265,13 +272,14 @@ func _populate_personal_relation_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
+		var checkbox = _checkbox(person.id)
 		if action != Action.LIST:
-			item_list.add_child(_checkbox(person.id))
-		item_list.add_child(_clickable_label(person.get_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_father_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_mother_name(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_spouse_names(), self, "__on_clickable_label_click", person))
-		item_list.add_child(_clickable_label(person.get_brother_names(), self, "__on_clickable_label_click", person))
+			item_list.add_child(checkbox)
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_father_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_mother_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_spouse_names(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_brother_names(), self, person, checkbox))
 		
 
 func _on_Confirm_pressed():
@@ -291,10 +299,15 @@ func _on_CreateTroop_select_leader(arch, persons):
 	current_architecture = arch
 	show_data(persons)
 
+func __on_clickable_label_long_pressed(label, receiver, object, checkbox):
+	if receiver == self:
+		emit_signal('person_row_clicked', object)
+		_detail_showing = true
 
-func __on_clickable_label_click(label, person):
-	emit_signal('person_row_clicked', person)
-	_detail_showing = true
+func __on_clickable_label_click(label, receiver, object, checkbox):
+	if receiver == self:
+		if checkbox != null:
+			_checkbox_change_status(checkbox)
 
 func _on_TroopMenu_troop_person_clicked(troop):
 	current_action = Action.LIST
