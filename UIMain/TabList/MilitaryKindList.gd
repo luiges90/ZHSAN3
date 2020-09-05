@@ -12,11 +12,10 @@ var _sorted_list
 var _selected_person_ids
 
 func _ready():
-	$Tabs.set_tab_title(0, tr('BASIC'))
-	$Tabs.set_tab_title(1, tr('MOVEMENT_DETAILS'))
-	$Tabs.set_tab_title(2, tr('TERRAIN_STRENGTH'))
-	$Tabs.remove_child($Tabs/Tab4)
-	$Tabs.remove_child($Tabs/Tab5)
+	_add_tab('BASIC')
+	_add_tab('MOVEMENT_DETAILS')
+	_add_tab('TERRAIN_STRENGTH')
+
 	
 func _on_InfoMenu_military_kind_clicked(scenario):
 	current_action = Action.LIST
@@ -42,7 +41,7 @@ func show_data(list: Array):
 	show()
 
 func _populate_basic_data(mk_list: Array, action):
-	var item_list = $Tabs/Tab1/Grid as GridContainer
+	var item_list = tabs['BASIC'] as GridContainer
 	_sorted_list = mk_list # default military kind list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -78,7 +77,7 @@ func _populate_basic_data(mk_list: Array, action):
 func _populate_movement_details_data(mk_list: Array, action):
 	if mk_list.size() <= 0: 
 		return
-	var item_list = $Tabs/Tab2/Grid as GridContainer
+	var item_list = tabs['MOVEMENT_DETAILS'] as GridContainer
 	_sorted_list = mk_list # default military kind list
 	Util.delete_all_children(item_list)
 	
@@ -107,7 +106,7 @@ func _populate_movement_details_data(mk_list: Array, action):
 func _populate_terrain_strength_data(mk_list: Array, action):
 	if mk_list.size() <= 0: 
 		return
-	var item_list = $Tabs/Tab3/Grid as GridContainer
+	var item_list = tabs['TERRAIN_STRENGTH'] as GridContainer
 	_sorted_list = mk_list # default military kind list
 	Util.delete_all_children(item_list)
 	

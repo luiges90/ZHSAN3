@@ -2,11 +2,7 @@ extends TabList
 class_name InfoList
 
 func _ready():
-	$Tabs.set_tab_title(0, tr('BASIC'))
-	$Tabs.remove_child($Tabs/Tab2)
-	$Tabs.remove_child($Tabs/Tab3)
-	$Tabs.remove_child($Tabs/Tab4)
-	$Tabs.remove_child($Tabs/Tab5)
+	_add_tab('BASIC')
 	
 
 func _on_InfoMenu_skills_clicked(scenario):
@@ -15,7 +11,7 @@ func _on_InfoMenu_skills_clicked(scenario):
 	show()
 
 func show_data(data):
-	var item_list = $Tabs/Tab1/Grid as GridContainer
+	var item_list = tabs['BASIC'] as GridContainer
 	Util.delete_all_children(item_list)
 	
 	item_list.columns = 3

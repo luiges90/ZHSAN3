@@ -26,11 +26,11 @@ var _sorted_list
 var _detail_showing = false
 
 func _ready():
-	$Tabs.set_tab_title(0, tr('BASIC'))
-	$Tabs.set_tab_title(1, tr('ABILITY'))
-	$Tabs.set_tab_title(2, tr('INTERNAL'))
-	$Tabs.set_tab_title(3, tr('MILITARY'))
-	$Tabs.set_tab_title(4, tr('PERSONAL_RELATIONS'))
+	_add_tab('BASIC')
+	_add_tab('ABILITY')
+	_add_tab('INTERNAL')
+	_add_tab('MILITARY')
+	_add_tab('PERSONAL_RELATIONS')
 	
 func handle_input(event):
 	if event is InputEventMouseButton:
@@ -105,7 +105,7 @@ func show_data(person_list: Array):
 	
 
 func _populate_basic_data(person_list: Array, action):
-	var item_list = $Tabs/Tab1/Grid as GridContainer
+	var item_list = tabs['BASIC'] as GridContainer
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -145,7 +145,7 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(str(person.task_days) + tr('DAY_UNIT'), self, "__on_clickable_label_click", person))
 
 func _populate_ability_data(person_list: Array, action):
-	var item_list = $Tabs/Tab2/Grid as GridContainer
+	var item_list = tabs['ABILITY'] as GridContainer
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -185,7 +185,7 @@ func _populate_ability_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(str(person.glamour_exp), self, "__on_clickable_label_click", person))
 		
 func _populate_internal_data(person_list: Array, action):
-	var item_list = $Tabs/Tab3/Grid as GridContainer
+	var item_list = tabs['INTERNAL'] as GridContainer
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -216,7 +216,7 @@ func _populate_internal_data(person_list: Array, action):
 		
 		
 func _populate_military_data(person_list: Array, action):
-	var item_list = $Tabs/Tab4/Grid as GridContainer
+	var item_list = tabs['MILITARY'] as GridContainer
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -246,7 +246,7 @@ func _populate_military_data(person_list: Array, action):
 		item_list.add_child(_clickable_label(str(round(person.get_produce_equipment_ability())), self, "__on_clickable_label_click", person))
 
 func _populate_personal_relation_data(person_list: Array, action):
-	var item_list = $Tabs/Tab5/Grid as GridContainer
+	var item_list = tabs['PERSONAL_RELATIONS'] as GridContainer
 	var sorted_list = person_list # sorted person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:

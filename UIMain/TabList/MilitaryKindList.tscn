@@ -8,15 +8,3 @@ script = ExtResource( 2 )
 
 [node name="Title" parent="." index="0"]
 text = "MILITARY_KIND_LIST"
-
-[node name="Tab1" parent="Tabs" index="0"]
-margin_top = 34.0
-
-[node name="Tab2" parent="Tabs" index="1"]
-margin_top = 34.0
-
-[node name="Tab3" parent="Tabs" index="2"]
-margin_top = 34.0
-
-[node name="Tab4" parent="Tabs" index="3"]
-margin_top = 34.0

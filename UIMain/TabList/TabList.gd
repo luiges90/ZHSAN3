@@ -10,6 +10,8 @@ var _confirming
 
 var _max_selection = -1
 
+var tabs = {}
+
 # for title sorting
 enum _sorting_order {
 	ASC,
@@ -120,8 +122,8 @@ func _draw():
 
 func _item_mouse_entered(label: Control):
 	var y = label.rect_global_position.y - rect_global_position.y
-	var x = $Tabs/Tab1.rect_global_position.x - rect_global_position.x
-	var width = $Tabs/Tab1.rect_size.x
+	var x = $Tabs.rect_global_position.x - rect_global_position.x
+	var width = $Tabs.rect_size.x
 	var height = label.rect_size.y
 	_current_mouseover_rect = Rect2(x, y, width, height)
 	update()
@@ -130,6 +132,18 @@ func _on_TabList_mouse_entered():
 	_current_mouseover_rect = null
 	update()
 
+func _add_tab(title):
+	var new_tab_container = ScrollContainer.new()
+	new_tab_container.anchor_right = 1
+	new_tab_container.anchor_bottom = 1
+	new_tab_container.margin_top = 42
+	new_tab_container.name = tr(title)
+	
+	var new_tab_data = GridContainer.new()
+	new_tab_container.add_child(new_tab_data)
+	$Tabs.add_child(new_tab_container)
+	
+	tabs[title] = new_tab_data
 
 ####################################
 #             Get list             #

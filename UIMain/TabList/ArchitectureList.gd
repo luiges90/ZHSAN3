@@ -14,11 +14,10 @@ var _sorted_list
 var _detail_showing = false
 
 func _ready():
-	$Tabs.set_tab_title(0, tr('BASIC'))
-	$Tabs.set_tab_title(1, tr('INTERNAL'))
-	$Tabs.set_tab_title(2, tr('MILITARY'))
-	$Tabs.set_tab_title(3, tr('EQUIPMENTS'))
-	$Tabs.remove_child($Tabs/Tab5)
+	_add_tab('BASIC')
+	_add_tab('INTERNAL')
+	_add_tab('MILITARY')
+	_add_tab('EQUIPMENTS')
 	
 func handle_input(event):
 	if event is InputEventMouseButton:
@@ -50,7 +49,7 @@ func show_data(arch_list: Array):
 	show()
 
 func _populate_basic_data(arch_list: Array, action):
-	var item_list = $Tabs/Tab1/Grid as GridContainer
+	var item_list = tabs['BASIC'] as GridContainer
 	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -84,7 +83,7 @@ func _populate_basic_data(arch_list: Array, action):
 		item_list.add_child(_clickable_label(str(arch.get_wild_persons().size()), self, "__on_clickable_label_click", arch))
 	
 func _populate_internal_data(arch_list: Array, action):
-	var item_list = $Tabs/Tab2/Grid as GridContainer
+	var item_list = tabs['INTERNAL'] as GridContainer
 	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -116,7 +115,7 @@ func _populate_internal_data(arch_list: Array, action):
 		item_list.add_child(_clickable_label(str(arch.endurance), self, "__on_clickable_label_click", arch))
 		
 func _populate_military_data(arch_list: Array, action):
-	var item_list = $Tabs/Tab3/Grid as GridContainer
+	var item_list = tabs['MILITARY'] as GridContainer
 	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
@@ -142,7 +141,7 @@ func _populate_military_data(arch_list: Array, action):
 		item_list.add_child(_clickable_label(str(arch.troop_combativity), self, "__on_clickable_label_click", arch))
 		
 func _populate_equipments_data(arch_list: Array, action):
-	var item_list = $Tabs/Tab4/Grid as GridContainer
+	var item_list = tabs['EQUIPMENTS'] as GridContainer
 	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
 	

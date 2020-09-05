@@ -9,11 +9,7 @@ enum Action {
 var _sorted_list
 
 func _ready():
-	$Tabs.set_tab_title(0, tr('BASIC'))
-	$Tabs.remove_child($Tabs/Tab2)
-	$Tabs.remove_child($Tabs/Tab3)
-	$Tabs.remove_child($Tabs/Tab4)
-	$Tabs.remove_child($Tabs/Tab5)
+	_add_tab('BASIC')
 	
 func _on_InfoMenu_factions_clicked(scenario):
 	current_action = Action.LIST
@@ -31,7 +27,7 @@ func show_data(list: Array):
 	show()
 
 func _populate_basic_data(list: Array, action):
-	var item_list = $Tabs/Tab1/Grid as GridContainer
+	var item_list = tabs['BASIC'] as GridContainer
 	_sorted_list = list # default faction list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:

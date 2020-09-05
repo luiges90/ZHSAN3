@@ -47,50 +47,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tab1" type="ScrollContainer" parent="Tabs"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 34.0
-
-[node name="Grid" type="GridContainer" parent="Tabs/Tab1"]
-columns = 6
-
-[node name="Tab2" type="ScrollContainer" parent="Tabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 34.0
-
-[node name="Grid" type="GridContainer" parent="Tabs/Tab2"]
-columns = 6
-
-[node name="Tab3" type="ScrollContainer" parent="Tabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 34.0
-
-[node name="Grid" type="GridContainer" parent="Tabs/Tab3"]
-columns = 6
-
-[node name="Tab4" type="ScrollContainer" parent="Tabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 34.0
-
-[node name="Grid" type="GridContainer" parent="Tabs/Tab4"]
-columns = 6
-
-[node name="Tab5" type="ScrollContainer" parent="Tabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 34.0
-
-[node name="Grid" type="GridContainer" parent="Tabs/Tab5"]
-columns = 6
-
 [node name="ActionButtons" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0

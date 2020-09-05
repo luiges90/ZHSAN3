@@ -9,11 +9,7 @@ var current_faction
 signal focus_camera
 
 func _ready():
-	$Tabs.set_tab_title(0, tr('ARCHITECTURE_LIST'))
-	$Tabs.remove_child($Tabs/Tab2)
-	$Tabs.remove_child($Tabs/Tab3)
-	$Tabs.remove_child($Tabs/Tab4)
-	$Tabs.remove_child($Tabs/Tab5)
+	_add_tab('ARCHITECTURE_LIST')
 
 func handle_input(event):
 	# do nothing
@@ -26,7 +22,7 @@ func show_data(faction):
 	_populate_architecture_data(faction.get_architectures())
 	
 func _populate_architecture_data(arch_list):
-	var item_list = $Tabs/Tab1/Grid as GridContainer
+	var item_list = tabs['ARCHITECTURE_LIST'] as GridContainer
 	Util.delete_all_children(item_list)
 	item_list.columns = 2
 	item_list.add_child(_title(tr('NAME')))
