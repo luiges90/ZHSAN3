@@ -16,6 +16,7 @@ func show_menu(arch, mouse_x, mouse_y):
 		$H/MainMenu/Internal.visible = false
 		$H/MainMenu/Military.visible = false
 		$H/MainMenu/Officers.visible = false
+		$H/MainMenu/Faction.visible = false
 		$H/MainMenu/ToggleAutoTask.visible = false
 		$H/MainMenu/FactionDetail.visible = false
 	else:
@@ -23,6 +24,7 @@ func show_menu(arch, mouse_x, mouse_y):
 		$H/MainMenu/Internal.visible = is_player
 		$H/MainMenu/Military.visible = is_player
 		$H/MainMenu/Officers.visible = is_player
+		$H/MainMenu/Faction.visible = is_player
 		$H/MainMenu/ToggleAutoTask.visible = is_player
 		$H/MainMenu/FactionDetail.visible = true
 
@@ -40,15 +42,17 @@ func show_menu(arch, mouse_x, mouse_y):
 	show()
 	
 func _open_submenu():
-	$H/MilitaryMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Military.rect_position.y)
-	$H/OfficersMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Officers.rect_position.y)
-	$H/FactionDetailsMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y)
+	$H/MilitaryMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Military.rect_position.y + 4)
+	$H/OfficersMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Officers.rect_position.y + 4)
+	$H/FactionMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Faction.rect_position.y + 4)
+	$H/FactionDetailsMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y + 4)
 	._open_submenu()
 	
 func _hide_submenus():
 	$H/InternalMenu.hide()
 	$H/MilitaryMenu.hide()
 	$H/OfficersMenu.hide()
+	$H/FactionMenu.hide()
 	$H/FactionDetailsMenu.hide()
 
 
