@@ -82,6 +82,8 @@ def convert_skills(object):
 			skills.append(10700)
 		if 230 in title_ids:
 			skills.append(10710)
+		if 106 in skill_ids:
+			skills.append(200)
 		return skills
 
 output_folder = '../Scenarios/194QXGJ-qh'

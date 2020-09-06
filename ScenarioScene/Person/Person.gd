@@ -158,18 +158,21 @@ func get_full_name() -> String:
 		name += "(" + courtesy_name + ")"
 	return name
 	
+# range: 0 - 10000
 func get_popularity():
 	return popularity
 	
 func get_popularity_str():
 	return str(popularity)
 	
+# range: -10000 - 10000
 func get_karma():
 	return karma
 	
 func get_karma_str():
 	return str(karma)
 	
+# range: -10000 - 10000
 func get_prestige():
 	return prestige
 	
@@ -178,7 +181,7 @@ func get_prestige_str():
 	
 func cmp_prestige_desc(a, b):
 	return a.get_prestige() > b.get_prestige()
-	
+
 func get_merit():
 	return merit
 	
@@ -384,6 +387,11 @@ func get_max_troop_quantity() -> int:
 	var base = 5000
 	base = apply_influences('modify_person_max_troop_quantity', {"value": base, "person": self})
 	return base
+	
+func get_convince_ability() -> int:
+	var base = 0.25 * get_intelligence() + 0.75 * get_glamour()
+	base = apply_influences('modify_person_convince_ability', {"value": base, "person": self})
+	return base
 
 #####################################
 #         Getters / Relations       #
@@ -437,6 +445,44 @@ func get_persons_with_same_strain():
 		if p.strain == self.strain:
 			result.append(p)
 	return result
+	
+func get_ideal_difference(other_person) -> float:
+	var diff = 0.0
+	diff += abs(get_command() - other_person.get_command()) / 20.0 # 0 - 5
+	diff += abs(get_strength() - other_person.get_strength()) / 20.0 # 0 - 5
+	diff += abs(get_intelligence() - other_person.get_intelligence()) / 20.0 # 0 - 5
+	diff += abs(get_politics() - other_person.get_politics()) / 20.0 # 0 - 5
+	diff += abs(get_glamour() - other_person.get_glamour()) / 20.0 # 0 - 5
+	diff += abs(get_age() - other_person.get_age()) / 10.0 # 0 - 10
+	diff += abs(get_popularity() - other_person.get_popularity()) / 1000.0 # 0 - 10
+	diff += abs(get_karma() - other_person.get_karma()) / 100.0 # 0 - 200
+	diff += abs(get_prestige() - other_person.get_prestige()) / 250.0 # 0 - 80
+	if other_person.spouses.has(self):
+		diff = min(diff * 0.5, diff - 20)
+	if brothers.has(self):
+		diff = min(diff * 0.5, diff - 20)
+	if father == other_person or other_person.father == self or mother == other_person or other_person.mother == self:
+		diff = min(diff * 0.75, diff - 12)
+	if other_person.father == father and other_person.mother == mother:
+		diff = min(diff * 0.8, diff - 10)
+	if other_person.strain == strain:
+		diff = min(diff * 0.9, diff - 5)
+	return diff
+
+func convince_probability(other_person) -> float:
+	var self_diff = other_person.get_ideal_difference(self)
+	var leader_diff = other_person.get_ideal_difference(get_belonged_faction().leader)
+	var ability = get_convince_ability()
+	var advisor = get_belonged_faction().get_intelligent_advisor()
+	var advisor_factor = max(0, -8.22565 * exp(-0.01875 * advisor.get_intelligence()) + 2.19742)
+	
+	return 1 - (self_diff * 0.3 + leader_diff * 0.7) / 100.0 + (ability + advisor_factor * 10.0) / 100.0
+	
+func displayed_convince_probability(other_person):
+	var prob = convince_probability(other_person)
+	var advisor = get_belonged_faction().get_intelligent_advisor()
+	var precision = int(exp(-0.1351 * advisor.get_intelligence() + 14.1682))
+	return Util.pround(prob, precision)
 
 ####################################
 #         Influence System         #

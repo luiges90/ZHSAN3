@@ -163,4 +163,7 @@ LEADER_NAME,Leader,君主,君主
 ADVISOR_NAME,Advisor,軍師,軍師
 ASSIGN_ADVISOR,Assign Advisor,委任軍師,委任軍師
 REMOVE_ADVISOR,Remove Advisor,解任軍師,解任軍師
-TAB_RELEVANCE,Relevance,相關,相關
+RELEVANCE,Relevance,相關,相關
+CONVINCE,Convince,說服,說服
+ADVISOR_RECOMMENDED,Advisor Recommended,軍師建議,軍師建議
+CONVINCE_ABILITY,Convince,說服能力,說服能力

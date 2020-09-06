@@ -208,6 +208,19 @@
 	]
   },
   {
+    "_Id": 200,
+	"Name": "說服",
+	"Description": "說服能力增加50%",
+	"Color": [0.13, 0.56, 0.82],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_convince_ability",
+			"Value": 1.5
+		}
+	]
+  },
+  {
     "_Id": 10000,
 	"Name": "動員",
 	"Description": "領兵數上限增加50%",

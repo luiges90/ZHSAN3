@@ -39,6 +39,8 @@ func show_menu(arch, mouse_x, mouse_y):
 	$H/OfficersMenu/Move.disabled = has_only_one_arch
 	$H/OfficersMenu/Call.disabled = has_only_one_arch
 	
+	$H/OfficersMenu/Convince.disabled = arch.get_wild_persons().size() > 0
+	
 	show()
 	
 func _open_submenu():
@@ -183,4 +185,10 @@ func _on_AssignAdvisor_pressed():
 func _on_RemoveAdvisor_pressed():
 	_select_item()
 	emit_signal("remove_advisor", showing_architecture)
+
+
+
+func _on_Convince_pressed():
+	_select_item()
+	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_wild_persons(), PersonList.Action.CONVINCE_TARGET)
 

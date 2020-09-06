@@ -116,6 +116,9 @@ func get_advisor():
 func get_advisor_name():
 	var a = get_advisor()
 	return a.get_name() if a != null else "----"
+	
+func get_intelligent_advisor():
+	return advisor if advisor != null and advisor.get_intelligence() > leader.get_intelligence() else leader
 
 ####################################
 #           Manipulation           #

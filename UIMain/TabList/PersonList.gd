@@ -14,7 +14,9 @@ enum Action {
 	PRODUCE_EQUIPMENT,
 	SELECT_TROOP_PERSON,
 	SELECT_TROOP_LEADER,
-	SELECT_ADVISOR
+	SELECT_ADVISOR,
+	CONVINCE_TARGET,
+	CONVINCE_PERSON
 }
 
 signal person_selected
@@ -96,9 +98,16 @@ func show_data(person_list: Array):
 		Action.SELECT_ADVISOR:
 			$Title.text = tr('ASSIGN_ADVISOR')
 			_max_selection = 1
+		Action.CONVINCE_TARGET:
+			$Title.text = tr('CONVINCE_TARGET')
+			_max_selection = 1
+		Action.CONVINCE_PERSON:
+			$Title.text = tr('CONVINCE_PERSON')
+			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
 	_selected_table = "person_list" 
+	_populate_relevant_data(person_list, current_action)
 	_populate_basic_data(person_list, current_action)
 	_populate_ability_data(person_list, current_action)
 	_populate_internal_data(person_list, current_action)
@@ -106,6 +115,16 @@ func show_data(person_list: Array):
 	_populate_personal_relation_data(person_list, current_action)
 	show()
 	
+func _populate_relevant_data(person_list: Array, action):
+	if action == Action.CONVINCE_PERSON:
+		_add_tab('RELEVANCE', 0)
+		
+		var item_list = tabs['RELEVANCE'] as GridContainer
+		_sorted_list = person_list # default person list
+		Util.delete_all_children(item_list)
+		
+		
+		
 
 func _populate_basic_data(person_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer

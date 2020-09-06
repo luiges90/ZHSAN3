@@ -85,8 +85,11 @@ static func squares_in_range(position: Vector2, r: int) -> Array:
 			if m_dist(Vector2(x,y), position) <= r:
 				result.append(Vector2(x, y))
 	return result
-	
 
+# Rounding with arbitrary precision
+static func pround(n: float, precision: int):
+	return int(n + precision / 2.0) / precision * precision
+	
 ##############################################
 #                 Collections                #
 ##############################################
