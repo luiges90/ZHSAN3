@@ -387,6 +387,9 @@ func get_max_troop_quantity() -> int:
 	var base = 5000
 	base = apply_influences('modify_person_max_troop_quantity', {"value": base, "person": self})
 	return base
+
+func get_probability_precision_as_advisor() -> int:
+	return int(exp(-0.1351 * get_intelligence() + 14.1682))
 	
 func get_convince_ability() -> int:
 	var base = 0.25 * get_intelligence() + 0.75 * get_glamour()
@@ -481,8 +484,18 @@ func convince_probability(other_person) -> float:
 func displayed_convince_probability(other_person):
 	var prob = convince_probability(other_person)
 	var advisor = get_belonged_faction().get_intelligent_advisor()
-	var precision = int(exp(-0.1351 * advisor.get_intelligence() + 14.1682))
-	return Util.pround(prob, precision)
+	var precision = advisor.get_probability_precision_as_advisor()
+	return min(100, max(0, Util.pround(prob * 100, precision)))
+	
+func convince_recommended(other_person):
+	var advisor = get_belonged_faction().get_intelligent_advisor()
+	return displayed_convince_probability(other_person) >= 100 - advisor.get_probability_precision_as_advisor()
+	
+func convince_eta_days(other_person):
+	return _move_eta(get_location(), other_person.get_location()) * 2
+	
+func get_loyalty():
+	return 100
 
 ####################################
 #         Influence System         #
@@ -549,12 +562,16 @@ func become_wild():
 	_status = Status.WILD
 	
 
+func _move_eta(from, arch):
+	var result = int(ScenarioUtil.object_distance(from, arch) * 0.2)
+	result = apply_influences("modify_person_movement_time", {"value": result, "person": self})
+	return result
+
 func move_to_architecture(arch):
 	var old_location = get_location()
 	set_location(arch)
 	working_task = Task.MOVE
-	task_days = int(ScenarioUtil.object_distance(old_location, arch) * 0.2)
-	task_days = apply_influences("modify_person_movement_time", {"value": task_days, "person": self})
+	task_days = _move_eta(old_location, arch)
 	
 func become_available():
 	var brother_sorted = brothers.duplicate()

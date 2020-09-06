@@ -27,6 +27,8 @@ var _sorted_list
 
 var _detail_showing = false
 
+var _previously_selected_person_ids = []
+
 func _ready():
 	_add_tab('BASIC')
 	_add_tab('ABILITY')
@@ -116,14 +118,39 @@ func show_data(person_list: Array):
 	show()
 	
 func _populate_relevant_data(person_list: Array, action):
-	if action == Action.CONVINCE_PERSON:
-		_add_tab('RELEVANCE', 0)
-		
-		var item_list = tabs['RELEVANCE'] as GridContainer
-		_sorted_list = person_list # default person list
-		Util.delete_all_children(item_list)
-		
-		
+	match current_action:
+		Action.CONVINCE_PERSON:
+			_add_tab('RELEVANCE', 0)
+			
+			var item_list = tabs['RELEVANCE'] as GridContainer
+			_sorted_list = person_list # default person list
+			Util.delete_all_children(item_list)
+			
+			item_list.columns = 7
+			item_list.add_child(_title(''))
+			item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('ADVISOR_RECOMMENDED'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('SUCCESS_RATE'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('CONVINCE_ABILITY'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('ETA'), self, "_on_title_sorting_click", person_list))
+			
+			match _current_order:
+				_sorting_order.DESC:
+					_sorted_list = _sorting_list(person_list.duplicate())
+				_sorting_order.ASC:
+					_sorted_list = _sorting_list(person_list.duplicate())
+			
+			var other_person = person_list[0].scenario.persons[_previously_selected_person_ids[0]]
+			for person in _sorted_list:
+				var checkbox = _checkbox(person.id)
+				item_list.add_child(checkbox)
+				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(Util.bstr(person.convince_recommended(other_person)), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.displayed_convince_probability(other_person)) + "%", self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_convince_ability()), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.convince_eta_days(other_person)) + tr('DAY_UNIT'), self, person, checkbox))
 		
 
 func _populate_basic_data(person_list: Array, action):
@@ -136,7 +163,7 @@ func _populate_basic_data(person_list: Array, action):
 	else:
 		item_list.columns = 11
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('LOCATION'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('GENDER'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
@@ -303,8 +330,14 @@ func _populate_personal_relation_data(person_list: Array, action):
 
 func _on_Confirm_pressed():
 	var selected = _get_selected_list()
-	emit_signal("person_selected", current_action, current_architecture, selected)
-	._on_Confirm_pressed()
+	match current_action:
+		Action.CONVINCE_TARGET: 
+			current_action = Action.CONVINCE_PERSON
+			_previously_selected_person_ids = selected
+			show_data(current_architecture.get_workable_persons())
+		_:
+			emit_signal("person_selected", current_action, current_architecture, selected)
+			._on_Confirm_pressed()
 
 
 func _on_CreateTroop_select_person(arch, persons):

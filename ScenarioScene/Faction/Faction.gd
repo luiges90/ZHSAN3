@@ -119,6 +119,18 @@ func get_advisor_name():
 	
 func get_intelligent_advisor():
 	return advisor if advisor != null and advisor.get_intelligence() > leader.get_intelligence() else leader
+	
+func get_convince_targets():
+	var result = []
+	for a in scenario.architectures:
+		var arch = scenario.architectures[a]
+		var candidates = arch.get_wild_persons() if arch.get_belonged_faction() == self else arch.get_faction_persons()
+		var filtered_candidates = []
+		for c in candidates:
+			if c.get_loyalty() < 100:
+				filtered_candidates.append(c)
+		Util.append_all(result, filtered_candidates)
+	return result
 
 ####################################
 #           Manipulation           #

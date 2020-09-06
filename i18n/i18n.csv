@@ -165,5 +165,8 @@ ASSIGN_ADVISOR,Assign Advisor,委任軍師,委任軍師
 REMOVE_ADVISOR,Remove Advisor,解任軍師,解任軍師
 RELEVANCE,Relevance,相關,相關
 CONVINCE,Convince,說服,說服
+CONVINCE_TARGET,Convince Target,說服目標,說服目標
 ADVISOR_RECOMMENDED,Advisor Recommended,軍師建議,軍師建議
 CONVINCE_ABILITY,Convince,說服能力,說服能力
+SUCCESS_RATE,Success Rate,成功率,成功率
+ETA,ETA,需時天數,需時天數
