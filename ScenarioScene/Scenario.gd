@@ -277,8 +277,10 @@ func _load_data(path):
 	var person_json = {}
 	for item in obj:
 		var instance = Person.new()
-		instance.connect('person_died', self, '_on_person_died')
+		instance.connect('person_died', $GameRecordCreator, 'person_died')
 		instance.connect("person_available", self, "_on_person_available")
+		instance.connect("convince_success", $GameRecordCreator, "person_convince_success")
+		instance.connect("convince_failure", $GameRecordCreator, "person_convince_failure")
 		__load_item(instance, item, persons, {"skills": skills})
 		person_json[instance.id] = item
 	file.close()
@@ -295,6 +297,9 @@ func _load_data(path):
 		var brother_ids = person_json[pid]["BrotherIds"]
 		for b in brother_ids:
 			persons[pid].add_brother(persons[int(b)])
+		var task_target_id = int(person_json[pid]["TaskTarget"])
+		if task_target_id >= 0:
+			persons[pid].set_task_target(persons[task_target_id])
 	
 	file.open(path + "/Architectures.json", File.READ)
 	var architecture_scene = preload("Architecture/Architecture.tscn")
@@ -430,6 +435,8 @@ func _on_person_selected(task, current_architecture, selected_person_ids, other 
 				p.move_to_architecture(current_architecture)
 		PersonList.Action.SELECT_ADVISOR:
 			current_architecture.get_belonged_faction()._set_advisor(selected_persons[0])
+		PersonList.Action.CONVINCE_PERSON:
+			selected_persons[0].go_for_convince(other['target'])
 			
 
 func _on_architecture_selected(task, current_architecture, selected_arch_ids, other = {}):
@@ -585,9 +592,6 @@ func _on_troop_created(troop, position):
 func _on_troop_removed(troop):
 	emit_signal("scenario_troop_removed", self, troop)
 
-func _on_person_died(person):
-	$GameRecordCreator.person_died(person)
-	
 func _on_person_available(person, reason, reason_person):
 	if reason == Person.AvailableReason.BROTHER:
 		$GameRecordCreator.person_available_by_brother(person, reason_person)

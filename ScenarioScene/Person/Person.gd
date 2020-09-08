@@ -4,7 +4,8 @@ class_name Person
 enum Task { NONE, 
 	AGRICULTURE, COMMERCE, MORALE, ENDURANCE, 
 	MOVE, 
-	RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT }
+	RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT,
+	CONVINCE }
 enum Status { NONE,
 	NORMAL, WILD
 }
@@ -51,6 +52,7 @@ var working_task setget forbidden
 var producing_equipment setget forbidden
 
 var task_days = 0 setget forbidden
+var task_target setget forbidden
 
 var skills = [] setget forbidden
 
@@ -62,6 +64,9 @@ var brothers = [] setget forbidden
 
 signal person_died
 signal person_available
+
+signal convince_success
+signal convince_failure
 
 func forbidden(x):
 	assert(false)
@@ -134,6 +139,7 @@ func save_data() -> Dictionary:
 		"Karma": karma,
 		"Merit": merit,
 		"Task": working_task,
+		"TaskTarget": task_target.id if task_target != null else -1,
 		"ProducingEquipment": producing_equipment,
 		"Skills": Util.id_list(skills),
 		"FatherId": father.id if father != null else -1,
@@ -461,11 +467,11 @@ func get_ideal_difference(other_person) -> float:
 	diff += abs(get_karma() - other_person.get_karma()) / 100.0 # 0 - 200
 	diff += abs(get_prestige() - other_person.get_prestige()) / 250.0 # 0 - 80
 	if other_person.spouses.has(self):
-		diff = min(diff * 0.5, diff - 20)
+		diff = min(diff * 0.5, diff - 40)
 	if brothers.has(self):
-		diff = min(diff * 0.5, diff - 20)
+		diff = min(diff * 0.5, diff - 40)
 	if father == other_person or other_person.father == self or mother == other_person or other_person.mother == self:
-		diff = min(diff * 0.75, diff - 12)
+		diff = min(diff * 0.75, diff - 15)
 	if other_person.father == father and other_person.mother == mother:
 		diff = min(diff * 0.8, diff - 10)
 	if other_person.strain == strain:
@@ -479,7 +485,7 @@ func convince_probability(other_person) -> float:
 	var advisor = get_belonged_faction().get_intelligent_advisor()
 	var advisor_factor = max(0, -8.22565 * exp(-0.01875 * advisor.get_intelligence()) + 2.19742)
 	
-	return 1 - (self_diff * 0.3 + leader_diff * 0.7) / 100.0 + (ability + advisor_factor * 10.0) / 100.0
+	return (1 - (self_diff * 0.3 + leader_diff * 0.7) / 100.0 + (ability + advisor_factor * 10.0) / 100.0) * (1 - (get_loyalty() - 50) / 50.0)
 	
 func displayed_convince_probability(other_person):
 	var prob = convince_probability(other_person)
@@ -495,6 +501,7 @@ func convince_eta_days(other_person):
 	return _move_eta(get_location(), other_person.get_location()) * 2
 	
 func get_loyalty():
+	# TODO
 	return 100
 
 ####################################
@@ -572,6 +579,12 @@ func move_to_architecture(arch):
 	set_location(arch)
 	working_task = Task.MOVE
 	task_days = _move_eta(old_location, arch)
+	
+func join_architecture(location_arch):
+	_status = Status.NORMAL
+	if get_location() != location_arch:
+		move_to_architecture(location_arch)
+	
 	
 func become_available():
 	var brother_sorted = brothers.duplicate()
@@ -692,6 +705,27 @@ func add_brother(other):
 		brothers.append(other)
 	if not other.brothers.has(self):
 		other.brothers.append(self)
+		
+#####################################
+#        Manipulation / Work        #
+#####################################
+func set_task_target(target):
+	task_target = target
+
+func go_for_convince(target):
+	working_task = Task.CONVINCE
+	task_days = convince_eta_days(target)
+	task_target = target
+	
+func do_convince():
+	var prob = convince_probability(task_target)
+	if randf() < prob:
+		join_architecture(get_belonged_architecture())
+		emit_signal('convince_success', self, task_target)
+	else:
+		emit_signal('convince_failure', self, task_target)
+	working_task = Task.MOVE
+	task_target = null
 
 ####################################
 #             Day event            #
@@ -701,6 +735,9 @@ func day_event():
 	if get_location() != null:
 		if task_days > 0:
 			task_days -= 1
+		if task_days == 0:
+			match working_task:
+				Task.CONVINCE: do_convince()
 			
 	# check death
 	if get_location() != null and scenario.get_year() >= get_expected_death_year() and randf() < 1 / 240.0:

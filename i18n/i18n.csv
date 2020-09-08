@@ -158,6 +158,9 @@ GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,{troop} has taken over {architecture},{tro
 GAME_RECORD_TROOP_DESTROYED,{troop} has been routed,{troop}溃散了,{troop}潰散了
 GAME_RECORD_FACTION_DESTROYED,{faction} has been eliminated,{faction}灭亡了,{faction}滅亡了
 GAME_RECORD_PERSON_DIED,{person} has died,{person}离开了人世,{person}離開了人世
+GAME_RECORD_PERSON_GROWN_JOIN,{person} has grown up and joined {faction} at {architecture},{person}長大成人了，加入了{faction}並於{architecture}到任,{person}長大成人了，加入了{faction}並於{architecture}到任
+GAME_RECORD_CONVINCE_PERSON_SUCCESS,{person} has successfully convinced {other_person} to join {faction}. {person} will be assigned to {architecture},{person}成功說服了{other_person}加入{faction}，將於{architecture}到任,{person}成功說服了{other_person}加入{faction}，將於{architecture}到任
+GAME_RECORD_CONVINCE_PERSON_FAILURE,{person} failed to convince {other_person},{person}說服{other_person}的行動失敗了,{person}說服{other_person}的行動失敗了
 NARRATOR,Narrator,旁白,旁白
 LEADER_NAME,Leader,君主,君主
 ADVISOR_NAME,Advisor,軍師,軍師

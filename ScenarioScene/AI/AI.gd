@@ -31,6 +31,8 @@ func run_section(faction: Faction, section: Section, scenario):
 		_ai_allocation._allocate_person(section)
 
 	for arch in section.get_architectures():
+		if not faction.player_controlled:
+			_ai_architecture._outside_task(arch, scenario)
 		if not faction.player_controlled or arch.auto_task:
 			_ai_architecture._assign_task(arch, scenario)
 	
