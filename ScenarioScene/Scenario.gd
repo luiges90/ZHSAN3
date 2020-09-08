@@ -417,6 +417,7 @@ func _on_troop_survey_updated(troop):
 	emit_signal("troop_survey_updated", troop)
 	
 func on_architecture_remove_advisor(current_architecture):
+	$GameRecordCreator.remove_advisor(current_architecture.get_belonged_faction())
 	current_architecture.get_belonged_faction()._set_advisor(null)
 	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
@@ -435,6 +436,7 @@ func _on_person_selected(task, current_architecture, selected_person_ids, other 
 				p.move_to_architecture(current_architecture)
 		PersonList.Action.SELECT_ADVISOR:
 			current_architecture.get_belonged_faction()._set_advisor(selected_persons[0])
+			$GameRecordCreator.assign_advisor(selected_persons[0])
 		PersonList.Action.CONVINCE_PERSON:
 			selected_persons[0].go_for_convince(other['target'])
 			

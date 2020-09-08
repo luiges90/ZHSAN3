@@ -247,3 +247,18 @@ func person_convince_failure(person, other_person):
 				"person": _color_text(YELLOW, person.get_name()),
 				"other_person": _color_text(YELLOW, other_person.get_name())
 		}))
+
+func assign_advisor(person):
+	if person.get_belonged_faction().player_controlled:
+		emit_signal("add_game_record", 
+			tr("GAME_RECORD_ASSIGN_ADVISOR").format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"faction": _color_text(YELLOW, person.get_belonged_faction().get_name())
+		}))
+	
+func remove_advisor(faction):
+	if faction.player_controlled:
+		emit_signal("add_game_record", 
+			tr("GAME_RECORD_REMOVE_ADVISOR").format({
+				"faction": _color_text(YELLOW, faction.get_name())
+		}))
