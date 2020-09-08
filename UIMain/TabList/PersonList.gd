@@ -179,8 +179,9 @@ func _populate_basic_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
-		var checkbox = _checkbox(person.id)
+		var checkbox = null
 		if action != Action.LIST:
+			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
@@ -220,8 +221,9 @@ func _populate_ability_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
-		var checkbox = _checkbox(person.id)
+		var checkbox = null
 		if action != Action.LIST:
+			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_command()), self, person, checkbox))
@@ -256,8 +258,9 @@ func _populate_internal_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
-		var checkbox = _checkbox(person.id)
+		var checkbox = null
 		if action != Action.LIST:
+			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
@@ -288,8 +291,9 @@ func _populate_military_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
-		var checkbox = _checkbox(person.id)
+		var checkbox = null
 		if action != Action.LIST:
+			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
@@ -318,8 +322,9 @@ func _populate_personal_relation_data(person_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(person_list.duplicate())
 	for person in _sorted_list:
-		var checkbox = _checkbox(person.id)
+		var checkbox = null
 		if action != Action.LIST:
+			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_father_name(), self, person, checkbox))
