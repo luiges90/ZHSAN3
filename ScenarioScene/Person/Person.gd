@@ -484,8 +484,8 @@ func convince_probability(other_person) -> float:
 	var ability = get_convince_ability()
 	var advisor = get_belonged_faction().get_intelligent_advisor()
 	var advisor_factor = max(0, -8.22565 * exp(-0.01875 * advisor.get_intelligence()) + 2.19742)
-	
-	return (1 - (self_diff * 0.3 + leader_diff * 0.7) / 100.0 + (ability + advisor_factor * 10.0) / 100.0) * (1 - (get_loyalty() - 50) / 50.0)
+
+	return (1 - (self_diff * 0.3 + leader_diff * 0.7) / 100.0 + (ability + advisor_factor * 10.0) / 100.0) * (1 - (other_person.get_loyalty() - 50) / 50.0)
 	
 func displayed_convince_probability(other_person):
 	var prob = convince_probability(other_person)
@@ -502,7 +502,10 @@ func convince_eta_days(other_person):
 	
 func get_loyalty():
 	# TODO
-	return 100
+	if _status == Status.NORMAL:
+		return 100
+	else:
+		return 0
 
 ####################################
 #         Influence System         #
