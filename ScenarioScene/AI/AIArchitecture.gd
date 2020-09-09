@@ -39,12 +39,14 @@ func _selected_equipment(arch: Architecture, scenario) -> MilitaryKind:
 	return result
 
 func _outside_task(arch: Architecture, scenario):
+	var workable_persons = arch.get_workable_persons()
 	if randf() < 0.3:
-		var convince_targets = arch.get_belonged_faction().get_convince_targets()
-		var convincer = Util.max_by(arch.get_workable_persons(), "get_convince_ability")[1]
-		for target in convince_targets:
-			if convincer.convince_probability(target) > 0.5:
-				convincer.go_for_convince(target)
+		if workable_persons.size() > 0:
+			var convince_targets = arch.get_belonged_faction().get_convince_targets()
+			var convincer = Util.max_by(workable_persons, "get_convince_ability")[1]
+			for target in convince_targets:
+				if convincer.convince_probability(target) > 0.5:
+					convincer.go_for_convince(target)
 		
 
 func _assign_task(arch: Architecture, scenario):

@@ -313,6 +313,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Karma": k['Karma'] * 100,
 					"Merit": 0,
 					"Task": 0,
+					"TaskTarget": -1,
 					"ProducingEquipment": None,
 					"Skills": convert_skills(k),
 					"FatherId": father_id_list[0]['Value'] if len(father_id_list) > 0 else -1,

@@ -78,13 +78,14 @@ func _on_troop_occupy_architecture(troop, architecture):
 	))
 
 func _on_troop_destroyed(troop):
-	emit_signal("add_game_record", _register_click(
-		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
-		tr("GAME_RECORD_TROOP_DESTROYED").format({
-			"troop": _color_text(GREEN, troop.get_name())
-		})
-	))
-	
+	if false: # disabled for now, very spammy -_-
+		emit_signal("add_game_record", _register_click(
+			"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
+			tr("GAME_RECORD_TROOP_DESTROYED").format({
+				"troop": _color_text(GREEN, troop.get_name())
+			})
+		))
+		
 func _on_troop_target_architecture_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
@@ -181,8 +182,8 @@ func person_available_by_brother(person, other_person):
 		emit_signal("add_game_record", 
 			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
-				"faction": _color_text(RED, person.get_belonged_faction()),
-				"architcecture": _color_text(CYAN, person.get_location().get_name())
+				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
+				"architecture": _color_text(CYAN, person.get_location().get_name())
 		}))
 
 func person_available_by_spouse(person, other_person):
@@ -196,8 +197,8 @@ func person_available_by_spouse(person, other_person):
 		emit_signal("add_game_record", 
 			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
-				"faction": _color_text(RED, person.get_belonged_faction()),
-				"architcecture": _color_text(CYAN, person.get_location().get_name())
+				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
+				"architecture": _color_text(CYAN, person.get_location().get_name())
 		}))
 
 func person_available_by_children(person, other_person):
@@ -211,8 +212,8 @@ func person_available_by_children(person, other_person):
 		emit_signal("add_game_record", 
 			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
-				"faction": _color_text(RED, person.get_belonged_faction()),
-				"architcecture": _color_text(CYAN, person.get_location().get_name())
+				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
+				"architecture": _color_text(CYAN, person.get_location().get_name())
 		}))
 		
 func person_available_by_sibling(person, other_person):
@@ -226,8 +227,8 @@ func person_available_by_sibling(person, other_person):
 		emit_signal("add_game_record", 
 			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
-				"faction": _color_text(RED, person.get_belonged_faction()),
-				"architcecture": _color_text(CYAN, person.get_location().get_name())
+				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
+				"architecture": _color_text(CYAN, person.get_location().get_name())
 		}))
 
 func person_convince_success(person, other_person):
@@ -236,7 +237,7 @@ func person_convince_success(person, other_person):
 			tr("GAME_RECORD_CONVINCE_PERSON_SUCCESS").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"other_person": _color_text(YELLOW, other_person.get_name()),
-				"faction": _color_text(RED, person.get_belonged_faction()),
+				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
 				"architcecture": _color_text(CYAN, person.get_location().get_name())
 		}))
 	
