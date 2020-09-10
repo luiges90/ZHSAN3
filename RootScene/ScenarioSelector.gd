@@ -49,6 +49,8 @@ func _on_scenario_clicked(node, scen):
 			n.set_pressed(false)
 		node.set_pressed(true)
 		
+		_selected_scenario = scen['__FileName']
+		
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()
 			
@@ -69,11 +71,7 @@ func _on_faction_clicked(node, scen, faction):
 			n.set_pressed(false)
 		node.set_pressed(true)
 		
-		_selected_scenario = scen['__FileName']
 		_selected_faction = faction['_Id']
-		$Confirm.disabled = false
-	else:
-		$Confirm.disabled = true
 
 
 func _on_Cancel_pressed():

@@ -8,6 +8,7 @@ var month: int
 var day: int
 
 var scenario
+var has_player
 
 signal date_updated
 
@@ -51,8 +52,15 @@ func _on_start_date_runner(day_count):
 	emit_signal("date_runner_stopped")
 	
 func _on_stop_date_runner():
-	stop_date_runner = true
+	if has_player:
+		stop_date_runner = true
 
 
 func _on_Scenario_scenario_loaded(scenario):
+	has_player = false
+	for f in scenario.factions:
+		if scenario.factions[f].player_controlled:
+			has_player = true
+			break
+	
 	emit_signal("date_updated", year, month, day, get_season())

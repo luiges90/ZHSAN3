@@ -79,7 +79,6 @@ margin_right = -16.0
 margin_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-disabled = true
 text = "CONFIRM"
 __meta__ = {
 "_edit_use_anchors_": false
