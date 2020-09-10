@@ -64,7 +64,7 @@ func _frontline_connected_archs(arch: Architecture) -> Array:
 	var archs = []
 	for arch_id in arch.adjacent_archs:
 		var other_faction = _scenario.architectures[arch_id].get_belonged_faction()
-		if other_faction != null and other_faction.is_enemy_to(arch.get_belonged_faction()):
+		if other_faction == null or other_faction.is_enemy_to(arch.get_belonged_faction()):
 			archs.append(_scenario.architectures[arch_id])
 	return archs
 

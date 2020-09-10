@@ -92,7 +92,7 @@ func offence(arch, section, scenario):
 	var self_power = ai._estimated_arch_military_power(arch)
 	var selected_target_power = self_power
 	for a in ai._frontline_connected_archs(arch):
-		var target_power = ai._estimated_arch_military_power(a) + arch.endurance * 1000000
+		var target_power = ai._estimated_arch_military_power(a) + arch.endurance * 1000000 + Util.m_dist(arch.map_position, a.map_position)
 		if target_power < self_power and target_power < selected_target_power:
 			selected_target = a
 			selected_target_power = target_power
