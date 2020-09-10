@@ -612,9 +612,12 @@ func get_screen_position():
 	return get_global_transform_with_canvas().origin
 	
 func _play_destroyed_animation():
-	$SpriteArea/Routed.show()
-	$SpriteArea/Routed.play()
-	$SpriteArea/Routed/RoutedSound.play()
+	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
+	var troop_rect = Rect2($SpriteArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
+	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
+		$SpriteArea/Routed.show()
+		$SpriteArea/Routed.play()
+		$SpriteArea/Routed/RoutedSound.play()
 
 
 func _on_Routed_animation_finished():
