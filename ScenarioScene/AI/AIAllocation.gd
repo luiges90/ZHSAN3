@@ -27,6 +27,8 @@ func _allocate_person(section: Section):
 	__under_attack_archs = []
 	var __low_endurance_archs = []
 	
+	var section_person_count = section.get_persons().size()
+	var architecture_count = section.get_architectures().size()
 	for a in section.get_architectures():
 		match __arch_class(a):
 			_ARCH_CLASS.UNDER_ATTACK: __under_attack_archs.append(a)
@@ -36,7 +38,7 @@ func _allocate_person(section: Section):
 					__low_endurance_archs.append(a)
 			_ARCH_CLASS.FRONTLINE_BLANK: 
 				__frontline_blank_archs.append(a)
-				if a.endurance <= 50:
+				if a.endurance <= 50 or (a.get_faction_persons().size() <= 0 and section_person_count >= architecture_count):
 					__low_endurance_archs.append(a)
 			_: __backline_archs.append(a)
 			
