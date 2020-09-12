@@ -25,24 +25,30 @@ func _allocate_person(section: Section):
 	__frontline_blank_archs = []
 	__frontline_archs = []
 	__under_attack_archs = []
+	var __low_endurance_archs = []
 	
 	for a in section.get_architectures():
 		match __arch_class(a):
 			_ARCH_CLASS.UNDER_ATTACK: __under_attack_archs.append(a)
-			_ARCH_CLASS.FRONTLINE: __frontline_archs.append(a)
-			_ARCH_CLASS.FRONTLINE_BLANK: __frontline_blank_archs.append(a)
+			_ARCH_CLASS.FRONTLINE: 
+				__frontline_archs.append(a)
+				if a.endurance <= 50:
+					__low_endurance_archs.append(a)
+			_ARCH_CLASS.FRONTLINE_BLANK: 
+				__frontline_blank_archs.append(a)
+				if a.endurance <= 50:
+					__low_endurance_archs.append(a)
 			_: __backline_archs.append(a)
 			
-	if randf() > 1 / 10.0 and __under_attack_archs.size() <= 0:
-		return
+	if __low_endurance_archs.size() <= 0 or randf() < 0.1:
+		if randf() > 1 / 30.0 and __under_attack_archs.size() <= 0:
+			return
 	
 	var sha = section.get_architectures()
-	sha.shuffle()
 	for a in sha:
 		var expected_state = __needed_person_state(a)
 		if a.get_faction_persons().size() < expected_state['count']:
 			var sha2 = section.get_architectures()
-			sha2.shuffle()
 			for call_from in sha2:
 				if a.id == call_from.id:
 					continue
@@ -53,8 +59,6 @@ func _allocate_person(section: Section):
 					persons.sort_custom(_ai, "__compare_by_person_troop_leader_ability_desc")
 				elif not expected_state['frontline'] and call_from_expected_state['frontline']:
 					persons.sort_custom(_ai, "__compare_by_person_troop_leader_ability_asc")
-				else:
-					persons.shuffle()
 				
 				while persons.size() > call_from_expected_state['count']:
 					var p = persons.pop_front()

@@ -104,7 +104,7 @@ func load_data(json: Dictionary, objects):
 			_ai_path = scenario.get_ai_path(military_kind.movement_kind.id, _starting_arch, _ai_destination_architecture)
 	else:
 		_ai_destination_architecture = null
-
+	gname = _person_list[0].get_name() + tr('PERSON_TROOP')
 	
 func save_data() -> Dictionary:
 	var order_type
@@ -143,8 +143,6 @@ func _on_scenario_loaded(scenario):
 	update_troop_title()
 
 func get_name() -> String:
-	if gname == null or gname.length() <= 0:
-		gname = _person_list[0].get_name() + tr('PERSON_TROOP')
 	return gname
 
 func get_persons() -> Array:
@@ -174,6 +172,7 @@ func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in
 	morale = in_morale
 	combativity = in_combativity
 	map_position = pos
+	gname = _person_list[0].get_name() + tr('PERSON_TROOP')
 	_update_military_kind_sprite()
 	update_troop_title()
 	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
