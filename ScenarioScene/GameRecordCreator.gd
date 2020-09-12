@@ -72,6 +72,7 @@ func _on_troop_occupy_architecture(troop, architecture):
 	emit_signal("add_game_record", _register_click(
 		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
 		tr("GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE").format({
+			"faction": _color_text(RED, troop.get_belonged_facttion().get_name() if troop.get_belonged_facttion() != null else ""),
 			"troop": _color_text(GREEN, troop.get_name()), 
 			"architecture": _color_text(CYAN, architecture.get_name())
 		})
