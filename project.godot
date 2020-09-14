@@ -394,7 +394,7 @@ window/size/height=768
 
 [editor_plugins]
 
-enabled=PoolStringArray( "vnen.tiled_importer" )
+enabled=PoolStringArray(  )
 
 [input]
 
