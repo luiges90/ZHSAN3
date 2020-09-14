@@ -181,7 +181,7 @@ func _long_pressed_down_event(label):
 	
 func _long_pressed_up_event(label, receiver, object, checkbox):
 	if long_pressed_start_time > 0 and long_pressed_object_id > 0:
-		if OS.get_system_time_msecs() - long_pressed_start_time > LONG_PRESSED_TIME:
+		if OS.get_system_time_msecs() - long_pressed_start_time > LONG_PRESSED_TIME or checkbox == null:
 			emit_signal("long_pressed_signal", label, receiver, object, checkbox)
 		else:
 			emit_signal("single_pressed_signal", label, receiver, object, checkbox)
