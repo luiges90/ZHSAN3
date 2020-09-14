@@ -154,7 +154,7 @@ AI_OFFENCE_RATE,AI Offence Rate,电脑部队攻击力乘数,電腦部隊攻擊�
 AI_DEFENCE_RATE,AI Defence Rate,电脑部队防御力乘数,電腦部隊防禦力乘數
 INVERSE_SELECT,INVERSE SELECT,反选,反選
 GAME_RECORD_CREATE_TROOP,{troop} has been created from {architecture},{troop}从{architecture}出征,{troop}從{architecture}出征
-GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,{troop} of {faction} has taken over {architecture},{faction}的{troop}占领了{architecture},{faction}的{troop}佔領了{architecture}
+GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE,{troop} has taken over {architecture},{troop}占领了{architecture},{troop}佔領了{architecture}
 GAME_RECORD_TROOP_DESTROYED,{troop} has been routed,{troop}溃散了,{troop}潰散了
 GAME_RECORD_FACTION_DESTROYED,{faction} has been eliminated,{faction}灭亡了,{faction}滅亡了
 GAME_RECORD_PERSON_DIED,{person} has died,{person}离开了人世,{person}離開了人世

@@ -48,6 +48,9 @@ func _get_dialog(key, person, objects):
 			return s['Text']
 	return ''
 
+func _color_block(color) -> String:
+	return "[color=" + color + "]█[/color] "
+
 func _color_text(color, text) -> String:
 	return "[color=" + color + "]" + text + "[/color]"
 	
@@ -60,19 +63,22 @@ func _on_Scenario_scenario_loaded(scenario):
 
 func create_troop(troop, position):
 	if false: # disabled for now, very spammy -_-
+		var faction = troop.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_game_record", _register_click(
 			"focus(" + str(position.x) + "," + str(position.y) + ")",
-			tr("GAME_RECORD_CREATE_TROOP").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_CREATE_TROOP").format({
 				"troop": _color_text(GREEN, troop.get_name()), 
 				"architecture": _color_text(CYAN, troop.get_starting_architecture().get_name())
 			})
 		))
 
 func _on_troop_occupy_architecture(troop, architecture):
+	var faction = troop.get_belonged_faction()
+	var fcolor = faction.color if faction != null else Color.white
 	emit_signal("add_game_record", _register_click(
 		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
-		tr("GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE").format({
-			"faction": _color_text(RED, troop.get_belonged_faction().get_name() if troop.get_belonged_faction() != null else ""),
+		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE").format({
 			"troop": _color_text(GREEN, troop.get_name()), 
 			"architecture": _color_text(CYAN, architecture.get_name())
 		})
@@ -80,9 +86,11 @@ func _on_troop_occupy_architecture(troop, architecture):
 
 func _on_troop_destroyed(troop):
 	if false: # disabled for now, very spammy -_-
+		var faction = troop.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_game_record", _register_click(
 			"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
-			tr("GAME_RECORD_TROOP_DESTROYED").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_TROOP_DESTROYED").format({
 				"troop": _color_text(GREEN, troop.get_name())
 			})
 		))
@@ -102,8 +110,9 @@ func _on_troop_target_troop_destroyed(current_troop, target):
 		}))
 
 func _on_faction_destroyed(faction):
+	var fcolor = faction.color if faction != null else Color.white
 	emit_signal("add_game_record", 
-		tr("GAME_RECORD_FACTION_DESTROYED").format({
+		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_FACTION_DESTROYED").format({
 			"faction": _color_text(RED, faction.get_name())
 		}))
 	emit_signal("add_person_dialog", null,
@@ -163,8 +172,10 @@ func _on_PositionSelector_create_troop(current_troop, position):
 		}))
 
 func person_died(person):
+	var faction = person.get_belonged_faction()
+	var fcolor = faction.color if faction != null else Color.white
 	emit_signal("add_game_record", 
-		tr("GAME_RECORD_PERSON_DIED").format({
+		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_DIED").format({
 			"person": _color_text(YELLOW, person.get_name())
 		}))
 	emit_signal("add_person_dialog", null,
@@ -174,6 +185,8 @@ func person_died(person):
 
 func person_available_by_brother(person, other_person):
 	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_person_dialog", person,
 			_get_dialog("person_available_by_brother", person, {'other': other_person}).format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -181,7 +194,7 @@ func person_available_by_brother(person, other_person):
 				"location": _color_text(CYAN, person.get_location().get_name())
 			}))
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
 				"architecture": _color_text(CYAN, person.get_location().get_name())
@@ -189,6 +202,8 @@ func person_available_by_brother(person, other_person):
 
 func person_available_by_spouse(person, other_person):
 	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_person_dialog", person,
 			_get_dialog("person_available_by_spouse", person, {'other': other_person}).format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -196,7 +211,7 @@ func person_available_by_spouse(person, other_person):
 				"location": _color_text(CYAN, person.get_location().get_name())
 			}))
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
 				"architecture": _color_text(CYAN, person.get_location().get_name())
@@ -204,6 +219,8 @@ func person_available_by_spouse(person, other_person):
 
 func person_available_by_children(person, other_person):
 	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_person_dialog", person,
 			_get_dialog("person_available_by_children", person, {'other': other_person}).format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -211,7 +228,7 @@ func person_available_by_children(person, other_person):
 				"location": _color_text(CYAN, person.get_location().get_name())
 			}))
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
 				"architecture": _color_text(CYAN, person.get_location().get_name())
@@ -219,6 +236,8 @@ func person_available_by_children(person, other_person):
 		
 func person_available_by_sibling(person, other_person):
 	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_person_dialog", person,
 			_get_dialog("person_available_by_sibling", person, {'other': other_person}).format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -226,7 +245,7 @@ func person_available_by_sibling(person, other_person):
 				"location": _color_text(CYAN, person.get_location().get_name())
 			}))
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
 				"architecture": _color_text(CYAN, person.get_location().get_name())
@@ -234,8 +253,10 @@ func person_available_by_sibling(person, other_person):
 
 func person_convince_success(person, other_person):
 	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_CONVINCE_PERSON_SUCCESS").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_CONVINCE_PERSON_SUCCESS").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"other_person": _color_text(YELLOW, other_person.get_name()),
 				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
@@ -244,23 +265,28 @@ func person_convince_success(person, other_person):
 	
 func person_convince_failure(person, other_person):
 	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_CONVINCE_PERSON_FAILURE").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_CONVINCE_PERSON_FAILURE").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"other_person": _color_text(YELLOW, other_person.get_name())
 		}))
 
 func assign_advisor(person):
 	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_ASSIGN_ADVISOR").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_ASSIGN_ADVISOR").format({
 				"person": _color_text(YELLOW, person.get_name()),
 				"faction": _color_text(YELLOW, person.get_belonged_faction().get_name())
 		}))
 	
 func remove_advisor(faction):
+	var fcolor = faction.color if faction != null else Color.white
 	if faction.player_controlled:
 		emit_signal("add_game_record", 
-			tr("GAME_RECORD_REMOVE_ADVISOR").format({
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_REMOVE_ADVISOR").format({
 				"faction": _color_text(YELLOW, faction.get_name())
 		}))
