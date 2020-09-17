@@ -16,7 +16,7 @@ var quantity: int setget forbidden
 var morale: int setget forbidden
 var combativity: int setget forbidden
 
-var _person_list = Array() setget forbidden, get_persons
+var _person_list = Array() setget forbidden, get_all_persons
 
 var _belonged_section setget forbidden, get_belonged_section
 var _starting_arch setget forbidden, get_starting_architecture
@@ -52,6 +52,8 @@ signal position_changed
 
 signal target_troop_destroyed
 signal target_architecture_destroyed
+
+signal person_captured
 
 func forbidden(x):
 	assert(false)
@@ -145,8 +147,15 @@ func _on_scenario_loaded(scenario):
 func get_name() -> String:
 	return gname
 
-func get_persons() -> Array:
+func get_all_persons() -> Array:
 	return _person_list
+	
+func get_persons() -> Array:
+	var result = []
+	for p in _person_list:
+		if p._status == Person.Status.NORMAL:
+			result.append(p)
+	return result
 	
 ####################################
 #        Set up / Tear down        #
@@ -159,7 +168,7 @@ func add_person(p, force: bool = false):
 func remove_person(p, force: bool = false):
 	Util.remove_object(_person_list, p)
 	if not force and _person_list.size() <= 0:
-		destroy()
+		destroy(null)
 
 func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in_morale: int, in_combativity: int, pos: Vector2):
 	id = in_id
@@ -555,8 +564,8 @@ func execute_attack():
 								p.add_popularity(other_merit_rate / 4)
 								p.add_prestige(other_merit_rate / 2 - 0.625)
 				
-					receive_attack_damage(counter_damage)
-					target.receive_attack_damage(damage)
+					receive_attack_damage(counter_damage, target)
+					target.receive_attack_damage(damage, self)
 					
 					return _animate_attack(target, counter_damage, damage)
 				else:
@@ -568,17 +577,29 @@ func execute_attack():
 	else:
 		return false
 		
-func receive_attack_damage(damage):
+func receive_attack_damage(damage, attacker):
 	quantity -= damage
-	return check_destroy()
+	return check_destroy(attacker)
 			
-func check_destroy():
+func check_destroy(attacker):
 	if quantity <= 0:
-		destroy()
+		destroy(attacker)
 		return true
 	return false
-		
-func destroy():
+
+func destroy(attacker):
+	var captured_persons = []
+	for p in get_persons():
+		var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
+		var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
+		var ratio = capture_ability / escape_ability 
+		var capture_chance = 0.726 / (1 + exp(-0.613 * (ratio - 4.644)))
+		if randf() < capture_chance:
+			p.become_captured(attacker)
+			captured_persons.append(p)
+	if captured_persons.size() > 0:
+		emit_signal("person_captured", attacker, captured_persons)
+	
 	emit_signal("destroyed", self)
 	var return_to = get_starting_architecture()
 	if return_to.get_belonged_faction() != self.get_belonged_faction():
@@ -601,8 +622,7 @@ func _remove():
 		if troop.current_order != null and troop.current_order.type == OrderType.ATTACK and troop.current_order.target == self:
 			troop._clear_order()
 	queue_free()
-
-
+	
 func after_order_cleanup():
 	if current_order != null and current_order.type == OrderType.MOVE and current_order.target == map_position:
 		current_order = null

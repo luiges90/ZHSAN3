@@ -653,6 +653,32 @@
 	]
   },
   {
+    "_Id": 10800,
+	"Name": "捕虜",
+	"Description": "所屬部隊的武將俘虜能力增加50%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_capture_ability",
+			"Value": 1.5
+		}
+	]
+  },
+  {
+    "_Id": 10810,
+	"Name": "血路",
+	"Description": "所屬部隊的武將逃跑能力增加50%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "modify_person_escape_ability",
+			"Value": 1.5
+		}
+	]
+  },
+  {
     "_Id": 20000,
 	"Name": "傳令",
 	"Description": "自身調動所需時間減少50%",

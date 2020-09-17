@@ -336,7 +336,7 @@ func month_event():
 ####################################
 #           Manipulation           #
 ####################################
-func receive_attack_damage(damage):
+func receive_attack_damage(damage, attacker):
 	endurance -= damage
 	if endurance <= 0:
 		endurance = 0
@@ -593,8 +593,8 @@ func accept_entering_troop(in_troop):
 	troop_combativity = int((troop * troop_combativity + in_troop.quantity * in_troop.combativity) / (troop + in_troop.quantity))
 	troop += in_troop.quantity
 	equipments[in_troop.military_kind.id] += in_troop.quantity
-	for p in in_troop.get_persons():
-		add_person(p)
+	for p in in_troop.get_all_persons():
+		p.set_location(self)
 
 func take_equipment(kind, quantity):
 	equipments[kind.id] -= quantity

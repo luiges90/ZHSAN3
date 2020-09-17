@@ -1,5 +1,6 @@
 ﻿keys,en,zh_CN,zh_TW
 ZHSAN3,ZHSAN3.0 alpha-3,中华三国志3.0 alpha-3,中華三國志3.0 alpha-3
+SEPARATOR,", ",、,、
 SELECT_SCENARIO,Select scenario,选择剧本,選擇劇本
 MAP,Map,地圖,地圖
 FACTION,Faction,势力,勢力
@@ -113,6 +114,8 @@ STATUS,Status,状态,狀態
 STATUS_NORMAL,Normal,一般,一般
 STATUS_WILD,Wild,在野,在野
 STATUS_FACTION_LEADER,Leader,君主,君主
+STATUS_CAPTIVE,Captive,俘虜,俘虜
+STATUS_LEADER_IN_CAPTIVE,Captive,俘虜,俘虜
 GAME_RECORD,Record,信息栏,信息欄
 FACTION_LIST,Faction List,势力列表,勢力列表
 GENDER,Gender,性別,性別
@@ -163,6 +166,7 @@ GAME_RECORD_CONVINCE_PERSON_SUCCESS,{person} has successfully convinced {other_p
 GAME_RECORD_CONVINCE_PERSON_FAILURE,{person} failed to convince {other_person},{person}說服{other_person}的行動失敗了,{person}說服{other_person}的行動失敗了
 GAME_RECORD_ASSIGN_ADVISOR,{person} become advisor for {faction},{person}被委任為{faction}的軍師,{person}被委任為{faction}的軍師
 GAME_RECORD_REMOVE_ADVISOR,Advisor for {faction} has been removed,{faction}的軍師被解任了,{faction}的軍師被解任了
+GAME_RECORD_PERSON_CAPTURED,{person} was captured by {troop},{person}等人被{troop}所俘虜,{person}等人被{troop}所俘虜
 NARRATOR,Narrator,旁白,旁白
 LEADER_NAME,Leader,君主,君主
 ADVISOR_NAME,Advisor,軍師,軍師

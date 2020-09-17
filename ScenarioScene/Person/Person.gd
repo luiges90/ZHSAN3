@@ -7,7 +7,7 @@ enum Task { NONE,
 	RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT,
 	CONVINCE }
 enum Status { NONE,
-	NORMAL, WILD
+	NORMAL, WILD, CAPTIVE
 }
 enum DeadReason { NATURAL, UNNNATURAL }
 enum AvailableReason { BROTHER, SPOUSE, CHILDREN, SIBLING, NONE }
@@ -24,6 +24,7 @@ var courtesy_name: String setget forbidden
 
 var _location setget set_location, get_location
 var _status = Status.NONE setget forbidden, get_status
+var _old_faction_id = -1 setget forbidden
 
 var command: int setget forbidden
 var strength: int setget forbidden
@@ -146,7 +147,8 @@ func save_data() -> Dictionary:
 		"MotherId": mother.id if mother != null else -1,
 		"SpouseIds": Util.id_list(spouses),
 		"BrotherIds": Util.id_list(brothers),
-		"Strain": strain
+		"Strain": strain,
+		"OldFaction": _old_faction_id
 	}
 	
 #####################################
@@ -252,15 +254,22 @@ func get_status():
 	
 func get_status_str() -> String:
 	if is_faction_leader():
-		return tr('STATUS_FACTION_LEADER')
-	match _status:
-		Status.NONE: return '--'
-		Status.NORMAL: return tr('STATUS_NORMAL')
-		Status.WILD: return tr('STATUS_WILD')
-		_: return '--'
+		match _status:
+			Status.CAPTIVE: return tr('STATUS_LEADER_IN_CAPTIVE')
+			_: return tr('STATUS_FACTION_LEADER')
+	else:
+		match _status:
+			Status.NONE: return '--'
+			Status.NORMAL: return tr('STATUS_NORMAL')
+			Status.WILD: return tr('STATUS_WILD')
+			Status.CAPTIVE: return tr('STATUS_CAPTIVE')
+			_: return '--'
 
 func get_belonged_faction():
-	return get_location().get_belonged_faction()
+	if _status == Status.CAPTIVE:
+		return scenario.factions[_old_faction_id]
+	else:
+		return get_location().get_belonged_faction()
 	
 func get_belonged_faction_str():
 	var faction = get_belonged_faction()
@@ -400,6 +409,16 @@ func get_probability_precision_as_advisor() -> int:
 func get_convince_ability() -> int:
 	var base = 0.25 * get_intelligence() + 0.75 * get_glamour()
 	base = apply_influences('modify_person_convince_ability', {"value": base, "person": self})
+	return base
+
+func get_capture_ability():
+	var base = 0.5 * get_strength() + 0.5 * get_intelligence()
+	base = apply_influences('modify_person_capture_ability', {"value": base, "person": self})
+	return base
+	
+func get_escape_ability():
+	var base = 0.5 * get_strength() + 0.5 * get_intelligence()
+	base = apply_influences('modify_person_escape_ability', {"value": base, "person": self})
 	return base
 
 #####################################
@@ -571,6 +590,10 @@ func set_location(item, force = false):
 func become_wild():
 	_status = Status.WILD
 	
+func become_captured(capturer):
+	_old_faction_id = get_belonged_faction().id
+	_status = Status.CAPTIVE
+	set_location(capturer)
 
 func _move_eta(from, arch):
 	var result = int(ScenarioUtil.object_distance(from, arch) * 0.2)

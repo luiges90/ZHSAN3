@@ -46,5 +46,11 @@
 			"Conditions": [],
 			"Text": "攻破了{architecture}的城防了！"
 		}
+	],
+	"troop_captured_person": [
+		{
+			"Conditions": [],
+			"Text": "捕獲了{person}等人！"
+		}
 	]
 }

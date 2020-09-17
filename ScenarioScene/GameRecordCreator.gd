@@ -290,3 +290,25 @@ func remove_advisor(faction):
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_REMOVE_ADVISOR").format({
 				"faction": _color_text(YELLOW, faction.get_name())
 		}))
+
+func _on_troop_person_captured(capturer, persons):
+	var faction = capturer.get_belonged_faction()
+	var other_faction = persons[0].get_belonged_faction()
+	
+	var person_list_str = ""
+	for p in persons:
+		person_list_str += p.get_name() + tr("SEPARATOR")
+	person_list_str = person_list_str.substr(0, person_list_str.length() - 1)
+	
+	var fcolor = faction.color if faction != null else Color.white
+	emit_signal("add_person_bubble", capturer.get_leader(), capturer,
+		 _get_speech("troop_captured_person", capturer.get_leader()).format({
+			"person": _color_text(YELLOW, person_list_str)
+		}))
+	if faction.player_controlled or other_faction.player_controlled:
+		emit_signal("add_game_record", 
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_CAPTURED").format({
+				"person": _color_text(YELLOW, person_list_str),
+				"troop": _color_text(GREEN, capturer.get_name())
+		}))
+	
