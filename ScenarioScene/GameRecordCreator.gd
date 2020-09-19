@@ -263,7 +263,7 @@ func person_convince_success(person, other_person):
 				"person": _color_text(YELLOW, person.get_name()),
 				"other_person": _color_text(YELLOW, other_person.get_name()),
 				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
-				"architcecture": _color_text(CYAN, person.get_location().get_name())
+				"architecture": _color_text(CYAN, person.get_location().get_name())
 		}))
 	
 func person_convince_failure(person, other_person):

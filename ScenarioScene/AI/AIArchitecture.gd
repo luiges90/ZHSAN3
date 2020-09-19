@@ -3,6 +3,8 @@ class_name AIArchitecture
 
 var ai
 
+var _convincing_persons = {}
+
 func _init(ai):
 	self.ai = ai
 
@@ -45,9 +47,14 @@ func _outside_task(arch: Architecture, scenario):
 			var convince_targets = arch.get_belonged_faction().get_convince_targets()
 			var convincer = Util.max_by(workable_persons, "get_convince_ability")[1]
 			for target in convince_targets:
-				if convincer.convince_probability(target) > 0.1:
+				if convincer.convince_probability(target) > 0.1 and not _convincing_persons.has(target.id):
 					convincer.go_for_convince(target)
-		
+					_convincing_persons[target.id] = target
+					convincer.connect("convince_success", self, "_on_convince_done")
+					convincer.connect("convince_failure", self, "_on_convince_done")
+					
+func _on_convince_done(convincer, convinced):
+	_convincing_persons.erase(convinced)
 
 func _assign_task(arch: Architecture, scenario):
 	var list = arch.get_workable_persons().duplicate()

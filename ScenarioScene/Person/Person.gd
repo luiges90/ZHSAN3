@@ -468,7 +468,7 @@ func get_siblings():
 	var result = []
 	for id in scenario.persons:
 		var p = scenario.persons[id]
-		if p.father == self.father or p.mother == self.mother:
+		if (p.father != null and p.father == self.father) or (p.mother != null and p.mother == self.mother):
 			result.append(p)
 	return result
 
@@ -754,12 +754,15 @@ func go_for_convince(target):
 	task_target = target
 	
 func do_convince():
-	var prob = convince_probability(task_target)
-	if randf() < prob:
-		join_architecture(get_belonged_architecture())
-		emit_signal('convince_success', self, task_target)
-	else:
+	if task_target._status != Status.WILD and task_target._status != Status.CAPTIVE:
 		emit_signal('convince_failure', self, task_target)
+	else:
+		var prob = convince_probability(task_target)
+		if randf() < prob:
+			task_target.join_architecture(get_belonged_architecture())
+			emit_signal('convince_success', self, task_target)
+		else:
+			emit_signal('convince_failure', self, task_target)
 	working_task = Task.MOVE
 	task_target = null
 
