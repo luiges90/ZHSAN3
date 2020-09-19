@@ -7,7 +7,7 @@ var se_enabled = true
 var enable_troop_animations = true
 var troop_animation_speed = 3
 
-var game_record_limit = 100
+var game_record_limit = 1000
 
 var day_passed_interrupt_time = 8
 

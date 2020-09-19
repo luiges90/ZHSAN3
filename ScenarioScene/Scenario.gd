@@ -725,6 +725,12 @@ func _update_position_label(mouse_position):
 	if terrain != null:
 		emit_signal("mouse_moved_to_map_position", map_pos, terrain)
 
+func is_observer():
+	for f in factions:
+		if factions[f].player_controlled:
+			return false
+	return true
+		
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		_update_position_label(event.position)
