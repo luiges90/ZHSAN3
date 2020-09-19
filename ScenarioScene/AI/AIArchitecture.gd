@@ -52,9 +52,12 @@ func _outside_task(arch: Architecture, scenario):
 					_convincing_persons[target.id] = target
 					convincer.connect("convince_success", self, "_on_convince_done")
 					convincer.connect("convince_failure", self, "_on_convince_done")
+					break
 					
 func _on_convince_done(convincer, convinced):
 	_convincing_persons.erase(convinced)
+	convincer.disconnect("convince_success", self, "_on_convince_done")
+	convincer.disconnect("convince_failure", self, "_on_convince_done")
 
 func _assign_task(arch: Architecture, scenario):
 	var list = arch.get_workable_persons().duplicate()

@@ -592,10 +592,14 @@ func destroy(attacker):
 	var captured_persons = []
 	var released_persons = []
 	for p in get_persons():
-		var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
-		var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
-		var ratio = capture_ability / escape_ability 
-		var capture_chance = 0.726 / (1 + exp(-0.613 * (ratio - 4.644)))
+		var capture_chance
+		if not attacker._destroyed:
+			var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
+			var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
+			var ratio = capture_ability / escape_ability 
+			capture_chance = 0.726 / (1 + exp(-0.613 * (ratio - 4.644)))
+		else:
+			capture_chance = -1
 		if randf() < capture_chance:
 			p.become_captured(attacker)
 			captured_persons.append(p)
@@ -603,7 +607,7 @@ func destroy(attacker):
 			if p._status == Person.Status.CAPTIVE:
 				released_persons.append(p)
 	if captured_persons.size() > 0:
-		emit_signal("'person_captured'", attacker, captured_persons)
+		emit_signal("person_captured", attacker, captured_persons)
 	if released_persons.size() > 0:
 		emit_signal("person_released", attacker, released_persons)
 	

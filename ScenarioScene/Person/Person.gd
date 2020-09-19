@@ -606,7 +606,7 @@ func become_free():
 	_old_faction_id = -1
 
 func _move_eta(from, arch):
-	var result = int(ScenarioUtil.object_distance(from, arch) * 0.2)
+	var result = int(ScenarioUtil.object_distance(from, arch) * 0.2) + 1
 	result = apply_influences("modify_person_movement_time", {"value": result, "person": self})
 	return result
 
