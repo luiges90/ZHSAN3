@@ -59,6 +59,7 @@ func _register_click(func_name, text) -> String:
 	
 func _on_Scenario_scenario_loaded(scenario):
 	_scenario = scenario
+	
 
 
 func create_troop(troop, position):
@@ -312,3 +313,18 @@ func _on_troop_person_captured(capturer, persons):
 				"troop": _color_text(GREEN, capturer.get_name())
 		}))
 	
+func _on_troop_person_released(attacker, persons):
+	var faction = persons[0].get_belonged_faction()
+	
+	var person_list_str = ""
+	for p in persons:
+		person_list_str += p.get_name() + tr("SEPARATOR")
+	person_list_str = person_list_str.substr(0, person_list_str.length() - 1)
+	
+	var fcolor = faction.color if faction != null else Color.white
+	if faction.player_controlled:
+		emit_signal("add_game_record", 
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_CAPTURED").format({
+				"person": _color_text(YELLOW, person_list_str),
+				"troop": _color_text(GREEN, attacker.get_name())
+		}))

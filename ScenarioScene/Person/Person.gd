@@ -240,6 +240,12 @@ func get_location_str():
 	var location = get_location()
 	return location.get_name() if location != null else '----'
 	
+func get_old_faction():
+	if _old_faction_id == -1:
+		return null
+	else:
+		return scenario.factions[_old_faction_id]
+	
 func get_belonged_architecture():
 	var loc = get_location()
 	if loc != null:
@@ -594,6 +600,10 @@ func become_captured(capturer):
 	_old_faction_id = get_belonged_faction().id
 	_status = Status.CAPTIVE
 	set_location(capturer)
+	
+func become_free():
+	_status = Status.NORMAL
+	_old_faction_id = -1
 
 func _move_eta(from, arch):
 	var result = int(ScenarioUtil.object_distance(from, arch) * 0.2)
