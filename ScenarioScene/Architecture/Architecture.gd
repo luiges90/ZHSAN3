@@ -382,6 +382,21 @@ func change_faction(to_section):
 			for person in get_persons():
 				person.become_wild()
 			target_faction_destroyed = true
+			
+	# forcibly move the capital too if capable
+	if old_faction != null:
+		if self == old_faction.capital:
+			var new_capital
+			var max_pop = 0
+			for a in old_faction.get_architectures():
+				if a == self:
+					continue
+				if a.population >= max_pop:
+					max_pop = a.population
+					new_capital = a
+			if new_capital != null:
+				old_faction.set_capital(new_capital)
+				# TODO penalties
 	
 	# burn the treasury
 	fund = fund / 10

@@ -12,6 +12,8 @@ var advisor setget forbidden, get_advisor
 
 var _section_list = Array() setget forbidden, get_sections
 
+var capital setget forbidden
+
 var player_controlled: bool
 
 var _destroyed: bool = false setget forbidden
@@ -45,7 +47,8 @@ func save_data() -> Dictionary:
 		"Advisor": advisor.id if advisor != null else -1,
 		"Color": Util.save_color(color),
 		"PlayerControlled": player_controlled,
-		"SectionList": Util.id_list(get_sections())
+		"SectionList": Util.id_list(get_sections()),
+		"Capital": capital.id
 	}
 	
 ####################################
@@ -201,6 +204,10 @@ func change_leader():
 				break
 		
 	leader = successor
+	
+func set_capital(arch):
+	assert(arch.get_belonged_faction() == self)
+	capital = arch
 
 ####################################
 #               Events             #

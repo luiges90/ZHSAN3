@@ -593,7 +593,7 @@ func destroy(attacker):
 	var released_persons = []
 	for p in get_persons():
 		var capture_chance
-		if not attacker._destroyed:
+		if attacker.get_persons().size() > 0 and not attacker is Architecture:
 			var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
 			var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
 			var ratio = capture_ability / escape_ability 
@@ -617,7 +617,7 @@ func destroy(attacker):
 		return_to = self.get_belonged_faction().get_architectures()[0]
 	for p in get_persons():
 		if p._status == Person.Status.CAPTIVE:
-			var captive_return_to = p.get_old_faction().get_leader().get_belonged_architecture()
+			var captive_return_to = p.get_old_faction().capital
 			p.become_free()
 			p.move_to_architecture(captive_return_to)
 		else:

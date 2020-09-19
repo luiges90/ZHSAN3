@@ -248,7 +248,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 				  "Advisor": -1,
 				  "Color": [round(colors[k['ColorIndex']]['R'] / 255.0, 3), round(colors[k['ColorIndex']]['G'] / 255.0, 3), round(colors[k['ColorIndex']]['B'] / 255.0, 3)],
 				  "SectionList": sects,
-				  "PlayerControlled": False
+				  "PlayerControlled": False,
+                  "Capital": k['CapitalID']
 				})
 				all_factions.append({
 					"_Id": k['ID'],
@@ -262,7 +263,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 					"Advisor": -1,
 					"Color": [255, 0, 255],
 					"SectionList": [500],
-					"PlayerControlled": False
+					"PlayerControlled": False,
+                    "Capital": 64
 				})
 				all_factions.append({
 					"_Id": 100,

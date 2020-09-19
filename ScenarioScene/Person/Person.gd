@@ -247,6 +247,10 @@ func get_old_faction():
 		return scenario.factions[_old_faction_id]
 	
 func get_belonged_architecture():
+	if _status == Status.CAPTIVE:
+		var faction = get_old_faction()
+		if faction != null:
+			return get_old_faction().capital
 	var loc = get_location()
 	if loc != null:
 		if loc.object_type() == ScenarioUtil.ObjectType.TROOP:
@@ -595,6 +599,7 @@ func set_location(item, force = false):
 
 func become_wild():
 	_status = Status.WILD
+	_old_faction_id = -1
 	
 func become_captured(capturer):
 	_old_faction_id = get_belonged_faction().id
@@ -627,7 +632,7 @@ func become_available():
 	brother_sorted.sort_custom(self, "cmp_age_desc")
 	for b in brother_sorted:
 		if b._status == Status.NORMAL or b._status == Status.WILD:
-			var arch = b.get_belonged_architecture()
+			var arch = b.get_belonged_architecture() if b._status != Status.CAPTIVE else b.get_old_faction().capital
 			_status = b._status
 			arch.add_person(self)
 			emit_signal("person_available", self, AvailableReason.BROTHER, b)
@@ -637,7 +642,7 @@ func become_available():
 	spouses_sorted.sort_custom(self, "cmp_age_desc")
 	for s in spouses_sorted:
 		if s._status == Status.NORMAL or s._status == Status.WILD:
-			var arch = s.get_belonged_architecture()
+			var arch = s.get_belonged_architecture() if s._status != Status.CAPTIVE else s.get_old_faction().capital
 			_status = s._status
 			arch.add_person(self)
 			emit_signal("person_available", self, AvailableReason.SPOUSE, s)
@@ -645,7 +650,7 @@ func become_available():
 	
 	if father != null:
 		if father._status != Status.NONE:
-			var arch = father.get_belonged_architecture()
+			var arch = father.get_belonged_architecture() if father._status != Status.CAPTIVE else father.get_old_faction().capital
 			_status = father._status
 			arch.add_person(self)
 			emit_signal("person_available", self, AvailableReason.CHILDREN, father)
@@ -653,7 +658,7 @@ func become_available():
 			
 	if mother != null:
 		if mother._status != Status.NONE:
-			var arch = mother.get_belonged_architecture()
+			var arch = mother.get_belonged_architecture() if mother._status != Status.CAPTIVE else mother.get_old_faction().capital
 			_status = mother._status
 			arch.add_person(self)
 			emit_signal("person_available", self, AvailableReason.CHILDREN, mother)
@@ -663,7 +668,7 @@ func become_available():
 	siblings_sorted.sort_custom(self, "cmp_age_desc")
 	for p in siblings_sorted:
 		if p._status != Status.NONE:
-			var arch = p.get_belonged_architecture()
+			var arch = p.get_belonged_architecture() if p._status != Status.CAPTIVE else p.get_old_faction().capital
 			_status = p._status
 			arch.add_person(self)
 			emit_signal("person_available", self, AvailableReason.SIBLING, p)
