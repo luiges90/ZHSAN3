@@ -127,7 +127,11 @@ func get_convince_targets():
 	var result = []
 	for a in scenario.architectures:
 		var arch = scenario.architectures[a]
-		var candidates = arch.get_wild_persons() if arch.get_belonged_faction() == self else arch.get_faction_persons()
+		var candidates
+		if arch.get_belonged_faction() == self:
+			candidates = Util.append_add(arch.get_wild_persons(), arch.get_captive_persons())
+		else:
+			candidates = arch.get_faction_persons()
 		var filtered_candidates = []
 		for c in candidates:
 			if c.get_loyalty() < 100:

@@ -210,6 +210,13 @@ func get_idling_persons() -> Array:
 			result.append(p)
 	return result
 	
+func get_captive_persons() -> Array:
+	var result = []
+	for p in _person_list:
+		if p.get_status() == Person.Status.CAPTIVE:
+			result.append(p)
+	return result
+	
 func expected_fund_income():
 	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
 	for p in get_workable_persons():
