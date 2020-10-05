@@ -294,6 +294,9 @@ func _get_compare_value(a, b):
 		elif _clicked_label == tr("MERIT"):
 			a1 = a.get_merit()
 			b1 = b.get_merit()
+		elif _clicked_label == tr("LOYALTY"):
+			a1 = a.get_loyalty()
+			b1 = b.get_loyalty()
 		elif _clicked_label == tr("POPULARITY"):
 			a1 = a.get_popularity()
 			b1 = b.get_popularity()

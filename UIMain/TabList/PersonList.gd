@@ -158,15 +158,16 @@ func _populate_basic_data(person_list: Array, action):
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 12
+		item_list.columns = 13
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 11
+		item_list.columns = 12
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('LOCATION'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('GENDER'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('LOYALTY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('MERIT'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('POPULARITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('PRESTIGE'), self, "_on_title_sorting_click", person_list))
@@ -188,6 +189,7 @@ func _populate_basic_data(person_list: Array, action):
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_loyalty()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_merit()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_popularity()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_prestige()), self, person, checkbox))

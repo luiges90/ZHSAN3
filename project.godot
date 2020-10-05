@@ -389,8 +389,8 @@ gdscript/warnings/integer_division=false
 
 [display]
 
-window/size/width=1366
-window/size/height=768
+window/size/width=1920
+window/size/height=1000
 
 [editor_plugins]
 

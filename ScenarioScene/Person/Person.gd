@@ -63,6 +63,9 @@ var mother setget forbidden
 var spouses = [] setget forbidden
 var brothers = [] setget forbidden
 
+var ideal: int setget forbidden
+var loyalty_shift: int setget forbidden
+
 signal person_died
 signal person_available
 
@@ -108,6 +111,8 @@ func load_data(json: Dictionary, objects):
 	working_task = int(json["Task"])
 	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
 	strain = int(json["Strain"])
+	ideal = int(json["Ideal"])
+	loyalty_shift = int(json["LoyaltyShift"])
 	for id in json["Skills"]:
 		skills.append(objects["skills"][int(id)])
 	
@@ -148,7 +153,9 @@ func save_data() -> Dictionary:
 		"SpouseIds": Util.id_list(spouses),
 		"BrotherIds": Util.id_list(brothers),
 		"Strain": strain,
-		"OldFaction": _old_faction_id
+		"OldFaction": _old_faction_id,
+		"Ideal": ideal,
+		"LoyaltyShift": loyalty_shift
 	}
 	
 #####################################
@@ -484,8 +491,14 @@ func get_persons_with_same_strain():
 			result.append(p)
 	return result
 	
+func get_ideal_offset(other_person) -> int:
+	var r = abs(ideal - other_person.ideal)
+	if r > 75:
+		r = abs(150 - r)
+	return r
+	
 func get_ideal_difference(other_person) -> float:
-	var diff = 0.0
+	var diff = get_ideal_offset(other_person)
 	diff += abs(get_command() - other_person.get_command()) / 20.0 # 0 - 5
 	diff += abs(get_strength() - other_person.get_strength()) / 20.0 # 0 - 5
 	diff += abs(get_intelligence() - other_person.get_intelligence()) / 20.0 # 0 - 5
@@ -530,11 +543,26 @@ func convince_eta_days(other_person):
 	return _move_eta(get_location(), other_person.get_location()) * 2
 	
 func get_loyalty():
-	# TODO
-	if _status == Status.NORMAL:
-		return 100
-	else:
+	if get_belonged_faction() == null:
 		return 0
+	var leader = get_belonged_faction().leader
+	
+	var loyalty = 105
+	loyalty -= get_ideal_difference(leader) / 3
+	
+	var prestige = leader.get_prestige()
+	if prestige >= 0:
+		loyalty += prestige / 1000
+	else:
+		loyalty += prestige / 200
+		
+	var karma = leader.get_karma()
+	var karma_diff = abs(leader.get_karma() - get_karma())
+	if karma < 0:
+		loyalty -= karma_diff / 100 * abs(karma / 5000.0)
+	
+	loyalty += loyalty_shift
+	return int(loyalty)
 
 ####################################
 #         Influence System         #
