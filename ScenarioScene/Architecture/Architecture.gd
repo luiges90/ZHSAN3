@@ -326,6 +326,9 @@ func create_troop_positions() -> Array:
 			result.append(p)
 	return result
 	
+func move_eta(to):
+	return int(ScenarioUtil.object_distance(self, to) * 0.2) + 1
+	
 ####################################
 #            Time event            #
 ####################################

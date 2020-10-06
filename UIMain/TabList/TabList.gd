@@ -162,6 +162,9 @@ func _on_TabList_mouse_entered():
 	update()
 
 func _add_tab(title, at_position = tabs.size()):
+	if tabs.has(title):
+		return
+	
 	var new_tab_container = ScrollContainer.new()
 	new_tab_container.anchor_right = 1
 	new_tab_container.anchor_bottom = 1

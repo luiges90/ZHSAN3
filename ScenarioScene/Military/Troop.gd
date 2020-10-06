@@ -329,6 +329,9 @@ func can_occupy():
 				return false
 		return true
 	return false
+	
+func move_eta(to):
+	return int(ScenarioUtil.object_distance(self, to) * 0.2) + 1
 
 ####################################
 #             Set order            #

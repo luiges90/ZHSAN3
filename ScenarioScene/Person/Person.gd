@@ -540,7 +540,7 @@ func convince_recommended(other_person):
 	return displayed_convince_probability(other_person) >= 100 - advisor.get_probability_precision_as_advisor()
 	
 func convince_eta_days(other_person):
-	return _move_eta(get_location(), other_person.get_location()) * 2
+	return _move_eta(other_person.get_location()) * 2
 	
 func get_loyalty():
 	if get_belonged_faction() == null:
@@ -638,16 +638,15 @@ func become_free():
 	_status = Status.NORMAL
 	_old_faction_id = -1
 
-func _move_eta(from, arch):
-	var result = int(ScenarioUtil.object_distance(from, arch) * 0.2) + 1
+func _move_eta(arch):
+	var result = get_location().move_eta(arch)
 	result = apply_influences("modify_person_movement_time", {"value": result, "person": self})
 	return result
 
 func move_to_architecture(arch):
-	var old_location = get_location()
+	task_days = _move_eta(arch)
 	set_location(arch)
 	working_task = Task.MOVE
-	task_days = _move_eta(old_location, arch)
 	
 func join_architecture(location_arch):
 	_status = Status.NORMAL

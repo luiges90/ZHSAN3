@@ -115,10 +115,54 @@ func show_data(person_list: Array):
 	_populate_internal_data(person_list, current_action)
 	_populate_military_data(person_list, current_action)
 	_populate_personal_relation_data(person_list, current_action)
+	$Tabs.current_tab = 0
+	
 	show()
 	
 func _populate_relevant_data(person_list: Array, action):
 	match current_action:
+		Action.CONVINCE_TARGET:
+			_add_tab('RELEVANCE', 0)
+			
+			var item_list = tabs['RELEVANCE'] as GridContainer
+			_sorted_list = person_list # default person list
+			Util.delete_all_children(item_list)
+			
+			item_list.columns = 12
+			item_list.add_child(_title(''))
+			item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('LOCATION'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('GENDER'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('LOYALTY'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('MERIT'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('POPULARITY'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('PRESTIGE'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('KARMA'), self, "_on_title_sorting_click", person_list))
+			item_list.add_child(_title_sorting(tr('ETA'), self, "_on_title_sorting_click", person_list))
+			
+			match _current_order:
+				_sorting_order.DESC:
+					_sorted_list = _sorting_list(person_list.duplicate())
+				_sorting_order.ASC:
+					_sorted_list = _sorting_list(person_list.duplicate())
+			
+			for person in _sorted_list:
+				var checkbox = _checkbox(person.id)
+				item_list.add_child(checkbox)
+				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_loyalty()), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_merit()), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_popularity()), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_prestige()), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_karma()), self, person, checkbox))
+				item_list.add_child(_clickable_label_with_long_pressed_event(str(current_architecture.move_eta(person.get_location()) * 2) + tr('DAY_UNIT'), self, person, checkbox))
+			
 		Action.CONVINCE_PERSON:
 			_add_tab('RELEVANCE', 0)
 			
@@ -126,14 +170,13 @@ func _populate_relevant_data(person_list: Array, action):
 			_sorted_list = person_list # default person list
 			Util.delete_all_children(item_list)
 			
-			item_list.columns = 7
+			item_list.columns = 6
 			item_list.add_child(_title(''))
 			item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
 			item_list.add_child(_title_sorting(tr('BELONGED_ARCHITECTURE'), self, "_on_title_sorting_click", person_list))
 			item_list.add_child(_title_sorting(tr('ADVISOR_RECOMMENDED'), self, "_on_title_sorting_click", person_list))
 			item_list.add_child(_title_sorting(tr('SUCCESS_RATE'), self, "_on_title_sorting_click", person_list))
 			item_list.add_child(_title_sorting(tr('CONVINCE_ABILITY'), self, "_on_title_sorting_click", person_list))
-			item_list.add_child(_title_sorting(tr('ETA'), self, "_on_title_sorting_click", person_list))
 			
 			match _current_order:
 				_sorting_order.DESC:
@@ -150,7 +193,7 @@ func _populate_relevant_data(person_list: Array, action):
 				item_list.add_child(_clickable_label_with_long_pressed_event(Util.bstr(person.convince_recommended(other_person)), self, person, checkbox))
 				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.displayed_convince_probability(other_person)) + "%", self, person, checkbox))
 				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_convince_ability()), self, person, checkbox))
-				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.convince_eta_days(other_person)) + tr('DAY_UNIT'), self, person, checkbox))
+				
 		
 
 func _populate_basic_data(person_list: Array, action):
