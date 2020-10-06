@@ -30,16 +30,23 @@ func _update_items():
 		file.close()
 
 func _on_game_pressed(name: String):
+	var path = "user://Saves"
+	
 	$Confirm.play()
 	_confirming = true
 	hide()
-	emit_signal("file_slot_clicked", mode, "user://Saves/Save" + name)
+	emit_signal("file_slot_clicked", mode, path + "/Save" + name)
 	
 	if mode == MODE.SAVE:
+		var dir = Directory.new()
+		if not dir.dir_exists(path):
+			dir.make_dir(path)
 		var file = File.new()
-		file.open("user://Saves/saves.json", File.READ_WRITE)
+		file.open(path + "/saves.json", File.READ_WRITE)
 		var json = file.get_as_text()
 		var obj = parse_json(json)
+		if obj == null:
+			obj = {}
 		obj[name] = name + "：" + player_name + "　" + Util.current_date_str()
 		file.store_line(to_json(obj))
 		file.close()
