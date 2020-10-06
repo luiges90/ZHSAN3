@@ -381,6 +381,9 @@ func _get_compare_value(a, b):
 		elif _clicked_label == tr("BROTHER"):
 			a1 = a.get_brother_names()
 			b1 = b.get_brother_names()
+		elif _clicked_label == tr("ETA"):
+			a1 = current_architecture.move_eta(a.get_location())
+			b1 = current_architecture.move_eta(b.get_location())
 	elif _selected_table == "architecture_list":
 		# Architecture List
 		if _clicked_label == tr("NAME"):
