@@ -47,4 +47,16 @@
 			"Text": "我绝不会辜负大家的期望，看我在{location}的表现吧！"
 		}
 	],
+	"person_convince_success_source": [
+		{
+			"Conditions": [],
+			"Text": "我{person}成功的说服{other_person}加入{faction}的势力。"
+		}
+	],
+	"person_assigned_to_advisor": [
+		{
+			"Conditions": [],
+			"Text": "我{person}作為{faction}勢力的軍師，必為{faction}指點迷津。"
+		}
+	],
 }

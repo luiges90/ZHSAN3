@@ -259,6 +259,14 @@ func person_convince_success(person, other_person):
 	if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 		var faction = person.get_belonged_faction()
 		var fcolor = faction.color if faction != null else Color.white
+		emit_signal("add_person_dialog", person,
+			_get_dialog("person_convince_success_source", person, {'other': other_person}).format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"other_person": _color_text(YELLOW, other_person.get_name()),
+				"faction": _color_text(RED, person.get_belonged_faction().get_name()),
+				"architecture": _color_text(CYAN, person.get_location().get_name())
+			}))
+		
 		emit_signal("add_game_record", 
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_CONVINCE_PERSON_SUCCESS").format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -281,6 +289,12 @@ func assign_advisor(person):
 	if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 		var faction = person.get_belonged_faction()
 		var fcolor = faction.color if faction != null else Color.white
+		emit_signal("add_person_dialog", person,
+			_get_dialog("person_assigned_to_advisor", person, {}).format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"faction": _color_text(YELLOW, person.get_belonged_faction().get_name())
+			}))
+		
 		emit_signal("add_game_record", 
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_ASSIGN_ADVISOR").format({
 				"person": _color_text(YELLOW, person.get_name()),
