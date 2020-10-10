@@ -109,6 +109,7 @@ func _checkbox(id: int):
 	checkbox.connect("mouse_entered", self, "_item_mouse_entered", [checkbox])
 	checkbox.mouse_filter = Control.MOUSE_FILTER_STOP
 	if _max_selection == 1:
+		# We handle radio un/select manually, use separate button group for radio button icon
 		checkbox.set_button_group(ButtonGroup.new()) 
 
 	return checkbox
