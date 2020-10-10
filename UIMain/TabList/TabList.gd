@@ -100,13 +100,17 @@ func _title(text: String):
 	return label
 	
 func _checkbox(id: int):
-	var checkbox = CheckBox.new()
+	var checkbox 
+	checkbox = CheckBox.new()
 	checkbox.add_to_group("checkboxes")
 	checkbox.add_to_group("id_" + str(id))
 	checkbox.set_meta("id", id)
 	checkbox.connect("pressed", self, "_checkbox_changed", [checkbox])
 	checkbox.connect("mouse_entered", self, "_item_mouse_entered", [checkbox])
 	checkbox.mouse_filter = Control.MOUSE_FILTER_STOP
+	if _max_selection == 1:
+		checkbox.set_button_group(ButtonGroup.new()) 
+
 	return checkbox
 	
 func _checkbox_changed(in_cb: CheckBox):
