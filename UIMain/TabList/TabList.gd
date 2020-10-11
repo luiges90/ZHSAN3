@@ -52,6 +52,10 @@ func _post_show():
 		$SelectionButtons/SelectAll.visible = false
 		$SelectionButtons/UnselectAll.visible = false
 		$SelectionButtons/InverseSelect.visible = false
+	else:
+		$SelectionButtons/SelectAll.visible = true
+		$SelectionButtons/UnselectAll.visible = true
+		$SelectionButtons/InverseSelect.visible = true
 
 ####################################
 # Control generation for subclass  #
