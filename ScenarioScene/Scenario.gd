@@ -323,7 +323,6 @@ func _load_data(path):
 		var instance = troop_scene.instance()
 		__load_item(instance, item, troops, {"persons": persons})
 		troop_json[instance.id] = item
-		__connect_signals_for_creating_troop(instance)
 	file.close()
 	for tid in troops:
 		var order_type = troop_json[tid]["_CurrentOrderType"]
@@ -358,6 +357,9 @@ func _load_data(path):
 			instance._set_advisor(persons[int(item["Advisor"])])
 		instance.set_capital(architectures[int(item["Capital"])])
 	file.close()
+	
+	for t in troops:
+		__connect_signals_for_creating_troop(troops[t])
 	
 	__handle_game_start(current_faction_id)
 	emit_signal("scenario_loaded", self)
