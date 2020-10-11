@@ -45,6 +45,13 @@ func _ready():
 func show_data(list):
 	# Subclasses should override this
 	pass
+	
+func _post_show():
+	$ActionButtons/Confirm.disabled = true
+	if _max_selection == 1:
+		$SelectionButtons/SelectAll.visible = false
+		$SelectionButtons/UnselectAll.visible = false
+		$SelectionButtons/InverseSelect.visible = false
 
 ####################################
 # Control generation for subclass  #

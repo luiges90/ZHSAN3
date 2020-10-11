@@ -47,6 +47,7 @@ func show_data(arch_list: Array):
 	_populate_military_data(arch_list, current_action)
 	_populate_equipments_data(arch_list, current_action)
 	show()
+	._post_show()
 
 func _populate_basic_data(arch_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer

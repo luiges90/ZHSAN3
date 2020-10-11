@@ -25,6 +25,7 @@ func show_data(list: Array):
 	_selected_table = "faction_list" 
 	_populate_basic_data(list, current_action)
 	show()
+	._post_show()
 
 func _populate_basic_data(list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer

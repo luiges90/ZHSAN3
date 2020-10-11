@@ -118,6 +118,7 @@ func show_data(person_list: Array):
 	$Tabs.current_tab = 0
 	
 	show()
+	._post_show()
 	
 func _populate_relevant_data(person_list: Array, action):
 	match current_action:

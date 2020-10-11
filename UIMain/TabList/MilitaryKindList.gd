@@ -39,6 +39,7 @@ func show_data(list: Array):
 	_populate_movement_details_data(list, current_action)
 	_populate_terrain_strength_data(list, current_action)
 	show()
+	._post_show()
 
 func _populate_basic_data(mk_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer
