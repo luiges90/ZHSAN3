@@ -546,6 +546,8 @@ func get_loyalty():
 	if get_belonged_faction() == null:
 		return 0
 	var leader = get_belonged_faction().leader
+	if self == leader:
+		return 999
 	
 	var loyalty = 105
 	loyalty -= get_ideal_difference(leader) / 3
