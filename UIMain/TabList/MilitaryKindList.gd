@@ -15,6 +15,9 @@ func _ready():
 	_add_tab('BASIC')
 	_add_tab('MOVEMENT_DETAILS')
 	_add_tab('TERRAIN_STRENGTH')
+	
+	self.connect("single_pressed_signal", self, "__on_clickable_label_click")
+	# self.connect("long_pressed_signal", self, "__on_clickable_label_long_pressed")
 
 	
 func _on_InfoMenu_military_kind_clicked(scenario):
@@ -64,16 +67,18 @@ func _populate_basic_data(mk_list: Array, action):
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(mk_list.duplicate())
 	for mk in _sorted_list:
+		var cb
 		if action != Action.LIST:
-			item_list.add_child(_checkbox(mk.id))
-		item_list.add_child(_label(mk.get_name()))
-		item_list.add_child(_label(str(mk.equipment_cost)))
-		item_list.add_child(_label(str(mk.base_offence) + " + x" + str(mk.offence)))
-		item_list.add_child(_label(str(mk.base_defence) + " + x" + str(mk.defence)))
-		item_list.add_child(_label(str(mk.range_min) + " - " + str(mk.range_max)))
-		item_list.add_child(_label(str(mk.speed)))
-		item_list.add_child(_label(str(mk.initiative)))
-		item_list.add_child(_label("x" + str(mk.max_quantity_multiplier)))
+			cb = _checkbox(mk.id)
+			item_list.add_child(cb)
+		item_list.add_child(_clickable_label_with_long_pressed_event(mk.get_name(), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.equipment_cost), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.base_offence) + " + x" + str(mk.offence), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.base_defence) + " + x" + str(mk.defence), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.range_min) + " - " + str(mk.range_max), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.speed), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.initiative), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event("x" + str(mk.max_quantity_multiplier), self, mk, cb))
 
 func _populate_movement_details_data(mk_list: Array, action):
 	if mk_list.size() <= 0: 
@@ -157,7 +162,10 @@ func _on_PersonList_person_selected(task, arch, selected_person_ids):
 					selectable_kinds.append(k)
 			show_data(selectable_kinds)
 
-
+func __on_clickable_label_click(label, receiver, object, checkbox):
+	if receiver == self:
+		if checkbox != null:
+			_checkbox_change_status(checkbox)
 
 func _on_CreateTroop_select_military_kind(arch, military_kinds):
 	current_action = Action.SELECT_TROOP_MILITARY_KIND
