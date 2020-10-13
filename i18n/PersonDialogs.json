@@ -59,4 +59,10 @@
 			"Text": "我{person}作為{faction}勢力的軍師，必為{faction}指點迷津。"
 		}
 	],
+	"troop_occupy_architecture": [
+		{
+			"Conditions": [],
+			"Text": "我軍{troop}佔領了{architecture}！"
+		}
+	],
 }

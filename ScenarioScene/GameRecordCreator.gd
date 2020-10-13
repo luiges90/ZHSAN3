@@ -83,6 +83,13 @@ func _on_troop_occupy_architecture(troop, architecture):
 			"architecture": _color_text(CYAN, architecture.get_name())
 		})
 	))
+	if troop.get_belonged_faction().player_controlled:
+		emit_signal("add_person_dialog", null,
+			_get_dialog("troop_occupy_architecture", troop.get_leader(), {'troop': troop, 'architecture': architecture}).format({
+				"troop": _color_text(GREEN, troop.get_name()), 
+				"architecture": _color_text(CYAN, architecture.get_name())
+			}))
+	
 
 func _on_troop_destroyed(troop):
 	var faction = troop.get_belonged_faction()
