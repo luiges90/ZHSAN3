@@ -332,6 +332,18 @@ func can_occupy():
 	
 func move_eta(to):
 	return int(ScenarioUtil.object_distance(self, to) * 0.2) + 1
+	
+func critical_chance():
+	var chance = 0.05
+	for p in get_persons():
+		chance = p.apply_influences('add_person_troop_critical', {"value": chance, "person": p, "troop": self})
+	return chance
+	
+func anti_critical_chance():
+	var chance = 0.05
+	for p in get_persons():
+		chance = p.apply_influences('add_person_troop_anti_critical', {"value": chance, "person": p, "troop": self})
+	return chance
 
 ####################################
 #             Set order            #
@@ -532,7 +544,10 @@ func execute_attack():
 						damage = p.apply_influences("modify_person_troop_damage", {"value": damage, "person": p, "troop": self, "target": target})
 					for p in get_persons():
 						counter_damage = p.apply_influences("modify_person_troop_counter_damage", {"value": counter_damage, "person": p, "troop": self, "target": target})
-						
+					
+					if randf() < critical_chance() - target.anti_critical_chance():
+						damage *= 2
+					
 					damage = int(damage)
 					counter_damage = int(counter_damage)
 					

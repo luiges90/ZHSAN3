@@ -679,6 +679,38 @@
 	]
   },
   {
+    "_Id": 11000,
+	"Name": "暴擊",
+	"Description": "作為主將時，部隊暴擊率增加20%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "add_person_troop_critical",
+			"Value": 0.2
+		}
+	]
+  },
+  {
+    "_Id": 11010,
+	"Name": "抗暴",
+	"Description": "作為主將時，部隊抗暴擊率增加20%",
+	"Color": [0.96, 0.69, 0.13],
+	"Conditions": [],
+	"Influences": [
+		{
+			"Operation": "is_leader"
+		},
+		{
+			"Operation": "add_person_troop_anti_critical",
+			"Value": 0.2
+		}
+	]
+  },
+  {
     "_Id": 20000,
 	"Name": "傳令",
 	"Description": "自身調動所需時間減少50%",
