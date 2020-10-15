@@ -154,6 +154,8 @@ stream = ExtResource( 7 )
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="."]
 
+[node name="CriticalSound" type="AudioStreamPlayer" parent="."]
+
 [node name="TroopTitle" parent="." instance=ExtResource( 4 )]
 margin_left = 100.0
 margin_top = -28.0

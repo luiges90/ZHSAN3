@@ -340,7 +340,7 @@ func critical_chance():
 	return chance
 	
 func anti_critical_chance():
-	var chance = 0.05
+	var chance = 0.0
 	for p in get_persons():
 		chance = p.apply_influences('add_person_troop_anti_critical', {"value": chance, "person": p, "troop": self})
 	return chance
@@ -545,7 +545,9 @@ func execute_attack():
 					for p in get_persons():
 						counter_damage = p.apply_influences("modify_person_troop_counter_damage", {"value": counter_damage, "person": p, "troop": self, "target": target})
 					
+					var critical = false
 					if randf() < critical_chance() - target.anti_critical_chance():
+						critical = true
 						damage *= 2
 					
 					damage = int(damage)
@@ -586,7 +588,7 @@ func execute_attack():
 					receive_attack_damage(counter_damage, target)
 					target.receive_attack_damage(damage, self)
 					
-					return _animate_attack(target, counter_damage, damage)
+					return _animate_attack(target, counter_damage, damage, critical)
 				else:
 					return false
 			else:
@@ -728,7 +730,7 @@ func _animate_position(old_position, destination_position):
 		return false
 
 var __anim_self_damage = 0
-func _animate_attack(target, self_damage, target_damage):
+func _animate_attack(target, self_damage, target_damage, critical):
 	_orientation = _get_animation_orientation(map_position, target.map_position)
 	var reverse_orientation = _get_animation_orientation(target.map_position, map_position)
 
@@ -739,7 +741,10 @@ func _animate_attack(target, self_damage, target_damage):
 		animated_sprite.animation = "attack_" + _orientation
 		__anim_self_damage = self_damage
 		
-		$AttackSound.play()
+		if critical:
+			$CriticalSound.play()
+		else:
+			$AttackSound.play()
 		
 		if target is Architecture:
 			yield($TroopArea/AnimatedSprite, "animation_finished")
