@@ -286,6 +286,9 @@ func get_total_equipments():
 		r += equipments[t]
 	return r
 	
+func anti_critical_chance():
+	return 0.0
+	
 ####################################
 #           GÌ°èet function           #
 ####################################
