@@ -2,6 +2,10 @@ extends Panel
 class_name PersonBubble
 
 
+func _ready():
+	$Timer.wait_time = GameConfig.bubble_show_time
+
+
 func _on_Timer_timeout():
 	queue_free()
 

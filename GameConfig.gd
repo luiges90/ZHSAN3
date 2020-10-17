@@ -12,3 +12,4 @@ var game_record_limit = 1000
 var day_passed_interrupt_time = 8
 
 var dialog_show_time = 5
+var bubble_show_time = 2

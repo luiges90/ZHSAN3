@@ -45,8 +45,8 @@ anchor_bottom = 1.0
 margin_top = 34.0
 
 [node name="G" type="GridContainer" parent="Tabs/CONFIG_DIFFICULTY"]
-margin_right = 1334.0
-margin_bottom = 614.0
+margin_right = 1888.0
+margin_bottom = 846.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 columns = 2
