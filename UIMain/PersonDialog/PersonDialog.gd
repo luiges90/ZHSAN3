@@ -6,7 +6,7 @@ func _ready():
 
 
 func show_dialog(person: Person, text):
-	if $Timer.wait_time > 0:
+	if len(text) > 0 and $Timer.wait_time > 0:
 		if person != null:
 			$Portrait.texture = person.get_portrait()
 			$SpeakerPanel/Speaker.text = person.get_name()

@@ -1,7 +1,7 @@
 extends Node
 class_name GameRecordCreator
 
-var _speeches
+var _bubbles
 var _dialogs
 
 var _scenario
@@ -18,7 +18,7 @@ const YELLOW = "#FFFF00" # person
 func _init():
 	var file = File.new()
 	file.open("res://i18n/PersonBubbles.json", File.READ)
-	_speeches = parse_json(file.get_as_text())
+	_bubbles = parse_json(file.get_as_text())
 	file.close()
 	
 	file = File.new()
@@ -27,13 +27,18 @@ func _init():
 	file.close()
 
 	
-func _get_speech(key, person):
-	var speech = _speeches[key]
+func _get_bubble(key, person):
+	var speech = _bubbles[key]
 	for s in speech:
 		var container = ScenarioUtil.InfluenceContainer.new()
 		container.conditions = s['Conditions']
+		
 		if ScenarioUtil.check_conditions(container, {'person': person}):
-			return s['Text']
+			var texts = s['Text']
+			if texts is Array:
+				return Util.random_from(texts)
+			else:
+				return texts
 	return ''
 	
 func _get_dialog(key, person, objects):
@@ -45,7 +50,11 @@ func _get_dialog(key, person, objects):
 		var params = objects.duplicate()
 		params['person'] = person
 		if ScenarioUtil.check_conditions(container, params):
-			return s['Text']
+			var texts = s['Text']
+			if texts is Array:
+				return Util.random_from(texts)
+			else:
+				return texts
 	return ''
 
 func _color_block(color) -> String:
@@ -84,7 +93,7 @@ func _on_troop_occupy_architecture(troop, architecture):
 		})
 	))
 	if troop.get_belonged_faction().player_controlled:
-		emit_signal("add_person_dialog", null,
+		emit_signal("add_person_dialog", troop.get_leader(),
 			_get_dialog("troop_occupy_architecture", troop.get_leader(), {'troop': troop, 'architecture': architecture}).format({
 				"troop": _color_text(GREEN, troop.get_name()), 
 				"architecture": _color_text(CYAN, architecture.get_name())
@@ -104,16 +113,37 @@ func _on_troop_destroyed(troop):
 func _on_troop_target_architecture_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("destroyed_target_architecture", leader).format({
+		 _get_bubble("destroyed_target_architecture", leader).format({
 			"architecture": _color_text(CYAN, target.get_name())
 		}))
 			
 func _on_troop_target_troop_destroyed(current_troop, target):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		_get_speech("destroyed_target_troop", leader).format({
+		_get_bubble("destroyed_target_troop", leader).format({
 			"troop": _color_text(GREEN, target.get_name())
 		}))
+		
+
+func _on_troop_performed_attack(current, receiver, critical):
+	if critical:
+		var leader = current.get_leader()
+		emit_signal("add_person_bubble", leader, current,
+			_get_bubble("troop_perform_critical_attack", leader).format({
+				"leader": _color_text(YELLOW, leader.get_name())
+			})
+		)
+	
+	
+func _on_troop_received_attack(current, sender, critical):
+	if critical and current is Troop:
+		var leader = current.get_leader()
+		emit_signal("add_person_bubble", leader, current,
+			_get_bubble("troop_receive_critical_attack", leader).format({
+				"leader": _color_text(YELLOW, leader.get_name())
+			})
+		)
+		
 
 func _on_faction_destroyed(faction):
 	var fcolor = faction.color if faction != null else Color.white
@@ -132,7 +162,7 @@ func _on_DateRunner_date_runner_stopped():
 	var location = leader.get_location()
 	if location != null:
 		emit_signal("add_person_bubble", leader, location,
-			 _get_speech("player_turn", leader).format({
+			 _get_bubble("player_turn", leader).format({
 				"person": _color_text(YELLOW, leader.get_name())
 			}))
 
@@ -141,7 +171,7 @@ func _on_DateRunner_date_runner_stopped():
 func _on_PositionSelector_move_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_move", leader).format({
+		 _get_bubble("troop_move", leader).format({
 			"position": _color_text(CYAN, _scenario.describe_position(position))
 		}))
 
@@ -149,7 +179,7 @@ func _on_PositionSelector_move_troop(current_troop, position):
 func _on_PositionSelector_attack_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_attack", leader).format({
+		 _get_bubble("troop_attack", leader).format({
 			"position": _color_text(CYAN, _scenario.describe_position(position))
 		}))
 		
@@ -157,7 +187,7 @@ func _on_PositionSelector_attack_troop(current_troop, position):
 func _on_PositionSelector_follow_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_follow", leader).format({
+		 _get_bubble("troop_follow", leader).format({
 			"position": _color_text(CYAN, _scenario.describe_position(position))
 		}))
 
@@ -165,7 +195,7 @@ func _on_PositionSelector_follow_troop(current_troop, position):
 func _on_PositionSelector_enter_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_enter", leader).format({
+		 _get_bubble("troop_enter", leader).format({
 			"position": _color_text(CYAN, _scenario.describe_position(position))
 		}))
 
@@ -173,7 +203,7 @@ func _on_PositionSelector_enter_troop(current_troop, position):
 func _on_PositionSelector_create_troop(current_troop, position):
 	var leader = current_troop.get_leader()
 	emit_signal("add_person_bubble", leader, current_troop,
-		 _get_speech("troop_create", leader).format({
+		 _get_bubble("troop_create", leader).format({
 			"person": _color_text(YELLOW, leader.get_name())
 		}))
 
@@ -327,7 +357,7 @@ func _on_troop_person_captured(capturer, persons):
 	
 	var fcolor = faction.color if faction != null else Color.white
 	emit_signal("add_person_bubble", capturer.get_leader(), capturer,
-		 _get_speech("troop_captured_person", capturer.get_leader()).format({
+		 _get_bubble("troop_captured_person", capturer.get_leader()).format({
 			"person": _color_text(YELLOW, person_list_str)
 		}))
 	if faction.player_controlled or other_faction.player_controlled or _scenario.is_observer():

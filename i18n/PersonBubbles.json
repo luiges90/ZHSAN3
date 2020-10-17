@@ -52,5 +52,17 @@
 			"Conditions": [],
 			"Text": "捕獲了{person}等人！"
 		}
+	],
+	"troop_perform_critical_attack": [
+		{
+			"Conditions": [],
+			"Text": ["喝！", "", ""]
+		}
+	],
+	"troop_receive_critical_attack": [
+		{
+			"Conditions": [],
+			"Text": ["別囂張！", "", ""]
+		}
 	]
 }

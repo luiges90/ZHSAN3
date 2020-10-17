@@ -45,6 +45,8 @@ signal animation_attack_finished
 signal starting_architecture_changed
 signal troop_survey_updated
 
+signal performed_attack
+signal received_attack
 signal occupy_architecture
 signal destroyed
 signal removed
@@ -745,6 +747,10 @@ func _animate_attack(target, self_damage, target_damage, critical):
 			$CriticalSound.play()
 		else:
 			$AttackSound.play()
+			
+		if not target._destroyed:
+			emit_signal("performed_attack", self, target, critical)
+			emit_signal("received_attack", target, self, critical)
 		
 		if target is Architecture:
 			yield($TroopArea/AnimatedSprite, "animation_finished")
