@@ -602,6 +602,7 @@ func execute_attack():
 		
 func receive_attack_damage(damage, attacker):
 	quantity -= damage
+	morale -= Util.f2ri(damage / 100.0 * max(0.0, 1.1 - get_leader().glamour / 100.0))
 	return check_destroy(attacker)
 			
 func check_destroy(attacker):
