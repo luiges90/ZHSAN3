@@ -115,7 +115,6 @@ func show_data(person_list: Array):
 	_populate_internal_data(person_list, current_action)
 	_populate_military_data(person_list, current_action)
 	_populate_personal_relation_data(person_list, current_action)
-	$Tabs.current_tab = 0
 	
 	show()
 	._post_show()
