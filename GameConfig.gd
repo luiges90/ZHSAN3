@@ -13,3 +13,5 @@ var day_passed_interrupt_time = 8
 
 var dialog_show_time = 5
 var bubble_show_time = 2
+
+var radio_button_direct_select = true

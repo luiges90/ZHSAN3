@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Images/PersonPortrait/default-male-officer.jpg" type="Texture" id=2]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://UIMain/PersonDialog/PersonDialog.gd" type="Script" id=4]
+[ext_resource path="res://UIMain/PersonDialog/OccupyArchitecture.wav" type="AudioStream" id=5]
+[ext_resource path="res://UIMain/PersonDialog/PersonDead.wav" type="AudioStream" id=6]
+[ext_resource path="res://UIMain/PersonDialog/FactionDestroyed.wav" type="AudioStream" id=7]
 
 [node name="PersonDialog" type="Control"]
 margin_right = 800.0
@@ -62,4 +65,13 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="OccupyArchitecture" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="PersonDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="FactionDestroyed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

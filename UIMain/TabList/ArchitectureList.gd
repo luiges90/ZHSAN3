@@ -180,6 +180,7 @@ func _on_Confirm_pressed():
 			emit_signal("architecture_selected", current_action, current_architecture, selected_arch, {
 				"selected_person_ids": _selected_person_ids
 			})
+	$ConfirmSound.play()
 	._on_Confirm_pressed()
 
 

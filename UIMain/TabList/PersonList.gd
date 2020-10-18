@@ -387,9 +387,11 @@ func _on_Confirm_pressed():
 			show_data(current_architecture.get_workable_persons())
 		Action.CONVINCE_PERSON:
 			emit_signal("person_selected", current_action, current_architecture, selected, {"target": _previously_selected_person_ids[0]})
+			$PersonMove.play()
 			._on_Confirm_pressed()
 		_:
 			emit_signal("person_selected", current_action, current_architecture, selected)
+			$ConfirmSound.play()
 			._on_Confirm_pressed()
 
 

@@ -148,6 +148,7 @@ func _on_Confirm_pressed():
 			})
 		Action.SELECT_TROOP_MILITARY_KIND:
 			emit_signal("military_kind_selected_for_troop", current_action, selected_kinds)
+	$ConfirmSound.play()
 	._on_Confirm_pressed()
 
 func _on_PersonList_person_selected(task, arch, selected_person_ids):

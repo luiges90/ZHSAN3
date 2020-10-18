@@ -130,6 +130,8 @@ func _checkbox_changed(in_cb: CheckBox):
 		for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 			checkbox.set_pressed(false)
 		in_cb.set_pressed(true)
+		if GameConfig.radio_button_direct_select:
+			_on_Confirm_pressed()
 	
 	for group in in_cb.get_groups():
 		if group.find("id_") >= 0:
@@ -235,7 +237,6 @@ func _on_Cancel_pressed():
 
 func _on_Confirm_pressed():
 	# Subclasses should handle their action types, and then invoke super func
-	$ConfirmSound.play()
 	_confirming = true
 	hide()
 	_on_UnselectAll_pressed()

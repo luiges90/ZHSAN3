@@ -97,7 +97,7 @@ func _on_troop_occupy_architecture(troop, architecture):
 			_get_dialog("troop_occupy_architecture", troop.get_leader(), {'troop': troop, 'architecture': architecture}).format({
 				"troop": _color_text(GREEN, troop.get_name()), 
 				"architecture": _color_text(CYAN, architecture.get_name())
-			}))
+			}), PersonDialog.SoundType.OCCUPY_ARCHITECTURE)
 	
 
 func _on_troop_destroyed(troop):
@@ -154,7 +154,7 @@ func _on_faction_destroyed(faction):
 	emit_signal("add_person_dialog", null,
 		_get_dialog("faction_destroyed", faction.get_leader(), {'faction': faction}).format({
 			"faction": _color_text(RED, faction.get_name())
-		}))
+		}), PersonDialog.SoundType.FACTION_DESTROYED)
 	
 
 func _on_DateRunner_date_runner_stopped():
@@ -217,7 +217,7 @@ func person_died(person):
 	emit_signal("add_person_dialog", null,
 		_get_dialog("person_died", person, {}).format({
 			"person": _color_text(YELLOW, person.get_name())
-		}))
+		}), PersonDialog.SoundType.PERSON_DEAD)
 
 func person_available_by_brother(person, other_person):
 	if person.get_belonged_faction() != null:
