@@ -606,7 +606,7 @@ func receive_attack_damage(damage, attacker):
 	return check_destroy(attacker)
 			
 func check_destroy(attacker):
-	if quantity <= 0:
+	if quantity <= 0 or morale <= 0:
 		destroy(attacker)
 		return true
 	return false
