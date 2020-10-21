@@ -346,6 +346,9 @@ func anti_critical_chance():
 	for p in get_persons():
 		chance = p.apply_influences('add_person_troop_anti_critical', {"value": chance, "person": p, "troop": self})
 	return chance
+	
+func get_movement_area():
+	return pathfinder.get_movement_area()
 
 ####################################
 #             Set order            #
@@ -388,15 +391,16 @@ func set_attack_order(troop, arch):
 		"type": OrderType.ATTACK,
 		"target": object
 	}
-
-func get_movement_area():
-	return pathfinder.get_movement_area()
 	
 func set_position(pos):
 	var old_position = map_position
 	map_position = pos
 	emit_signal("position_changed", self, old_position, map_position)
 	return _animate_position(old_position, map_position)
+	
+func add_morale(delta):
+	morale += delta
+	morale = clamp(morale, 1, 100)
 	
 func get_order_text():
 	if current_order == null:
@@ -602,28 +606,35 @@ func execute_attack():
 		
 func receive_attack_damage(damage, attacker):
 	quantity -= damage
-	morale -= Util.f2ri(damage / 100.0 * max(0.0, 1.1 - get_leader().glamour / 100.0))
+	add_morale(-Util.f2ri(damage / 100.0 * max(0.0, 1.1 - get_leader().get_glamour() / 100.0)))
 	return check_destroy(attacker)
 			
 func check_destroy(attacker):
-	if quantity <= 0 or morale <= 0:
+	if quantity <= 0 or morale <= 0 or len(get_persons()) <= 0:
 		destroy(attacker)
 		return true
 	return false
 
 func destroy(attacker):
+	# affect nearby troop morale
+	for t in friendly_troop_in_range(4):
+		t.add_morale(5 + min(5, t.get_leader().get_glamour() / 20))
+	for t in enemy_troop_in_range(4):
+		t.add_morale(-10 + min(5, t.get_leader().get_glamour() / 20))
+	
+	# capture and release persons
 	var captured_persons = []
 	var released_persons = []
 	for p in get_persons():
 		var capture_chance
-		if attacker.get_persons().size() > 0 and not attacker is Architecture:
+		if attacker != null and not attacker is Architecture and attacker.get_persons().size() > 0:
 			var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
 			var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
 			var ratio = capture_ability / escape_ability 
 			capture_chance = 0.726 / (1 + exp(-0.613 * (ratio - 4.644)))
 		else:
 			capture_chance = -1
-		if randf() < capture_chance:
+		if attacker != null and randf() < capture_chance:
 			p.become_captured(attacker)
 			captured_persons.append(p)
 		else:
@@ -632,13 +643,15 @@ func destroy(attacker):
 	if captured_persons.size() > 0:
 		emit_signal("person_captured", attacker, captured_persons)
 	if released_persons.size() > 0:
-		emit_signal("person_released", attacker, released_persons)
+		emit_signal("person_released", self, released_persons)
 	
+	# perform destroy
 	emit_signal("destroyed", self)
 	var return_to = get_starting_architecture()
 	if return_to.get_belonged_faction() != self.get_belonged_faction():
 		return_to = self.get_belonged_faction().get_architectures()[0]
-	for p in get_persons():
+	var persons = get_persons().duplicate()
+	for p in persons:
 		if p._status == Person.Status.CAPTIVE:
 			var captive_return_to = p.get_old_faction().capital
 			p.become_free()
@@ -654,12 +667,13 @@ func destroy(attacker):
 	_destroyed = true
 		
 func _remove():
+	assert(len(get_all_persons()) == 0)
 	emit_signal("removed", self)
-	get_belonged_section().remove_troop(self)
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
 		if troop.current_order != null and troop.current_order.type == OrderType.ATTACK and troop.current_order.target == self:
 			troop._clear_order()
+	get_belonged_section().remove_troop(self)
 	queue_free()
 	
 func after_order_cleanup():

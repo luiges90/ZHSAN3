@@ -371,7 +371,7 @@ func _on_troop_person_captured(capturer, persons):
 				"troop": _color_text(GREEN, capturer.get_name())
 		}))
 	
-func _on_troop_person_released(attacker, persons):
+func _on_troop_person_released(troop, persons):
 	var faction = persons[0].get_belonged_faction()
 	
 	var person_list_str = ""
@@ -384,5 +384,5 @@ func _on_troop_person_released(attacker, persons):
 		emit_signal("add_game_record", 
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_CAPTURED").format({
 				"person": _color_text(YELLOW, person_list_str),
-				"troop": _color_text(GREEN, attacker.get_name())
+				"troop": _color_text(GREEN, troop.get_name())
 		}))

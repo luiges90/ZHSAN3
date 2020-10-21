@@ -2,7 +2,7 @@ extends Control
 class_name PersonDialog
 
 enum SoundType {
-	NONE, OCCUPY_ARCHITECTURE, PERSON_DEAD
+	NONE, OCCUPY_ARCHITECTURE, PERSON_DEAD, FACTION_DESTROYED
 }
 
 

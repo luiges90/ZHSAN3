@@ -284,6 +284,8 @@ func get_status_str() -> String:
 
 func get_belonged_faction():
 	if _status == Status.CAPTIVE:
+		if _old_faction_id == -1:
+			return null
 		return scenario.factions[_old_faction_id]
 	else:
 		return get_location().get_belonged_faction()
@@ -711,7 +713,10 @@ func become_available():
 func die():
 	if is_faction_leader():
 		get_belonged_faction().change_leader()
-	get_location().remove_person(self)
+	var loc = get_location()
+	loc.remove_person(self)
+	if loc.has_method("check_destroy"):
+		loc.check_destroy()
 	_status = Status.NONE
 	alive = false
 	emit_signal('person_died', self)

@@ -621,8 +621,13 @@ func accept_entering_troop(in_troop):
 	troop_combativity = int((troop * troop_combativity + in_troop.quantity * in_troop.combativity) / (troop + in_troop.quantity))
 	troop += in_troop.quantity
 	equipments[in_troop.military_kind.id] += in_troop.quantity
-	for p in in_troop.get_all_persons():
+	
+	print(len(in_troop.get_all_persons()))
+	var list = in_troop.get_all_persons().duplicate()
+	for p in list:
+		print(p.get_name())
 		p.set_location(self)
+	print(len(in_troop.get_all_persons()))
 
 func take_equipment(kind, quantity):
 	equipments[kind.id] -= quantity
