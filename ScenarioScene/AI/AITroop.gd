@@ -111,10 +111,10 @@ func run_troop(troop, scenario):
 
 
 func consider_retreat(troop):
-	return troop.quantity < 1000
+	return troop.quantity < 1000 or troop.morale <= 40
 
 func consider_make_troop(troop, defend: bool):
 	if defend:
-		return troop.quantity > 1000
+		return troop.quantity > 1000 and troop.morale > 40
 	else:
-		return troop.quantity > 3000
+		return troop.quantity > 3000 and troop.morale > 40

@@ -284,7 +284,7 @@ func get_status_str() -> String:
 
 func get_belonged_faction():
 	if _status == Status.CAPTIVE:
-		if _old_faction_id == -1:
+		if _old_faction_id == -1 or !scenario.factions.has(_old_faction_id):
 			return null
 		return scenario.factions[_old_faction_id]
 	else:
