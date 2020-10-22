@@ -625,21 +625,39 @@ func destroy(attacker):
 	# capture and release persons
 	var captured_persons = []
 	var released_persons = []
-	for p in get_persons():
-		var capture_chance
-		if attacker != null and not attacker is Architecture and attacker.get_persons().size() > 0:
-			var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
-			var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
-			var ratio = capture_ability / escape_ability 
-			capture_chance = 0.726 / (1 + exp(-0.613 * (ratio - 4.644)))
+	var list = get_all_persons().duplicate()
+	for p in list:
+		if p._status == Person.Status.CAPTIVE: 
+			released_persons.append(p)
+			var captive_return_to = p.get_old_faction().capital
+			p.become_free()
+			p.move_to_architecture(captive_return_to)
 		else:
-			capture_chance = -1
-		if attacker != null and randf() < capture_chance:
-			p.become_captured(attacker)
-			captured_persons.append(p)
-		else:
-			if p._status == Person.Status.CAPTIVE:
-				released_persons.append(p)
+			var capture_chance
+			if attacker != null and not attacker is Architecture and attacker.get_persons().size() > 0:
+				var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
+				var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
+				var ratio = capture_ability / escape_ability 
+				capture_chance = 0.726 / (1 + exp(-0.613 * (ratio - 4.644)))
+			else:
+				capture_chance = -1
+				
+			if attacker != null and randf() < capture_chance:
+				p.become_captured(attacker)
+				captured_persons.append(p)
+			else:
+				var return_to = get_starting_architecture()
+				if return_to.get_belonged_faction() != self.get_belonged_faction():
+					return_to = self.get_belonged_faction().capital
+				if p == get_leader():
+					p.add_merit(-40)
+					p.add_prestige(-2)
+				else:
+					p.add_merit(-20)
+					p.add_prestige(-1)
+				p.move_to_architecture(return_to)
+	assert(len(get_all_persons()) == 0)
+			
 	if captured_persons.size() > 0:
 		emit_signal("person_captured", attacker, captured_persons)
 	if released_persons.size() > 0:
@@ -647,23 +665,6 @@ func destroy(attacker):
 	
 	# perform destroy
 	emit_signal("destroyed", self)
-	var return_to = get_starting_architecture()
-	if return_to.get_belonged_faction() != self.get_belonged_faction():
-		return_to = self.get_belonged_faction().get_architectures()[0]
-	var persons = get_persons().duplicate()
-	for p in persons:
-		if p._status == Person.Status.CAPTIVE:
-			var captive_return_to = p.get_old_faction().capital
-			p.become_free()
-			p.move_to_architecture(captive_return_to)
-		else:
-			if p == get_leader():
-				p.add_merit(-40)
-				p.add_prestige(-2)
-			else:
-				p.add_merit(-20)
-				p.add_prestige(-1)
-			p.move_to_architecture(return_to)
 	_destroyed = true
 		
 func _remove():
