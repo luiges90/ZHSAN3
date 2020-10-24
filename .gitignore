@@ -157,3 +157,4 @@ dmypy.json
 Tools/*.json
 *.lnk
 MOD
+.vscode/settings.json
