@@ -27,6 +27,7 @@ class InfluenceContainer:
 static func apply_influences(influence_container, in_operation, params: Dictionary):
 	if params.has("value"):
 		var value = params['value']
+		var level = params['level'] if params.has('level') else 1
 		
 		if not check_conditions(influence_container, params):
 			return value
@@ -34,9 +35,9 @@ static func apply_influences(influence_container, in_operation, params: Dictiona
 		for influence in influence_container.influences:
 			if in_operation == influence['Operation']:
 				if influence['Operation'].begins_with('modify'):
-					value = influence["Value"] * value
+					value = influence["Value"] * max(0, 1 + value * level)
 				elif influence['Operation'].begins_with('add'):
-					value = influence["Value"] + value
+					value = influence["Value"] + value * level
 				else:
 					assert('Value Operation shall start with add or modify')
 		return value
@@ -101,23 +102,23 @@ static func check_conditions(influence_container, params: Dictionary):
 						return false
 	return true
 
-static func influence_troop_leader_offensive_factor(influence_container, params: Dictionary):
+static func influence_troop_leader_offensive_factor(influence_container, level: int, params: Dictionary):
 	if not check_conditions(influence_container, params):
 		return 1
 	
 	for influence in influence_container.influences:
 		if influence['Operation'] == "modify_person_troop_offence":
-			return influence["Value"]
+			return 1 + influence["Value"] * level
 	
 	return 1
 
-static func influence_troop_leader_defensive_factor(influence_container, params: Dictionary):
+static func influence_troop_leader_defensive_factor(influence_container, level: int, params: Dictionary):
 	if not check_conditions(influence_container, params):
 		return 1
 	
 	for influence in influence_container.influences:
 		if influence['Operation'] == "modify_person_troop_defence":
-			return influence["Value"]
+			return 1 + influence["Value"] * level
 	
 	return 1
 

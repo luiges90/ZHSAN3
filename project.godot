@@ -441,8 +441,8 @@ limits/message_queue/max_size_kb=1048576
 
 [mono]
 
-debugger_agent/port=11000
 debugger_agent/wait_timeout=10000
+debugger_agent/port=6008
 
 [rendering]
 

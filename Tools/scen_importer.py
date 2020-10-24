@@ -11,83 +11,104 @@ def convert_skills(object):
         skill_ids = [int(x) if len(x) > 0 else -1 for x in object['SkillsString'].split(' ')]
         title_ids = [int(x) if len(x) > 0 else -1 for x in object['RealTitlesString'].split(' ')]
         stunt_ids = [int(x) if len(x) > 0 else -1 for x in object['StuntsString'].split(' ')]
-        skills = []
-        if 10 in skill_ids:
-            skills.append(10)
-        if 11 in skill_ids:
-            skills.append(20)
-        if 14 in skill_ids:
-            skills.append(30)
-        if 15 in skill_ids:
-            skills.append(40)
+        skills = {}
+        if 0 in skill_ids and 10 in skill_ids:
+            skills[10] = 7
+        elif 10 in skill_ids:
+            skills[10] = 5
+        elif 0 in skill_ids:
+            skills[10] = 2
+        
+        if 1 in skill_ids and 11 in skill_ids:
+            skills[20] = 7
+        elif 11 in skill_ids:
+            skills[20] = 5
+        elif 1 in skill_ids:
+            skills[20] = 2
+
+        if 4 in skill_ids and 14 in skill_ids:
+            skills[30] = 7
+        elif 14 in skill_ids:
+            skills[30] = 5
+        elif 4 in skill_ids:
+            skills[30] = 2
+
+        if 5 in skill_ids and 15 in skill_ids:
+            skills[40] = 7
+        elif 15 in skill_ids:
+            skills[40] = 5
+        elif 5 in skill_ids:
+            skills[40] = 2
+
         if 16 in skill_ids:
-            skills.append(50)
+            skills[50] = 5
         if 6 in skill_ids:
-            skills.append(60)
+            skills[60] = 5
         if 12 in skill_ids:
-            skills.append(70)
+            skills[70] = 5
+
         if 71 in title_ids:
-            skills.append(100)
+            skills[100] = 5
         if 70 in title_ids:
-            skills.append(110)
+            skills[110] = 5
         if 74 in title_ids:
-            skills.append(120)
+            skills[120] = 5
         if 42 in title_ids:
-            skills.append(130)
+            skills[130] = 5
         if 11030 in title_ids:
-            skills.append(150)
+            skills[150] = 5
         if 20 in skill_ids:
-            skills.append(10500)
+            skills[10500] = 5
         if 21 in skill_ids:
-            skills.append(10600)
+            skills[10600] = 5
         if 22 in skill_ids:
-            skills.append(10610)
+            skills[10610] = 5
         if 24 in skill_ids:
-            skills.append(10501)
+            skills[10501] = 5
         if 230 in title_ids:
-            skills.append(10100)
+            skills[10100] = 5
         if 34 in skill_ids:
-            skills.append(10200)
+            skills[10200] = 5
         if 35 in skill_ids:
-            skills.append(10210)
+            skills[10210] = 5
         if 320 in title_ids:
-            skills.append(10220)
+            skills[10220] = 5
         if 300 in title_ids:
-            skills.append(10200)
-            skills.append(10210)
-            skills.append(10220)
+            skills[10200] = 5
+            skills[10210] = 5
+            skills[10220] = 5
         if 44 in skill_ids:
-            skills.append(10300)
+            skills[10300] = 5
         if 45 in skill_ids:
-            skills.append(10310)
+            skills[10310] = 5
         if 321 in title_ids:
-            skills.append(10320)
+            skills[10320] = 5
         if 301 in title_ids:
-            skills.append(10300)
-            skills.append(10310)
-            skills.append(10320)
+            skills[10300] = 5
+            skills[10310] = 5
+            skills[10320] = 5
         if 54 in skill_ids:
-            skills.append(10400)
+            skills[10400] = 5
         if 55 in skill_ids:
-            skills.append(10410)
+            skills[10410] = 5
         if 322 in title_ids:
-            skills.append(10420)
+            skills[10420] = 5
         if 302 in title_ids:
-            skills.append(10400)
-            skills.append(10410)
-            skills.append(10420)
+            skills[10400] = 5
+            skills[10410] = 5
+            skills[10420] = 5
         if 80 in title_ids:
-            skills.append(20020)
+            skills[20020] = 5
         if 13 in stunt_ids:
-            skills.append(10700)
+            skills[10700] = 5
         if 230 in title_ids:
-            skills.append(10710)
+            skills[10710] = 5
         if 106 in skill_ids:
-            skills.append(200)
+            skills[200] = 5
         if len(list(set([6, 24, 221, 222, 223, 231, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 10000, 10009, 10013, 10019, 10041, 10048, 10057]) & set(title_ids))) > 0:
-            skills.append(11000)
+            skills[11000] = 5
         if len(list(set([201, 202, 220, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 10001, 10013, 10019, 10041, 10057]) & set(title_ids))) > 0:
-            skills.append(11010)
+            skills[11010] = 5
         return skills
 
 output_folder = '../Scenarios/194QXGJ-qh'

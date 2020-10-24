@@ -55,7 +55,7 @@ var producing_equipment setget forbidden
 var task_days = 0 setget forbidden
 var task_target setget forbidden
 
-var skills = [] setget forbidden
+var skills = {} setget forbidden
 
 var strain: int
 var father setget forbidden
@@ -114,7 +114,7 @@ func load_data(json: Dictionary, objects):
 	ideal = int(json["Ideal"])
 	loyalty_shift = int(json["LoyaltyShift"])
 	for id in json["Skills"]:
-		skills.append(objects["skills"][int(id)])
+		skills[objects["skills"][int(id)]] = json["Skills"][id]
 	
 	
 func save_data() -> Dictionary:
@@ -147,7 +147,7 @@ func save_data() -> Dictionary:
 		"Task": working_task,
 		"TaskTarget": task_target.id if task_target != null else -1,
 		"ProducingEquipment": producing_equipment,
-		"Skills": Util.id_list(skills),
+		"Skills": Util.id_key_dict(skills),
 		"FatherId": father.id if father != null else -1,
 		"MotherId": mother.id if mother != null else -1,
 		"SpouseIds": Util.id_list(spouses),
@@ -412,10 +412,10 @@ func get_troop_leader_ability(params = null):
 	var command_factor = 1
 	var strength_factor = 1
 	for s in skills:
-		command_factor *= ScenarioUtil.influence_troop_leader_defensive_factor(s, out_params)
-		strength_factor *= ScenarioUtil.influence_troop_leader_offensive_factor(s, out_params)
+		command_factor *= ScenarioUtil.influence_troop_leader_defensive_factor(s, skills[s], out_params)
+		strength_factor *= ScenarioUtil.influence_troop_leader_offensive_factor(s, skills[s], out_params)
 	
-	return command * 1.7 + strength * 0.3
+	return command * command_factor * 1.7 + strength * strength_factor * 0.3
 	
 func get_max_troop_quantity() -> int:
 	var base = 5000
@@ -575,7 +575,7 @@ func apply_influences(operation, params: Dictionary):
 	if params.has("value"):
 		var value = params["value"]
 		for skill in skills:
-			value = skill.apply_influences(operation, {"value": value, "person": self})
+			value = skill.apply_influences(operation, skills[skill], {"value": value, "person": self})
 		return value
 
 ####################################

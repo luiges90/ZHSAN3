@@ -38,7 +38,7 @@ func set_data():
 	Util.delete_all_children($Skills)
 	for skill in current_person.skills:
 		var label = LinkButton.new()
-		label.text = skill.get_name()
+		label.text = skill.get_name_with_level(current_person.skills[skill])
 		label.add_color_override("font_color", skill.color)
 		label.underline = LinkButton.UNDERLINE_MODE_NEVER
 		label.mouse_default_cursor_shape = Control.CURSOR_ARROW

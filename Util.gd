@@ -31,6 +31,12 @@ static func id_list(list: Array) -> Array:
 		s.append(item.id)
 	return s
 
+static func id_key_dict(dict: Dictionary) -> Dictionary:
+	var s = {}
+	for item in dict:
+		s[item.id] = dict[item]
+	return s
+
 ##############################################
 #                 Formatting                 #
 ##############################################
