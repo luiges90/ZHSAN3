@@ -34,6 +34,8 @@ var _clicked_at: Vector2
 
 var scenario_config: ScenarioConfig setget forbidden
 
+var _loading_scenario = false
+
 signal current_faction_set
 signal scenario_loaded
 
@@ -190,6 +192,7 @@ func __save_items(d: Dictionary):
 	return arr
 
 func _load_data(path):
+	_loading_scenario = true
 	for n in get_tree().get_nodes_in_group(GROUP_GAME_INSTANCES):
 		remove_child(n)
 		n.queue_free()
@@ -363,6 +366,8 @@ func _load_data(path):
 	
 	__handle_game_start(current_faction_id)
 	emit_signal("scenario_loaded", self)
+
+	_loading_scenario = false
 
 	
 func __load_item(instance, item, add_to_list, objects):
@@ -595,7 +600,8 @@ func _on_troop_position_changed(troop, old_pos, new_pos):
 	emit_signal("scenario_troop_position_changed", self, troop, old_pos, new_pos)
 	
 func _on_troop_created(troop, position):
-	$GameRecordCreator.create_troop(troop, position)
+	if not _loading_scenario:
+		$GameRecordCreator.create_troop(troop, position)
 	emit_signal("scenario_troop_created", self, troop)
 	
 func _on_troop_removed(troop):
