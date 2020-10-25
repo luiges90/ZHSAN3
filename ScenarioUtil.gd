@@ -35,9 +35,9 @@ static func apply_influences(influence_container, in_operation, params: Dictiona
 		for influence in influence_container.influences:
 			if in_operation == influence['Operation']:
 				if influence['Operation'].begins_with('modify'):
-					value = influence["Value"] * max(0, 1 + value * level)
+					value = value * max(0, 1 + influence["Value"] * level)
 				elif influence['Operation'].begins_with('add'):
-					value = influence["Value"] + value * level
+					value = value + influence["Value"] * level
 				else:
 					assert('Value Operation shall start with add or modify')
 		return value
