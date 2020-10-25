@@ -4,118 +4,113 @@ skill_data = importlib.import_module('scen_importer_skill_data')
 
 dev = True
 
-def convert_skills(object):
+def prepare_influence_data(common):
+    all_skills = common['AllSkills']['Skills']
+    all_titles = common['AllTitles']['Titles']
+    all_stunts = common['AllStunts']['Stunts']
+
+    influence_skills = {}
+    for t in all_skills:
+        influences = [int(x) for x in filter(None, t['Value']['InfluencesString'].split(' '))]
+        for i in influences:
+            if i not in influence_skills:
+                influence_skills[i] = set()
+            influence_skills[i].add(t['Key'])
+
+    influence_titles = {}
+    for t in all_titles:
+        influences = [int(x) for x in filter(None, t['Value']['InfluencesString'].split(' '))]
+        for i in influences:
+            if i not in influence_titles:
+                influence_titles[i] = set()
+            influence_titles[i].add(t['Key'])
+
+    influence_stunts = {}
+    for t in all_stunts:
+        influences = [int(x) for x in filter(None, t['Value']['InfluencesString'].split(' '))]
+        for i in influences:
+            if i not in influence_stunts:
+                influence_stunts[i] = set()
+            influence_stunts[i].add(t['Key'])
+
+    return (influence_skills, influence_titles, influence_stunts)
+
+def convert_skill(new_list, influences, newid, conversion, required_influence = []):
+    for inf in influences:
+        if len(required_influence) > 0:
+            for req in required_influence:
+                if not req in inf[1]:
+                    continue
+        for c in conversion:
+            if c in inf[0]:
+                for _ in inf[0][c].intersection(set(inf[1])):
+                    if newid not in new_list:
+                        new_list[newid] = 0
+                    new_list[newid] += conversion[c]
+
+def convert_skills(object, influence_data):
+    influence_skills = influence_data[0]
+    influence_titles = influence_data[1]
+    influence_stunts = influence_data[2]
+
     if k['ID'] in skill_data.SKILLS_LIST:
         return skill_data.SKILLS_LIST[k['ID']]
     else:
-        skill_ids = [int(x) if len(x) > 0 else -1 for x in object['SkillsString'].split(' ')]
-        title_ids = [int(x) if len(x) > 0 else -1 for x in object['RealTitlesString'].split(' ')]
-        stunt_ids = [int(x) if len(x) > 0 else -1 for x in object['StuntsString'].split(' ')]
-        skills = {}
-        if 0 in skill_ids and 10 in skill_ids:
-            skills[10] = 7
-        elif 10 in skill_ids:
-            skills[10] = 5
-        elif 0 in skill_ids:
-            skills[10] = 2
-        
-        if 1 in skill_ids and 11 in skill_ids:
-            skills[20] = 7
-        elif 11 in skill_ids:
-            skills[20] = 5
-        elif 1 in skill_ids:
-            skills[20] = 2
+        skill_ids = [int(x) for x in filter(
+            None, object['SkillsString'].split(' '))]
+        title_ids = [int(x) for x in filter(
+            None, object['RealTitlesString'].split(' '))]
+        stunt_ids = [int(x) for x in filter(
+            None, object['StuntsString'].split(' '))]
 
-        if 4 in skill_ids and 14 in skill_ids:
-            skills[30] = 7
-        elif 14 in skill_ids:
-            skills[30] = 5
-        elif 4 in skill_ids:
-            skills[30] = 2
+        influences = [(influence_skills, skill_ids), 
+                      (influence_titles, title_ids),
+                      (influence_stunts, stunt_ids)]
 
-        if 5 in skill_ids and 15 in skill_ids:
-            skills[40] = 7
-        elif 15 in skill_ids:
-            skills[40] = 5
-        elif 5 in skill_ids:
-            skills[40] = 2
+        new_skills = {}
+        convert_skill(new_skills, influences, 10, {0: 2, 10: 5, 70: 6, 80: 10})
+        convert_skill(new_skills, influences, 20, {1: 2, 11: 5, 71: 6, 81: 10})
+        convert_skill(new_skills, influences, 30, {4: 2, 14: 5, 74: 6, 84: 10})
+        convert_skill(new_skills, influences, 40, {5: 2, 15: 5, 75: 6, 85: 10})
+        convert_skill(new_skills, influences, 50, {91: 5})
+        convert_skill(new_skills, influences, 60, {90: 5})
+        convert_skill(new_skills, influences, 70, {2: 2, 12: 5, 72: 6, 82: 10})
+        convert_skill(new_skills, influences, 110, {20: 3, 60: 3})
+        convert_skill(new_skills, influences, 120, {21: 3, 61: 3})
+        convert_skill(new_skills, influences, 130, {124: 1})
+        convert_skill(new_skills, influences, 140, {122: 5})
+        convert_skill(new_skills, influences, 150, {30: 1})
+        convert_skill(new_skills, influences, 200, {466: 1})
 
-        if 16 in skill_ids:
-            skills[50] = 5
-        if 6 in skill_ids:
-            skills[60] = 5
-        if 12 in skill_ids:
-            skills[70] = 5
+        convert_skill(new_skills, influences, 10100, {6470: 5})
+        convert_skill(new_skills, influences, 10200, {410: 2}, [290])
+        convert_skill(new_skills, influences, 10210, {420: 2}, [290])
+        convert_skill(new_skills, influences, 10220, {250: 5, 251: 2}, [290])
+        convert_skill(new_skills, influences, 10300, {410: 2}, [291])
+        convert_skill(new_skills, influences, 10310, {420: 2}, [291])
+        convert_skill(new_skills, influences, 10320, {250: 5, 251: 2}, [291])
+        convert_skill(new_skills, influences, 10400, {410: 2}, [292])
+        convert_skill(new_skills, influences, 10410, {420: 2}, [292])
+        convert_skill(new_skills, influences, 10420, {250: 2, 251: 5, 252: 10}, [292])
+        convert_skill(new_skills, influences, 10500, {250: 2, 251: 5, 252: 10}, [292])
+        convert_skill(new_skills, influences, 10501, {250: 2, 251: 5, 252: 10}, [290, 291])
+        convert_skill(new_skills, influences, 10600, {202: 2, 222: 2})
+        convert_skill(new_skills, influences, 10610, {204: 2, 224: 2})
+        convert_skill(new_skills, influences, 10700, {4020: 1, 4021: 2, 4022: 5, 4023: 10, 4024: 20})
+        convert_skill(new_skills, influences, 10710, {607: 5})
+        convert_skill(new_skills, influences, 10800, {6100: 1, 6101: 2, 6102: 3, 6103: 4})
+        convert_skill(new_skills, influences, 10810, {260: 1, 261: 10})
+        convert_skill(new_skills, influences, 11000, {400: 1, 401: 2, 402: 3, 403: 4, 404: 6})
+        convert_skill(new_skills, influences, 11000, {405: 1, 406: 2, 407: 3, 408: 4, 409: 6})
 
-        if 71 in title_ids:
-            skills[100] = 5
-        if 70 in title_ids:
-            skills[110] = 5
-        if 74 in title_ids:
-            skills[120] = 5
-        if 42 in title_ids:
-            skills[130] = 5
-        if 11030 in title_ids:
-            skills[150] = 5
-        if 20 in skill_ids:
-            skills[10500] = 5
-        if 21 in skill_ids:
-            skills[10600] = 5
-        if 22 in skill_ids:
-            skills[10610] = 5
-        if 24 in skill_ids:
-            skills[10501] = 5
-        if 230 in title_ids:
-            skills[10100] = 5
-        if 34 in skill_ids:
-            skills[10200] = 5
-        if 35 in skill_ids:
-            skills[10210] = 5
-        if 320 in title_ids:
-            skills[10220] = 5
-        if 300 in title_ids:
-            skills[10200] = 5
-            skills[10210] = 5
-            skills[10220] = 5
-        if 44 in skill_ids:
-            skills[10300] = 5
-        if 45 in skill_ids:
-            skills[10310] = 5
-        if 321 in title_ids:
-            skills[10320] = 5
-        if 301 in title_ids:
-            skills[10300] = 5
-            skills[10310] = 5
-            skills[10320] = 5
-        if 54 in skill_ids:
-            skills[10400] = 5
-        if 55 in skill_ids:
-            skills[10410] = 5
-        if 322 in title_ids:
-            skills[10420] = 5
-        if 302 in title_ids:
-            skills[10400] = 5
-            skills[10410] = 5
-            skills[10420] = 5
-        if 80 in title_ids:
-            skills[20020] = 5
-        if 13 in stunt_ids:
-            skills[10700] = 5
-        if 230 in title_ids:
-            skills[10710] = 5
-        if 106 in skill_ids:
-            skills[200] = 5
-        if len(list(set([6, 24, 221, 222, 223, 231, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 10000, 10009, 10013, 10019, 10041, 10048, 10057]) & set(title_ids))) > 0:
-            skills[11000] = 5
-        if len(list(set([201, 202, 220, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 10001, 10013, 10019, 10041, 10057]) & set(title_ids))) > 0:
-            skills[11010] = 5
-        return skills
+        return new_skills
 
 output_folder = '../Scenarios/194QXGJ-qh'
 file_name = '194QXGJ-qh'
 with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
     all_factions = []
     common = json.loads(cfin.read(), strict=False)
+    influence_data = prepare_influence_data(common)
     with open(file_name + '.json', mode='r', encoding='utf-8') as fin:
         obj = json.loads(fin.read(), strict=False)
         
@@ -342,7 +337,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "Task": 0,
                     "TaskTarget": -1,
                     "ProducingEquipment": None,
-                    "Skills": convert_skills(k),
+                    "Skills": convert_skills(k, influence_data),
                     "FatherId": father_id_list[0]['Value'] if len(father_id_list) > 0 else -1,
                     "MotherId": mother_id_list[0]['Value'] if len(mother_id_list) > 0 else -1,
                     "SpouseIds": [spouse_id_list[0]['Value']] if len(spouse_id_list) > 0 and spouse_id_list[0]['Value'] >= 0 else [],

@@ -54,7 +54,7 @@
   {
     "_Id": 50,
 	"Name": "招兵",
-	"Description": "徵兵能力每等級增加10%",
+	"Description": "招兵能力每等級增加10%",
 	"Color": [0.13, 0.56, 0.82],
 	"Conditions": [],
 	"Influences": [
@@ -226,7 +226,7 @@
   {
     "_Id": 10200,
 	"Name": "步攻",
-	"Description": "作為主將時，步兵攻擊力每等級增加10%",
+	"Description": "作為主將時，步兵攻擊力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
@@ -268,7 +268,7 @@
   {
     "_Id": 10220,
 	"Name": "步速",
-	"Description": "作為主將時，步兵移動速度及先行每等級增加5%",
+	"Description": "作為主將時，步兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
@@ -282,11 +282,11 @@
 	"Influences": [
 		{
 			"Operation": "modify_person_troop_speed",
-			"Value": 0.05
+			"Value": 0.1
 		},
 		{
 			"Operation": "modify_person_troop_initiative",
-			"Value": 0.05
+			"Value": 0.1
 		}
 	]
   },
@@ -335,7 +335,7 @@
   {
     "_Id": 10320,
 	"Name": "弓將",
-	"Description": "作為主將時，弓兵移動速度及先行每等級增加5%",
+	"Description": "作為主將時，弓兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
@@ -349,11 +349,11 @@
 	"Influences": [
 		{
 			"Operation": "modify_person_troop_speed",
-			"Value": 0.05
+			"Value": 0.1
 		},
 		{
 			"Operation": "modify_person_troop_initiative",
-			"Value": 0.05
+			"Value": 0.1
 		}
 	]
   },
@@ -402,7 +402,7 @@
   {
     "_Id": 10420,
 	"Name": "騎將",
-	"Description": "作為主將時，騎兵移動速度及先行每等級增加5%",
+	"Description": "作為主將時，騎兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
@@ -416,18 +416,18 @@
 	"Influences": [
 		{
 			"Operation": "modify_person_troop_speed",
-			"Value": 0.05
+			"Value": 0.1
 		},
 		{
 			"Operation": "modify_person_troop_initiative",
-			"Value": 0.05
+			"Value": 0.1
 		}
 	]
   },
   {
     "_Id": 10500,
 	"Name": "馳騁",
-	"Description": "作為主將時，在平地的騎兵移動速度及先行每等級增加5%",
+	"Description": "作為主將時，在平地的騎兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
@@ -445,18 +445,18 @@
 	"Influences": [
 		{
 			"Operation": "modify_person_troop_speed",
-			"Value": 0.05
+			"Value": 0.1
 		},
 		{
 			"Operation": "modify_person_troop_initiative",
-			"Value": 0.05
+			"Value": 0.1
 		}
 	]
   },
   {
     "_Id": 10501,
 	"Name": "強行",
-	"Description": "作為主將時，步兵及弓兵的移動速度及先行每等級增加5%",
+	"Description": "作為主將時，步兵及弓兵的移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
 	"Conditions": [
 		{
@@ -470,11 +470,11 @@
 	"Influences": [
 		{
 			"Operation": "modify_person_troop_speed",
-			"Value": 0.05
+			"Value": 0.1
 		},
 		{
 			"Operation": "modify_person_troop_initiative",
-			"Value": 0.05
+			"Value": 0.1
 		}
 	]
   },
