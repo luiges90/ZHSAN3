@@ -209,6 +209,12 @@ func get_merit():
 	
 func get_merit_str():
 	return str(merit)
+
+func get_ambition():
+	return ambition
+
+func get_morality():
+	return morality
 	
 func get_portrait():
 	if SharedData.person_portraits.has(id):
@@ -562,8 +568,11 @@ func get_loyalty():
 	if self == leader:
 		return 999
 	
-	var loyalty = 105
+	var loyalty = 110
 	loyalty -= get_ideal_difference(leader) / 3
+
+	loyalty += get_morality() / 5 - 10
+	loyalty -= get_ambition() / 10 - 5
 	
 	var prestige = leader.get_prestige()
 	if prestige >= 0:
@@ -827,6 +836,21 @@ func day_event():
 		if task_days == 0:
 			match working_task:
 				Task.CONVINCE: do_convince()
+
+	if randf() < 1 / 10.0:
+		# lose loyalty when held captive
+		if get_status() == Status.CAPTIVE:
+			loyalty_shift -= (100 - get_morality()) / 20 + 1
+
+	# loyalty-shift naturalize
+	var ideal_diff = get_ideal_difference(get_belonged_faction().leader)
+	if randf() < 1 / (ideal_diff / 15.0 + 4):
+		if loyalty_shift < 0:
+			loyalty_shift += 1
+
+	if randf() < 1 / ((75 - ideal_diff) / 15.0 + 4):
+		if loyalty_shift > 0:
+			loyalty_shift -= 1
 			
 	# check death
 	if get_location() != null and scenario.get_year() >= get_expected_death_year() and randf() < 1 / 240.0:
