@@ -301,7 +301,8 @@ func get_belonged_faction():
 			return null
 		return scenario.factions[_old_faction_id]
 	else:
-		return get_location().get_belonged_faction()
+		var location = get_location()
+		return location.get_belonged_faction() if location != null else null
 	
 func get_belonged_faction_str():
 	var faction = get_belonged_faction()
@@ -837,20 +838,22 @@ func day_event():
 			match working_task:
 				Task.CONVINCE: do_convince()
 
-	if randf() < 1 / 10.0:
-		# lose loyalty when held captive
-		if get_status() == Status.CAPTIVE:
-			loyalty_shift -= (100 - get_morality()) / 20 + 1
-
-	# loyalty-shift naturalize
-	var ideal_diff = get_ideal_difference(get_belonged_faction().leader)
-	if randf() < 1 / (ideal_diff / 15.0 + 4):
-		if loyalty_shift < 0:
-			loyalty_shift += 1
-
-	if randf() < 1 / ((75 - ideal_diff) / 15.0 + 4):
-		if loyalty_shift > 0:
-			loyalty_shift -= 1
+	var faction = get_belonged_faction()
+	if faction != null:
+		if randf() < 1 / 10.0:
+			# lose loyalty when held captive
+			if get_status() == Status.CAPTIVE:
+				loyalty_shift -= (100 - get_morality()) / 20 + 1
+	
+		# loyalty-shift naturalize
+		var ideal_diff = get_ideal_difference(faction.leader)
+		if randf() < 1 / (ideal_diff / 15.0 + 4):
+			if loyalty_shift < 0:
+				loyalty_shift += 1
+	
+		if randf() < 1 / ((75 - ideal_diff) / 15.0 + 4):
+			if loyalty_shift > 0:
+				loyalty_shift -= 1
 			
 	# check death
 	if get_location() != null and scenario.get_year() >= get_expected_death_year() and randf() < 1 / 240.0:
