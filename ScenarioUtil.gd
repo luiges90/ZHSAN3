@@ -122,3 +122,22 @@ static func influence_troop_leader_defensive_factor(influence_container, level: 
 	
 	return 1
 
+static func influence_troop_leader_critical_factor(influence_container, level: int, params: Dictionary):
+	if not check_conditions(influence_container, params):
+		return 1
+	
+	for influence in influence_container.influences:
+		if influence['Operation'] == "add_person_troop_critical":
+			return 1 + influence["Value"] * level
+	
+	return 1
+
+static func influence_troop_leader_anti_critical_factor(influence_container, level: int, params: Dictionary):
+	if not check_conditions(influence_container, params):
+		return 1
+	
+	for influence in influence_container.influences:
+		if influence['Operation'] == "add_person_troop_anti_critical":
+			return 1 + influence["Value"] * level
+	
+	return 1
