@@ -66,6 +66,9 @@ var brothers = [] setget forbidden
 var ideal: int setget forbidden
 var loyalty_shift: int setget forbidden
 
+var ambition: int setget forbidden
+var morality: int setget forbidden
+
 signal person_died
 signal person_available
 
@@ -113,6 +116,8 @@ func load_data(json: Dictionary, objects):
 	strain = int(json["Strain"])
 	ideal = int(json["Ideal"])
 	loyalty_shift = int(json["LoyaltyShift"])
+	ambition = int(json["Ambition"])
+	morality = int(json["Morality"])
 	for id in json["Skills"]:
 		skills[objects["skills"][int(id)]] = json["Skills"][id]
 	
@@ -155,7 +160,9 @@ func save_data() -> Dictionary:
 		"Strain": strain,
 		"OldFaction": _old_faction_id,
 		"Ideal": ideal,
-		"LoyaltyShift": loyalty_shift
+		"LoyaltyShift": loyalty_shift,
+		"Ambition": ambition,
+		"Morality": morality
 	}
 	
 #####################################

@@ -344,7 +344,9 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "BrotherIds": brother_id_list[0]['Value'] if len(brother_id_list) > 0 else [],
                     "Strain": k['Strain'],
                     "Ideal": k['Ideal'],
-                    "LoyaltyShift": 0
+                    "LoyaltyShift": 0,
+                    "Ambition": k['Ambition'] * 20 + 10,
+                    "Morality": k['PersonalLoyalty'] * 20 + 10
                 })
             fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
             
