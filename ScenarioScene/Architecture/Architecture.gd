@@ -290,7 +290,7 @@ func anti_critical_chance():
 	return 0.0
 	
 ####################################
-#           GÌ°èet function           #
+#           GÔøΩÔøΩÔøΩet function           #
 ####################################
 
 func enemy_troop_in_range(distance: int):
@@ -456,6 +456,16 @@ func _develop_population():
 func _develop_resources():
 	fund = Util.f2ri(fund + expected_fund_income())
 	food = Util.f2ri(food + expected_food_income())
+
+	if fund <= 0:
+		fund = 0
+		for p in get_faction_persons():
+			p.loyalty_shift -= (100 - p.get_morality()) / 4 + 5
+	if food <= 0:
+		food = 0
+		troop = troop * 9 / 10
+		troop_morale = max(0, troop_morale - 10)
+		troop_combativity = max(0, troop_combativity - 10)
 	
 func _decay_internal():
 	var factor = 1

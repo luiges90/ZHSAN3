@@ -57,7 +57,7 @@ var task_target setget forbidden
 
 var skills = {} setget forbidden
 
-var strain: int
+var strain: int setget forbidden
 var father setget forbidden
 var mother setget forbidden
 var spouses = [] setget forbidden
@@ -470,7 +470,7 @@ func get_mother_name():
 func get_spouse_names():
 	var result = ''
 	for s in spouses:
-		result += "‧" + s.get_name()
+		result += "、" + s.get_name()
 	if len(result) > 0:
 		result = result.substr(1)
 	else:
@@ -480,7 +480,7 @@ func get_spouse_names():
 func get_brother_names():
 	var result = ''
 	for s in brothers:
-		result += "‧" + s.get_name()
+		result += "、" + s.get_name()
 	if len(result) > 0:
 		result = result.substr(1)
 	else:
@@ -863,11 +863,11 @@ func day_event():
 	
 		# loyalty-shift naturalize
 		var ideal_diff = get_ideal_difference(faction.leader)
-		if randf() < 1 / (ideal_diff / 15.0 + 4):
+		if randf() < 1 / (ideal_diff / 15.0 + 5):
 			if loyalty_shift < 0:
 				loyalty_shift += 1
 	
-		if randf() < 1 / ((75 - ideal_diff) / 15.0 + 4):
+		if randf() < 1 / ((75 - ideal_diff) / 15.0 + 5):
 			if loyalty_shift > 0:
 				loyalty_shift -= 1
 			
