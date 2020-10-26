@@ -466,6 +466,8 @@ func _develop_resources():
 		troop = troop * 9 / 10
 		troop_morale = max(0, troop_morale - 10)
 		troop_combativity = max(0, troop_combativity - 10)
+		for e in equipments:
+			equipments[e] = equipments[e] * 9 / 10
 	
 func _decay_internal():
 	var factor = 1
