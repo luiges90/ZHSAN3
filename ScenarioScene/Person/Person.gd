@@ -531,17 +531,23 @@ func get_ideal_difference(other_person) -> float:
 	diff += abs(get_ambition() - other_person.get_ambition()) / 10 # 0 - 10
 	diff += abs(get_morality() - other_person.get_morality()) / 5 # 0 - 20
 
-	if other_person.spouses.has(self):
+	if is_intimate_to(other_person):
 		diff = min(diff * 0.5, diff - 40)
-	if brothers.has(self):
-		diff = min(diff * 0.5, diff - 40)
-	if father == other_person or other_person.father == self or mother == other_person or other_person.mother == self:
+	if is_close_blood_to(other_person):
 		diff = min(diff * 0.75, diff - 15)
-	if other_person.father == father and other_person.mother == mother:
-		diff = min(diff * 0.8, diff - 10)
-	if other_person.strain == strain:
+	if is_same_strain_to(other_person):
 		diff = min(diff * 0.9, diff - 5)
 	return diff
+
+func is_intimate_to(other_person) -> bool:
+	return spouses.has(other_person) or brothers.has(other_person)
+
+func is_close_blood_to(other_person) -> bool:
+	return (father != null and (father == other_person or other_person.father == self or other_person.father == father)) or \
+		(mother != null and (mother == other_person  or other_person.mother == self or other_person.mother == mother))
+
+func is_same_strain_to(other_person) -> bool:
+	return other_person.strain == strain
 
 func convince_probability(other_person) -> float:
 	var self_diff = other_person.get_ideal_difference(self)
@@ -577,6 +583,13 @@ func get_loyalty():
 
 	loyalty += get_morality() / 5 - 10
 	loyalty -= get_ambition() / 10 - 5
+
+	if is_intimate_to(leader):
+		loyalty += 100
+	if is_close_blood_to(leader):
+		loyalty += 20
+	if is_same_strain_to(leader):
+		loyalty += 10
 	
 	var prestige = leader.get_prestige()
 	if prestige >= 0:
