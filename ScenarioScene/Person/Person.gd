@@ -525,9 +525,12 @@ func get_ideal_difference(other_person) -> float:
 	diff += abs(get_politics() - other_person.get_politics()) / 20.0 # 0 - 5
 	diff += abs(get_glamour() - other_person.get_glamour()) / 20.0 # 0 - 5
 	diff += abs(get_age() - other_person.get_age()) / 10.0 # 0 - 10
-	diff += abs(get_popularity() - other_person.get_popularity()) / 1000.0 # 0 - 10
+	diff += abs(get_popularity() - other_person.get_popularity()) / 500.0 # 0 - 20
 	diff += abs(get_karma() - other_person.get_karma()) / 100.0 # 0 - 200
 	diff += abs(get_prestige() - other_person.get_prestige()) / 250.0 # 0 - 80
+	diff += abs(get_ambition() - other_person.get_ambition()) / 10 # 0 - 10
+	diff += abs(get_morality() - other_person.get_morality()) / 5 # 0 - 20
+
 	if other_person.spouses.has(self):
 		diff = min(diff * 0.5, diff - 40)
 	if brothers.has(self):
