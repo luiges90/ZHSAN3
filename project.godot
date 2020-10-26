@@ -244,6 +244,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ScenarioScene/Person/Skill.gd"
 }, {
+"base": "Node",
+"class": "Stunt",
+"language": "GDScript",
+"path": "res://ScenarioScene/Military/Stunt.gd"
+}, {
+"base": "Node",
+"class": "StuntTemplate",
+"language": "GDScript",
+"path": "res://ScenarioScene/Military/StuntTemplate.gd"
+}, {
 "base": "ContextMenu",
 "class": "SystemMenu",
 "language": "GDScript",
@@ -352,6 +362,8 @@ _global_script_class_icons={
 "ScreenBlind": "",
 "Section": "",
 "Skill": "",
+"Stunt": "",
+"StuntTemplate": "",
 "SystemMenu": "",
 "TabList": "",
 "TerrainDetail": "",
