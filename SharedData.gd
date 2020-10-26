@@ -87,10 +87,12 @@ func _load_troop_sounds():
 
 			var attack = load(path + "/Attack.wav")
 			var moving = load(path + "/Moving.wav")
+			var critical = load(path + "/CriticalAttack.wav")
 			if attack != null and moving != null:
 				var sounds = {
 					"attack": attack,
-					"moving": moving
+					"moving": moving,
+					"critical": critical
 				}
 				troop_sounds[int(in_dir_name)] = sounds
 

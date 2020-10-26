@@ -719,6 +719,7 @@ func _update_military_kind_sprite():
 	if sounds != null:
 		$MovingSound.stream = sounds["moving"]
 		$AttackSound.stream = sounds["attack"]
+		$CriticalSound.stream = sounds["critical"]
 	
 
 		
