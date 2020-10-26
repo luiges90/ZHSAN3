@@ -1,5 +1,5 @@
 extends Node
-class_name StuntTemplate
+class_name BaseStunt
 
 var id: int setget forbidden
 var scenario
@@ -9,6 +9,8 @@ var description: String setget forbidden
 
 var influences setget forbidden
 var conditions setget forbidden
+
+var combativity_cost: int setget forbidden
 
 func forbidden(x):
 	assert(false)
