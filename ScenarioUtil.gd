@@ -49,7 +49,7 @@ static func _op_cond(op_not, op_value):
 
 static func check_conditions(influence_container, params: Dictionary):
 	for condition in influence_container.conditions:
-		var operator = condition['Operator']
+		var operator = Util.dict_try_get(condition, "Operator", [])
 		var op_not = operator.has('not')
 		match condition['Operation']:
 			'gender_male':

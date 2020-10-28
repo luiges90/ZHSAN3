@@ -67,7 +67,7 @@ var spouses = [] setget forbidden
 var brothers = [] setget forbidden
 
 var ideal: int setget forbidden
-var loyalty_shift: int setget forbidden
+var loyalty_shift: int
 
 var ambition: int setget forbidden
 var morality: int setget forbidden

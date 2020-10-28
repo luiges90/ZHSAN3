@@ -24,8 +24,8 @@ func load_data(json: Dictionary, objects):
 	color = Util.load_color(json["Color"])
 	conditions = json["Conditions"]
 	influences = json["Influences"]
-	max_level = json["MaxLevel"] if json.has("MaxLevel") else -1
-	learn_conditions = json["LearnConditions"] if json.has("LearnConditions") else []
+	max_level = Util.dict_try_get(json, "MaxLevel", -1)
+	learn_conditions = Util.dict_try_get(json, "LearnConditions", [])
 	
 func save_data() -> Dictionary:
 	return {
