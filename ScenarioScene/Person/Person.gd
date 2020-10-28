@@ -618,8 +618,11 @@ func get_loyalty():
 func apply_influences(operation, params: Dictionary):
 	if params.has("value"):
 		var value = params["value"]
+		var all_params = params.duplicate()
+		all_params["person"] = self
 		for skill in skills:
-			value = skill.apply_influences(operation, skills[skill], {"value": value, "person": self})
+			all_params["value"] = value
+			value = skill.apply_influences(operation, skills[skill], all_params)
 		return value
 
 ####################################
