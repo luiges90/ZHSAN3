@@ -563,14 +563,16 @@ func execute_attack():
 					var merit_rate = min(sqrt(damage_for_merit / (counter_damage + 100.0)), 5) + damage_for_merit / 1000.0
 					for p in get_persons():
 						if p == get_leader():
-							p.add_command_exp(40)
-							p.add_strength_exp(60)
+							p.add_combat_exp(20)
+							p.add_command_exp(20)
+							p.add_strength_exp(30)
 							p.add_merit((merit_rate - 0.5) * 25)
 							p.add_popularity(merit_rate / 2)
 							p.add_prestige(merit_rate - 1.25)
 						else:
-							p.add_command_exp(20)
-							p.add_strength_exp(30)
+							p.add_combat_exp(10)
+							p.add_command_exp(10)
+							p.add_strength_exp(15)
 							p.add_merit((merit_rate - 0.5) * 12.5)
 							p.add_popularity(merit_rate / 4)
 							p.add_prestige(merit_rate / 2 - 0.625)
@@ -579,14 +581,16 @@ func execute_attack():
 					if not target is Architecture:
 						for p in target.get_persons():
 							if p == get_leader():
-								p.add_command_exp(80)
-								p.add_strength_exp(20)
+								p.add_combat_exp(20)
+								p.add_command_exp(40)
+								p.add_strength_exp(10)
 								p.add_merit((merit_rate - 0.5) * 25)
 								p.add_popularity(other_merit_rate / 2)
 								p.add_prestige(other_merit_rate - 1.25)
 							else:
-								p.add_command_exp(40)
-								p.add_strength_exp(10)
+								p.add_combat_exp(10)
+								p.add_command_exp(20)
+								p.add_strength_exp(5)
 								p.add_merit((merit_rate - 0.5) * 12.5)
 								p.add_popularity(other_merit_rate / 4)
 								p.add_prestige(other_merit_rate / 2 - 0.625)

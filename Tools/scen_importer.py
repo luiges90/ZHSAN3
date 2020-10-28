@@ -325,6 +325,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "Politics": k['BasePolitics'],
                     "Glamour": k['BaseGlamour'],
                     "AvailableArchitectureId": k['AvailableLocation'],
+                    "InternalExperience": 0,
+                    "CombatExperience": 0,
                     "CommandExperience": 0,
                     "StrengthExperience": 0,
                     "IntelligenceExperience": 0,

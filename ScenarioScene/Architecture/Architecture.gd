@@ -511,6 +511,7 @@ func _develop_agriculture(p: Person):
 		if kind.agriculture > 0:
 			var delta = Util.f2ri(p.get_agriculture_ability() * 0.04 / max(1, float(agriculture) / kind.agriculture))
 			agriculture += delta
+			p.add_internal_exp(5)
 			p.add_intelligence_exp(5)
 			p.add_politics_exp(10)
 			p.add_glamour_exp(5)
@@ -526,6 +527,7 @@ func _develop_commerce(p: Person):
 		if kind.commerce > 0:
 			var delta = Util.f2ri(p.get_commerce_ability() * 0.04 / max(1, float(commerce) / kind.commerce))
 			commerce += delta
+			p.add_internal_exp(5)
 			p.add_intelligence_exp(10)
 			p.add_politics_exp(5)
 			p.add_glamour_exp(5)
@@ -541,6 +543,7 @@ func _develop_morale(p: Person):
 		if kind.morale > 0:
 			var delta = Util.f2ri(p.get_morale_ability() * 0.04 / max(1, float(morale) / kind.morale))
 			morale += delta
+			p.add_internal_exp(5)
 			p.add_command_exp(5)
 			p.add_strength_exp(5)
 			p.add_glamour_exp(10)
@@ -562,6 +565,7 @@ func _develop_endurance(p: Person):
 		if kind.endurance > 0:
 			var delta = Util.f2ri(p.get_endurance_ability() * 0.04 / max(1, float(endurance) / kind.endurance))
 			endurance += delta
+			p.add_internal_exp(5)
 			p.add_command_exp(5)
 			p.add_strength_exp(5)
 			p.add_intelligence_exp(5)
@@ -587,6 +591,7 @@ func _recruit_troop(p: Person):
 			troop_morale = Util.f2ri((troop_morale * old_quantity + 50 * quantity) / float(troop))
 			troop_combativity = Util.f2ri((troop_combativity * old_quantity + 50 * quantity) / float(troop))
 			morale -= Util.f2ri(quantity / 50.0)
+			p.add_internal_exp(5)
 			p.add_strength_exp(10)
 			p.add_glamour_exp(10)
 			p.add_merit(0.1 * quantity)
@@ -606,6 +611,7 @@ func _train_troop(p: Person):
 		
 		troop_morale = min(100, troop_morale + delta)
 		troop_combativity = min(100, troop_combativity + delta2)
+		p.add_internal_exp(5)
 		p.add_command_exp(10)
 		p.add_strength_exp(10)
 		p.add_merit(10)
@@ -621,6 +627,7 @@ func _produce_equipment(p: Person):
 			amount = floor(fund / cost)
 		fund -= amount * cost
 		equipments[equipment] += amount
+		p.add_internal_exp(5)
 		p.add_intelligence_exp(10)
 		p.add_politics_exp(10)
 		p.add_merit(0.25 * amount)

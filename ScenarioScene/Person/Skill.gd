@@ -11,6 +11,9 @@ var description: String setget forbidden
 var influences setget forbidden
 var conditions setget forbidden
 
+var learn_conditions setget forbidden
+var max_level: int setget forbidden
+
 func forbidden(x):
 	assert(false)
 
@@ -21,6 +24,8 @@ func load_data(json: Dictionary, objects):
 	color = Util.load_color(json["Color"])
 	conditions = json["Conditions"]
 	influences = json["Influences"]
+	max_level = json["MaxLevel"] if json.has("MaxLevel") else -1
+	learn_conditions = json["LearnConditions"] if json.has("LearnConditions") else []
 	
 func save_data() -> Dictionary:
 	return {
@@ -28,6 +33,8 @@ func save_data() -> Dictionary:
 		"Name": gname,
 		"Description": description,
 		"Color": Util.save_color(color),
+		"MaxLevel": max_level,
+		"LearnConditions": learn_conditions,
 		"Conditions": conditions,
 		"Influences": influences
 	}

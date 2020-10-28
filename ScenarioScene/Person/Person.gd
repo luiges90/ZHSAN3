@@ -32,6 +32,9 @@ var intelligence: int setget forbidden
 var politics: int setget forbidden
 var glamour: int setget forbidden
 
+var internal_exp: int setget forbidden
+var combat_exp: int setget forbidden
+
 var command_exp: int setget forbidden
 var strength_exp: int setget forbidden
 var intelligence_exp: int setget forbidden
@@ -102,6 +105,8 @@ func load_data(json: Dictionary, objects):
 	intelligence = int(json["Intelligence"])
 	politics = int(json["Politics"])
 	glamour = int(json["Glamour"])
+	internal_exp = int(json["InternalExperience"])
+	combat_exp = int(json["CombatExperience"])
 	command_exp = int(json["CommandExperience"])
 	strength_exp = int(json["StrengthExperience"])
 	intelligence_exp = int(json["IntelligenceExperience"])
@@ -140,6 +145,8 @@ func save_data() -> Dictionary:
 		"Intelligence": intelligence,
 		"Politics": politics,
 		"Glamour": glamour,
+		"InternalExperience": internal_exp,
+		"CombatExperience": combat_exp,
 		"CommandExperience": command_exp,
 		"StrengthExperience": strength_exp,
 		"IntelligenceExperience": intelligence_exp,
@@ -776,6 +783,14 @@ func set_produce_equipment(equipment: int):
 ####################################
 #     Manipulation / Abilities     #
 ####################################
+
+func add_internal_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
+	internal_exp = Util.f2ri(internal_exp)
+
+func add_combat_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
+	combat_exp = Util.f2ri(combat_exp)
 
 func add_command_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})

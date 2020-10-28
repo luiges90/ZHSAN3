@@ -44,61 +44,114 @@ static func apply_influences(influence_container, in_operation, params: Dictiona
 	else:
 		assert('Applying influences must provide value in params')
 
+static func _op_cond(op_not, op_value):
+	return (not op_not and op_value) or (op_not and not op_value)
+
 static func check_conditions(influence_container, params: Dictionary):
 	for condition in influence_container.conditions:
+		var operator = condition['Operator']
+		var op_not = operator.has('not')
 		match condition['Operation']:
 			'gender_male':
 				if params.has('person'):
-					if params['person'].gender:
+					if _op_cond(op_not, params['person'].gender):
 						return false
 			'gender_female':
 				if params.has('person'):
-					if not params['person'].gender:
+					if _op_cond(op_not, not params['person'].gender):
 						return false
 			'is_leader': 
 				if params.has('troop') and params.has('person'):
-					if params['troop'].get_leader() != params['person']:
+					if _op_cond(op_not, params['troop'].get_leader() != params['person']):
 						return false
 			'is_military_type':
 				if params.has('troop'):
 					if condition['Id'] is Array:
-						if not (params['troop'].military_kind.type in condition['Id']):
+						if _op_cond(op_not, not (params['troop'].military_kind.type in condition['Id'])):
 							return false
 					else:
-						if params['troop'].military_kind.type != condition['Id']:
+						if _op_cond(op_not, params['troop'].military_kind.type != condition['Id']):
 							return false
 				elif params.has('military_kind'):
 					if condition['Id'] is Array:
-						if not (params['military_kind'].type in condition['Id']):
+						if _op_cond(op_not, not (params['military_kind'].type in condition['Id'])):
 							return false
 					else:
-						if params['military_kind'].type != condition['Id']:
+						if _op_cond(op_not, params['military_kind'].type != condition['Id']):
 							return false
 			'is_terrain':
 				if params.has('troop'):
 					if condition['Id'] is Array:
-						if not (params['troop'].get_current_terrain().id in condition['Id']):
+						if _op_cond(op_not, not (params['troop'].get_current_terrain().id in condition['Id'])):
 							return false
 					else:
-						if params['troop'].get_current_terrain().id != condition['Id']:
+						if _op_cond(op_not, params['troop'].get_current_terrain().id != condition['Id']):
 							return false
 			'is_on_own_architecture':
 				if params.has('troop'):
 					var arch = params['troop'].get_on_architecture()
-					if arch == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction()):
+					if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction())):
 						return false
 			'is_on_enemy_architecture':
 				if params.has('troop'):
 					var arch = params['troop'].get_on_architecture()
-					if arch == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction()):
+					if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction())):
 						return false
 			'target_is_troop':
 				if params.has('target'):
-					if params['target'].object_type() != ObjectType.TROOP:
+					if _op_cond(op_not, params['target'].object_type() != ObjectType.TROOP):
 						return false
 			'target_is_architecture':
 				if params.has('target'):
-					if params['target'].object_type() != ObjectType.ARCHITECTURE:
+					if _op_cond(op_not, params['target'].object_type() != ObjectType.ARCHITECTURE):
+						return false
+			'internal_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].internal_exp < condition['Value']):
+						return false
+			'combat_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].combat_exp < condition['Value']):
+						return false
+			'command_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].get_command() < condition['Value']):
+						return false
+			'command_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].command_exp < condition['Value']):
+						return false
+			'strength_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].get_strength() < condition['Value']):
+						return false
+			'strength_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].strength_exp < condition['Value']):
+						return false
+			'intelligence_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].get_intelligence() < condition['Value']):
+						return false
+			'intelligence_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].intelligence_exp < condition['Value']):
+						return false
+			'politics_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].get_politics() < condition['Value']):
+						return false
+			'politics_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].politics_exp < condition['Value']):
+						return false
+			'glamour_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].get_glamour() < condition['Value']):
+						return false
+			'glamour_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].glamour_exp < condition['Value']):
 						return false
 	return true
 
