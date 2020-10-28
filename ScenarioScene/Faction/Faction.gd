@@ -122,8 +122,11 @@ func get_advisor_name():
 	
 func get_intelligent_advisor():
 	return advisor if advisor != null and advisor.get_intelligence() > leader.get_intelligence() else leader
-	
+
+var __get_convince_targets = null
 func get_convince_targets():
+	if __get_convince_targets != null:
+		return __get_convince_targets
 	var result = []
 	for a in scenario.architectures:
 		var arch = scenario.architectures[a]
@@ -138,6 +141,7 @@ func get_convince_targets():
 			if c.get_loyalty() < 100:
 				filtered_candidates.append(c)
 		Util.append_all(result, filtered_candidates)
+	__get_convince_targets = result
 	return result
 
 ####################################
@@ -220,6 +224,9 @@ func set_capital(arch):
 func day_event():
 	for arch in get_architectures():
 		arch.day_event()
+		
+	# clear cache
+	__get_convince_targets = null
 
 func month_event():
 	for arch in get_architectures():
