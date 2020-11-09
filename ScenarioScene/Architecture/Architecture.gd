@@ -35,6 +35,8 @@ var auto_task: bool
 
 var _destroyed: bool = false
 
+var _recently_battled: int setget forbidden
+
 signal architecture_clicked
 signal architecture_survey_updated
 
@@ -89,6 +91,8 @@ func load_data(json: Dictionary, objects):
 	auto_task = json.get("_AutoTask", false)
 	
 	equipments = Util.convert_dict_to_int_key(json["Equipments"])
+
+	_recently_battled = json["_RecentlyBattled"]
 	
 func save_data() -> Dictionary:
 	return {
@@ -110,7 +114,8 @@ func save_data() -> Dictionary:
 		"TroopMorale": troop_morale,
 		"TroopCombativity": troop_combativity,
 		"Equipments": equipments,
-		"_AutoTask": auto_task
+		"_AutoTask": auto_task,
+		"_RecentlyBattled": _recently_battled
 	}
 
 ####################################
@@ -290,7 +295,7 @@ func anti_critical_chance():
 	return 0.0
 	
 ####################################
-#           G���et function           #
+#           Get function           #
 ####################################
 
 func enemy_troop_in_range(distance: int):
@@ -341,6 +346,9 @@ func day_event():
 	_develop_population()
 	_develop_military()
 	emit_signal("architecture_survey_updated", self)
+
+	if _recently_battled > 0:
+		_recently_battled -= 1
 		
 func month_event():
 	_develop_resources()
@@ -433,6 +441,10 @@ func change_faction(to_section):
 		($Flag as Sprite).modulate = faction.color
 	
 	emit_signal('faction_changed', self)
+
+
+func set_recently_battled():
+	_recently_battled = 5
 	
 
 ####################################
@@ -465,7 +477,6 @@ func _develop_resources():
 		food = 0
 		troop = troop * 9 / 10
 		troop_morale = max(0, troop_morale - 10)
-		troop_combativity = max(0, troop_combativity - 10)
 		for e in equipments:
 			equipments[e] = equipments[e] * 9 / 10
 	
@@ -589,7 +600,6 @@ func _recruit_troop(p: Person):
 			population -= quantity
 			military_population -= quantity
 			troop_morale = Util.f2ri((troop_morale * old_quantity + 50 * quantity) / float(troop))
-			troop_combativity = Util.f2ri((troop_combativity * old_quantity + 50 * quantity) / float(troop))
 			morale -= Util.f2ri(quantity / 50.0)
 			p.add_internal_exp(5)
 			p.add_strength_exp(10)
@@ -610,7 +620,6 @@ func _train_troop(p: Person):
 			delta2 *= scenario.scenario_config.ai_troop_training_rate
 		
 		troop_morale = min(100, troop_morale + delta)
-		troop_combativity = min(100, troop_combativity + delta2)
 		p.add_internal_exp(5)
 		p.add_command_exp(10)
 		p.add_strength_exp(10)
@@ -637,7 +646,6 @@ func _produce_equipment(p: Person):
 func accept_entering_troop(in_troop):
 	assert(in_troop.quantity > 0)
 	troop_morale = int((troop * troop_morale + in_troop.quantity * in_troop.morale) / (troop + in_troop.quantity))
-	troop_combativity = int((troop * troop_combativity + in_troop.quantity * in_troop.combativity) / (troop + in_troop.quantity))
 	troop += in_troop.quantity
 	equipments[in_troop.military_kind.id] += in_troop.quantity
 	

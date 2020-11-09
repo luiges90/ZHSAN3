@@ -16,6 +16,8 @@ var quantity: int setget forbidden
 var morale: int setget forbidden
 var combativity: int setget forbidden
 
+var _recently_battled: int setget forbidden
+
 var _person_list = Array() setget forbidden, get_all_persons
 
 var _belonged_section setget forbidden, get_belonged_section
@@ -98,6 +100,8 @@ func load_data(json: Dictionary, objects):
 	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
 	_food_shortage = json["_FoodShortage"]
+
+	_recently_battled = json["_RecentlyBattled"]
 	
 	_ai_state = json["_AIState"]
 	var __arch = json["_AIDestinationArchitecture"]
@@ -141,7 +145,8 @@ func save_data() -> Dictionary:
 		"_CurrentOrderTarget": order_target,
 		"_CurrentOrderTargetType": order_target_type,
 		"_AIState": _ai_state,
-		"_AIDestinationArchitecture": _ai_destination_architecture.id if _ai_destination_architecture != null else null
+		"_AIDestinationArchitecture": _ai_destination_architecture.id if _ai_destination_architecture != null else null,
+		"_RecentlyBattled": _recently_battled
 	}
 	
 func _on_scenario_loaded(scenario):
@@ -400,7 +405,9 @@ func set_position(pos):
 	
 func add_morale(delta):
 	morale += delta
+	# TODO let morale drop to 0 and rout
 	morale = clamp(morale, 1, 100)
+
 	
 func get_order_text():
 	if current_order == null:
@@ -432,6 +439,15 @@ func occupy():
 	var arch = scenario.get_architecture_at_position(map_position)
 	arch.change_faction(get_belonged_section())
 	emit_signal("occupy_architecture", self, arch)
+
+
+func set_recently_battled():
+	_recently_battled = 5
+
+
+func add_combativity(value):
+	combativity += value
+	combativity = clamp(combativity, 0, 100)
 
 ####################################
 #          Order Execution         #
@@ -526,6 +542,8 @@ func execute_attack():
 				var self_valid = quantity > 0
 				if self_valid and target_valid:
 					_attack_count_in_turn += 1
+					set_recently_battled()
+					target.set_recently_battled()
 					
 					var actual_offence = get_offence()
 					var actual_defence = get_defence()
@@ -701,6 +719,10 @@ func day_event():
 			quantity = int(quantity * 0.9)
 	else:
 		_food_shortage = false
+
+	if _recently_battled > 0:
+		_recently_battled -= 1
+		add_combativity(5)
 		
 	emit_signal("troop_survey_updated", self)
 		

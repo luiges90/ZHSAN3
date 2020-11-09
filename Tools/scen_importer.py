@@ -239,8 +239,9 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "Endurance": k['Endurance'],
                     "Troop": 0,
                     "TroopMorale": 0,
-                    "TroopCombativity": 0,
-                    "Equipments": {}
+                    "TroopCombativity": 20,
+                    "Equipments": {},
+                    "_RecentlyBattled": 0
                 })
             fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
             

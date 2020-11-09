@@ -18,9 +18,10 @@
     "Population": 200000,
     "Title": "司隶 洛阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 0
+    "_Id": 0,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -41,9 +42,10 @@
     "Population": 0,
     "Title": "司隶 函谷关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 1
+    "_Id": 1,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -64,9 +66,10 @@
     "Population": 30000,
     "Title": "凉州 金城",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 2
+    "_Id": 2,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -87,9 +90,10 @@
     "Population": 0,
     "Title": "司隶 潼关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 3
+    "_Id": 3,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -110,9 +114,10 @@
     "Population": 0,
     "Title": "司隶 武关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 4
+    "_Id": 4,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -133,9 +138,10 @@
     "Population": 120000,
     "Title": "豫州 许县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 5
+    "_Id": 5,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -156,9 +162,10 @@
     "Population": 80000,
     "Title": "豫州 谯县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 6
+    "_Id": 6,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -179,9 +186,10 @@
     "Population": 200000,
     "Title": "荆北 宛县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 7
+    "_Id": 7,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -202,9 +210,10 @@
     "Population": 40000,
     "Title": "荆北 新野",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 8
+    "_Id": 8,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -263,9 +272,10 @@
     "Population": 100000,
     "Title": "荆北 襄阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 9
+    "_Id": 9,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -286,9 +296,10 @@
     "Population": 80000,
     "Title": "荆北 江陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 10
+    "_Id": 10,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -314,9 +325,10 @@
     "Population": 80000,
     "Title": "司隶 弘农",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 11
+    "_Id": 11,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -337,9 +349,10 @@
     "Population": 30000,
     "Title": "益州 上庸",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 12
+    "_Id": 12,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -360,9 +373,10 @@
     "Population": 30000,
     "Title": "益州 西城",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 13
+    "_Id": 13,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -383,9 +397,10 @@
     "Population": 5000,
     "Title": "荆北 乌林港",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 14
+    "_Id": 14,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 100,
@@ -406,9 +421,10 @@
     "Population": 30000,
     "Title": "荆南 巴丘",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 15
+    "_Id": 15,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -429,9 +445,10 @@
     "Population": 40000,
     "Title": "荆南 鄂县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 16
+    "_Id": 16,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -455,9 +472,10 @@
     "Population": 150000,
     "Title": "兖州 陈留",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 17
+    "_Id": 17,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 100,
@@ -478,9 +496,10 @@
     "Population": 5000,
     "Title": "兖州 白马津",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 18
+    "_Id": 18,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -525,9 +544,10 @@
     "Population": 120000,
     "Title": "兖州 濮阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 19
+    "_Id": 19,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -548,9 +568,10 @@
     "Population": 5000,
     "Title": "司隶 孟津",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 20
+    "_Id": 20,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -571,9 +592,10 @@
     "Population": 150000,
     "Title": "豫州 平舆",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 21
+    "_Id": 21,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -594,9 +616,10 @@
     "Population": 80000,
     "Title": "淮南 皖县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 22
+    "_Id": 22,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -641,9 +664,10 @@
     "Population": 80000,
     "Title": "淮南 寿春",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 23
+    "_Id": 23,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -664,9 +688,10 @@
     "Population": 80000,
     "Title": "淮南 合肥",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 24
+    "_Id": 24,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -687,9 +712,10 @@
     "Population": 120000,
     "Title": "兖州 无盐",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 26
+    "_Id": 26,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -710,9 +736,10 @@
     "Population": 120000,
     "Title": "兖州 奉高",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 27
+    "_Id": 27,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -733,9 +760,10 @@
     "Population": 120000,
     "Title": "青州 临淄",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 28
+    "_Id": 28,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -760,9 +788,10 @@
     "Population": 150000,
     "Title": "青州 都昌",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 29
+    "_Id": 29,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -783,9 +812,10 @@
     "Population": 120000,
     "Title": "青州 黄县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 30
+    "_Id": 30,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -806,9 +836,10 @@
     "Population": 150000,
     "Title": "兖州 定陶",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 31
+    "_Id": 31,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -829,9 +860,10 @@
     "Population": 0,
     "Title": "凉州 散关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 32
+    "_Id": 32,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -852,9 +884,10 @@
     "Population": 100000,
     "Title": "徐州 东武",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 33
+    "_Id": 33,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -881,9 +914,10 @@
     "Population": 100000,
     "Title": "徐州 开阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 34
+    "_Id": 34,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -916,9 +950,10 @@
     "Population": 150000,
     "Title": "徐州 郯县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 35
+    "_Id": 35,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -939,9 +974,10 @@
     "Population": 80000,
     "Title": "兖州 任城",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 36
+    "_Id": 36,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 400,
@@ -962,9 +998,10 @@
     "Population": 150000,
     "Title": "兖州 昌邑",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 37
+    "_Id": 37,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -985,9 +1022,10 @@
     "Population": 120000,
     "Title": "徐州 彭城",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 38
+    "_Id": 38,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1012,9 +1050,10 @@
     "Population": 150000,
     "Title": "徐州 下邳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 39
+    "_Id": 39,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1047,9 +1086,10 @@
     "Population": 40000,
     "Title": "豫州 沛县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 40
+    "_Id": 40,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1070,9 +1110,10 @@
     "Population": 120000,
     "Title": "徐州 淮阴",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 41
+    "_Id": 41,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -1093,9 +1134,10 @@
     "Population": 5000,
     "Title": "徐州 广陵港",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 42
+    "_Id": 42,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1127,9 +1169,10 @@
     "Population": 80000,
     "Title": "扬州 秣陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 43
+    "_Id": 43,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1152,9 +1195,10 @@
     "Population": 120000,
     "Title": "扬州 吴县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 44
+    "_Id": 44,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1179,9 +1223,10 @@
     "Population": 80000,
     "Title": "扬州 山阴",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 45
+    "_Id": 45,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1202,9 +1247,10 @@
     "Population": 40000,
     "Title": "扬州 始新",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 46
+    "_Id": 46,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1225,9 +1271,10 @@
     "Population": 30000,
     "Title": "扬州 章安",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 47
+    "_Id": 47,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1248,9 +1295,10 @@
     "Population": 30000,
     "Title": "扬州 侯官",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 48
+    "_Id": 48,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1271,9 +1319,10 @@
     "Population": 120000,
     "Title": "扬州 柴桑",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 49
+    "_Id": 49,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1294,9 +1343,10 @@
     "Population": 5000,
     "Title": "扬州 虎林港",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 50
+    "_Id": 50,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1317,9 +1367,10 @@
     "Population": 40000,
     "Title": "扬州 鄱阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 51
+    "_Id": 51,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1342,9 +1393,10 @@
     "Population": 120000,
     "Title": "扬州 南昌",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 52
+    "_Id": 52,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1365,9 +1417,10 @@
     "Population": 40000,
     "Title": "扬州 南城",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 53
+    "_Id": 53,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1388,9 +1441,10 @@
     "Population": 100000,
     "Title": "扬州 高昌",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 54
+    "_Id": 54,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1411,9 +1465,10 @@
     "Population": 40000,
     "Title": "扬州 建安",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 55
+    "_Id": 55,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1444,9 +1499,10 @@
     "Population": 100000,
     "Title": "扬州 山越",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 56
+    "_Id": 56,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -1467,9 +1523,10 @@
     "Population": 5000,
     "Title": "夷州 夷西渡口",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 57
+    "_Id": 57,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1490,9 +1547,10 @@
     "Population": 40000,
     "Title": "夷州 夷洲",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 58
+    "_Id": 58,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1513,9 +1571,10 @@
     "Population": 40000,
     "Title": "兖州 己吾",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 59
+    "_Id": 59,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1538,9 +1597,10 @@
     "Population": 150000,
     "Title": "荆南 临湘",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 60
+    "_Id": 60,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1561,9 +1621,10 @@
     "Population": 100000,
     "Title": "荆南 临沅",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 61
+    "_Id": 61,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1584,9 +1645,10 @@
     "Population": 80000,
     "Title": "荆南 湘南",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 62
+    "_Id": 62,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1610,9 +1672,10 @@
     "Population": 120000,
     "Title": "荆南 泉陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 63
+    "_Id": 63,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1648,9 +1711,10 @@
     "Population": 120000,
     "Title": "荆南 郴县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 64
+    "_Id": 64,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1671,9 +1735,10 @@
     "Population": 80000,
     "Title": "交州 临贺",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 65
+    "_Id": 65,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1694,9 +1759,10 @@
     "Population": 100000,
     "Title": "交州 番禹",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 66
+    "_Id": 66,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1717,9 +1783,10 @@
     "Population": 30000,
     "Title": "荆南 夷道",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 67
+    "_Id": 67,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1740,9 +1807,10 @@
     "Population": 30000,
     "Title": "益州 临江",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 68
+    "_Id": 68,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1763,9 +1831,10 @@
     "Population": 120000,
     "Title": "交州 广信",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 69
+    "_Id": 69,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -1786,9 +1855,10 @@
     "Population": 5000,
     "Title": "益州 江油关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 70
+    "_Id": 70,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1814,9 +1884,10 @@
     "Population": 40000,
     "Title": "交州 合浦",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 71
+    "_Id": 71,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1837,9 +1908,10 @@
     "Population": 5000,
     "Title": "淮南 皖口港",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 72
+    "_Id": 72,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1860,9 +1932,10 @@
     "Population": 40000,
     "Title": "交州 布山",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 73
+    "_Id": 73,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1892,9 +1965,10 @@
     "Population": 80000,
     "Title": "交州 龙编",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 74
+    "_Id": 74,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1915,9 +1989,10 @@
     "Population": 30000,
     "Title": "凉州 沓中",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 75
+    "_Id": 75,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1938,9 +2013,10 @@
     "Population": 5000,
     "Title": "荆北 夏口港",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 76
+    "_Id": 76,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1961,9 +2037,10 @@
     "Population": 40000,
     "Title": "淮南 安风",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 77
+    "_Id": 77,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -1984,9 +2061,10 @@
     "Population": 100000,
     "Title": "兖州 卢县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 78
+    "_Id": 78,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2007,9 +2085,10 @@
     "Population": 120000,
     "Title": "冀州 乐成",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 79
+    "_Id": 79,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2059,9 +2138,10 @@
     "Population": 200000,
     "Title": "益州 成都",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 80
+    "_Id": 80,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2082,9 +2162,10 @@
     "Population": 120000,
     "Title": "益州 汉嘉",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 81
+    "_Id": 81,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2105,9 +2186,10 @@
     "Population": 80000,
     "Title": "益州 武阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 82
+    "_Id": 82,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2128,9 +2210,10 @@
     "Population": 80000,
     "Title": "益州 江阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 83
+    "_Id": 83,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2151,9 +2234,10 @@
     "Population": 100000,
     "Title": "益州 江州",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 84
+    "_Id": 84,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 100,
@@ -2174,9 +2258,10 @@
     "Population": 40000,
     "Title": "冀州 易京",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 85
+    "_Id": 85,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2197,9 +2282,10 @@
     "Population": 100000,
     "Title": "益州 永安",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 86
+    "_Id": 86,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -2220,9 +2306,10 @@
     "Population": 0,
     "Title": "益州 绵竹关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 87
+    "_Id": 87,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2243,9 +2330,10 @@
     "Population": 150000,
     "Title": "南中 邛都",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 88
+    "_Id": 88,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2266,9 +2354,10 @@
     "Population": 80000,
     "Title": "南中 且兰",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 89
+    "_Id": 89,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2289,9 +2378,10 @@
     "Population": 30000,
     "Title": "南中 朱提",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 90
+    "_Id": 90,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2312,9 +2402,10 @@
     "Population": 30000,
     "Title": "南中 味县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 91
+    "_Id": 91,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -2335,9 +2426,10 @@
     "Population": 0,
     "Title": "兖州 乌巢",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 92
+    "_Id": 92,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2361,9 +2453,10 @@
     "Population": 100000,
     "Title": "南中 南蛮",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 93
+    "_Id": 93,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2384,9 +2477,10 @@
     "Population": 40000,
     "Title": "南中 梇栋",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 94
+    "_Id": 94,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2407,9 +2501,10 @@
     "Population": 120000,
     "Title": "南中 不韦",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 95
+    "_Id": 95,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2430,9 +2525,10 @@
     "Population": 40000,
     "Title": "益州 雒县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 96
+    "_Id": 96,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2453,9 +2549,10 @@
     "Population": 80000,
     "Title": "益州 阆中",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 97
+    "_Id": 97,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2476,9 +2573,10 @@
     "Population": 80000,
     "Title": "益州 梓潼",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 98
+    "_Id": 98,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -2499,9 +2597,10 @@
     "Population": 0,
     "Title": "益州 剑阁",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 99
+    "_Id": 99,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2530,9 +2629,10 @@
     "Population": 80000,
     "Title": "益州 南郑",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 100
+    "_Id": 100,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -2553,9 +2653,10 @@
     "Population": 0,
     "Title": "益州 阳平关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 101
+    "_Id": 101,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2581,9 +2682,10 @@
     "Population": 40000,
     "Title": "凉州 下辨",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 102
+    "_Id": 102,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2604,9 +2706,10 @@
     "Population": 30000,
     "Title": "益州 阴平",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 103
+    "_Id": 103,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -2627,9 +2730,10 @@
     "Population": 0,
     "Title": "兖州 官渡",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 104
+    "_Id": 104,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2677,9 +2781,10 @@
     "Population": 100000,
     "Title": "司隶 长安",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 105
+    "_Id": 105,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2700,9 +2805,10 @@
     "Population": 30000,
     "Title": "司隶 槐里",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 106
+    "_Id": 106,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2723,9 +2829,10 @@
     "Population": 30000,
     "Title": "司隶 临晋",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 107
+    "_Id": 107,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2746,9 +2853,10 @@
     "Population": 30000,
     "Title": "司隶 祋栩",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 108
+    "_Id": 108,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2769,9 +2877,10 @@
     "Population": 30000,
     "Title": "司隶 漆县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 109
+    "_Id": 109,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2792,9 +2901,10 @@
     "Population": 30000,
     "Title": "凉州 临泾",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 110
+    "_Id": 110,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2815,9 +2925,10 @@
     "Population": 30000,
     "Title": "凉州 上邽",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 111
+    "_Id": 111,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2838,9 +2949,10 @@
     "Population": 30000,
     "Title": "凉州 冀县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 112
+    "_Id": 112,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2871,9 +2983,10 @@
     "Population": 30000,
     "Title": "凉州 襄武",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 113
+    "_Id": 113,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2900,9 +3013,10 @@
     "Population": 100000,
     "Title": "凉州 羌胡",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 114
+    "_Id": 114,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2923,9 +3037,10 @@
     "Population": 30000,
     "Title": "凉州 榆中",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 115
+    "_Id": 115,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2953,9 +3068,10 @@
     "Population": 30000,
     "Title": "凉州 西都",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 116
+    "_Id": 116,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2976,9 +3092,10 @@
     "Population": 30000,
     "Title": "雍州 姑臧",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 117
+    "_Id": 117,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -2999,9 +3116,10 @@
     "Population": 30000,
     "Title": "雍州 觻得",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 118
+    "_Id": 118,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3022,9 +3140,10 @@
     "Population": 30000,
     "Title": "雍州 禄福",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 119
+    "_Id": 119,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3045,9 +3164,10 @@
     "Population": 30000,
     "Title": "雍州 敦煌",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 120
+    "_Id": 120,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3068,9 +3188,10 @@
     "Population": 30000,
     "Title": "雍州 居延",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 121
+    "_Id": 121,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3091,9 +3212,10 @@
     "Population": 100000,
     "Title": "漠北 乌孙",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 122
+    "_Id": 122,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3123,9 +3245,10 @@
     "Population": 100000,
     "Title": "并州 美稷",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 123
+    "_Id": 123,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3146,9 +3269,10 @@
     "Population": 120000,
     "Title": "司隶 安邑",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 124
+    "_Id": 124,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3169,9 +3293,10 @@
     "Population": 120000,
     "Title": "司隶 怀县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 125
+    "_Id": 125,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3192,9 +3317,10 @@
     "Population": 40000,
     "Title": "司隶 平阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 126
+    "_Id": 126,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3221,9 +3347,10 @@
     "Population": 150000,
     "Title": "冀州 邺县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 127
+    "_Id": 127,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3244,9 +3371,10 @@
     "Population": 0,
     "Title": "冀州 界桥",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 128
+    "_Id": 128,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3269,9 +3397,10 @@
     "Population": 80000,
     "Title": "并州 晋阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 129
+    "_Id": 129,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3292,9 +3421,10 @@
     "Population": 30000,
     "Title": "并州 离石",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 130
+    "_Id": 130,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3315,9 +3445,10 @@
     "Population": 100000,
     "Title": "并州 原平",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 131
+    "_Id": 131,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3338,9 +3469,10 @@
     "Population": 0,
     "Title": "并州 雁门关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 132
+    "_Id": 132,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3361,9 +3493,10 @@
     "Population": 150000,
     "Title": "青州 平原",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 133
+    "_Id": 133,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3384,9 +3517,10 @@
     "Population": 150000,
     "Title": "冀州 信都",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 134
+    "_Id": 134,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3407,9 +3541,10 @@
     "Population": 100000,
     "Title": "青州 厌次",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 135
+    "_Id": 135,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3477,9 +3612,10 @@
     "Population": 200000,
     "Title": "冀州 南皮",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 136
+    "_Id": 136,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3506,9 +3642,10 @@
     "Population": 80000,
     "Title": "冀州 真定",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 137
+    "_Id": 137,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3529,9 +3666,10 @@
     "Population": 150000,
     "Title": "冀州 卢奴",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 138
+    "_Id": 138,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3552,9 +3690,10 @@
     "Population": 150000,
     "Title": "幽州 涿县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 139
+    "_Id": 139,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3575,9 +3714,10 @@
     "Population": 30000,
     "Title": "幽州 高柳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 140
+    "_Id": 140,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3598,9 +3738,10 @@
     "Population": 100000,
     "Title": "幽州 蓟县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 141
+    "_Id": 141,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3621,9 +3762,10 @@
     "Population": 30000,
     "Title": "幽州 沮阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 142
+    "_Id": 142,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3644,9 +3786,10 @@
     "Population": 120000,
     "Title": "幽州 渔阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 143
+    "_Id": 143,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3685,9 +3828,10 @@
     "Population": 30000,
     "Title": "幽州 土垠",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 144
+    "_Id": 144,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3708,9 +3852,10 @@
     "Population": 5000,
     "Title": "司隶 伊阙关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 145
+    "_Id": 145,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3731,9 +3876,10 @@
     "Population": 40000,
     "Title": "幽州 昌黎",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 146
+    "_Id": 146,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3760,9 +3906,10 @@
     "Population": 40000,
     "Title": "幽州 襄平",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 147
+    "_Id": 147,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3783,9 +3930,10 @@
     "Population": 0,
     "Title": "司隶 轘辕关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 148
+    "_Id": 148,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3813,9 +3961,10 @@
     "Population": 100000,
     "Title": "漠北 丸都",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 149
+    "_Id": 149,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3836,9 +3985,10 @@
     "Population": 100000,
     "Title": "幽州 朝鲜",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 150
+    "_Id": 150,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3859,9 +4009,10 @@
     "Population": 5000,
     "Title": "幽州 带方港",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 151
+    "_Id": 151,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3882,9 +4033,10 @@
     "Population": 0,
     "Title": "司隶 广成关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 152
+    "_Id": 152,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3905,9 +4057,10 @@
     "Population": 0,
     "Title": "益州 葭萌关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 153
+    "_Id": 153,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3928,9 +4081,10 @@
     "Population": 0,
     "Title": "司隶 虎牢关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 154
+    "_Id": 154,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -3954,9 +4108,10 @@
     "Population": 100000,
     "Title": "漠北 盛乐",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 155
+    "_Id": 155,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -3977,9 +4132,10 @@
     "Population": 0,
     "Title": "凉州 街亭",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 156
+    "_Id": 156,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -4000,9 +4156,10 @@
     "Population": 5000,
     "Title": "扬州 曲阿港",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 157
+    "_Id": 157,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4023,9 +4180,10 @@
     "Population": 100000,
     "Title": "扬州 宛陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 158
+    "_Id": 158,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4057,9 +4215,10 @@
     "Population": 100000,
     "Title": "漠北 东部鲜卑",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 159
+    "_Id": 159,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4093,9 +4252,10 @@
     "Population": 100000,
     "Title": "漠北 白狼山",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 160
+    "_Id": 160,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4119,9 +4279,10 @@
     "Population": 100000,
     "Title": "漠北 夫余",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 161
+    "_Id": 161,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4145,9 +4306,10 @@
     "Population": 150000,
     "Title": "豫州 陈县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 162
+    "_Id": 162,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4168,9 +4330,10 @@
     "Population": 40000,
     "Title": "淮南 六县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 163
+    "_Id": 163,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4191,9 +4354,10 @@
     "Population": 120000,
     "Title": "豫州 睢阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 164
+    "_Id": 164,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4214,9 +4378,10 @@
     "Population": 30000,
     "Title": "扬州 寻阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 165
+    "_Id": 165,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4237,9 +4402,10 @@
     "Population": 120000,
     "Title": "青州 东平陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 166
+    "_Id": 166,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4260,9 +4426,10 @@
     "Population": 120000,
     "Title": "青州 临济",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 167
+    "_Id": 167,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4283,9 +4450,10 @@
     "Population": 120000,
     "Title": "司隶 温县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 168
+    "_Id": 168,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4306,9 +4474,10 @@
     "Population": 40000,
     "Title": "冀州 黎阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 169
+    "_Id": 169,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4329,9 +4498,10 @@
     "Population": 120000,
     "Title": "冀州 馆陶",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 170
+    "_Id": 170,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4352,9 +4522,10 @@
     "Population": 120000,
     "Title": "冀州 甘陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 171
+    "_Id": 171,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4375,9 +4546,10 @@
     "Population": 5000,
     "Title": "并州 壶关",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 172
+    "_Id": 172,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4398,9 +4570,10 @@
     "Population": 30000,
     "Title": "幽州 高句骊",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 173
+    "_Id": 173,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4424,9 +4597,10 @@
     "Population": 40000,
     "Title": "扬州 乌程",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 174
+    "_Id": 174,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4447,9 +4621,10 @@
     "Population": 40000,
     "Title": "扬州 富春",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 175
+    "_Id": 175,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4470,9 +4645,10 @@
     "Population": 40000,
     "Title": "荆北 樊城",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 176
+    "_Id": 176,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4493,9 +4669,10 @@
     "Population": 30000,
     "Title": "荆北 南乡",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 177
+    "_Id": 177,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4516,9 +4693,10 @@
     "Population": 30000,
     "Title": "益州 成固",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 178
+    "_Id": 178,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4539,9 +4717,10 @@
     "Population": 30000,
     "Title": "荆北 当阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 179
+    "_Id": 179,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4562,9 +4741,10 @@
     "Population": 40000,
     "Title": "益州 郪县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 180
+    "_Id": 180,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4585,9 +4765,10 @@
     "Population": 40000,
     "Title": "益州 涪县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 181
+    "_Id": 181,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4608,9 +4789,10 @@
     "Population": 30000,
     "Title": "司隶 陈仓",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 182
+    "_Id": 182,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4631,9 +4813,10 @@
     "Population": 30000,
     "Title": "司隶 郿县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 183
+    "_Id": 183,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 0,
@@ -4654,9 +4837,10 @@
     "Population": 0,
     "Title": "司隶 五丈原",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 184
+    "_Id": 184,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4677,9 +4861,10 @@
     "Population": 30000,
     "Title": "凉州 允吾",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 185
+    "_Id": 185,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4700,9 +4885,10 @@
     "Population": 30000,
     "Title": "凉州 狄道",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 186
+    "_Id": 186,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4725,9 +4911,10 @@
     "Population": 30000,
     "Title": "凉州 枹罕",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 187
+    "_Id": 187,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4748,9 +4935,10 @@
     "Population": 30000,
     "Title": "凉州 富平",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 188
+    "_Id": 188,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4771,9 +4959,10 @@
     "Population": 30000,
     "Title": "凉州 陇县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 189
+    "_Id": 189,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4794,9 +4983,10 @@
     "Population": 30000,
     "Title": "司隶 高陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 190
+    "_Id": 190,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4817,9 +5007,10 @@
     "Population": 30000,
     "Title": "司隶 上洛",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 191
+    "_Id": 191,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4840,9 +5031,10 @@
     "Population": 30000,
     "Title": "司隶 华阴",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 192
+    "_Id": 192,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4869,9 +5061,10 @@
     "Population": 40000,
     "Title": "并州 长子",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 193
+    "_Id": 193,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4892,9 +5085,10 @@
     "Population": 30000,
     "Title": "并州 肤施",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 194
+    "_Id": 194,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4915,9 +5109,10 @@
     "Population": 30000,
     "Title": "并州 临戎",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 195
+    "_Id": 195,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4938,9 +5133,10 @@
     "Population": 30000,
     "Title": "并州 九原",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 196
+    "_Id": 196,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4961,9 +5157,10 @@
     "Population": 30000,
     "Title": "并州 云中",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 197
+    "_Id": 197,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -4984,9 +5181,10 @@
     "Population": 5000,
     "Title": "司隶 蒲坂津",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 198
+    "_Id": 198,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5007,9 +5205,10 @@
     "Population": 30000,
     "Title": "幽州 代县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 199
+    "_Id": 199,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5030,9 +5229,10 @@
     "Population": 120000,
     "Title": "冀州 元氏",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 200
+    "_Id": 200,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5053,9 +5253,10 @@
     "Population": 150000,
     "Title": "冀州 廮陶",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 201
+    "_Id": 201,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5076,9 +5277,10 @@
     "Population": 40000,
     "Title": "南中 滇池",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 202
+    "_Id": 202,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5099,9 +5301,10 @@
     "Population": 40000,
     "Title": "豫州 阳翟",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 203
+    "_Id": 203,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5122,9 +5325,10 @@
     "Population": 120000,
     "Title": "豫州 新息",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 204
+    "_Id": 204,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5145,9 +5349,10 @@
     "Population": 40000,
     "Title": "荆北 西陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 205
+    "_Id": 205,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5168,9 +5373,10 @@
     "Population": 30000,
     "Title": "荆北 夷陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 206
+    "_Id": 206,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5191,9 +5397,10 @@
     "Population": 30000,
     "Title": "荆北 秭归",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 207
+    "_Id": 207,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5214,9 +5421,10 @@
     "Population": 5000,
     "Title": "荆南 汉津",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 208
+    "_Id": 208,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5259,9 +5467,10 @@
     "Population": 40000,
     "Title": "淮南 历阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 209
+    "_Id": 209,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5282,9 +5491,10 @@
     "Population": 30000,
     "Title": "扬州 牛渚",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 210
+    "_Id": 210,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5305,9 +5515,10 @@
     "Population": 100000,
     "Title": "荆北 鲁阳",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 211
+    "_Id": 211,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 100,
@@ -5328,9 +5539,10 @@
     "Population": 5000,
     "Title": "司隶 河阳津",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 212
+    "_Id": 212,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 100,
@@ -5351,9 +5563,10 @@
     "Population": 5000,
     "Title": "司隶 小平津",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 213
+    "_Id": 213,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 100,
@@ -5374,9 +5587,10 @@
     "Population": 50000,
     "Title": "荆南 陆口",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 214
+    "_Id": 214,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5397,9 +5611,10 @@
     "Population": 30000,
     "Title": "荆北 房陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 215
+    "_Id": 215,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 100,
@@ -5420,9 +5635,10 @@
     "Population": 50000,
     "Title": "荆南 孱陵",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 216
+    "_Id": 216,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5475,9 +5691,10 @@
     "Population": 40000,
     "Title": "兖州 鄄城",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 311
+    "_Id": 311,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5500,9 +5717,10 @@
     "Population": 30000,
     "Title": "兖州 东阿",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 312
+    "_Id": 312,
+    "_RecentlyBattled": 0
   },
   {
     "Agriculture": 200,
@@ -5523,8 +5741,9 @@
     "Population": 30000,
     "Title": "兖州 范县",
     "Troop": 0,
-    "TroopCombativity": 0,
+    "TroopCombativity": 20,
     "TroopMorale": 0,
-    "_Id": 313
+    "_Id": 313,
+    "_RecentlyBattled": 0
   }
 ]
