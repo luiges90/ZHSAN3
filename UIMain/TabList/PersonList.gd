@@ -287,12 +287,13 @@ func _populate_internal_data(person_list: Array, action):
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 7
+		item_list.columns = 8
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 6
+		item_list.columns = 7
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TASK'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('INTERNAL_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('AGRICULTURE_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('COMMERCE_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('MORALE_ABILITY'), self, "_on_title_sorting_click", person_list))
@@ -309,6 +310,7 @@ func _populate_internal_data(person_list: Array, action):
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.internal_exp), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_agriculture_ability())), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_commerce_ability())), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_morale_ability())), self, person, checkbox))
@@ -320,16 +322,21 @@ func _populate_military_data(person_list: Array, action):
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 7
+		item_list.columns = 12
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 6
+		item_list.columns = 11
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TASK'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('PRODUCING_EQUIPMENT_TYPE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('COMBAT_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('RECRUIT_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('TRAIN_ABILITY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('PRODUCE_EQUIPMENT_ABILITY'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('INFANTRY_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('BOWMAN_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('CALVARY_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('SIEGE_WEAPON_EXPERIENCE'), self, "_on_title_sorting_click", person_list))
 	match _current_order:
 		_sorting_order.DESC:
 			_sorted_list = _sorting_list(person_list.duplicate())
@@ -343,9 +350,15 @@ func _populate_military_data(person_list: Array, action):
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_working_task_str(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_producing_equipment_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.combat_exp), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_recruit_troop_ability())), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_train_troop_ability())), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_produce_equipment_ability())), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_military_type_experience(MilitaryKind.MilitaryType.INFANTRY)), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_military_type_experience(MilitaryKind.MilitaryType.BOWMAN)), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_military_type_experience(MilitaryKind.MilitaryType.CALVARY)), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_military_type_experience(MilitaryKind.MilitaryType.SIEGE)), self, person, checkbox))
+
 
 func _populate_personal_relation_data(person_list: Array, action):
 	var item_list = tabs['PERSONAL_RELATIONS'] as GridContainer

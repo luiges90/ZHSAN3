@@ -34,6 +34,7 @@ var glamour: int setget forbidden
 
 var internal_exp: int setget forbidden
 var combat_exp: int setget forbidden
+var stratagem_exp: int setget forbidden
 
 var command_exp: int setget forbidden
 var strength_exp: int setget forbidden
@@ -41,7 +42,7 @@ var intelligence_exp: int setget forbidden
 var politics_exp: int setget forbidden
 var glamour_exp: int setget forbidden
 
-var military_type_experience: Dictionary setget forbidden
+var military_type_exp: Dictionary setget forbidden
 
 var popularity: int setget forbidden
 var prestige: int setget forbidden
@@ -114,7 +115,8 @@ func load_data(json: Dictionary, objects):
 	intelligence_exp = int(json["IntelligenceExperience"])
 	politics_exp = int(json["PoliticsExperience"])
 	glamour_exp = int(json["GlamourExperience"])
-	military_type_experience = json["MilitaryTypeExperience"]
+	stratagem_exp = int(json["StratagemExperience"])
+	military_type_exp = json["MilitaryTypeExperience"]
 	popularity = int(json["Popularity"])
 	prestige = int(json["Prestige"])
 	karma = int(json["Karma"])
@@ -155,7 +157,8 @@ func save_data() -> Dictionary:
 		"IntelligenceExperience": intelligence_exp,
 		"PoliticsExperience": politics_exp,
 		"GlamourExperience": glamour_exp,
-		"MilitaryTypeExperience": military_type_experience,
+		"StratagemExperience": stratagem_exp,
+		"MilitaryTypeExperience": military_type_exp,
 		"Popularity": popularity,
 		"Prestige": prestige,
 		"Karma": karma,
@@ -389,7 +392,7 @@ func get_glamour_detail_str():
 	return str(get_glamour()) + "(+" + str(glamour_exp / 1000) + ")"
 
 func get_military_type_experience(type):
-	return Util.dict_try_get(military_type_experience, type, 0)
+	return Util.dict_try_get(military_type_exp, type, 0)
 	
 func get_agriculture_ability():
 	var base = 0.25 * get_intelligence() + 0.5 * get_politics() + 0.25 * get_glamour()
@@ -802,6 +805,10 @@ func add_combat_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	combat_exp = Util.f2ri(combat_exp)
 
+func add_stratagem_exp(delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
+	stratagem_exp = Util.f2ri(stratagem_exp)
+
 func add_command_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	command_exp = Util.f2ri(command_exp + delta * (50.0 / (get_command() + 50)))
@@ -824,7 +831,7 @@ func add_glamour_exp(delta):
 
 func add_military_type_exp(type, delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
-	Util.dict_add(military_type_experience, type, Util.f2ri(delta))
+	Util.dict_add(military_type_exp, type, Util.f2ri(delta))
 
 	
 ####################################
@@ -865,9 +872,15 @@ func do_convince():
 	else:
 		var prob = convince_probability(task_target)
 		if randf() < prob:
+			add_stratagem_exp(20)
+			add_intelligence_exp(20)
+			add_glamour_exp(80)
 			task_target.join_architecture(get_belonged_architecture())
 			emit_signal('convince_success', self, task_target)
 		else:
+			add_stratagem_exp(5)
+			add_intelligence_exp(5)
+			add_glamour_exp(20)
 			emit_signal('convince_failure', self, task_target)
 	working_task = Task.MOVE
 	task_target = null

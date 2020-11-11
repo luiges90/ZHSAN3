@@ -74,7 +74,7 @@ TRAIN_ABILITY,Train Army Ability,训练能力,訓練能力
 MILITARY_POPULATION,Leviable Pop.,兵役人口,兵役人口
 PRODUCE_EQUIPMENT,Produce Equip.,生产兵装,生產兵裝
 PRODUCE_EQUIPMENT_ABILITY,Produce Equip. Ability,生产兵装能力,生產兵裝能力
-PRODUCING_EQUIPMENT_TYPE,Producing Type,兵装类,兵裝類
+PRODUCING_EQUIPMENT_TYPE,Producing Type,生產兵装类,生產兵裝類
 MILITARY_KIND_LIST,Military Kinds,兵种列表,兵種列表
 MOVEMENT_DETAILS,Movement,地型移动,地型移動
 TERRAIN_STRENGTH,Terrain,地型能力,地型能力
@@ -187,3 +187,10 @@ TROOP_ANIMATION_ENABLED,Troop Animation,部隊動畫,部隊動畫
 TROOP_ANIMATION_SPEED,Troop Animation Speed,部隊動畫速度,部隊動畫速度
 DIALOG_SHOW_TIME,Dialog showing time length,對話顯示時間,對話顯示時間
 BUBBLE_SHOW_TIME,Dialog Bubbles showing time length,氣泡對話顯示時間,氣泡對話顯示時間
+INTERNAL_EXPERIENCE,Domestic Experience,內政經驗,內政經驗
+COMBAT_EXPERIENCE,Combat Experience,戰鬥經驗,戰鬥經驗
+STRATAGEM_EXPERIENCE,Stratagem Experience,策略經驗,策略經驗
+INFANTRY_EXPERIENCE,Infantry Experience,步兵經驗,步兵經驗
+CALVARY_EXPERIENCE,Calvary Experience,騎兵經驗,騎兵經驗
+BOWMAN_EXPERIENCE,Bowman Experience,弓兵經驗,弓兵經驗
+SIEGE_WEAPON_EXPERIENCE,Siege Weapons Experience,兵器經驗,兵器經驗

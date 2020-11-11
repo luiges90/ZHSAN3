@@ -328,6 +328,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "AvailableArchitectureId": k['AvailableLocation'],
                     "InternalExperience": 0,
                     "CombatExperience": 0,
+                    "StratagemExperience": 0,
                     "CommandExperience": 0,
                     "StrengthExperience": 0,
                     "IntelligenceExperience": 0,

@@ -401,6 +401,24 @@ func _get_compare_value(a, b):
 		elif _clicked_label == tr("ETA"):
 			a1 = current_architecture.move_eta(a.get_location())
 			b1 = current_architecture.move_eta(b.get_location())
+		elif _clicked_label == tr("INTERNAL_EXPERIENCE"):
+			a1 = a.internal_exp
+			b1 = b.internal_exp
+		elif _clicked_label == tr("COMBAT_EXPERIENCE"):
+			a1 = a.combat_exp
+			b1 = b.combat_exp
+		elif _clicked_label == tr("INFANTRY_EXPERIENCE"):
+			a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.INFANTRY)
+			b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.INFANTRY)
+		elif _clicked_label == tr("BOWMAN_EXPERIENCE"):
+			a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.BOWMAN)
+			b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.BOWMAN)
+		elif _clicked_label == tr("CAVALRY_EXPERIENCE"):
+			a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.CAVALRY)
+			b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.CAVALRY)
+		elif _clicked_label == tr("SIEGE_WEAPON_EXPERIENCE"):
+			a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.SIEGE)
+			b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.SIEGE)
 	elif _selected_table == "architecture_list":
 		# Architecture List
 		if _clicked_label == tr("NAME"):

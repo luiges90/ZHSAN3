@@ -113,6 +113,10 @@ static func check_conditions(influence_container, params: Dictionary):
 				if params.has('person'):
 					if _op_cond(op_not, params['person'].combat_exp < condition['Value']):
 						return false
+			'stratagem_experience_at_least':
+				if params.has('person'):
+					if _op_cond(op_not, params['person'].stratagem_exp < condition['Value']):
+						return false
 			'command_at_least':
 				if params.has('person'):
 					if _op_cond(op_not, params['person'].get_command() < condition['Value']):
@@ -152,6 +156,10 @@ static func check_conditions(influence_container, params: Dictionary):
 			'glamour_experience_at_least':
 				if params.has('person'):
 					if _op_cond(op_not, params['person'].glamour_exp < condition['Value']):
+						return false
+			'military_type_experience_at_least':
+				if params.has('person') and params.has('military_type'):
+					if _op_cond(op_not, params['person'].get_military_type_experience(params['military_type']) < condition['Value']):
 						return false
 	return true
 
