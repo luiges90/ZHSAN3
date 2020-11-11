@@ -545,6 +545,8 @@ func execute_attack():
 					set_recently_battled()
 					target.set_recently_battled()
 					
+					var exp_factor = 1.0
+
 					var actual_offence = get_offence()
 					var actual_defence = get_defence()
 					var actual_target_offence = target.get_offence()
@@ -573,6 +575,7 @@ func execute_attack():
 					if randf() < critical_chance() - target.anti_critical_chance():
 						critical = true
 						damage *= 2
+						exp_factor += 0.5
 					
 					damage = int(damage)
 					counter_damage = int(counter_damage)
@@ -582,6 +585,7 @@ func execute_attack():
 					for p in get_persons():
 						if p == get_leader():
 							p.add_combat_exp(20)
+							p.add_military_type_exp(military_kind.type, 20 * exp_factor)
 							p.add_command_exp(20)
 							p.add_strength_exp(30)
 							p.add_merit((merit_rate - 0.5) * 25)
@@ -589,6 +593,7 @@ func execute_attack():
 							p.add_prestige(merit_rate - 1.25)
 						else:
 							p.add_combat_exp(10)
+							p.add_military_type_exp(military_kind.type, 10 * exp_factor)
 							p.add_command_exp(10)
 							p.add_strength_exp(15)
 							p.add_merit((merit_rate - 0.5) * 12.5)
@@ -600,6 +605,7 @@ func execute_attack():
 						for p in target.get_persons():
 							if p == get_leader():
 								p.add_combat_exp(20)
+								p.add_military_type_exp(military_kind.type, 20 * exp_factor)
 								p.add_command_exp(40)
 								p.add_strength_exp(10)
 								p.add_merit((merit_rate - 0.5) * 25)
@@ -607,6 +613,7 @@ func execute_attack():
 								p.add_prestige(other_merit_rate - 1.25)
 							else:
 								p.add_combat_exp(10)
+								p.add_military_type_exp(military_kind.type, 10 * exp_factor)
 								p.add_command_exp(20)
 								p.add_strength_exp(5)
 								p.add_merit((merit_rate - 0.5) * 12.5)

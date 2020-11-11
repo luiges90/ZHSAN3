@@ -333,6 +333,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "IntelligenceExperience": 0,
                     "PoliticsExperience": 0,
                     "GlamourExperience": 0,
+                    "MilitaryTypeExperience": {},
                     "Popularity": int(min(10000, k['Reputation'] / 5)),
                     "Prestige": int(min(10000, k['Reputation'] / 5)),
                     "Karma": k['Karma'] * 100,

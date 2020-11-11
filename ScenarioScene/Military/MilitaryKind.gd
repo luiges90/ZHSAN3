@@ -101,9 +101,9 @@ func has_equipments():
 	
 func get_type_offensive_effectivenss(other_kind):
 	var other_type = other_kind.type
-	return type_offensive_effectiveness[other_type] if type_offensive_effectiveness.has(other_type) else 1
+	return Util.dict_try_get(type_offensive_effectiveness, other_type, 1)
 
 func get_type_defensive_effectivenss(other_kind):
 	var other_type = other_kind.type
-	return type_defensive_effectiveness[other_type] if type_defensive_effectiveness.has(other_type) else 1
+	return Util.dict_try_get(type_defensive_effectiveness, other_type, 1)
 	

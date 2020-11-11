@@ -41,6 +41,8 @@ var intelligence_exp: int setget forbidden
 var politics_exp: int setget forbidden
 var glamour_exp: int setget forbidden
 
+var military_type_experience: Dictionary setget forbidden
+
 var popularity: int setget forbidden
 var prestige: int setget forbidden
 var karma: int setget forbidden
@@ -112,6 +114,7 @@ func load_data(json: Dictionary, objects):
 	intelligence_exp = int(json["IntelligenceExperience"])
 	politics_exp = int(json["PoliticsExperience"])
 	glamour_exp = int(json["GlamourExperience"])
+	military_type_experience = json["MilitaryTypeExperience"]
 	popularity = int(json["Popularity"])
 	prestige = int(json["Prestige"])
 	karma = int(json["Karma"])
@@ -152,6 +155,7 @@ func save_data() -> Dictionary:
 		"IntelligenceExperience": intelligence_exp,
 		"PoliticsExperience": politics_exp,
 		"GlamourExperience": glamour_exp,
+		"MilitaryTypeExperience": military_type_experience,
 		"Popularity": popularity,
 		"Prestige": prestige,
 		"Karma": karma,
@@ -383,6 +387,9 @@ func get_glamour():
 	
 func get_glamour_detail_str():
 	return str(get_glamour()) + "(+" + str(glamour_exp / 1000) + ")"
+
+func get_military_type_experience(type):
+	return Util.dict_try_get(military_type_experience, type, 0)
 	
 func get_agriculture_ability():
 	var base = 0.25 * get_intelligence() + 0.5 * get_politics() + 0.25 * get_glamour()
@@ -814,6 +821,11 @@ func add_politics_exp(delta):
 func add_glamour_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
 	glamour_exp = Util.f2ri(glamour_exp + delta * (50.0 / (get_glamour() + 50)))
+
+func add_military_type_exp(type, delta):
+	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
+	Util.dict_add(military_type_experience, type, Util.f2ri(delta))
+
 	
 ####################################
 #     Manipulation / Relations     #
