@@ -654,13 +654,16 @@ func check_destroy(attacker):
 func destroy(attacker):
 	# affect nearby troop morale
 	for t in friendly_troop_in_range(4):
-		t.add_morale(5 + min(5, t.get_leader().get_glamour() / 20))
+		if not t._destroyed:
+			t.add_morale(5 + min(5, t.get_leader().get_glamour() / 20))
 	for t in enemy_troop_in_range(4):
-		t.add_morale(-10 + min(5, t.get_leader().get_glamour() / 20))
+		if not t._destroyed:
+			t.add_morale(-10 + min(5, t.get_leader().get_glamour() / 20))
 
 	# keep rout counts
 	get_leader().routed_count += 1
-	attacker.get_leader().rout_count += 1
+	if attacker != null and not attacker is Architecture:
+		attacker.get_leader().rout_count += 1
 	
 	# capture and release persons
 	var captured_persons = []
