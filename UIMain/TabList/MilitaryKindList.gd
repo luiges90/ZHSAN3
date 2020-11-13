@@ -139,6 +139,35 @@ func _populate_terrain_strength_data(mk_list: Array, action):
 		for t in terrain:
 			item_list.add_child(_label(str(terrain[t])))
 
+func __get_compare_value(_clicked_label, a, b):
+	var a1 = ""
+	var b1 = ""
+	if _clicked_label == tr("KIND_NAME"):
+		a1 = a.get_name()
+		b1 = b.get_name()
+	elif _clicked_label == tr("COST"):
+		a1 = a.equipment_cost
+		b1 = b.equipment_cost
+	elif _clicked_label == tr("OFFENCE"):
+		a1 = a.offence
+		b1 = b.offence
+	elif _clicked_label == tr("DEFENCE"):
+		a1 = a.defence
+		b1 = b.defence
+	elif _clicked_label == tr("RANGE"):
+		a1 = a.range_max
+		b1 = b.range_max
+	elif _clicked_label == tr("SPEED"):
+		a1 = a.speed
+		b1 = b.speed
+	elif _clicked_label == tr("INITIATIVE"):
+		a1 = a.initiative
+		b1 = b.initiative
+	elif _clicked_label == tr("MAX_QUANTITY_MULITPLIER"):
+		a1 = a.max_quantity_multiplier
+		b1 = b.max_quantity_multiplier
+	return [a1, b1]
+
 func _on_Confirm_pressed():
 	var selected_kinds = _get_selected_list()
 	match current_action:

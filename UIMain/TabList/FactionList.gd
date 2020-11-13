@@ -63,6 +63,35 @@ func _populate_basic_data(list: Array, action):
 		item_list.add_child(_label(str(f.get_total_food())))
 		item_list.add_child(_label(str(f.get_total_troop())))
 
+func __get_compare_value(_clicked_label, a, b):
+	var a1 = ""
+	var b1 = ""
+	if _clicked_label == tr("FACTION_NAME"):
+		a1 = a.get_name()
+		b1 = b.get_name()
+	elif _clicked_label == tr("LEADER_NAME"):
+		a1 = a.get_leader_name()
+		b1 = b.get_leader_name()
+	elif _clicked_label == tr("ADVISOR_NAME"):
+		a1 = a.get_advisor_name()
+		b1 = b.get_advisor_name()
+	elif _clicked_label == tr("PERSON_COUNT"):
+		a1 = a.get_persons().size()
+		b1 = b.get_persons().size()
+	elif _clicked_label == tr("ARCHITECTURE_COUNT"):
+		a1 = a.get_architectures().size()
+		b1 = b.get_architectures().size()
+	elif _clicked_label == tr("TOTAL_FUND"):
+		a1 = a.get_total_fund()
+		b1 = b.get_total_fund()
+	elif _clicked_label == tr("TOTAL_FOOD"):
+		a1 = a.get_total_food()
+		b1 = b.get_total_food()
+	elif _clicked_label == tr("TOTAL_TROOP"):
+		a1 = a.get_total_troop()
+		b1 = b.get_total_troop()
+	return [a1, b1]
+
 
 func _on_ArchitectureMenu_faction_list_clicked(architecture, faction, action):
 	current_architecture = architecture

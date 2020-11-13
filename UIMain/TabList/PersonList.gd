@@ -390,6 +390,133 @@ func _populate_personal_relation_data(person_list: Array, action):
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_spouse_names(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_brother_names(), self, person, checkbox))
 		
+func __get_compare_value(_clicked_label, a, b):
+	var a1 = ""
+	var b1 = ""
+	if _clicked_label == tr("PERSON_NAME"):
+		a1 = a.get_name()
+		b1 = b.get_name()
+	elif _clicked_label == tr("BELONGED_ARCHITECTURE"):
+		a1 = a.get_location().get_name()
+		b1 = b.get_location().get_name()
+	elif _clicked_label == tr("STATUS"):
+		a1 = a.get_status_str()
+		b1 = b.get_status_str()
+	elif _clicked_label == tr("GENDER"):
+		a1 = a.get_gender_str()
+		b1 = b.get_gender_str()
+	elif _clicked_label == tr("AGE"):
+		a1 = a.get_age()
+		b1 = b.get_age()
+	elif _clicked_label == tr("MERIT"):
+		a1 = a.get_merit()
+		b1 = b.get_merit()
+	elif _clicked_label == tr("LOYALTY"):
+		a1 = a.get_loyalty()
+		b1 = b.get_loyalty()
+	elif _clicked_label == tr("POPULARITY"):
+		a1 = a.get_popularity()
+		b1 = b.get_popularity()
+	elif _clicked_label == tr("PRESTIGE"):
+		a1 = a.get_prestige()
+		b1 = b.get_prestige()
+	elif _clicked_label == tr("KARMA"):
+		a1 = a.get_karma()
+		b1 = b.get_karma()
+	elif _clicked_label == tr("TASK"):
+		a1 = a.get_working_task_str()
+		b1 = b.get_working_task_str()
+	elif _clicked_label == tr("TASK_DAYS"):
+		a1 = a.task_days
+		b1 = b.task_days
+	elif _clicked_label == tr("COMMAND"):
+		a1 = a.get_command()
+		b1 = b.get_command()
+	elif _clicked_label == tr("STRENGTH"):
+		a1 = a.get_strength()
+		b1 = b.get_strength()
+	elif _clicked_label == tr("INTELLIGENCE"):
+		a1 = a.get_intelligence()
+		b1 = b.get_intelligence()
+	elif _clicked_label == tr("POLITICS"):
+		a1 = a.get_politics()
+		b1 = b.get_politics()
+	elif _clicked_label == tr("GLAMOUR"):
+		a1 = a.get_glamour()
+		b1 = b.get_glamour()
+	elif _clicked_label == tr("COMMAND_EXPERIENCE"):
+		a1 = a.command_exp
+		b1 = b.command_exp
+	elif _clicked_label == tr("STRENGTH_EXPERIENCE"):
+		a1 = a.strength_exp
+		b1 = b.strength_exp
+	elif _clicked_label == tr("INTELLIGENCE_EXPERIENCE"):
+		a1 = a.intelligence_exp
+		b1 = b.intelligence_exp
+	elif _clicked_label == tr("POLITICS_EXPERIENCE"):
+		a1 = a.politics_exp
+		b1 = b.politics_exp
+	elif _clicked_label == tr("GLAMOUR_EXPERIENCE"):
+		a1 = a.glamour_exp
+		b1 = b.glamour_exp
+	elif _clicked_label == tr("AGRICULTURE_ABILITY"):
+		a1 = a.get_agriculture_ability()
+		b1 = b.get_agriculture_ability()
+	elif _clicked_label == tr("COMMERCE_ABILITY"):
+		a1 = a.get_commerce_ability()
+		b1 = b.get_commerce_ability()
+	elif _clicked_label == tr("MORALE_ABILITY"):
+		a1 = a.get_morale_ability()
+		b1 = b.get_morale_ability()
+	elif _clicked_label == tr("ENDURANCE_ABILITY"):
+		a1 = a.get_endurance_ability()
+		b1 = b.get_endurance_ability()
+	elif _clicked_label == tr("PRODUCING_EQUIPMENT_TYPE"):
+		a1 = a.get_producing_equipment_name()
+		b1 = b.get_producing_equipment_name()
+	elif _clicked_label == tr("RECRUIT_ABILITY"):
+		a1 = a.get_recruit_troop_ability()
+		b1 = b.get_recruit_troop_ability()
+	elif _clicked_label == tr("TRAIN_ABILITY"):
+		a1 = a.get_train_troop_ability()
+		b1 = b.get_train_troop_ability()
+	elif _clicked_label == tr("PRODUCE_EQUIPMENT_ABILITY"):
+		a1 = a.get_produce_equipment_ability()
+		b1 = b.get_produce_equipment_ability()
+	elif _clicked_label == tr("FATHER"):
+		a1 = a.get_father_name()
+		b1 = b.get_father_name()
+	elif _clicked_label == tr("MOTHER"):
+		a1 = a.get_mother_name()
+		b1 = b.get_mother_name()
+	elif _clicked_label == tr("SPOUSE"):
+		a1 = a.get_spouse_names()
+		b1 = b.get_spouse_names()
+	elif _clicked_label == tr("BROTHER"):
+		a1 = a.get_brother_names()
+		b1 = b.get_brother_names()
+	elif _clicked_label == tr("ETA"):
+		a1 = current_architecture.move_eta(a.get_location())
+		b1 = current_architecture.move_eta(b.get_location())
+	elif _clicked_label == tr("INTERNAL_EXPERIENCE"):
+		a1 = a.internal_exp
+		b1 = b.internal_exp
+	elif _clicked_label == tr("COMBAT_EXPERIENCE"):
+		a1 = a.combat_exp
+		b1 = b.combat_exp
+	elif _clicked_label == tr("INFANTRY_EXPERIENCE"):
+		a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.INFANTRY)
+		b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.INFANTRY)
+	elif _clicked_label == tr("BOWMAN_EXPERIENCE"):
+		a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.BOWMAN)
+		b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.BOWMAN)
+	elif _clicked_label == tr("CAVALRY_EXPERIENCE"):
+		a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.CAVALRY)
+		b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.CAVALRY)
+	elif _clicked_label == tr("SIEGE_WEAPON_EXPERIENCE"):
+		a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.SIEGE)
+		b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.SIEGE)
+	return [a1, b1]
 
 func _on_Confirm_pressed():
 	var selected = _get_selected_list()

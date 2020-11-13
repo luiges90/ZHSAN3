@@ -172,6 +172,67 @@ func _populate_equipments_data(arch_list: Array, action):
 		for k in kinds:
 			item_list.add_child(_clickable_label(str(arch.equipments[k.id]), self, "__on_clickable_label_click", arch))
 	
+func __get_compare_value(_clicked_label, a, b):
+	var a1 = ""
+	var b1 = ""
+	if _clicked_label == tr("NAME"):
+		a1 = a.get_name()
+		b1 = b.get_name()
+	elif _clicked_label == tr("KIND_NAME"):
+		a1 = a.kind
+		b1 = b.kind
+	elif _clicked_label == tr("FACTION_NAME"):
+		a1 = a.get_belonged_faction_str()
+		b1 = b.get_belonged_faction_str()
+	elif _clicked_label == tr("POPULATION"):
+		a1 = a.population
+		b1 = b.population
+	elif _clicked_label == tr("FOOD"):
+		a1 = a.food
+		b1 = b.food
+	elif _clicked_label == tr("FUND"):
+		a1 = a.fund
+		b1 = b.fund
+	elif _clicked_label == tr("PERSON_COUNT"):
+		a1 = a.get_persons().size()
+		b1 = b.get_persons().size()
+	elif _clicked_label == tr("WILD_PERSON_COUNT"):
+		a1 = a.get_wild_persons().size()
+		b1 = b.get_wild_persons().size()
+	elif _clicked_label == tr("MILITARY_POPULATION"):
+		a1 = a.military_population
+		b1 = b.military_population
+	elif _clicked_label == tr("AGRICULTURE"):
+		a1 = a.agriculture
+		b1 = b.agriculture
+	elif _clicked_label == tr("COMMERCE"):
+		a1 = a.commerce
+		b1 = b.commerce
+	elif _clicked_label == tr("MORALE"):
+		a1 = a.morale
+		b1 = b.morale
+	elif _clicked_label == tr("ENDURANCE"):
+		a1 = a.endurance
+		b1 = b.endurance
+	elif _clicked_label == tr("TROOP"):
+		a1 = a.troop
+		b1 = b.troop
+	elif _clicked_label == tr("TROOP_MORALE"):
+		a1 = a.troop_morale
+		b1 = b.troop_morale
+	elif _clicked_label == tr("COMBATIVITY"):
+		a1 = a.troop_combativity
+		b1 = b.troop_combativity
+	elif _clicked_label == tr("TROOP"):
+		a1 = a.troop
+		b1 = b.troop
+	elif _clicked_label == tr("TROOP_MORALE"):
+		a1 = a.troop_morale
+		b1 = b.troop_morale
+	elif _clicked_label == tr("COMBATIVITY"):
+		a1 = a.troop_combativity
+		b1 = b.troop_combativity
+	return [a1, b1]
 
 func _on_Confirm_pressed():
 	var selected_arch = _get_selected_list()
