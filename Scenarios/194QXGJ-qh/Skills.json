@@ -7,19 +7,19 @@
 	"LearnConditions": [
 		{
 			"Operation": "internal_experience_at_least",
-			"Value": 1000
-		},
-		{
-			"Operation": "intelligence_experience_at_least",
-			"Value": 1000
-		},
-		{
-			"Operation": "politics_experience_at_least",
 			"Value": 2000
 		},
 		{
+			"Operation": "intelligence_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "politics_experience_at_least",
+			"Value": 4000
+		},
+		{
 			"Operation": "glamour_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		}
 	],
 	"Conditions": [],
@@ -38,19 +38,19 @@
 	"LearnConditions": [
 		{
 			"Operation": "internal_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "intelligence_experience_at_least",
-			"Value": 200
+			"Value": 4000
 		},
 		{
 			"Operation": "politics_experience_at_least",
-			"Value": 100
+			"Value": 2000
 		},
 		{
 			"Operation": "glamour_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		}
 	],
 	"Conditions": [],
@@ -69,19 +69,19 @@
 	"LearnConditions": [
 		{
 			"Operation": "internal_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "command_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "strength_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "glamour_experience_at_least",
-			"Value": 2000
+			"Value": 4000
 		}
 	],
 	"Conditions": [],
@@ -100,23 +100,23 @@
 	"LearnConditions": [
 		{
 			"Operation": "internal_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "command_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "strength_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "intelligence_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "politics_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		}
 	],
 	"Conditions": [],
@@ -135,15 +135,15 @@
 	"LearnConditions": [
 		{
 			"Operation": "internal_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "strength_experience_at_least",
-			"Value": 2000
+			"Value": 4000
 		},
 		{
 			"Operation": "glamour_experience_at_least",
-			"Value": 2000
+			"Value": 4000
 		}
 	],
 	"Conditions": [],
@@ -162,15 +162,15 @@
 	"LearnConditions": [
 		{
 			"Operation": "internal_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "command_experience_at_least",
-			"Value": 2000
+			"Value": 4000
 		},
 		{
 			"Operation": "strength_experience_at_least",
-			"Value": 2000
+			"Value": 4000
 		}
 	],
 	"Conditions": [],
@@ -189,15 +189,15 @@
 	"LearnConditions": [
 		{
 			"Operation": "internal_experience_at_least",
-			"Value": 1000
+			"Value": 2000
 		},
 		{
 			"Operation": "intelligence_experience_at_least",
-			"Value": 2000
+			"Value": 4000
 		},
 		{
 			"Operation": "politics_experience_at_least",
-			"Value": 2000
+			"Value": 4000
 		}
 	],
 	"Conditions": [],
@@ -294,6 +294,20 @@
 	"Name": "說服",
 	"Description": "說服能力每等級增加10%",
 	"Color": [0.13, 0.56, 0.82],
+	"LearnConditions": [
+		{
+			"Operation": "stratagem_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "intelligence_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "glamour_experience_at_least",
+			"Value": 4000
+		}
+	],
 	"Conditions": [],
 	"Influences": [
 		{
@@ -346,6 +360,21 @@
 	"Name": "步攻",
 	"Description": "作為主將時，步兵攻擊力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 0,
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 4000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -367,6 +396,21 @@
 	"Name": "步守",
 	"Description": "作為主將時，步兵防禦力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 0,
+			"Value": 2000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 4000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -388,6 +432,25 @@
 	"Name": "步速",
 	"Description": "作為主將時，步兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 0,
+			"Value": 4000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 2000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -413,6 +476,21 @@
 	"Name": "弓攻",
 	"Description": "作為主將時，弓兵攻擊力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 1,
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 4000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -434,6 +512,21 @@
 	"Name": "弓守",
 	"Description": "作為主將時，弓兵防禦力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 1,
+			"Value": 2000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 4000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -455,6 +548,25 @@
 	"Name": "弓速",
 	"Description": "作為主將時，弓兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 1,
+			"Value": 4000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 2000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -480,6 +592,21 @@
 	"Name": "騎攻",
 	"Description": "作為主將時，騎兵攻擊力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 2,
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 4000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -501,13 +628,28 @@
 	"Name": "騎守",
 	"Description": "作為主將時，騎兵防禦力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 2,
+			"Value": 2000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 4000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
 		},
 		{
 			"Operation": "is_military_type",
-			"Id": 1
+			"Id": 2
 		}
 	],
 	"Influences": [
@@ -522,13 +664,32 @@
 	"Name": "騎速",
 	"Description": "作為主將時，騎兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 1,
+			"Value": 4000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 2000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
 		},
 		{
 			"Operation": "is_military_type",
-			"Id": 1
+			"Id": 2
 		}
 	],
 	"Influences": [
@@ -547,6 +708,25 @@
 	"Name": "馳騁",
 	"Description": "作為主將時，在平地的騎兵移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 3000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 2,
+			"Value": 4000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 2000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -576,6 +756,30 @@
 	"Name": "強行",
 	"Description": "作為主將時，步兵及弓兵的移動速度及先行每等級增加10%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 3000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 0,
+			"Value": 2000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 1,
+			"Value": 2000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 2000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -601,6 +805,30 @@
 	"Name": "林戰",
 	"Description": "作為主將時，在森林裡部隊各項能力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 0,
+			"Value": 1000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 1,
+			"Value": 1000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 2000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"
@@ -634,6 +862,30 @@
 	"Name": "山戰",
 	"Description": "作為主將時，在山地裡部隊各項能力每等級增加5%",
 	"Color": [0.96, 0.69, 0.13],
+	"LearnConditions": [
+		{
+			"Operation": "combat_experience_at_least",
+			"Value": 4000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 0,
+			"Value": 1000
+		},
+		{
+			"Operation": "military_type_experience_at_least",
+			"military_type": 1,
+			"Value": 1000
+		},
+		{
+			"Operation": "command_experience_at_least",
+			"Value": 2000
+		},
+		{
+			"Operation": "strength_experience_at_least",
+			"Value": 2000
+		}
+	],
 	"Conditions": [
 		{
 			"Operation": "is_leader"

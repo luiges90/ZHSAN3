@@ -75,6 +75,14 @@ var loyalty_shift: int
 var ambition: int setget forbidden
 var morality: int setget forbidden
 
+var troop_damage_dealt: int
+var troop_damage_received: int
+var arch_damage_dealt: int
+var rout_count: int
+var routed_count: int
+var capture_count: int
+var be_captured_count: int
+
 signal person_died
 signal person_available
 
@@ -130,6 +138,13 @@ func load_data(json: Dictionary, objects):
 	morality = int(json["Morality"])
 	for id in json["Skills"]:
 		skills[objects["skills"][int(id)]] = json["Skills"][id]
+	troop_damage_dealt = Util.dict_try_get(json, "TroopDamageDealt", 0)
+	troop_damage_received = Util.dict_try_get(json, "TroopDamageReceived", 0)
+	arch_damage_dealt = Util.dict_try_get(json, "ArchDamageDealt", 0)
+	rout_count = Util.dict_try_get(json, "RoutCount", 0)
+	routed_count = Util.dict_try_get(json, "RoutedCount", 0)
+	capture_count = Util.dict_try_get(json, "CaptureCount", 0)
+	be_captured_count = Util.dict_try_get(json, "BeCapturedCount", 0)
 	
 	
 func save_data() -> Dictionary:
@@ -176,7 +191,14 @@ func save_data() -> Dictionary:
 		"Ideal": ideal,
 		"LoyaltyShift": loyalty_shift,
 		"Ambition": ambition,
-		"Morality": morality
+		"Morality": morality,
+		"TroopDamageDealt": troop_damage_dealt,
+		"TroopDamageReceived": troop_damage_received,
+		"ArchDamageDealt": arch_damage_dealt,
+		"RoutCount": rout_count,
+		"RoutedCount": routed_count,
+		"CaptureCount": capture_count,
+		"BeCapturedCount": be_captured_count
 	}
 	
 #####################################

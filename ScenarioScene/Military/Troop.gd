@@ -591,6 +591,11 @@ func execute_attack():
 							p.add_merit((merit_rate - 0.5) * 25)
 							p.add_popularity(merit_rate / 2)
 							p.add_prestige(merit_rate - 1.25)
+							if target is Architecture:
+								p.arch_damage_dealt += damage
+							else:
+								p.troop_damage_dealt += damage
+							p.troop_damage_received += counter_damage
 						else:
 							p.add_combat_exp(10)
 							p.add_military_type_exp(military_kind.type, 10 * exp_factor)
@@ -611,6 +616,8 @@ func execute_attack():
 								p.add_merit((merit_rate - 0.5) * 25)
 								p.add_popularity(other_merit_rate / 2)
 								p.add_prestige(other_merit_rate - 1.25)
+								p.troop_damage_dealt += counter_damage
+								p.troop_damage_received += damage
 							else:
 								p.add_combat_exp(10)
 								p.add_military_type_exp(military_kind.type, 10 * exp_factor)
@@ -650,6 +657,10 @@ func destroy(attacker):
 		t.add_morale(5 + min(5, t.get_leader().get_glamour() / 20))
 	for t in enemy_troop_in_range(4):
 		t.add_morale(-10 + min(5, t.get_leader().get_glamour() / 20))
+
+	# keep rout counts
+	get_leader().routed_count += 1
+	attacker.get_leader().rout_count += 1
 	
 	# capture and release persons
 	var captured_persons = []
@@ -672,8 +683,16 @@ func destroy(attacker):
 				capture_chance = -1
 				
 			if attacker != null and randf() < capture_chance:
+				if p == get_leader():
+					p.add_merit(-60)
+					p.add_prestige(-4)
+				else:
+					p.add_merit(-30)
+					p.add_prestige(-2)
 				p.become_captured(attacker)
 				captured_persons.append(p)
+				p.be_captured_count += 1
+				attacker.get_leader().capture_count += 1
 			else:
 				var return_to = get_starting_architecture()
 				if return_to.get_belonged_faction() != self.get_belonged_faction():
