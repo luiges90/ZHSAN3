@@ -194,3 +194,10 @@ INFANTRY_EXPERIENCE,Infantry Experience,步兵經驗,步兵經驗
 CALVARY_EXPERIENCE,Calvary Experience,騎兵經驗,騎兵經驗
 BOWMAN_EXPERIENCE,Bowman Experience,弓兵經驗,弓兵經驗
 SIEGE_WEAPON_EXPERIENCE,Siege Weapons Experience,兵器經驗,兵器經驗
+TROOP_DAMAGE_DEALT,Troop Damage Dealt,部隊損敵兵數,部隊損敵兵數
+TROOP_DAMAGE_RECEIVED,Troop Damage Received,部隊自損兵數,部隊自損兵數
+ARCH_DAMAGE_DEALT,Architecture Damage Dealt,部隊建築耐久損毀量,部隊建築耐久損毀量
+ROUT_COUNT,Rout Count,部隊擊破數,部隊擊破數
+ROUTED_COUNT,Routed Count,部隊被擊破數,部隊被擊破數
+CAPTURE_COUNT,Capture Count,部隊武將捕獲數,部隊武將捕獲數
+BE_CAPTURED_COUNT,Be Captured Count,部隊自身被捕獲數,部隊自身被捕獲數
