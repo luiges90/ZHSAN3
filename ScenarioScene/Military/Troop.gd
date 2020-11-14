@@ -341,16 +341,22 @@ func move_eta(to):
 	return int(ScenarioUtil.object_distance(self, to) * 0.2) + 1
 	
 func critical_chance():
-	var chance = 0.05
+	var chance = 0.05 + float(get_strength()) / 500.0
 	for p in get_persons():
 		chance = p.apply_influences('add_person_troop_critical', {"value": chance, "troop": self})
 	return chance
 	
 func anti_critical_chance():
-	var chance = 0.0
+	var chance = 0.0 + float(get_command()) / 500.0
 	for p in get_persons():
 		chance = p.apply_influences('add_person_troop_anti_critical', {"value": chance, "troop": self})
 	return chance
+
+func critical_damage_rate(other_troop):
+	if other_troop is Architecture:
+		return 1 + float(get_strength()) / 50.0
+	else:
+		return 1 + float(get_strength()) / max(10, other_troop.get_strength())
 	
 func get_movement_area():
 	return pathfinder.get_movement_area()
@@ -574,12 +580,12 @@ func execute_attack():
 					var critical = false
 					if randf() < critical_chance() - target.anti_critical_chance():
 						critical = true
-						damage *= 2
+						damage *= critical_damage_rate(target)
 						exp_factor += 0.5
 					
-					damage = int(damage)
-					counter_damage = int(counter_damage)
-					
+					damage = max(1, int(damage))
+					counter_damage = max(1, int(counter_damage))
+
 					var damage_for_merit = damage * (10 if target is Architecture else 1)
 					var merit_rate = min(sqrt(damage_for_merit / (counter_damage + 100.0)), 5) + damage_for_merit / 1000.0
 					for p in get_persons():
