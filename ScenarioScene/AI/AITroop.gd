@@ -104,7 +104,15 @@ func run_troop(troop, scenario):
 				if done:
 					break
 			if not done:
-				troop.set_enter_order(troop.get_starting_architecture().map_position)
+				var min_dist = 9999999
+				var move_to = null
+				for p in troop._ai_path:
+					for q in movement_area:
+						var dist = Util.m_dist(Vector2(p[0], p[1]), q)
+						if dist < min_dist:
+							move_to = q
+							min_dist = dist
+				troop.set_move_order(move_to)
 	
 	assert(troop.current_order != null)
 
