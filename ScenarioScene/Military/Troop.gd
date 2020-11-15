@@ -4,6 +4,8 @@ class_name Troop
 enum OrderType { MOVE, FOLLOW, ATTACK, ENTER }
 enum AIState { MARCH, COMBAT, RETREAT }
 
+enum Status { NORMAL, CHAOS, FORCED_RETREAT, FORCED_ATTACK, STOP }
+
 var id: int setget forbidden
 var scenario
 
@@ -15,6 +17,8 @@ var military_kind setget forbidden
 var quantity: int setget forbidden
 var morale: int setget forbidden
 var combativity: int setget forbidden
+
+var status = Status.NORMAL setget forbidden
 
 var _recently_battled: int setget forbidden
 
@@ -353,10 +357,14 @@ func anti_critical_chance():
 	return chance
 
 func critical_damage_rate(other_troop):
+	var rate
 	if other_troop is Architecture:
-		return 1 + float(get_strength()) / 50.0
+		rate = 1 + float(get_strength()) / 50.0
 	else:
-		return 1 + float(get_strength()) / max(10, other_troop.get_strength())
+		rate = 1 + float(get_strength()) / max(10, other_troop.get_strength())
+	for p in get_persons():
+		rate = p.apply_influences('modify_person_troop_critical_damage_rate', {"value": rate, "troop": self})
+	return rate
 	
 func get_movement_area():
 	return pathfinder.get_movement_area()
@@ -454,6 +462,10 @@ func set_recently_battled():
 func add_combativity(value):
 	combativity += value
 	combativity = clamp(combativity, 0, 100)
+
+func set_status(in_status):
+	status = in_status
+	update_status_sprite()
 
 ####################################
 #          Order Execution         #
@@ -765,6 +777,30 @@ func day_event():
 ####################################
 #                UI                #
 ####################################
+func update_status_sprite():
+	$TroopArea/ChaosSprite.visible = false
+	$TroopArea/ForcedRetreatSprite.visible = false
+	$TroopArea/ForcedAttractSprite.visible = false
+	$TroopArea/StopSprite.visible = false
+	$TroopArea/ChaosSprite.playing = false
+	$TroopArea/ForcedRetreatSprite.playing = false
+	$TroopArea/ForcedAttractSprite.playing = false
+	$TroopArea/StopSprite.playing = false
+	match status:
+		Status.CHAOS: 
+			$TroopArea/ChaosSprite.visible = true
+			$TroopArea/ChaosSprite.playing = true
+		Status.FORCED_RETREAT: 
+			$TroopArea/ForcedRetreatSprite.visible = true
+			$TroopArea/ForcedRetreatSprite.playing = true
+		Status.FORCED_ATTACK: 
+			$TroopArea/ForcedRetreatSprite.visible = true
+			$TroopArea/ForcedRetreatSprite.playing = true
+		Status.STOP: 
+			$TroopArea/StopSprite.visible = true
+			$TroopArea/StopSprite.playing = true
+	
+
 func update_troop_title():
 	if quantity > 0:
 		$TroopTitle.show_data(self)
