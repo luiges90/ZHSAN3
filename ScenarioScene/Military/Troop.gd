@@ -250,6 +250,7 @@ func get_offence():
 	
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
+	base = p.apply_influences("modify_troop_offence", {"value": base, "troop": self})
 	for p in get_persons():
 		base = p.apply_influences("modify_person_troop_offence", {"value": base, "troop": self})
 		
@@ -266,6 +267,8 @@ func get_defence():
 	var morale_factor = (morale + 10) / 100.0
 
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
+
+	base = p.apply_influences("modify_troop_defence", {"value": base, "troop": self})
 	for p in get_persons():
 		base = p.apply_influences("modify_person_troop_defence", {"value": base, "troop": self})
 		

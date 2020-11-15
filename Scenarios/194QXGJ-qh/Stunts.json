@@ -1,1 +1,70 @@
-{}
+[
+    {
+        "_Id": 1,
+        "Name": "強攻",
+        "Description": "增加部隊攻擊力20%",
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 40,
+        "Duration": 3,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "strength_at_least",
+                "LevelIncrement": 4,
+                "Value": 60
+            },
+            {
+                "Operation": "troop_damage_dealt_at_least",
+                "Value": 20000
+            }
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offence",
+                "Value": 0.2
+            }
+        ]
+    },
+    {
+        "_Id": 2,
+        "Name": "堅守",
+        "Description": "增加部隊防禦力20%",
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 40,
+        "Duration": 3,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 4,
+                "Value": 60
+            },
+            {
+                "Operation": "troop_damage_received_at_least",
+                "Value": 20000
+            }
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_troop_defence",
+                "Value": 0.2
+            }
+        ]
+    }
+]

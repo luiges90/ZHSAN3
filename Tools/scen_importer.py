@@ -56,12 +56,9 @@ def convert_skills(object, influence_data):
     if k['ID'] in skill_data.SKILLS_LIST:
         return skill_data.SKILLS_LIST[k['ID']]
     else:
-        skill_ids = [int(x) for x in filter(
-            None, object['SkillsString'].split(' '))]
-        title_ids = [int(x) for x in filter(
-            None, object['RealTitlesString'].split(' '))]
-        stunt_ids = [int(x) for x in filter(
-            None, object['StuntsString'].split(' '))]
+        skill_ids = [int(x) for x in filter(None, object['SkillsString'].split(' '))]
+        title_ids = [int(x) for x in filter(None, object['RealTitlesString'].split(' '))]
+        stunt_ids = [int(x) for x in filter(None, object['StuntsString'].split(' '))]
 
         influences = [(influence_skills, skill_ids), 
                       (influence_titles, title_ids),
@@ -104,6 +101,31 @@ def convert_skills(object, influence_data):
         convert_skill(new_skills, influences, 11000, {405: 1, 406: 2, 407: 3, 408: 4, 409: 6})
 
         return new_skills
+
+
+def convert_stunts(object, influence_data):
+    influence_skills = influence_data[0]
+    influence_titles = influence_data[1]
+    influence_stunts = influence_data[2]
+
+    if k['ID'] in skill_data.STUNTS_LIST:
+        return skill_data.STUNTS_LIST[k['ID']]
+    else:
+        skill_ids = [int(x) for x in filter(None, object['SkillsString'].split(' '))]
+        title_ids = [int(x) for x in filter(None, object['RealTitlesString'].split(' '))]
+        stunt_ids = [int(x) for x in filter(None, object['StuntsString'].split(' '))]
+
+        influences = [(influence_skills, skill_ids),
+                      (influence_titles, title_ids),
+                      (influence_stunts, stunt_ids)]
+
+        new_stunts = {}
+
+        convert_skill(new_stunts, influences, 1, {413: 1, 414: 1, 4000: 1, 4001: 2, 4002: 5, 4003: 10, 4004: 20})
+        convert_skill(new_stunts, influences, 2, {423: 1, 424: 1, 4010: 1, 4011: 2, 4012: 5, 4013: 10, 4014: 20})
+
+        return new_stunts
+
 
 output_folder = '../Scenarios/194QXGJ-qh'
 file_name = '194QXGJ-qh'
@@ -343,6 +365,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "TaskTarget": -1,
                     "ProducingEquipment": None,
                     "Skills": convert_skills(k, influence_data),
+                    "Stunts": convert_stunts(k, influence_data),
                     "FatherId": father_id_list[0]['Value'] if len(father_id_list) > 0 else -1,
                     "MotherId": mother_id_list[0]['Value'] if len(mother_id_list) > 0 else -1,
                     "SpouseIds": [spouse_id_list[0]['Value']] if len(spouse_id_list) > 0 and spouse_id_list[0]['Value'] >= 0 else [],

@@ -62,6 +62,7 @@ var task_days = 0 setget forbidden
 var task_target setget forbidden
 
 var skills = {} setget forbidden
+var stunts = {} setget forbidden
 
 var strain: int setget forbidden
 var father setget forbidden
@@ -138,6 +139,8 @@ func load_data(json: Dictionary, objects):
 	morality = int(json["Morality"])
 	for id in json["Skills"]:
 		skills[objects["skills"][int(id)]] = json["Skills"][id]
+	for id in json["Stunts"]:
+		stunts[objects["Stunts"][int(id)]] = json["Stunts"][id]
 	troop_damage_dealt = Util.dict_try_get(json, "TroopDamageDealt", 0)
 	troop_damage_received = Util.dict_try_get(json, "TroopDamageReceived", 0)
 	arch_damage_dealt = Util.dict_try_get(json, "ArchDamageDealt", 0)
@@ -182,6 +185,7 @@ func save_data() -> Dictionary:
 		"TaskTarget": task_target.id if task_target != null else -1,
 		"ProducingEquipment": producing_equipment,
 		"Skills": Util.id_key_dict(skills),
+		"Stunts": Util.id_key_dict(stunts),
 		"FatherId": father.id if father != null else -1,
 		"MotherId": mother.id if mother != null else -1,
 		"SpouseIds": Util.id_list(spouses),

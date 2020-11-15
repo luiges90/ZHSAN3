@@ -122,7 +122,8 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 						return false
 			'command_at_least':
 				if params.has('person'):
-					if _op_cond(op_not, params['person'].get_command() < condition['Value']):
+					var inc = condition['level_increment'] if condition.has('level_increment') else 0
+					if _op_cond(op_not, params['person'].get_command() < condition['Value'] + condition['level_increment'] * (level - 1)):
 						return false
 			'command_experience_at_least':
 				if params.has('person'):
@@ -130,7 +131,8 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 						return false
 			'strength_at_least':
 				if params.has('person'):
-					if _op_cond(op_not, params['person'].get_strength() < condition['Value']):
+					var inc = condition['level_increment'] if condition.has('level_increment') else 0
+					if _op_cond(op_not, params['person'].get_strength() < condition['Value'] + condition['level_increment'] * (level - 1)):
 						return false
 			'strength_experience_at_least':
 				if params.has('person'):
@@ -138,7 +140,8 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 						return false
 			'intelligence_at_least':
 				if params.has('person'):
-					if _op_cond(op_not, params['person'].get_intelligence() < condition['Value']):
+					var inc = condition['level_increment'] if condition.has('level_increment') else 0
+					if _op_cond(op_not, params['person'].get_intelligence() < condition['Value'] + condition['level_increment'] * (level - 1)):
 						return false
 			'intelligence_experience_at_least':
 				if params.has('person'):
@@ -146,7 +149,8 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 						return false
 			'politics_at_least':
 				if params.has('person'):
-					if _op_cond(op_not, params['person'].get_politics() < condition['Value']):
+					var inc = condition['level_increment'] if condition.has('level_increment') else 0
+					if _op_cond(op_not, params['person'].get_politics() < condition['Value'] + condition['level_increment'] * (level - 1)):
 						return false
 			'politics_experience_at_least':
 				if params.has('person'):
@@ -154,7 +158,8 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 						return false
 			'glamour_at_least':
 				if params.has('person'):
-					if _op_cond(op_not, params['person'].get_glamour() < condition['Value']):
+					var inc = condition['level_increment'] if condition.has('level_increment') else 0
+					if _op_cond(op_not, params['person'].get_glamour() < condition['Value'] + condition['level_increment'] * (level - 1)):
 						return false
 			'glamour_experience_at_least':
 				if params.has('person'):
