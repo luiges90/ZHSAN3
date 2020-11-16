@@ -140,7 +140,7 @@ func load_data(json: Dictionary, objects):
 	for id in json["Skills"]:
 		skills[objects["skills"][int(id)]] = json["Skills"][id]
 	for id in json["Stunts"]:
-		stunts[objects["Stunts"][int(id)]] = json["Stunts"][id]
+		stunts[objects["stunts"][int(id)]] = json["Stunts"][id]
 	troop_damage_dealt = Util.dict_try_get(json, "TroopDamageDealt", 0)
 	troop_damage_received = Util.dict_try_get(json, "TroopDamageReceived", 0)
 	arch_damage_dealt = Util.dict_try_get(json, "ArchDamageDealt", 0)
