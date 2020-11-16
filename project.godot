@@ -392,6 +392,8 @@ config/windows_native_icon="res://icon.ico"
 Util="*res://Util.gd"
 GameConfig="*res://GameConfig.gd"
 ScenarioUtil="*res://ScenarioUtil.gd"
+Conditions="*res://Conditions.gd"
+Influences="*res://Influences.gd"
 SharedData="*res://SharedData.gd"
 
 [debug]

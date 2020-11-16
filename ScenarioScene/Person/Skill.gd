@@ -51,4 +51,4 @@ func get_color() -> Color:
 func apply_influences(in_operation, level: int, params: Dictionary):
 	var all_params = params.duplicate()
 	all_params['level'] = level
-	return ScenarioUtil.apply_influences(self, in_operation, all_params)
+	return Influences.apply_influences(self, in_operation, all_params)

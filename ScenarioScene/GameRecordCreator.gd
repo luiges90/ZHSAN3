@@ -33,7 +33,7 @@ func _get_bubble(key, person):
 		var container = ScenarioUtil.InfluenceContainer.new()
 		container.conditions = s['Conditions']
 		
-		if ScenarioUtil.check_conditions(container, {'person': person}):
+		if Conditions.check_conditions(container, {'person': person}):
 			var texts = s['Text']
 			if texts is Array:
 				return Util.random_from(texts)
@@ -49,7 +49,7 @@ func _get_dialog(key, person, objects):
 		
 		var params = objects.duplicate()
 		params['person'] = person
-		if ScenarioUtil.check_conditions(container, params):
+		if Conditions.check_conditions(container, params):
 			var texts = s['Text']
 			if texts is Array:
 				return Util.random_from(texts)
