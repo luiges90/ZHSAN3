@@ -35,7 +35,7 @@ func run_section(faction: Faction, section: Section, scenario):
 			_ai_architecture._outside_task(arch, scenario)
 		if not faction.player_controlled or arch.auto_task:
 			_ai_architecture._assign_task(arch, scenario)
-	
+
 	for arch in section.get_architectures():
 		if not faction.player_controlled:
 			_ai_campaign.defence(arch, section, scenario)
@@ -44,7 +44,8 @@ func run_section(faction: Faction, section: Section, scenario):
 	for troop in section.get_troops():
 		if not faction.player_controlled:
 			_ai_troop.run_troop(troop, scenario)
-			
+
+		
 func _unequipped_military_kind_power() -> float:
 	var max_power = 0
 	for k in _scenario.military_kinds:

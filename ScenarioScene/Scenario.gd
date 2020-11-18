@@ -502,7 +502,7 @@ func create_troop(arch, troop, position) -> Troop:
 	instance.scenario = self
 	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
 	troops[instance.id] = instance
-	add_child(instance)
+	call_deferred("add_child", instance)
 	instance.add_to_group(GROUP_GAME_INSTANCES)
 	
 	__connect_signals_for_creating_troop(instance)
@@ -552,15 +552,68 @@ var __day_passed_sec = OS.get_ticks_msec()
 
 # TODO run computation on separate thread
 func _on_day_passed():
-	# run Troops
+	if GameConfig._use_threads:
+		__on_day_passed_threaded()
+	else:
+		# run Troops
+		var troop_queue = TroopQueue.new(troops.values())
+		var troop_queue_result = troop_queue.execute()
+		if troop_queue_result:
+			yield(troop_queue_result, "completed")
+		if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
+			yield(get_tree(), "idle_frame")
+		__day_passed_sec = OS.get_ticks_msec()
+		
+		# run Factions
+		var last_faction = current_faction
+		for faction in factions.values():
+			if faction._destroyed:
+				continue
+			current_faction = faction
+			emit_signal("current_faction_set", current_faction)
+			ai.run_faction(faction, self)
+			if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
+				yield(get_tree(), "idle_frame")
+			__day_passed_sec = OS.get_ticks_msec()
+			
+		current_faction = last_faction
+		emit_signal("current_faction_set", current_faction)
+		for faction in factions.values():
+			if not faction._destroyed:
+				faction.day_event()
+			
+		for troop in troops.values():
+			if not troop._destroyed:
+				troop.day_event()
+				
+		for person in persons.values():
+			person.day_event()
+		
+		yield(get_tree(), "idle_frame")
+		emit_signal("all_faction_finished")
+		_on_architecture_survey_updated(null)
+
+var __day_passed_finished = false
+var _day_passed_thread = Thread.new()
+func __on_day_passed_threaded():
+	__day_passed_finished = false
+	_day_passed_thread.start(self, "___on_day_passed_thread", 0)
+
+	while not __day_passed_finished:
+		yield(get_tree(), "idle_frame")
+		
+	_day_passed_thread.wait_to_finish()
+
+	emit_signal("all_faction_finished")
+	_on_architecture_survey_updated(null)
+
+
+func ___on_day_passed_thread(_unused):
 	var troop_queue = TroopQueue.new(troops.values())
 	var troop_queue_result = troop_queue.execute()
 	if troop_queue_result:
 		yield(troop_queue_result, "completed")
-	if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
-		yield(get_tree(), "idle_frame")
-	__day_passed_sec = OS.get_ticks_msec()
-	
+
 	# run Factions
 	var last_faction = current_faction
 	for faction in factions.values():
@@ -569,26 +622,24 @@ func _on_day_passed():
 		current_faction = faction
 		emit_signal("current_faction_set", current_faction)
 		ai.run_faction(faction, self)
-		if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
-			yield(get_tree(), "idle_frame")
-		__day_passed_sec = OS.get_ticks_msec()
 		
 	current_faction = last_faction
 	emit_signal("current_faction_set", current_faction)
+
+	# run day event
 	for faction in factions.values():
 		if not faction._destroyed:
 			faction.day_event()
-		
+
 	for troop in troops.values():
 		if not troop._destroyed:
 			troop.day_event()
-			
+
 	for person in persons.values():
 		person.day_event()
 	
-	yield(get_tree(), "idle_frame")
-	emit_signal("all_faction_finished")
-	_on_architecture_survey_updated(null)
+	__day_passed_finished = true
+
 	
 func _on_month_passed():
 	for faction in factions.values():

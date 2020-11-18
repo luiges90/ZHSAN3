@@ -345,7 +345,6 @@ func day_event():
 	_develop_internal()
 	_develop_population()
 	_develop_military()
-	emit_signal("architecture_survey_updated", self)
 
 	if _recently_battled > 0:
 		_recently_battled -= 1
