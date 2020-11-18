@@ -600,6 +600,11 @@ func _on_day_passed():
 var __day_passed_finished = false
 var _day_passed_thread = Thread.new()
 func __on_day_passed_threaded():
+	var troop_queue = TroopQueue.new(troops.values())
+	var troop_queue_result = troop_queue.execute()
+	if troop_queue_result:
+		yield(troop_queue_result, "completed")
+
 	__day_passed_finished = false
 	_day_passed_thread.start(self, "___on_day_passed_thread", 0)
 
@@ -613,11 +618,6 @@ func __on_day_passed_threaded():
 
 
 func ___on_day_passed_thread(_unused):
-	var troop_queue = TroopQueue.new(troops.values())
-	var troop_queue_result = troop_queue.execute()
-	if troop_queue_result:
-		yield(troop_queue_result, "completed")
-
 	# run Factions
 	var last_faction = current_faction
 	for faction in factions.values():

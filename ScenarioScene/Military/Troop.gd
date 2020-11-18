@@ -85,7 +85,7 @@ func _ready():
 	
 	var click_area = CollisionShape2D.new()
 	click_area.shape = RectangleShape2D.new()
-	click_area.shape.extents = Vector2(64, 64)
+	click_area.shape.extents = Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE)
 	$TroopArea.add_child(click_area)
 
 func set_scenario(scen):
