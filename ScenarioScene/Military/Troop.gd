@@ -602,7 +602,8 @@ func execute_attack():
 						exp_factor += 0.5
 					
 					damage = max(1, int(damage))
-					counter_damage = max(1, int(counter_damage))
+					if military_kind.receive_counter_attacks:
+						counter_damage = max(1, int(counter_damage))
 
 					var damage_for_merit = damage * (10 if target is Architecture else 1)
 					var merit_rate = min(sqrt(damage_for_merit / (counter_damage + 100.0)), 5) + damage_for_merit / 1000.0

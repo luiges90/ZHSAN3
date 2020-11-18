@@ -15,6 +15,7 @@ var experience: int setget forbidden
 
 var influences setget forbidden
 var conditions setget forbidden
+var ai_conditions setget forbidden
 
 var learn_conditions setget forbidden
 var max_level: int setget forbidden
@@ -31,6 +32,7 @@ func load_data(json: Dictionary, objects):
 	duration = json["Duration"]
 	conditions = json["Conditions"]
 	influences = json["Influences"]
+	ai_conditions = json["AIConditions"]
 	max_level = Util.dict_try_get(json, "MaxLevel", -1)
 	learn_conditions = Util.dict_try_get(json, "LearnConditions", [])
 	
@@ -45,6 +47,7 @@ func save_data() -> Dictionary:
 		"MaxLevel": max_level,
 		"LearnConditions": learn_conditions,
 		"Conditions": conditions,
+		"AIConditions": ai_conditions,
 		"Influences": influences
 	}
 

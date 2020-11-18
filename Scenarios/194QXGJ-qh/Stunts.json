@@ -26,6 +26,7 @@
             }
         ],
         "Conditions": [],
+        "AIConditions": [],
         "Influences": [
             {
                 "Operation": "modify_troop_offence",
@@ -60,6 +61,7 @@
             }
         ],
         "Conditions": [],
+        "AIConditions": [],
         "Influences": [
             {
                 "Operation": "modify_troop_defence",
