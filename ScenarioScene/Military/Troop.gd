@@ -82,6 +82,11 @@ func _ready():
 	scale.y = SharedData.TILE_SIZE / 128.0
 	scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
 	scenario.connect("scenario_camera_moved", self, "_on_camera_moved")
+	
+	var click_area = CollisionShape2D.new()
+	click_area.shape = RectangleShape2D.new()
+	click_area.shape.extents = Vector2(64, 64)
+	$TroopArea.add_child(click_area)
 
 func set_scenario(scen):
 	scenario = scen
