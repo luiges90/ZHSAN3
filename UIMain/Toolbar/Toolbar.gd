@@ -106,13 +106,13 @@ func _on_Play_pressed():
 	if _running:
 		_running = false
 		_set_play_button_texture_to_play()
-		emit_signal("stop_date_runner")
+		call_deferred("emit_signal", "stop_date_runner")
 	else:
 		var value = _get_value()
 		if value > 0:
 			_running = true
 			_set_play_button_texture_to_pause()
-			emit_signal("start_date_runner", value)
+			call_deferred("emit_signal", "start_date_runner", value)
 		
 func _on_Stop_pressed():
 	if _running:
@@ -120,7 +120,7 @@ func _on_Stop_pressed():
 		$DateRunner/TensDigit/Text10.text = '0'
 		$DateRunner/UnitDigit/Text.text = '0'
 		_set_play_button_texture_to_play()
-		emit_signal("stop_date_runner")
+		call_deferred("emit_signal", "stop_date_runner")
 
 
 func _set_play_button_texture_to_play():
@@ -148,7 +148,7 @@ func _on_day_passed():
 			# this path should not happen
 			_running = false
 			_set_play_button_texture_to_play()
-			emit_signal("stop_date_runner")
+			call_deferred("emit_signal", "stop_date_runner")
 	else:
 		$DateRunner/UnitDigit/Text.text = str(int($DateRunner/UnitDigit/Text.text) - 1)
 		var units = int($DateRunner/UnitDigit/Text.text)
@@ -156,17 +156,17 @@ func _on_day_passed():
 		if units <= 0 and tens <= 0:
 			_running = false
 			_set_play_button_texture_to_play()
-			emit_signal("stop_date_runner")
+			call_deferred("emit_signal", "stop_date_runner")
 
 
 func _on_System_pressed():
 	$Select.play()
-	emit_signal("system_clicked")
+	call_deferred("emit_signal", "system_clicked")
 
 
 func _on_GameRecord_pressed():
-	emit_signal("game_record_clicked")
+	call_deferred("emit_signal", "game_record_clicked")
 
 
 func _on_Map_pressed():
-	emit_signal("map_clicked")
+	call_deferred("emit_signal", "map_clicked")

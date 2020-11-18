@@ -8,12 +8,12 @@ signal info_clicked
 
 func _on_Save_pressed():
 	_select_item()
-	emit_signal("save_clicked")
+	call_deferred("emit_signal", "save_clicked")
 
 
 func _on_Load_pressed():
 	_select_item()
-	emit_signal("load_clicked")
+	call_deferred("emit_signal", "load_clicked")
 
 
 func _on_Quit_pressed():
@@ -26,4 +26,4 @@ func _on_Toolbar_system_clicked():
 
 func _on_Info_pressed():
 	_select_item()
-	emit_signal("info_clicked")
+	call_deferred("emit_signal", "info_clicked")

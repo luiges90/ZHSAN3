@@ -21,4 +21,4 @@ func _on_Records_meta_clicked(meta):
 	if meta.begins_with("\"focus"):
 		var x = meta.substr(meta.find("(") + 1, meta.find(",") - meta.find("("))
 		var y = meta.substr(meta.find(",") + 1, meta.find(")") - 1)
-		emit_signal("focus_camera", Vector2(int(x), int(y)))
+		call_deferred("emit_signal", "focus_camera", Vector2(int(x), int(y)))

@@ -81,5 +81,5 @@ func _on_Cancel_pressed():
 func _on_Confirm_pressed():
 	SharedData.loading_file_path = "res://Scenarios/" + _selected_scenario
 	SharedData.starting_faction_id = _selected_faction
-	emit_signal("confirmed_scenario")
+	call_deferred("emit_signal", "confirmed_scenario")
 

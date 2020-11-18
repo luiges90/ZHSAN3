@@ -83,32 +83,32 @@ func _on_Main_FactionDetail_pressed():
 
 func _on_PersonList_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_persons(), PersonList.Action.LIST)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_persons(), PersonList.Action.LIST)
 
 
 func _on_Agriculture_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.AGRICULTURE)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.AGRICULTURE)
 
 
 func _on_Commerce_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.COMMERCE)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.COMMERCE)
 
 
 func _on_Morale_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.MORALE)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.MORALE)
 
 
 func _on_Endurance_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.ENDURANCE)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.ENDURANCE)
 
 
 func _on_Move_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.MOVE)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.MOVE)
 
 
 func _on_Call_pressed():
@@ -117,45 +117,45 @@ func _on_Call_pressed():
 	for a in showing_architecture.get_belonged_faction().get_architectures():
 		if a.id != showing_architecture.id:
 			Util.append_all(list, a.get_workable_persons())
-	emit_signal("person_list_clicked", showing_architecture, list, PersonList.Action.CALL)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, list, PersonList.Action.CALL)
 
 
 func _on_ArchitectureDetail_pressed():
 	_select_item()
-	emit_signal("architecture_list_clicked", showing_architecture, [showing_architecture], PersonList.Action.LIST)
+	call_deferred("emit_signal", "architecture_list_clicked", showing_architecture, [showing_architecture], PersonList.Action.LIST)
 
 
 func _on_RecruitTroop_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.RECRUIT_TROOP)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.RECRUIT_TROOP)
 
 
 
 func _on_TrainTroop_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.TRAIN_TROOP)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.TRAIN_TROOP)
 
 
 
 func _on_ProduceEquipment_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.PRODUCE_EQUIPMENT)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_workable_persons(), PersonList.Action.PRODUCE_EQUIPMENT)
 
 
 
 func _on_FactionArchitectures_pressed():
 	_select_item()
-	emit_signal("architecture_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_architectures(), PersonList.Action.LIST)
+	call_deferred("emit_signal", "architecture_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_architectures(), PersonList.Action.LIST)
 
 
 func _on_ToggleAutoTask_pressed():
 	_select_item()
-	emit_signal("architecture_toggle_auto_task", showing_architecture)
+	call_deferred("emit_signal", "architecture_toggle_auto_task", showing_architecture)
 
 
 func _on_StartCampaign_pressed():
 	_select_item()
-	emit_signal("architecture_create_troop", showing_architecture, showing_architecture.get_workable_persons(), showing_architecture.scenario.military_kinds)
+	call_deferred("emit_signal", "architecture_create_troop", showing_architecture, showing_architecture.get_workable_persons(), showing_architecture.scenario.military_kinds)
 
 
 
@@ -165,28 +165,28 @@ func _on_ArchitectureAndTroopMenu_architecture_clicked(arch, mx, my):
 
 func _on_FactionDetail_pressed():
 	_select_item()
-	emit_signal("faction_list_clicked", showing_architecture, [showing_architecture.get_belonged_faction()], FactionList.Action.LIST)
+	call_deferred("emit_signal", "faction_list_clicked", showing_architecture, [showing_architecture.get_belonged_faction()], FactionList.Action.LIST)
 
 
 func _on_FactionPersons_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_persons(), PersonList.Action.LIST)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_persons(), PersonList.Action.LIST)
 
 
 
 func _on_AssignAdvisor_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_advisor_candidates(), PersonList.Action.SELECT_ADVISOR)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_advisor_candidates(), PersonList.Action.SELECT_ADVISOR)
 
 
 
 func _on_RemoveAdvisor_pressed():
 	_select_item()
-	emit_signal("remove_advisor", showing_architecture)
+	call_deferred("emit_signal", "remove_advisor", showing_architecture)
 
 
 
 func _on_Convince_pressed():
 	_select_item()
-	emit_signal("person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_convince_targets(), PersonList.Action.CONVINCE_TARGET)
+	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_convince_targets(), PersonList.Action.CONVINCE_TARGET)
 

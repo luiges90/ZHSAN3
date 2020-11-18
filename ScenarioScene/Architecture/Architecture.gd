@@ -439,7 +439,7 @@ func change_faction(to_section):
 	if faction != null:
 		($Flag as Sprite).modulate = faction.color
 	
-	emit_signal('faction_changed', self)
+	call_deferred("emit_signal", 'faction_changed', self)
 
 
 func set_recently_battled():
@@ -661,7 +661,7 @@ func take_equipment(kind, quantity):
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			emit_signal("architecture_clicked", self, event.global_position.x, event.global_position.y)
+			call_deferred("emit_signal", "architecture_clicked", self, event.global_position.x, event.global_position.y)
 			get_tree().set_input_as_handled()
 			
 func get_screen_position():

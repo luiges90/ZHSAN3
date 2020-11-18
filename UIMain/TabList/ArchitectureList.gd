@@ -238,7 +238,7 @@ func _on_Confirm_pressed():
 	var selected_arch = _get_selected_list()
 	match current_action:
 		Action.MOVE_TO: 
-			emit_signal("architecture_selected", current_action, current_architecture, selected_arch, {
+			call_deferred("emit_signal", "architecture_selected", current_action, current_architecture, selected_arch, {
 				"selected_person_ids": _selected_person_ids
 			})
 	$ConfirmSound.play()
@@ -252,7 +252,7 @@ func _on_ArchitectureMenu_architecture_list_clicked(arch, archs: Array, action):
 
 
 func __on_clickable_label_click(label, person):
-	emit_signal('architecture_row_clicked', person)
+	call_deferred("emit_signal", 'architecture_row_clicked', person)
 	_detail_showing = true
 
 

@@ -9,7 +9,7 @@ signal skills_clicked
 
 func _on_MilitaryKind_pressed():
 	_select_item()
-	emit_signal("military_kind_clicked")
+	call_deferred("emit_signal", "military_kind_clicked")
 
 
 func _on_SystemMenu_info_clicked():
@@ -18,21 +18,21 @@ func _on_SystemMenu_info_clicked():
 
 func _on_Factions_pressed():
 	_select_item()
-	emit_signal("factions_clicked")
+	call_deferred("emit_signal", "factions_clicked")
 
 
 func _on_Architectures_pressed():
 	_select_item()
-	emit_signal("architectures_clicked")
+	call_deferred("emit_signal", "architectures_clicked")
 
 
 
 func _on_Persons_pressed():
 	_select_item()
-	emit_signal("persons_clicked")
+	call_deferred("emit_signal", "persons_clicked")
 
 
 
 func _on_Skill_pressed():
 	_select_item()
-	emit_signal("skills_clicked")
+	call_deferred("emit_signal", "skills_clicked")

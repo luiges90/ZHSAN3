@@ -98,12 +98,12 @@ func _on_cancel_ui():
 func _on_position_selected(position):
 	match current_action:
 		CurrentAction.CREATE_TROOP:
-			emit_signal("create_troop", current_architecture, current_troop, position)
+			call_deferred("emit_signal", "create_troop", current_architecture, current_troop, position)
 		CurrentAction.MOVE_TROOP:
-			emit_signal("move_troop", current_troop, position)
+			call_deferred("emit_signal", "move_troop", current_troop, position)
 		CurrentAction.ENTER_TROOP:
-			emit_signal("enter_troop", current_troop, position)
+			call_deferred("emit_signal", "enter_troop", current_troop, position)
 		CurrentAction.FOLLOW_TROOP:
-			emit_signal("follow_troop", current_troop, position)
+			call_deferred("emit_signal", "follow_troop", current_troop, position)
 		CurrentAction.ATTACK_TROOP:
-			emit_signal("attack_troop", current_troop, position)
+			call_deferred("emit_signal", "attack_troop", current_troop, position)

@@ -27,7 +27,7 @@ func _unhandled_input(event):
 			($PersonDetail as PersonDetail).hide()
 			($ArchitectureDetail as ArchitectureDetail).hide()
 			($PersonDialog as PersonDialog).hide()
-			emit_signal("cancel_ui")
+			call_deferred("emit_signal", "cancel_ui")
 
 func _on_mouse_moved_to_map_posiiton(position, terrain):
 	$TileInfo.text = terrain.get_name() + str(position)

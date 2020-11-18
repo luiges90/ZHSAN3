@@ -36,34 +36,34 @@ func _on_ArchitectureAndTroopMenu_troop_clicked(troop, mx, my):
 
 func _on_Move_pressed():
 	_select_item()
-	emit_signal("move_clicked", showing_troop)
+	call_deferred("emit_signal", "move_clicked", showing_troop)
 
 
 func _on_Attack_pressed():
 	_select_item()
-	emit_signal("attack_clicked", showing_troop)
+	call_deferred("emit_signal", "attack_clicked", showing_troop)
 
 
 func _on_Enter_pressed():
 	_select_item()
-	emit_signal("enter_clicked", showing_troop)
+	call_deferred("emit_signal", "enter_clicked", showing_troop)
 
 
 func _on_Follow_pressed():
 	_select_item()
-	emit_signal("follow_clicked", showing_troop)
+	call_deferred("emit_signal", "follow_clicked", showing_troop)
 
 
 func _on_TroopDetail_pressed():
 	_select_item()
-	emit_signal("troop_detail_clicked", showing_troop)
+	call_deferred("emit_signal", "troop_detail_clicked", showing_troop)
 
 
 func _on_Occupy_pressed():
 	_select_item()
-	emit_signal("occupy_clicked", showing_troop)
+	call_deferred("emit_signal", "occupy_clicked", showing_troop)
 
 
 func _on_TroopPerson_pressed():
 	_select_item()
-	emit_signal("troop_person_clicked", showing_troop)
+	call_deferred("emit_signal", "troop_person_clicked", showing_troop)

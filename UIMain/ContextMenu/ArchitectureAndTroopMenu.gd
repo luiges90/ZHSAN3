@@ -28,10 +28,10 @@ func show_menu(arch, troop, mouse_x, mouse_y):
 
 func _on_Architecture_pressed():
 	_select_item()
-	emit_signal("architecture_clicked", showing_arch, mx, my)
+	call_deferred("emit_signal", "architecture_clicked", showing_arch, mx, my)
 
 
 func _on_Troop_pressed():
 	_select_item()
-	emit_signal("troop_clicked", showing_troop, mx, my)
+	call_deferred("emit_signal", "troop_clicked", showing_troop, mx, my)
 

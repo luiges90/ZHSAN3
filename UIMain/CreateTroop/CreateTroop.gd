@@ -38,7 +38,7 @@ func _on_CreateTroop_hide():
 func _on_SelectPersons_pressed():
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	emit_signal("select_person", current_architecture, eligible_persons)
+	call_deferred("emit_signal", "select_person", current_architecture, eligible_persons)
 
 	
 func set_data():
@@ -99,13 +99,13 @@ func _on_PersonList_person_selected(action, arch, selected):
 func _on_SelectLeader_pressed():
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	emit_signal("select_leader", current_architecture, current_troop.persons)
+	call_deferred("emit_signal", "select_leader", current_architecture, current_troop.persons)
 
 
 func _on_SelectMilitaryKind_pressed():
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	emit_signal("select_military_kind", current_architecture, get_available_kinds())
+	call_deferred("emit_signal", "select_military_kind", current_architecture, get_available_kinds())
 
 
 func _on_MilitaryKindList_military_kind_selected_for_troop(current_action, selected_kinds):
@@ -125,5 +125,5 @@ func _on_Create_pressed():
 	_confirming = true
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	emit_signal("create_troop_select_position", current_architecture, current_troop)
+	call_deferred("emit_signal", "create_troop_select_position", current_architecture, current_troop)
 	hide()

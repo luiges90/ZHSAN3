@@ -33,7 +33,7 @@ func _populate_architecture_data(arch_list):
 		item_list.add_child(_clickable_label(person_text, self, "__on_label_click", arch))
 
 func __on_label_click(label, arch):
-	emit_signal('focus_camera', arch.map_position)
+	call_deferred("emit_signal", 'focus_camera', arch.map_position)
 
 
 func _on_all_loaded(scenario):

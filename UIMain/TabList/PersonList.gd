@@ -565,11 +565,11 @@ func _on_Confirm_pressed():
 			_previously_selected_person_ids = selected
 			show_data(current_architecture.get_workable_persons())
 		Action.CONVINCE_PERSON:
-			emit_signal("person_selected", current_action, current_architecture, selected, {"target": _previously_selected_person_ids[0]})
+			call_deferred("emit_signal", "person_selected", current_action, current_architecture, selected, {"target": _previously_selected_person_ids[0]})
 			$PersonMove.play()
 			._on_Confirm_pressed()
 		_:
-			emit_signal("person_selected", current_action, current_architecture, selected)
+			call_deferred("emit_signal", "person_selected", current_action, current_architecture, selected)
 			$ConfirmSound.play()
 			._on_Confirm_pressed()
 
@@ -587,7 +587,7 @@ func _on_CreateTroop_select_leader(arch, persons):
 
 func __on_clickable_label_long_pressed(label, receiver, object, checkbox):
 	if receiver == self:
-		emit_signal('person_row_clicked', object)
+		call_deferred("emit_signal", 'person_row_clicked', object)
 		_detail_showing = true
 
 func __on_clickable_label_click(label, receiver, object, checkbox):

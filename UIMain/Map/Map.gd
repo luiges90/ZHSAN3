@@ -84,4 +84,4 @@ func _on_PaintLayer_mouse_down(event):
 	if event.button_mask == BUTTON_LEFT:
 		var real_pos = Vector2(event.position.x, event.position.y)
 		if real_pos.x >= 0 and real_pos.y >= 0 and real_pos.x <= $PaintLayer.rect_size.x and real_pos.y <= $PaintLayer.rect_size.y:
-			emit_signal('focus_camera', __map_position_to_scen_position(real_pos))
+			call_deferred("emit_signal", 'focus_camera', __map_position_to_scen_position(real_pos))

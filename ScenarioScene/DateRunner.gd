@@ -30,26 +30,26 @@ func get_season():
 	return Season.WINTER
 	
 func _on_all_loaded():
-	emit_signal("date_updated", year, month, day, get_season())
+	call_deferred("emit_signal", "date_updated", year, month, day, get_season())
 
 func _on_start_date_runner(day_count):
 	while not stop_date_runner:
 		day += GameConfig.day_per_turn
-		emit_signal("day_passed")
+		call_deferred("emit_signal", "day_passed")
 		if day > 30:
 			day -= 30
 			month += 1
-			emit_signal("month_passed")
+			call_deferred("emit_signal", "month_passed")
 			if month == 3 or month == 6 or month == 9 or month == 12:
-				emit_signal("season_passed")
+				call_deferred("emit_signal", "season_passed")
 			if month > 12:
 				month -= 12
 				year += 1
-				emit_signal("year_passed")
-		emit_signal("date_updated", year, month, day, get_season())
+				call_deferred("emit_signal", "year_passed")
+		call_deferred("emit_signal", "date_updated", year, month, day, get_season())
 		yield(scenario, "all_faction_finished")
 	stop_date_runner = false
-	emit_signal("date_runner_stopped")
+	call_deferred("emit_signal", "date_runner_stopped")
 	
 func _on_stop_date_runner():
 	if has_player:
@@ -63,4 +63,4 @@ func _on_Scenario_scenario_loaded(scenario):
 			has_player = true
 			break
 	
-	emit_signal("date_updated", year, month, day, get_season())
+	call_deferred("emit_signal", "date_updated", year, month, day, get_season())

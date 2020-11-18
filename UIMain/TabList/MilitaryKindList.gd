@@ -172,11 +172,11 @@ func _on_Confirm_pressed():
 	var selected_kinds = _get_selected_list()
 	match current_action:
 		Action.PRODUCE_EQUIPMENT: 
-			emit_signal("military_kind_selected", current_action, current_architecture, selected_kinds, {
+			call_deferred("emit_signal", "military_kind_selected", current_action, current_architecture, selected_kinds, {
 				"selected_person_ids": _selected_person_ids
 			})
 		Action.SELECT_TROOP_MILITARY_KIND:
-			emit_signal("military_kind_selected_for_troop", current_action, selected_kinds)
+			call_deferred("emit_signal", "military_kind_selected_for_troop", current_action, selected_kinds)
 	$ConfirmSound.play()
 	._on_Confirm_pressed()
 

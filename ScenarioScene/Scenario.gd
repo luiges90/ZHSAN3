@@ -84,8 +84,8 @@ func _ready():
 	if player_factions.size() > 0:
 		var fid = player_factions[0]
 		camera.position = factions[fid].get_architectures()[0].position
-		camera.emit_signal("camera_moved", camera.get_viewing_rect(), camera.zoom)
-		emit_signal("scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
+		camera.call_deferred("emit_signal", "camera_moved", camera.get_viewing_rect(), camera.zoom)
+		call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
@@ -378,13 +378,17 @@ func _load_data(path):
 		__connect_signals_for_creating_troop(troops[t])
 	
 	__handle_game_start(current_faction_id)
-	emit_signal("scenario_loaded", self)
+	call_deferred("emit_signal", "scenario_loaded", self)
 
 	_loading_scenario = false
 
 	
 func __load_item(instance, item, add_to_list, objects):
-	instance.scenario = self
+	if instance.has_method("set_scenario"):
+		instance.set_scenario(self)
+	else:
+		instance.scenario = self
+		
 	instance.load_data(item, objects)
 	add_to_list[int(instance.id)] = instance
 	if instance is Architecture or instance is Troop:
@@ -427,19 +431,19 @@ func _on_architecture_clicked(arch, mx, my):
 	_clicked_at = Vector2(mx, my)
 	
 func _on_architecture_survey_updated(arch):
-	emit_signal("architecture_survey_updated", arch)
-	emit_signal("faction_survey_updated")
+	call_deferred("emit_signal", "architecture_survey_updated", arch)
+	call_deferred("emit_signal", "faction_survey_updated")
 	
 func _on_architecture_faction_changed(arch):
-	emit_signal("scenario_architecture_faction_changed", arch, self)
-	emit_signal("faction_survey_updated")
+	call_deferred("emit_signal", "scenario_architecture_faction_changed", arch, self)
+	call_deferred("emit_signal", "faction_survey_updated")
 	
 func _on_troop_clicked(troop, mx, my):
 	_troop_clicked = troop
 	_clicked_at = Vector2(mx, my)
 	
 func _on_troop_survey_updated(troop):
-	emit_signal("troop_survey_updated", troop)
+	call_deferred("emit_signal", "troop_survey_updated", troop)
 	
 func on_architecture_remove_advisor(current_architecture):
 	$GameRecordCreator.remove_advisor(current_architecture.get_belonged_faction())
@@ -499,7 +503,7 @@ func create_troop(arch, troop, position) -> Troop:
 		id = 1
 	else:
 		id = id + 1
-	instance.scenario = self
+	instance.set_scenario(self)
 	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
 	troops[instance.id] = instance
 	call_deferred("add_child", instance)
@@ -523,7 +527,7 @@ func _on_PositionSelector_attack_troop(troop, position):
 	troop.set_attack_order(get_troop_at_position(position), get_architecture_at_position(position))
 
 func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
-	emit_signal("scenario_camera_moved", camera_rect, zoom, self)
+	call_deferred("emit_signal", "scenario_camera_moved", camera_rect, zoom, self)
 	_update_position_label(get_viewport().get_mouse_position())
 	
 
@@ -570,14 +574,14 @@ func _on_day_passed():
 			if faction._destroyed:
 				continue
 			current_faction = faction
-			emit_signal("current_faction_set", current_faction)
+			call_deferred("emit_signal", "current_faction_set", current_faction)
 			ai.run_faction(faction, self)
 			if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
 				yield(get_tree(), "idle_frame")
 			__day_passed_sec = OS.get_ticks_msec()
 			
 		current_faction = last_faction
-		emit_signal("current_faction_set", current_faction)
+		call_deferred("emit_signal", "current_faction_set", current_faction)
 		for faction in factions.values():
 			if not faction._destroyed:
 				faction.day_event()
@@ -590,7 +594,7 @@ func _on_day_passed():
 			person.day_event()
 		
 		yield(get_tree(), "idle_frame")
-		emit_signal("all_faction_finished")
+		call_deferred("emit_signal", "all_faction_finished")
 		_on_architecture_survey_updated(null)
 
 var __day_passed_finished = false
@@ -604,7 +608,7 @@ func __on_day_passed_threaded():
 		
 	_day_passed_thread.wait_to_finish()
 
-	emit_signal("all_faction_finished")
+	call_deferred("emit_signal", "all_faction_finished")
 	_on_architecture_survey_updated(null)
 
 
@@ -620,11 +624,11 @@ func ___on_day_passed_thread(_unused):
 		if faction._destroyed:
 			continue
 		current_faction = faction
-		emit_signal("current_faction_set", current_faction)
+		call_deferred("emit_signal", "current_faction_set", current_faction)
 		ai.run_faction(faction, self)
 		
 	current_faction = last_faction
-	emit_signal("current_faction_set", current_faction)
+	call_deferred("emit_signal", "current_faction_set", current_faction)
 
 	# run day event
 	for faction in factions.values():
@@ -650,26 +654,26 @@ func _on_month_passed():
 	
 
 func _on_all_loaded():
-	emit_signal("current_faction_set", current_faction)
+	call_deferred("emit_signal", "current_faction_set", current_faction)
 	var camera = $MainCamera as MainCamera
-	emit_signal("scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
+	call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
 	
 	for a in architectures:
 		_on_architecture_faction_changed(architectures[a])
 	
 	for t in troops:
-		emit_signal("scenario_troop_created", self, troops[t])
+		call_deferred("emit_signal", "scenario_troop_created", self, troops[t])
 		
 func _on_troop_position_changed(troop, old_pos, new_pos):
-	emit_signal("scenario_troop_position_changed", self, troop, old_pos, new_pos)
+	call_deferred("emit_signal", "scenario_troop_position_changed", self, troop, old_pos, new_pos)
 	
 func _on_troop_created(troop, position):
 	if not _loading_scenario:
 		$GameRecordCreator.create_troop(troop, position)
-	emit_signal("scenario_troop_created", self, troop)
+	call_deferred("emit_signal", "scenario_troop_created", self, troop)
 	
 func _on_troop_removed(troop):
-	emit_signal("scenario_troop_removed", self, troop)
+	call_deferred("emit_signal", "scenario_troop_removed", self, troop)
 
 func _on_person_available(person, reason, reason_person):
 	if reason == Person.AvailableReason.BROTHER:
@@ -687,11 +691,11 @@ func _on_person_available(person, reason, reason_person):
 
 func _process(delta):
 	if _architecture_clicked != null and _troop_clicked == null:
-		emit_signal("architecture_clicked", _architecture_clicked, _clicked_at.x, _clicked_at.y)
+		call_deferred("emit_signal", "architecture_clicked", _architecture_clicked, _clicked_at.x, _clicked_at.y)
 	elif _architecture_clicked == null and _troop_clicked != null:
-		emit_signal("troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y)
+		call_deferred("emit_signal", "troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y)
 	elif _architecture_clicked != null and _troop_clicked != null:
-		emit_signal("architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y)
+		call_deferred("emit_signal", "architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y)
 	_architecture_clicked = null
 	_troop_clicked = null
 	
@@ -798,7 +802,7 @@ func _update_position_label(mouse_position):
 	var map_pos = Vector2(map_x, map_y)
 	var terrain = get_terrain_at_position(map_pos)
 	if terrain != null:
-		emit_signal("mouse_moved_to_map_position", map_pos, terrain)
+		call_deferred("emit_signal", "mouse_moved_to_map_position", map_pos, terrain)
 
 func is_observer():
 	for f in factions:

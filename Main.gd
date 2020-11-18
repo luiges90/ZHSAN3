@@ -95,4 +95,4 @@ func _all_loaded():
 	connect("all_loaded", $Scenario/DateRunner, "_on_all_loaded")
 	connect("all_loaded", $UICanvas/UIMain/FactionSurvey, "_on_all_loaded", [$Scenario])
 	
-	emit_signal("all_loaded")
+	call_deferred("emit_signal", "all_loaded")

@@ -749,7 +749,7 @@ func become_available():
 			var arch = b.get_belonged_architecture() if b._status != Status.CAPTIVE else b.get_old_faction().capital
 			_status = b._status
 			arch.add_person(self)
-			emit_signal("person_available", self, AvailableReason.BROTHER, b)
+			call_deferred("emit_signal", "person_available", self, AvailableReason.BROTHER, b)
 			return
 	
 	var spouses_sorted = spouses.duplicate()
@@ -759,7 +759,7 @@ func become_available():
 			var arch = s.get_belonged_architecture() if s._status != Status.CAPTIVE else s.get_old_faction().capital
 			_status = s._status
 			arch.add_person(self)
-			emit_signal("person_available", self, AvailableReason.SPOUSE, s)
+			call_deferred("emit_signal", "person_available", self, AvailableReason.SPOUSE, s)
 			return
 	
 	if father != null:
@@ -767,7 +767,7 @@ func become_available():
 			var arch = father.get_belonged_architecture() if father._status != Status.CAPTIVE else father.get_old_faction().capital
 			_status = father._status
 			arch.add_person(self)
-			emit_signal("person_available", self, AvailableReason.CHILDREN, father)
+			call_deferred("emit_signal", "person_available", self, AvailableReason.CHILDREN, father)
 			return
 			
 	if mother != null:
@@ -775,7 +775,7 @@ func become_available():
 			var arch = mother.get_belonged_architecture() if mother._status != Status.CAPTIVE else mother.get_old_faction().capital
 			_status = mother._status
 			arch.add_person(self)
-			emit_signal("person_available", self, AvailableReason.CHILDREN, mother)
+			call_deferred("emit_signal", "person_available", self, AvailableReason.CHILDREN, mother)
 			return
 	
 	var siblings_sorted = get_siblings().duplicate()
@@ -785,13 +785,13 @@ func become_available():
 			var arch = p.get_belonged_architecture() if p._status != Status.CAPTIVE else p.get_old_faction().capital
 			_status = p._status
 			arch.add_person(self)
-			emit_signal("person_available", self, AvailableReason.SIBLING, p)
+			call_deferred("emit_signal", "person_available", self, AvailableReason.SIBLING, p)
 			return
 	
 	var arch = scenario.architectures[available_architecture_id]
 	_status = Status.WILD
 	arch.add_person(self)
-	emit_signal("person_available", self, AvailableReason.NONE, null)
+	call_deferred("emit_signal", "person_available", self, AvailableReason.NONE, null)
 	
 func die():
 	if is_faction_leader():
@@ -802,7 +802,7 @@ func die():
 		loc.check_destroy()
 	_status = Status.NONE
 	alive = false
-	emit_signal('person_died', self)
+	call_deferred("emit_signal", 'person_died', self)
 	
 #####################################
 #      Manipulation / Domestic      #
@@ -894,7 +894,7 @@ func go_for_convince(target):
 	
 func do_convince():
 	if task_target._status != Status.WILD and task_target._status != Status.CAPTIVE:
-		emit_signal('convince_failure', self, task_target)
+		call_deferred("emit_signal", 'convince_failure', self, task_target)
 	else:
 		var prob = convince_probability(task_target)
 		if randf() < prob:
@@ -902,12 +902,12 @@ func do_convince():
 			add_intelligence_exp(20)
 			add_glamour_exp(80)
 			task_target.join_architecture(get_belonged_architecture())
-			emit_signal('convince_success', self, task_target)
+			call_deferred("emit_signal", 'convince_success', self, task_target)
 		else:
 			add_stratagem_exp(5)
 			add_intelligence_exp(5)
 			add_glamour_exp(20)
-			emit_signal('convince_failure', self, task_target)
+			call_deferred("emit_signal", 'convince_failure', self, task_target)
 	working_task = Task.MOVE
 	task_target = null
 

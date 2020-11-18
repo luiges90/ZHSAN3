@@ -23,4 +23,4 @@ func _process(delta):
 	update()
 
 func _gui_input(event):
-	emit_signal('mouse_down', event)
+	call_deferred("emit_signal", 'mouse_down', event)

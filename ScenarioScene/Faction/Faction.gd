@@ -52,7 +52,7 @@ func save_data() -> Dictionary:
 	}
 	
 ####################################
-#           Gí¡et function           #
+#           Gï¿½ï¿½ï¿½et function           #
 ####################################
 
 func get_architectures() -> Array:
@@ -163,7 +163,7 @@ func add_section(section, force: bool = false):
 func destroy():
 	scenario.remove_faction(self)
 	_destroyed = true
-	emit_signal("destroyed", self)
+	call_deferred("emit_signal", "destroyed", self)
 	
 func change_leader():
 	if get_persons().size() <= 1:

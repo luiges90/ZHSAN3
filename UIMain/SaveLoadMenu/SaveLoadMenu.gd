@@ -35,7 +35,7 @@ func _on_game_pressed(name: String):
 	$Confirm.play()
 	_confirming = true
 	hide()
-	emit_signal("file_slot_clicked", mode, path + "/Save" + name)
+	call_deferred("emit_signal", "file_slot_clicked", mode, path + "/Save" + name)
 	
 	if mode == MODE.SAVE:
 		var dir = Directory.new()

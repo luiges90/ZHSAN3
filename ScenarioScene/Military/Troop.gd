@@ -43,7 +43,7 @@ var _ai_path
 
 var _destroyed = false
 
-onready var pathfinder: PathFinder = PathFinder.new(self)
+var pathfinder: PathFinder
 
 signal troop_clicked
 signal animation_step_finished
@@ -75,14 +75,17 @@ func _ready():
 	_update_military_kind_sprite()
 	$TroopArea/AnimatedSprite.animation = "move_e"
 	$TroopArea/AnimatedSprite.play()
-	
-	if scenario:
-		position.x = map_position.x * scenario.tile_size
-		position.y = map_position.y * scenario.tile_size
-		scale.x = SharedData.TILE_SIZE / 128.0
-		scale.y = SharedData.TILE_SIZE / 128.0
-		scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
-		scenario.connect("scenario_camera_moved", self, "_on_camera_moved")
+
+	position.x = map_position.x * scenario.tile_size
+	position.y = map_position.y * scenario.tile_size
+	scale.x = SharedData.TILE_SIZE / 128.0
+	scale.y = SharedData.TILE_SIZE / 128.0
+	scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
+	scenario.connect("scenario_camera_moved", self, "_on_camera_moved")
+
+func set_scenario(scen):
+	scenario = scen
+	pathfinder = PathFinder.new(self)
 	
 
 ####################################
@@ -420,7 +423,7 @@ func set_attack_order(troop, arch):
 func set_position(pos):
 	var old_position = map_position
 	map_position = pos
-	emit_signal("position_changed", self, old_position, map_position)
+	call_deferred("emit_signal", "position_changed", self, old_position, map_position)
 	return _animate_position(old_position, map_position)
 	
 func add_morale(delta):
@@ -458,7 +461,7 @@ func occupy():
 	
 	var arch = scenario.get_architecture_at_position(map_position)
 	arch.change_faction(get_belonged_section())
-	emit_signal("occupy_architecture", self, arch)
+	call_deferred("emit_signal", "occupy_architecture", self, arch)
 
 
 func set_recently_battled():
@@ -735,17 +738,17 @@ func destroy(attacker):
 	assert(len(get_all_persons()) == 0)
 			
 	if captured_persons.size() > 0:
-		emit_signal("person_captured", attacker, captured_persons)
+		call_deferred("emit_signal", "person_captured", attacker, captured_persons)
 	if released_persons.size() > 0:
-		emit_signal("person_released", self, released_persons)
+		call_deferred("emit_signal", "person_released", self, released_persons)
 	
 	# perform destroy
-	emit_signal("destroyed", self)
+	call_deferred("emit_signal", "destroyed", self)
 	_destroyed = true
 		
 func _remove():
 	assert(len(get_all_persons()) == 0)
-	emit_signal("removed", self)
+	call_deferred("emit_signal", "removed", self)
 	for t in scenario.troops:
 		var troop = scenario.troops[t]
 		if troop.current_order != null and troop.current_order.type == OrderType.ATTACK and troop.current_order.target == self:
@@ -763,7 +766,7 @@ func day_event():
 		var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position)
 		if move_to != null:
 			_starting_arch = move_to
-			emit_signal("starting_architecture_changed", self)
+			call_deferred("emit_signal", "starting_architecture_changed", self)
 	
 	var food_required = int((1 + military_kind.food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.25)
 	if not _starting_arch.consume_food(food_required):
@@ -778,7 +781,7 @@ func day_event():
 		_recently_battled -= 1
 		add_combativity(5)
 		
-	emit_signal("troop_survey_updated", self)
+	call_deferred("emit_signal", "troop_survey_updated", self)
 		
 
 ####################################
@@ -870,15 +873,15 @@ func _animate_attack(target, self_damage, target_damage, critical):
 			$AttackSound.play()
 			
 		if not target._destroyed:
-			emit_signal("performed_attack", self, target, critical)
-			emit_signal("received_attack", target, self, critical)
+			call_deferred("emit_signal", "performed_attack", self, target, critical)
+			call_deferred("emit_signal", "received_attack", target, self, critical)
 		
 		if target is Architecture:
 			yield($TroopArea/AnimatedSprite, "animation_finished")
 			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
 			target.find_node("NumberFlashText").find_node('Timer').start()
 			if target.endurance <= 0:
-				emit_signal("target_architecture_destroyed", self, target)
+				call_deferred("emit_signal", "target_architecture_destroyed", self, target)
 		else:
 			var area_node = target.find_node("TroopArea")
 			var target_animated_sprite = area_node.find_node("AnimatedSprite") as AnimatedSprite
@@ -887,7 +890,7 @@ func _animate_attack(target, self_damage, target_damage, critical):
 				target.__anim_self_damage = target_damage
 			if target._destroyed:
 				yield($TroopArea/AnimatedSprite, "animation_finished")
-				emit_signal("target_troop_destroyed", self, target)
+				call_deferred("emit_signal", "target_troop_destroyed", self, target)
 		
 		return true
 	else:
@@ -916,14 +919,14 @@ func _on_AnimatedSprite_animation_finished():
 			$TroopArea/Routed.play()
 			$TroopArea/Routed/RoutedSound.play()
 		else:
-			emit_signal("animation_attack_finished")
+			call_deferred("emit_signal", "animation_attack_finished")
 	
 func _on_Routed_animation_finished():
-	emit_signal("animation_attack_finished")
+	call_deferred("emit_signal", "animation_attack_finished")
 	_remove()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	emit_signal("animation_step_finished")
+	call_deferred("emit_signal", "animation_step_finished")
 	
 func _on_camera_moved(camera_rect: Rect2, zoom: Vector2, scen):
 	if zoom.x >= 1.2 or zoom.y >= 1.2:
@@ -961,7 +964,7 @@ func _get_animation_orientation(from: Vector2, to: Vector2):
 func _on_TroopArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			emit_signal("troop_clicked", self, event.global_position.x, event.global_position.y)
+			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y)
 
 func get_screen_position():
 	return get_global_transform_with_canvas().origin
