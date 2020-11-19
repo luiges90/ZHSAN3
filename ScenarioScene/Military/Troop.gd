@@ -483,8 +483,9 @@ func apply_influences(operation, params: Dictionary):
 		
 		all_params["value"] = value
 		value = military_kind.apply_influences(operation, all_params)
-		all_params["value"] = value
-		value = active_stunt.apply_influences(operation, all_params)
+		if active_stunt != null:
+			all_params["value"] = value
+			value = active_stunt.apply_influences(operation, all_params)
 		for p in get_persons():
 			all_params["value"] = value
 			value = p.apply_influences(operation, all_params)
