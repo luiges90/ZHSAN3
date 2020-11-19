@@ -608,7 +608,7 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_offence",
+			"Operation": "modify_troop_offence",
 			"Value": 0.05
 		}
 	]
@@ -648,7 +648,7 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_defence",
+			"Operation": "modify_troop_defence",
 			"Value": 0.05
 		}
 	]
@@ -688,11 +688,11 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.1
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.1
 		}
 	]
@@ -732,7 +732,7 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_offence",
+			"Operation": "modify_troop_offence",
 			"Value": 0.05
 		}
 	]
@@ -772,7 +772,7 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_defence",
+			"Operation": "modify_troop_defence",
 			"Value": 0.05
 		}
 	]
@@ -812,11 +812,11 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.1
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.1
 		}
 	]
@@ -856,7 +856,7 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_offence",
+			"Operation": "modify_troop_offence",
 			"Value": 0.05
 		}
 	]
@@ -896,7 +896,7 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_defence",
+			"Operation": "modify_troop_defence",
 			"Value": 0.05
 		}
 	]
@@ -936,11 +936,11 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.1
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.1
 		}
 	]
@@ -984,11 +984,11 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.1
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.1
 		}
 	]
@@ -1033,11 +1033,11 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.1
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.1
 		}
 	]
@@ -1090,19 +1090,19 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_offence",
+			"Operation": "modify_troop_offence",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_defence",
+			"Operation": "modify_troop_defence",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.05
 		}
 	]
@@ -1155,19 +1155,19 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_offence",
+			"Operation": "modify_troop_offence",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_defence",
+			"Operation": "modify_troop_defence",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.05
 		}
 	]
@@ -1205,7 +1205,7 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_damage",
+			"Operation": "modify_troop_damage",
 			"Value": 0.1
 		}
 	]
@@ -1243,19 +1243,19 @@
 	],
 	"Influences": [
 		{
-			"Operation": "modify_person_troop_offence",
+			"Operation": "modify_troop_offence",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_defence",
+			"Operation": "modify_troop_defence",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_speed",
+			"Operation": "modify_troop_speed",
 			"Value": 0.05
 		},
 		{
-			"Operation": "modify_person_troop_initiative",
+			"Operation": "modify_troop_initiative",
 			"Value": 0.05
 		}
 	]

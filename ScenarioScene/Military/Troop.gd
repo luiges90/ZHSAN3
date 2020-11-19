@@ -259,10 +259,7 @@ func get_offence():
 	
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	if active_stunt != null:
-		base = active_stunt.apply_influences("modify_troop_offence", {"value": base, "troop": self})
-	for p in get_persons():
-		base = p.apply_influences("modify_person_troop_offence", {"value": base, "troop": self})
+	base = apply_influences("modify_troop_offence", {"value": base, "troop": self})
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -278,10 +275,7 @@ func get_defence():
 
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	if active_stunt != null:
-		base = active_stunt.apply_influences("modify_troop_defence", {"value": base, "troop": self})
-	for p in get_persons():
-		base = p.apply_influences("modify_person_troop_defence", {"value": base, "troop": self})
+	base = apply_influences("modify_troop_defence", {"value": base, "troop": self})
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -294,14 +288,12 @@ func get_offence_over_defence():
 
 func get_speed():
 	var base = military_kind.speed
-	for p in get_persons():
-		base = p.apply_influences("modify_person_troop_speed", {"value": base, "troop": self})
+	base = apply_influences("modify_troop_speed", {"value": base, "troop": self})
 	return int(base)
 	
 func get_initiative():
 	var base = military_kind.initiative
-	for p in get_persons():
-		base = p.apply_influences("modify_person_troop_initiative", {"value": base, "troop": self})
+	base = apply_influences("modify_troop_initiative", {"value": base, "troop": self})
 	return int(base)
 	
 static func cmp_initiative(a, b):
@@ -360,14 +352,12 @@ func move_eta(to):
 	
 func critical_chance():
 	var chance = -0.05 + float(get_strength()) / 500.0
-	for p in get_persons():
-		chance = p.apply_influences('add_person_troop_critical', {"value": chance, "troop": self})
+	chance = apply_influences('add_person_troop_critical', {"value": chance, "troop": self})
 	return chance
 	
 func anti_critical_chance():
 	var chance = -0.1 + float(get_command()) / 500.0
-	for p in get_persons():
-		chance = p.apply_influences('add_person_troop_anti_critical', {"value": chance, "troop": self})
+	chance = apply_influences('add_person_troop_anti_critical', {"value": chance, "troop": self})
 	return chance
 
 func critical_damage_rate(other_troop):
@@ -376,8 +366,8 @@ func critical_damage_rate(other_troop):
 		rate = 1 + float(get_strength()) / 50.0
 	else:
 		rate = 1 + float(get_strength()) / max(10, other_troop.get_strength())
-	for p in get_persons():
-		rate = p.apply_influences('modify_person_troop_critical_damage_rate', {"value": rate, "troop": self})
+
+	rate = apply_influences('modify_troop_critical_damage_rate', {"value": rate, "troop": self})
 	return rate
 	
 func get_movement_area():
@@ -481,6 +471,25 @@ func add_combativity(value):
 func set_status(in_status):
 	status = in_status
 	update_status_sprite()
+
+####################################
+#         Influence System         #
+####################################
+func apply_influences(operation, params: Dictionary):
+	if params.has("value"):
+		var value = params["value"]
+		var all_params = params.duplicate()
+		all_params["troop"] = self
+		
+		all_params["value"] = value
+		value = military_kind.apply_influences(operation, all_params)
+		all_params["value"] = value
+		value = active_stunt.apply_influences(operation, all_params)
+		for p in get_persons():
+			all_params["value"] = value
+			value = p.apply_influences(operation, all_params)
+
+		return value
 
 
 ####################################
@@ -602,12 +611,10 @@ func execute_attack():
 					else:
 						var target_on_arch = target.get_on_architecture()
 						if target_on_arch != null:
-							damage = military_kind.apply_influences("modify_troop_damage_on_architecture", {"value": damage, "target": target})
+							damage = apply_influences("modify_troop_damage_on_architecture", {"value": damage, "troop": self, "target": target})
 						
-					for p in get_persons():
-						damage = p.apply_influences("modify_person_troop_damage", {"value": damage, "troop": self, "target": target})
-					for p in get_persons():
-						counter_damage = p.apply_influences("modify_person_troop_counter_damage", {"value": counter_damage, "troop": self, "target": target})
+					damage = apply_influences("modify_troop_damage", {"value": damage, "troop": self, "target": target})
+					counter_damage = apply_influences("modify_troop_counter_damage", {"value": counter_damage, "troop": self, "target": target})
 					
 					var critical = false
 					if randf() < critical_chance() - target.anti_critical_chance():

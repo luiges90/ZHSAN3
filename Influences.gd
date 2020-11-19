@@ -26,7 +26,7 @@ static func influence_troop_leader_offensive_factor(influence_container, level: 
 		return 1
 	
 	for influence in influence_container.influences:
-		if influence['Operation'] == "modify_person_troop_offence":
+		if influence['Operation'] == "modify_troop_offence":
 			return 1 + influence["Value"] * level
 	
 	return 1
@@ -36,7 +36,7 @@ static func influence_troop_leader_defensive_factor(influence_container, level: 
 		return 1
 	
 	for influence in influence_container.influences:
-		if influence['Operation'] == "modify_person_troop_defence":
+		if influence['Operation'] == "modify_troop_defence":
 			return 1 + influence["Value"] * level
 	
 	return 1
