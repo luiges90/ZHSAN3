@@ -359,13 +359,13 @@ func move_eta(to):
 	return int(ScenarioUtil.object_distance(self, to) * 0.2) + 1
 	
 func critical_chance():
-	var chance = 0.05 + float(get_strength()) / 500.0
+	var chance = -0.05 + float(get_strength()) / 500.0
 	for p in get_persons():
 		chance = p.apply_influences('add_person_troop_critical', {"value": chance, "troop": self})
 	return chance
 	
 func anti_critical_chance():
-	var chance = 0.0 + float(get_command()) / 500.0
+	var chance = -0.1 + float(get_command()) / 500.0
 	for p in get_persons():
 		chance = p.apply_influences('add_person_troop_anti_critical', {"value": chance, "troop": self})
 	return chance
