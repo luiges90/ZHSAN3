@@ -591,7 +591,8 @@ func _on_day_passed():
 				troop.day_event()
 				
 		for person in persons.values():
-			person.day_event()
+			if person.alive:
+				person.day_event()
 		
 		yield(get_tree(), "idle_frame")
 		call_deferred("emit_signal", "all_faction_finished")
@@ -640,7 +641,8 @@ func ___on_day_passed_thread(_unused):
 			troop.day_event()
 
 	for person in persons.values():
-		person.day_event()
+		if person.alive:
+			person.day_event()
 	
 	__day_passed_finished = true
 
