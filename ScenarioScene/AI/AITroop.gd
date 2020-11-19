@@ -109,7 +109,8 @@ func run_troop(troop, scenario):
 				for p in troop._ai_path:
 					for q in movement_area:
 						var dist = Util.m_dist(Vector2(p[0], p[1]), q)
-						if dist < min_dist and dist > 0:
+						var move_dist = Util.m_dist(q, troop.map_position)
+						if move_dist >= 1 and dist < min_dist:
 							move_to = q
 							min_dist = dist
 				troop.set_move_order(move_to)
