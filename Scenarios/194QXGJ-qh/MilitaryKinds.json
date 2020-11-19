@@ -1,5 +1,6 @@
 [
   {
+    "_Id":1,
     "Type":0,
     "BaseDefence":50.0,
     "Defence":0.5,
@@ -34,9 +35,10 @@
     },
     "ReceiveCounterAttacks":true,
     "ArchitectureAttackFactor":0.005,
-    "_Id":1
+    "Influences": []
   },
   {
+    "_Id":100,
     "Type":0,
     "BaseDefence":100.0,
     "Defence":1.0,
@@ -71,9 +73,10 @@
     },
     "ReceiveCounterAttacks":true,
     "ArchitectureAttackFactor":0.01,
-    "_Id":2
+    "Influences": []
   },
   {
+    "_Id":200,
     "Type":1,
     "BaseDefence":70.0,
     "Defence":0.7,
@@ -108,9 +111,10 @@
     },
     "ReceiveCounterAttacks":false,
     "ArchitectureAttackFactor":0.002,
-    "_Id":3
+    "Influences": []
   },
   {
+    "_Id":300,
     "Type":2,
     "BaseDefence":100.0,
     "Defence":1.0,
@@ -146,6 +150,6 @@
     },
     "ReceiveCounterAttacks":true,
     "ArchitectureAttackFactor":0.004,
-    "_Id":4
+    "Influences": []
   }
 ]

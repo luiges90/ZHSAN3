@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Move.png-147ddfbf9101d65bfeed44fdc02067ac.stex"
+path="res://.import/Move.png-8a05802ddd4be5dc52f8ad5114bf6d9e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Troop/2/Move.png"
-dest_files=[ "res://.import/Move.png-147ddfbf9101d65bfeed44fdc02067ac.stex" ]
+source_file="res://Images/Troop/200/Move.png"
+dest_files=[ "res://.import/Move.png-8a05802ddd4be5dc52f8ad5114bf6d9e.stex" ]
 
 [params]
 

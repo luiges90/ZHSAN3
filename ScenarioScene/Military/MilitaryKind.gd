@@ -31,6 +31,8 @@ var architecture_attack_factor: float setget forbidden
 var max_quantity_multiplier: float setget forbidden
 var equipment_cost: float setget forbidden
 
+var influences: Array setget forbidden
+
 func forbidden(x):
 	assert(false)
 
@@ -55,6 +57,7 @@ func load_data(json: Dictionary, objects):
 	architecture_attack_factor = json["ArchitectureAttackFactor"]
 	type_offensive_effectiveness = Util.convert_dict_to_int_key(json["TypeOffensiveEffectiveness"])
 	type_defensive_effectiveness = Util.convert_dict_to_int_key(json["TypeDefensiveEffectiveness"])
+	influences = json["Influences"]
 	
 func save_data() -> Dictionary:
 	return {
@@ -77,7 +80,8 @@ func save_data() -> Dictionary:
 		"ReceiveCounterAttacks": receive_counter_attacks,
 		"ArchitectureAttackFactor": architecture_attack_factor,
 		"TypeOffensiveEffectiveness": type_offensive_effectiveness,
-		"TypeDefensiveEffectiveness": type_defensive_effectiveness
+		"TypeDefensiveEffectiveness": type_defensive_effectiveness,
+		"Influences": influences
 	}
 	
 func get_name():

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/CriticalAttack.wav-d8c8b4d0ce144763af42fbaa97db1677.sample"
+
+[deps]
+
+source_file="res://Sounds/Troop/300/CriticalAttack.wav"
+dest_files=[ "res://.import/CriticalAttack.wav-d8c8b4d0ce144763af42fbaa97db1677.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

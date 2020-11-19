@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Moving.wav-298340c275b3e1eb05e0999ad957f9f9.sample"
+path="res://.import/Attack.wav-cb4a55a16d043e9995973528d775e56e.sample"
 
 [deps]
 
-source_file="res://Sounds/Troop/3/Moving.wav"
-dest_files=[ "res://.import/Moving.wav-298340c275b3e1eb05e0999ad957f9f9.sample" ]
+source_file="res://Sounds/Troop/200/Attack.wav"
+dest_files=[ "res://.import/Attack.wav-cb4a55a16d043e9995973528d775e56e.sample" ]
 
 [params]
 

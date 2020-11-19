@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack.png-b0ae4a88012dceaa3ab12b74b89b5e1e.stex"
+path="res://.import/Attack.png-56361976ad41b617de00c602936a1181.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Troop/4/Attack.png"
-dest_files=[ "res://.import/Attack.png-b0ae4a88012dceaa3ab12b74b89b5e1e.stex" ]
+source_file="res://Images/Troop/100/Attack.png"
+dest_files=[ "res://.import/Attack.png-56361976ad41b617de00c602936a1181.stex" ]
 
 [params]
 
