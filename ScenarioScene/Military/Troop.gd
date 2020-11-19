@@ -477,9 +477,11 @@ func add_combativity(value):
 	combativity += value
 	combativity = clamp(combativity, 0, 100)
 
+
 func set_status(in_status):
 	status = in_status
 	update_status_sprite()
+
 
 ####################################
 #          Order Execution         #
@@ -597,6 +599,10 @@ func execute_attack():
 						counter_damage = 0
 					if target is Architecture:
 						damage = damage * military_kind.architecture_attack_factor
+					else:
+						var target_on_arch = target.get_on_architecture()
+						if target_on_arch != null:
+							damage = military_kind.apply_influences("modify_troop_damage_on_architecture", {"value": damage, "target": target})
 						
 					for p in get_persons():
 						damage = p.apply_influences("modify_person_troop_damage", {"value": damage, "troop": self, "target": target})
