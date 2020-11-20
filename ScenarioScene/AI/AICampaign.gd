@@ -20,7 +20,8 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 	var nearby_squares = Util.squares_in_range(target.map_position, 6)
 	for s in nearby_squares:
 		var terrain = scenario.get_terrain_at_position(s)
-		Util.dict_inc(___nearby_terrain, terrain.id, 1)
+		if terrain != null:
+			Util.dict_inc(___nearby_terrain, terrain.id, 1)
 	
 	var troops_created = []
 	var stop_creating_troop = false
