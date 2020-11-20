@@ -191,8 +191,10 @@ func add_person(p, force: bool = false):
 		  
 func remove_person(p, force: bool = false):
 	Util.remove_object(_person_list, p)
-	if not force and _person_list.size() <= 0:
+	if not force and get_persons().size() <= 0:
 		destroy(null)
+	else:
+		_leader = get_persons()[0]
 
 func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in_morale: int, in_combativity: int, pos: Vector2):
 	id = in_id
