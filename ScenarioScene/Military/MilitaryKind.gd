@@ -53,7 +53,7 @@ func load_data(json: Dictionary, objects):
 	food_per_soldier = json["FoodPerSoldier"]
 	equipment_cost = json["EquipmentCost"]
 	movement_kind = scenario.movement_kinds[int(json["MovementKind"])]
-	terrain_strength = json["TerrainStrength"]
+	terrain_strength = Util.convert_dict_to_int_key(json["TerrainStrength"])
 	receive_counter_attacks = json["ReceiveCounterAttacks"]
 	architecture_attack_factor = json["ArchitectureAttackFactor"]
 	type_offensive_effectiveness = Util.convert_dict_to_int_key(json["TypeOffensiveEffectiveness"])

@@ -46,8 +46,8 @@ static func influence_troop_leader_critical_factor(influence_container, level: i
 		return 1
 	
 	for influence in influence_container.influences:
-		if influence['Operation'] == "add_person_troop_critical":
-			return 1 + influence["Value"] * level
+		if influence['Operation'] == "add_troop_critical":
+			return 1 + (influence["Value"] / 100.0) * level
 	
 	return 1
 
@@ -56,7 +56,7 @@ static func influence_troop_leader_anti_critical_factor(influence_container, lev
 		return 1
 	
 	for influence in influence_container.influences:
-		if influence['Operation'] == "add_person_troop_anti_critical":
-			return 1 + influence["Value"] * level
+		if influence['Operation'] == "add_troop_anti_critical":
+			return 1 + (influence["Value"] / 100.0) * level
 	
 	return 1

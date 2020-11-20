@@ -1339,7 +1339,7 @@
 			"Operation": "is_leader"
 		},
 		{
-			"Operation": "add_person_troop_critical",
+			"Operation": "add_troop_critical",
 			"Value": 0.05
 		}
 	]
@@ -1369,7 +1369,7 @@
 			"Operation": "is_leader"
 		},
 		{
-			"Operation": "add_person_troop_anti_critical",
+			"Operation": "add_troop_anti_critical",
 			"Value": 0.05
 		}
 	]

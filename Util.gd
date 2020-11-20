@@ -84,6 +84,7 @@ static func f2ri(x: float) -> int:
 static func m_dist(a: Vector2, b: Vector2):
 	return abs(a.x - b.x) + abs(a.y - b.y)
 	
+# Get all positions in range of given position
 static func squares_in_range(position: Vector2, r: int) -> Array:
 	var result = []
 	for x in range(position.x - r, position.x + r + 1):
@@ -95,6 +96,20 @@ static func squares_in_range(position: Vector2, r: int) -> Array:
 # Rounding with arbitrary precision
 static func pround(n: float, precision: int):
 	return int(n + precision / 2.0) / precision * precision
+
+# Shift position by 1 place at random
+static func random_shift_position(pos: Vector2) -> Vector2:
+	if randf() < 0.5:
+		if randf() < 0.5:
+			return Vector2(pos.x - 1, pos.y)
+		else:
+			return Vector2(pos.x + 1, pos.y)
+	else:
+		if randf() < 0.5:
+			return Vector2(pos.x, pos.y - 1)
+		else:
+			return Vector2(pos.x, pos.y + 1)
+
 	
 ##############################################
 #                 Collections                #
@@ -121,7 +136,7 @@ static func dict_try_get(dict: Dictionary, key, default):
 	else:
 		return default
 		
-static func dict_add(dict: Dictionary, key, value: int):
+static func dict_inc(dict: Dictionary, key, value: int):
 	if dict.has(key):
 		dict[key] += value
 	else:
@@ -245,14 +260,3 @@ static func resize_texture(texture, old_size: Vector2, new_size: Vector2):
 	image.create_from_image(sprite)
 	return image
 	
-static func random_shift_position(pos: Vector2) -> Vector2:
-	if randf() < 0.5:
-		if randf() < 0.5:
-			return Vector2(pos.x - 1, pos.y)
-		else:
-			return Vector2(pos.x + 1, pos.y)
-	else:
-		if randf() < 0.5:
-			return Vector2(pos.x, pos.y - 1)
-		else:
-			return Vector2(pos.x, pos.y + 1)

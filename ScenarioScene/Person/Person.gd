@@ -857,7 +857,7 @@ func add_glamour_exp(delta):
 
 func add_military_type_exp(type, delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
-	Util.dict_add(military_type_exp, type, Util.f2ri(delta))
+	Util.dict_inc(military_type_exp, type, Util.f2ri(delta))
 
 	
 ####################################

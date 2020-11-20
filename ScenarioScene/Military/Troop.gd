@@ -43,6 +43,8 @@ var _ai_path
 
 var _destroyed = false
 
+var _leader
+
 var pathfinder: PathFinder
 
 signal troop_clicked
@@ -126,7 +128,8 @@ func load_data(json: Dictionary, objects):
 			_ai_path = scenario.get_ai_path(military_kind.movement_kind.id, _starting_arch, _ai_destination_architecture)
 	else:
 		_ai_destination_architecture = null
-	gname = _person_list[0].get_name() + tr('PERSON_TROOP')
+	_leader = _person_list[0]
+	gname = _leader.get_name() + tr('PERSON_TROOP')
 	
 func save_data() -> Dictionary:
 	var order_type
@@ -202,7 +205,8 @@ func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in
 	morale = in_morale
 	combativity = in_combativity
 	map_position = pos
-	gname = _person_list[0].get_name() + tr('PERSON_TROOP')
+	_leader = _person_list[0]
+	gname = _leader.get_name() + tr('PERSON_TROOP')
 	_update_military_kind_sprite()
 	update_troop_title()
 	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
@@ -211,9 +215,6 @@ func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in
 ####################################
 #             Get stat             #
 ####################################
-func ai_value():
-	return get_offence() + get_defence()
-
 func get_belonged_section():
 	return _belonged_section
 	
@@ -229,7 +230,7 @@ func get_starting_architecture():
 	return _starting_arch
 
 func get_leader():
-	return _person_list[0]
+	return _leader
 
 func get_strength():
 	var strength = get_leader().get_strength()
@@ -252,7 +253,7 @@ func get_command():
 	return command
 
 func get_offence():
-	var troop_base = military_kind.base_offence
+	var troop_base = military_kind.base_offence * military_kind.terrain_strength[get_current_terrain().id]
 	var troop_quantity = military_kind.offence * quantity / military_kind.max_quantity_multiplier
 	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
 	var morale_factor = (morale + 5) / 100.0
@@ -268,7 +269,7 @@ func get_offence():
 	return int(base)
 	
 func get_defence():
-	var troop_base = military_kind.base_defence
+	var troop_base = military_kind.base_defence * military_kind.terrain_strength[get_current_terrain().id]
 	var troop_quantity = military_kind.defence * quantity / military_kind.max_quantity_multiplier
 	var ability_factor = (get_command() + 10) / 100.0
 	var morale_factor = (morale + 10) / 100.0
@@ -292,7 +293,7 @@ func get_speed():
 	return int(base)
 	
 func get_initiative():
-	var base = military_kind.initiative
+	var base = military_kind.initiative * military_kind.terrain_strength[get_current_terrain().id]
 	base = apply_influences("modify_troop_initiative", {"value": base})
 	return int(base)
 	
@@ -352,12 +353,12 @@ func move_eta(to):
 	
 func critical_chance():
 	var chance = -0.05 + float(get_strength()) / 500.0
-	chance = apply_influences('add_person_troop_critical', {"value": chance})
+	chance = apply_influences('add_troop_critical', {"value": chance})
 	return chance
 	
 func anti_critical_chance():
 	var chance = -0.1 + float(get_command()) / 500.0
-	chance = apply_influences('add_person_troop_anti_critical', {"value": chance})
+	chance = apply_influences('add_troop_anti_critical', {"value": chance})
 	return chance
 
 func critical_damage_rate(other_troop):

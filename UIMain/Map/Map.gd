@@ -60,7 +60,8 @@ func _on_architecture_faction_changed(arch, scen):
 func _on_troop_position_changed(scen, troop, old_position, new_position):
 	_scenario = scen
 	
-	troop_positions[troop.id]['position'] = __scen_position_to_map_position(new_position)
+	if troop_positions.has(troop.id):
+		troop_positions[troop.id]['position'] = __scen_position_to_map_position(new_position)
 	
 func _on_troop_created(scen, troop):
 	_scenario = scen

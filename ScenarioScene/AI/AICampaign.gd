@@ -6,9 +6,22 @@ var ai
 func _init(ai):
 	self.ai = ai
 	
-func _create_troops(from_architecture, target, scenario) -> Array:
+var ___sorting_create_troop_offensive
+var ___nearby_troops = []
+var ___nearby_terrain = {}
+func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 	if from_architecture.troop <= 0 || from_architecture.troop_morale <= 0: 
 		return []
+
+	___sorting_create_troop_offensive = offensive
+
+	# compute nearby terrain
+	___nearby_terrain.clear()
+	var nearby_squares = Util.squares_in_range(target.map_position, 6)
+	for s in nearby_squares:
+		var terrain = scenario.get_terrain_at_position(s)
+		Util.dict_inc(___nearby_terrain, terrain.id, 1)
+	
 	var troops_created = []
 	var stop_creating_troop = false
 	while !stop_creating_troop:
@@ -80,7 +93,8 @@ func _setup_starting_architecture_changed_signal(troop):
 func defence(arch, section, scenario):
 	var enemy_troops = arch.enemy_troop_in_range(6)
 	if enemy_troops.size() > 0:
-		var troops = _create_troops(arch, arch, scenario)
+		___nearby_troops = enemy_troops
+		var troops = _create_troops(arch, arch, scenario, false)
 		for troop in troops:
 			troop._ai_state = Troop.AIState.COMBAT
 			troop._ai_destination_architecture = arch
@@ -98,7 +112,7 @@ func offence(arch, section, scenario):
 			selected_target_power = target_power
 	
 	if selected_target != null:
-		var troops = _create_troops(arch, selected_target, scenario)
+		var troops = _create_troops(arch, selected_target, scenario, true)
 		for troop in troops:
 			troop._ai_state = Troop.AIState.MARCH
 			troop._ai_destination_architecture = selected_target
@@ -106,6 +120,38 @@ func offence(arch, section, scenario):
 			_setup_starting_architecture_changed_signal(troop)
 			
 func __compare_troop_ai_value(a, b):
-	if a.ai_value() > b.ai_value():
+	if ___get_ai_value(a) > ___get_ai_value(b):
 		return true
 	return false
+
+func ___get_ai_value(troop):
+	var offensive = ___sorting_create_troop_offensive
+
+	var offence = troop.get_offence()
+	var defence = troop.get_defence()
+	var speed = troop.get_speed()
+	var initiative = troop.get_initiative()
+	var siege = troop.military_kind.architecture_attack_factor
+
+	var terrain_factor = 0
+	var terrain_speed_factor = 0
+	var terrain_strengths = troop.military_kind.terrain_strength
+	var terrain_movement = troop.military_kind.movement_kind.movement_cost
+	for ts in terrain_strengths:
+		terrain_factor += terrain_strengths[ts] * Util.dict_try_get(___nearby_terrain, ts, 0)
+	for tm in terrain_movement:
+		terrain_speed_factor += (1.0 / terrain_movement[tm]) * Util.dict_try_get(___nearby_terrain, tm, 0)
+	offence *= terrain_factor
+	defence *= terrain_factor
+	speed *= terrain_speed_factor
+	initiative *= terrain_factor
+
+	if not troop.military_kind.receive_counter_attacks:
+		offence *= 1.2
+		defence *= 0.8
+
+	if offensive:
+		offence = offence * 2 + offence * siege
+		defence = defence * 2
+
+	return (offence + defence) * speed * sqrt(initiative)

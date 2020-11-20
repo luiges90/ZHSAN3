@@ -8,10 +8,7 @@ var combativity: int
 
 var persons = Array()
 
-## TODO reuse functions from Troop
-func ai_value():
-	return get_offence() + get_defence()
-	
+## TODO reuse functions from Troop	
 func get_persons() -> Array:
 	return persons
 
