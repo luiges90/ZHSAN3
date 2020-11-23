@@ -937,7 +937,6 @@ func _on_AnimatedSprite_animation_finished():
 		
 		if _destroyed:
 			$TroopArea/AnimatedSprite.hide()
-			$TroopArea/ClickArea.hide()
 			$TroopArea/Routed.show()
 			$TroopArea/Routed.play()
 			$TroopArea/Routed/RoutedSound.play()
