@@ -75,11 +75,6 @@ _global_script_classes=[ {
 "path": "res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd"
 }, {
 "base": "Node",
-"class": "BaseStunt",
-"language": "GDScript",
-"path": "res://ScenarioScene/Military/BaseStunt.gd"
-}, {
-"base": "Node",
 "class": "Biography",
 "language": "GDScript",
 "path": "res://ScenarioScene/Person/Biography.gd"
@@ -328,7 +323,6 @@ _global_script_class_icons={
 "ArchitectureList": "",
 "ArchitectureMenu": "",
 "ArchitectureSurvey": "",
-"BaseStunt": "",
 "Biography": "",
 "ContextMenu": "",
 "CreateTroop": "",

@@ -540,6 +540,9 @@ func _on_troop_follow_clicked(troop):
 func _on_troop_attack_clicked(troop):
 	$PositionSelector._on_select_troop_attack(troop)
 	
+func _on_troop_stunt_clicked(troop, stunt):
+	$PositionSelector._on_select_troop_stunt(troop, stunt)
+	
 func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)
 	

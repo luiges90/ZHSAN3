@@ -201,3 +201,4 @@ ROUT_COUNT,Rout Count,部隊擊破數,部隊擊破數
 ROUTED_COUNT,Routed Count,部隊被擊破數,部隊被擊破數
 CAPTURE_COUNT,Capture Count,部隊武將捕獲數,部隊武將捕獲數
 BE_CAPTURED_COUNT,Be Captured Count,部隊自身被捕獲數,部隊自身被捕獲數
+STUNT,Stunt,戰法,戰法

@@ -54,6 +54,11 @@ func _on_select_troop_attack(troop):
 		var target_arch = scen.architectures[a]
 		if target_arch != null and target_arch.get_belonged_faction() != troop.get_belonged_faction():
 			_create_position_select_item(target_arch.map_position, Color.red)
+			
+
+func _on_select_troop_stunt(troop, stunt):
+	pass
+
 
 func _on_select_troop_enter(troop):
 	current_action = CurrentAction.ENTER_TROOP
