@@ -239,7 +239,17 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
             r = []
             states = {x['ID']: x['Name'] for x in obj['States']['GameObjects']}
             for k in obj['Architectures']['GameObjects']:
-                position = [int(x) for x in k['ArchitectureAreaString'].split(' ') if x]
+                raw_positions = [int(x) for x in k['ArchitectureAreaString'].split(' ') if x]
+                positions_x = []
+                positions_y = []
+                for i in range(0, len(raw_positions), 2):
+                    positions_x.append(raw_positions[i])
+                    positions_y.append(raw_positions[i + 1])
+                position_center = [
+                    (min(positions_x) + max(positions_x)) // 2,
+                    (min(positions_y) + max(positions_y)) // 2
+                ]
+
                 persons = [int(x) for x in k['PersonsString'].split(' ') if x]
                 faction_person_ids += persons
                 no_faction_persons = [int(x) for x in k['NoFactionPersonsString'].split(' ') if x]
@@ -249,7 +259,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "Kind": k['KindId'],
                     "Name": k['Name'],
                     "Title": states[k['StateID']] + ' ' + k['Name'],
-                    "MapPosition": [position[0], position[1] - 1],
+                    "MapPosition": [position_center[0], position_center[1] - 1],
                     "PersonList": persons + no_faction_persons if not dev or k["ID"] != 64 else [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388],
                     "Population": k['Population'],
                     "MilitaryPopulation": k['Population'] * 0.4,

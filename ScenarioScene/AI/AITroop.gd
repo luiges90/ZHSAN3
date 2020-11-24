@@ -104,6 +104,7 @@ func run_troop(troop, scenario):
 				if done:
 					break
 			if not done:
+				# TODO find nearest city and use ai-path from there
 				var min_dist = 9999999
 				var move_to = null
 				for p in troop._ai_path:
