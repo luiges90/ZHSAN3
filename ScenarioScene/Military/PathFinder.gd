@@ -6,6 +6,7 @@ var scenario
 
 var _travelled_stupid_path = []
 var _stored_paths = {}
+var _stored_to_ai_path = {}
 
 func _init(troop):
 	self.troop = troop
@@ -17,6 +18,40 @@ class PositionItem:
 	func _init(pos, movement):
 		position = pos
 		movement_left = movement
+
+func find_path_to_ai_path() -> Array:
+	var start_item = PositionItem.new(troop.map_position, 200)
+	var area = [start_item]
+	var position_queue = [start_item]
+	_stored_to_ai_path.clear()
+	_stored_to_ai_path[start_item.position] = [start_item.position]
+
+	var target_position = null
+	while position_queue.size() > 0:
+		var item = position_queue.pop_front()
+
+		var found = false
+		for aipath_pos in troop._ai_path:
+			if aipath_pos == item.position:
+				found = true
+				target_position = item.position
+				break
+		if found:
+			break
+		
+		var up = item.position + Vector2.UP
+		_step_forward(item, up, area, position_queue, _stored_to_ai_path)
+		
+		var down = item.position + Vector2.DOWN
+		_step_forward(item, down, area, position_queue, _stored_to_ai_path)
+		
+		var left = item.position + Vector2.LEFT
+		_step_forward(item, left, area, position_queue, _stored_to_ai_path)
+		
+		var right = item.position + Vector2.RIGHT
+		_step_forward(item, right, area, position_queue, _stored_to_ai_path)
+	
+	return target_position
 
 func get_movement_area() -> Array:
 	var start_item = PositionItem.new(troop.map_position, troop.get_speed())
@@ -44,6 +79,9 @@ func get_movement_area() -> Array:
 		area_pos.append(a.position)
 	return area_pos
 	
+func _clear_stored_to_ai_path():
+	_stored_to_ai_path.clear()
+	
 func has_stored_path_to(position) -> Array:
 	if _stored_paths.size() > 0:
 		return _stored_paths.has(position)
@@ -52,6 +90,9 @@ func has_stored_path_to(position) -> Array:
 		return _stored_paths.has(position)
 	
 func get_stored_path_to(position) -> Array:
+	if _stored_to_ai_path.size() > 0 and _stored_to_ai_path.has(position):
+		return _stored_to_ai_path[position]
+		
 	if _stored_paths.size() > 0:
 		return _stored_paths[position] 
 	else:

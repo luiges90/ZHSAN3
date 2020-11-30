@@ -19,6 +19,12 @@ func load_data(json: Array):
 		item.start_architecture = j['StartArchitecture']
 		item.end_architecture = j['EndArchitecture']
 		item.movement_kind = j['MovementKind']
-		item.path = j['Path']
+		
+		var path = j['Path']
+		var path_v2 = []
+		for p in path:
+			path_v2.append(Vector2(p[0], p[1]))
+		item.path = path_v2
+		
 		list.append(item)
 	

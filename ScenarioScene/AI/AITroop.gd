@@ -73,8 +73,8 @@ func run_troop(troop, scenario):
 			var __path = troop._ai_path.duplicate()
 			__path.invert()
 			for p in __path:
-				var px = p[0]
-				var py = p[1]
+				var px = p.x
+				var py = p.y
 				if randf() < 0.3:
 					px += 1 if randf() < 0.5 else -1
 				if randf() < 0.3:
@@ -97,21 +97,25 @@ func run_troop(troop, scenario):
 			var done = false
 			for p in troop._ai_path:
 				for q in movement_area:
-					if p[0] == q.x and p[1] == q.y:
+					if p == q:
 						troop.set_move_order(q)
+						troop.pathfinder._clear_stored_to_ai_path()
 						done = true
 						break
 				if done:
 					break
 			if not done:
-				# TODO find nearest city and use ai-path from there
+				var target = troop.pathfinder.find_path_to_ai_path()
+				if target != null:
+					troop.set_move_order(target)
+					done = true
+			if not done:
 				var min_dist = 9999999
 				var move_to = null
 				for p in troop._ai_path:
 					for q in movement_area:
-						var dist = Util.m_dist(Vector2(p[0], p[1]), q)
-						var move_dist = Util.m_dist(q, troop.map_position)
-						if dist - move_dist < min_dist:
+						var dist = Util.m_dist(p, q)
+						if dist < min_dist:
 							move_to = q
 							min_dist = dist
 				troop.set_move_order(move_to)
