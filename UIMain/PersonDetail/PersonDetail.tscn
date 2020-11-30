@@ -426,6 +426,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="."]
+margin_left = 464.0
+margin_top = 248.0
+margin_right = 547.0
+margin_bottom = 248.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
+text = "STUNTS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stunts" type="GridContainer" parent="."]
+margin_left = 464.0
+margin_top = 280.0
+margin_right = 464.0
+margin_bottom = 280.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 

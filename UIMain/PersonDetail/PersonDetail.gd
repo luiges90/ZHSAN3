@@ -46,6 +46,18 @@ func set_data():
 		label.mouse_filter = Control.MOUSE_FILTER_STOP
 		
 		$Skills.add_child(label)
+		
+	Util.delete_all_children($Stunts)
+	for stunt in current_person.stunts:
+		var label = LinkButton.new()
+		label.text = stunt.get_name()
+		label.add_color_override("font_color", stunt.color)
+		label.underline = LinkButton.UNDERLINE_MODE_NEVER
+		label.mouse_default_cursor_shape = Control.CURSOR_ARROW
+		label.connect("pressed", self, "_on_stunt_clicked", [stunt])
+		label.mouse_filter = Control.MOUSE_FILTER_STOP
+		
+		$Stunts.add_child(label)
 
 
 func _on_PersonList_person_row_clicked(person):
@@ -60,3 +72,12 @@ func _on_skill_clicked(skill):
 	bbcode += "[color=#" + skill.color.to_html() + "]" + skill.get_name() + "[/color]\n"
 	bbcode += skill.description
 	description.bbcode_text = bbcode
+
+func _on_stunt_clicked(stunt):
+	var description = $Description as RichTextLabel
+	var bbcode = ""
+	bbcode += "[color=#FF7700]" + tr("STUNTS") + "[/color] "
+	bbcode += "[color=#" + stunt.color.to_html() + "]" + stunt.get_name() + "[/color]\n"
+	bbcode += stunt.description
+	description.bbcode_text = bbcode
+	
