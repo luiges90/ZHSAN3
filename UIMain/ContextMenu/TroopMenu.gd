@@ -41,6 +41,9 @@ func show_menu(troop, mouse_x, mouse_y):
 		$H/Stunt.add_child(button)
 	
 	show()
+	
+func _hide_submenus():
+	$H/Stunt.hide()
 
 
 func _on_ArchitectureAndTroopMenu_troop_clicked(troop, mx, my):
@@ -58,7 +61,8 @@ func _on_Attack_pressed():
 
 
 func _on_Stunt_pressed():
-	$H/Stunt.visible = true
+	._open_submenu()
+	$H/Stunt.show()
 	
 
 func _on_Stunt_item_pressed(stunt):
