@@ -28,8 +28,8 @@ z_index = 99
 script = ExtResource( 2 )
 [connection signal="scenario_loaded" from="." to="DateRunner" method="_on_Scenario_scenario_loaded"]
 [connection signal="scenario_loaded" from="." to="GameRecordCreator" method="_on_Scenario_scenario_loaded"]
-[connection signal="camera_moved" from="MainCamera" to="." method="_on_MainCamera_camera_moved"]
 [connection signal="camera_moved" from="MainCamera" to="Map" method="_on_MainCamera_camera_moved"]
+[connection signal="camera_moved" from="MainCamera" to="." method="_on_MainCamera_camera_moved"]
 [connection signal="date_runner_stopped" from="DateRunner" to="GameRecordCreator" method="_on_DateRunner_date_runner_stopped"]
 [connection signal="attack_troop" from="PositionSelector" to="." method="_on_PositionSelector_attack_troop"]
 [connection signal="attack_troop" from="PositionSelector" to="GameRecordCreator" method="_on_PositionSelector_attack_troop"]

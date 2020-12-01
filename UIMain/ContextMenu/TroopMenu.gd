@@ -33,10 +33,10 @@ func show_menu(troop, mouse_x, mouse_y):
 		if n.name != 'Blank':
 			$H/Stunt.remove_child(n)
 	
-	$H/V/Stunt.disabled = troop.get_leader().stunts.size() == 0
-	for s in troop.get_leader().stunts:
+	$H/V/Stunt.disabled = troop.available_stunts().size() == 0
+	for s in troop.available_stunts():
 		var button = Button.new()
-		button.text = s.get_name()
+		button.text = s.get_name() + "(" + str(s.combativity_cost) + ")"
 		button.connect("pressed", self, "_on_Stunt_item_pressed", [s])
 		$H/Stunt.add_child(button)
 	

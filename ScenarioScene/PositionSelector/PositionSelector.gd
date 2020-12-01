@@ -56,9 +56,6 @@ func _on_select_troop_attack(troop):
 			_create_position_select_item(target_arch.map_position, Color.red)
 			
 
-func _on_select_troop_stunt(troop, stunt):
-	pass
-
 
 func _on_select_troop_enter(troop):
 	current_action = CurrentAction.ENTER_TROOP

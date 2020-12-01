@@ -541,7 +541,7 @@ func _on_troop_attack_clicked(troop):
 	$PositionSelector._on_select_troop_attack(troop)
 	
 func _on_troop_stunt_clicked(troop, stunt):
-	$PositionSelector._on_select_troop_stunt(troop, stunt)
+	pass
 	
 func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)
@@ -557,7 +557,6 @@ func _on_focus_camera(position):
 ########################################
 var __day_passed_sec = OS.get_ticks_msec()
 
-# TODO run computation on separate thread
 func _on_day_passed():
 	if GameConfig._use_threads:
 		__on_day_passed_threaded()

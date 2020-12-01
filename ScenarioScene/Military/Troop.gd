@@ -20,6 +20,7 @@ var combativity: int setget forbidden
 
 var status = Status.NORMAL setget forbidden
 var active_stunt setget forbidden
+var active_stunt_days setget forbidden
 
 var _recently_battled: int setget forbidden
 
@@ -475,6 +476,26 @@ func add_combativity(value):
 func set_status(in_status):
 	status = in_status
 	update_status_sprite()
+
+
+####################################
+#              Stunts              #
+####################################
+
+func available_stunts():
+	var result = []
+	for stunt in get_leader().stunts:
+		if stunt.combativity_cost <= combativity:
+			result.append(stunt)
+	return result
+
+
+func activate_stunt(stunt):
+	assert(stunt.combativity_cost <= combativity)
+	combativity -= stunt.combativity_cost
+	active_stunt = stunt
+	active_stunt_days = stunt.duration
+
 
 ####################################
 #         Influence System         #

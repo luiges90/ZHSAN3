@@ -50,7 +50,7 @@ func set_data():
 	Util.delete_all_children($Stunts)
 	for stunt in current_person.stunts:
 		var label = LinkButton.new()
-		label.text = stunt.get_name()
+		label.text = stunt.get_name_with_level(current_person.stunts[stunt])
 		label.add_color_override("font_color", stunt.color)
 		label.underline = LinkButton.UNDERLINE_MODE_NEVER
 		label.mouse_default_cursor_shape = Control.CURSOR_ARROW
@@ -78,6 +78,7 @@ func _on_stunt_clicked(stunt):
 	var bbcode = ""
 	bbcode += "[color=#FF7700]" + tr("STUNTS") + "[/color] "
 	bbcode += "[color=#" + stunt.color.to_html() + "]" + stunt.get_name() + "[/color]\n"
+	bbcode += tr("COMBATIVITY_COST").format({"cost": stunt.combativity_cost}) + "\n"
 	bbcode += stunt.description
 	description.bbcode_text = bbcode
 	
