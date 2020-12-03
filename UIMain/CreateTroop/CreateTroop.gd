@@ -71,6 +71,10 @@ func set_data():
 		$All/H1/V2/C/Defence.text = str(current_troop.get_defence())
 		$All/H1/V2/C/Speed.text = str(current_troop.get_speed())
 		$All/H1/V2/C/Initiative.text = str(current_troop.get_initiative())
+		$All/H1/V2/C/Critical.text = str(current_troop.critical_chance() * 100) + "%"
+		$All/H1/V2/C/AntiCritical.text = str(current_troop.anti_critical_chance() * 100) + "%"
+		$All/H1/V2/C/CriticalRate.text = "x" + str(current_troop.critical_damage_rate())
+		
 		$All/Buttons/Create.disabled = current_troop.quantity <= 0
 
 

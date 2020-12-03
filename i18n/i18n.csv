@@ -204,3 +204,6 @@ BE_CAPTURED_COUNT,Be Captured Count,部隊自身被捕獲數,部隊自身被捕�
 STUNT,Stunt,戰法,戰法
 STUNTS,Stunts,戰法,戰法
 COMBATIVITY_COST,Combativity Cost: {cost},消耗戰意：{cost},消耗戰意：{cost}
+CRITICAL,Critical,暴擊率,暴擊率
+ANTI_CRITICAL,Anti-critical,抗暴擊率,抗暴擊率
+CRITICAL_RATE,Critical Damage,暴擊傷害,暴擊傷害

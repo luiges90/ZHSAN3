@@ -367,8 +367,8 @@ func anti_critical_chance():
 
 func critical_damage_rate(other_troop):
 	var rate
-	if other_troop is Architecture:
-		rate = 1 + float(get_strength()) / 50.0
+	if other_troop == null or other_troop is Architecture:
+		rate = 1 + float(get_strength()) / 100.0
 	else:
 		rate = 1 + float(get_strength()) / max(10, other_troop.get_strength())
 
@@ -824,6 +824,11 @@ func day_event():
 	if _recently_battled > 0:
 		_recently_battled -= 1
 		add_combativity(5)
+
+	if active_stunt_days > 0:
+		active_stunt_days -= 1
+		if active_stunt_days <= 0:
+			active_stunt = null
 		
 	call_deferred("emit_signal", "troop_survey_updated", self)
 		

@@ -39,7 +39,7 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 						if _op_cond(op_not, params['military_kind'].type != condition['Id']):
 							return false
 			'is_terrain':
-				if params.has('troop'):
+				if params.has('troop') and params['troop'].has_method('get_current_terrain'):
 					if condition['Id'] is Array:
 						if _op_cond(op_not, not (params['troop'].get_current_terrain().id in condition['Id'])):
 							return false
