@@ -13,6 +13,8 @@ func run_troop(troop, scenario):
 	var on_arch = scenario.get_architecture_at_position(troop.map_position)
 	if on_arch != null and troop.get_belonged_faction().is_enemy_to(on_arch.get_belonged_faction()):
 		troop.occupy()
+
+	var enemy_troop_consider_range = 6
 	
 	if troop._ai_state == Troop.AIState.COMBAT:
 		var enemy_troops = []
@@ -21,7 +23,7 @@ func run_troop(troop, scenario):
 			var target = Util.max_by(targets, "get_offence_over_defence")[1]
 			troop.set_attack_order(target, null)
 		else:
-			targets = troop.enemy_troop_in_range(6)
+			targets = troop.enemy_troop_in_range(enemy_troop_consider_range)
 			if targets.size() > 0:
 				var target = Util.max_by(targets, "get_offence_over_defence")[1]
 				troop.set_attack_order(target, null)
@@ -69,6 +71,12 @@ func run_troop(troop, scenario):
 						troop.set_attack_order(null, troop._ai_destination_architecture)
 					done = true
 					break
+		if not done:
+			var targets = troop.enemy_troop_in_range(enemy_troop_consider_range)
+			if targets.size() > 0:
+				troop._ai_state = Troop.AIState.COMBAT
+				var target = Util.max_by(targets, "get_offence_over_defence")[1]
+				troop.set_attack_order(target, null)
 		if not done:
 			var __path = troop._ai_path.duplicate()
 			__path.invert()
