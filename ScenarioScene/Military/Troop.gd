@@ -340,6 +340,14 @@ func friendly_troop_in_range(distance: int):
 		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance and not troop._destroyed:
 			results.append(troop)
 	return results
+
+func enemy_architectures_in_range(distance: int):
+	var results = []
+	for a in scenario.architectures:
+		var architecture = scenario.architectures[a]
+		if architecture.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(architecture.map_position, self.map_position) <= distance:
+			results.append(architecture)
+	return results
 	
 func can_occupy():
 	var on_arch = scenario.get_architecture_at_position(map_position)
@@ -485,7 +493,7 @@ func set_status(in_status):
 func available_stunts():
 	var result = []
 	for stunt in get_leader().stunts:
-		if stunt.combativity_cost <= combativity:
+		if stunt.combativity_cost <= combativity and stunt.check_conditions(self):
 			result.append(stunt)
 	return result
 

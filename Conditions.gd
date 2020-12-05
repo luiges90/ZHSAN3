@@ -7,7 +7,10 @@ static func __quadratic(level):
 	return 0.25 * level * level + 0.5 * level + 0.25
 
 static func check_conditions(influence_container, params: Dictionary, level = 1):
-	for condition in influence_container.conditions:
+	return check_conditions_list(influence_container.conditions, params, level)
+
+static func check_conditions_list(condition_list, params: Dictionary, level = 1):
+	for condition in condition_list.conditions:
 		var operator = Util.dict_try_get(condition, "Operator", [])
 		var op_not = operator.has('not')
 		match condition['Operation']:
@@ -176,5 +179,39 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 			'be_captured_count_at_least':
 				if params.has('person'):
 					if _op_cond(op_not, params['person'].be_captured_count < condition['Value'] * __quadratic(level)):
+						return false
+			'enemy_troop_nearby_count_at_least':
+				if params.has('troop'):
+					var distance = condition['Distance']
+					var enemy_troops = params['troop'].enemy_troop_in_range(distance)
+					if _op_cond(op_not, enemy_troops.count() < condition['Value']):
+						return false
+			'enemy_architecture_nearby_count_at_least':
+				if params.has('troop'):
+					var distance = condition['Distance']
+					var enemy_arch = params['troop'].enemy_architectures_in_range(distance)
+					if _op_cond(op_not, enemy_arch.count() < condition['Value']):
+						return false
+			'friendly_troop_nearby_count_at_least':
+				if params.has('troop'):
+					var distance = condition['Distance']
+					var friendly_troops = params['troop'].friendly_troop_in_range(distance)
+					if _op_cond(op_not, friendly_troops.count() < condition['Value']):
+						return false
+			'troop_quantity_at_least':
+				if params.has('troop'):
+					if _op_cond(op_not, params['troop'].quantity < condition['Value']):
+						return false
+			'troop_morale_at_least':
+				if params.has('troop'):
+					if _op_cond(op_not, params['troop'].morale < condition['Value']):
+						return false
+			'troop_combativity_at_least':
+				if params.has('troop'):
+					if _op_cond(op_not, params['troop'].combativity < condition['Value']):
+						return false
+			'troop_has_no_active_stunt':
+				if params.has('troop'):
+					if _op_cond(op_not, params['troop'].active_stunt != null):
 						return false
 	return true

@@ -61,3 +61,9 @@ func apply_influences(in_operation, level: int, params: Dictionary):
 	var all_params = params.duplicate()
 	all_params['level'] = level
 	return Influences.apply_influences(self, in_operation, all_params)
+
+func check_conditions(troop: Troop):
+	return Conditions.check_conditions_list(conditions, {"troop": troop})
+
+func check_ai_conditions(troop: Troop):
+	return Conditions.check_conditions_list(ai_conditions, {"troop": troop})

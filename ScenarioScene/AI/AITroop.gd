@@ -17,6 +17,13 @@ func run_troop(troop, scenario):
 	var enemy_troop_consider_range = 6
 	
 	if troop._ai_state == Troop.AIState.COMBAT:
+		# Setup stunts
+		for stunt in troop.available_stunts():
+			if troop.combativity >= stunt.combativity_cost and stunt.check_ai_conditions(troop):
+				troop.activate_stunt(stunt)
+				break
+				
+		# select target
 		var enemy_troops = []
 		var targets = troop.enemy_troop_in_range(troop.military_kind.range_max)
 		if targets.size() > 0:

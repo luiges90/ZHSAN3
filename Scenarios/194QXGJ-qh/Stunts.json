@@ -1,7 +1,7 @@
 [
     {
-        "_Id": 1,
-        "Name": "強攻",
+        "_Id": 10,
+        "Name": "攻擊命令",
         "Description": "增加部隊攻擊力每等級20%",
         "Color": [
             0.96,
@@ -26,7 +26,24 @@
             }
         ],
         "Conditions": [],
-        "AIConditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "troop_quantity_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "troop_morale_at_least",
+                "Value": 60
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 6
+            }
+        ],
         "Influences": [
             {
                 "Operation": "modify_troop_offence",
@@ -35,8 +52,8 @@
         ]
     },
     {
-        "_Id": 2,
-        "Name": "堅守",
+        "_Id": 20,
+        "Name": "防禦命令",
         "Description": "增加部隊防禦力每等級20%",
         "Color": [
             0.96,
@@ -61,11 +78,87 @@
             }
         ],
         "Conditions": [],
-        "AIConditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "troop_quantity_at_least",
+                "Value": 1000
+            },
+            {
+                "Operation": "troop_morale_at_least",
+                "Value": 50
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 6
+            }
+        ],
         "Influences": [
             {
                 "Operation": "modify_troop_defence",
                 "Value": 0.2
+            }
+        ]
+    },
+
+    {
+        "_Id": 30,
+        "Name": "攻城命令",
+        "Description": "增加部隊對城牆攻擊力每等級50%",
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 40,
+        "Duration": 3,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 4,
+                "Value": 60
+            },
+            {
+                "Operation": "arch_damage_dealt_at_least",
+                "Value": 5000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "troop_quantity_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "troop_morale_at_least",
+                "Value": 70
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Operator": "not",
+                "Value": 1,
+                "Distance": 6
+            },
+            {
+                "Operation": "enemy_architecture_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_damage_on_architecture",
+                "Value": 0.5
             }
         ]
     }

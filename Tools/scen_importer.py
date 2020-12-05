@@ -121,8 +121,9 @@ def convert_stunts(object, influence_data):
 
         new_stunts = {}
 
-        convert_skill(new_stunts, influences, 1, {413: 1, 414: 1, 4000: 1, 4001: 2, 4002: 5, 4003: 10, 4004: 20})
-        convert_skill(new_stunts, influences, 2, {423: 1, 424: 1, 4010: 1, 4011: 2, 4012: 5, 4013: 10, 4014: 20})
+        convert_skill(new_stunts, influences, 10, {413: 1, 414: 1, 4000: 1, 4001: 2, 4002: 5, 4003: 10, 4004: 20})
+        convert_skill(new_stunts, influences, 20, {423: 1, 424: 1, 4010: 1, 4011: 2, 4012: 5, 4013: 10, 4014: 20})
+        convert_skill(new_stunts, influences, 30, {4021: 1, 4022: 2, 4023: 4, 4024: 8})
 
         return new_stunts
 

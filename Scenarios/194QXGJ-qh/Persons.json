@@ -331,8 +331,8 @@
     "Strength": 87,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 3
+      "10": 2,
+      "20": 3
     },
     "Surname": "于",
     "Task": 0,
@@ -719,7 +719,7 @@
     "Strength": 84,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "阎",
     "Task": 0,
@@ -915,7 +915,9 @@
     "StratagemExperience": 0,
     "Strength": 69,
     "StrengthExperience": 0,
-    "Stunts": {},
+    "Stunts": {
+      "30": 4
+    },
     "Surname": "袁",
     "Task": 0,
     "TaskTarget": -1,
@@ -1012,7 +1014,7 @@
     "Strength": 69,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "袁",
     "Task": 0,
@@ -1304,7 +1306,7 @@
     "Strength": 78,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "王",
     "Task": 0,
@@ -1838,8 +1840,8 @@
     "Strength": 73,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1,
-      "2": 1
+      "10": 1,
+      "20": 1
     },
     "Surname": "王",
     "Task": 0,
@@ -1992,7 +1994,7 @@
     "Strength": 88,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3
     },
     "Surname": "王",
     "Task": 0,
@@ -2238,7 +2240,7 @@
     "Strength": 79,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 3
+      "20": 3
     },
     "Surname": "王",
     "Task": 0,
@@ -2382,7 +2384,7 @@
     "Strength": 64,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "王",
     "Task": 0,
@@ -2816,7 +2818,7 @@
     "Strength": 61,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "贾",
     "Task": 0,
@@ -2964,7 +2966,7 @@
     "Strength": 48,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "贾",
     "Task": 0,
@@ -3302,7 +3304,7 @@
     "Strength": 66,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "霍",
     "Task": 0,
@@ -3353,7 +3355,7 @@
     "Strength": 79,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "郝",
     "Task": 0,
@@ -3410,8 +3412,9 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 1
+      "10": 2,
+      "20": 1,
+      "30": 6
     },
     "Surname": "乐",
     "Task": 0,
@@ -3702,7 +3705,7 @@
     "Strength": 69,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "霍",
     "Task": 0,
@@ -3753,7 +3756,7 @@
     "Strength": 78,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "郭",
     "Task": 0,
@@ -3856,7 +3859,7 @@
     "Strength": 91,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 10
+      "10": 10
     },
     "Surname": "夏侯",
     "Task": 0,
@@ -4194,7 +4197,7 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6
+      "10": 6
     },
     "Surname": "夏侯",
     "Task": 0,
@@ -4822,8 +4825,8 @@
     "Strength": 97,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 12,
-      "2": 5
+      "10": 12,
+      "20": 5
     },
     "Surname": "关",
     "Task": 0,
@@ -5252,7 +5255,7 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "关",
     "Task": 0,
@@ -5348,7 +5351,7 @@
     "Strength": 70,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "韩",
     "Task": 0,
@@ -5686,7 +5689,7 @@
     "Strength": 85,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "韩",
     "Task": 0,
@@ -5789,8 +5792,8 @@
     "Strength": 94,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 10,
-      "2": 2
+      "10": 10,
+      "20": 2
     },
     "Surname": "甘",
     "Task": 0,
@@ -6035,7 +6038,7 @@
     "Strength": 93,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6
+      "10": 6
     },
     "Surname": "颜",
     "Task": 0,
@@ -6092,7 +6095,7 @@
     "Strength": 92,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 4
+      "10": 4
     },
     "Surname": "魏",
     "Task": 0,
@@ -6671,8 +6674,8 @@
     "Strength": 89,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6,
-      "2": 2
+      "10": 6,
+      "20": 2
     },
     "Surname": "姜",
     "Task": 0,
@@ -7148,8 +7151,8 @@
     "Strength": 83,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "纪",
     "Task": 0,
@@ -7631,7 +7634,7 @@
     "Strength": 71,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "严",
     "Task": 0,
@@ -7729,7 +7732,7 @@
     "Strength": 69,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "牵",
     "Task": 0,
@@ -7972,7 +7975,7 @@
     "Strength": 83,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "黄",
     "Task": 0,
@@ -8073,8 +8076,8 @@
     "Strength": 31,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1,
-      "2": 2
+      "10": 1,
+      "20": 2
     },
     "Surname": "黄",
     "Task": 0,
@@ -8272,7 +8275,8 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2,
+      "30": 4
     },
     "Surname": "高",
     "Task": 0,
@@ -8799,7 +8803,7 @@
     "Strength": 83,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3
     },
     "Surname": "公孙",
     "Task": 0,
@@ -9037,8 +9041,8 @@
     "Strength": 93,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 3
+      "10": 5,
+      "20": 3
     },
     "Surname": "黄",
     "Task": 0,
@@ -10091,7 +10095,7 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "兀",
     "Task": 0,
@@ -10959,8 +10963,8 @@
     "Strength": 63,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 5
+      "10": 2,
+      "20": 5
     },
     "Surname": "司马",
     "Task": 0,
@@ -11525,7 +11529,7 @@
     "Strength": 68,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "朱",
     "Task": 0,
@@ -11774,7 +11778,7 @@
     "Strength": 91,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6
+      "10": 6
     },
     "Surname": "周",
     "Task": 0,
@@ -11929,8 +11933,8 @@
     "Strength": 71,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 1
+      "10": 5,
+      "20": 1
     },
     "Surname": "周",
     "Task": 0,
@@ -12222,7 +12226,7 @@
     "Strength": 56,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "朱",
     "Task": 0,
@@ -12607,7 +12611,7 @@
     "Strength": 26,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "荀",
     "Task": 0,
@@ -12995,7 +12999,7 @@
     "Strength": 84,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "蒋",
     "Task": 0,
@@ -13232,7 +13236,7 @@
     "Strength": 61,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "向",
     "Task": 0,
@@ -14064,8 +14068,8 @@
     "Strength": 38,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 7
+      "10": 2,
+      "20": 7
     },
     "Surname": "诸葛",
     "Task": 0,
@@ -14121,8 +14125,8 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 2
+      "10": 5,
+      "20": 2
     },
     "Surname": "徐",
     "Task": 0,
@@ -14320,7 +14324,7 @@
     "Strength": 81,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5
+      "10": 5
     },
     "Surname": "徐",
     "Task": 0,
@@ -14749,7 +14753,7 @@
     "Strength": 60,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "审",
     "Task": 0,
@@ -16353,7 +16357,8 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3,
+      "30": 4
     },
     "Surname": "曹",
     "Task": 0,
@@ -16408,7 +16413,7 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3
     },
     "Surname": "曹",
     "Task": 0,
@@ -16561,8 +16566,8 @@
     "Strength": 89,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 10
+      "10": 2,
+      "20": 10
     },
     "Surname": "曹",
     "Task": 0,
@@ -16673,8 +16678,9 @@
     "Strength": 72,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 4,
-      "2": 7
+      "10": 4,
+      "20": 7,
+      "30": 4
     },
     "Surname": "曹",
     "Task": 0,
@@ -16820,7 +16826,7 @@
     "Strength": 85,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "臧",
     "Task": 0,
@@ -17730,7 +17736,7 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5
+      "10": 5
     },
     "Surname": "孙",
     "Task": 0,
@@ -17924,7 +17930,7 @@
     "Strength": 72,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "孙",
     "Task": 0,
@@ -17983,8 +17989,9 @@
     "Strength": 92,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6,
-      "2": 2
+      "10": 6,
+      "20": 2,
+      "30": 4
     },
     "Surname": "孙",
     "Task": 0,
@@ -18177,7 +18184,7 @@
     "Strength": 79,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "孙",
     "Task": 0,
@@ -18235,7 +18242,7 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "孙",
     "Task": 0,
@@ -18329,7 +18336,7 @@
     "Strength": 53,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "孙",
     "Task": 0,
@@ -18520,7 +18527,7 @@
     "Strength": 70,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "孙",
     "Task": 0,
@@ -18909,8 +18916,8 @@
     "Strength": 93,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 7,
-      "2": 2
+      "10": 7,
+      "20": 2
     },
     "Surname": "太史",
     "Task": 0,
@@ -19204,8 +19211,8 @@
     "Strength": 96,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 3
+      "10": 5,
+      "20": 3
     },
     "Surname": "赵",
     "Task": 0,
@@ -19976,8 +19983,8 @@
     "Strength": 92,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 4,
-      "2": 2
+      "10": 4,
+      "20": 2
     },
     "Surname": "张",
     "Task": 0,
@@ -20569,8 +20576,8 @@
     "Strength": 84,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 4,
-      "2": 2
+      "10": 4,
+      "20": 2
     },
     "Surname": "张",
     "Task": 0,
@@ -21009,7 +21016,7 @@
     "Strength": 98,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 7
+      "10": 7
     },
     "Surname": "张",
     "Task": 0,
@@ -21352,8 +21359,8 @@
     "Strength": 92,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 9,
-      "2": 5
+      "10": 9,
+      "20": 5
     },
     "Surname": "张",
     "Task": 0,
@@ -21691,7 +21698,7 @@
     "Strength": 55,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "陈",
     "Task": 0,
@@ -22076,8 +22083,8 @@
     "Strength": 73,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "陈",
     "Task": 0,
@@ -22130,8 +22137,8 @@
     "Strength": 64,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 3
+      "10": 2,
+      "20": 3
     },
     "Surname": "陈",
     "Task": 0,
@@ -22183,8 +22190,8 @@
     "Strength": 85,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 3
+      "10": 2,
+      "20": 3
     },
     "Surname": "陈",
     "Task": 0,
@@ -22429,7 +22436,7 @@
     "Strength": 49,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 3
+      "20": 3
     },
     "Surname": "程",
     "Task": 0,
@@ -22665,8 +22672,8 @@
     "Strength": 79,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1,
-      "2": 6
+      "10": 1,
+      "20": 6
     },
     "Surname": "程",
     "Task": 0,
@@ -23394,8 +23401,8 @@
     "Strength": 87,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6,
-      "2": 4
+      "10": 6,
+      "20": 4
     },
     "Surname": "邓",
     "Task": 0,
@@ -23967,8 +23974,8 @@
     "Strength": 87,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "董",
     "Task": 0,
@@ -24359,7 +24366,7 @@
     "Strength": 30,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3
     },
     "Surname": "杜",
     "Task": 0,
@@ -24553,8 +24560,8 @@
     "Strength": 88,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "马",
     "Task": 0,
@@ -24696,7 +24703,7 @@
     "Strength": 7,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "马",
     "Task": 0,
@@ -24889,8 +24896,8 @@
     "Strength": 85,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "马",
     "Task": 0,
@@ -25043,8 +25050,8 @@
     "Strength": 97,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6,
-      "2": 3
+      "10": 6,
+      "20": 3
     },
     "Surname": "马",
     "Task": 0,
@@ -25475,8 +25482,8 @@
     "Strength": 80,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "潘",
     "Task": 0,
@@ -25668,7 +25675,7 @@
     "Strength": 30,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "费",
     "Task": 0,
@@ -26292,7 +26299,7 @@
     "Strength": 72,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "傅",
     "Task": 0,
@@ -26347,7 +26354,7 @@
     "Strength": 91,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "文",
     "Task": 0,
@@ -26497,7 +26504,7 @@
     "Strength": 94,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3
     },
     "Surname": "文",
     "Task": 0,
@@ -26548,8 +26555,8 @@
     "Strength": 82,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 4
+      "10": 2,
+      "20": 4
     },
     "Surname": "文",
     "Task": 0,
@@ -27033,7 +27040,7 @@
     "Strength": 47,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "法",
     "Task": 0,
@@ -27088,7 +27095,7 @@
     "Strength": 34,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "庞",
     "Task": 0,
@@ -27144,7 +27151,7 @@
     "Strength": 94,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "庞",
     "Task": 0,
@@ -27430,7 +27437,7 @@
     "Strength": 51,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "步",
     "Task": 0,
@@ -27631,7 +27638,7 @@
     "Strength": 87,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5
+      "10": 5
     },
     "Surname": "孟",
     "Task": 0,
@@ -28071,7 +28078,7 @@
     "Strength": 64,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 3
+      "20": 3
     },
     "Surname": "羊",
     "Task": 0,
@@ -28550,7 +28557,7 @@
     "Strength": 65,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "杨",
     "Task": 0,
@@ -29175,8 +29182,8 @@
     "Strength": 63,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "陆",
     "Task": 0,
@@ -29279,8 +29286,8 @@
     "Strength": 69,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 2
+      "10": 5,
+      "20": 2
     },
     "Surname": "陆",
     "Task": 0,
@@ -29623,7 +29630,7 @@
     "Strength": 81,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 3
+      "20": 3
     },
     "Surname": "李",
     "Task": 0,
@@ -29961,7 +29968,7 @@
     "Strength": 73,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "刘",
     "Task": 0,
@@ -30295,7 +30302,7 @@
     "Strength": 46,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "刘",
     "Task": 0,
@@ -30882,7 +30889,7 @@
     "Strength": 73,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 10
+      "20": 10
     },
     "Surname": "刘",
     "Task": 0,
@@ -31181,7 +31188,7 @@
     "Strength": 32,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "刘",
     "Task": 0,
@@ -31666,7 +31673,7 @@
     "Strength": 89,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5
+      "10": 5
     },
     "Surname": "凌",
     "Task": 0,
@@ -32006,7 +32013,7 @@
     "Strength": 71,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "吕",
     "Task": 0,
@@ -32112,8 +32119,8 @@
     "Strength": 100,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 11,
-      "2": 2
+      "10": 11,
+      "20": 2
     },
     "Surname": "吕",
     "Task": 0,
@@ -32163,7 +32170,7 @@
     "Strength": 81,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3
     },
     "Surname": "吕",
     "Task": 0,
@@ -32213,7 +32220,7 @@
     "Strength": 89,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6
+      "10": 6
     },
     "Surname": "吕",
     "Task": 0,
@@ -32458,7 +32465,7 @@
     "Strength": 56,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "鲁",
     "Task": 0,
@@ -32690,14 +32697,7 @@
     "Popularity": 0,
     "Prestige": 0,
     "ProducingEquipment": null,
-    "Skills": {
-      "10": 7,
-      "20": 2,
-      "30": 5,
-      "40": 7,
-      "70": 2,
-      "200": 1
-    },
+    "Skills": [],
     "SpouseIds": [
       1376
     ],
@@ -32760,8 +32760,8 @@
     "Strength": 93,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -32819,7 +32819,7 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3
+      "10": 3
     },
     "Surname": "籍",
     "Task": 0,
@@ -32874,8 +32874,9 @@
     "Strength": 91,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 7,
-      "2": 3
+      "10": 7,
+      "20": 3,
+      "30": 4
     },
     "Surname": "耒",
     "Task": 0,
@@ -32992,8 +32993,8 @@
     "Strength": 96,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 5
+      "10": 5,
+      "20": 5
     },
     "Surname": "耒",
     "Task": 0,
@@ -33048,7 +33049,7 @@
     "Strength": 58,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -33102,7 +33103,7 @@
     "Strength": 38,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "邓",
     "Task": 0,
@@ -33211,7 +33212,7 @@
     "Strength": 42,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "吕",
     "Task": 0,
@@ -33267,7 +33268,7 @@
     "Strength": 83,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "殷",
     "Task": 0,
@@ -33326,7 +33327,7 @@
     "Strength": 80,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5
+      "10": 5
     },
     "Surname": "耒",
     "Task": 0,
@@ -33438,7 +33439,7 @@
     "Strength": 65,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -33657,8 +33658,9 @@
     "Strength": 96,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 7,
-      "2": 2
+      "10": 7,
+      "20": 2,
+      "30": 4
     },
     "Surname": "井",
     "Task": 0,
@@ -33723,8 +33725,9 @@
     "Strength": 82,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 3
+      "10": 2,
+      "20": 3,
+      "30": 4
     },
     "Surname": "蓝",
     "Task": 0,
@@ -33777,8 +33780,9 @@
     "Strength": 84,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3,
-      "2": 3
+      "10": 3,
+      "20": 3,
+      "30": 6
     },
     "Surname": "耒",
     "Task": 0,
@@ -33836,7 +33840,7 @@
     "Strength": 63,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "尚",
     "Task": 0,
@@ -33892,7 +33896,8 @@
     "Strength": 83,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1,
+      "30": 4
     },
     "Surname": "耒",
     "Task": 0,
@@ -33949,8 +33954,8 @@
     "Strength": 62,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 4,
-      "2": 5
+      "10": 4,
+      "20": 5
     },
     "Surname": "仰",
     "Task": 0,
@@ -34062,7 +34067,8 @@
     "Strength": 92,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 8
+      "10": 8,
+      "30": 8
     },
     "Surname": "耒",
     "Task": 0,
@@ -34114,7 +34120,7 @@
     "Strength": 87,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "佘",
     "Task": 0,
@@ -34168,8 +34174,8 @@
     "Strength": 94,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "邹",
     "Task": 0,
@@ -34229,8 +34235,8 @@
     "Strength": 100,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 10,
-      "2": 2
+      "10": 10,
+      "20": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -34490,7 +34496,7 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 7
+      "20": 7
     },
     "Surname": "晋",
     "Task": 0,
@@ -34548,7 +34554,7 @@
     "Strength": 72,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 3
+      "20": 3
     },
     "Surname": "耒",
     "Task": 0,
@@ -34600,7 +34606,7 @@
     "Strength": 76,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "岑",
     "Task": 0,
@@ -34656,7 +34662,7 @@
     "Strength": 40,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "衡",
     "Task": 0,
@@ -34710,7 +34716,7 @@
     "Strength": 60,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 2
+      "20": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -34765,8 +34771,8 @@
     "Strength": 93,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 13,
-      "2": 2
+      "10": 13,
+      "20": 2
     },
     "Surname": "章",
     "Task": 0,
@@ -34825,8 +34831,8 @@
     "Strength": 98,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 8,
-      "2": 1
+      "10": 8,
+      "20": 1
     },
     "Surname": "花",
     "Task": 0,
@@ -34879,7 +34885,7 @@
     "Strength": 93,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "墨",
     "Task": 0,
@@ -34932,7 +34938,7 @@
     "Strength": 85,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "凤",
     "Task": 0,
@@ -34989,7 +34995,7 @@
     "Strength": 78,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 9
+      "20": 9
     },
     "Surname": "耒",
     "Task": 0,
@@ -35045,8 +35051,8 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 6
+      "10": 5,
+      "20": 6
     },
     "Surname": "蔡",
     "Task": 0,
@@ -35100,7 +35106,7 @@
     "Strength": 71,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "耒",
     "Task": 0,
@@ -35152,8 +35158,8 @@
     "Strength": 98,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 8,
-      "2": 2
+      "10": 8,
+      "20": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -35219,8 +35225,9 @@
     "Strength": 3,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 4
+      "10": 2,
+      "20": 4,
+      "30": 4
     },
     "Surname": "朱",
     "Task": 0,
@@ -35271,7 +35278,7 @@
     "Strength": 58,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "仰",
     "Task": 0,
@@ -35373,7 +35380,7 @@
     "Strength": 83,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "姜",
     "Task": 0,
@@ -35482,7 +35489,7 @@
     "Strength": 72,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "耒",
     "Task": 0,
@@ -35539,7 +35546,7 @@
     "Strength": 65,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "耒",
     "Task": 0,
@@ -35649,8 +35656,8 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3,
-      "2": 3
+      "10": 3,
+      "20": 3
     },
     "Surname": "耒",
     "Task": 0,
@@ -35763,8 +35770,8 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 3,
-      "2": 7
+      "10": 3,
+      "20": 7
     },
     "Surname": "南宫",
     "Task": 0,
@@ -35877,7 +35884,7 @@
     "Strength": 82,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2
+      "10": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -35988,7 +35995,7 @@
     "Strength": 65,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "晋",
     "Task": 0,
@@ -36088,7 +36095,7 @@
     "Strength": 53,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "刁",
     "Task": 0,
@@ -36195,7 +36202,7 @@
     "Strength": 94,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "耒",
     "Task": 0,
@@ -36306,8 +36313,8 @@
     "Strength": 85,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 3
+      "10": 2,
+      "20": 3
     },
     "Surname": "耒",
     "Task": 0,
@@ -36363,7 +36370,7 @@
     "Strength": 90,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "裘",
     "Task": 0,
@@ -36422,8 +36429,8 @@
     "Strength": 72,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 8,
-      "2": 2
+      "10": 8,
+      "20": 2
     },
     "Surname": "耒",
     "Task": 0,
@@ -36683,7 +36690,7 @@
     "Strength": 98,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 6
+      "10": 6
     },
     "Surname": "鄂",
     "Task": 0,
@@ -36741,8 +36748,8 @@
     "Strength": 86,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "谭",
     "Task": 0,
@@ -36801,8 +36808,8 @@
     "Strength": 92,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 4,
-      "2": 5
+      "10": 4,
+      "20": 5
     },
     "Surname": "岳",
     "Task": 0,
@@ -36995,8 +37002,8 @@
     "Strength": 59,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 5,
-      "2": 18
+      "10": 5,
+      "20": 18
     },
     "Surname": "刘",
     "Task": 0,
@@ -37660,7 +37667,7 @@
     "Strength": 82,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 10
+      "20": 10
     },
     "Surname": "刘",
     "Task": 0,
@@ -37720,8 +37727,8 @@
     "Strength": 98,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 11,
-      "2": 2
+      "10": 11,
+      "20": 2
     },
     "Surname": "吕",
     "Task": 0,
@@ -37872,8 +37879,8 @@
     "Strength": 95,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 2
+      "10": 2,
+      "20": 2
     },
     "Surname": "董",
     "Task": 0,
@@ -38491,7 +38498,7 @@
     "Strength": 73,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 10
+      "20": 10
     },
     "Surname": "刘",
     "Task": 0,
@@ -38544,8 +38551,8 @@
     "Strength": 64,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 2,
-      "2": 3
+      "10": 2,
+      "20": 3
     },
     "Surname": "陈",
     "Task": 0,
@@ -38644,7 +38651,7 @@
     "Strength": 71,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "千",
     "Task": 0,
@@ -38835,7 +38842,7 @@
     "Strength": 76,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "阿",
     "Task": 0,
@@ -38883,7 +38890,7 @@
     "Strength": 64,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "窦",
     "Task": 0,
@@ -38933,7 +38940,7 @@
     "Strength": 68,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "夫",
     "Task": 0,
@@ -39853,7 +39860,7 @@
     "Strength": 66,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "卑弥",
     "Task": 0,
@@ -40630,7 +40637,7 @@
     "Strength": 65,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "楼",
     "Task": 0,
@@ -41219,7 +41226,7 @@
     "Strength": 70,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "鲁",
     "Task": 0,
@@ -42233,7 +42240,7 @@
     "Strength": 72,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "栾提",
     "Task": 0,
@@ -42386,7 +42393,7 @@
     "Strength": 73,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "刘",
     "Task": 0,
@@ -42686,7 +42693,7 @@
     "Strength": 75,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 11
+      "20": 11
     },
     "Surname": "尤",
     "Task": 0,
@@ -44137,7 +44144,7 @@
     "Strength": 78,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "陈",
     "Task": 0,
@@ -45922,7 +45929,7 @@
     "Strength": 58,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "范",
     "Task": 0,
@@ -47071,7 +47078,7 @@
     "Strength": 64,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "管",
     "Task": 0,
@@ -51364,7 +51371,7 @@
     "Strength": 63,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "留",
     "Task": 0,
@@ -60256,7 +60263,7 @@
     "Strength": 56,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "张",
     "Task": 0,
@@ -60873,7 +60880,7 @@
     "Strength": 59,
     "StrengthExperience": 0,
     "Stunts": {
-      "2": 1
+      "20": 1
     },
     "Surname": "钟离",
     "Task": 0,
@@ -62124,7 +62131,7 @@
     "Strength": 51,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "周",
     "Task": 0,
@@ -62554,7 +62561,7 @@
     "Strength": 49,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "郭",
     "Task": 0,
@@ -62886,7 +62893,7 @@
     "Strength": 57,
     "StrengthExperience": 0,
     "Stunts": {
-      "1": 1
+      "10": 1
     },
     "Surname": "黄",
     "Task": 0,
