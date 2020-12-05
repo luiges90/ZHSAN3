@@ -10,7 +10,7 @@ static func check_conditions(influence_container, params: Dictionary, level = 1)
 	return check_conditions_list(influence_container.conditions, params, level)
 
 static func check_conditions_list(condition_list, params: Dictionary, level = 1):
-	for condition in condition_list.conditions:
+	for condition in condition_list:
 		var operator = Util.dict_try_get(condition, "Operator", [])
 		var op_not = operator.has('not')
 		match condition['Operation']:
@@ -50,12 +50,12 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 						if _op_cond(op_not, params['troop'].get_current_terrain().id != condition['Id']):
 							return false
 			'is_on_own_architecture':
-				if params.has('troop'):
+				if params.has('troop') and params['troop'].has_method('get_on_architecture'):
 					var arch = params['troop'].get_on_architecture()
 					if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction())):
 						return false
 			'is_on_enemy_architecture':
-				if params.has('troop'):
+				if params.has('troop') and params['troop'].has_method('get_on_architecture'):
 					var arch = params['troop'].get_on_architecture()
 					if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction())):
 						return false
@@ -184,19 +184,19 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 				if params.has('troop'):
 					var distance = condition['Distance']
 					var enemy_troops = params['troop'].enemy_troop_in_range(distance)
-					if _op_cond(op_not, enemy_troops.count() < condition['Value']):
+					if _op_cond(op_not, enemy_troops.size() < condition['Value']):
 						return false
 			'enemy_architecture_nearby_count_at_least':
 				if params.has('troop'):
 					var distance = condition['Distance']
 					var enemy_arch = params['troop'].enemy_architectures_in_range(distance)
-					if _op_cond(op_not, enemy_arch.count() < condition['Value']):
+					if _op_cond(op_not, enemy_arch.size() < condition['Value']):
 						return false
 			'friendly_troop_nearby_count_at_least':
 				if params.has('troop'):
 					var distance = condition['Distance']
 					var friendly_troops = params['troop'].friendly_troop_in_range(distance)
-					if _op_cond(op_not, friendly_troops.count() < condition['Value']):
+					if _op_cond(op_not, friendly_troops.size() < condition['Value']):
 						return false
 			'troop_quantity_at_least':
 				if params.has('troop'):

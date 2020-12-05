@@ -20,7 +20,7 @@ var combativity: int setget forbidden
 
 var status = Status.NORMAL setget forbidden
 var active_stunt setget forbidden
-var active_stunt_days setget forbidden
+var active_stunt_days = 0 setget forbidden
 
 var _recently_battled: int setget forbidden
 
