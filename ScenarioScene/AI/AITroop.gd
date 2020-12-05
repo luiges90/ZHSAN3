@@ -18,9 +18,10 @@ func run_troop(troop, scenario):
 	
 	if troop._ai_state == Troop.AIState.COMBAT:
 		# Setup stunts
-		for stunt in troop.available_stunts():
+		var avail_stunts = troop.available_stunts()
+		for stunt in avail_stunts:
 			if troop.combativity >= stunt.combativity_cost and stunt.check_ai_conditions(troop):
-				troop.activate_stunt(stunt)
+				troop.activate_stunt(stunt, avail_stunts[stunt])
 				break
 				
 		# select target

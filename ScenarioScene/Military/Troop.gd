@@ -20,6 +20,7 @@ var combativity: int setget forbidden
 
 var status = Status.NORMAL setget forbidden
 var active_stunt setget forbidden
+var active_stunt_level setget forbidden
 var active_stunt_days = 0 setget forbidden
 
 var _recently_battled: int setget forbidden
@@ -491,17 +492,19 @@ func set_status(in_status):
 ####################################
 
 func available_stunts():
-	var result = []
-	for stunt in get_leader().stunts:
+	var result = {}
+	var stunts = get_leader().stunts
+	for stunt in stunts:
 		if stunt.combativity_cost <= combativity and stunt.check_conditions(self):
-			result.append(stunt)
+			result[stunt] = stunts[stunt]
 	return result
 
 
-func activate_stunt(stunt):
+func activate_stunt(stunt, level):
 	assert(stunt.combativity_cost <= combativity)
 	combativity -= stunt.combativity_cost
 	active_stunt = stunt
+	active_stunt_level = level
 	active_stunt_days = stunt.duration
 
 
@@ -518,7 +521,7 @@ func apply_influences(operation, params: Dictionary):
 		value = military_kind.apply_influences(operation, all_params)
 		if active_stunt != null:
 			all_params["value"] = value
-			value = active_stunt.apply_influences(operation, all_params)
+			value = active_stunt.apply_influences(operation, active_stunt_level, all_params)
 		for p in get_persons():
 			all_params["value"] = value
 			value = p.apply_influences(operation, all_params)
