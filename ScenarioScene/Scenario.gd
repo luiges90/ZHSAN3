@@ -418,6 +418,7 @@ func __connect_signals_for_creating_troop(troop):
 	troop.connect("received_attack", $GameRecordCreator, "_on_troop_received_attack")
 	troop.connect("target_architecture_destroyed", $GameRecordCreator, "_on_troop_target_architecture_destroyed")
 	troop.connect("target_troop_destroyed", $GameRecordCreator, "_on_troop_target_troop_destroyed")	
+	troop.connect("start_stunt", $GameRecordCreator, "_on_troop_start_stunt")
 	
 	_on_troop_created(troop, troop.map_position)
 	
@@ -541,7 +542,8 @@ func _on_troop_attack_clicked(troop):
 	$PositionSelector._on_select_troop_attack(troop)
 	
 func _on_troop_stunt_clicked(troop, stunt):
-	pass
+	var stunt_level = troop.get_leader().stunts[stunt]
+	troop.activate_stunt(stunt, stunt_level)
 	
 func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)

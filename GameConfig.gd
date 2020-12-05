@@ -16,4 +16,4 @@ var bubble_show_time = 2
 
 var radio_button_direct_select = true
 
-var _use_threads = true
+var _use_threads = false

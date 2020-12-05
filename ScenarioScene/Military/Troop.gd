@@ -69,6 +69,8 @@ signal target_architecture_destroyed
 signal person_captured
 signal person_released
 
+signal start_stunt
+
 func forbidden(x):
 	assert(false)
 	
@@ -346,7 +348,8 @@ func enemy_architectures_in_range(distance: int):
 	var results = []
 	for a in scenario.architectures:
 		var architecture = scenario.architectures[a]
-		if architecture.get_belonged_faction().is_enemy_to(get_belonged_faction()) and Util.m_dist(architecture.map_position, self.map_position) <= distance:
+		var other_faction = architecture.get_belonged_faction()
+		if (other_faction == null or other_faction.is_enemy_to(get_belonged_faction())) and Util.m_dist(architecture.map_position, self.map_position) <= distance:
 			results.append(architecture)
 	return results
 	
@@ -506,7 +509,17 @@ func activate_stunt(stunt, level):
 	active_stunt = stunt
 	active_stunt_level = level
 	active_stunt_days = stunt.duration
+	_animate_stunt_start(stunt)
 
+func get_active_stunt_name():
+	if active_stunt == null:
+		return "----"
+	return active_stunt.get_name() + active_stunt_level
+	
+func get_active_stunt_days_str():
+	if active_stunt == null:
+		return "--"
+	return str(active_stunt_days)
 
 ####################################
 #         Influence System         #
@@ -1016,6 +1029,8 @@ func _get_animation_orientation(from: Vector2, to: Vector2):
 		else:
 			return "se"
 			
+func _animate_stunt_start(stunt):
+	call_deferred("emit_signal", "start_stunt", self, stunt)
 	
 ####################################
 #         UI event handling        #

@@ -46,4 +46,6 @@ func set_data():
 	$A/H1/Content/Critical.text = str(current_troop.critical_chance() * 100) + "%"
 	$A/H1/Content/AntiCritical.text = str(current_troop.anti_critical_chance() * 100) + "%"
 	$A/H1/Content/CriticalRate.text = "x" + str(current_troop.critical_damage_rate(null))
-
+	$A/H1/Content/ActiveStunt.text = current_troop.get_active_stunt_name()
+	$A/H1/Content/ActiveStuntDay.text = current_troop.get_active_stunt_days_str()
+	

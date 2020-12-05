@@ -64,5 +64,11 @@
 			"Conditions": [],
 			"Text": ["別囂張！", "", ""]
 		}
+	],
+	"troop_start_stunt": [
+		{
+			"Conditions": [],
+			"Text": ["見識一下我{person}的{stunt}！"]
+		}
 	]
 }

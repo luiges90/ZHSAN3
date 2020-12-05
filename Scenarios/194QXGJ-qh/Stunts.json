@@ -36,7 +36,7 @@
             },
             {
                 "Operation": "troop_morale_at_least",
-                "Value": 60
+                "Value": 30
             },
             {
                 "Operation": "enemy_troop_nearby_count_at_least",
@@ -81,14 +81,6 @@
         "AIConditions": [
             {
                 "Operation": "troop_has_no_active_stunt"
-            },
-            {
-                "Operation": "troop_quantity_at_least",
-                "Value": 1000
-            },
-            {
-                "Operation": "troop_morale_at_least",
-                "Value": 50
             },
             {
                 "Operation": "enemy_troop_nearby_count_at_least",
@@ -141,11 +133,11 @@
             },
             {
                 "Operation": "troop_morale_at_least",
-                "Value": 70
+                "Value": 40
             },
             {
                 "Operation": "enemy_troop_nearby_count_at_least",
-                "Operator": "not",
+                "Operator": ["not"],
                 "Value": 1,
                 "Distance": 6
             },

@@ -11,7 +11,7 @@ signal add_person_bubble
 signal add_person_dialog
 
 const GREEN = "#00FF00" # troop
-const CYAN = "#00FFFF" # architecture, positions
+const CYAN = "#00FFFF" # architecture, positions, other keywords
 const RED = "#FF0000" # faction
 const YELLOW = "#FFFF00" # person
 
@@ -385,4 +385,12 @@ func _on_troop_person_released(troop, persons):
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_CAPTURED").format({
 				"person": _color_text(YELLOW, person_list_str),
 				"troop": _color_text(GREEN, troop.get_name())
+		}))
+
+func _on_troop_start_stunt(current_troop, stunt):
+	var leader = current_troop.get_leader()
+	call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+		 _get_bubble("troop_start_stunt", leader).format({
+			"person": _color_text(YELLOW, leader.get_name()),
+			"stunt": _color_text(CYAN, stunt.get_name()),
 		}))
