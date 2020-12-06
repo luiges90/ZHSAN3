@@ -1,16 +1,13 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Images/Troop/100/Move.png" type="Texture" id=1]
 [ext_resource path="res://ScenarioScene/Military/Troop.gd" type="Script" id=2]
-[ext_resource path="res://Images/TileEffect/Attract.png" type="Texture" id=3]
 [ext_resource path="res://UIMain/TroopTitle/TroopTitle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://ScenarioScene/Military/NumberFlashText.gd" type="Script" id=6]
 [ext_resource path="res://ScenarioScene/Architecture/Routed.wav" type="AudioStream" id=7]
 [ext_resource path="res://Images/TileEffect/Routed.png" type="Texture" id=8]
-[ext_resource path="res://Images/TileEffect/Stop.png" type="Texture" id=9]
 [ext_resource path="res://Images/TileEffect/Chaos.png" type="Texture" id=10]
-[ext_resource path="res://Images/TileEffect/Rumour.png" type="Texture" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -118,150 +115,6 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 135, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 270, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=24]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 405, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 540, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 675, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 810, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 11 )
-region = Rect2( 945, 0, 135, 135 )
-
-[sub_resource type="SpriteFrames" id=29]
-animations = [ {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
-"loop": true,
-"name": "default",
-"speed": 30.0
-} ]
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 135, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=32]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 270, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=33]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 405, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=34]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 540, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=35]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 675, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=36]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 810, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=37]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 945, 0, 135, 135 )
-
-[sub_resource type="SpriteFrames" id=38]
-animations = [ {
-"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
-"loop": true,
-"name": "default",
-"speed": 30.0
-} ]
-
-[sub_resource type="AtlasTexture" id=39]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=40]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 135, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=41]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 270, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=42]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 405, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=43]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 540, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=44]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 675, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=45]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 810, 0, 135, 135 )
-
-[sub_resource type="AtlasTexture" id=46]
-flags = 4
-atlas = ExtResource( 9 )
-region = Rect2( 945, 0, 135, 135 )
-
-[sub_resource type="SpriteFrames" id=47]
-animations = [ {
-"frames": [ SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
-"loop": true,
-"name": "default",
-"speed": 30.0
-} ]
-
 [sub_resource type="AtlasTexture" id=48]
 flags = 4
 atlas = ExtResource( 8 )
@@ -331,24 +184,9 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TroopArea"]
 frames = SubResource( 11 )
 
-[node name="ChaosSprite" type="AnimatedSprite" parent="TroopArea"]
+[node name="StatusSprite" type="AnimatedSprite" parent="TroopArea"]
 visible = false
 frames = SubResource( 20 )
-
-[node name="ForcedRetreatSprite" type="AnimatedSprite" parent="TroopArea"]
-visible = false
-frames = SubResource( 29 )
-frame = 5
-
-[node name="ForcedAttractSprite" type="AnimatedSprite" parent="TroopArea"]
-visible = false
-frames = SubResource( 38 )
-frame = 7
-
-[node name="StopSprite" type="AnimatedSprite" parent="TroopArea"]
-visible = false
-frames = SubResource( 47 )
-frame = 4
 
 [node name="Routed" type="AnimatedSprite" parent="TroopArea"]
 visible = false

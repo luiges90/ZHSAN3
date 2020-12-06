@@ -402,7 +402,7 @@ window/size/height=1000
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "vnen.tiled_importer" )
 
 [input]
 
