@@ -678,3 +678,7 @@ func _play_destroyed_animation():
 
 func _on_Routed_animation_finished():
 	$SpriteArea/Routed.hide()
+
+
+func _on_EffectSprite_animation_finished():
+	$SpriteArea/EffectSprite.hide()

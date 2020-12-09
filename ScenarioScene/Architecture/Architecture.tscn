@@ -343,4 +343,5 @@ __meta__ = {
 one_shot = true
 [connection signal="input_event" from="SpriteArea" to="." method="_on_SpriteArea_input_event"]
 [connection signal="animation_finished" from="SpriteArea/Routed" to="." method="_on_Routed_animation_finished"]
+[connection signal="animation_finished" from="SpriteArea/EffectSprite" to="." method="_on_EffectSprite_animation_finished"]
 [connection signal="timeout" from="NumberFlashText/Timer" to="NumberFlashText" method="_on_Timer_timeout"]

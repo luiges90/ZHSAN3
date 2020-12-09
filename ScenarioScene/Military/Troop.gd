@@ -960,7 +960,6 @@ func _animate_attack(target, self_damage, target_damage, critical):
 		if target is Architecture:
 			yield($TroopArea/AnimatedSprite, "animation_finished")
 			yield(other_effect_sprite, "animation_finished")
-			other_effect_sprite.visible = false
 			target.find_node("NumberFlashText").text = target.find_node("NumberFlashText").text + "\n↓" + str(target_damage)
 			target.find_node("NumberFlashText").find_node('Timer').start()
 			if target.endurance <= 0:
@@ -974,7 +973,6 @@ func _animate_attack(target, self_damage, target_damage, critical):
 			if target._destroyed:
 				yield($TroopArea/AnimatedSprite, "animation_finished")
 				yield(other_effect_sprite, "animation_finished")
-				other_effect_sprite.visible = false
 				call_deferred("emit_signal", "target_troop_destroyed", self, target)
 		
 		return true
@@ -1044,6 +1042,10 @@ func _get_animation_orientation(from: Vector2, to: Vector2):
 func _animate_stunt_start(stunt):
 	call_deferred("emit_signal", "start_stunt", self, stunt)
 	
+func _on_EffectSprite_animation_finished():
+	$TroopArea/EffectSprite.hide()
+
+	
 ####################################
 #         UI event handling        #
 ####################################
@@ -1054,5 +1056,6 @@ func _on_TroopArea_input_event(viewport, event, shape_idx):
 
 func get_screen_position():
 	return get_global_transform_with_canvas().origin
+
 
 
