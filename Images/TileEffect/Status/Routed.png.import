@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attract.png-a94e3585a42c67e04e9e1863f32455e6.stex"
+path="res://.import/Routed.png-74b0c8b4a128b48e5b1d1429fb153bce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/TileEffect/Attract.png"
-dest_files=[ "res://.import/Attract.png-a94e3585a42c67e04e9e1863f32455e6.stex" ]
+source_file="res://Images/TileEffect/Status/Routed.png"
+dest_files=[ "res://.import/Routed.png-74b0c8b4a128b48e5b1d1429fb153bce.stex" ]
 
 [params]
 

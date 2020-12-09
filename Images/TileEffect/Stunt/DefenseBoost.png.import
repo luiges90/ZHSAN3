@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Chaos.png-00884c33cd1c462aa044566262e93d9a.stex"
+path="res://.import/DefenseBoost.png-b21cc76e8517f0f7b0fcf0ff6e280991.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/TileEffect/Chaos.png"
-dest_files=[ "res://.import/Chaos.png-00884c33cd1c462aa044566262e93d9a.stex" ]
+source_file="res://Images/TileEffect/Stunt/DefenseBoost.png"
+dest_files=[ "res://.import/DefenseBoost.png-b21cc76e8517f0f7b0fcf0ff6e280991.stex" ]
 
 [params]
 

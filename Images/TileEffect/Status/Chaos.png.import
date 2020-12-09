@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rumour.png-bff27bcff059f45e97255deddc691831.stex"
+path="res://.import/Chaos.png-cff90fa0ee3d73cbac9e39d7aee6ee04.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/TileEffect/Rumour.png"
-dest_files=[ "res://.import/Rumour.png-bff27bcff059f45e97255deddc691831.stex" ]
+source_file="res://Images/TileEffect/Status/Chaos.png"
+dest_files=[ "res://.import/Chaos.png-cff90fa0ee3d73cbac9e39d7aee6ee04.stex" ]
 
 [params]
 

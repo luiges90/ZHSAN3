@@ -259,4 +259,4 @@ static func resize_texture(texture, old_size: Vector2, new_size: Vector2):
 	var image = ImageTexture.new()
 	image.create_from_image(sprite)
 	return image
-	
+

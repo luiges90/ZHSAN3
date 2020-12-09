@@ -1,13 +1,14 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Images/Troop/100/Move.png" type="Texture" id=1]
 [ext_resource path="res://ScenarioScene/Military/Troop.gd" type="Script" id=2]
+[ext_resource path="res://Images/TileEffect/Hit/Critical.png" type="Texture" id=3]
 [ext_resource path="res://UIMain/TroopTitle/TroopTitle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://ScenarioScene/Military/NumberFlashText.gd" type="Script" id=6]
 [ext_resource path="res://ScenarioScene/Architecture/Routed.wav" type="AudioStream" id=7]
-[ext_resource path="res://Images/TileEffect/Routed.png" type="Texture" id=8]
-[ext_resource path="res://Images/TileEffect/Chaos.png" type="Texture" id=10]
+[ext_resource path="res://Images/TileEffect/Status/Routed.png" type="Texture" id=8]
+[ext_resource path="res://Images/TileEffect/Hit/Hit.png" type="Texture" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -69,101 +70,221 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 135, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 270, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 256, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 405, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 384, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 540, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 512, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 675, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 810, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 768, 0, 128, 128 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 4
-atlas = ExtResource( 10 )
-region = Rect2( 945, 0, 135, 135 )
+atlas = ExtResource( 3 )
+region = Rect2( 896, 0, 128, 128 )
 
-[sub_resource type="SpriteFrames" id=20]
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1024, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1152, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1280, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1408, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1536, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1664, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1792, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 512, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 640, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 768, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 896, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1024, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1152, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1280, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1408, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1536, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1664, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1792, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 1920, 0, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=43]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
-"loop": true,
-"name": "default",
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": false,
+"name": "Critical",
+"speed": 30.0
+}, {
+"frames": [ SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": false,
+"name": "Hit",
 "speed": 30.0
 } ]
 
-[sub_resource type="AtlasTexture" id=48]
+[sub_resource type="AtlasTexture" id=44]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=49]
+[sub_resource type="AtlasTexture" id=45]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 100, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=50]
+[sub_resource type="AtlasTexture" id=46]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 200, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=51]
+[sub_resource type="AtlasTexture" id=47]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 300, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=52]
+[sub_resource type="AtlasTexture" id=48]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 400, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=53]
+[sub_resource type="AtlasTexture" id=49]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 500, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=54]
+[sub_resource type="AtlasTexture" id=50]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 600, 0, 100, 100 )
 
-[sub_resource type="AtlasTexture" id=55]
+[sub_resource type="AtlasTexture" id=51]
 flags = 4
 atlas = ExtResource( 8 )
 region = Rect2( 700, 0, 100, 100 )
 
-[sub_resource type="SpriteFrames" id=56]
+[sub_resource type="SpriteFrames" id=52]
 animations = [ {
-"frames": [ SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
 } ]
 
-[sub_resource type="DynamicFont" id=57]
+[sub_resource type="DynamicFont" id=53]
 size = 32
 outline_size = 1
 outline_color = Color( 1, 0, 0, 1 )
@@ -186,11 +307,18 @@ frames = SubResource( 11 )
 
 [node name="StatusSprite" type="AnimatedSprite" parent="TroopArea"]
 visible = false
-frames = SubResource( 20 )
+
+[node name="StuntSprite" type="AnimatedSprite" parent="TroopArea"]
+visible = false
+
+[node name="EffectSprite" type="AnimatedSprite" parent="TroopArea"]
+visible = false
+frames = SubResource( 43 )
+animation = "Hit"
 
 [node name="Routed" type="AnimatedSprite" parent="TroopArea"]
 visible = false
-frames = SubResource( 56 )
+frames = SubResource( 52 )
 
 [node name="RoutedSound" type="AudioStreamPlayer" parent="TroopArea/Routed"]
 stream = ExtResource( 7 )
@@ -214,7 +342,7 @@ rect_min_size = Vector2( 90, 56 )
 margin_right = 128.0
 margin_bottom = 128.0
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 57 )
+custom_fonts/font = SubResource( 53 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 align = 1
 valign = 1

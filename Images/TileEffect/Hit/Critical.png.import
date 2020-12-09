@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Stop.png-9158dbc900120776bdb2f053e64c89c6.stex"
+path="res://.import/Critical.png-10c06e5078f1ef62a5a35526e731308a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/TileEffect/Stop.png"
-dest_files=[ "res://.import/Stop.png-9158dbc900120776bdb2f053e64c89c6.stex" ]
+source_file="res://Images/TileEffect/Hit/Critical.png"
+dest_files=[ "res://.import/Critical.png-10c06e5078f1ef62a5a35526e731308a.stex" ]
 
 [params]
 

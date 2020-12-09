@@ -939,11 +939,19 @@ func _animate_attack(target, self_damage, target_damage, critical):
 		var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 		animated_sprite.animation = "attack_" + _orientation
 		__anim_self_damage = self_damage
+
+		var other_effect_sprite = target.find_node('EffectSprite')
 		
 		if critical:
 			$CriticalSound.play()
+			other_effect_sprite.visible = true
+			other_effect_sprite.frame = 0
+			other_effect_sprite.play("Critical")
 		else:
 			$AttackSound.play()
+			other_effect_sprite.visible = true
+			other_effect_sprite.frame = 0
+			other_effect_sprite.play("Hit")
 			
 		if not target._destroyed:
 			call_deferred("emit_signal", "performed_attack", self, target, critical)
@@ -951,7 +959,9 @@ func _animate_attack(target, self_damage, target_damage, critical):
 		
 		if target is Architecture:
 			yield($TroopArea/AnimatedSprite, "animation_finished")
-			target.find_node("NumberFlashText").text = "↓" + str(target_damage)
+			yield(other_effect_sprite, "animation_finished")
+			other_effect_sprite.visible = false
+			target.find_node("NumberFlashText").text = target.find_node("NumberFlashText").text + "\n↓" + str(target_damage)
 			target.find_node("NumberFlashText").find_node('Timer').start()
 			if target.endurance <= 0:
 				call_deferred("emit_signal", "target_architecture_destroyed", self, target)
@@ -963,6 +973,8 @@ func _animate_attack(target, self_damage, target_damage, critical):
 				target.__anim_self_damage = target_damage
 			if target._destroyed:
 				yield($TroopArea/AnimatedSprite, "animation_finished")
+				yield(other_effect_sprite, "animation_finished")
+				other_effect_sprite.visible = false
 				call_deferred("emit_signal", "target_troop_destroyed", self, target)
 		
 		return true
@@ -981,7 +993,7 @@ func _on_AnimatedSprite_animation_finished():
 		animated_sprite.animation = "move_" + _orientation
 		
 		if __anim_self_damage > 0 and not _destroyed:
-			find_node("NumberFlashText").text = "↓" + str(__anim_self_damage)
+			find_node("NumberFlashText").text = find_node("NumberFlashText").text + "\n↓" + str(__anim_self_damage)
 			find_node("NumberFlashText").find_node('Timer').start()
 			__anim_self_damage = 0
 		
