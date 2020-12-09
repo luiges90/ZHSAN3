@@ -928,7 +928,14 @@ func day_event():
 		if randf() < 1 / 10.0:
 			# lose loyalty when held captive
 			if get_status() == Status.CAPTIVE:
-				loyalty_shift -= (100 - get_morality()) / 20 + 1
+				var factor = 1.0
+				if is_intimate_to(faction.leader):
+					factor = 0.0
+				elif is_close_blood_to(faction.leader):
+					factor = 0.1
+				elif is_same_strain_to(faction.leader):
+					factor = 0.33
+				loyalty_shift = Util.f2ri(((91.0 - get_morality()) / 20.0) * factor)
 	
 		# loyalty-shift naturalize
 		var ideal_diff = get_ideal_difference(faction.leader)
