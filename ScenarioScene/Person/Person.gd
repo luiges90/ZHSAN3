@@ -935,7 +935,7 @@ func day_event():
 					factor = 0.1
 				elif is_same_strain_to(faction.leader):
 					factor = 0.33
-				loyalty_shift = Util.f2ri(((91.0 - get_morality()) / 20.0) * factor)
+				loyalty_shift -= max(0.0, Util.f2ri(((91.0 - get_morality()) / 20.0) * factor))
 	
 		# loyalty-shift naturalize
 		var ideal_diff = get_ideal_difference(faction.leader)
