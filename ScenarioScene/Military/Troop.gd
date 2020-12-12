@@ -1,7 +1,7 @@
 extends Node2D
 class_name Troop
 
-enum OrderType { MOVE, FOLLOW, ATTACK, ENTER }
+enum OrderType { MOVE, FOLLOW, ATTACK, ACTIVATE_STUNT, ENTER }
 enum AIState { MARCH, COMBAT, RETREAT }
 
 enum Status { NORMAL, CHAOS, FORCED_RETREAT, FORCED_ATTACK, STOP }
@@ -137,19 +137,26 @@ func load_data(json: Dictionary, objects):
 	
 func save_data() -> Dictionary:
 	var order_type
-	var order_target
-	var order_target_type
+	var order_target = -1
+	var order_target_type = ""
+	var order_stunt = -1
+	var order_stunt_level = 0
 	if current_order != null:
 		order_type = current_order.type
-		if current_order.target is Architecture:
-			order_target = current_order.target.id
-			order_target_type = "Architecture"
-		elif current_order.target is Vector2:
-			order_target = Util.save_position(current_order.target)
-			order_target_type = "Position"
-		else:
-			order_target = current_order.target.id
-			order_target_type = "Troop"
+		if current_order.target != null:
+			if current_order.target is Architecture:
+				order_target = current_order.target.id
+				order_target_type = "Architecture"
+			elif current_order.target is Vector2:
+				order_target = Util.save_position(current_order.target)
+				order_target_type = "Position"
+			else:
+				order_target = current_order.target.id
+				order_target_type = "Troop"
+		
+		if current_order.has("stunt"):
+			order_stunt = current_order.stunt.id
+			order_stunt_level = current_order.stunt_level
 	return {
 		"_Id": id,
 		"MapPosition": Util.save_position(map_position),
@@ -164,6 +171,8 @@ func save_data() -> Dictionary:
 		"_CurrentOrderType": order_type,
 		"_CurrentOrderTarget": order_target,
 		"_CurrentOrderTargetType": order_target_type,
+		"_CurrentOrderStunt": order_stunt,
+		"_CurrentOrderStuntLevel": order_stunt_level,
 		"_AIState": _ai_state,
 		"_AIDestinationArchitecture": _ai_destination_architecture.id if _ai_destination_architecture != null else null,
 		"_RecentlyBattled": _recently_battled
@@ -431,6 +440,14 @@ func set_attack_order(troop, arch):
 		"type": OrderType.ATTACK,
 		"target": object
 	}
+
+func set_activate_stunt_order(stunt, level):
+	current_order = {
+		"type": OrderType.ACTIVATE_STUNT,
+		"target": null,
+		"stunt": stunt,
+		"stunt_level": level
+	}
 	
 func set_position(pos):
 	var old_position = map_position
@@ -452,6 +469,7 @@ func get_order_text():
 		OrderType.ATTACK: return "ATTACK"
 		OrderType.FOLLOW: return "FOLLOW"
 		OrderType.ENTER: return "ENTER"
+		OrderType.ACTIVATE_STUNT: return "ACTIVATE_STUNT"
 		_: return ""
 		
 func get_order_target_text():
@@ -510,6 +528,7 @@ func activate_stunt(stunt, level):
 	active_stunt_level = level
 	active_stunt_days = stunt.duration
 	_animate_stunt_start(stunt)
+	current_order = null
 
 func get_active_stunt_name():
 	if active_stunt == null:
@@ -568,7 +587,10 @@ class ExecuteStepResult:
 		new_position = n
 
 func execute_step() -> ExecuteStepResult:
-	if current_order != null and current_order.type == OrderType.MOVE:
+	if current_order != null and current_order.type == OrderType.ACTIVATE_STUNT:
+		activate_stunt(current_order.stunt, current_order.stunt_level)
+		return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
+	elif current_order != null and current_order.type == OrderType.MOVE:
 		_current_path_index += 1
 		if _current_path_index >= _current_path.size():
 			return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)

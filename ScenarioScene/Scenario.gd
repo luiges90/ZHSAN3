@@ -344,7 +344,13 @@ func _load_data(path):
 		var order_type = troop_json[tid]["_CurrentOrderType"]
 		var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
 		var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
-		if order_target_type == "Position":
+		var order_target_stunt = troop_json[tid]["_CurrentOrderStunt"]
+		var order_target_stunt_level = troop_json[tid]["_CurrentOrderStuntLevel"]
+
+		if order_target_stunt >= 0:
+			var stunt = stunts[int(order_target_stunt)]
+			troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level)
+		elif order_target_type == "Position":
 			troops[tid].set_move_order(Util.load_position(order_target_raw))
 		elif order_target_type == "Architecture":
 			var arch = architectures[int(order_target_raw)]
@@ -355,6 +361,8 @@ func _load_data(path):
 				troops[tid].set_attack_order(troop, null)
 			elif order_type == Troop.OrderType.FOLLOW:
 				troops[tid].set_follow_order(troop)
+		
+		
 	
 	file.open(path + "/Sections.json", File.READ)
 	obj = parse_json(file.get_as_text())
@@ -542,8 +550,9 @@ func _on_troop_attack_clicked(troop):
 	$PositionSelector._on_select_troop_attack(troop)
 	
 func _on_troop_stunt_clicked(troop, stunt):
+	$GameRecordCreator._on_troop_prepare_start_stunt(troop, stunt)
 	var stunt_level = troop.get_leader().stunts[stunt]
-	troop.activate_stunt(stunt, stunt_level)
+	troop.set_activate_stunt_order(stunt, stunt_level)
 	
 func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)

@@ -10,7 +10,7 @@
             0.13
         ],
         "CombativityCost": 40,
-        "Duration": 3,
+        "Duration": 5,
         "LearnConditions": [
             {
                 "Operation": "combat_experience_at_least",
@@ -63,7 +63,7 @@
             0.13
         ],
         "CombativityCost": 40,
-        "Duration": 3,
+        "Duration": 5,
         "LearnConditions": [
             {
                 "Operation": "combat_experience_at_least",
@@ -109,7 +109,7 @@
             0.13
         ],
         "CombativityCost": 40,
-        "Duration": 3,
+        "Duration": 5,
         "LearnConditions": [
             {
                 "Operation": "combat_experience_at_least",

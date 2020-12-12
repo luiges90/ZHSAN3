@@ -209,3 +209,4 @@ ANTI_CRITICAL,Anti-critical,抗暴擊率,抗暴擊率
 CRITICAL_RATE,Critical Damage,暴擊傷害,暴擊傷害
 ACTIVE_STUNT,Active Stunt,正使用戰法,正使用戰法
 STUNT_DAY,Stunt Remaining Days,戰法剩餘天數,戰法剩餘天數
+ACTIVATE_STUNT,Activate Stunt,啟用戰法,啟用戰法

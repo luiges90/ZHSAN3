@@ -65,6 +65,12 @@
 			"Text": ["別囂張！", "", ""]
 		}
 	],
+	"troop_prepare_start_stunt":[
+		{
+			"Conditions": [],
+			"Text": ["準備使用{stunt}。"]
+		}
+	],
 	"troop_start_stunt": [
 		{
 			"Conditions": [],

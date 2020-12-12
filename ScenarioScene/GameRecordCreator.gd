@@ -387,6 +387,13 @@ func _on_troop_person_released(troop, persons):
 				"troop": _color_text(GREEN, troop.get_name())
 		}))
 
+func _on_troop_prepare_start_stunt(current_troop, stunt):
+	var leader = current_troop.get_leader()
+	call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+		 _get_bubble("troop_prepare_start_stunt", leader).format({
+			"stunt": _color_text(CYAN, stunt.get_name()),
+		}))
+
 func _on_troop_start_stunt(current_troop, stunt):
 	var leader = current_troop.get_leader()
 	call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
