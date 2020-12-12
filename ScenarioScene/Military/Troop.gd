@@ -23,6 +23,8 @@ var active_stunt setget forbidden
 var active_stunt_level setget forbidden
 var active_stunt_days = 0 setget forbidden
 
+var order_made: bool setget forbidden
+
 var _recently_battled: int setget forbidden
 
 var _person_list = Array() setget forbidden, get_all_persons
@@ -46,6 +48,8 @@ var _ai_path
 var _destroyed = false
 
 var _leader
+
+var _scenario_loaded = false
 
 var pathfinder: PathFinder
 
@@ -115,6 +119,8 @@ func load_data(json: Dictionary, objects):
 	morale = json["Morale"]
 	combativity = json["Combativity"]
 	
+	order_made = json["_OrderMade"]
+	
 	_orientation = json["_Orientation"]
 	
 	_starting_arch = scenario.architectures[int(json["StartingArchitecture"])]
@@ -166,6 +172,7 @@ func save_data() -> Dictionary:
 		"Quantity": quantity,
 		"Morale": morale,
 		"Combativity": combativity,
+		"_OrderMade": order_made,
 		"_FoodShortage": _food_shortage,
 		"_Orientation": _orientation,
 		"_CurrentOrderType": order_type,
@@ -180,6 +187,7 @@ func save_data() -> Dictionary:
 	
 func _on_scenario_loaded(scenario):
 	update_troop_title()
+	_scenario_loaded = true
 
 func get_name() -> String:
 	return gname
@@ -406,19 +414,29 @@ func _clear_order():
 	current_order = null
 
 func set_move_order(position):
+	assert(!order_made)
+	order_made = true
 	current_order = {
 		"type": OrderType.MOVE,
 		"target": position
 	}
+	if _scenario_loaded:
+		update_troop_title()
 	
 func set_enter_order(position):
+	assert(!order_made)
+	order_made = true
 	var architecture = scenario.get_architecture_at_position(position)
 	current_order = {
 		"type": OrderType.ENTER,
 		"target": architecture
 	}
+	if _scenario_loaded:
+		update_troop_title()
 		
 func set_follow_order(troop):
+	assert(!order_made)
+	order_made = true
 	if troop == null:
 		current_order = null
 	else:
@@ -426,8 +444,12 @@ func set_follow_order(troop):
 			"type": OrderType.FOLLOW,
 			"target": troop
 		}
+	if _scenario_loaded:
+		update_troop_title()
 	
 func set_attack_order(troop, arch):
+	assert(!order_made)
+	order_made = true
 	var object
 	if troop != null:
 		object = troop
@@ -440,14 +462,20 @@ func set_attack_order(troop, arch):
 		"type": OrderType.ATTACK,
 		"target": object
 	}
+	if _scenario_loaded:
+		update_troop_title()
 
 func set_activate_stunt_order(stunt, level):
+	assert(!order_made)
+	order_made = true
 	current_order = {
 		"type": OrderType.ACTIVATE_STUNT,
 		"target": null,
 		"stunt": stunt,
 		"stunt_level": level
 	}
+	if _scenario_loaded:
+		update_troop_title()
 	
 func set_position(pos):
 	var old_position = map_position
@@ -852,6 +880,9 @@ func after_order_cleanup():
 	pathfinder.after_order_cleanup()
 	
 func day_event():
+	order_made = false
+	update_troop_title()
+
 	if get_starting_architecture().get_belonged_faction() != get_belonged_faction():
 		var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position)
 		if move_to != null:

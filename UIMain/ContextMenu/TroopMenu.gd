@@ -18,12 +18,12 @@ func show_menu(troop, mouse_x, mouse_y):
 	
 	var is_player = troop.get_belonged_faction().player_controlled
 
-	$H/V/Move.visible = is_player
-	$H/V/Follow.visible = is_player
-	$H/V/Attack.visible = is_player
-	$H/V/Stunt.visible = is_player
-	$H/V/Enter.visible = is_player
-	$H/V/Occupy.visible = is_player
+	$H/V/Move.visible = is_player and not troop.order_made
+	$H/V/Follow.visible = is_player and not troop.order_made
+	$H/V/Attack.visible = is_player and not troop.order_made
+	$H/V/Stunt.visible = is_player and not troop.order_made
+	$H/V/Enter.visible = is_player and not troop.order_made
+	$H/V/Occupy.visible = is_player and not troop.order_made
 	$H/V/Occupy.disabled = !troop.can_occupy()
 	
 	margin_left = mouse_x
