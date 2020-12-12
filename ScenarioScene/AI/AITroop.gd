@@ -26,7 +26,7 @@ func run_troop(troop, scenario):
 				activated = true
 				break
 		
-		if not activated:	
+		if not activated:
 			# select target
 			var enemy_troops = []
 			var targets = troop.enemy_troop_in_range(troop.military_kind.range_max)
@@ -88,6 +88,7 @@ func run_troop(troop, scenario):
 				troop._ai_state = Troop.AIState.COMBAT
 				var target = Util.max_by(targets, "get_offence_over_defence")[1]
 				troop.set_attack_order(target, null)
+				done = true
 		if not done:
 			var __path = troop._ai_path.duplicate()
 			__path.invert()

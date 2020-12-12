@@ -799,7 +799,7 @@ func die():
 	var loc = get_location()
 	loc.remove_person(self)
 	if loc.has_method("check_destroy"):
-		loc.check_destroy()
+		loc.check_destroy(null)
 	_status = Status.NONE
 	alive = false
 	call_deferred("emit_signal", 'person_died', self)
