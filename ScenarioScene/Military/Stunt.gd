@@ -8,6 +8,8 @@ var gname: String setget forbidden
 var color: Color setget forbidden
 var description: String setget forbidden
 
+var tile_effect: String setget forbidden
+
 var combativity_cost: int setget forbidden
 var duration: int setget forbidden
 
@@ -28,6 +30,7 @@ func load_data(json: Dictionary, objects):
 	gname = json["Name"]
 	description = json["Description"]
 	color = Util.load_color(json["Color"])
+	tile_effect = json["TileEffect"]
 	combativity_cost = json["CombativityCost"]
 	duration = json["Duration"]
 	conditions = json["Conditions"]
@@ -42,6 +45,7 @@ func save_data() -> Dictionary:
 		"Name": gname,
 		"Description": description,
 		"Color": Util.save_color(color),
+		"TileEffect": tile_effect,
 		"CombativityCost": combativity_cost,
 		"Duration": duration,
 		"MaxLevel": max_level,

@@ -853,6 +853,7 @@ func day_event():
 		active_stunt_days -= 1
 		if active_stunt_days <= 0:
 			active_stunt = null
+			call_deferred("_animate_stunt_stop")
 		
 	call_deferred("emit_signal", "troop_survey_updated", self)
 		
@@ -1040,7 +1041,15 @@ func _get_animation_orientation(from: Vector2, to: Vector2):
 			return "se"
 			
 func _animate_stunt_start(stunt):
+	$TroopArea/StuntSprite.animation = stunt.tile_effect
+	$TroopArea/StuntSprite.frame = 0
+	$TroopArea/StuntSprite.show()
+	$TroopArea/StuntSprite.play()
 	call_deferred("emit_signal", "start_stunt", self, stunt)
+
+func _animate_stunt_stop():
+	$TroopArea/StuntSprite.stop()
+	$TroopArea/StuntSprite.hide()
 	
 func _on_EffectSprite_animation_finished():
 	$TroopArea/EffectSprite.hide()
