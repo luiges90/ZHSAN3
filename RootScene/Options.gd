@@ -3,11 +3,14 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameConfig.load_game_config()
+
 	$G/SE.pressed = GameConfig.se_enabled
 	$G/TroopAnimation.pressed = GameConfig.enable_troop_animations
 	$G/TroopAnimationSpeed.text = str(GameConfig.troop_animation_speed)
 	$G/DialogShowTime.text = str(GameConfig.dialog_show_time)
 	$G/BubbleShowTime.text = str(GameConfig.bubble_show_time)
+	$G/RadioButtonDirectSelect.pressed = GameConfig.radio_button_direct_select
 	$G/AutoSave.pressed = GameConfig.auto_save
 	$G/AutoSaveInterval.text = str(GameConfig.auto_save_interval)
 
@@ -22,6 +25,10 @@ func _on_Confirm_pressed():
 	GameConfig.troop_animation_speed = int($G/TroopAnimationSpeed.text)
 	GameConfig.dialog_show_time = int($G/DialogShowTime.text)
 	GameConfig.bubble_show_time = int($G/BubbleShowTime.text)
+	GameConfig.radio_button_direct_select = $G/RadioButtonDirectSelect.pressed
 	GameConfig.auto_save = $G/AutoSave.pressed
 	GameConfig.auto_save_interval = int($G/AutoSaveInterval.text)
+
+	GameConfig.save_game_config()
 	hide()
+

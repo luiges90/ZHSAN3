@@ -38,38 +38,38 @@ __meta__ = {
 }
 
 [node name="SE" type="CheckBox" parent="G"]
-margin_right = 222.0
+margin_right = 270.0
 margin_bottom = 18.0
 text = "SE_ENABLED"
 
 [node name="Control" type="Control" parent="G"]
-margin_left = 226.0
-margin_right = 284.0
+margin_left = 274.0
+margin_right = 332.0
 margin_bottom = 18.0
 
 [node name="TroopAnimation" type="CheckBox" parent="G"]
 margin_top = 22.0
-margin_right = 222.0
+margin_right = 270.0
 margin_bottom = 50.0
 text = "TROOP_ANIMATION_SPEED"
 
 [node name="TroopAnimationSpeed" type="LineEdit" parent="G"]
-margin_left = 226.0
+margin_left = 274.0
 margin_top = 22.0
-margin_right = 284.0
+margin_right = 332.0
 margin_bottom = 50.0
 text = "3"
 
 [node name="Label4" type="Label" parent="G"]
 margin_top = 59.0
-margin_right = 222.0
+margin_right = 270.0
 margin_bottom = 77.0
 text = "DIALOG_SHOW_TIME"
 
 [node name="DialogShowTime" type="LineEdit" parent="G"]
-margin_left = 226.0
+margin_left = 274.0
 margin_top = 54.0
-margin_right = 284.0
+margin_right = 332.0
 margin_bottom = 82.0
 text = "5"
 __meta__ = {
@@ -78,31 +78,43 @@ __meta__ = {
 
 [node name="Label5" type="Label" parent="G"]
 margin_top = 91.0
-margin_right = 222.0
+margin_right = 270.0
 margin_bottom = 109.0
 text = "BUBBLE_SHOW_TIME"
 
 [node name="BubbleShowTime" type="LineEdit" parent="G"]
-margin_left = 226.0
+margin_left = 274.0
 margin_top = 86.0
-margin_right = 284.0
+margin_right = 332.0
 margin_bottom = 114.0
 text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AutoSave" type="CheckBox" parent="G"]
+[node name="RadioButtonDirectSelect" type="CheckBox" parent="G"]
 margin_top = 118.0
-margin_right = 222.0
-margin_bottom = 146.0
+margin_right = 270.0
+margin_bottom = 136.0
+text = "RADIO_BUTTON_DIRECT_SELECT"
+
+[node name="Control2" type="Control" parent="G"]
+margin_left = 274.0
+margin_top = 118.0
+margin_right = 332.0
+margin_bottom = 136.0
+
+[node name="AutoSave" type="CheckBox" parent="G"]
+margin_top = 140.0
+margin_right = 270.0
+margin_bottom = 168.0
 text = "AUTO_SAVE_ENABLED"
 
 [node name="AutoSaveInterval" type="LineEdit" parent="G"]
-margin_left = 226.0
-margin_top = 118.0
-margin_right = 284.0
-margin_bottom = 146.0
+margin_left = 274.0
+margin_top = 140.0
+margin_right = 332.0
+margin_bottom = 168.0
 text = "120"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -12,6 +12,7 @@ func _on_Confirm_pressed():
 	config.ai_troop_defence_rate = float($Tabs/CONFIG_DIFFICULTY/G/AIDefenceRate.text)
 	SharedData.starting_scenario_config = config
 	
+	GameConfig.load_game_config()
 	get_tree().change_scene("res://Main.tscn")
 
 

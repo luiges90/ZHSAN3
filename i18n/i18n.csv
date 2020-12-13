@@ -210,3 +210,4 @@ ACTIVE_STUNT,Active Stunt,正使用戰法,正使用戰法
 STUNT_DAY,Stunt Remaining Days,戰法剩餘天數,戰法剩餘天數
 ACTIVATE_STUNT,Activate Stunt,啟用戰法,啟用戰法
 AUTO_SAVE_ENABLED,Autosave interval (turns),自動存檔間隔(回數),自動存檔間隔(回數)
+RADIO_BUTTON_DIRECT_SELECT,Click once to directly select item in single select lists,單選列表一點即選取,單選列表一點即選取

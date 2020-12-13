@@ -114,7 +114,7 @@ func _on_file_slot_clicked(mode, path: String):
 	
 func _save_data(path):
 	var dir = Directory.new()
-	dir.make_dir(path)
+	dir.make_dir_recursive(path)
 	
 	var date = $DateRunner as DateRunner
 	
