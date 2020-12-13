@@ -162,52 +162,52 @@ GAME_RECORD_TROOP_DESTROYED,{troop} has been routed,{troop}溃散了,{troop}潰�
 GAME_RECORD_FACTION_DESTROYED,{faction} has been eliminated,{faction}灭亡了,{faction}滅亡了
 GAME_RECORD_PERSON_DIED,{person} has died,{person}离开了人世,{person}離開了人世
 GAME_RECORD_PERSON_GROWN_JOIN,{person} has grown up and joined {faction} at {architecture},{person}長大成人了，加入了{faction}並於{architecture}到任,{person}長大成人了，加入了{faction}並於{architecture}到任
-GAME_RECORD_CONVINCE_PERSON_SUCCESS,{person} has successfully convinced {other_person} to join {faction}. {person} will be assigned to {architecture},{person}成功說服了{other_person}加入{faction}，將於{architecture}到任,{person}成功說服了{other_person}加入{faction}，將於{architecture}到任
-GAME_RECORD_CONVINCE_PERSON_FAILURE,{person} failed to convince {other_person},{person}說服{other_person}的行動失敗了,{person}說服{other_person}的行動失敗了
-GAME_RECORD_ASSIGN_ADVISOR,{person} become advisor for {faction},{person}被委任為{faction}的軍師,{person}被委任為{faction}的軍師
-GAME_RECORD_REMOVE_ADVISOR,Advisor for {faction} has been removed,{faction}的軍師被解任了,{faction}的軍師被解任了
-GAME_RECORD_PERSON_CAPTURED,{person} was captured by {troop},{person}等人被{troop}所俘虜,{person}等人被{troop}所俘虜
-GAME_RECORD_PERSON_RELEASED,{person} was released since {troop} has been routed,由於{troop}的潰散，{person}被釋放了,由於{troop}的潰散，{person}被釋放了
+GAME_RECORD_CONVINCE_PERSON_SUCCESS,{person} has successfully convinced {other_person} to join {faction}. {person} will be assigned to {architecture},{person}成功说服了{other_person}加入{faction}，将于{architecture}到任,{person}成功說服了{other_person}加入{faction}，將於{architecture}到任
+GAME_RECORD_CONVINCE_PERSON_FAILURE,{person} failed to convince {other_person},{person}说服{other_person}的行动失败了,{person}說服{other_person}的行動失敗了
+GAME_RECORD_ASSIGN_ADVISOR,{person} become advisor for {faction},{person}被委任为{faction}的军师,{person}被委任為{faction}的軍師
+GAME_RECORD_REMOVE_ADVISOR,Advisor for {faction} has been removed,{faction}的军师被解任了,{faction}的軍師被解任了
+GAME_RECORD_PERSON_CAPTURED,{person} was captured by {troop},{person}等人被{troop}所俘虏,{person}等人被{troop}所俘虜
+GAME_RECORD_PERSON_RELEASED,{person} was released since {troop} has been routed,由於{troop}的溃散，{person}被释放了,由於{troop}的潰散，{person}被釋放了
 NARRATOR,Narrator,旁白,旁白
 LEADER_NAME,Leader,君主,君主
-ADVISOR_NAME,Advisor,軍師,軍師
-ASSIGN_ADVISOR,Assign Advisor,委任軍師,委任軍師
-REMOVE_ADVISOR,Remove Advisor,解任軍師,解任軍師
-RELEVANCE,Relevance,相關,相關
-CONVINCE,Convince,說服,說服
-CONVINCE_TARGET,Convince Target,說服目標,說服目標
-ADVISOR_RECOMMENDED,Advisor Recommended,軍師建議,軍師建議
-CONVINCE_ABILITY,Convince,說服能力,說服能力
+ADVISOR_NAME,Advisor,军师,軍師
+ASSIGN_ADVISOR,Assign Advisor,委任军师,委任軍師
+REMOVE_ADVISOR,Remove Advisor,解任军师,解任軍師
+RELEVANCE,Relevance,相关,相關
+CONVINCE,Convince,说服,說服
+CONVINCE_TARGET,Convince Target,说服目标,說服目標
+ADVISOR_RECOMMENDED,Advisor Recommended,军师建议,軍師建議
+CONVINCE_ABILITY,Convince,说服能力,說服能力
 SUCCESS_RATE,Success Rate,成功率,成功率
-ETA,ETA,需時天數,需時天數
+ETA,ETA,需时天数,需時天數
 CAPITAL_NAME,Capital,首都,首都
-LOYALTY,Loyalty,忠誠度,忠誠度
-SE_ENABLED,Sound Effect,啟用音效,啟用音效
-TROOP_ANIMATION_SPEED,Troop Animation Speed,部隊動畫速度,部隊動畫速度
-DIALOG_SHOW_TIME,Dialog showing time length,對話顯示時間,對話顯示時間
-BUBBLE_SHOW_TIME,Dialog Bubbles showing time length,氣泡對話顯示時間,氣泡對話顯示時間
-INTERNAL_EXPERIENCE,Domestic Experience,內政經驗,內政經驗
-COMBAT_EXPERIENCE,Combat Experience,戰鬥經驗,戰鬥經驗
-STRATAGEM_EXPERIENCE,Stratagem Experience,策略經驗,策略經驗
-INFANTRY_EXPERIENCE,Infantry Experience,步兵經驗,步兵經驗
-CALVARY_EXPERIENCE,Calvary Experience,騎兵經驗,騎兵經驗
-BOWMAN_EXPERIENCE,Bowman Experience,弓兵經驗,弓兵經驗
-SIEGE_WEAPON_EXPERIENCE,Siege Weapons Experience,兵器經驗,兵器經驗
-TROOP_DAMAGE_DEALT,Troop Damage Dealt,部隊損敵兵數,部隊損敵兵數
-TROOP_DAMAGE_RECEIVED,Troop Damage Received,部隊自損兵數,部隊自損兵數
-ARCH_DAMAGE_DEALT,Architecture Damage Dealt,部隊建築耐久損毀量,部隊建築耐久損毀量
-ROUT_COUNT,Rout Count,部隊擊破數,部隊擊破數
-ROUTED_COUNT,Routed Count,部隊被擊破數,部隊被擊破數
-CAPTURE_COUNT,Capture Count,部隊武將捕獲數,部隊武將捕獲數
-BE_CAPTURED_COUNT,Be Captured Count,部隊自身被捕獲數,部隊自身被捕獲數
-STUNT,Stunt,戰法,戰法
-STUNTS,Stunts,戰法,戰法
-COMBATIVITY_COST,Combativity Cost: {cost},消耗戰意：{cost},消耗戰意：{cost}
-CRITICAL,Critical,暴擊率,暴擊率
-ANTI_CRITICAL,Anti-critical,抗暴擊率,抗暴擊率
-CRITICAL_RATE,Critical Damage,暴擊傷害,暴擊傷害
-ACTIVE_STUNT,Active Stunt,正使用戰法,正使用戰法
-STUNT_DAY,Stunt Remaining Days,戰法剩餘天數,戰法剩餘天數
-ACTIVATE_STUNT,Activate Stunt,啟用戰法,啟用戰法
-AUTO_SAVE_ENABLED,Autosave interval (turns),自動存檔間隔(回數),自動存檔間隔(回數)
-RADIO_BUTTON_DIRECT_SELECT,Click once to directly select item in single select lists,單選列表一點即選取,單選列表一點即選取
+LOYALTY,Loyalty,忠诚度,忠誠度
+SE_ENABLED,Sound Effect,启用音效,啟用音效
+TROOP_ANIMATION_SPEED,Troop Animation Speed,部队动画速度,部隊動畫速度
+DIALOG_SHOW_TIME,Dialog showing time length,对话显示时间,對話顯示時間
+BUBBLE_SHOW_TIME,Dialog Bubbles showing time length,气泡对话显示时间,氣泡對話顯示時間
+INTERNAL_EXPERIENCE,Domestic Experience,内政经验,內政經驗
+COMBAT_EXPERIENCE,Combat Experience,战斗经验,戰鬥經驗
+STRATAGEM_EXPERIENCE,Stratagem Experience,策略经验,策略經驗
+INFANTRY_EXPERIENCE,Infantry Experience,步兵经验,步兵經驗
+CALVARY_EXPERIENCE,Calvary Experience,骑兵经验,騎兵經驗
+BOWMAN_EXPERIENCE,Bowman Experience,弓兵经验,弓兵經驗
+SIEGE_WEAPON_EXPERIENCE,Siege Weapons Experience,兵器经验,兵器經驗
+TROOP_DAMAGE_DEALT,Troop Damage Dealt,部队损敌兵数,部隊損敵兵數
+TROOP_DAMAGE_RECEIVED,Troop Damage Received,部队自损兵数,部隊自損兵數
+ARCH_DAMAGE_DEALT,Architecture Damage Dealt,部队建筑耐久损毁量,部隊建築耐久損毀量
+ROUT_COUNT,Rout Count,部队击破数,部隊擊破數
+ROUTED_COUNT,Routed Count,部队被击破数,部隊被擊破數
+CAPTURE_COUNT,Capture Count,部队武将捕获数,部隊武將捕獲數
+BE_CAPTURED_COUNT,Be Captured Count,部队自身被捕获数,部隊自身被捕獲數
+STUNT,Stunt,战法,戰法
+STUNTS,Stunts,战法,戰法
+COMBATIVITY_COST,Combativity Cost: {cost},消耗战意：{cost},消耗戰意：{cost}
+CRITICAL,Critical,暴击率,暴擊率
+ANTI_CRITICAL,Anti-critical,抗暴击率,抗暴擊率
+CRITICAL_RATE,Critical Damage,暴击伤害,暴擊傷害
+ACTIVE_STUNT,Active Stunt,正使用战法,正使用戰法
+STUNT_DAY,Stunt Remaining Days,战法剩余天数,戰法剩餘天數
+ACTIVATE_STUNT,Activate Stunt,启用战法,啟用戰法
+AUTO_SAVE_ENABLED,Autosave interval (turns),自动存档间隔(回数),自動存檔間隔(回數)
+RADIO_BUTTON_DIRECT_SELECT,Click once to directly select item in single select lists,单选列表一点即选取,單選列表一點即選取
