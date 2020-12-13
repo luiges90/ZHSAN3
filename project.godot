@@ -376,6 +376,8 @@ _global_script_class_icons={
 
 config/name="ZHSAN3"
 run/main_scene="res://Root.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="ZHSAN3"
 boot_splash/image="res://Images/Splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
