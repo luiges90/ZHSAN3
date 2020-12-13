@@ -929,13 +929,15 @@ func day_event():
 			# lose loyalty when held captive
 			if get_status() == Status.CAPTIVE:
 				var factor = 1.0
-				if is_intimate_to(faction.leader):
+				if is_faction_leader():
+					factor = 0.0
+				elif is_intimate_to(faction.leader):
 					factor = 0.0
 				elif is_close_blood_to(faction.leader):
 					factor = 0.1
 				elif is_same_strain_to(faction.leader):
 					factor = 0.33
-				loyalty_shift -= max(0.0, Util.f2ri(((91.0 - get_morality()) / 20.0) * factor))
+				loyalty_shift -= Util.f2ri(max((90.0 - get_morality()) / 20.0 * factor, 0.0))
 	
 		# loyalty-shift naturalize
 		var ideal_diff = get_ideal_difference(faction.leader)
