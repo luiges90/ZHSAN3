@@ -17,3 +17,7 @@ var bubble_show_time = 2
 var radio_button_direct_select = true
 
 var _use_threads = true
+
+var auto_save = true
+var auto_save_interval = 10
+var _auto_save_file_prefix = "_autoSave"

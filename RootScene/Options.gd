@@ -21,4 +21,6 @@ func _on_Confirm_pressed():
 	GameConfig.troop_animation_speed = int($G/TroopAnimationSpeed.text)
 	GameConfig.dialog_show_time = int($G/DialogShowTime.text)
 	GameConfig.bubble_show_time = int($G/BubbleShowTime.text)
+	GameConfig.auto_save = $G/AutoSave.pressed
+	GameConfig.auto_save_interval = int($G/AutoSaveInterval.text)
 	hide()
