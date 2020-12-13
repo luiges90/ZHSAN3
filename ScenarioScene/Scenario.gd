@@ -10,6 +10,8 @@ var ai: AI
 
 var current_faction
 
+var turn_passed = 0
+
 var terrain_details = Dictionary() setget forbidden
 var movement_kinds = Dictionary() setget forbidden
 var architecture_kinds = Dictionary() setget forbidden
@@ -125,7 +127,8 @@ func _save_data(path):
 			"GameData": {
 				"Year": date.year,
 				"Month": date.month,
-				"Day": date.day
+				"Day": date.day,
+				"TurnPassed": turn_passed
 			}
 		}
 	))
@@ -215,6 +218,7 @@ func _load_data(path):
 	var current_name = obj.get("Scenario")
 	if current_name != null:
 		current_scenario_name = current_name
+	turn_passed = obj["GameData"]["TurnPassed"]
 	file.close()
 	
 	file.open(path + "/ScenarioConfig.json", File.READ)
@@ -569,6 +573,28 @@ func _on_focus_camera(position):
 var __day_passed_sec = OS.get_ticks_msec()
 
 func _on_day_passed():
+	# auto save
+	turn_passed += 1
+	if GameConfig.auto_save and int(turn_passed) % int(GameConfig.auto_save_interval) == 0:
+		var path = "user://Saves/_AutoSaves"
+		var dir = Directory.new()
+		if not dir.dir_exists(path):
+			dir.make_dir_recursive(path)
+		dir.open(path)
+
+		var save_id = 0
+		dir.list_dir_begin()
+		while true:
+			var file = dir.get_next()
+			if file == "":
+				break
+			elif file.begins_with("_Auto"):
+				save_id += 1
+		dir.list_dir_end()
+
+		_save_data(path + "/_Auto" + str(int(save_id) % int(GameConfig.auto_save_file_count)))
+	
+	# run days
 	if GameConfig._use_threads:
 		__on_day_passed_threaded()
 	else:

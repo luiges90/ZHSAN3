@@ -8,7 +8,8 @@ func _ready():
 	$G/TroopAnimationSpeed.text = str(GameConfig.troop_animation_speed)
 	$G/DialogShowTime.text = str(GameConfig.dialog_show_time)
 	$G/BubbleShowTime.text = str(GameConfig.bubble_show_time)
-
+	$G/AutoSave.pressed = GameConfig.auto_save
+	$G/AutoSaveInterval.text = str(GameConfig.auto_save_interval)
 
 
 func _on_Cancel_pressed():

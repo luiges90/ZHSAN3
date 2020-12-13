@@ -19,5 +19,5 @@ var radio_button_direct_select = true
 var _use_threads = true
 
 var auto_save = true
-var auto_save_interval = 10
-var _auto_save_file_prefix = "_autoSave"
+var auto_save_interval = 60
+var auto_save_file_count = 10

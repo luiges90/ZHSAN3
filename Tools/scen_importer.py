@@ -408,7 +408,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
               {
                 "Year": obj['Date']['Year'],
                 "Month": obj['Date']['Month'],
-                "Day": obj['Date']['Day']
+                "Day": obj['Date']['Day'],
+                "TurnPassed": 0
               },
               "Name": obj['ScenarioTitle'],
               "Factions": all_factions

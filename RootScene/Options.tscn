@@ -92,7 +92,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SE2" type="CheckBox" parent="G"]
+[node name="AutoSave" type="CheckBox" parent="G"]
 margin_top = 118.0
 margin_right = 222.0
 margin_bottom = 146.0
@@ -103,7 +103,7 @@ margin_left = 226.0
 margin_top = 118.0
 margin_right = 284.0
 margin_bottom = 146.0
-text = "10"
+text = "120"
 __meta__ = {
 "_edit_use_anchors_": false
 }
