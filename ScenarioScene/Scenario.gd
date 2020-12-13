@@ -582,17 +582,8 @@ func _on_day_passed():
 			dir.make_dir_recursive(path)
 		dir.open(path)
 
-		var save_id = 0
-		dir.list_dir_begin()
-		while true:
-			var file = dir.get_next()
-			if file == "":
-				break
-			elif file.begins_with("_Auto"):
-				save_id += 1
-		dir.list_dir_end()
-
-		_save_data(path + "/_Auto" + str(int(save_id) % int(GameConfig.auto_save_file_count)))
+		var save_id = int(turn_passed) / int(GameConfig.auto_save_interval) % int(GameConfig.auto_save_file_count)
+		_save_data(path + "/_Auto" + str(save_id))
 	
 	# run days
 	if GameConfig._use_threads:
