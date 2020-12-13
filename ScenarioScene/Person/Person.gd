@@ -934,9 +934,9 @@ func day_event():
 				elif is_intimate_to(faction.leader):
 					factor = 0.0
 				elif is_close_blood_to(faction.leader):
-					factor = 0.1
+					factor = 0.25
 				elif is_same_strain_to(faction.leader):
-					factor = 0.33
+					factor = 0.5
 				loyalty_shift -= Util.f2ri(max((90.0 - get_morality()) / 20.0 * factor, 0.0))
 	
 		# loyalty-shift naturalize
