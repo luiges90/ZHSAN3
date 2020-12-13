@@ -98,3 +98,8 @@ func set_belonged_faction(faction, force = false):
 	_belonged_faction = faction
 	if not force:
 		faction.add_architecture(self, true)
+
+func destroy():
+	for t in get_troops():
+		t.destroy(null)
+	

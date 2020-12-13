@@ -822,6 +822,7 @@ func remove_troop(item):
 	
 func remove_faction(item):
 	for s in item.get_sections():
+		s.destroy()
 		sections.erase(s.id)
 	factions.erase(item.id)
 

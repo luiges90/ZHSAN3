@@ -794,6 +794,7 @@ func become_available():
 	call_deferred("emit_signal", "person_available", self, AvailableReason.NONE, null)
 	
 func die():
+	get_location().remove_person()
 	if is_faction_leader():
 		get_belonged_faction().change_leader()
 	var loc = get_location()
