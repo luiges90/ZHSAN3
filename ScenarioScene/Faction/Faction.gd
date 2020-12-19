@@ -148,11 +148,13 @@ func get_convince_targets():
 #           Manipulation           #
 ####################################
 func _set_leader(person):
-	assert(person != null and person.get_belonged_faction() == self)
+	if not scenario._loading_scenario:
+		assert(person != null and person.get_belonged_faction() == self)
 	leader = person
 
 func _set_advisor(person):
-	assert(person == null or person.get_belonged_faction() == self)
+	if not scenario._loading_scenario:
+		assert(person == null or person.get_belonged_faction() == self)
 	advisor = person
 
 func add_section(section, force: bool = false):

@@ -197,6 +197,10 @@ func _save_data(path):
 func __save_items(d: Dictionary):
 	var arr = []
 	for item in d.values():
+		if item is Troop and item._destroyed:
+			continue
+		if item is Faction and item._destroyed:
+			continue
 		arr.push_back(item.save_data())
 	return arr
 
@@ -507,17 +511,20 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 func create_troop(arch, troop, position) -> Troop:
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
-	for p in troop.persons:
-		instance.add_person(p)
-		p.clear_working_task()
-
+	instance.scenario = self
+	
 	var id = troops.keys().max()
 	if id == null:
 		id = 1
 	else:
 		id = id + 1
-	instance.set_scenario(self)
 	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
+	
+	for p in troop.persons:
+		instance.add_person(p)
+		p.clear_working_task()
+
+	instance.set_scenario(self)
 	troops[instance.id] = instance
 	call_deferred("add_child", instance)
 	instance.add_to_group(GROUP_GAME_INSTANCES)
@@ -666,9 +673,12 @@ func ___on_day_passed_thread(_unused):
 		if not faction._destroyed:
 			faction.day_event()
 
-	for troop in troops.values():
+	var all_troops = troops.values()
+	for troop in all_troops:
 		if not troop._destroyed:
 			troop.day_event()
+		else:
+			remove_troop(troop)
 
 	for person in persons.values():
 		if person.alive:

@@ -206,6 +206,10 @@ func get_persons() -> Array:
 #        Set up / Tear down        #
 ####################################
 func add_person(p, force: bool = false):
+	if _person_list.size() == 0:
+		_leader = p
+		gname = _leader.get_name() + tr('PERSON_TROOP')
+		update_troop_title()
 	_person_list.append(p)
 	if not force:
 		p.set_location(self, true)
@@ -229,10 +233,7 @@ func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in
 	morale = in_morale
 	combativity = in_combativity
 	map_position = pos
-	_leader = _person_list[0]
-	gname = _leader.get_name() + tr('PERSON_TROOP')
 	_update_military_kind_sprite()
-	update_troop_title()
 	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
 	_on_camera_moved(camera_rect, scenario.get_camera_zoom(), scenario)
 

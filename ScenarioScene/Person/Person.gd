@@ -337,7 +337,7 @@ func get_status_str() -> String:
 
 func get_belonged_faction():
 	if _status == Status.CAPTIVE:
-		if _old_faction_id == -1 or !scenario.factions.has(_old_faction_id):
+		if _old_faction_id == -1 or not scenario.factions.has(_old_faction_id):
 			return null
 		return scenario.factions[_old_faction_id]
 	else:
@@ -706,6 +706,8 @@ func add_merit(delta):
 #####################################
 	
 func set_location(item, force = false):
+	if _status != Status.CAPTIVE:
+		assert(not is_faction_leader() or get_belonged_faction() == item.get_belonged_faction())
 	if _location != null:
 		_location.remove_person(self, true)
 	_location = item
