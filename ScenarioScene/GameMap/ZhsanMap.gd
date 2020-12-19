@@ -16,8 +16,8 @@ func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
 	var quadrant_bottom = int(bottom_right.y / quadrant_size.y)
 	for node in get_children():
 		var name = node.name
-		var y = int(name.substr(0, name.find('x')))
-		var x = int(name.substr(name.find('x') + 1))
+		var y = int(name.substr(0, 1))
+		var x = int(name.substr(2, 1))
 		node.visible = quadrant_left <= x and x <= quadrant_right and quadrant_top <= y and y <= quadrant_bottom
 
 
