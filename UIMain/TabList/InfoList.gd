@@ -9,6 +9,12 @@ func _on_InfoMenu_skills_clicked(scenario):
 	$Title.text = tr('SKILL_LIST')
 	show_data(scenario.skills)
 	show()
+	
+func _on_InfoMenu_stunts_clicked(scenario):
+	$Title.text = tr('STUNT_LIST')
+	show_data(scenario.stunts)
+	show()
+	
 
 func show_data(data):
 	var item_list = tabs['BASIC'] as GridContainer

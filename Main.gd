@@ -73,6 +73,7 @@ func _register_menus():
 	$UICanvas/UIMain/InfoMenu.connect("architectures_clicked", $UICanvas/UIMain/ArchitectureList, "_on_InfoMenu_architectures_clicked", [$Scenario])
 	$UICanvas/UIMain/InfoMenu.connect("persons_clicked", $UICanvas/UIMain/PersonList, "_on_InfoMenu_persons_clicked", [$Scenario])
 	$UICanvas/UIMain/InfoMenu.connect("skills_clicked", $UICanvas/UIMain/InfoList, "_on_InfoMenu_skills_clicked", [$Scenario])
+	$UICanvas/UIMain/InfoMenu.connect("stunts_clicked", $UICanvas/UIMain/InfoList, "_on_InfoMenu_stunts_clicked", [$Scenario])
 	
 	$UICanvas/UIMain/TroopMenu.connect("move_clicked", $Scenario, "_on_troop_move_clicked")
 	$UICanvas/UIMain/TroopMenu.connect("attack_clicked", $Scenario, "_on_troop_attack_clicked")

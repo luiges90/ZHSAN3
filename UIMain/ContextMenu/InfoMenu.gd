@@ -6,6 +6,7 @@ signal factions_clicked
 signal architectures_clicked
 signal persons_clicked
 signal skills_clicked
+signal stunts_clicked
 
 func _on_MilitaryKind_pressed():
 	_select_item()
@@ -36,3 +37,8 @@ func _on_Persons_pressed():
 func _on_Skill_pressed():
 	_select_item()
 	call_deferred("emit_signal", "skills_clicked")
+
+
+func _on_Stunt_pressed():
+	_select_item()
+	call_deferred("emit_signal", "stunts_clicked")
