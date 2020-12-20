@@ -120,6 +120,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EnableInGameEdit" type="CheckBox" parent="G"]
+margin_top = 172.0
+margin_right = 270.0
+margin_bottom = 190.0
+text = "ENABLE_IN_GAME_EDIT"
+
+[node name="Control3" type="Control" parent="G"]
+margin_left = 274.0
+margin_top = 172.0
+margin_right = 332.0
+margin_bottom = 190.0
+
 [node name="Confirm" type="Button" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0

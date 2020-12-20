@@ -13,6 +13,7 @@ func _ready():
 	$G/RadioButtonDirectSelect.pressed = GameConfig.radio_button_direct_select
 	$G/AutoSave.pressed = GameConfig.auto_save
 	$G/AutoSaveInterval.text = str(GameConfig.auto_save_interval)
+	$G/EnableInGameEdit.pressed = GameConfig.enable_edit
 
 
 func _on_Cancel_pressed():
@@ -27,7 +28,8 @@ func _on_Confirm_pressed():
 	GameConfig.bubble_show_time = int($G/BubbleShowTime.text)
 	GameConfig.radio_button_direct_select = $G/RadioButtonDirectSelect.pressed
 	GameConfig.auto_save = $G/AutoSave.pressed
-	GameConfig.auto_save_interval = int($G/AutoSaveInterval.text)
+	GameConfig.auto_save_interval = max(1, int($G/AutoSaveInterval.text))
+	GameConfig.enable_edit = $G/EnableInGameEdit.pressed
 
 	GameConfig.save_game_config()
 	hide()

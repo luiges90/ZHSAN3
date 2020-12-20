@@ -36,7 +36,7 @@ static func id_key_dict(dict: Dictionary) -> Dictionary:
 	for item in dict:
 		s[item.id] = dict[item]
 	return s
-
+	
 ##############################################
 #                 Formatting                 #
 ##############################################

@@ -10,8 +10,7 @@
 [node name="PersonDetail" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_right = -341.0
+margin_right = -342.0
 margin_bottom = -168.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
@@ -53,13 +52,13 @@ margin_top = 64.0
 margin_right = -16.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
-columns = 9
+columns = 11
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label10" type="Label" parent="Status"]
-margin_right = 134.0
+margin_right = 108.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -70,8 +69,8 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="Status"]
-margin_left = 142.0
-margin_right = 276.0
+margin_left = 116.0
+margin_right = 224.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -82,8 +81,8 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="Status"]
-margin_left = 284.0
-margin_right = 418.0
+margin_left = 232.0
+margin_right = 340.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -94,8 +93,8 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="Status"]
-margin_left = 426.0
-margin_right = 560.0
+margin_left = 348.0
+margin_right = 456.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -106,8 +105,8 @@ __meta__ = {
 }
 
 [node name="Label9" type="Label" parent="Status"]
-margin_left = 568.0
-margin_right = 702.0
+margin_left = 464.0
+margin_right = 572.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -118,8 +117,8 @@ __meta__ = {
 }
 
 [node name="Label14" type="Label" parent="Status"]
-margin_left = 710.0
-margin_right = 844.0
+margin_left = 580.0
+margin_right = 688.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -130,8 +129,8 @@ __meta__ = {
 }
 
 [node name="Label11" type="Label" parent="Status"]
-margin_left = 852.0
-margin_right = 986.0
+margin_left = 696.0
+margin_right = 804.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -142,8 +141,8 @@ __meta__ = {
 }
 
 [node name="Label12" type="Label" parent="Status"]
-margin_left = 994.0
-margin_right = 1128.0
+margin_left = 812.0
+margin_right = 920.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -154,8 +153,8 @@ __meta__ = {
 }
 
 [node name="Label13" type="Label" parent="Status"]
-margin_left = 1136.0
-margin_right = 1270.0
+margin_left = 928.0
+margin_right = 1036.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -165,9 +164,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label15" type="Label" parent="Status"]
+margin_left = 1044.0
+margin_right = 1152.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "AMBITION"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label16" type="Label" parent="Status"]
+margin_left = 1160.0
+margin_right = 1268.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "MORALITY"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Gender" type="Label" parent="Status"]
 margin_top = 26.0
-margin_right = 134.0
+margin_right = 108.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "男"
@@ -177,9 +200,9 @@ __meta__ = {
 }
 
 [node name="Faction" type="Label" parent="Status"]
-margin_left = 142.0
+margin_left = 116.0
 margin_top = 26.0
-margin_right = 276.0
+margin_right = 224.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火"
@@ -189,9 +212,9 @@ __meta__ = {
 }
 
 [node name="Section" type="Label" parent="Status"]
-margin_left = 284.0
+margin_left = 232.0
 margin_top = 26.0
-margin_right = 418.0
+margin_right = 340.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火軍團"
@@ -201,9 +224,9 @@ __meta__ = {
 }
 
 [node name="Location" type="Label" parent="Status"]
-margin_left = 426.0
+margin_left = 348.0
 margin_top = 26.0
-margin_right = 560.0
+margin_right = 456.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒陽"
@@ -213,9 +236,9 @@ __meta__ = {
 }
 
 [node name="Status" type="Label" parent="Status"]
-margin_left = 568.0
+margin_left = 464.0
 margin_top = 26.0
-margin_right = 702.0
+margin_right = 572.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "君主"
@@ -225,9 +248,9 @@ __meta__ = {
 }
 
 [node name="Merit" type="Label" parent="Status"]
-margin_left = 710.0
+margin_left = 580.0
 margin_top = 26.0
-margin_right = 844.0
+margin_right = 688.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "10"
@@ -236,47 +259,128 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Popularity" type="Label" parent="Status"]
+[node name="MeritEdit" type="LineEdit" parent="Status"]
+visible = false
 margin_left = 852.0
 margin_top = 26.0
 margin_right = 986.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+text = "10"
+align = 1
+
+[node name="Karma" type="Label" parent="Status"]
+margin_left = 696.0
+margin_top = 26.0
+margin_right = 804.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-text = "100"
+text = "10"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Prestige" type="Label" parent="Status"]
+[node name="KarmaEdit" type="LineEdit" parent="Status"]
+visible = false
 margin_left = 994.0
 margin_top = 26.0
 margin_right = 1128.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
+text = "10"
+align = 1
+
+[node name="Popularity" type="Label" parent="Status"]
+margin_left = 812.0
+margin_top = 26.0
+margin_right = 920.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
 text = "100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Karma" type="Label" parent="Status"]
+[node name="PopularityEdit" type="LineEdit" parent="Status"]
+visible = false
 margin_left = 1136.0
 margin_top = 26.0
 margin_right = 1270.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-text = "10"
+text = "100"
+align = 1
+
+[node name="Prestige" type="Label" parent="Status"]
+margin_left = 928.0
+margin_top = 26.0
+margin_right = 1036.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "100"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PrestigeEdit" type="LineEdit" parent="Status"]
+visible = false
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
+[node name="Ambition" type="Label" parent="Status"]
+margin_left = 1044.0
+margin_top = 26.0
+margin_right = 1152.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmbitionEdit" type="LineEdit" parent="Status"]
+visible = false
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
+[node name="Morality" type="Label" parent="Status"]
+margin_left = 1160.0
+margin_top = 26.0
+margin_right = 1268.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoralityEdit" type="LineEdit" parent="Status"]
+visible = false
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
 [node name="Abilities" type="GridContainer" parent="."]
 margin_left = 288.0
 margin_top = 128.0
-margin_right = 448.0
-margin_bottom = 148.0
+margin_right = 492.0
+margin_bottom = 276.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 columns = 2
@@ -297,7 +401,7 @@ __meta__ = {
 
 [node name="Command" type="Label" parent="Abilities"]
 margin_left = 126.0
-margin_right = 160.0
+margin_right = 204.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 text = "60"
@@ -305,6 +409,15 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CommandEdit" type="LineEdit" parent="Abilities"]
+visible = false
+margin_top = 26.0
+margin_right = 78.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "60"
+align = 1
 
 [node name="Label2" type="Label" parent="Abilities"]
 margin_top = 26.0
@@ -321,7 +434,7 @@ __meta__ = {
 [node name="Strength" type="Label" parent="Abilities"]
 margin_left = 126.0
 margin_top = 26.0
-margin_right = 160.0
+margin_right = 204.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "60"
@@ -329,6 +442,15 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="StrengthEdit" type="LineEdit" parent="Abilities"]
+visible = false
+margin_top = 52.0
+margin_right = 89.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+text = "60"
+align = 1
 
 [node name="Label3" type="Label" parent="Abilities"]
 margin_top = 52.0
@@ -345,7 +467,7 @@ __meta__ = {
 [node name="Intelligence" type="Label" parent="Abilities"]
 margin_left = 126.0
 margin_top = 52.0
-margin_right = 160.0
+margin_right = 204.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 text = "60"
@@ -353,6 +475,15 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="IntelligenceEdit" type="LineEdit" parent="Abilities"]
+visible = false
+margin_top = 78.0
+margin_right = 118.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+text = "60"
+align = 1
 
 [node name="Label4" type="Label" parent="Abilities"]
 margin_top = 78.0
@@ -369,7 +500,7 @@ __meta__ = {
 [node name="Politics" type="Label" parent="Abilities"]
 margin_left = 126.0
 margin_top = 78.0
-margin_right = 160.0
+margin_right = 204.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "60"
@@ -377,6 +508,15 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PoliticsEdit" type="LineEdit" parent="Abilities"]
+visible = false
+margin_top = 104.0
+margin_right = 118.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+text = "60"
+align = 1
 
 [node name="Label5" type="Label" parent="Abilities"]
 margin_top = 104.0
@@ -393,7 +533,7 @@ __meta__ = {
 [node name="Glamour" type="Label" parent="Abilities"]
 margin_left = 126.0
 margin_top = 104.0
-margin_right = 160.0
+margin_right = 204.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 text = "60"
@@ -402,11 +542,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GlamourEdit" type="LineEdit" parent="Abilities"]
+visible = false
+margin_top = 130.0
+margin_right = 118.0
+margin_bottom = 148.0
+size_flags_horizontal = 3
+text = "60"
+align = 1
+
 [node name="Label" type="Label" parent="."]
-margin_left = 464.0
+margin_left = 508.0
 margin_top = 128.0
-margin_right = 40.0
-margin_bottom = 18.0
+margin_right = 583.0
+margin_bottom = 155.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
 text = "SKILLS"
@@ -415,9 +564,9 @@ __meta__ = {
 }
 
 [node name="Skills" type="GridContainer" parent="."]
-margin_left = 464.0
+margin_left = 508.0
 margin_top = 160.0
-margin_right = 464.0
+margin_right = 508.0
 margin_bottom = 160.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
@@ -427,10 +576,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 464.0
+margin_left = 508.0
 margin_top = 248.0
-margin_right = 547.0
-margin_bottom = 248.0
+margin_right = 601.0
+margin_bottom = 275.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
 text = "STUNTS"
@@ -439,7 +588,7 @@ __meta__ = {
 }
 
 [node name="Stunts" type="GridContainer" parent="."]
-margin_left = 464.0
+margin_left = 508.0
 margin_top = 280.0
 margin_right = 464.0
 margin_bottom = 280.0
@@ -459,4 +608,28 @@ anchor_right = 1.0
 margin_right = -20.0
 grow_horizontal = 0
 text = "9999"
+
+[node name="Edit" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 48.0
+text = "EDIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="hide" from="." to="." method="_on_PersonDetail_hide"]
+[connection signal="text_changed" from="Status/MeritEdit" to="." method="_on_MeritEdit_text_changed"]
+[connection signal="text_changed" from="Status/KarmaEdit" to="." method="_on_KarmaEdit_text_changed"]
+[connection signal="text_changed" from="Status/PopularityEdit" to="." method="_on_PopularityEdit_text_changed"]
+[connection signal="text_changed" from="Status/PrestigeEdit" to="." method="_on_PrestigeEdit_text_changed"]
+[connection signal="text_changed" from="Status/AmbitionEdit" to="." method="_on_AmbitionEdit_text_changed"]
+[connection signal="text_changed" from="Status/MoralityEdit" to="." method="_on_MoralityEdit_text_changed"]
+[connection signal="text_changed" from="Abilities/CommandEdit" to="." method="_on_CommandEdit_text_changed"]
+[connection signal="text_changed" from="Abilities/StrengthEdit" to="." method="_on_StrengthEdit_text_changed"]
+[connection signal="text_changed" from="Abilities/IntelligenceEdit" to="." method="_on_IntelligenceEdit_text_changed"]
+[connection signal="text_changed" from="Abilities/PoliticsEdit" to="." method="_on_PoliticsEdit_text_changed"]
+[connection signal="text_changed" from="Abilities/GlamourEdit" to="." method="_on_GlamourEdit_text_changed"]
+[connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]

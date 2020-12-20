@@ -1,5 +1,5 @@
 ﻿keys,en,zh_CN,zh_TW
-ZHSAN3,'ZHSAN' World of Three Kingdoms alpha-4,中华三国志3.0 alpha-4,中華三國志3.0 alpha-4
+ZHSAN3,'ZHSAN' World of Three Kingdoms alpha-5,中华三国志3.0 alpha-5,中華三國志3.0 alpha-5
 SEPARATOR,", ",、,、
 SELECT_SCENARIO,Select scenario,选择剧本,選擇劇本
 MAP,Map,地圖,地圖
@@ -126,6 +126,8 @@ SKILLS,Skills,技能,技能
 POPULARITY,Popularity,名声,名聲
 PRESTIGE,Prestige,声望,聲望
 KARMA,Karma,善名,善名
+AMBITION,Ambition,野心,野心
+MORALITY,Morality,义理,義理
 COMMAND_EXPERIENCE,Command Exp.,统兵经验,統兵經驗
 STRENGTH_EXPERIENCE,Strength Exp.,武艺经验,武藝經驗
 INTELLIGENCE_EXPERIENCE,Intelligence Exp.,智略经验,智略經驗
@@ -211,3 +213,5 @@ STUNT_DAY,Stunt Remaining Days,战法剩余天数,戰法剩餘天數
 ACTIVATE_STUNT,Activate Stunt,启用战法,啟用戰法
 AUTO_SAVE_ENABLED,Autosave interval (turns),自动存档间隔(回数),自動存檔間隔(回數)
 RADIO_BUTTON_DIRECT_SELECT,Click once to directly select item in single select lists,单选列表一点即选取,單選列表一點即選取
+ENABLE_IN_GAME_EDIT,Enable in game edit,游戏内编辑,遊戲內編輯
+EDIT,Edit,编辑,編輯

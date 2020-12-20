@@ -2,7 +2,8 @@ extends Panel
 class_name PersonDetail
 
 var current_person: Person
-
+var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
+				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour']
 
 func _on_PersonDetail_hide():
 	$Close.play()
@@ -13,6 +14,11 @@ func _input(event):
 			hide()
 
 func set_data():
+	$Edit.visible = GameConfig.enable_edit
+	for e in _editables:
+		find_node(e).visible = true
+		find_node(e + 'Edit').visible = false
+	
 	$_Id.text = str(current_person.id)
 	$Description.bbcode_text = current_person.get_biography_text()
 	
@@ -28,6 +34,8 @@ func set_data():
 	$Status/Prestige.text = current_person.get_prestige_str()
 	$Status/Karma.text = current_person.get_karma_str()
 	$Status/Merit.text = current_person.get_merit_str()
+	$Status/Ambition.text = current_person.get_ambition_str()
+	$Status/Morality.text = current_person.get_morality_str()
 
 	$Abilities/Command.text = current_person.get_command_detail_str()
 	$Abilities/Strength.text = current_person.get_strength_detail_str()
@@ -82,3 +90,63 @@ func _on_stunt_clicked(stunt):
 	bbcode += stunt.description
 	description.bbcode_text = bbcode
 	
+
+
+func _on_Edit_pressed():
+	$Edit.visible = false
+	for e in _editables:
+		var nonedit = find_node(e)
+		var edit = find_node(e + 'Edit')
+		nonedit.visible = false
+		edit.visible = true
+		match e:
+			'Command': edit.text = str(current_person.command)
+			'Strength': edit.text = str(current_person.strength)
+			'Intelligence': edit.text = str(current_person.intelligence)
+			'Politics': edit.text = str(current_person.politics)
+			'Glamour': edit.text = str(current_person.glamour)
+			_: edit.text = nonedit.text
+
+
+func _on_MeritEdit_text_changed(new_text):
+	current_person.set_merit(int(new_text))
+
+
+func _on_KarmaEdit_text_changed(new_text):
+	current_person.set_karma(int(new_text))
+
+
+func _on_PopularityEdit_text_changed(new_text):
+	current_person.set_popularity(int(new_text))
+
+
+func _on_PrestigeEdit_text_changed(new_text):
+	current_person.set_prestige(int(new_text))
+
+
+func _on_AmbitionEdit_text_changed(new_text):
+	current_person.set_ambiiton(int(new_text))
+
+
+func _on_MoralityEdit_text_changed(new_text):
+	current_person.set_morality(int(new_text))
+
+
+func _on_CommandEdit_text_changed(new_text):
+	current_person.set_command(int(new_text))
+
+
+func _on_StrengthEdit_text_changed(new_text):
+	current_person.set_strength(int(new_text))
+
+
+func _on_IntelligenceEdit_text_changed(new_text):
+	current_person.set_intelligence(int(new_text))
+
+
+func _on_PoliticsEdit_text_changed(new_text):
+	current_person.set_politics(int(new_text))
+
+
+func _on_GlamourEdit_text_changed(new_text):
+	current_person.set_glamour(int(new_text))

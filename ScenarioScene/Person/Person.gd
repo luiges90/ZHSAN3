@@ -227,9 +227,15 @@ func get_popularity():
 func get_popularity_str():
 	return str(popularity)
 	
+func set_popularity(v):
+	popularity = clamp(v, 0, 10000)
+	
 # range: -10000 - 10000
 func get_karma():
 	return karma
+	
+func set_karma(v):
+	karma = clamp(v, -10000, 10000)
 	
 func get_karma_str():
 	return str(karma)
@@ -241,6 +247,9 @@ func get_prestige():
 func get_prestige_str():
 	return str(prestige)
 	
+func set_prestige(v):
+	prestige = clamp(v, -10000, 10000)
+	
 func cmp_prestige_desc(a, b):
 	return a.get_prestige() > b.get_prestige()
 
@@ -249,12 +258,27 @@ func get_merit():
 	
 func get_merit_str():
 	return str(merit)
+	
+func set_merit(v):
+	merit = v
 
 func get_ambition():
 	return ambition
+	
+func get_ambition_str():
+	return str(ambition)
+	
+func set_ambition(v):
+	ambition = clamp(v, 0, 100)
 
 func get_morality():
 	return morality
+	
+func get_morality_str():
+	return str(morality)
+	
+func set_morality(v):
+	morality = clamp(v, 0, 100)
 	
 func get_portrait():
 	if SharedData.person_portraits.has(id):
@@ -390,17 +414,26 @@ func get_biography_text():
 func get_command():
 	return command + command_exp / 1000
 	
+func set_command(v):
+	command = v
+	
 func get_command_detail_str():
 	return str(get_command()) + "(+" + str(command_exp / 1000) + ")"
 	
 func get_strength():
 	return strength + strength_exp / 1000
 	
+func set_strength(v):
+	strength = v
+	
 func get_strength_detail_str():
 	return str(get_strength()) + "(+" + str(strength_exp / 1000) + ")"
 	
 func get_intelligence():
 	return intelligence + intelligence_exp / 1000
+
+func set_intelligence(v):
+	intelligence = v
 	
 func get_intelligence_detail_str():
 	return str(get_intelligence()) + "(+" + str(intelligence_exp / 1000) + ")"
@@ -408,11 +441,17 @@ func get_intelligence_detail_str():
 func get_politics():
 	return politics + politics_exp / 1000
 	
+func set_politics(v):
+	politics = v
+	
 func get_politics_detail_str():
 	return str(get_politics()) + "(+" + str(politics_exp / 1000) + ")"
 	
 func get_glamour():
 	return glamour + glamour_exp / 1000
+	
+func set_glamour(v):
+	glamour = v
 	
 func get_glamour_detail_str():
 	return str(get_glamour()) + "(+" + str(glamour_exp / 1000) + ")"

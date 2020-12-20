@@ -21,6 +21,8 @@ var auto_save = true
 var auto_save_interval = 60
 var auto_save_file_count = 10
 
+var enable_edit = false
+
 func load_game_config():
 	var file_path = "user://game_config.json"
 	var file = File.new()
@@ -48,6 +50,8 @@ func load_game_config():
 		GameConfig.auto_save = obj["auto_save"]
 		GameConfig.auto_save_interval = obj["auto_save_interval"]
 		GameConfig.auto_save_file_count = obj["auto_save_file_count"]
+		
+		GameConfig.enable_edit = Util.dict_try_get(obj, "enable_edit", false)
 
 	file.close()
 
@@ -77,6 +81,8 @@ func save_game_config():
 		"auto_save": GameConfig.auto_save,
 		"auto_save_interval": GameConfig.auto_save_interval,
 		"auto_save_file_count": GameConfig.auto_save_file_count,
+		
+		"enable_edit": GameConfig.enable_edit
 	}
 
 	file.store_line(to_json(obj))
