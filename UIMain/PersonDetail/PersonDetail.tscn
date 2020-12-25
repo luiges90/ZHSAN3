@@ -551,17 +551,39 @@ size_flags_horizontal = 3
 text = "60"
 align = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="SkillsHeader" type="HBoxContainer" parent="."]
 margin_left = 508.0
 margin_top = 128.0
-margin_right = 583.0
+margin_right = 591.0
 margin_bottom = 155.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SkillsHeader"]
+margin_right = 83.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
 text = "SKILLS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Edit" type="Button" parent="SkillsHeader"]
+visible = false
+margin_left = 87.0
+margin_right = 180.0
+margin_bottom = 27.0
+text = "EDIT"
+
+[node name="Label2" type="Label" parent="SkillsHeader"]
+visible = false
+margin_left = 184.0
+margin_top = 4.0
+margin_right = 375.0
+margin_bottom = 22.0
+text = "SKILL_EDIT_INSTRUCTION"
 
 [node name="Skills" type="GridContainer" parent="."]
 margin_left = 508.0
@@ -575,17 +597,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
+[node name="StuntsHeader" type="HBoxContainer" parent="."]
 margin_left = 508.0
 margin_top = 248.0
-margin_right = 601.0
+margin_right = 548.0
 margin_bottom = 275.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="StuntsHeader"]
+margin_right = 93.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
 text = "STUNTS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Edit" type="Button" parent="StuntsHeader"]
+visible = false
+margin_left = 97.0
+margin_right = 190.0
+margin_bottom = 27.0
+text = "EDIT"
+
+[node name="Label3" type="Label" parent="StuntsHeader"]
+visible = false
+margin_left = 194.0
+margin_top = 4.0
+margin_right = 385.0
+margin_bottom = 22.0
+text = "SKILL_EDIT_INSTRUCTION"
 
 [node name="Stunts" type="GridContainer" parent="."]
 margin_left = 508.0
@@ -632,4 +676,6 @@ __meta__ = {
 [connection signal="text_changed" from="Abilities/IntelligenceEdit" to="." method="_on_IntelligenceEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/PoliticsEdit" to="." method="_on_PoliticsEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/GlamourEdit" to="." method="_on_GlamourEdit_text_changed"]
+[connection signal="pressed" from="SkillsHeader/Edit" to="." method="_on_Skills_Edit_pressed"]
+[connection signal="pressed" from="StuntsHeader/Edit" to="." method="_on_Stunts_Edit_pressed"]
 [connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]

@@ -39,6 +39,9 @@ func load_data(json: Dictionary, objects):
 	max_level = Util.dict_try_get(json, "MaxLevel", -1)
 	learn_conditions = Util.dict_try_get(json, "LearnConditions", [])
 	
+	if max_level <= 0:
+		max_level = 32767
+	
 func save_data() -> Dictionary:
 	return {
 		"_Id": id,

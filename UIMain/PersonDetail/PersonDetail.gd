@@ -1,6 +1,9 @@
 extends Panel
 class_name PersonDetail
 
+signal on_select_skills
+signal on_select_stunts
+
 var current_person: Person
 var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
 				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour']
@@ -18,6 +21,10 @@ func set_data():
 	for e in _editables:
 		find_node(e).visible = true
 		find_node(e + 'Edit').visible = false
+	$SkillsHeader/Edit.visible = false
+	$SkillsHeader/Label2.visible = false
+	$StuntsHeader/Edit.visible = false
+	$StuntsHeader/Label2.visible = false
 	
 	$_Id.text = str(current_person.id)
 	$Description.bbcode_text = current_person.get_biography_text()
@@ -43,6 +50,10 @@ func set_data():
 	$Abilities/Politics.text = current_person.get_politics_detail_str()
 	$Abilities/Glamour.text = current_person.get_glamour_detail_str()
 	
+	_update_skill_list()
+	_update_stunt_list()
+
+func _update_skill_list():
 	Util.delete_all_children($Skills)
 	for skill in current_person.skills:
 		var label = LinkButton.new()
@@ -55,6 +66,7 @@ func set_data():
 		
 		$Skills.add_child(label)
 		
+func _update_stunt_list():
 	Util.delete_all_children($Stunts)
 	for stunt in current_person.stunts:
 		var label = LinkButton.new()
@@ -80,6 +92,10 @@ func _on_skill_clicked(skill):
 	bbcode += "[color=#" + skill.color.to_html() + "]" + skill.get_name() + "[/color]\n"
 	bbcode += skill.description
 	description.bbcode_text = bbcode
+	
+	if $SkillsHeader/Edit.visible:
+		current_person.increment_skill_level(skill)
+		_update_skill_list()
 
 func _on_stunt_clicked(stunt):
 	var description = $Description as RichTextLabel
@@ -90,10 +106,17 @@ func _on_stunt_clicked(stunt):
 	bbcode += stunt.description
 	description.bbcode_text = bbcode
 	
-
+	if $StuntsHeader/Edit.visible:
+		current_person.increment_stunt_level(stunt)
+		_update_stunt_list()
 
 func _on_Edit_pressed():
 	$Edit.visible = false
+	$SkillsHeader/Edit.visible = true
+	$SkillsHeader/Label2.visible = true
+	$StuntsHeader/Edit.visible = true
+	$StuntsHeader/Label2.visible = true
+	
 	for e in _editables:
 		var nonedit = find_node(e)
 		var edit = find_node(e + 'Edit')
@@ -150,3 +173,18 @@ func _on_PoliticsEdit_text_changed(new_text):
 
 func _on_GlamourEdit_text_changed(new_text):
 	current_person.set_glamour(int(new_text))
+
+
+func _on_Skills_Edit_pressed():
+	call_deferred("emit_signal", "on_select_skills", current_person)
+
+func _on_Stunts_Edit_pressed():
+	call_deferred("emit_signal", "on_select_stunts", current_person)
+
+func _on_InfoList_edit_skill_item_selected(selected):
+	current_person.set_skills(selected)
+	_update_skill_list()
+
+func _on_InfoList_edit_stunt_item_selected(selected):
+	current_person.set_stunts(selected)
+	_update_stunt_list()

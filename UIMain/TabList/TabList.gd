@@ -110,12 +110,13 @@ func _title(text: String):
 	label.add_stylebox_override("normal", stylebox)
 	return label
 	
-func _checkbox(id: int):
+func _checkbox(id: int, checked: bool = false):
 	var checkbox 
 	checkbox = CheckBox.new()
 	checkbox.add_to_group("checkboxes")
 	checkbox.add_to_group("id_" + str(id))
 	checkbox.set_meta("id", id)
+	checkbox.pressed = checked
 	checkbox.connect("pressed", self, "_checkbox_changed", [checkbox])
 	checkbox.connect("mouse_entered", self, "_item_mouse_entered", [checkbox])
 	checkbox.mouse_filter = Control.MOUSE_FILTER_STOP

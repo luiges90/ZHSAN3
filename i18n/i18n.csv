@@ -216,3 +216,4 @@ AUTO_SAVE_ENABLED,Autosave interval (turns),自动存档间隔(回数),自動存
 RADIO_BUTTON_DIRECT_SELECT,Click once to directly select item in single select lists,单选列表一点即选取,單選列表一點即選取
 ENABLE_IN_GAME_EDIT,Enable in game edit,游戏内编辑,遊戲內編輯
 EDIT,Edit,编辑,編輯
+SKILL_EDIT_INSTRUCTION,Left-click on the skill to increase level,左按技能增加等级,左按技能增加等級

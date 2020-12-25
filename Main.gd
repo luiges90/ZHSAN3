@@ -14,6 +14,7 @@ func _ready():
 	_register_troop_ui()
 	_register_game_record_ui()
 	_register_lists()
+	_register_detail_page_edits()
 	_register_menus()
 	
 	$UICanvas/UIMain/FactionSurvey.connect("focus_camera", $Scenario, "_on_focus_camera")
@@ -59,6 +60,15 @@ func _register_lists():
 	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_person_selected")
 	$UICanvas/UIMain/ArchitectureList.connect("architecture_selected", $Scenario, "_on_architecture_selected")
 	$UICanvas/UIMain/MilitaryKindList.connect("military_kind_selected", $Scenario, "_on_military_kind_selected")
+
+
+func _register_detail_page_edits():
+	$UICanvas/UIMain/PersonDetail.connect("on_select_skills", $UICanvas/UIMain/InfoList, "_on_PersonDetail_edit_skills_clicked")
+	$UICanvas/UIMain/PersonDetail.connect("on_select_stunts", $UICanvas/UIMain/InfoList, "_on_PersonDetail_edit_stunts_clicked")
+	
+	$UICanvas/UIMain/InfoList.connect("edit_skill_item_selected", $UICanvas/UIMain/PersonDetail, "_on_InfoList_edit_skill_item_selected")
+	$UICanvas/UIMain/InfoList.connect("edit_stunt_item_selected", $UICanvas/UIMain/PersonDetail, "_on_InfoList_edit_stunt_item_selected")
+	
 	
 func _register_menus():
 	$Scenario.connect("current_faction_set", $UICanvas/UIMain/SaveLoadMenu, "_on_faction_updated")

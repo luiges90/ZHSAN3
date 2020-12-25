@@ -539,7 +539,42 @@ func get_escape_ability():
 	var base = 0.5 * get_strength() + 0.5 * get_intelligence()
 	base = apply_influences('modify_person_escape_ability', {"value": base, "person": self})
 	return base
-
+	
+func get_skills():
+	return skills
+	
+func set_skills(skill_ids):
+	var to_remove = []
+	for s in skills:
+		if not skill_ids.has(s.id):
+			to_remove.append(s)
+	for s in to_remove:
+		skills.erase(s)
+	for id in skill_ids:
+		var s = scenario.skills[id]
+		if not skills.has(s):
+			skills[s] = 1
+	
+func increment_skill_level(skill):
+	if skills[skill] < skill.max_level:
+		skills[skill] += 1
+	
+func set_stunts(stunt_ids):
+	var to_remove = []
+	for s in stunts:
+		if not stunt_ids.has(s.id):
+			to_remove.append(s)
+	for s in to_remove: 
+		stunts.erase(s)
+	for id in stunt_ids:
+		var s = scenario.stunts[id]
+		if not stunts.has(s):
+			stunts[s] = 1
+	
+func increment_stunt_level(stunt):
+	if stunts[stunt] < stunt.max_level:
+		stunts[stunt] += 1
+	
 #####################################
 #         Getters / Relations       #
 #####################################
