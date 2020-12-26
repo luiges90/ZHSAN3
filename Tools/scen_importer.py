@@ -2,7 +2,7 @@ import json
 import importlib
 skill_data = importlib.import_module('scen_importer_skill_data')
 
-import_persons = True
+import_persons = False
 dev = True
 
 def prepare_influence_data(common):
