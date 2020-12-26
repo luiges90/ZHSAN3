@@ -2,6 +2,7 @@ import json
 import importlib
 skill_data = importlib.import_module('scen_importer_skill_data')
 
+import_persons = True
 dev = True
 
 def prepare_influence_data(common):
@@ -326,69 +327,70 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                 })
             fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
         
-        with open(output_folder + '/Persons.json', mode='w', encoding='utf-8') as fout:
-            r = []
-            for k in obj['Persons']['GameObjects']:
-                if k['ID'] >= 8000 and k['ID'] < 9000:
-                    continue
-                if k['ID'] in faction_person_ids:
-                    status = 1
-                elif k['ID'] in no_faction_person_ids:
-                    status = 2
-                else:
-                    status = 0
-                father_id_list = [x for x in obj['FatherIds'] if x['Key'] == k['ID']]
-                mother_id_list = [x for x in obj['MotherIds'] if x['Key'] == k['ID']]
-                spouse_id_list = [x for x in obj['SpouseIds'] if x['Key'] == k['ID']]
-                brother_id_list = [x for x in obj['BrotherIds'] if x['Key'] == k['ID']]
-                r.append({
-                    "_Id": k['ID'],
-                    "Status": status,
-                    "Alive": False if k['ID'] >= 7000 and k['ID'] < 8000 else k['Alive'],
-                    "Gender": k['Sex'],
-                    "Surname": k['SurName'],
-                    "GivenName": k['GivenName'],
-                    "CourtesyName": k['CalledName'],
-                    "AvailableYear": k['YearAvailable'],
-                    "BornYear": k['YearBorn'],
-                    "DeathYear": k['YearDead'],
-                    "DeadReason": 1 if k['DeadReason'] == 1 else 0,
-                    "Command": k['BaseCommand'],
-                    "Strength": k['BaseStrength'],
-                    "Intelligence": k['BaseIntelligence'],
-                    "Politics": k['BasePolitics'],
-                    "Glamour": k['BaseGlamour'],
-                    "AvailableArchitectureId": k['AvailableLocation'],
-                    "InternalExperience": 0,
-                    "CombatExperience": 0,
-                    "StratagemExperience": 0,
-                    "CommandExperience": 0,
-                    "StrengthExperience": 0,
-                    "IntelligenceExperience": 0,
-                    "PoliticsExperience": 0,
-                    "GlamourExperience": 0,
-                    "MilitaryTypeExperience": {},
-                    "Popularity": int(min(10000, k['Reputation'] / 5)),
-                    "Prestige": int(min(10000, k['Reputation'] / 5)),
-                    "Karma": k['Karma'] * 100,
-                    "Merit": 0,
-                    "Task": 0,
-                    "TaskTarget": -1,
-                    "ProducingEquipment": None,
-                    "Skills": convert_skills(k, influence_data),
-                    "Stunts": convert_stunts(k, influence_data),
-                    "FatherId": father_id_list[0]['Value'] if len(father_id_list) > 0 else -1,
-                    "MotherId": mother_id_list[0]['Value'] if len(mother_id_list) > 0 else -1,
-                    "SpouseIds": [spouse_id_list[0]['Value']] if len(spouse_id_list) > 0 and spouse_id_list[0]['Value'] >= 0 else [],
-                    "BrotherIds": brother_id_list[0]['Value'] if len(brother_id_list) > 0 else [],
-                    "Strain": k['Strain'],
-                    "Ideal": k['Ideal'],
-                    "LoyaltyShift": 0,
-                    "Ambition": k['Ambition'] * 20 + 10,
-                    "Morality": k['PersonalLoyalty'] * 20 + 10
-                })
-            fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
-            
+        if import_persons:
+            with open(output_folder + '/Persons.json', mode='w', encoding='utf-8') as fout:
+                r = []
+                for k in obj['Persons']['GameObjects']:
+                    if k['ID'] >= 8000 and k['ID'] < 9000:
+                        continue
+                    if k['ID'] in faction_person_ids:
+                        status = 1
+                    elif k['ID'] in no_faction_person_ids:
+                        status = 2
+                    else:
+                        status = 0
+                    father_id_list = [x for x in obj['FatherIds'] if x['Key'] == k['ID']]
+                    mother_id_list = [x for x in obj['MotherIds'] if x['Key'] == k['ID']]
+                    spouse_id_list = [x for x in obj['SpouseIds'] if x['Key'] == k['ID']]
+                    brother_id_list = [x for x in obj['BrotherIds'] if x['Key'] == k['ID']]
+                    r.append({
+                        "_Id": k['ID'],
+                        "Status": status,
+                        "Alive": False if k['ID'] >= 7000 and k['ID'] < 8000 else k['Alive'],
+                        "Gender": k['Sex'],
+                        "Surname": k['SurName'],
+                        "GivenName": k['GivenName'],
+                        "CourtesyName": k['CalledName'],
+                        "AvailableYear": k['YearAvailable'],
+                        "BornYear": k['YearBorn'],
+                        "DeathYear": k['YearDead'],
+                        "DeadReason": 1 if k['DeadReason'] == 1 else 0,
+                        "Command": k['BaseCommand'],
+                        "Strength": k['BaseStrength'],
+                        "Intelligence": k['BaseIntelligence'],
+                        "Politics": k['BasePolitics'],
+                        "Glamour": k['BaseGlamour'],
+                        "AvailableArchitectureId": k['AvailableLocation'],
+                        "InternalExperience": 0,
+                        "CombatExperience": 0,
+                        "StratagemExperience": 0,
+                        "CommandExperience": 0,
+                        "StrengthExperience": 0,
+                        "IntelligenceExperience": 0,
+                        "PoliticsExperience": 0,
+                        "GlamourExperience": 0,
+                        "MilitaryTypeExperience": {},
+                        "Popularity": int(min(10000, k['Reputation'] / 5)),
+                        "Prestige": int(min(10000, k['Reputation'] / 5)),
+                        "Karma": k['Karma'] * 100,
+                        "Merit": 0,
+                        "Task": 0,
+                        "TaskTarget": -1,
+                        "ProducingEquipment": None,
+                        "Skills": convert_skills(k, influence_data),
+                        "Stunts": convert_stunts(k, influence_data),
+                        "FatherId": father_id_list[0]['Value'] if len(father_id_list) > 0 else -1,
+                        "MotherId": mother_id_list[0]['Value'] if len(mother_id_list) > 0 else -1,
+                        "SpouseIds": [spouse_id_list[0]['Value']] if len(spouse_id_list) > 0 and spouse_id_list[0]['Value'] >= 0 else [],
+                        "BrotherIds": brother_id_list[0]['Value'] if len(brother_id_list) > 0 else [],
+                        "Strain": k['Strain'],
+                        "Ideal": k['Ideal'],
+                        "LoyaltyShift": 0,
+                        "Ambition": k['Ambition'] * 20 + 10,
+                        "Morality": k['PersonalLoyalty'] * 20 + 10
+                    })
+                fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
+                
         with open(output_folder + '/Biographies.json', mode='w', encoding='utf-8') as fout:
             r = []
             for k in obj['AllBiographies']['Biographys']:

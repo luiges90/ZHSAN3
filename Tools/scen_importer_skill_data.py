@@ -1,5 +1,5 @@
 SKILLS_LIST = {
-    1375: []
+    9999: []
 }
 
 STUNTS_LIST = {
