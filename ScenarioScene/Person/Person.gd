@@ -569,6 +569,12 @@ func increment_skill_level(skill):
 	if skills[skill] < skill.max_level:
 		skills[skill] += 1
 
+func decrement_skill_level(skill):
+	if skills[skill] > 1:
+		skills[skill] -= 1
+	else:
+		skills.erase(skill)
+
 func get_stunts():
 	var sorted = []
 	for s in stunts:
@@ -594,6 +600,13 @@ func set_stunts(stunt_ids):
 func increment_stunt_level(stunt):
 	if stunts[stunt] < stunt.max_level:
 		stunts[stunt] += 1
+
+func decrement_stunt_level(stunt):
+	if stunts[stunt] > 1:
+		stunts[stunt] -= 1
+	else:
+		stunts.erase(stunt)
+
 	
 #####################################
 #         Getters / Relations       #

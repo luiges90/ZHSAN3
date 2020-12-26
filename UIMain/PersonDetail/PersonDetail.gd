@@ -8,6 +8,8 @@ var current_person: Person
 var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
 				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour']
 
+var _shift_held_down = false
+
 func _on_PersonDetail_hide():
 	$Close.play()
 
@@ -15,6 +17,10 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_RIGHT and event.pressed:
 			hide()
+	elif event is InputEventKey:
+		if event.scancode == KEY_SHIFT:
+			_shift_held_down = event.pressed
+
 
 func set_data():
 	$Edit.visible = GameConfig.enable_edit
@@ -96,7 +102,10 @@ func _on_skill_clicked(skill):
 	description.bbcode_text = bbcode
 	
 	if $SkillsHeader/Edit.visible:
-		current_person.increment_skill_level(skill)
+		if _shift_held_down:
+			current_person.decrement_skill_level(skill)
+		else:
+			current_person.increment_skill_level(skill)
 		_update_skill_list()
 
 func _on_stunt_clicked(stunt):
@@ -109,7 +118,10 @@ func _on_stunt_clicked(stunt):
 	description.bbcode_text = bbcode
 	
 	if $StuntsHeader/Edit.visible:
-		current_person.increment_stunt_level(stunt)
+		if _shift_held_down:
+			current_person.decrement_stunt_level(stunt)
+		else:
+			current_person.increment_stunt_level(stunt)
 		_update_stunt_list()
 
 func _on_Edit_pressed():
