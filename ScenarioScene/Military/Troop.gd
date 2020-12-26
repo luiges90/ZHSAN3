@@ -826,7 +826,7 @@ func destroy(attacker):
 			var capture_chance
 			if attacker != null and not attacker is Architecture and attacker.get_persons().size() > 0:
 				var capture_ability = Util.max_by(attacker.get_persons(), "get_capture_ability")[2]
-				var escape_ability = Util.max_by(get_persons(), "get_escape_ability")[2]
+				var escape_ability = p.get_escape_ability()
 				var ratio = capture_ability / escape_ability 
 				capture_chance = 0.726 / (1 + exp(-0.613 * (ratio - 4.644)))
 			else:

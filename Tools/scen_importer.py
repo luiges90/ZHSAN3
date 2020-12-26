@@ -66,16 +66,16 @@ def convert_skills(object, influence_data):
                       (influence_stunts, stunt_ids)]
 
         new_skills = {}
-        convert_skill(new_skills, influences, 10, {0: 2, 10: 5, 70: 6, 80: 10})
-        convert_skill(new_skills, influences, 20, {1: 2, 11: 5, 71: 6, 81: 10})
-        convert_skill(new_skills, influences, 30, {4: 2, 14: 5, 74: 6, 84: 10})
-        convert_skill(new_skills, influences, 40, {5: 2, 15: 5, 75: 6, 85: 10})
+        convert_skill(new_skills, influences, 10, {0: 1, 10: 2, 70: 3, 80: 5})
+        convert_skill(new_skills, influences, 20, {1: 1, 11: 2, 71: 3, 81: 5})
+        convert_skill(new_skills, influences, 30, {4: 1, 14: 2, 74: 3, 84: 5})
+        convert_skill(new_skills, influences, 40, {5: 1, 15: 2, 75: 3, 85: 5})
         convert_skill(new_skills, influences, 50, {91: 5})
         convert_skill(new_skills, influences, 60, {90: 5})
         convert_skill(new_skills, influences, 70, {2: 2, 12: 5, 72: 6, 82: 10})
         convert_skill(new_skills, influences, 110, {20: 3, 60: 3})
         convert_skill(new_skills, influences, 120, {21: 3, 61: 3})
-        convert_skill(new_skills, influences, 130, {124: 1})
+        convert_skill(new_skills, influences, 130, {124: 5})
         convert_skill(new_skills, influences, 140, {122: 5})
         convert_skill(new_skills, influences, 150, {30: 1})
         convert_skill(new_skills, influences, 200, {466: 1})
