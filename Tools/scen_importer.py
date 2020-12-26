@@ -47,7 +47,7 @@ def convert_skill(new_list, influences, newid, conversion, required_influence = 
                 for _ in inf[0][c].intersection(set(inf[1])):
                     if newid not in new_list:
                         new_list[newid] = 0
-                    new_list[newid] += conversion[c]
+                    new_list[newid] = max(new_list[newid], conversion[c])
 
 def convert_skills(object, influence_data):
     influence_skills = influence_data[0]
