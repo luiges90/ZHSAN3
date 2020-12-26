@@ -55,9 +55,10 @@ func set_data():
 
 func _update_skill_list():
 	Util.delete_all_children($Skills)
-	for skill in current_person.skills:
+	var skills = current_person.get_skills()
+	for skill in skills:
 		var label = LinkButton.new()
-		label.text = skill.get_name_with_level(current_person.skills[skill])
+		label.text = skill.get_name_with_level(skills[skill])
 		label.add_color_override("font_color", skill.color)
 		label.underline = LinkButton.UNDERLINE_MODE_NEVER
 		label.mouse_default_cursor_shape = Control.CURSOR_ARROW
@@ -68,9 +69,10 @@ func _update_skill_list():
 		
 func _update_stunt_list():
 	Util.delete_all_children($Stunts)
-	for stunt in current_person.stunts:
+	var stunts = current_person.get_stunts()
+	for stunt in stunts:
 		var label = LinkButton.new()
-		label.text = stunt.get_name_with_level(current_person.stunts[stunt])
+		label.text = stunt.get_name_with_level(stunts[stunt])
 		label.add_color_override("font_color", stunt.color)
 		label.underline = LinkButton.UNDERLINE_MODE_NEVER
 		label.mouse_default_cursor_shape = Control.CURSOR_ARROW

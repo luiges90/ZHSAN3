@@ -1462,7 +1462,7 @@
 	{
 		"_Id": 10800,
 		"Name": "捕虜",
-		"Description": "所屬部隊的武將俘虜能力每等級增加10%",
+		"Description": "所屬部隊的武將俘虜能力每等級增加20%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1486,14 +1486,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_capture_ability",
-				"Value": 0.1
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 10810,
 		"Name": "血路",
-		"Description": "部隊被擊破時自身不被俘虜的能力每等級增加10%",
+		"Description": "部隊被擊破時自身不被俘虜，能力每等級增加20%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1517,12 +1517,12 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_escape_ability",
-				"Value": 0.1
+				"Value": 0.2
 			}
 		]
 	},
 	{
-		"_Id": 11815,
+		"_Id": 10815,
 		"Name": "欠運",
 		"Description": "部隊被擊破時自身容易被俘虜，每等級增加10%",
 		"Color": [

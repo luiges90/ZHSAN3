@@ -540,8 +540,18 @@ func get_escape_ability():
 	base = apply_influences('modify_person_escape_ability', {"value": base, "person": self})
 	return base
 	
+func __sort_key_id(x, y):
+	return x[0] < y[0]
+
 func get_skills():
-	return skills
+	var sorted = []
+	for s in skills:
+		sorted.append([s, skills[s]])
+	sorted.sort_custom(self, "__sort_key_id")
+	var sorted_d = {}
+	for s in sorted:
+		sorted_d[s[0]] = s[1]
+	return sorted_d
 	
 func set_skills(skill_ids):
 	var to_remove = []
@@ -558,6 +568,16 @@ func set_skills(skill_ids):
 func increment_skill_level(skill):
 	if skills[skill] < skill.max_level:
 		skills[skill] += 1
+
+func get_stunts():
+	var sorted = []
+	for s in stunts:
+		sorted.append([s, stunts[s]])
+	sorted.sort_custom(self, "__sort_key_id")
+	var sorted_d = {}
+	for s in sorted:
+		sorted_d[s[0]] = s[1]
+	return sorted_d
 	
 func set_stunts(stunt_ids):
 	var to_remove = []
