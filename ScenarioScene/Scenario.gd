@@ -561,9 +561,12 @@ func _on_troop_attack_clicked(troop):
 	$PositionSelector._on_select_troop_attack(troop)
 	
 func _on_troop_stunt_clicked(troop, stunt):
-	$GameRecordCreator._on_troop_prepare_start_stunt(troop, stunt)
-	var stunt_level = troop.get_leader().stunts[stunt]
-	troop.set_activate_stunt_order(stunt, stunt_level)
+	if stunt.target == Stunt.Target.SELF:
+		$GameRecordCreator._on_troop_prepare_start_stunt(troop, stunt)
+		var stunt_level = troop.get_leader().stunts[stunt]
+		troop.set_activate_stunt_order(stunt, stunt_level)
+	else:
+		assert("not implemented")
 	
 func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)

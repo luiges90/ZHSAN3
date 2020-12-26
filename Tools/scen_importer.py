@@ -2,7 +2,7 @@ import json
 import importlib
 skill_data = importlib.import_module('scen_importer_skill_data')
 
-import_persons = False
+import_persons = True
 dev = True
 
 def prepare_influence_data(common):
@@ -66,19 +66,19 @@ def convert_skills(object, influence_data):
                       (influence_stunts, stunt_ids)]
 
         new_skills = {}
-        convert_skill(new_skills, influences, 10, {0: 1, 10: 2, 70: 3, 80: 5})
-        convert_skill(new_skills, influences, 20, {1: 1, 11: 2, 71: 3, 81: 5})
-        convert_skill(new_skills, influences, 30, {4: 1, 14: 2, 74: 3, 84: 5})
-        convert_skill(new_skills, influences, 40, {5: 1, 15: 2, 75: 3, 85: 5})
-        convert_skill(new_skills, influences, 50, {91: 5})
-        convert_skill(new_skills, influences, 60, {90: 5})
-        convert_skill(new_skills, influences, 70, {2: 2, 12: 5, 72: 6, 82: 10})
-        convert_skill(new_skills, influences, 110, {20: 3, 60: 3})
-        convert_skill(new_skills, influences, 120, {21: 3, 61: 3})
-        convert_skill(new_skills, influences, 130, {124: 5})
-        convert_skill(new_skills, influences, 140, {122: 5})
-        convert_skill(new_skills, influences, 150, {30: 1})
-        convert_skill(new_skills, influences, 200, {466: 1})
+        convert_skill(new_skills, influences, 10, {0: 1, 10: 2, 70: 3, 80: 4})
+        convert_skill(new_skills, influences, 20, {1: 1, 11: 2, 71: 3, 81: 4})
+        convert_skill(new_skills, influences, 30, {4: 1, 14: 2, 74: 3, 84: 4})
+        convert_skill(new_skills, influences, 40, {5: 1, 15: 2, 75: 3, 85: 4})
+        convert_skill(new_skills, influences, 50, {91: 2})
+        convert_skill(new_skills, influences, 60, {90: 2})
+        convert_skill(new_skills, influences, 70, {2: 1, 12: 2, 72: 3, 82: 5})
+        convert_skill(new_skills, influences, 110, {20: 2, 60: 2})
+        convert_skill(new_skills, influences, 120, {21: 2, 61: 2})
+        convert_skill(new_skills, influences, 130, {124: 4})
+        convert_skill(new_skills, influences, 140, {122: 4})
+        convert_skill(new_skills, influences, 150, {30: 4})
+        convert_skill(new_skills, influences, 200, {466: 2})
 
         convert_skill(new_skills, influences, 10100, {6470: 5})
         convert_skill(new_skills, influences, 10200, {410: 2}, [290])
@@ -89,17 +89,17 @@ def convert_skills(object, influence_data):
         convert_skill(new_skills, influences, 10320, {250: 5, 251: 2}, [291])
         convert_skill(new_skills, influences, 10400, {410: 2}, [292])
         convert_skill(new_skills, influences, 10410, {420: 2}, [292])
-        convert_skill(new_skills, influences, 10420, {250: 5, 251: 2, 252: 10}, [292])
-        convert_skill(new_skills, influences, 10500, {250: 5, 251: 2, 252: 10}, [292])
-        convert_skill(new_skills, influences, 10501, {250: 5, 251: 2, 252: 10}, [290, 291])
+        convert_skill(new_skills, influences, 10420, {250: 2, 251: 1, 252: 4}, [292])
+        convert_skill(new_skills, influences, 10500, {250: 2, 251: 1, 252: 4}, [292])
+        convert_skill(new_skills, influences, 10501, {250: 2, 251: 1, 252: 4}, [290, 291])
         convert_skill(new_skills, influences, 10600, {202: 2, 222: 2})
         convert_skill(new_skills, influences, 10610, {204: 2, 224: 2})
-        convert_skill(new_skills, influences, 10700, {4020: 1, 4021: 2, 4022: 5, 4023: 10, 4024: 20})
+        convert_skill(new_skills, influences, 10700, {4020: 1, 4021: 2, 4022: 3, 4023: 4, 4024: 5})
         convert_skill(new_skills, influences, 10710, {607: 5})
         convert_skill(new_skills, influences, 10800, {6100: 1, 6101: 2, 6102: 3, 6103: 4})
-        convert_skill(new_skills, influences, 10810, {260: 1, 261: 10})
-        convert_skill(new_skills, influences, 11000, {400: 1, 401: 2, 402: 3, 403: 4, 404: 6})
-        convert_skill(new_skills, influences, 11000, {405: 1, 406: 2, 407: 3, 408: 4, 409: 6})
+        convert_skill(new_skills, influences, 10810, {260: 1, 261: 4})
+        convert_skill(new_skills, influences, 11000, {400: 1, 401: 2, 402: 3, 403: 4, 404: 5})
+        convert_skill(new_skills, influences, 11000, {405: 1, 406: 2, 407: 3, 408: 4, 409: 5})
 
         return new_skills
 

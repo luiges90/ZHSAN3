@@ -195,7 +195,10 @@ func _populate_relevant_data(person_list: Array, action):
 				item_list.add_child(_clickable_label_with_long_pressed_event(Util.bstr(person.convince_recommended(other_person)), self, person, checkbox))
 				item_list.add_child(_clickable_label_with_long_pressed_event(str(person.displayed_convince_probability(other_person)) + "%", self, person, checkbox))
 				item_list.add_child(_clickable_label_with_long_pressed_event(str(round(person.get_convince_ability())), self, person, checkbox))
-				
+
+		_:
+			_remove_tab('RELEVANCE')
+
 		
 
 func _populate_basic_data(person_list: Array, action):

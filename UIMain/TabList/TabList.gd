@@ -192,10 +192,20 @@ func _add_tab(title, at_position = tabs.size()):
 	
 	var new_tab_data = GridContainer.new()
 	new_tab_container.add_child(new_tab_data)
+	new_tab_container.add_to_group("tab_" + title)
 	$Tabs.add_child(new_tab_container)
 	$Tabs.move_child(new_tab_container, at_position)
 	
 	tabs[title] = new_tab_data
+
+func _remove_tab(title):
+	if not tabs.has(title):
+		return
+
+	var tab = get_tree().get_nodes_in_group("tab_" + title)[0]
+	$Tabs.remove_child(tab)
+
+	tabs.erase(title)
 
 func _long_pressed_down_event(label):
 	long_pressed_object_id = label.get_instance_id()

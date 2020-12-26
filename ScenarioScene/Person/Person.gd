@@ -541,7 +541,7 @@ func get_escape_ability():
 	return base
 	
 func __sort_key_id(x, y):
-	return x[0] < y[0]
+	return x[0].id < y[0].id
 
 func get_skills():
 	var sorted = []
