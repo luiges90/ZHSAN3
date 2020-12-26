@@ -2,7 +2,7 @@
 	{
 		"_Id": 10,
 		"Name": "農政",
-		"Description": "農業能力每等級增加20%",
+		"Description": "農業能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -30,14 +30,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_agriculture_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 20,
 		"Name": "商才",
-		"Description": "商業能力每等級增加20%",
+		"Description": "商業能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -65,14 +65,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_commerce_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 30,
 		"Name": "民心",
-		"Description": "民心能力每等級增加20%",
+		"Description": "民心能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -100,14 +100,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_morale_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 40,
 		"Name": "修補",
-		"Description": "耐久能力每等級增加20%",
+		"Description": "耐久能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -139,14 +139,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_endurance_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 50,
 		"Name": "招兵",
-		"Description": "招兵能力每等級增加20%",
+		"Description": "招兵能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -170,14 +170,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_recruit_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 60,
 		"Name": "操練",
-		"Description": "訓練能力每等級增加20%",
+		"Description": "訓練能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -201,14 +201,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_training_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 70,
 		"Name": "生產",
-		"Description": "生產兵裝能力每等級增加20%",
+		"Description": "生產兵裝能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -232,14 +232,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_produce_equipment_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 100,
 		"Name": "富豪",
-		"Description": "城池資金收入每等級增加20%",
+		"Description": "城池資金收入每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -267,14 +267,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_fund_income",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 110,
 		"Name": "米道",
-		"Description": "城池糧草收入每等級增加20%",
+		"Description": "城池糧草收入每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -306,7 +306,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_food_income",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
@@ -336,7 +336,7 @@
 	{
 		"_Id": 120,
 		"Name": "文化",
-		"Description": "城池人口增長每等級增加5%",
+		"Description": "城池人口增長每等級增加10%",
 		"Color": [
 			0.13,
 			0.56,
@@ -368,14 +368,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_population_gain",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 125,
 		"Name": "野蠻",
-		"Description": "城池人口增長每等級減少5%",
+		"Description": "城池人口增長每等級減少10%",
 		"Color": [
 			1,
 			0,
@@ -387,14 +387,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_population_gain",
-				"Value": -0.05
+				"Value": -0.1
 			}
 		]
 	},
 	{
 		"_Id": 130,
 		"Name": "師君",
-		"Description": "城池的人口在戰爭的狀態下下降率減少20%",
+		"Description": "城池的人口在戰爭的狀態下下降率減少25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -422,19 +422,19 @@
 				"Value": 250
 			}
 		],
-		"MaxLevel": 5,
+		"MaxLevel": 4,
 		"Conditions": [],
 		"Influences": [
 			{
 				"Operation": "modify_person_architecture_population_loss",
-				"Value": -0.2
+				"Value": -0.25
 			}
 		]
 	},
 	{
 		"_Id": 140,
 		"Name": "行曹",
-		"Description": "減緩城池內政數值的自然下降每等級20%",
+		"Description": "減緩城池內政數值的自然下降每等級25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -466,19 +466,19 @@
 				"Value": 2000
 			}
 		],
-		"MaxLevel": 4,
+		"MaxLevel": 3,
 		"Conditions": [],
 		"Influences": [
 			{
 				"Operation": "modify_person_architecture_internal_decay",
-				"Value": -0.2
+				"Value": -0.25
 			}
 		]
 	},
 	{
 		"_Id": 145,
 		"Name": "暴政",
-		"Description": "加速城池內政數值的自然下降每等級20%、城池的人口在戰爭的狀態下下降率增加50%",
+		"Description": "加速城池內政數值的自然下降每等級25%、城池的人口在戰爭的狀態下下降率增加50%",
 		"Color": [
 			1,
 			0,
@@ -489,7 +489,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_architecture_internal_decay",
-				"Value": 0.2
+				"Value": 0.25
 			},
 			{
 				"Operation": "modify_person_architecture_population_loss",
@@ -500,7 +500,7 @@
 	{
 		"_Id": 150,
 		"Name": "眾望",
-		"Description": "執行內政時所需資金減少每等級20%",
+		"Description": "執行內政時所需資金減少每等級25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -545,18 +545,18 @@
 			}
 		],
 		"Conditions": [],
-		"MaxLevel": 5,
+		"MaxLevel": 4,
 		"Influences": [
 			{
 				"Operation": "modify_person_develop_internal_cost",
-				"Value": -0.2
+				"Value": -0.25
 			}
 		]
 	},
 	{
 		"_Id": 200,
 		"Name": "說服",
-		"Description": "說服能力每等級增加20%",
+		"Description": "說服能力每等級增加25%",
 		"Color": [
 			0.13,
 			0.56,
@@ -580,7 +580,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_convince_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
@@ -1462,7 +1462,7 @@
 	{
 		"_Id": 10800,
 		"Name": "捕虜",
-		"Description": "所屬部隊的武將俘虜能力每等級增加20%",
+		"Description": "所屬部隊的武將俘虜能力每等級增加25%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1486,14 +1486,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_capture_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 10810,
 		"Name": "血路",
-		"Description": "部隊被擊破時自身不被俘虜，能力每等級增加20%",
+		"Description": "部隊被擊破時自身不被俘虜，能力每等級增加25%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1517,14 +1517,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_escape_ability",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 10815,
 		"Name": "欠運",
-		"Description": "部隊被擊破時自身容易被俘虜，每等級增加10%",
+		"Description": "部隊被擊破時自身容易被俘虜，每等級增加20%",
 		"Color": [
 			1,
 			0,
@@ -1532,11 +1532,11 @@
 		],
 		"LearnConditions": [],
 		"Conditions": [],
-		"MaxLevel": 9,
+		"MaxLevel": 5,
 		"Influences": [
 			{
 				"Operation": "modify_person_escape_ability",
-				"Value": -0.1
+				"Value": -0.2
 			}
 		]
 	},
@@ -1634,7 +1634,7 @@
 	{
 		"_Id": 20010,
 		"Name": "寡欲",
-		"Description": "自身俸祿每等級減少20%",
+		"Description": "自身俸祿每等級減少25%",
 		"Color": [
 			0,
 			0.78,
@@ -1654,12 +1654,12 @@
 				"Value": 60
 			}
 		],
-		"MaxLevel": 4,
+		"MaxLevel": 3,
 		"Conditions": [],
 		"Influences": [
 			{
 				"Operation": "modify_person_salary",
-				"Value": -0.2
+				"Value": -0.25
 			}
 		]
 	},
@@ -1684,7 +1684,7 @@
 	{
 		"_Id": 20020,
 		"Name": "潛在",
-		"Description": "自身經驗每等級增加20%",
+		"Description": "自身經驗每等級增加25%",
 		"Color": [
 			0,
 			0.78,
@@ -1694,14 +1694,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_experience_gain",
-				"Value": 0.2
+				"Value": 0.25
 			}
 		]
 	},
 	{
 		"_Id": 20025,
 		"Name": "笨拙",
-		"Description": "自身經驗每等級減少20%",
+		"Description": "自身經驗每等級減少25%",
 		"Color": [
 			1,
 			0,
@@ -1709,11 +1709,11 @@
 		],
 		"LearnConditions": [],
 		"Conditions": [],
-		"MaxLevel": 5,
+		"MaxLevel": 4,
 		"Influences": [
 			{
 				"Operation": "modify_person_experience_gain",
-				"Value": -0.2
+				"Value": -0.25
 			}
 		]
 	}
