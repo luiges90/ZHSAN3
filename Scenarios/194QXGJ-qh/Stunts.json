@@ -4,7 +4,7 @@
         "Name": "攻擊命令",
         "Description": "增加部隊攻擊力每等級20%",
         "TileEffect": "OffenseBoost",
-        "Target": 0,
+        "TargetRange": 0,
         "Color": [
             0.96,
             0.69,
@@ -19,7 +19,7 @@
             },
             {
                 "Operation": "strength_at_least",
-                "LevelIncrement": 4,
+                "LevelIncrement": 10,
                 "Value": 60
             },
             {
@@ -58,7 +58,7 @@
         "Name": "防禦命令",
         "Description": "增加部隊防禦力每等級20%",
         "TileEffect": "DefenseBoost",
-        "Target": 0,
+        "TargetRange": 0,
         "Color": [
             0.96,
             0.69,
@@ -73,7 +73,7 @@
             },
             {
                 "Operation": "command_at_least",
-                "LevelIncrement": 4,
+                "LevelIncrement": 10,
                 "Value": 60
             },
             {
@@ -105,7 +105,7 @@
         "Name": "攻城命令",
         "Description": "增加部隊對城牆攻擊力每等級50%",
         "TileEffect": "SiegeBoost",
-        "Target": 0,
+        "TargetRange": 0,
         "Color": [
             0.96,
             0.69,
@@ -120,7 +120,7 @@
             },
             {
                 "Operation": "command_at_least",
-                "LevelIncrement": 4,
+                "LevelIncrement": 10,
                 "Value": 60
             },
             {
