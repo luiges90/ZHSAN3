@@ -2,7 +2,7 @@
     {
         "_Id": 10,
         "Name": "攻擊命令",
-        "Description": "增加部隊攻擊力每等級25%",
+        "Description": "增加部隊攻擊力每等級20%",
         "TileEffect": "OffenseBoost",
         "Target": 0,
         "Color": [
@@ -56,7 +56,7 @@
     {
         "_Id": 20,
         "Name": "防禦命令",
-        "Description": "增加部隊防禦力每等級25%",
+        "Description": "增加部隊防禦力每等級20%",
         "TileEffect": "DefenseBoost",
         "Target": 0,
         "Color": [

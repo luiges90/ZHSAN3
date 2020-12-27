@@ -2,7 +2,7 @@
 	{
 		"_Id": 10,
 		"Name": "農政",
-		"Description": "農業能力每等級增加25%",
+		"Description": "農業能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -30,14 +30,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_agriculture_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 20,
 		"Name": "商才",
-		"Description": "商業能力每等級增加25%",
+		"Description": "商業能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -65,14 +65,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_commerce_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 30,
 		"Name": "民心",
-		"Description": "民心能力每等級增加25%",
+		"Description": "民心能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -100,14 +100,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_morale_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 40,
 		"Name": "修補",
-		"Description": "耐久能力每等級增加25%",
+		"Description": "耐久能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -139,14 +139,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_endurance_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 50,
 		"Name": "招兵",
-		"Description": "招兵能力每等級增加25%",
+		"Description": "招兵能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -170,14 +170,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_recruit_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 60,
 		"Name": "操練",
-		"Description": "訓練能力每等級增加25%",
+		"Description": "訓練能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -201,14 +201,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_training_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 70,
 		"Name": "生產",
-		"Description": "生產兵裝能力每等級增加25%",
+		"Description": "生產兵裝能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -232,14 +232,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_produce_equipment_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 100,
 		"Name": "富豪",
-		"Description": "城池資金收入每等級增加25%",
+		"Description": "城池資金收入每等級增加10%",
 		"Color": [
 			0.13,
 			0.56,
@@ -267,14 +267,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_fund_income",
-				"Value": 0.25
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 110,
 		"Name": "米道",
-		"Description": "城池糧草收入每等級增加25%",
+		"Description": "城池糧草收入每等級增加10%",
 		"Color": [
 			0.13,
 			0.56,
@@ -306,7 +306,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_food_income",
-				"Value": 0.25
+				"Value": 0.1
 			}
 		]
 	},
@@ -478,7 +478,7 @@
 	{
 		"_Id": 145,
 		"Name": "暴政",
-		"Description": "加速城池內政數值的自然下降每等級25%、城池的人口在戰爭的狀態下下降率增加50%",
+		"Description": "加速城池內政數值的自然下降每等級20%、城池的人口在戰爭的狀態下下降率增加50%",
 		"Color": [
 			1,
 			0,
@@ -489,7 +489,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_architecture_internal_decay",
-				"Value": 0.25
+				"Value": 0.2
 			},
 			{
 				"Operation": "modify_person_architecture_population_loss",
@@ -556,7 +556,7 @@
 	{
 		"_Id": 200,
 		"Name": "說服",
-		"Description": "說服能力每等級增加25%",
+		"Description": "說服能力每等級增加20%",
 		"Color": [
 			0.13,
 			0.56,
@@ -580,7 +580,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_convince_ability",
-				"Value": 0.25
+				"Value": 0.2
 			}
 		]
 	},
@@ -622,7 +622,7 @@
 	{
 		"_Id": 10100,
 		"Name": "城守",
-		"Description": "在城池內時，城池防禦每等級增加10%",
+		"Description": "在城池內時，城池防禦每等級增加20%",
 		"Color": [
 			0.96,
 			0.69,
@@ -658,7 +658,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_architecture_defence",
-				"Value": 0.1
+				"Value": 0.2
 			}
 		]
 	},
@@ -708,7 +708,7 @@
 	{
 		"_Id": 10200,
 		"Name": "步攻",
-		"Description": "作為主將時，步兵攻擊力每等級增加5%",
+		"Description": "作為主將時，步兵攻擊力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -745,14 +745,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_offence",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 10210,
 		"Name": "步守",
-		"Description": "作為主將時，步兵防禦力每等級增加5%",
+		"Description": "作為主將時，步兵防禦力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -789,7 +789,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_defence",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
@@ -844,7 +844,7 @@
 	{
 		"_Id": 10300,
 		"Name": "弓攻",
-		"Description": "作為主將時，弓兵攻擊力每等級增加5%",
+		"Description": "作為主將時，弓兵攻擊力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -881,14 +881,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_offence",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 10310,
 		"Name": "弓守",
-		"Description": "作為主將時，弓兵防禦力每等級增加5%",
+		"Description": "作為主將時，弓兵防禦力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -925,7 +925,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_defence",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
@@ -980,7 +980,7 @@
 	{
 		"_Id": 10400,
 		"Name": "騎攻",
-		"Description": "作為主將時，騎兵攻擊力每等級增加5%",
+		"Description": "作為主將時，騎兵攻擊力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1017,14 +1017,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_offence",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 10410,
 		"Name": "騎守",
-		"Description": "作為主將時，騎兵防禦力每等級增加5%",
+		"Description": "作為主將時，騎兵防禦力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1061,7 +1061,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_defence",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
@@ -1228,7 +1228,7 @@
 	{
 		"_Id": 10600,
 		"Name": "林戰",
-		"Description": "作為主將時，在森林裡部隊各項能力每等級增加5%",
+		"Description": "作為主將時，在森林裡部隊各項能力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1278,26 +1278,26 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_offence",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_defence",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_speed",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_initiative",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 10610,
 		"Name": "山戰",
-		"Description": "作為主將時，在山地裡部隊各項能力每等級增加5%",
+		"Description": "作為主將時，在山地裡部隊各項能力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1347,26 +1347,26 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_offence",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_defence",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_speed",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_initiative",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 10700,
 		"Name": "攻城",
-		"Description": "作為主將攻擊城池時，傷害每等級增加10%",
+		"Description": "作為主將攻擊城池時，傷害每等級增加20%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1401,14 +1401,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_damage",
-				"Value": 0.1
+				"Value": 0.2
 			}
 		]
 	},
 	{
 		"_Id": 10710,
 		"Name": "守戰",
-		"Description": "作為主將守城時，部隊各項能力每等級增加5%",
+		"Description": "作為主將守城時，部隊各項能力每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1443,19 +1443,19 @@
 		"Influences": [
 			{
 				"Operation": "modify_troop_offence",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_defence",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_speed",
-				"Value": 0.05
+				"Value": 0.1
 			},
 			{
 				"Operation": "modify_troop_initiative",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
@@ -1493,7 +1493,7 @@
 	{
 		"_Id": 10810,
 		"Name": "血路",
-		"Description": "部隊被擊破時自身不被俘虜，能力每等級增加25%",
+		"Description": "部隊被擊破時自身不被俘虜，能力每等級增加50%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1517,14 +1517,14 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_escape_ability",
-				"Value": 0.25
+				"Value": 0.5
 			}
 		]
 	},
 	{
 		"_Id": 10815,
 		"Name": "欠運",
-		"Description": "部隊被擊破時自身容易被俘虜，每等級增加20%",
+		"Description": "部隊被擊破時自身容易被俘虜，相應能力每等級減少20%",
 		"Color": [
 			1,
 			0,
@@ -1543,7 +1543,7 @@
 	{
 		"_Id": 11000,
 		"Name": "暴擊",
-		"Description": "作為主將時，部隊暴擊率每等級增加5%",
+		"Description": "作為主將時，部隊暴擊率每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1570,14 +1570,14 @@
 			},
 			{
 				"Operation": "add_troop_critical",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
 	{
 		"_Id": 11010,
 		"Name": "抗暴",
-		"Description": "作為主將時，部隊抗暴擊率每等級增加5%",
+		"Description": "作為主將時，部隊抗暴擊率每等級增加10%",
 		"Color": [
 			0.96,
 			0.69,
@@ -1604,7 +1604,7 @@
 			},
 			{
 				"Operation": "add_troop_anti_critical",
-				"Value": 0.05
+				"Value": 0.1
 			}
 		]
 	},
@@ -1634,7 +1634,7 @@
 	{
 		"_Id": 20010,
 		"Name": "寡欲",
-		"Description": "自身俸祿每等級減少25%",
+		"Description": "自身俸祿每等級減少20%",
 		"Color": [
 			0,
 			0.78,
@@ -1654,19 +1654,19 @@
 				"Value": 60
 			}
 		],
-		"MaxLevel": 3,
+		"MaxLevel": 4,
 		"Conditions": [],
 		"Influences": [
 			{
 				"Operation": "modify_person_salary",
-				"Value": -0.25
+				"Value": -0.2
 			}
 		]
 	},
 	{
 		"_Id": 20015,
 		"Name": "強欲",
-		"Description": "自身俸祿每等級增加50%",
+		"Description": "自身俸祿每等級增加25%",
 		"Color": [
 			1,
 			0,
@@ -1677,7 +1677,7 @@
 		"Influences": [
 			{
 				"Operation": "modify_person_salary",
-				"Value": 0.5
+				"Value": 0.25
 			}
 		]
 	},
