@@ -9,6 +9,7 @@ var color: Color setget forbidden
 var description: String setget forbidden
 
 var target_range: int setget forbidden
+var effect_range: int setget forbidden
 
 var tile_effect: String setget forbidden
 
@@ -34,6 +35,7 @@ func load_data(json: Dictionary, objects):
 	color = Util.load_color(json["Color"])
 	tile_effect = json["TileEffect"]
 	target_range = json["TargetRange"]
+	effect_range = json["EffectRange"]
 	combativity_cost = json["CombativityCost"]
 	duration = json["Duration"]
 	conditions = json["Conditions"]
@@ -53,6 +55,7 @@ func save_data() -> Dictionary:
 		"Color": Util.save_color(color),
 		"TileEffect": tile_effect,
 		"TargetRange": target_range,
+		"EffectRange": effect_range,
 		"CombativityCost": combativity_cost,
 		"Duration": duration,
 		"MaxLevel": max_level,

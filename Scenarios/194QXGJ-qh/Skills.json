@@ -1541,6 +1541,41 @@
 		]
 	},
 	{
+		"_Id": 10900,
+		"Name": "戰術",
+		"Description": "戰法持續天數每等級增加1回合",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 3000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "add_active_stunt_days",
+				"Value": 1
+			}
+		]
+	},
+	{
 		"_Id": 11000,
 		"Name": "暴擊",
 		"Description": "作為主將時，部隊暴擊率每等級增加10%",
@@ -1563,11 +1598,12 @@
 				"Value": 20000
 			}
 		],
-		"Conditions": [],
-		"Influences": [
+		"Conditions": [
 			{
 				"Operation": "is_leader"
-			},
+			}
+		],
+		"Influences": [
 			{
 				"Operation": "add_troop_critical",
 				"Value": 0.1
@@ -1597,14 +1633,50 @@
 				"Value": 20000
 			}
 		],
-		"Conditions": [],
-		"Influences": [
+		"Conditions": [
 			{
 				"Operation": "is_leader"
-			},
+			}
+		],
+		"Influences": [
 			{
 				"Operation": "add_troop_anti_critical",
 				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 11020,
+		"Name": "爆發",
+		"Description": "作為主將時，部隊暴擊造成傷8每等級增加25%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 2500
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 20000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_critical_damage_rate",
+				"Value": 0.25
 			}
 		]
 	},
@@ -1618,6 +1690,10 @@
 			0.13
 		],
 		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
 			{
 				"Operation": "command_experience_at_least",
 				"Value": 5000
@@ -1646,6 +1722,10 @@
 		],
 		"LearnConditions": [
 			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
 				"Operation": "command_experience_at_least",
 				"Value": 3000
 			},
@@ -1672,6 +1752,10 @@
 			0.13
 		],
 		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
 			{
 				"Operation": "command_experience_at_least",
 				"Value": 4000
@@ -1726,6 +1810,10 @@
 			0.13
 		],
 		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 1000
+			},
 			{
 				"Operation": "command_experience_at_least",
 				"Value": 1000

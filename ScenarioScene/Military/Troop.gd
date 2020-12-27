@@ -565,6 +565,7 @@ func activate_stunt(stunt, level):
 	active_stunt = stunt
 	active_stunt_level = level
 	active_stunt_days = stunt.duration
+	active_stunt_days = apply_influences("add_active_stunt_days", {"value": active_stunt_days})
 	_animate_stunt_start(stunt)
 	current_order = null
 
