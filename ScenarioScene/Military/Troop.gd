@@ -281,7 +281,7 @@ func get_offence():
 	var troop_base = military_kind.base_offence * military_kind.terrain_strength[get_current_terrain().id]
 	var troop_quantity = military_kind.offence * quantity / military_kind.max_quantity_multiplier
 	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
-	var morale_factor = (morale + 5) / 100.0
+	var morale_factor = (morale + 1) / 100.0
 	
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
@@ -297,7 +297,7 @@ func get_defence():
 	var troop_base = military_kind.base_defence * military_kind.terrain_strength[get_current_terrain().id]
 	var troop_quantity = military_kind.defence * quantity / military_kind.max_quantity_multiplier
 	var ability_factor = (get_command() + 10) / 100.0
-	var morale_factor = (morale + 10) / 100.0
+	var morale_factor = (morale + 1) / 100.0
 
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
@@ -485,8 +485,12 @@ func set_position(pos):
 	return _animate_position(old_position, map_position)
 	
 func add_morale(delta):
+	if delta < 0:
+		delta = apply_influences("modify_morale_loss", {"value": delta})
+	elif delta > 0:
+		delta = apply_influences("modify_morale_gain", {"value": delta})
+
 	morale += delta
-	# TODO let morale drop to 0 and rout
 	morale = clamp(morale, 1, 100)
 
 	
@@ -527,8 +531,13 @@ func set_recently_battled():
 	_recently_battled = 5
 
 
-func add_combativity(value):
-	combativity += value
+func add_combativity(delta):
+	if delta < 0:
+		delta = apply_influences("modify_combativity_loss", {"value": delta})
+	elif delta > 0:
+		delta = apply_influences("modify_combativity_gain", {"value": delta})
+		
+	combativity += delta
 	combativity = clamp(combativity, 0, 100)
 
 
@@ -901,7 +910,15 @@ func day_event():
 
 	if _recently_battled > 0:
 		_recently_battled -= 1
-		add_combativity(5)
+		
+		var add_morale_value = 0
+		var add_combativity_value = 5
+
+		add_morale_value = apply_influences("add_morale_per_day_during_battle", {"value": add_morale_value})
+		add_combativity_value = apply_influences("add_combativity_per_day_during_battle", {"value": add_combativity_value})
+
+		add_morale(add_morale_value)
+		add_combativity(add_combativity_value)
 
 	if active_stunt_days > 0:
 		active_stunt_days -= 1

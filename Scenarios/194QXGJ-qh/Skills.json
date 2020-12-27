@@ -1609,6 +1609,149 @@
 		]
 	},
 	{
+		"_Id": 11100,
+		"Name": "鼓舞",
+		"Description": "戰鬥時，部隊士氣每天增加每等級3點",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 3000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "add_morale_per_day_during_battle",
+				"Value": 3
+			}
+		]
+	},
+	{
+		"_Id": 11110,
+		"Name": "奏樂",
+		"Description": "戰鬥時，部隊戰意每天增加每等級3點",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 5000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "add_combativity_per_day_during_battle",
+				"Value": 3
+			}
+		]
+	},
+	{
+		"_Id": 11120,
+		"Name": "一心",
+		"Description": "減輕士氣、戰意衰減每等級10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"MaxLevel": 9,
+		"Influences": [
+			{
+				"Operation": "modify_morale_loss",
+				"Value": -0.1
+			},
+			{
+				"Operation": "modify_combativity_loss",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 11125,
+		"Name": "消沉",
+		"Description": "增加士氣、戰意衰減每等級20%",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_morale_loss",
+				"Value": 0.2
+			},
+			{
+				"Operation": "modify_combativity_loss",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 11130,
+		"Name": "激勵",
+		"Description": "強化士氣、戰意增長每等級10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_morale_gain",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_combativity_gain",
+				"Value": 0.1
+			}
+		]
+	},
+	{
 		"_Id": 20000,
 		"Name": "傳令",
 		"Description": "自身調動所需時間每等級減少10%",
