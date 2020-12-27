@@ -16,6 +16,7 @@ func _on_InfoMenu_factions_clicked(scenario):
 	show_data(scenario.factions.values())
 	
 func show_data(list: Array):
+	.show_data(list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('FACTION_LIST')

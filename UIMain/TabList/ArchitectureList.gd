@@ -32,6 +32,7 @@ func _on_InfoMenu_architectures_clicked(scenario):
 	show_data(scenario.architectures.values())
 
 func show_data(arch_list: Array):
+	.show_data(arch_list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('ARCHITECTURE_LIST')

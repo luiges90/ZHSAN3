@@ -38,6 +38,9 @@ func _on_InfoMenu_stunts_clicked(scenario):
 	
 
 func show_data(data):
+	.show_data(data)
+	_allow_empty_selection = true
+	
 	var item_list = tabs['BASIC'] as GridContainer
 	Util.delete_all_children(item_list)
 	

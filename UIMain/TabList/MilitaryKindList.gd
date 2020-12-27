@@ -25,6 +25,7 @@ func _on_InfoMenu_military_kind_clicked(scenario):
 	show_data(scenario.military_kinds.values())
 
 func show_data(list: Array):
+	.show_data(list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('MILITARY_KIND_LIST')

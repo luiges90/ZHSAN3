@@ -61,6 +61,7 @@ func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
 
 
 func show_data(person_list: Array):
+	.show_data(person_list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('PERSON_LIST')

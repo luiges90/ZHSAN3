@@ -12,6 +12,8 @@ var _confirming
 
 var _max_selection = -1
 
+var _allow_empty_selection = false
+
 var tabs = {}
 
 # 記錄長按事件作用物體id，用於實現長按動作
@@ -43,8 +45,8 @@ func _ready():
 	connect("mouse_entered", self, "_on_TabList_mouse_entered")
 
 func show_data(list):
-	# Subclasses should override this to show data
-	pass
+	# Subclasses should first call super and then override this to show data
+	_allow_empty_selection = false
 	
 func _post_show():
 	$ActionButtons/Confirm.disabled = true
@@ -79,7 +81,7 @@ func _clickable_label(text: String, on_click_func, on_click_func_name, object):
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label
 
-# 帶有長點擊事件的按鈕	
+# 帶有長點擊事件的按鈕
 func _clickable_label_with_long_pressed_event(text: String, on_click_func, object, checkbox):
 	var label = LinkButton.new()
 	label.text = text
@@ -144,7 +146,7 @@ func _checkbox_changed(in_cb: CheckBox):
 		if checkbox.is_pressed():
 			any_checked = true
 			break
-	$ActionButtons/Confirm.disabled = not any_checked
+	$ActionButtons/Confirm.disabled = not any_checked and not _allow_empty_selection
 	
 func _checkbox_change_status(checkbox: CheckBox):
 	checkbox.set_pressed(!checkbox.is_pressed())
@@ -262,7 +264,7 @@ func _on_SelectAll_pressed():
 func _on_UnselectAll_pressed():
 	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
 		checkbox.set_pressed(false)
-	$ActionButtons/Confirm.disabled = true
+	$ActionButtons/Confirm.disabled = not _allow_empty_selection
 	
 func _on_InverseSelect_pressed():
 	if _max_selection > 1:
@@ -271,7 +273,7 @@ func _on_InverseSelect_pressed():
 			checkbox.set_pressed(!checkbox.is_pressed())
 			if checkbox.is_pressed():
 				disable = false
-		$ActionButtons/Confirm.disabled = disable
+		$ActionButtons/Confirm.disabled = disable and not _allow_empty_selection
 
 #######################
 #       Sorting       #
