@@ -262,7 +262,7 @@ func get_strength():
 	var max_strength = 0
 	for p in get_persons():
 		var sub_strength = p.get_strength()
-		if p.get_strength() > max_strength:
+		if sub_strength > max_strength:
 			max_strength = p.get_strength()
 	strength = max(strength, max_strength * 0.7)
 	return strength
