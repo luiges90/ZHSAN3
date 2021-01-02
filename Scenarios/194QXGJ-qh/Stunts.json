@@ -6,6 +6,7 @@
         "TileEffect": "OffenseBoost",
         "TargetRange": 0,
         "EffectRange": 1,
+        "TargetType": 0,
         "Color": [
             0.96,
             0.69,
@@ -61,6 +62,7 @@
         "TileEffect": "DefenseBoost",
         "TargetRange": 0,
         "EffectRange": 1,
+        "TargetType": 0,
         "Color": [
             0.96,
             0.69,
@@ -109,6 +111,7 @@
         "TileEffect": "SiegeBoost",
         "TargetRange": 0,
         "EffectRange": 1,
+        "TargetType": 0,
         "Color": [
             0.96,
             0.69,

@@ -1,6 +1,8 @@
 extends Node
 class_name Stunt
 
+enum TargetType { ALLIES, ENEMIES, ALL, POSITION }
+
 var id: int setget forbidden
 var scenario
 
@@ -25,6 +27,8 @@ var ai_conditions setget forbidden
 var learn_conditions setget forbidden
 var max_level: int setget forbidden
 
+var target_type setget forbidden
+
 func forbidden(x):
 	assert(false)
 
@@ -36,6 +40,7 @@ func load_data(json: Dictionary, objects):
 	tile_effect = json["TileEffect"]
 	target_range = json["TargetRange"]
 	effect_range = json["EffectRange"]
+	target_type = json["TargetType"]
 	combativity_cost = json["CombativityCost"]
 	duration = json["Duration"]
 	conditions = json["Conditions"]
@@ -56,6 +61,7 @@ func save_data() -> Dictionary:
 		"TileEffect": tile_effect,
 		"TargetRange": target_range,
 		"EffectRange": effect_range,
+		"TargetType": target_type,
 		"CombativityCost": combativity_cost,
 		"Duration": duration,
 		"MaxLevel": max_level,
