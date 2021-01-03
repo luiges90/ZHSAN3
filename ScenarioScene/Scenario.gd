@@ -348,27 +348,27 @@ func _load_data(path):
 		__load_item(instance, item, troops, {"persons": persons, "stunts": stunts})
 		troop_json[instance.id] = item
 	file.close()
-	for tid in troops:
-		var order_type = troop_json[tid]["_CurrentOrderType"]
-		var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
-		var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
-		var order_target_stunt = troop_json[tid]["_CurrentOrderStunt"]
-		var order_target_stunt_level = troop_json[tid]["_CurrentOrderStuntLevel"]
+	#for tid in troops:
+	#	var order_type = troop_json[tid]["_CurrentOrderType"]
+	#	var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
+	#	var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
+	#	var order_target_stunt = troop_json[tid]["_CurrentOrderStunt"]
+	#	var order_target_stunt_level = troop_json[tid]["_CurrentOrderStuntLevel"]
 
-		if order_target_stunt >= 0:
-			var stunt = stunts[int(order_target_stunt)]
-			troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level)
-		elif order_target_type == "Position":
-			troops[tid].set_move_order(Util.load_position(order_target_raw))
-		elif order_target_type == "Architecture":
-			var arch = architectures[int(order_target_raw)]
-			troops[tid].set_attack_order(null, arch)
-		elif order_target_type == "Troop":
-			var troop = troops[int(order_target_raw)]
-			if order_type == Troop.OrderType.ATTACK:
-				troops[tid].set_attack_order(troop, null)
-			elif order_type == Troop.OrderType.FOLLOW:
-				troops[tid].set_follow_order(troop)
+	#	if order_target_stunt >= 0:
+	#		var stunt = stunts[int(order_target_stunt)]
+	#		troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level)
+	#	elif order_target_type == "Position":
+	#		troops[tid].set_move_order(Util.load_position(order_target_raw))
+	#	elif order_target_type == "Architecture":
+	#		var arch = architectures[int(order_target_raw)]
+	#		troops[tid].set_attack_order(null, arch)
+	#	elif order_target_type == "Troop":
+	#		var troop = troops[int(order_target_raw)]
+	#		if order_type == Troop.OrderType.ATTACK:
+	#			troops[tid].set_attack_order(troop, null)
+	#		elif order_type == Troop.OrderType.FOLLOW:
+	#			troops[tid].set_follow_order(troop)
 		
 		
 	

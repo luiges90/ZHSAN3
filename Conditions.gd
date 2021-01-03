@@ -212,6 +212,6 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 						return false
 			'troop_has_no_active_stunt':
 				if params.has('troop'):
-					if _op_cond(op_not, params['troop'].active_stunt != null):
+					if _op_cond(op_not, params['troop'].active_stunt_effects.size() > 0):
 						return false
 	return true
