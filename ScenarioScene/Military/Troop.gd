@@ -580,13 +580,25 @@ func activate_stunt(stunt, level):
 	assert(stunt.combativity_cost <= combativity)
 	combativity -= stunt.combativity_cost
 
-	var days = stunt.duration
-	days = apply_influences("add_active_stunt_days", {"value": days})
-	active_stunt_effects.append({
-		"stunt": stunt,
-		"level": level,
-		"days": days
-	})
+	var troops
+	if stunt.effect_range >= 1:
+		var squares = Util.squares_in_range(position, stunt.effect_range)
+		troops = []
+		for s in squares:
+			var t = scenario.get_troop_at_position(s)
+			if t != null:
+				troops.append(t)
+	else:
+		troops = [self]
+	
+	for t in troops:
+		var days = stunt.duration
+		days = t.apply_influences("add_active_stunt_days", {"value": days})
+		t.active_stunt_effects.append({
+			"stunt": stunt,
+			"level": level,
+			"days": days
+		})
 
 	call_deferred("_update_stunt_animations")
 	current_order = null

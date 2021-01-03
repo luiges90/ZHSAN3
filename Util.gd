@@ -41,7 +41,7 @@ static func id_key_dict(dict: Dictionary) -> Dictionary:
 #                 Formatting                 #
 ##############################################
 
-static func nstr (n: int) -> String:
+static func nstr(n: int) -> String:
 	var s = str(n)
 	var negative_shift = 1 if n < 0 else 0
 	if s.length() > 3 + negative_shift:

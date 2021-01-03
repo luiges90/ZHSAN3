@@ -5,7 +5,7 @@
         "Description": "增加部隊攻擊力每等級20%",
         "TileEffect": "OffenseBoost",
         "TargetRange": 0,
-        "EffectRange": 1,
+        "EffectRange": 0,
         "TargetType": 0,
         "Color": [
             0.96,
@@ -61,7 +61,7 @@
         "Description": "增加部隊防禦力每等級20%",
         "TileEffect": "DefenseBoost",
         "TargetRange": 0,
-        "EffectRange": 1,
+        "EffectRange": 0,
         "TargetType": 0,
         "Color": [
             0.96,
@@ -110,7 +110,7 @@
         "Description": "增加部隊對城牆攻擊力每等級50%",
         "TileEffect": "SiegeBoost",
         "TargetRange": 0,
-        "EffectRange": 1,
+        "EffectRange": 0,
         "TargetType": 0,
         "Color": [
             0.96,
