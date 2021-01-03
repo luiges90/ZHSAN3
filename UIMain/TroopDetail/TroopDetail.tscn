@@ -42,12 +42,12 @@ __meta__ = {
 [node name="H1" type="HBoxContainer" parent="A"]
 margin_top = 52.0
 margin_right = 749.0
-margin_bottom = 252.0
+margin_bottom = 200.0
 custom_constants/separation = 8
 
 [node name="V1" type="VBoxContainer" parent="A/H1"]
 margin_right = 103.0
-margin_bottom = 200.0
+margin_bottom = 148.0
 custom_constants/separation = 8
 
 [node name="Label10" type="Label" parent="A/H1/V1"]
@@ -95,7 +95,7 @@ __meta__ = {
 [node name="Content" type="GridContainer" parent="A/H1"]
 margin_left = 111.0
 margin_right = 749.0
-margin_bottom = 200.0
+margin_bottom = 148.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
@@ -484,97 +484,6 @@ margin_left = 515.0
 margin_top = 130.0
 margin_right = 636.0
 margin_bottom = 148.0
-size_flags_horizontal = 3
-text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label17" type="Label" parent="A/H1/Content"]
-margin_top = 156.0
-margin_right = 119.0
-margin_bottom = 174.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-text = "ACTIVE_STUNT"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label18" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
-margin_top = 156.0
-margin_right = 246.0
-margin_bottom = 174.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-text = "STUNT_DAY"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label19" type="Label" parent="A/H1/Content"]
-margin_left = 254.0
-margin_top = 156.0
-margin_right = 373.0
-margin_bottom = 174.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label20" type="Label" parent="A/H1/Content"]
-margin_left = 381.0
-margin_top = 156.0
-margin_right = 507.0
-margin_bottom = 174.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label21" type="Label" parent="A/H1/Content"]
-margin_left = 515.0
-margin_top = 156.0
-margin_right = 636.0
-margin_bottom = 174.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 0, 1, 1, 1 )
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ActiveStunt" type="Label" parent="A/H1/Content"]
-margin_top = 182.0
-margin_right = 119.0
-margin_bottom = 200.0
-size_flags_horizontal = 3
-text = "0"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ActiveStuntDay" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
-margin_top = 182.0
-margin_right = 246.0
-margin_bottom = 200.0
 size_flags_horizontal = 3
 text = "0"
 align = 1

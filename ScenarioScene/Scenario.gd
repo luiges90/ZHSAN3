@@ -345,7 +345,7 @@ func _load_data(path):
 	var troop_json = {}
 	for item in obj:
 		var instance = troop_scene.instance()
-		__load_item(instance, item, troops, {"persons": persons})
+		__load_item(instance, item, troops, {"persons": persons, "stunts": stunts})
 		troop_json[instance.id] = item
 	file.close()
 	for tid in troops:

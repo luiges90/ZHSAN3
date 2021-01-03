@@ -19,9 +19,8 @@ var morale: int setget forbidden
 var combativity: int setget forbidden
 
 var status = Status.NORMAL setget forbidden
-var active_stunt setget forbidden
-var active_stunt_level setget forbidden
-var active_stunt_days = 0 setget forbidden
+
+var active_stunt_effects: Array setget forbidden
 
 var order_made: bool setget forbidden
 
@@ -127,6 +126,14 @@ func load_data(json: Dictionary, objects):
 	_food_shortage = json["_FoodShortage"]
 
 	_recently_battled = json["_RecentlyBattled"]
+
+	var active_stunts = json["_ActiveStunts"]
+	for s in active_stunts:
+		active_stunt_effects.append({
+			"stunt": objects["stunts"][s["stunt"]],
+			"level": int(s["level"]),
+			"days": int(s["days"])
+		})
 	
 	_ai_state = json["_AIState"]
 	var __arch = json["_AIDestinationArchitecture"]
@@ -163,6 +170,15 @@ func save_data() -> Dictionary:
 		if current_order.has("stunt"):
 			order_stunt = current_order.stunt.id
 			order_stunt_level = current_order.stunt_level
+
+	var active_stunt_ids = []
+	for s in active_stunt_effects:
+		active_stunt_ids.append({
+			"stunt": s["stunt"].id,
+			"level": s["level"],
+			"days": s["days"]
+		})
+
 	return {
 		"_Id": id,
 		"MapPosition": Util.save_position(map_position),
@@ -172,6 +188,7 @@ func save_data() -> Dictionary:
 		"Quantity": quantity,
 		"Morale": morale,
 		"Combativity": combativity,
+		"_ActiveStunts": active_stunt_ids,
 		"_OrderMade": order_made,
 		"_FoodShortage": _food_shortage,
 		"_Orientation": _orientation,
@@ -562,22 +579,18 @@ func available_stunts():
 func activate_stunt(stunt, level):
 	assert(stunt.combativity_cost <= combativity)
 	combativity -= stunt.combativity_cost
-	active_stunt = stunt
-	active_stunt_level = level
-	active_stunt_days = stunt.duration
-	active_stunt_days = apply_influences("add_active_stunt_days", {"value": active_stunt_days})
-	_animate_stunt_start(stunt)
+
+	var days = stunt.duration
+	days = apply_influences("add_active_stunt_days", {"value": days})
+	active_stunt_effects.append({
+		"stunt": stunt,
+		"level": level,
+		"days": days
+	})
+
+	call_deferred("_update_stunt_animations")
 	current_order = null
 
-func get_active_stunt_name():
-	if active_stunt == null:
-		return "----"
-	return active_stunt.get_name() + active_stunt_level
-	
-func get_active_stunt_days_str():
-	if active_stunt == null:
-		return "--"
-	return str(active_stunt_days)
 
 ####################################
 #         Influence System         #
@@ -590,9 +603,11 @@ func apply_influences(operation, params: Dictionary):
 		
 		all_params["value"] = value
 		value = military_kind.apply_influences(operation, all_params)
-		if active_stunt != null:
+
+		for s in active_stunt_effects:
 			all_params["value"] = value
-			value = active_stunt.apply_influences(operation, active_stunt_level, all_params)
+			value = s["stunt"].apply_influences(operation, s["level"], all_params)
+			
 		for p in get_persons():
 			all_params["value"] = value
 			value = p.apply_influences(operation, all_params)
@@ -921,11 +936,12 @@ func day_event():
 		add_morale(add_morale_value)
 		add_combativity(add_combativity_value)
 
-	if active_stunt_days > 0:
-		active_stunt_days -= 1
-		if active_stunt_days <= 0:
-			active_stunt = null
-			call_deferred("_animate_stunt_stop")
+	var effects = active_stunt_effects.duplicate()
+	for s in effects:
+		s["days"] -= 1
+		if s["days"] <= 0:
+			active_stunt_effects.erase(s)
+			call_deferred("_update_stunt_animations")
 		
 	call_deferred("emit_signal", "troop_survey_updated", self)
 		
@@ -1112,16 +1128,18 @@ func _get_animation_orientation(from: Vector2, to: Vector2):
 		else:
 			return "se"
 			
-func _animate_stunt_start(stunt):
-	$TroopArea/StuntSprite.animation = stunt.tile_effect
-	$TroopArea/StuntSprite.frame = 0
-	$TroopArea/StuntSprite.show()
-	$TroopArea/StuntSprite.play()
-	call_deferred("emit_signal", "start_stunt", self, stunt)
+func _update_stunt_animations():
+	if active_stunt_effects.size() > 0:
+		var last_index = active_stunt_effects.size() - 1
+		$TroopArea/StuntSprite.animation = active_stunt_effects[last_index].tile_effect
+		$TroopArea/StuntSprite.frame = 0
+		$TroopArea/StuntSprite.show()
+		$TroopArea/StuntSprite.play()
+		call_deferred("emit_signal", "start_stunt", self, active_stunt_effects[last_index])
+	else:
+		$TroopArea/StuntSprite.stop()
+		$TroopArea/StuntSprite.hide()
 
-func _animate_stunt_stop():
-	$TroopArea/StuntSprite.stop()
-	$TroopArea/StuntSprite.hide()
 	
 func _on_EffectSprite_animation_finished():
 	$TroopArea/EffectSprite.hide()
