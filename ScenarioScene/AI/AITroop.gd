@@ -21,8 +21,10 @@ func run_troop(troop, scenario):
 		var avail_stunts = troop.available_stunts()
 		var activated = false
 		for stunt in avail_stunts:
+			var valid_squares = stunt.get_valid_target_squares(troop)
+			var target = Util.random_from(valid_squares) # TODO pick target
 			if troop.combativity >= stunt.combativity_cost and stunt.check_ai_conditions(troop):
-				troop.set_activate_stunt_order(stunt, avail_stunts[stunt])
+				troop.set_activate_stunt_order(stunt, avail_stunts[stunt], target) 
 				activated = true
 				break
 		

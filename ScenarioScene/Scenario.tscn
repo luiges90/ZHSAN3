@@ -40,3 +40,4 @@ script = ExtResource( 2 )
 [connection signal="follow_troop" from="PositionSelector" to="GameRecordCreator" method="_on_PositionSelector_follow_troop"]
 [connection signal="move_troop" from="PositionSelector" to="." method="_on_PositionSelector_move_troop"]
 [connection signal="move_troop" from="PositionSelector" to="GameRecordCreator" method="_on_PositionSelector_move_troop"]
+[connection signal="select_stunt_target" from="PositionSelector" to="." method="_on_PositionSelector_select_stunt_target"]

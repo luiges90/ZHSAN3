@@ -87,3 +87,26 @@ func check_conditions(troop: Troop):
 
 func check_ai_conditions(troop: Troop):
 	return Conditions.check_conditions_list(ai_conditions, {"troop": troop})
+
+func get_valid_target_squares(troop: Troop) -> Array:
+	if target_range <= 0:
+		return [troop.map_position]
+	
+	var result = []
+	var squares_in_range = Util.squares_in_range(troop.map_position, target_range)
+	for s in squares_in_range:
+		if target_type == TargetType.POSITION:
+			result.append(s)
+		else:
+			var target_troop = scenario.get_troop_at_position(s)
+			if target_troop != null:
+				if valid_target(troop, target_troop):
+					result.append(s)
+	return result
+	
+func valid_target(troop: Troop, other_troop: Troop) -> bool:
+	match target_type:
+		TargetType.ALL: return true
+		TargetType.ALLIES: return other_troop.get_belonged_faction().is_friend_to(troop.get_belonged_faction())
+		TargetType.ENEMIES: return other_troop.get_belonged_faction().is_enemy_to(troop.get_belonged_faction())
+	return false

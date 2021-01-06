@@ -1,11 +1,12 @@
 extends Node2D
 class_name PositionSelector
 
-enum CurrentAction { CREATE_TROOP, MOVE_TROOP, ATTACK_TROOP, ENTER_TROOP, FOLLOW_TROOP }
+enum CurrentAction { CREATE_TROOP, MOVE_TROOP, ATTACK_TROOP, ENTER_TROOP, FOLLOW_TROOP, SELECT_STUNT_TARGET }
 var current_action
 
 var current_architecture
 var current_troop
+var current_stunt
 
 var _cancel = false
 
@@ -14,6 +15,7 @@ signal move_troop
 signal enter_troop
 signal follow_troop
 signal attack_troop
+signal select_stunt_target
 
 func _process(delta):
 	if _cancel:
@@ -80,6 +82,17 @@ func _on_select_troop_follow(troop):
 		if target_troop != null and target_troop != troop:
 			_create_position_select_item(target_troop.map_position, Color.yellow)
 
+	
+func _on_select_troop_stunt_target(troop, stunt):
+	current_action = CurrentAction.SELECT_STUNT_TARGET
+	current_architecture = null
+	current_troop = troop
+	current_stunt = stunt
+
+	var valid_targets = stunt.get_valid_target_squares(troop)
+	for t in valid_targets:
+		_create_position_select_item(t, Color.red)
+
 
 func _create_position_select_item(position, color = Color.white):
 	var item = preload("PositionSelectItem.tscn")
@@ -109,3 +122,5 @@ func _on_position_selected(position):
 			call_deferred("emit_signal", "follow_troop", current_troop, position)
 		CurrentAction.ATTACK_TROOP:
 			call_deferred("emit_signal", "attack_troop", current_troop, position)
+		CurrentAction.SELECT_STUNT_TARGET:
+			call_deferred("emit_signal", "select_stunt_target", current_troop, current_stunt, position)

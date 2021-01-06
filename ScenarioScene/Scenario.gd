@@ -507,6 +507,7 @@ func on_architecture_toggle_auto_task(current_architecture):
 
 func _on_PositionSelector_create_troop(arch, troop, position):
 	create_troop(arch, troop, position)
+
 	
 func create_troop(arch, troop, position) -> Troop:
 	var scene = preload("Military/Troop.tscn")
@@ -550,6 +551,10 @@ func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
 	call_deferred("emit_signal", "scenario_camera_moved", camera_rect, zoom, self)
 	_update_position_label(get_viewport().get_mouse_position())
 	
+func _on_PositionSelector_select_stunt_target(troop, stunt, position):
+	$GameRecordCreator._on_troop_prepare_start_stunt(troop, stunt)
+	var stunt_level = troop.get_leader().stunts[stunt]
+	troop.set_activate_stunt_order(stunt, stunt_level, position)
 
 func _on_troop_move_clicked(troop):
 	$PositionSelector._on_select_troop_move_to(troop)
@@ -564,9 +569,9 @@ func _on_troop_stunt_clicked(troop, stunt):
 	if stunt.target_range <= 0:
 		$GameRecordCreator._on_troop_prepare_start_stunt(troop, stunt)
 		var stunt_level = troop.get_leader().stunts[stunt]
-		troop.set_activate_stunt_order(stunt, stunt_level)
+		troop.set_activate_stunt_order(stunt, stunt_level, troop.map_position)
 	else:
-		assert("not implemented")
+		$PositionSelector._on_select_troop_stunt_target(troop, stunt)
 	
 func _on_troop_enter_clicked(troop):
 	$PositionSelector._on_select_troop_enter(troop)
@@ -861,3 +866,4 @@ func _unhandled_input(event):
 		_update_position_label(event.position)
 		
 		
+

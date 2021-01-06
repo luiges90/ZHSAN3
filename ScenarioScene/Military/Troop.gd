@@ -483,12 +483,12 @@ func set_attack_order(troop, arch):
 	if _scenario_loaded:
 		update_troop_title()
 
-func set_activate_stunt_order(stunt, level):
+func set_activate_stunt_order(stunt, level, target):
 	assert(!order_made)
 	order_made = true
 	current_order = {
 		"type": OrderType.ACTIVATE_STUNT,
-		"target": null,
+		"target": target,
 		"stunt": stunt,
 		"stunt_level": level
 	}
@@ -576,17 +576,17 @@ func available_stunts():
 	return result
 
 
-func activate_stunt(stunt, level):
+func activate_stunt(stunt, level, target):
 	assert(stunt.combativity_cost <= combativity)
 	combativity -= stunt.combativity_cost
 
 	var troops
 	if stunt.effect_range >= 1:
-		var squares = Util.squares_in_range(position, stunt.effect_range)
+		var squares = Util.squares_in_range(target, stunt.effect_range)
 		troops = []
 		for s in squares:
 			var t = scenario.get_troop_at_position(s)
-			if t != null:
+			if t != null and stunt.valid_target(self, t):
 				troops.append(t)
 	else:
 		troops = [self]
@@ -654,7 +654,7 @@ class ExecuteStepResult:
 
 func execute_step() -> ExecuteStepResult:
 	if current_order != null and current_order.type == OrderType.ACTIVATE_STUNT:
-		activate_stunt(current_order.stunt, current_order.stunt_level)
+		activate_stunt(current_order.stunt, current_order.stunt_level, current_order.target)
 		return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 	elif current_order != null and current_order.type == OrderType.MOVE:
 		_current_path_index += 1
