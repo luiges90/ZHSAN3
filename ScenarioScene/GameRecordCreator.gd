@@ -394,10 +394,46 @@ func _on_troop_prepare_start_stunt(current_troop, stunt):
 			"stunt": _color_text(CYAN, stunt.get_name()),
 		}))
 
-func _on_troop_start_stunt(current_troop, stunt):
+func _on_troop_start_stunt(current_troop, stunt, apply_to_self, friendly, success):
 	var leader = current_troop.get_leader()
-	call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
-		 _get_bubble("troop_start_stunt", leader).format({
-			"person": _color_text(YELLOW, leader.get_name()),
-			"stunt": _color_text(CYAN, stunt.get_name()),
-		}))
+	if apply_to_self:
+		if success:
+			call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+				_get_bubble("troop_start_stunt", leader).format({
+					"person": _color_text(YELLOW, leader.get_name()),
+					"stunt": _color_text(CYAN, stunt.get_name()),
+				}))
+		else:
+			call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+				_get_bubble("troop_start_stunt_failure", leader).format({
+					"person": _color_text(YELLOW, leader.get_name()),
+					"stunt": _color_text(CYAN, stunt.get_name()),
+				}))
+	else:
+		if success:
+			if friendly:
+				call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+					_get_bubble("troop_affected_by_friendly_start_stunt", leader).format({
+						"person": _color_text(YELLOW, leader.get_name()),
+						"stunt": _color_text(CYAN, stunt.get_name()),
+					}))
+			else:
+				call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+					_get_bubble("troop_affected_by_hostile_start_stunt", leader).format({
+						"person": _color_text(YELLOW, leader.get_name()),
+						"stunt": _color_text(CYAN, stunt.get_name()),
+					}))
+		else:
+			if friendly:
+				call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+					_get_bubble("troop_affected_by_start_stunt_failure", leader).format({
+						"person": _color_text(YELLOW, leader.get_name()),
+						"stunt": _color_text(CYAN, stunt.get_name()),
+					}))
+			else:
+				call_deferred("emit_signal", "add_person_bubble", leader, current_troop,
+					_get_bubble("troop_affected_by_hostile_start_stunt_failure", leader).format({
+						"person": _color_text(YELLOW, leader.get_name()),
+						"stunt": _color_text(CYAN, stunt.get_name()),
+					}))
+

@@ -76,5 +76,35 @@
 			"Conditions": [],
 			"Text": ["見識一下我{person}的{stunt}！"]
 		}
+	],
+	"troop_start_stunt_failure": [
+		{
+			"Conditions": [],
+			"Text": ["{stunt}無效嘛......"]
+		}
+	],
+	"troop_affected_by_friendly_start_stunt": [
+		{
+			"Conditions": [],
+			"Text": [""]
+		}
+	],
+	"troop_affected_by_hostile_start_stunt": [
+		{
+			"Conditions": [],
+			"Text": ["可惡，中計了！"]
+		}
+	],
+	"troop_affected_by_start_stunt_failure": [
+		{
+			"Conditions": [],
+			"Text": ["{stunt}無效嘛......", "", "", ""]
+		}
+	],
+	"troop_affected_by_hostile_start_stunt_failure": [
+		{
+			"Conditions": [],
+			"Text": ["這些技倆對我無效！", "", "", ""]
+		}
 	]
 }

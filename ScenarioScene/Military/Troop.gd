@@ -633,8 +633,11 @@ func activate_stunt(stunt, level, target):
 				"level": level,
 				"days": days
 			})
+			call_deferred("emit_signal", "start_stunt", t, stunt, t == self, self.get_belonged_faction().is_friend_to(t.get_belonged_faction()), true)
+		else:
+			call_deferred("emit_signal", "start_stunt", t, stunt, t == self, self.get_belonged_faction().is_friend_to(t.get_belonged_faction()), false)
+		t.call_deferred("_update_stunt_animations")
 
-	call_deferred("_update_stunt_animations")
 	current_order = null
 
 
@@ -983,12 +986,15 @@ func day_event():
 		add_combativity(add_combativity_value)
 
 	var effects = active_stunt_effects.duplicate()
+	var stunt_updated = false
 	for s in effects:
 		s["days"] -= 1
 		if s["days"] <= 0:
 			active_stunt_effects.erase(s)
-			call_deferred("_update_stunt_animations")
-		
+			stunt_updated = true
+	if stunt_updated:
+		call_deferred("_update_stunt_animations")
+	
 	call_deferred("emit_signal", "troop_survey_updated", self)
 		
 
@@ -1181,7 +1187,6 @@ func _update_stunt_animations():
 		$TroopArea/StuntSprite.frame = 0
 		$TroopArea/StuntSprite.show()
 		$TroopArea/StuntSprite.play()
-		call_deferred("emit_signal", "start_stunt", self, active_stunt_effects[last_index]["stunt"])
 	else:
 		$TroopArea/StuntSprite.stop()
 		$TroopArea/StuntSprite.hide()
