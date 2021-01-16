@@ -294,6 +294,16 @@ func get_command():
 	command = max(command, max_command * 0.7)
 	return command
 
+func get_intelligence():
+	var intelligence = get_leader().get_intelligence()
+	var max_intelligence = 0
+	for p in get_persons():
+		var sub_intelligence = p.get_intelligence()
+		if sub_intelligence > max_intelligence:
+			max_intelligence = sub_intelligence
+	intelligence = max(intelligence, max_intelligence * 0.9)
+	return intelligence
+
 func get_offence():
 	var troop_base = military_kind.base_offence * military_kind.terrain_strength[get_current_terrain().id]
 	var troop_quantity = military_kind.offence * quantity / military_kind.max_quantity_multiplier
@@ -302,7 +312,7 @@ func get_offence():
 	
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	base = apply_influences("modify_troop_offence", {"value": base})
+	base = clamp(apply_influences("modify_troop_offence", {"value": base}), base * 0.5, base * 2)
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -318,7 +328,7 @@ func get_defence():
 
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	base = apply_influences("modify_troop_defence", {"value": base})
+	base = clamp(apply_influences("modify_troop_defence", {"value": base}), base * 0.5, base * 2)
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -331,12 +341,16 @@ func get_offence_over_defence():
 
 func get_speed():
 	var base = military_kind.speed
-	base = apply_influences("modify_troop_speed", {"value": base})
+
+	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.5, base * 2)
+
 	return int(base)
 	
 func get_initiative():
 	var base = military_kind.initiative * military_kind.terrain_strength[get_current_terrain().id]
-	base = apply_influences("modify_troop_initiative", {"value": base})
+
+	base = clamp(apply_influences("modify_troop_initiative", {"value": base}), base * 0.5, base * 2)
+
 	return int(base)
 	
 static func cmp_initiative(a, b):
@@ -591,14 +605,34 @@ func activate_stunt(stunt, level, target):
 	else:
 		troops = [self]
 	
+	var self_ability
+	match stunt.competition_ability:
+		Stunt.CompetitionAbility.COMMAND: self_ability = get_command()
+		Stunt.CompetitionAbility.STRENGTH: self_ability = get_strength()
+		Stunt.CompetitionAbility.INTELLIGENCE: self_ability = get_intelligence()
+		_: self_ability = 0
+	
 	for t in troops:
-		var days = stunt.duration
-		days = t.apply_influences("add_active_stunt_days", {"value": days})
-		t.active_stunt_effects.append({
-			"stunt": stunt,
-			"level": level,
-			"days": days
-		})
+		var target_ability
+		if get_belonged_faction().is_enemy_to(target.get_belonged_faction()):
+			match stunt.competition_ability:
+				Stunt.CompetitionAbility.COMMAND: target_ability = t.get_command()
+				Stunt.CompetitionAbility.STRENGTH: target_ability = t.get_strength()
+				Stunt.CompetitionAbility.INTELLIGENCE: target_ability = t.get_intelligence()
+				_: target_ability = 0
+		else:
+			target_ability = 0
+
+		var success_chance = stunt.success_chance + (self_ability - target_ability) * stunt.ability_chance_rate
+
+		if randf() < success_chance:
+			var days = stunt.duration
+			days = t.apply_influences("add_active_stunt_days", {"value": days})
+			t.active_stunt_effects.append({
+				"stunt": stunt,
+				"level": level,
+				"days": days
+			})
 
 	call_deferred("_update_stunt_animations")
 	current_order = null

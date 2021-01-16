@@ -2,6 +2,7 @@ extends Node
 class_name Stunt
 
 enum TargetType { ALLIES, ENEMIES, ALL, POSITION }
+enum CompetitionAbility { NONE, COMMAND, STRENGTH, INTELLIGENCE }
 
 var id: int setget forbidden
 var scenario
@@ -29,6 +30,10 @@ var max_level: int setget forbidden
 
 var target_type setget forbidden
 
+var success_chance: float setget forbidden
+var competition_ability setget forbidden
+var ability_chance_rate: float setget forbidden
+
 func forbidden(x):
 	assert(false)
 
@@ -41,6 +46,9 @@ func load_data(json: Dictionary, objects):
 	target_range = json["TargetRange"]
 	effect_range = json["EffectRange"]
 	target_type = json["TargetType"]
+	success_chance = json["SuccessChance"]
+	competition_ability = json["CompetitionAbility"]
+	ability_chance_rate = json["AbilityChanceRate"]
 	combativity_cost = json["CombativityCost"]
 	duration = json["Duration"]
 	conditions = json["Conditions"]
@@ -62,6 +70,9 @@ func save_data() -> Dictionary:
 		"TargetRange": target_range,
 		"EffectRange": effect_range,
 		"TargetType": target_type,
+		"SuccessChance": success_chance,
+		"CompetitionAbility": competition_ability,
+		"AbilityChanceRate": ability_chance_rate,
 		"CombativityCost": combativity_cost,
 		"Duration": duration,
 		"MaxLevel": max_level,
@@ -82,13 +93,13 @@ func apply_influences(in_operation, level: int, params: Dictionary):
 	all_params['level'] = level
 	return Influences.apply_influences(self, in_operation, all_params)
 
-func check_conditions(troop: Troop):
+func check_conditions(troop):
 	return Conditions.check_conditions_list(conditions, {"troop": troop})
 
-func check_ai_conditions(troop: Troop):
+func check_ai_conditions(troop):
 	return Conditions.check_conditions_list(ai_conditions, {"troop": troop})
 
-func get_valid_target_squares(troop: Troop) -> Array:
+func get_valid_target_squares(troop) -> Array:
 	if target_range <= 0:
 		return [troop.map_position]
 	
@@ -104,7 +115,7 @@ func get_valid_target_squares(troop: Troop) -> Array:
 					result.append(s)
 	return result
 	
-func valid_target(troop: Troop, other_troop: Troop) -> bool:
+func valid_target(troop, other_troop) -> bool:
 	match target_type:
 		TargetType.ALL: return true
 		TargetType.ALLIES: return other_troop.get_belonged_faction().is_friend_to(troop.get_belonged_faction())
