@@ -553,8 +553,10 @@ func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
 	
 func _on_PositionSelector_select_stunt_target(troop, stunt, position):
 	$GameRecordCreator._on_troop_prepare_start_stunt(troop, stunt)
+	var target_troop = get_troop_at_position(position)
+	assert(target_troop != null)
 	var stunt_level = troop.get_leader().stunts[stunt]
-	troop.set_activate_stunt_order(stunt, stunt_level, position)
+	troop.set_activate_stunt_order(stunt, stunt_level, target_troop)
 
 func _on_troop_move_clicked(troop):
 	$PositionSelector._on_select_troop_move_to(troop)
@@ -569,7 +571,7 @@ func _on_troop_stunt_clicked(troop, stunt):
 	if stunt.target_range <= 0:
 		$GameRecordCreator._on_troop_prepare_start_stunt(troop, stunt)
 		var stunt_level = troop.get_leader().stunts[stunt]
-		troop.set_activate_stunt_order(stunt, stunt_level, troop.map_position)
+		troop.set_activate_stunt_order(stunt, stunt_level, troop)
 	else:
 		$PositionSelector._on_select_troop_stunt_target(troop, stunt)
 	

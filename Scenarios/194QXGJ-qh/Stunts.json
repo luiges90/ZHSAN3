@@ -365,5 +365,203 @@
                 "Value": 0.1
             }
         ]
+    },
+    {
+        "_Id": 200,
+        "Name": "攻擊弱化",
+        "Description": "弱化2格內敵方部隊攻擊力每等級5%",
+        "TileEffect": "OffenseNerf",
+        "TargetRange": 3,
+        "EffectRange": 2,
+        "TargetType": 1,
+        "SuccessChance": 0.5,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 4000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "troop_damage_received_at_least",
+                "Value": 30000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 3,
+                "Distance": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offence",
+                "Value": -0.05
+            }
+        ]
+    },
+    {
+        "_Id": 210,
+        "Name": "防禦弱化",
+        "Description": "弱化3格內敵方部隊防禦力每等級5%",
+        "TileEffect": "DefenseNerf",
+        "TargetRange": 3,
+        "EffectRange": 2,
+        "TargetType": 1,
+        "SuccessChance": 0.5,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 4000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "troop_damage_dealt_at_least",
+                "Value": 30000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 3,
+                "Distance": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_defence",
+                "Value": -0.05
+            }
+        ]
+    },
+    {
+        "_Id": 220,
+        "Name": "攻城弱化",
+        "Description": "弱化3格內敵方部隊對城牆攻擊力每等級10%",
+        "TileEffect": "SiegeNerf",
+        "TargetRange": 3,
+        "EffectRange": 2,
+        "TargetType": 1,
+        "SuccessChance": 0.5,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 4000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "arch_damage_dealt_at_least",
+                "Value": 10000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 3
+            },
+            {
+                "Operation": "friendly_architecture_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_damage_on_architecture",
+                "Value": -0.1
+            }
+        ]
+    },
+    {
+        "_Id": 1000,
+        "Name": "鼓舞戰法",
+        "Description": "增加2格內我方部隊士氣10點",
+        "TileEffect": "OffenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 2,
+        "TargetType": 0,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 3,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_morale_at_least",
+                "Operator":["not"],
+                "Value": 80
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "add_morale_per_day_during_battle",
+                "Value": 10
+            }
+        ]
     }
 ]

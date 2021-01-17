@@ -1,7 +1,7 @@
 extends Node
 class_name Stunt
 
-enum TargetType { ALLIES, ENEMIES, ALL, POSITION }
+enum TargetType { ALLIES, ENEMIES, ALL }
 enum CompetitionAbility { NONE, COMMAND, STRENGTH, INTELLIGENCE }
 
 var id: int setget forbidden
@@ -106,13 +106,10 @@ func get_valid_target_squares(troop) -> Array:
 	var result = []
 	var squares_in_range = Util.squares_in_range(troop.map_position, target_range)
 	for s in squares_in_range:
-		if target_type == TargetType.POSITION:
-			result.append(s)
-		else:
-			var target_troop = scenario.get_troop_at_position(s)
-			if target_troop != null:
-				if valid_target(troop, target_troop):
-					result.append(s)
+		var target_troop = scenario.get_troop_at_position(s)
+		if target_troop != null:
+			if valid_target(troop, target_troop):
+				result.append(s)
 	return result
 	
 func valid_target(troop, other_troop) -> bool:

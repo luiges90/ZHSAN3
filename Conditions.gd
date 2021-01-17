@@ -198,6 +198,12 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 					var friendly_troops = params['troop'].friendly_troop_in_range(distance)
 					if _op_cond(op_not, friendly_troops.size() < condition['Value']):
 						return false
+			'friendly_architecture_nearby_count_at_least':
+				if params.has('troop'):
+					var distance = condition['Distance']
+					var friendly_arch = params['troop'].friendly_architectures_in_range(distance)
+					if _op_cond(op_not, friendly_arch.size() < condition['Value']):
+						return false
 			'troop_quantity_at_least':
 				if params.has('troop'):
 					if _op_cond(op_not, params['troop'].quantity < condition['Value']):

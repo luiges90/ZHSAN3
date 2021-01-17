@@ -98,7 +98,7 @@
 	"troop_affected_by_start_stunt_failure": [
 		{
 			"Conditions": [],
-			"Text": ["{stunt}無效嘛......", "", "", ""]
+			"Text": [""]
 		}
 	],
 	"troop_affected_by_hostile_start_stunt_failure": [

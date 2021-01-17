@@ -312,7 +312,7 @@ func get_offence():
 	
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	base = clamp(apply_influences("modify_troop_offence", {"value": base}), base * 0.5, base * 2)
+	base = clamp(apply_influences("modify_troop_offence", {"value": base}), base * 0.2, base * 3)
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -328,7 +328,7 @@ func get_defence():
 
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	base = clamp(apply_influences("modify_troop_defence", {"value": base}), base * 0.5, base * 2)
+	base = clamp(apply_influences("modify_troop_defence", {"value": base}), base * 0.2, base * 3)
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -342,14 +342,14 @@ func get_offence_over_defence():
 func get_speed():
 	var base = military_kind.speed
 
-	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.5, base * 2)
+	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.2, base * 3)
 
 	return int(base)
 	
 func get_initiative():
 	var base = military_kind.initiative * military_kind.terrain_strength[get_current_terrain().id]
 
-	base = clamp(apply_influences("modify_troop_initiative", {"value": base}), base * 0.5, base * 2)
+	base = clamp(apply_influences("modify_troop_initiative", {"value": base}), base * 0.2, base * 3)
 
 	return int(base)
 	
@@ -391,6 +391,15 @@ func friendly_troop_in_range(distance: int):
 		var troop = scenario.troops[t]
 		if troop.get_belonged_faction().is_friend_to(get_belonged_faction()) and Util.m_dist(troop.map_position, self.map_position) <= distance and not troop._destroyed:
 			results.append(troop)
+	return results
+
+func friendly_architectures_in_range(distance: int):
+	var results = []
+	for a in scenario.architectures:
+		var architecture = scenario.architectures[a]
+		var other_faction = architecture.get_belonged_faction()
+		if (other_faction == null or other_faction.is_friend_to(get_belonged_faction())) and Util.m_dist(architecture.map_position, self.map_position) <= distance:
+			results.append(architecture)
 	return results
 
 func enemy_architectures_in_range(distance: int):
@@ -589,6 +598,25 @@ func available_stunts():
 			result[stunt] = stunts[stunt]
 	return result
 
+func get_stunt_success_chance(stunt, target):
+	var self_ability
+	match stunt.competition_ability:
+		Stunt.CompetitionAbility.COMMAND: self_ability = get_command()
+		Stunt.CompetitionAbility.STRENGTH: self_ability = get_strength()
+		Stunt.CompetitionAbility.INTELLIGENCE: self_ability = get_intelligence()
+		_: self_ability = 0
+	
+	var target_ability
+	if get_belonged_faction().is_enemy_to(target.get_belonged_faction()):
+		match stunt.competition_ability:
+			Stunt.CompetitionAbility.COMMAND: target_ability = target.get_command()
+			Stunt.CompetitionAbility.STRENGTH: target_ability = target.get_strength()
+			Stunt.CompetitionAbility.INTELLIGENCE: target_ability = target.get_intelligence()
+			_: target_ability = 0
+	else:
+		target_ability = 0
+
+	return stunt.success_chance + (self_ability - target_ability) * stunt.ability_chance_rate
 
 func activate_stunt(stunt, level, target):
 	assert(stunt.combativity_cost <= combativity)
@@ -605,25 +633,8 @@ func activate_stunt(stunt, level, target):
 	else:
 		troops = [self]
 	
-	var self_ability
-	match stunt.competition_ability:
-		Stunt.CompetitionAbility.COMMAND: self_ability = get_command()
-		Stunt.CompetitionAbility.STRENGTH: self_ability = get_strength()
-		Stunt.CompetitionAbility.INTELLIGENCE: self_ability = get_intelligence()
-		_: self_ability = 0
-	
 	for t in troops:
-		var target_ability
-		if get_belonged_faction().is_enemy_to(target.get_belonged_faction()):
-			match stunt.competition_ability:
-				Stunt.CompetitionAbility.COMMAND: target_ability = t.get_command()
-				Stunt.CompetitionAbility.STRENGTH: target_ability = t.get_strength()
-				Stunt.CompetitionAbility.INTELLIGENCE: target_ability = t.get_intelligence()
-				_: target_ability = 0
-		else:
-			target_ability = 0
-
-		var success_chance = stunt.success_chance + (self_ability - target_ability) * stunt.ability_chance_rate
+		var success_chance = get_stunt_success_chance(stunt, t)
 
 		if randf() < success_chance:
 			var days = stunt.duration

@@ -22,7 +22,13 @@ func run_troop(troop, scenario):
 		var activated = false
 		for stunt in avail_stunts:
 			var valid_squares = stunt.get_valid_target_squares(troop)
-			var target = Util.random_from(valid_squares) # TODO pick target
+			var target_candidates = []
+			for s in valid_squares:
+				var t = scenario.get_troop_at_position(s)
+				var success_chance = troop.get_stunt_success_chance(stunt, t)
+				if success_chance > 0.5:
+					target_candidates.append(t)
+			var target = Util.random_from(target_candidates) # TODO pick target
 			if troop.combativity >= stunt.combativity_cost and stunt.check_ai_conditions(troop):
 				troop.set_activate_stunt_order(stunt, avail_stunts[stunt], target) 
 				activated = true
@@ -30,7 +36,6 @@ func run_troop(troop, scenario):
 		
 		if not activated:
 			# select target
-			var enemy_troops = []
 			var targets = troop.enemy_troop_in_range(troop.military_kind.range_max)
 			if targets.size() > 0:
 				var target = Util.max_by(targets, "get_offence_over_defence")[1]
