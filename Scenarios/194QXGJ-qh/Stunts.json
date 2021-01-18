@@ -563,5 +563,54 @@
                 "Value": 10
             }
         ]
+    },
+    {
+        "_Id": 1000,
+        "Name": "鼓舞戰法",
+        "Description": "增加2格內我方部隊士氣10點",
+        "TileEffect": "OffenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 2,
+        "TargetType": 0,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 3,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_morale_at_least",
+                "Operator":["not"],
+                "Value": 80
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "add_morale_per_day_during_battle",
+                "Value": 10
+            }
+        ]
     }
 ]
