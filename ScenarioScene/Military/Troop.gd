@@ -312,7 +312,7 @@ func get_offence():
 	
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	base = clamp(apply_influences("modify_troop_offence", {"value": base}), base * 0.2, base * 3)
+	base = clamp(apply_influences("modify_troop_offence", {"value": base}), base * 0.2, base * 5)
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -328,7 +328,7 @@ func get_defence():
 
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
 
-	base = clamp(apply_influences("modify_troop_defence", {"value": base}), base * 0.2, base * 3)
+	base = clamp(apply_influences("modify_troop_defence", {"value": base}), base * 0.2, base * 5)
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -342,14 +342,14 @@ func get_offence_over_defence():
 func get_speed():
 	var base = military_kind.speed
 
-	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.2, base * 3)
+	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.2, base * 2)
 
 	return int(base)
 	
 func get_initiative():
 	var base = military_kind.initiative * military_kind.terrain_strength[get_current_terrain().id]
 
-	base = clamp(apply_influences("modify_troop_initiative", {"value": base}), base * 0.2, base * 3)
+	base = clamp(apply_influences("modify_troop_initiative", {"value": base}), base * 0.2, base * 5)
 
 	return int(base)
 	

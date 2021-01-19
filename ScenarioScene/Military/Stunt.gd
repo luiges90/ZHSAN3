@@ -85,6 +85,9 @@ func save_data() -> Dictionary:
 func get_name() -> String:
 	return gname
 
+func get_color():
+	return color
+
 func get_name_with_level(level) -> String:
 	return gname + str(level)
 
