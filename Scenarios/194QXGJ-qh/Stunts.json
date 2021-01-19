@@ -517,9 +517,9 @@
     },
     {
         "_Id": 1000,
-        "Name": "鼓舞戰法",
+        "Name": "鼓舞",
         "Description": "增加2格內我方部隊士氣10點",
-        "TileEffect": "OffenseBoost",
+        "TileEffect": "MoraleIncrease",
         "TargetRange": 0,
         "EffectRange": 2,
         "TargetType": 0,
@@ -566,6 +566,55 @@
             {
                 "Operation": "add_morale_per_day_during_battle",
                 "Value": 10
+            }
+        ]
+    },
+    {
+        "_Id": 1010,
+        "Name": "攻心",
+        "Description": "減少1格內敵方部隊士氣10點",
+        "TileEffect": "MoraleDecrease",
+        "TargetRange": 2,
+        "EffectRange": 1,
+        "TargetType": 1,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 3,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.13,
+            0.96,
+            0.69
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            },
+            {
+                "Operation": "glamour_at_least",
+                "LevelIncrement": 5,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "add_morale_per_day_during_battle",
+                "Value": -10
             }
         ]
     },
