@@ -518,7 +518,7 @@
     {
         "_Id": 1000,
         "Name": "鼓舞",
-        "Description": "增加2格內我方部隊士氣10點",
+        "Description": "增加2格內我方部隊士氣每等級5點",
         "TileEffect": "MoraleIncrease",
         "TargetRange": 0,
         "EffectRange": 2,
@@ -565,14 +565,14 @@
         "Influences": [
             {
                 "Operation": "add_morale_per_day_during_battle",
-                "Value": 10
+                "Value": 5
             }
         ]
     },
     {
         "_Id": 1010,
         "Name": "攻心",
-        "Description": "減少1格內敵方部隊士氣10點",
+        "Description": "減少1格內敵方部隊士氣每等級5點",
         "TileEffect": "MoraleDecrease",
         "TargetRange": 2,
         "EffectRange": 1,
@@ -614,7 +614,7 @@
         "Influences": [
             {
                 "Operation": "add_morale_per_day_during_battle",
-                "Value": -10
+                "Value": -5
             }
         ]
     },
@@ -791,6 +791,7 @@
         "SuccessChance": 1.0,
         "CompetitionAbility": 0,
         "AbilityChanceRate": 0,
+        "MaxLevel": 1,
         "Color": [
             0.69,
             0.13,
@@ -844,6 +845,7 @@
         "SuccessChance": 1.0,
         "CompetitionAbility": 0,
         "AbilityChanceRate": 0,
+        "MaxLevel": 1,
         "Color": [
             0.69,
             0.13,
