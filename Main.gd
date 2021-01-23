@@ -93,6 +93,8 @@ func _register_menus():
 	$UICanvas/UIMain/TroopMenu.connect("occupy_clicked", $Scenario, "_on_troop_occupy_clicked")
 
 func _register_map_ui():
+	$Scenario.connect("empty_space_right_clicked", $UICanvas/UIMain/SystemMenu, "show")
+	
 	$Scenario.connect("scenario_camera_moved", $UICanvas/UIMain/Map, "_on_camera_moved")
 	$Scenario.connect("scenario_architecture_faction_changed", $UICanvas/UIMain/Map, "_on_architecture_faction_changed")
 	

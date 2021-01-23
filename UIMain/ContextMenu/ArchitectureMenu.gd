@@ -11,7 +11,7 @@ signal remove_advisor
 var showing_architecture
 var _opening_list
 
-func show_menu(arch, mouse_x, mouse_y):
+func show_menu(arch, mouse_x, mouse_y, right_clicked):
 	if arch.get_belonged_faction() == null:
 		$H/MainMenu/Internal.visible = false
 		$H/MainMenu/Military.visible = false
@@ -20,7 +20,7 @@ func show_menu(arch, mouse_x, mouse_y):
 		$H/MainMenu/ToggleAutoTask.visible = false
 		$H/MainMenu/FactionDetail.visible = false
 	else:
-		var is_player = arch.get_belonged_faction().player_controlled
+		var is_player = arch.get_belonged_faction().player_controlled and not right_clicked
 		$H/MainMenu/Internal.visible = is_player
 		$H/MainMenu/Military.visible = is_player
 		$H/MainMenu/Officers.visible = is_player
@@ -38,7 +38,7 @@ func show_menu(arch, mouse_x, mouse_y):
 	var has_only_one_arch = arch.get_belonged_faction() != null and arch.get_belonged_faction().get_architectures().size() < 2
 	$H/OfficersMenu/Move.disabled = has_only_one_arch
 	$H/OfficersMenu/Call.disabled = has_only_one_arch
-	$H/FactionMenu/RemoveAdvisor.disabled = arch.get_belonged_faction().advisor != null
+	$H/FactionMenu/RemoveAdvisor.disabled = arch.get_belonged_faction().advisor == null
 	
 	show()
 	
@@ -161,7 +161,7 @@ func _on_StartCampaign_pressed():
 
 
 func _on_ArchitectureAndTroopMenu_architecture_clicked(arch, mx, my):
-	show_menu(arch, mx, my)
+	show_menu(arch, mx, my, false)
 
 
 func _on_FactionDetail_pressed():

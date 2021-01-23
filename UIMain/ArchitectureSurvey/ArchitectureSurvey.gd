@@ -3,7 +3,7 @@ class_name ArchitectureSurvey
 
 var showing_architecture
 
-func show_data(architecture: Architecture, mouse_x: int, mouse_y: int):
+func show_data(architecture: Architecture, mouse_x: int, mouse_y: int, right_clicked):
 	if architecture != null:
 		showing_architecture = architecture
 	else:
@@ -44,7 +44,7 @@ func update_data(architecture: Architecture):
 	if showing_architecture == null:
 		return
 	if architecture == null or architecture.id == showing_architecture.id:
-		show_data(architecture, 0, 0)
+		show_data(architecture, 0, 0, false)
 
 func _on_ArchitectureSurvey_hide():
 	showing_architecture = null

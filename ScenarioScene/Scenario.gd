@@ -35,6 +35,7 @@ var current_scenario_name = null
 var _architecture_clicked
 var _troop_clicked
 var _clicked_at: Vector2
+var _right_clicked = false
 
 var scenario_config: ScenarioConfig setget forbidden
 
@@ -49,6 +50,8 @@ signal troop_clicked
 signal troop_survey_updated
 signal architecture_and_troop_clicked
 signal faction_survey_updated
+
+signal empty_space_right_clicked
 
 signal all_faction_finished
 
@@ -443,9 +446,10 @@ func __connect_signals_for_creating_troop(troop):
 #           UI signal handling         #
 ########################################
 	
-func _on_architecture_clicked(arch, mx, my):
+func _on_architecture_clicked(arch, mx, my, right_clicked):
 	_architecture_clicked = arch
 	_clicked_at = Vector2(mx, my)
+	_right_clicked = right_clicked
 	
 func _on_architecture_survey_updated(arch):
 	call_deferred("emit_signal", "architecture_survey_updated", arch)
@@ -455,9 +459,10 @@ func _on_architecture_faction_changed(arch):
 	call_deferred("emit_signal", "scenario_architecture_faction_changed", arch, self)
 	call_deferred("emit_signal", "faction_survey_updated")
 	
-func _on_troop_clicked(troop, mx, my):
+func _on_troop_clicked(troop, mx, my, right_clicked):
 	_troop_clicked = troop
 	_clicked_at = Vector2(mx, my)
+	_right_clicked = right_clicked
 	
 func _on_troop_survey_updated(troop):
 	call_deferred("emit_signal", "troop_survey_updated", troop)
@@ -743,11 +748,11 @@ func _on_person_available(person, reason, reason_person):
 
 func _process(delta):
 	if _architecture_clicked != null and _troop_clicked == null:
-		call_deferred("emit_signal", "architecture_clicked", _architecture_clicked, _clicked_at.x, _clicked_at.y)
+		call_deferred("emit_signal", "architecture_clicked", _architecture_clicked, _clicked_at.x, _clicked_at.y, _right_clicked)
 	elif _architecture_clicked == null and _troop_clicked != null:
-		call_deferred("emit_signal", "troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y)
+		call_deferred("emit_signal", "troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y, _right_clicked)
 	elif _architecture_clicked != null and _troop_clicked != null:
-		call_deferred("emit_signal", "architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y)
+		call_deferred("emit_signal", "architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y, _right_clicked)
 	_architecture_clicked = null
 	_troop_clicked = null
 	
@@ -866,6 +871,8 @@ func is_observer():
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		_update_position_label(event.position)
-		
+	elif event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			call_deferred("emit_signal", "empty_space_right_clicked")
 		
 

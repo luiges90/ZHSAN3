@@ -1213,7 +1213,10 @@ func _on_EffectSprite_animation_finished():
 func _on_TroopArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y)
+			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y, false)
+		elif event.button_index == BUTTON_RIGHT and event.pressed:
+			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y, true)
+
 
 func get_screen_position():
 	return get_global_transform_with_canvas().origin

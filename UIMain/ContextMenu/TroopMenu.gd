@@ -13,7 +13,7 @@ signal troop_detail_clicked
 signal occupy_clicked
 signal troop_person_clicked
 
-func show_menu(troop, mouse_x, mouse_y): 
+func show_menu(troop, mouse_x, mouse_y, right_clicked): 
 	showing_troop = troop
 	
 	var is_player = troop.get_belonged_faction().player_controlled
@@ -47,7 +47,7 @@ func _hide_submenus():
 
 
 func _on_ArchitectureAndTroopMenu_troop_clicked(troop, mx, my):
-	show_menu(troop, mx, my)
+	show_menu(troop, mx, my, false)
 
 
 func _on_Move_pressed():

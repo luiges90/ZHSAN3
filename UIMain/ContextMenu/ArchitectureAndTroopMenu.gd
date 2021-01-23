@@ -11,7 +11,7 @@ signal troop_clicked
 
 var _opening_list
 
-func show_menu(arch, troop, mouse_x, mouse_y):	
+func show_menu(arch, troop, mouse_x, mouse_y, right_clicked):
 	showing_arch = arch
 	showing_troop = troop
 	

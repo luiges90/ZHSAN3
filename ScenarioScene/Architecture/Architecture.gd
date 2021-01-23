@@ -495,37 +495,31 @@ func _decay_internal():
 	
 func _develop_internal():
 	if enemy_troop_in_architecture() == null:
-		var factor = 1.0
-		for p in get_workable_persons():
-			factor = p.apply_influences("modify_person_architecture_internal_development_rate", {"value": factor, "person": p, "architecture": self})
 		for p in get_workable_persons():
 			match p.working_task:
-				Person.Task.AGRICULTURE: _develop_agriculture(p, factor)
-				Person.Task.COMMERCE: _develop_commerce(p, factor)
-				Person.Task.MORALE: _develop_morale(p, factor)
-				Person.Task.ENDURANCE: _develop_endurance(p, factor)
+				Person.Task.AGRICULTURE: _develop_agriculture(p)
+				Person.Task.COMMERCE: _develop_commerce(p)
+				Person.Task.MORALE: _develop_morale(p)
+				Person.Task.ENDURANCE: _develop_endurance(p)
 			
 func _develop_military():
 	for p in get_workable_persons():
-		var factor = 1.0
-		for p in get_workable_persons():
-			factor = p.apply_influences("modify_person_architecture_military_development_rate", {"value": factor, "person": p, "architecture": self})
 		match p.working_task:
-			Person.Task.RECRUIT_TROOP: _recruit_troop(p, factor)
-			Person.Task.TRAIN_TROOP: _train_troop(p, factor)
-			Person.Task.PRODUCE_EQUIPMENT: _produce_equipment(p, factor)
+			Person.Task.RECRUIT_TROOP: _recruit_troop(p)
+			Person.Task.TRAIN_TROOP: _train_troop(p)
+			Person.Task.PRODUCE_EQUIPMENT: _produce_equipment(p)
 			
 func _develop_cost(p):
 	var base = 20
 	p.apply_influences("modify_person_develop_internal_cost", {"value": base, "person": p, "architecture": self})
 	return base
 
-func _develop_agriculture(p: Person, factor):
+func _develop_agriculture(p: Person):
 	var cost = _develop_cost(p)
 	if fund > cost:
 		fund -= cost
 		if kind.agriculture > 0:
-			var delta = Util.f2ri(p.get_agriculture_ability() * 0.04 * factor / max(1, float(agriculture) / kind.agriculture))
+			var delta = Util.f2ri(p.get_agriculture_ability() * 0.04 / max(1, float(agriculture) / kind.agriculture))
 			agriculture += delta
 			p.add_internal_exp(5)
 			p.add_intelligence_exp(5)
@@ -536,12 +530,12 @@ func _develop_agriculture(p: Person, factor):
 			p.add_prestige(0.1 * delta)
 			p.add_karma(0.1 * delta)
 	
-func _develop_commerce(p: Person, factor):
+func _develop_commerce(p: Person):
 	var cost = _develop_cost(p)
 	if fund > cost:
 		fund -= cost
 		if kind.commerce > 0:
-			var delta = Util.f2ri(p.get_commerce_ability() * 0.04 * factor / max(1, float(commerce) / kind.commerce))
+			var delta = Util.f2ri(p.get_commerce_ability() * 0.04 / max(1, float(commerce) / kind.commerce))
 			commerce += delta
 			p.add_internal_exp(5)
 			p.add_intelligence_exp(10)
@@ -552,12 +546,12 @@ func _develop_commerce(p: Person, factor):
 			p.add_prestige(0.1 * delta)
 			p.add_karma(0.05 * delta)
 	
-func _develop_morale(p: Person, factor):
+func _develop_morale(p: Person):
 	var cost = _develop_cost(p)
 	if fund > cost:
 		fund -= cost
 		if kind.morale > 0:
-			var delta = Util.f2ri(p.get_morale_ability() * 0.04 * factor / max(1, float(morale) / kind.morale))
+			var delta = Util.f2ri(p.get_morale_ability() * 0.04 / max(1, float(morale) / kind.morale))
 			morale += delta
 			p.add_internal_exp(5)
 			p.add_command_exp(5)
@@ -572,14 +566,14 @@ func _develop_morale(p: Person, factor):
 				p.add_prestige(0.05 * delta)
 				p.add_karma(0.15 * delta)
 			
-func _develop_endurance(p: Person, factor):
+func _develop_endurance(p: Person):
 	if enemy_troop_in_range(1).size() > 0:
 		return
 	var cost = _develop_cost(p)
 	if fund > cost:
 		fund -= cost
 		if kind.endurance > 0:
-			var delta = Util.f2ri(p.get_endurance_ability() * 0.04 * factor / max(1, float(endurance) / kind.endurance))
+			var delta = Util.f2ri(p.get_endurance_ability() * 0.04 / max(1, float(endurance) / kind.endurance))
 			endurance += delta
 			p.add_internal_exp(5)
 			p.add_command_exp(5)
@@ -591,10 +585,10 @@ func _develop_endurance(p: Person, factor):
 			p.add_prestige(0.15 * delta)
 			p.add_karma(0.05 * delta)
 			
-func _recruit_troop(p: Person, factor):
+func _recruit_troop(p: Person):
 	if fund > 50 and military_population > 0 and morale > 100:
 		fund -= 50
-		var quantity = min(min(Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(military_population)) * morale * 0.001 * factor), population), military_population)
+		var quantity = min(min(Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(military_population)) * morale * 0.001), population), military_population)
 		if quantity > 0:
 			var f = get_belonged_faction()
 			if f != null and not f.player_controlled:
@@ -613,11 +607,11 @@ func _recruit_troop(p: Person, factor):
 			p.add_popularity(0.002 * quantity)
 			p.add_prestige(0.002 * quantity)
 	
-func _train_troop(p: Person, factor):
+func _train_troop(p: Person):
 	if fund > 20:
 		fund -= 20
-		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1 * factor)
-		var delta2 = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.2 * factor)
+		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1)
+		var delta2 = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.2)
 		
 		var f = get_belonged_faction()
 		if f != null and not f.player_controlled:
@@ -632,11 +626,11 @@ func _train_troop(p: Person, factor):
 		p.add_popularity(0.2)
 		p.add_prestige(0.2)
 
-func _produce_equipment(p: Person, factor):
+func _produce_equipment(p: Person):
 	var equipment = p.producing_equipment
 	var cost = scenario.military_kinds[equipment].equipment_cost
 	if fund > cost:
-		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.4 * factor)
+		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.4)
 		if fund < cost * amount:
 			amount = floor(fund / cost)
 		fund -= amount * cost
@@ -667,8 +661,12 @@ func take_equipment(kind, quantity):
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			call_deferred("emit_signal", "architecture_clicked", self, event.global_position.x, event.global_position.y)
+			call_deferred("emit_signal", "architecture_clicked", self, event.global_position.x, event.global_position.y, false)
 			get_tree().set_input_as_handled()
+		elif event.button_index == BUTTON_RIGHT and event.pressed:
+			call_deferred("emit_signal", "architecture_clicked", self, event.global_position.x, event.global_position.y, true)
+			get_tree().set_input_as_handled()
+			
 			
 func get_screen_position():
 	return get_global_transform_with_canvas().origin
