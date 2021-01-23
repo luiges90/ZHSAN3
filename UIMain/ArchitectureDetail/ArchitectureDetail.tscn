@@ -22,7 +22,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "郴縣 桂陽"
 
 [node name="Data" type="GridContainer" parent="."]
-anchor_right = 1.0
+anchor_right = 0.8
 margin_left = 16.0
 margin_top = 60.0
 margin_right = -16.0
@@ -34,7 +34,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Data"]
-margin_right = 100.0
+margin_right = 102.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -42,8 +42,8 @@ text = "FACTION"
 align = 1
 
 [node name="Label2" type="Label" parent="Data"]
-margin_left = 108.0
-margin_right = 285.0
+margin_left = 110.0
+margin_right = 287.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -51,8 +51,8 @@ text = "SECTION"
 align = 1
 
 [node name="Label3" type="Label" parent="Data"]
-margin_left = 293.0
-margin_right = 421.0
+margin_left = 295.0
+margin_right = 423.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -60,8 +60,8 @@ text = "IDLING_PERSONS"
 align = 1
 
 [node name="Label4" type="Label" parent="Data"]
-margin_left = 429.0
-margin_right = 599.0
+margin_left = 431.0
+margin_right = 601.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -69,8 +69,8 @@ text = "WORKABLE_PERSONS"
 align = 1
 
 [node name="Label5" type="Label" parent="Data"]
-margin_left = 607.0
-margin_right = 759.0
+margin_left = 609.0
+margin_right = 724.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -78,8 +78,8 @@ text = "PERSONS"
 align = 1
 
 [node name="Label6" type="Label" parent="Data"]
-margin_left = 767.0
-margin_right = 885.0
+margin_left = 732.0
+margin_right = 850.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -87,25 +87,25 @@ text = "WILD_PERSONS"
 align = 1
 
 [node name="Label7" type="Label" parent="Data"]
-margin_left = 893.0
-margin_right = 993.0
+margin_left = 858.0
+margin_right = 960.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
 
 [node name="Label8" type="Label" parent="Data"]
-margin_left = 1001.0
-margin_right = 1102.0
+margin_left = 968.0
+margin_right = 1070.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
 
 [node name="Faction" type="HBoxContainer" parent="Data"]
-margin_left = 24.0
+margin_left = 25.0
 margin_top = 26.0
-margin_right = 76.0
+margin_right = 77.0
 margin_bottom = 44.0
 size_flags_horizontal = 4
 
@@ -123,27 +123,27 @@ text = "耒火"
 align = 1
 
 [node name="Section" type="Label" parent="Data"]
-margin_left = 108.0
+margin_left = 110.0
 margin_top = 26.0
-margin_right = 285.0
+margin_right = 287.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="IdlingPersons" type="Label" parent="Data"]
-margin_left = 293.0
+margin_left = 295.0
 margin_top = 26.0
-margin_right = 421.0
+margin_right = 423.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="WorkablePersons" type="Label" parent="Data"]
-margin_left = 429.0
+margin_left = 431.0
 margin_top = 26.0
-margin_right = 599.0
+margin_right = 601.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火"
@@ -153,42 +153,42 @@ __meta__ = {
 }
 
 [node name="FactionPersons" type="Label" parent="Data"]
-margin_left = 607.0
+margin_left = 609.0
 margin_top = 26.0
-margin_right = 759.0
+margin_right = 724.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="WildPersons" type="Label" parent="Data"]
-margin_left = 767.0
+margin_left = 732.0
 margin_top = 26.0
-margin_right = 885.0
+margin_right = 850.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Blank" type="Label" parent="Data"]
-margin_left = 893.0
+margin_left = 858.0
 margin_top = 26.0
-margin_right = 993.0
+margin_right = 960.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
 
 [node name="Blank2" type="Label" parent="Data"]
-margin_left = 1001.0
+margin_left = 968.0
 margin_top = 26.0
-margin_right = 1102.0
+margin_right = 1070.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
 
 [node name="Label15" type="Label" parent="Data"]
 margin_top = 52.0
-margin_right = 100.0
+margin_right = 102.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -196,9 +196,9 @@ text = "POPULATION"
 align = 1
 
 [node name="Label16" type="Label" parent="Data"]
-margin_left = 108.0
+margin_left = 110.0
 margin_top = 52.0
-margin_right = 285.0
+margin_right = 287.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -206,9 +206,9 @@ text = "MILITARY_POPULATION"
 align = 1
 
 [node name="Label13" type="Label" parent="Data"]
-margin_left = 293.0
+margin_left = 295.0
 margin_top = 52.0
-margin_right = 421.0
+margin_right = 423.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -216,9 +216,9 @@ text = "FUND"
 align = 1
 
 [node name="Label14" type="Label" parent="Data"]
-margin_left = 429.0
+margin_left = 431.0
 margin_top = 52.0
-margin_right = 599.0
+margin_right = 601.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -226,9 +226,9 @@ text = "FOOD"
 align = 1
 
 [node name="Label9" type="Label" parent="Data"]
-margin_left = 607.0
+margin_left = 609.0
 margin_top = 52.0
-margin_right = 759.0
+margin_right = 724.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -236,9 +236,9 @@ text = "AGRICULTURE"
 align = 1
 
 [node name="Label10" type="Label" parent="Data"]
-margin_left = 767.0
+margin_left = 732.0
 margin_top = 52.0
-margin_right = 885.0
+margin_right = 850.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -246,9 +246,9 @@ text = "COMMERCE"
 align = 1
 
 [node name="Label11" type="Label" parent="Data"]
-margin_left = 893.0
+margin_left = 858.0
 margin_top = 52.0
-margin_right = 993.0
+margin_right = 960.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -256,9 +256,9 @@ text = "MORALE"
 align = 1
 
 [node name="Label12" type="Label" parent="Data"]
-margin_left = 1001.0
+margin_left = 968.0
 margin_top = 52.0
-margin_right = 1102.0
+margin_right = 1070.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -267,70 +267,70 @@ align = 1
 
 [node name="Population" type="Label" parent="Data"]
 margin_top = 78.0
-margin_right = 100.0
+margin_right = 102.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="MilitaryPopulation" type="Label" parent="Data"]
-margin_left = 108.0
+margin_left = 110.0
 margin_top = 78.0
-margin_right = 285.0
+margin_right = 287.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Fund" type="Label" parent="Data"]
-margin_left = 293.0
+margin_left = 295.0
 margin_top = 78.0
-margin_right = 421.0
+margin_right = 423.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Food" type="Label" parent="Data"]
-margin_left = 429.0
+margin_left = 431.0
 margin_top = 78.0
-margin_right = 599.0
+margin_right = 601.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Agriculture" type="Label" parent="Data"]
-margin_left = 607.0
+margin_left = 609.0
 margin_top = 78.0
-margin_right = 759.0
+margin_right = 724.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Commerce" type="Label" parent="Data"]
-margin_left = 767.0
+margin_left = 732.0
 margin_top = 78.0
-margin_right = 885.0
+margin_right = 850.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Morale" type="Label" parent="Data"]
-margin_left = 893.0
+margin_left = 858.0
 margin_top = 78.0
-margin_right = 993.0
+margin_right = 960.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Endurance" type="Label" parent="Data"]
-margin_left = 1001.0
+margin_left = 968.0
 margin_top = 78.0
-margin_right = 1102.0
+margin_right = 1070.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "耒火"
@@ -338,7 +338,7 @@ align = 1
 
 [node name="Label17" type="Label" parent="Data"]
 margin_top = 104.0
-margin_right = 100.0
+margin_right = 102.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -346,9 +346,9 @@ text = "TROOP"
 align = 1
 
 [node name="Label18" type="Label" parent="Data"]
-margin_left = 108.0
+margin_left = 110.0
 margin_top = 104.0
-margin_right = 285.0
+margin_right = 287.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -356,9 +356,9 @@ text = "TROOP_MORALE"
 align = 1
 
 [node name="Label19" type="Label" parent="Data"]
-margin_left = 293.0
+margin_left = 295.0
 margin_top = 104.0
-margin_right = 421.0
+margin_right = 423.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -366,9 +366,9 @@ text = "COMBATIVITY"
 align = 1
 
 [node name="Label21" type="Label" parent="Data"]
-margin_left = 429.0
+margin_left = 431.0
 margin_top = 104.0
-margin_right = 599.0
+margin_right = 601.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -376,37 +376,36 @@ text = "FRONTLINE"
 align = 1
 
 [node name="Label20" type="Label" parent="Data"]
-margin_left = 607.0
+margin_left = 609.0
 margin_top = 104.0
-margin_right = 759.0
+margin_right = 724.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
-text = "TOTAL_EQUIPMENT"
 align = 1
 
 [node name="Label22" type="Label" parent="Data"]
-margin_left = 767.0
+margin_left = 732.0
 margin_top = 104.0
-margin_right = 885.0
+margin_right = 850.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
 
 [node name="Label23" type="Label" parent="Data"]
-margin_left = 893.0
+margin_left = 858.0
 margin_top = 104.0
-margin_right = 993.0
+margin_right = 960.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
 
 [node name="Label24" type="Label" parent="Data"]
-margin_left = 1001.0
+margin_left = 968.0
 margin_top = 104.0
-margin_right = 1102.0
+margin_right = 1070.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -414,44 +413,62 @@ align = 1
 
 [node name="Troop" type="Label" parent="Data"]
 margin_top = 130.0
-margin_right = 100.0
+margin_right = 102.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="TroopMorale" type="Label" parent="Data"]
-margin_left = 108.0
+margin_left = 110.0
 margin_top = 130.0
-margin_right = 285.0
+margin_right = 287.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="TroopCombativity" type="Label" parent="Data"]
-margin_left = 293.0
+margin_left = 295.0
 margin_top = 130.0
-margin_right = 421.0
+margin_right = 423.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
 [node name="Frontline" type="Label" parent="Data"]
-margin_left = 429.0
+margin_left = 431.0
 margin_top = 130.0
-margin_right = 599.0
+margin_right = 601.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "耒火"
 align = 1
 
-[node name="TotalEquipment" type="Label" parent="Data"]
-margin_left = 607.0
-margin_top = 130.0
-margin_right = 759.0
-margin_bottom = 148.0
+[node name="EquipmentCounts" type="GridContainer" parent="."]
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 60.0
+margin_right = -16.0
+margin_bottom = -17.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label25" type="Label" parent="EquipmentCounts"]
+margin_right = 103.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
-text = "耒火"
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "EQUIPMENTS"
+
+[node name="Label26" type="Label" parent="EquipmentCounts"]
+margin_left = 107.0
+margin_right = 188.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
 align = 1
