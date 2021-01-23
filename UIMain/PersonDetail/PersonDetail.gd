@@ -9,13 +9,14 @@ var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Moral
 				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour']
 
 var _shift_held_down = false
+var has_active_subwindow = false
 
 func _on_PersonDetail_hide():
 	$Close.play()
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == BUTTON_RIGHT and event.pressed and not has_active_subwindow:
 			hide()
 	elif event is InputEventKey:
 		if event.scancode == KEY_SHIFT:
@@ -190,15 +191,19 @@ func _on_GlamourEdit_text_changed(new_text):
 
 
 func _on_Skills_Edit_pressed():
+	has_active_subwindow = true
 	call_deferred("emit_signal", "on_select_skills", current_person)
 
 func _on_Stunts_Edit_pressed():
+	has_active_subwindow = true
 	call_deferred("emit_signal", "on_select_stunts", current_person)
 
 func _on_InfoList_edit_skill_item_selected(selected):
 	current_person.set_skills(selected)
 	_update_skill_list()
+	has_active_subwindow = false
 
 func _on_InfoList_edit_stunt_item_selected(selected):
 	current_person.set_stunts(selected)
 	_update_stunt_list()
+	has_active_subwindow = false

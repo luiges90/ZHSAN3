@@ -38,6 +38,7 @@ func show_menu(arch, mouse_x, mouse_y):
 	var has_only_one_arch = arch.get_belonged_faction() != null and arch.get_belonged_faction().get_architectures().size() < 2
 	$H/OfficersMenu/Move.disabled = has_only_one_arch
 	$H/OfficersMenu/Call.disabled = has_only_one_arch
+	$H/FactionMenu/RemoveAdvisor.disabled = arch.get_belonged_faction().advisor != null
 	
 	show()
 	

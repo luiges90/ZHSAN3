@@ -554,6 +554,68 @@
 		]
 	},
 	{
+		"_Id": 160,
+		"Name": "能吏",
+		"Description": "增加城市內政開發率5%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_internal_development_rate",
+				"Value": 0.05
+			}
+		]
+	},
+	{
+		"_Id": 170,
+		"Name": "軍政",
+		"Description": "增加城市軍事開發率5%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_military_development_rate",
+				"Value": 0.05
+			}
+		]
+	},
+	{
 		"_Id": 200,
 		"Name": "說服",
 		"Description": "說服能力每等級增加20%",
