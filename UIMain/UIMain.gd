@@ -3,14 +3,22 @@ class_name UIMain
 
 signal cancel_ui
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-	
-func _process(delta):
-	$FPSCounter.text = str(Engine.get_frames_per_second())
-	
+var _had_windows_showing = false
+
 func _unhandled_input(event):
+	_had_windows_showing = $ArchitectureSurvey.visible or \
+		$ArchitectureMenu.visible or \
+		$TroopSurvey.visible or \
+		$ArchitectureAndTroopMenu.visible or \
+		$PersonList.visible or \
+		$InfoMenu.visible or \
+		$SystemMenu.visible or \
+		$SaveLoadMenu.visible or \
+		$CreateTroop.visible or \
+		$TroopDetail.visible or \
+		$PersonDetail.visible or \
+		$ArchitectureDetail.visible or \
+		$PersonDialog.visible
 	if event is InputEventMouseButton:
 		if (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) and event.pressed:
 			($ArchitectureSurvey as ArchitectureSurvey).hide()
@@ -28,6 +36,10 @@ func _unhandled_input(event):
 			($ArchitectureDetail as ArchitectureDetail).hide()
 			($PersonDialog as PersonDialog).hide()
 			call_deferred("emit_signal", "cancel_ui")
+			
+func _on_right_click_blank_space():
+	if not _had_windows_showing:
+		$SystemMenu.show()
 
 func _on_mouse_moved_to_map_posiiton(position, terrain):
 	$TileInfo.text = terrain.get_name() + str(position)

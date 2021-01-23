@@ -1214,8 +1214,10 @@ func _on_TroopArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:
 			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y, false)
+			get_tree().set_input_as_handled()
 		elif event.button_index == BUTTON_RIGHT and event.pressed:
 			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y, true)
+			get_tree().set_input_as_handled()
 
 
 func get_screen_position():

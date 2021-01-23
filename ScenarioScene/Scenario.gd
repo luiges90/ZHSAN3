@@ -41,6 +41,8 @@ var scenario_config: ScenarioConfig setget forbidden
 
 var _loading_scenario = false
 
+var __right_click_on_blank_detected = false
+
 signal current_faction_set
 signal scenario_loaded
 
@@ -753,8 +755,13 @@ func _process(delta):
 		call_deferred("emit_signal", "troop_clicked", _troop_clicked, _clicked_at.x, _clicked_at.y, _right_clicked)
 	elif _architecture_clicked != null and _troop_clicked != null:
 		call_deferred("emit_signal", "architecture_and_troop_clicked", _architecture_clicked, _troop_clicked, _clicked_at.x, _clicked_at.y, _right_clicked)
+	elif __right_click_on_blank_detected:
+		call_deferred("emit_signal", "empty_space_right_clicked")
+	
+	__right_click_on_blank_detected = false
 	_architecture_clicked = null
 	_troop_clicked = null
+	
 	
 ######################################
 #               Getters              #
@@ -873,6 +880,6 @@ func _unhandled_input(event):
 		_update_position_label(event.position)
 	elif event is InputEventMouseButton:
 		if event.button_index == BUTTON_RIGHT and event.pressed:
-			call_deferred("emit_signal", "empty_space_right_clicked")
+			__right_click_on_blank_detected = true
 		
 
