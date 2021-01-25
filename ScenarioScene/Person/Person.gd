@@ -935,15 +935,15 @@ func set_produce_equipment(equipment: int):
 
 func add_internal_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
-	internal_exp = Util.f2ri(internal_exp)
+	internal_exp = Util.f2ri(internal_exp + delta)
 
 func add_combat_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
-	combat_exp = Util.f2ri(combat_exp)
+	combat_exp = Util.f2ri(combat_exp + delta)
 
 func add_stratagem_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
-	stratagem_exp = Util.f2ri(stratagem_exp)
+	stratagem_exp = Util.f2ri(stratagem_exp + delta)
 
 func add_command_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})

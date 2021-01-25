@@ -28,6 +28,7 @@ func set_data():
 	$Data/TroopCombativity.text = Util.nstr(current_architecture.troop_combativity)
 	$Data/Frontline.text = Util.bstr(current_architecture.is_frontline())
 	
+	Util.delete_all_children($EquipmentCounts)
 	for mk in current_architecture.scenario.military_kinds.values():
 		if mk.has_equipments():
 			var lbl_title = Label.new()
