@@ -31,6 +31,7 @@ var _person_list = Array() setget forbidden, get_all_persons
 var _belonged_section setget forbidden, get_belonged_section
 var _starting_arch setget forbidden, get_starting_architecture
 
+var _order_before_activate_stunt setget forbidden
 var current_order setget forbidden
 var _current_path setget forbidden
 var _current_path_index = 0 setget forbidden
@@ -130,7 +131,7 @@ func load_data(json: Dictionary, objects):
 	var active_stunts = json["_ActiveStunts"]
 	for s in active_stunts:
 		active_stunt_effects.append({
-			"stunt": objects["stunts"][s["stunt"]],
+			"stunt": objects["stunts"][int(s["stunt"])],
 			"level": int(s["level"]),
 			"days": int(s["days"])
 		})
@@ -509,6 +510,7 @@ func set_attack_order(troop, arch):
 func set_activate_stunt_order(stunt, level, target):
 	assert(!order_made)
 	order_made = true
+	_order_before_activate_stunt = current_order
 	current_order = {
 		"type": OrderType.ACTIVATE_STUNT,
 		"target": target,
@@ -624,7 +626,7 @@ func activate_stunt(stunt, level, target):
 
 	var troops
 	if stunt.effect_range >= 1:
-		var squares = Util.squares_in_range(target, stunt.effect_range)
+		var squares = Util.squares_in_range(target.map_position, stunt.effect_range)
 		troops = []
 		for s in squares:
 			var t = scenario.get_troop_at_position(s)
@@ -703,6 +705,7 @@ class ExecuteStepResult:
 func execute_step() -> ExecuteStepResult:
 	if current_order != null and current_order.type == OrderType.ACTIVATE_STUNT:
 		activate_stunt(current_order.stunt, current_order.stunt_level, current_order.target)
+		current_order = _order_before_activate_stunt
 		return ExecuteStepResult.new(ExecuteStepType.STOPPED, null)
 	elif current_order != null and current_order.type == OrderType.MOVE:
 		_current_path_index += 1

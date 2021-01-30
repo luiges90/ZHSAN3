@@ -116,8 +116,11 @@ func get_valid_target_squares(troop) -> Array:
 	return result
 	
 func valid_target(troop, other_troop) -> bool:
-	match target_type:
-		TargetType.ALL: return true
-		TargetType.ALLIES: return other_troop.get_belonged_faction().is_friend_to(troop.get_belonged_faction())
-		TargetType.ENEMIES: return other_troop.get_belonged_faction().is_enemy_to(troop.get_belonged_faction())
-	return false
+	if target_type == TargetType.ALL:
+		return true
+	elif target_type == TargetType.ALLIES: 
+		return other_troop.get_belonged_faction().is_friend_to(troop.get_belonged_faction())
+	elif target_type == TargetType.ENEMIES: 
+		return other_troop.get_belonged_faction().is_enemy_to(troop.get_belonged_faction())
+	else:
+		return false

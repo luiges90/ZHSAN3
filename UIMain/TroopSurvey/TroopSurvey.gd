@@ -3,7 +3,7 @@ class_name TroopSurvey
 
 var showing_troop
 
-func show_data(troop: Troop, mouse_x: int, mouse_y: int):
+func show_data(troop: Troop, mouse_x: int, mouse_y: int, right_clicked: bool):
 	showing_troop = troop
 	
 	var faction = troop.get_belonged_faction()
@@ -30,7 +30,7 @@ func update_data(troop: Troop):
 	if showing_troop == null:
 		return
 	if troop.id == showing_troop.id:
-		show_data(troop, 0, 0)
+		show_data(troop, 0, 0, false)
 
 func _on_TroopSurvey_hide():
 	showing_troop = null
