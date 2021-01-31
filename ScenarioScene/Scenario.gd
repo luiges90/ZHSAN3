@@ -40,6 +40,8 @@ var _right_clicked = false
 var scenario_config: ScenarioConfig setget forbidden
 
 var _loading_scenario = false
+var _starting_camera_move_to
+var _starting_camera_zoom_to
 
 var __right_click_on_blank_detected = false
 
@@ -87,12 +89,18 @@ func _ready():
 			current_scenario_name = SharedData.loading_file_path.substr(pos + 10)
 	_load_data(SharedData.loading_file_path)
 	
-	var player_factions = get_player_factions()
-	if player_factions.size() > 0:
-		var fid = player_factions[0]
-		camera.position = factions[fid].get_architectures()[0].position
+	if _starting_camera_move_to != null:
+		camera.position = _starting_camera_move_to
+		camera.zoom = _starting_camera_zoom_to
 		camera.call_deferred("emit_signal", "camera_moved", camera.get_viewing_rect(), camera.zoom)
 		call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
+	else:
+		var player_factions = get_player_factions()
+		if player_factions.size() > 0:
+			var fid = player_factions[0]
+			camera.position = factions[fid].get_architectures()[0].position
+			camera.call_deferred("emit_signal", "camera_moved", camera.get_viewing_rect(), camera.zoom)
+			call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
 	
 	$DateRunner.connect("day_passed", self, "_on_day_passed")
 	$DateRunner.connect("month_passed", self, "_on_month_passed")
@@ -134,6 +142,10 @@ func _save_data(path):
 				"Month": date.month,
 				"Day": date.day,
 				"TurnPassed": turn_passed
+			},
+			"Camera": {
+				"Position": Util.save_position($MainCamera.position),
+				"Zoom": Util.save_position($MainCamera.zoom)
 			}
 		}
 	))
@@ -228,6 +240,9 @@ func _load_data(path):
 	if current_name != null:
 		current_scenario_name = current_name
 	turn_passed = obj["GameData"]["TurnPassed"]
+	if obj.has("Camera"):
+		_starting_camera_move_to = Util.load_position(obj["Camera"]["Position"])
+		_starting_camera_zoom_to = Util.load_position(obj["Camera"]["Zoom"])
 	file.close()
 	
 	file.open(path + "/ScenarioConfig.json", File.READ)
