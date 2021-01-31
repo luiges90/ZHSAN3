@@ -353,28 +353,52 @@ func _load_data(path):
 		__load_item(instance, item, troops, {"persons": persons, "stunts": stunts})
 		troop_json[instance.id] = item
 	file.close()
-	#for tid in troops:
-	#	var order_type = troop_json[tid]["_CurrentOrderType"]
-	#	var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
-	#	var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
-	#	var order_target_stunt = troop_json[tid]["_CurrentOrderStunt"]
-	#	var order_target_stunt_level = troop_json[tid]["_CurrentOrderStuntLevel"]
+	for tid in troops:
+		var order_type = troop_json[tid]["_CurrentOrderType"]
+		if order_type != null:
+			var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
+			var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
+			var order_target_stunt = troop_json[tid]["_CurrentOrderStunt"]
+			var order_target_stunt_level = troop_json[tid]["_CurrentOrderStuntLevel"]
+			
+			var target 
+			if order_target_type == "Position":
+				target = Util.load_position(order_target_raw)
+			elif order_target_type == "Architecture":
+				target = architectures[int(order_target_raw)]
+			elif order_target_type == "Troop":
+				target = troops[int(order_target_raw)]
+			
+			if order_type == Troop.OrderType.MOVE:
+				troops[tid].set_move_order(target)
+			elif order_type == Troop.OrderType.ATTACK:
+				troops[tid].set_attack_order(target, null)
+			elif order_type == Troop.OrderType.FOLLOW:
+				troops[tid].set_follow_order(target)
+			elif order_type == Troop.OrderType.ENTER:
+				troops[tid].set_enter_order(target)
+			elif order_type == Troop.OrderType.ACTIVATE_STUNT:
+				var stunt
+				if order_target_stunt >= 0:
+					stunt = stunts[int(order_target_stunt)]
+				else:
+					assert(false, "Stunt not found: " + str(order_target_stunt))
+				troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level, target)
+			else:
+				assert(false, "Unexpected order type " + str(order_type))
 
-	#	if order_target_stunt >= 0:
-	#		var stunt = stunts[int(order_target_stunt)]
-	#		troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level)
-	#	elif order_target_type == "Position":
-	#		troops[tid].set_move_order(Util.load_position(order_target_raw))
-	#	elif order_target_type == "Architecture":
-	#		var arch = architectures[int(order_target_raw)]
-	#		troops[tid].set_attack_order(null, arch)
-	#	elif order_target_type == "Troop":
-	#		var troop = troops[int(order_target_raw)]
-	#		if order_type == Troop.OrderType.ATTACK:
-	#			troops[tid].set_attack_order(troop, null)
-	#		elif order_type == Troop.OrderType.FOLLOW:
-	#			troops[tid].set_follow_order(troop)
-		
+		for s in troop_json[tid]["_ActiveStunts"]:
+			var stunt
+			if s["stunt"] >= 0:
+				stunt = stunts[int(s["stunt"])]
+			else:
+				assert(false, "Stunt not found: " + str(s["stunt"]))
+			troops[tid].active_stunt_effects.append({
+				"stunt": stunt,
+				"level": s["level"],
+				"days": s["days"]
+			})
+			troops[tid].call_deferred("_update_stunt_animations")
 		
 	
 	file.open(path + "/Sections.json", File.READ)

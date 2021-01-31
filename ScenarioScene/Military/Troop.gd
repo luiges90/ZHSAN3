@@ -119,7 +119,7 @@ func load_data(json: Dictionary, objects):
 	morale = json["Morale"]
 	combativity = json["Combativity"]
 	
-	order_made = json["_OrderMade"]
+	# order_made = json["_OrderMade"]
 	
 	_orientation = json["_Orientation"]
 	
@@ -150,27 +150,27 @@ func load_data(json: Dictionary, objects):
 	gname = _leader.get_name() + tr('PERSON_TROOP')
 	
 func save_data() -> Dictionary:
-	#var order_type
-	#var order_target = -1
-	#var order_target_type = ""
-	#var order_stunt = -1
-	#var order_stunt_level = 0
-	#if current_order != null:
-	#	order_type = current_order.type
-	#	if current_order.target != null:
-	#		if current_order.target is Architecture:
-	#			order_target = current_order.target.id
-	#			order_target_type = "Architecture"
-	#		elif current_order.target is Vector2:
-	#			order_target = Util.save_position(current_order.target)
-	#			order_target_type = "Position"
-	#		else:
-	#			order_target = current_order.target.id
-	#			order_target_type = "Troop"
-	#	
-	#	if current_order.has("stunt"):
-	#		order_stunt = current_order.stunt.id
-	#		order_stunt_level = current_order.stunt_level
+	var order_type
+	var order_target = -1
+	var order_target_type = ""
+	var order_stunt = -1
+	var order_stunt_level = 0
+	if current_order != null:
+		order_type = current_order.type
+		if current_order.target != null:
+			if current_order.target is Architecture:
+				order_target = current_order.target.id
+				order_target_type = "Architecture"
+			elif current_order.target is Vector2:
+				order_target = Util.save_position(current_order.target)
+				order_target_type = "Position"
+			else:
+				order_target = current_order.target.id
+				order_target_type = "Troop"
+		
+		if current_order.has("stunt"):
+			order_stunt = current_order.stunt.id
+			order_stunt_level = current_order.stunt_level
 
 	var active_stunt_ids = []
 	for s in active_stunt_effects:
@@ -193,11 +193,11 @@ func save_data() -> Dictionary:
 		"_OrderMade": order_made,
 		"_FoodShortage": _food_shortage,
 		"_Orientation": _orientation,
-	#	"_CurrentOrderType": order_type,
-	#	"_CurrentOrderTarget": order_target,
-	#	"_CurrentOrderTargetType": order_target_type,
-	#	"_CurrentOrderStunt": order_stunt,
-	#	"_CurrentOrderStuntLevel": order_stunt_level,
+		"_CurrentOrderType": order_type,
+		"_CurrentOrderTarget": order_target,
+		"_CurrentOrderTargetType": order_target_type,
+		"_CurrentOrderStunt": order_stunt,
+		"_CurrentOrderStuntLevel": order_stunt_level,
 		"_AIState": _ai_state,
 		"_AIDestinationArchitecture": _ai_destination_architecture.id if _ai_destination_architecture != null else null,
 		"_RecentlyBattled": _recently_battled
