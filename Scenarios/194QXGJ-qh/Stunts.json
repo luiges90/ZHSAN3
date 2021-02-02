@@ -713,7 +713,7 @@
     },
     {
         "_Id": 1100,
-        "Name": "攻心",
+        "Name": "膽怯",
         "Description": "減少1格內敵方部隊士氣每等級5點",
         "TileEffect": "MoraleDecrease",
         "TargetRange": 2,
@@ -756,6 +756,55 @@
         "Influences": [
             {
                 "Operation": "add_morale_per_day_during_battle",
+                "Value": -5
+            }
+        ]
+    },
+    {
+        "_Id": 1200,
+        "Name": "攻心",
+        "Description": "減少1格內敵方部隊戰意每等級5點",
+        "TileEffect": "MoraleDecrease",
+        "TargetRange": 2,
+        "EffectRange": 1,
+        "TargetType": 1,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 3,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.69,
+            0.96,
+            0.13
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            },
+            {
+                "Operation": "glamour_at_least",
+                "LevelIncrement": 5,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "add_combativity_per_day_during_battle",
                 "Value": -5
             }
         ]
