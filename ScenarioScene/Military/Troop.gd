@@ -797,6 +797,7 @@ func execute_attack():
 						counter_damage = 0
 					if target is Architecture:
 						damage = damage * military_kind.architecture_attack_factor
+						damage = apply_influences("modify_damage_on_architecture", {"value": damage, "target": target})
 					else:
 						var target_on_arch = target.get_on_architecture()
 						if target_on_arch != null:

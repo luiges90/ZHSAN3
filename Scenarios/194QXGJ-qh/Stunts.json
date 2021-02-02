@@ -169,7 +169,7 @@
         ],
         "Influences": [
             {
-                "Operation": "modify_troop_damage_on_architecture",
+                "Operation": "modify_damage_on_architecture",
                 "Value": 0.5
             }
         ]
@@ -408,7 +408,7 @@
         ],
         "Influences": [
             {
-                "Operation": "modify_troop_damage_on_architecture",
+                "Operation": "modify_damage_on_architecture",
                 "Value": 0.1
             }
         ]
@@ -604,7 +604,7 @@
         ],
         "Influences": [
             {
-                "Operation": "modify_troop_damage_on_architecture",
+                "Operation": "modify_damage_on_architecture",
                 "Value": -0.1
             }
         ]
