@@ -326,6 +326,16 @@ func person_convince_failure(person, other_person):
 				"other_person": _color_text(YELLOW, other_person.get_name())
 		}))
 
+func person_move_complete(person):
+	if person.get_belonged_faction().player_controlled:
+		var faction = person.get_belonged_faction()
+		var fcolor = faction.color if faction != null else Color.white
+		call_deferred("emit_signal", "add_game_record", 
+			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_MOVE_COMPLETE").format({
+				"person": _color_text(YELLOW, person.get_name()),
+				"architecture": person.get_location_str()
+		}))
+
 func assign_advisor(person):
 	if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 		var faction = person.get_belonged_faction()

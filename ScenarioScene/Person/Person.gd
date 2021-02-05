@@ -90,6 +90,8 @@ signal person_available
 signal convince_success
 signal convince_failure
 
+signal move_complete
+
 func forbidden(x):
 	assert(false)
 
@@ -1032,6 +1034,7 @@ func day_event():
 		if task_days == 0:
 			match working_task:
 				Task.CONVINCE: do_convince()
+				Task.MOVE: call_deferred("emit_signal", "move_complete", self)
 
 	var faction = get_belonged_faction()
 	if faction != null:

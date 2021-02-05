@@ -171,6 +171,7 @@ GAME_RECORD_ASSIGN_ADVISOR,{person} become advisor for {faction},{person}被委�
 GAME_RECORD_REMOVE_ADVISOR,Advisor for {faction} has been removed,{faction}的军师被解任了,{faction}的軍師被解任了
 GAME_RECORD_PERSON_CAPTURED,{person} was captured by {troop},{person}等人被{troop}所俘虏,{person}等人被{troop}所俘虜
 GAME_RECORD_PERSON_RELEASED,{person} was released since {troop} has been routed,由於{troop}的溃散，{person}被释放了,由於{troop}的潰散，{person}被釋放了
+GAME_RECORD_PERSON_MOVE_COMPLETE,{person} has entered {architecture},{person}抵达了{architecture},{person}抵達了{architecture}
 NARRATOR,Narrator,旁白,旁白
 LEADER_NAME,Leader,君主,君主
 ADVISOR_NAME,Advisor,军师,軍師
