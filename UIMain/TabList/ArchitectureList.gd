@@ -242,8 +242,11 @@ func _on_Confirm_pressed():
 			call_deferred("emit_signal", "architecture_selected", current_action, current_architecture, selected_arch, {
 				"selected_person_ids": _selected_person_ids
 			})
-	$ConfirmSound.play()
-	._on_Confirm_pressed()
+			$PersonMove.play()
+			._on_Confirm_pressed()
+		_:
+			$ConfirmSound.play()
+			._on_Confirm_pressed()
 
 
 func _on_ArchitectureMenu_architecture_list_clicked(arch, archs: Array, action):
