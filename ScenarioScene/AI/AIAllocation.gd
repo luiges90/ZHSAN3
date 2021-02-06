@@ -12,28 +12,19 @@ var __backline_archs
 var __frontline_blank_archs
 var __frontline_archs
 var __under_attack_archs
+var __low_endurance_archs
 
 func _init(ai):
 	_ai = ai
 
-func _allocate_resources(section: Section):
-	if section.get_architectures().size() <= 1:
-		return
-
-
-func _allocate_person(section: Section):
-	if section.get_architectures().size() <= 1:
-		return
-	
+func __class_architectures(section):
 	__section = section
 	__backline_archs = []
 	__frontline_blank_archs = []
 	__frontline_archs = []
 	__under_attack_archs = []
-	var __low_endurance_archs = []
+	__low_endurance_archs = []
 	
-	var section_person_count = section.get_persons().size()
-	var architecture_count = section.get_architectures().size()
 	for a in section.get_architectures():
 		match __arch_class(a):
 			_ARCH_CLASS.UNDER_ATTACK: __under_attack_archs.append(a)
@@ -43,11 +34,30 @@ func _allocate_person(section: Section):
 					__low_endurance_archs.append(a)
 			_ARCH_CLASS.FRONTLINE_BLANK: 
 				__frontline_blank_archs.append(a)
-				if a.endurance <= 50 or (a.get_faction_persons().size() <= 0 and section_person_count >= architecture_count):
-					__low_endurance_archs.append(a)
 			_: __backline_archs.append(a)
-			
-	if not (randf() <= 1 / 30.0 or __under_attack_archs.size() > 0):
+
+
+func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
+	if section.get_architectures().size() <= 1:
+		return
+	
+	__class_architectures(section)
+
+	if not randf() < 1 / 30.0:
+		return
+	
+	var arch_count = __section.get_architectures().size()
+	var fund_unit = __section.get_total_fund()
+	# TODO
+
+
+func _allocate_person(section: Section):
+	if section.get_architectures().size() <= 1:
+		return
+	
+	__class_architectures(section)
+
+	if not (randf() < 1 / 30.0 or __under_attack_archs.size() > 0 or (__low_endurance_archs.size() > 0 and randf() < 1 / 10.0)):
 		return
 	
 	var sha = section.get_architectures()

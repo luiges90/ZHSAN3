@@ -29,7 +29,7 @@ func run_faction(faction: Faction, scenario):
 func run_section(faction: Faction, section: Section, scenario):
 	if not faction.player_controlled:
 		_ai_allocation._allocate_person(section)
-		_ai_allocation._allocate_resources(section)
+		_ai_allocation._allocate_resources(section, _ai_architecture)
 
 	for arch in section.get_architectures():
 		if not faction.player_controlled:

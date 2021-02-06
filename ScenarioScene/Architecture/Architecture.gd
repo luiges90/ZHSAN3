@@ -227,39 +227,47 @@ func get_captive_persons() -> Array:
 		if p.get_status() == Person.Status.CAPTIVE:
 			result.append(p)
 	return result
+
+
+func _expected_fund_expenditure():
+	var officer_expenditure = 0
+	for p in get_faction_persons():
+		officer_expenditure += p.get_salary()
+
+	return officer_expenditure
 	
 func expected_fund_income():
 	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
 	for p in get_workable_persons():
 		income = p.apply_influences('modify_person_fund_income', {"value": income, "person": p, "architecture": self})
 	
-	var officer_expenditure = 0
-	for p in get_faction_persons():
-		officer_expenditure += p.get_salary()
-		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
 		income *= scenario.scenario_config.ai_fund_rate
 	
-	return income - officer_expenditure
-	
-func expected_food_income():
-	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
-	for p in get_workable_persons():
-		income = p.apply_influences('modify_person_food_income', {"value": income, "person": p, "architecture": self})
-	
+	return income - _expected_fund_expenditure()
+
+
+func _expected_food_expenditure():
 	var soldier_expenditure = troop
 	
 	var equipment_expenditure = 0
 	for equipment in equipments:
 		var kind = scenario.military_kinds[equipment]
 		equipment_expenditure += equipments[equipment] * kind.food_per_soldier
+
+	return soldier_expenditure + equipment_expenditure
+	
+func expected_food_income():
+	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+	for p in get_workable_persons():
+		income = p.apply_influences('modify_person_food_income', {"value": income, "person": p, "architecture": self})
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
 		income *= scenario.scenario_config.ai_food_rate
 	
-	return income - soldier_expenditure - equipment_expenditure
+	return income - _expected_food_expenditure()
 	
 func expected_population_gain():
 	var base = population * ((morale - 200) / 600000.0 * (float(kind.population - population) / kind.population)) + 10
@@ -478,10 +486,10 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	troop -= troop_to_transport
 
 	var pack = ResourcePack.new()
-	pack.fund = fund_to_transport
-	pack.food = food_to_transport
+	pack.fund = fund_to_transport * _transport_loss(destination)
+	pack.food = food_to_transport * _transport_loss(destination)
 	pack.troop = troop_to_transport
-	pack.troop_morale = troop_morale
+	pack.troop_morale = troop_morale * _transport_loss(destination)
 	pack.day_left = _transport_eta(destination)
 	destination._resource_packs.append(pack)
 
@@ -492,6 +500,13 @@ func _transport_eta(arch):
 		result = p.apply_influences("modify_transport_time", {"value": result, "person": p, "architecture": self})
 	return result
 
+func _transport_loss(arch):
+	var eta = transport_eta(arch)
+	for p in get_workable_persons():
+		eta = p.apply_influences("modify_transport_loss", {"value": eta, "person": p, "architecture": self})
+	
+	return min(1.0, 1.81342 / (1.75862 + 0.024067 * eta))
+	
 
 ####################################
 #          Order Execution         #

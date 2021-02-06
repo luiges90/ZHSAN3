@@ -616,34 +616,6 @@
 		]
 	},
 	{
-		"_Id": 180,
-		"Name": "運輸",
-		"Description": "減少城市運送物資所需時間10%",
-		"Color": [
-			0.13,
-			0.56,
-			0.82
-		],
-		"MaxLevel": 9,
-		"LearnConditions": [
-			{
-				"Operation": "internal_experience_at_least",
-				"Value": 4000
-			},
-			{
-				"Operation": "politics_experience_at_least",
-				"Value": 4000
-			}
-		],
-		"Conditions": [],
-		"Influences": [
-			{
-				"Operation": "modify_transport_time",
-				"Value": -0.1
-			}
-		]
-	},
-	{
 		"_Id": 200,
 		"Name": "說服",
 		"Description": "說服能力每等級增加20%",
@@ -671,6 +643,62 @@
 			{
 				"Operation": "modify_person_convince_ability",
 				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 300,
+		"Name": "運輸",
+		"Description": "減少城市運送物資所需時間10%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"MaxLevel": 9,
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_transport_time",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 310,
+		"Name": "輜重",
+		"Description": "減緩城市運送物資損耗10%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"MaxLevel": 9,
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_transport_loss",
+				"Value": -0.1
 			}
 		]
 	},
