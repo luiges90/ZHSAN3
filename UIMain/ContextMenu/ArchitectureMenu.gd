@@ -7,6 +7,7 @@ signal faction_list_clicked
 signal architecture_toggle_auto_task
 signal architecture_create_troop
 signal remove_advisor
+signal transport_clicked
 
 var showing_architecture
 var _opening_list
@@ -16,6 +17,7 @@ func show_menu(arch, mouse_x, mouse_y, right_clicked):
 		$H/MainMenu/Internal.visible = false
 		$H/MainMenu/Military.visible = false
 		$H/MainMenu/Officers.visible = false
+		$H/MainMenu/Transport.visible = false
 		$H/MainMenu/Faction.visible = false
 		$H/MainMenu/ToggleAutoTask.visible = false
 		$H/MainMenu/FactionDetail.visible = false
@@ -25,6 +27,7 @@ func show_menu(arch, mouse_x, mouse_y, right_clicked):
 		$H/MainMenu/Military.visible = is_player
 		$H/MainMenu/Officers.visible = is_player
 		$H/MainMenu/Faction.visible = is_player
+		$H/MainMenu/Transport.visible = is_player
 		$H/MainMenu/ToggleAutoTask.visible = is_player
 		$H/MainMenu/FactionDetail.visible = true
 
@@ -191,3 +194,8 @@ func _on_Convince_pressed():
 	_select_item()
 	call_deferred("emit_signal", "person_list_clicked", showing_architecture, showing_architecture.get_belonged_faction().get_convince_targets(), PersonList.Action.CONVINCE_TARGET)
 
+
+
+func _on_Transport_pressed():
+	_select_item()
+	call_deferred("emit_signal", "transport_clicked", showing_architecture)

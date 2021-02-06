@@ -16,6 +16,9 @@ var __under_attack_archs
 func _init(ai):
 	_ai = ai
 
+func _allocate_resources(section: Section):
+	pass
+
 func _allocate_person(section: Section):
 	if section.get_architectures().size() <= 1:
 		return

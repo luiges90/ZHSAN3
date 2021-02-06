@@ -392,7 +392,7 @@ func _load_data(path):
 			elif order_type == Troop.OrderType.FOLLOW:
 				troops[tid].set_follow_order(target)
 			elif order_type == Troop.OrderType.ENTER:
-				troops[tid].set_enter_order(target)
+				troops[tid].set_enter_order(target.map_position)
 			elif order_type == Troop.OrderType.ACTIVATE_STUNT:
 				var stunt
 				if order_target_stunt >= 0:

@@ -37,6 +37,8 @@ var _destroyed: bool = false
 
 var _recently_battled: int setget forbidden
 
+var _resource_packs: Array
+
 signal architecture_clicked
 signal architecture_survey_updated
 
@@ -93,6 +95,9 @@ func load_data(json: Dictionary, objects):
 	equipments = Util.convert_dict_to_int_key(json["Equipments"])
 
 	_recently_battled = json["_RecentlyBattled"]
+
+	_resource_packs = parse_json(Util.dict_try_get(json, "_ResourcePacks", "[]"))
+	
 	
 func save_data() -> Dictionary:
 	return {
@@ -115,7 +120,8 @@ func save_data() -> Dictionary:
 		"TroopCombativity": troop_combativity,
 		"Equipments": equipments,
 		"_AutoTask": auto_task,
-		"_RecentlyBattled": _recently_battled
+		"_RecentlyBattled": _recently_battled,
+		"_ResourcePacks": _resource_packs
 	}
 
 ####################################
@@ -336,6 +342,9 @@ func create_troop_positions() -> Array:
 	
 func move_eta(to):
 	return int(ScenarioUtil.object_distance(self, to) * 0.2) + 1
+
+func transport_eta(to):
+	return int(ScenarioUtil.object_distance(self, to) * 0.8) + 1
 	
 ####################################
 #            Time event            #
@@ -416,7 +425,7 @@ func change_faction(to_section):
 					new_capital = a
 			if new_capital != null:
 				old_faction.set_capital(new_capital)
-				# TODO penalties
+				# TODO penalties, signal
 	
 	# burn the treasury
 	fund = fund / 10
@@ -445,6 +454,27 @@ func change_faction(to_section):
 func set_recently_battled():
 	_recently_battled = 5
 	
+
+func transport_resources(destination, fund_to_transport: int, food_to_transport: int, troop_to_transport: int):
+	fund -= fund_to_transport
+	food -= food_to_transport
+	troop -= troop_to_transport
+
+	var pack = ResourcePack.new()
+	pack.fund = fund_to_transport
+	pack.food = food_to_transport
+	pack.troop = troop_to_transport
+	pack.troop_morale = troop_morale
+	pack.day_left = _transport_eta(destination)
+	destination._resource_packs.append(pack)
+
+
+func _transport_eta(arch):
+	var result = transport_eta(arch)
+	for p in get_workable_persons():
+		result = p.apply_influences("modify_transport_time", {"value": result, "person": p, "architecture": self})
+	return result
+
 
 ####################################
 #          Order Execution         #

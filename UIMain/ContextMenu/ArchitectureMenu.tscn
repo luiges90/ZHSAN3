@@ -27,7 +27,7 @@ __meta__ = {
 
 [node name="MainMenu" type="VBoxContainer" parent="H" index="0"]
 margin_right = 239.0
-margin_bottom = 276.0
+margin_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,34 +49,40 @@ margin_right = 239.0
 margin_bottom = 106.123
 text = "OFFICERS"
 
-[node name="Faction" type="Button" parent="H/MainMenu" index="3"]
+[node name="Transport" type="Button" parent="H/MainMenu" index="3"]
 margin_top = 102.0
 margin_right = 239.0
 margin_bottom = 140.123
-text = "FACTION"
+text = "TRANSPORT"
 
-[node name="ToggleAutoTask" type="Button" parent="H/MainMenu" index="4"]
+[node name="Faction" type="Button" parent="H/MainMenu" index="4"]
 margin_top = 136.0
 margin_right = 239.0
 margin_bottom = 174.123
-text = "TOGGLE_AUTO_TASK"
+text = "FACTION"
 
-[node name="PersonList" type="Button" parent="H/MainMenu" index="5"]
+[node name="ToggleAutoTask" type="Button" parent="H/MainMenu" index="5"]
 margin_top = 170.0
 margin_right = 239.0
 margin_bottom = 208.123
-text = "PERSON_LIST"
+text = "TOGGLE_AUTO_TASK"
 
-[node name="ArchitectureDetail" type="Button" parent="H/MainMenu" index="6"]
+[node name="PersonList" type="Button" parent="H/MainMenu" index="6"]
 margin_top = 204.0
 margin_right = 239.0
 margin_bottom = 242.123
-text = "ARCHITECTURE_DETAILS"
+text = "PERSON_LIST"
 
-[node name="FactionDetail" type="Button" parent="H/MainMenu" index="7"]
+[node name="ArchitectureDetail" type="Button" parent="H/MainMenu" index="7"]
 margin_top = 238.0
 margin_right = 239.0
 margin_bottom = 276.123
+text = "ARCHITECTURE_DETAILS"
+
+[node name="FactionDetail" type="Button" parent="H/MainMenu" index="8"]
+margin_top = 272.0
+margin_right = 239.0
+margin_bottom = 310.123
 text = "FACTION_DETAILS"
 
 [node name="InternalMenu" type="VBoxContainer" parent="H" index="1"]
@@ -113,6 +119,9 @@ visible = false
 margin_left = 235.0
 margin_right = 450.0
 margin_bottom = 276.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Blank" type="Button" parent="H/MilitaryMenu" index="0"]
 margin_right = 215.0
@@ -246,6 +255,7 @@ text = "FACTION_PERSONS"
 [connection signal="pressed" from="H/MainMenu/Internal" to="." method="_on_Internal_pressed"]
 [connection signal="pressed" from="H/MainMenu/Military" to="." method="_on_Military_pressed"]
 [connection signal="pressed" from="H/MainMenu/Officers" to="." method="_on_Officers_pressed"]
+[connection signal="pressed" from="H/MainMenu/Transport" to="." method="_on_Transport_pressed"]
 [connection signal="pressed" from="H/MainMenu/Faction" to="." method="_on_Faction_pressed"]
 [connection signal="pressed" from="H/MainMenu/ToggleAutoTask" to="." method="_on_ToggleAutoTask_pressed"]
 [connection signal="pressed" from="H/MainMenu/PersonList" to="." method="_on_PersonList_pressed"]
