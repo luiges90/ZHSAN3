@@ -375,6 +375,7 @@ func day_event():
 	_develop_internal()
 	_develop_population()
 	_develop_military()
+	_move_resource_packs()
 
 	if _recently_battled > 0:
 		_recently_battled -= 1
@@ -672,13 +673,11 @@ func _recruit_troop(p: Person):
 func _train_troop(p: Person):
 	if fund > 20:
 		fund -= 20
-		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1)
-		var delta2 = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.2)
+		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1))
 		
 		var f = get_belonged_faction()
 		if f != null and not f.player_controlled:
 			delta *= scenario.scenario_config.ai_troop_training_rate
-			delta2 *= scenario.scenario_config.ai_troop_training_rate
 		
 		troop_morale = min(100, troop_morale + delta)
 		p.add_internal_exp(5)
@@ -716,6 +715,16 @@ func accept_entering_troop(in_troop):
 
 func take_equipment(kind, quantity):
 	equipments[kind.id] -= quantity
+
+func _move_resource_packs():
+	for p in _resource_packs.duplicate():
+		p.day_left -= 1
+		if p.day_left <= 0:
+			fund += p.fund
+			food += p.food
+			troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.morale) / (troop + p.troop))
+			troop += p.troop
+			_resource_packs.erase(p)
 
 ####################################
 #                UI                #
