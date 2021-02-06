@@ -673,7 +673,7 @@ func _recruit_troop(p: Person):
 func _train_troop(p: Person):
 	if fund > 20:
 		fund -= 20
-		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1))
+		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1 * (10000.0 / max(1000.0, troop)))
 		
 		var f = get_belonged_faction()
 		if f != null and not f.player_controlled:
