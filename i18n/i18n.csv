@@ -61,7 +61,7 @@ TOTAL_FOOD,Total Food,总粮草,總糧草
 TOTAL_TROOP,Total Troop,总士兵,總士兵
 BELONGED_ARCHITECTURE,Assignment,所属,所屬
 TASK_DAYS,Task Days,天数,天數
-DAY_UNIT, Days,天,天
+DAY_UNIT," Days",天,天
 SECTION,Section,军区,軍區
 MILITARY,Military,军事,軍事
 TROOP,Troop,士兵,士兵
@@ -80,6 +80,7 @@ MOVEMENT_DETAILS,Movement,地型移动,地型移動
 TERRAIN_STRENGTH,Terrain,地型能力,地型能力
 COST,Cost,所需资金,所需資金
 TRANSPORT,Transport,运送资源,運送資源
+TRANSPORT_DISABLED_HINT_SURROUNDED,Architecture is surrounded,建筑已被包围,建築已被包圍
 OFFENCE,Attack,攻击力,攻擊力
 DEFENCE,Defense,防御力,防禦力
 RANGE,Range,攻击距离,攻擊距離

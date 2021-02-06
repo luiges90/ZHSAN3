@@ -345,6 +345,19 @@ func move_eta(to):
 
 func transport_eta(to):
 	return int(ScenarioUtil.object_distance(self, to) * 0.8) + 1
+
+func surrounded():
+	if enemy_troop_in_architecture():
+		return true
+
+	var enemy_troops = enemy_troop_in_range(1)
+	if enemy_troops.size() < 4:
+		return false
+	for t in enemy_troops:
+		if t.quantity < 1000:
+			return false
+	return true
+
 	
 ####################################
 #            Time event            #
@@ -455,6 +468,10 @@ func set_recently_battled():
 	_recently_battled = 5
 	
 
+func can_transport_resources():
+	return not surrounded()
+
+
 func transport_resources(destination, fund_to_transport: int, food_to_transport: int, troop_to_transport: int):
 	fund -= fund_to_transport
 	food -= food_to_transport
@@ -468,7 +485,7 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	pack.day_left = _transport_eta(destination)
 	destination._resource_packs.append(pack)
 
-\
+
 func _transport_eta(arch):
 	var result = transport_eta(arch)
 	for p in get_workable_persons():

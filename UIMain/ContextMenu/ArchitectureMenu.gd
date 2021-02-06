@@ -43,6 +43,12 @@ func show_menu(arch, mouse_x, mouse_y, right_clicked):
 	$H/OfficersMenu/Call.disabled = has_only_one_arch
 	$H/FactionMenu/RemoveAdvisor.disabled = arch.get_belonged_faction() != null and arch.get_belonged_faction().advisor == null
 	
+	$H/MainMenu/Transport.disabled = arch.can_transport_resources()
+	if $H/MainMenu/Transport.disabled:
+		$H/MainMenu/Transport.hint_tooltip = tr('TRANSPORT_DISABLED_HINT_SURROUNDED')
+	else:
+		$H/MainMenu/Transport.hint_tooltip = ""
+	
 	show()
 	
 func _open_submenu():

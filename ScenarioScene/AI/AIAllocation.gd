@@ -2,7 +2,7 @@ extends Node
 class_name AIAllocation
 
 enum _ARCH_CLASS {
-	BACKLINE, FRONTLINE_BLANK, FRONTLINE, UNDER_ATTACK
+	BACKLINE, FRONTLINE_BLANK, FRONTLINE, UNDER_ATTACK, ABANDONED
 }
 
 var _ai
@@ -17,7 +17,9 @@ func _init(ai):
 	_ai = ai
 
 func _allocate_resources(section: Section):
-	pass
+	if section.get_architectures().size() <= 1:
+		return
+
 
 func _allocate_person(section: Section):
 	if section.get_architectures().size() <= 1:
@@ -45,16 +47,14 @@ func _allocate_person(section: Section):
 					__low_endurance_archs.append(a)
 			_: __backline_archs.append(a)
 			
-	if __low_endurance_archs.size() <= 0 or randf() < 0.1:
-		if randf() > 1 / 30.0 and __under_attack_archs.size() <= 0:
-			return
+	if not (randf() <= 1 / 30.0 or __under_attack_archs.size() > 0):
+		return
 	
 	var sha = section.get_architectures()
 	for a in sha:
 		var expected_state = __needed_person_state(a)
 		if a.get_faction_persons().size() < expected_state['count']:
-			var sha2 = section.get_architectures()
-			for call_from in sha2:
+			for call_from in sha:
 				if a.id == call_from.id:
 					continue
 				
@@ -88,6 +88,9 @@ func __needed_person_state(a):
 	var count
 	var frontline
 	match __arch_class(a):
+		_ARCH_CLASS.ABANDONED:
+			count = 0
+			frontline = false
 		_ARCH_CLASS.UNDER_ATTACK:
 			count = person_count_unit * under_attack_person_to_backline_ratio
 			frontline = true
@@ -107,7 +110,9 @@ func __needed_person_state(a):
 	}
 
 func __arch_class(a):
-	if a.enemy_troop_in_range(6):
+	if a.enemy_troop_in_architecture():
+		return _ARCH_CLASS.ABANDONED
+	elif a.enemy_troop_in_range(6):
 		return _ARCH_CLASS.UNDER_ATTACK
 	elif a.is_frontline():
 		return _ARCH_CLASS.FRONTLINE
