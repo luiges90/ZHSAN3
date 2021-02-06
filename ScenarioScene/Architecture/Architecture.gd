@@ -468,7 +468,7 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	pack.day_left = _transport_eta(destination)
 	destination._resource_packs.append(pack)
 
-
+\
 func _transport_eta(arch):
 	var result = transport_eta(arch)
 	for p in get_workable_persons():

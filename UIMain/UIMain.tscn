@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://UIMain/ArchitectureSurvey/ArcthiectureSurvey.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UIMain/UIMain.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://UIMain/Control.wav" type="AudioStream" id=26]
 [ext_resource path="res://UIMain/PersonBubble/PersonBubble.tscn" type="PackedScene" id=27]
 [ext_resource path="res://UIMain/PersonDialog/PersonDialog.tscn" type="PackedScene" id=28]
+[ext_resource path="res://UIMain/TransportDialog/TransportDialog.tscn" type="PackedScene" id=29]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -36,8 +37,9 @@ font_data = ExtResource( 17 )
 [node name="UIMain" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -5.54016
 margin_right = 0.00012207
-margin_bottom = 6.10352e-05
+margin_bottom = -5.5401
 mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
@@ -165,6 +167,17 @@ margin_bottom = 300.0
 [node name="InfoList" parent="." instance=ExtResource( 24 )]
 visible = false
 
+[node name="TransportDialog" parent="." instance=ExtResource( 29 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -200.0
+margin_right = 300.0
+margin_bottom = 200.0
+
 [node name="PersonDialog" parent="." instance=ExtResource( 28 )]
 visible = false
 anchor_left = 0.5
@@ -255,8 +268,8 @@ stream = ExtResource( 26 )
 [connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
 [connection signal="person_row_clicked" from="PersonList" to="PersonDetail" method="_on_PersonList_person_row_clicked"]
 [connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="architecture_row_clicked" from="ArchitectureList" to="ArchitectureDetail" method="_on_ArchitectureList_architecture_row_clicked"]
 [connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
 [connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
@@ -265,6 +278,7 @@ stream = ExtResource( 26 )
 [connection signal="architecture_list_clicked" from="ArchitectureMenu" to="ArchitectureList" method="_on_ArchitectureMenu_architecture_list_clicked"]
 [connection signal="faction_list_clicked" from="ArchitectureMenu" to="FactionList" method="_on_ArchitectureMenu_faction_list_clicked"]
 [connection signal="person_list_clicked" from="ArchitectureMenu" to="PersonList" method="_on_ArchitectureMenu_person_list_clicked"]
+[connection signal="transport_clicked" from="ArchitectureMenu" to="TransportDialog" method="_on_ArchitectureMenu_transport_clicked"]
 [connection signal="troop_detail_clicked" from="TroopMenu" to="TroopDetail" method="_on_TroopMenu_troop_detail_clicked"]
 [connection signal="troop_person_clicked" from="TroopMenu" to="PersonList" method="_on_TroopMenu_troop_person_clicked"]
 [connection signal="info_clicked" from="SystemMenu" to="InfoMenu" method="_on_SystemMenu_info_clicked"]

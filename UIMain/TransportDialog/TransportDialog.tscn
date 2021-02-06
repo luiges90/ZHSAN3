@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UIMain/TransportDialog/TransportDialog.gd" type="Script" id=4]
+
+[node name="TransportDialog" type="Panel"]
+margin_right = 600.0
+margin_bottom = 400.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "TRANSPORT"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FromArchitecture" type="Label" parent="."]
+anchor_right = 0.4
+margin_left = 16.0
+margin_top = 64.0
+margin_right = -16.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 3 )
+text = "郴縣"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToArchitecture" type="Button" parent="."]
+anchor_left = 0.6
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 64.0
+margin_right = -16.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 3 )
