@@ -37,9 +37,7 @@ font_data = ExtResource( 17 )
 [node name="UIMain" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -5.54016
 margin_right = 0.00012207
-margin_bottom = -5.5401
 mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
