@@ -19,7 +19,7 @@ func run_troop(troop, scenario):
 	if troop._ai_state == Troop.AIState.COMBAT:
 		# Setup stunts
 		var avail_stunts = troop.available_stunts()
-		avail_stunts.shuffle()
+		# avail_stunts.shuffle()
 		var activated = false
 		for stunt in avail_stunts:
 			var valid_squares = stunt.get_valid_target_squares(troop)

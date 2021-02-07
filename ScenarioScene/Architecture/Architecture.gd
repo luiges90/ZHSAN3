@@ -504,6 +504,15 @@ func can_transport_resources():
 
 
 func transport_resources(destination, fund_to_transport: int, food_to_transport: int, troop_to_transport: int):
+	assert(fund_to_transport >= 0)
+	assert(food_to_transport >= 0)
+	assert(troop_to_transport >= 0)
+	assert(fund_to_transport > 0 || food_to_transport > 0 || troop_to_transport > 0)
+	assert(fund_to_transport <= fund)
+	assert(food_to_transport <= food)
+	assert(troop_to_transport <= troop)
+	assert(get_belonged_faction() == destination.get_belonged_faction())
+	
 	fund -= fund_to_transport
 	food -= food_to_transport
 	troop -= troop_to_transport
@@ -745,7 +754,7 @@ func _move_resource_packs():
 			if p.day_left <= 0:
 				fund += p.fund
 				food += p.food
-				troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.morale) / (troop + p.troop))
+				troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.troop_morale) / (troop + p.troop))
 				troop += p.troop
 				_resource_packs.erase(p)
 

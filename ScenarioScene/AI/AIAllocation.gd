@@ -102,24 +102,25 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 	if total_target_fund > total_fund:
 		var total_deficit_ratio = float(total_fund) / total_target_fund
 		for i in target_fund:
-			target_fund[i] *= total_deficit_ratio
+			target_fund[i] = int(target_fund[i] * total_deficit_ratio)
 
 	if total_target_food > total_food:
 		var total_deficit_ratio = float(total_food) / total_target_food
 		for i in target_food:
-			target_food[i] *= total_deficit_ratio
+			target_food[i] = int(target_food[i] * total_deficit_ratio)
 
 	if total_target_troop > total_troop:
 		var total_deficit_ratio = float(total_troop) / total_target_troop
 		for i in target_troop:
-			target_troop[i] *= total_deficit_ratio
+			target_troop[i] = int(target_troop[i] * total_deficit_ratio)
 
 	# distribute resources from surplus to deficit by having deficit places ask nearby surplus greedily, most deficit first
 	valid_architectures.sort_custom(self, "__sort_by_fund_deficit")
 	for a in valid_architectures:
 		if __surplus_fund[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
-			var from = valid_architectures.duplicate().sort_custom(self, "__sort_by_transport_eta")
+			var from = valid_architectures.duplicate()
+			from.sort_custom(self, "__sort_by_transport_eta")
 			for a2 in from:
 				if a2.fund > target_fund[a2]:
 					var to_transfer = a2.fund - target_fund[a2]
@@ -130,10 +131,11 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 	
 		if __surplus_food[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
-			var from = valid_architectures.duplicate().sort_custom(self, "__sort_by_transport_eta")
+			var from = valid_architectures.duplicate()
+			from.sort_custom(self, "__sort_by_transport_eta")
 			for a2 in from:
-				if a2.fund > target_food[a2]:
-					var to_transfer = a2.fund - target_food[a2]
+				if a2.food > target_food[a2]:
+					var to_transfer = a2.food - target_food[a2]
 					a2.transport_resources(a, 0, to_transfer, 0)
 					__surplus_food[a] += to_transfer
 				if __surplus_food[a] >= 0:
@@ -141,10 +143,11 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 
 		if __surplus_troop[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
-			var from = valid_architectures.duplicate().sort_custom(self, "__sort_by_transport_eta")
+			var from = valid_architectures.duplicate()
+			from.sort_custom(self, "__sort_by_transport_eta")
 			for a2 in from:
-				if a2.fund > target_troop[a2]:
-					var to_transfer = a2.fund - target_troop[a2]
+				if a2.troop > target_troop[a2]:
+					var to_transfer = a2.troop - target_troop[a2]
 					a2.transport_resources(a, 0, 0, to_transfer)
 					__surplus_troop[a] += to_transfer
 				if __surplus_troop[a] >= 0:
