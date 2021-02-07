@@ -24,7 +24,7 @@ func _target_troop_quantity(arch: Architecture):
 	var frontline = ai._frontline_connected_archs(arch)
 	var troops = 5000
 	if arch.is_frontline_including_blank():
-		troops = 20000
+		troops = 10000
 	for a in frontline:
 		troops += a.troop
 	return troops

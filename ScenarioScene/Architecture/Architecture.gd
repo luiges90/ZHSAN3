@@ -369,19 +369,13 @@ func create_troop_positions() -> Array:
 func move_eta(to):
 	return int(ScenarioUtil.object_distance(self, to) * 0.2) + 1
 
-func transport_eta(to):
-	return int(ScenarioUtil.object_distance(self, to) * 0.8) + 1
-
 func surrounded():
 	if enemy_troop_in_architecture():
 		return true
 
 	var enemy_troops = enemy_troop_in_range(1)
-	if enemy_troops.size() < 4:
+	if enemy_troops.size() < 3:
 		return false
-	for t in enemy_troops:
-		if t.quantity < 1000:
-			return false
 	return true
 
 	
@@ -524,13 +518,13 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 
 
 func _transport_eta(arch):
-	var result = transport_eta(arch)
+	var result = int(ScenarioUtil.object_distance(self, arch) * 0.8) + 1
 	for p in get_workable_persons():
 		result = p.apply_influences("modify_transport_time", {"value": result, "person": p, "architecture": self})
 	return result
 
 func _transport_loss(arch):
-	var eta = transport_eta(arch)
+	var eta = int(ScenarioUtil.object_distance(self, arch) * 0.8) + 1
 	for p in get_workable_persons():
 		eta = p.apply_influences("modify_transport_loss", {"value": eta, "person": p, "architecture": self})
 	
