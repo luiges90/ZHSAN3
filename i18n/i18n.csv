@@ -220,3 +220,7 @@ RADIO_BUTTON_DIRECT_SELECT,Click once to directly select item in single select l
 ENABLE_IN_GAME_EDIT,Enable in game edit,游戏内编辑,遊戲內編輯
 EDIT,Edit,编辑,編輯
 SKILL_EDIT_INSTRUCTION,"Left-click on the skill to increase level, hold shift and click to decrease.",左按技能增加等级，按Shift时减少等级,左按技能增加等級，按Shift時減少等級
+RESOURCES,Resources,资源,資源
+DELIVERING_FUND,Fund under delivery,正运送资金,正運送資金
+DELIVERING_FOOD,Food under delivery,正运送粮草,正運送糧草
+DELIVERING_TROOP,Troop under delivery,正运送士兵,正運送士兵

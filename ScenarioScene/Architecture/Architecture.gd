@@ -314,17 +314,26 @@ func get_fund_in_packs():
 		result += p.fund
 	return result
 	
+func get_fund_in_packs_str():
+	return str(get_fund_in_packs())
+	
 func get_food_in_packs():
 	var result = 0
 	for p in _resource_packs:
 		result += p.food
 	return result
+	
+func get_food_in_packs_str():
+	return str(get_food_in_packs())
 
 func get_troop_in_packs():
 	var result = 0
 	for p in _resource_packs:
 		result += p.troop
 	return result
+	
+func get_troop_in_packs_str():
+	return str(get_troop_in_packs())
 
 ####################################
 #           Get function           #
