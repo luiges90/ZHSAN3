@@ -434,7 +434,10 @@ func change_faction(to_section):
 	var target_faction_destroyed = false
 	var old_faction = get_belonged_faction()
 	# forcibly move persons away
-	var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position, self)
+	var move_to = null
+	if old_faction != null:
+		move_to = ScenarioUtil.nearest_architecture_of_faction(old_faction, map_position, self)
+		
 	if old_faction != null:
 		if move_to != null:
 			for person in get_persons():
