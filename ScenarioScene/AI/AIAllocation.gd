@@ -128,7 +128,9 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 					__surplus_fund[a] += to_transfer
 				if __surplus_fund[a] >= 0:
 					break
-	
+					
+	valid_architectures.sort_custom(self, "__sort_by_food_deficit")
+	for a in valid_architectures:
 		if __surplus_food[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
 			var from = valid_architectures.duplicate()
@@ -141,6 +143,8 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 				if __surplus_food[a] >= 0:
 					break
 
+	valid_architectures.sort_custom(self, "__sort_by_troop_deficit")
+	for a in valid_architectures:
 		if __surplus_troop[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
 			var from = valid_architectures.duplicate()
