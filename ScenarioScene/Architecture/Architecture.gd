@@ -307,7 +307,25 @@ func get_total_equipments():
 	
 func anti_critical_chance():
 	return 0.0
+
+func get_fund_in_packs():
+	var result = 0
+	for p in _resource_packs:
+		result += p.fund
+	return result
 	
+func get_food_in_packs():
+	var result = 0
+	for p in _resource_packs:
+		result += p.food
+	return result
+
+func get_troop_in_packs():
+	var result = 0
+	for p in _resource_packs:
+		result += p.troop
+	return result
+
 ####################################
 #           Get function           #
 ####################################
@@ -422,8 +440,8 @@ func change_faction(to_section):
 	var target_faction_destroyed = false
 	var old_faction = get_belonged_faction()
 	# forcibly move persons away
+	var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position, self)
 	if old_faction != null:
-		var move_to = ScenarioUtil.nearest_architecture_of_faction(get_belonged_faction(), map_position, self)
 		if move_to != null:
 			for person in get_persons():
 				person.move_to_architecture(move_to)
@@ -448,6 +466,16 @@ func change_faction(to_section):
 			if new_capital != null:
 				old_faction.set_capital(new_capital)
 				# TODO penalties, signal
+
+	# redirect all resource packs
+	if old_faction != null:
+		for p in _resource_packs:
+			p.fund *= _transport_loss(move_to)
+			p.food *= _transport_loss(move_to)
+			p.troop_morale *= _transport_loss(move_to)
+			p.day_left += _transport_eta(move_to)
+			move_to._resource_packs.append(p)
+		_resource_packs.clear()
 	
 	# burn the treasury
 	fund = fund / 10
