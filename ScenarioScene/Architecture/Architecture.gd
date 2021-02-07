@@ -766,8 +766,9 @@ func _move_resource_packs():
 			if p.day_left <= 0:
 				fund += p.fund
 				food += p.food
-				troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.troop_morale) / (troop + p.troop))
-				troop += p.troop
+				if p.troop > 0:
+					troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.troop_morale) / (troop + p.troop))
+					troop += p.troop
 				_resource_packs.erase(p)
 
 ####################################
