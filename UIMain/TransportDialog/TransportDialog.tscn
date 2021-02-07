@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=3]
 [ext_resource path="res://UIMain/TransportDialog/TransportDialog.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://UIMain/TransportDialog/arrow.png" type="Texture" id=6]
 
 [node name="TransportDialog" type="Panel"]
 margin_right = 600.0
-margin_bottom = 400.0
+margin_bottom = 260.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -28,7 +30,8 @@ __meta__ = {
 }
 
 [node name="FromArchitecture" type="Label" parent="."]
-anchor_right = 0.4
+anchor_left = 0.15
+anchor_right = 0.5
 margin_left = 16.0
 margin_top = 64.0
 margin_right = -16.0
@@ -40,11 +43,199 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.65
+margin_top = 60.0
+texture = ExtResource( 6 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ToArchitecture" type="Button" parent="."]
-anchor_left = 0.6
+anchor_left = 0.65
 anchor_right = 1.0
 margin_left = 16.0
-margin_top = 64.0
+margin_top = 60.0
 margin_right = -16.0
-margin_bottom = 18.0
+margin_bottom = 94.0
 custom_fonts/font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 108.0
+margin_right = 59.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "FUND"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 142.0
+margin_right = 59.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "FOOD"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 176.0
+margin_right = 59.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "TROOP"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FromFund" type="Label" parent="."]
+anchor_left = 0.15
+anchor_right = 0.15
+margin_left = 16.0
+margin_top = 108.0
+margin_right = 59.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FromFood" type="Label" parent="."]
+anchor_left = 0.15
+anchor_right = 0.15
+margin_left = 16.0
+margin_top = 142.0
+margin_right = 59.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FromTroop" type="Label" parent="."]
+anchor_left = 0.15
+anchor_right = 0.15
+margin_left = 16.0
+margin_top = 176.0
+margin_right = 59.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransportFund" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_right = 0.65
+margin_top = 102.0
+text = "1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransportFood" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_right = 0.65
+margin_top = 138.0
+text = "1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransportTroop" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_right = 0.65
+margin_top = 172.0
+text = "1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToFund" type="Label" parent="."]
+anchor_left = 0.65
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 108.0
+margin_right = -16.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToFood" type="Label" parent="."]
+anchor_left = 0.65
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 142.0
+margin_right = -16.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToTroop" type="Label" parent="."]
+anchor_left = 0.65
+anchor_right = 1.0
+margin_left = 16.0
+margin_top = 176.0
+margin_right = -16.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionButtons" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -137.0
+margin_top = -48.0
+margin_right = -16.0
+margin_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="ActionButtons"]
+margin_right = 121.0
+margin_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CANCEL"
+
+[node name="Confirm" type="Button" parent="ActionButtons"]
+margin_left = 125.0
+margin_right = 249.0
+margin_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+disabled = true
+text = "CONFIRM"

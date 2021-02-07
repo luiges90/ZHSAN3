@@ -46,8 +46,19 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 	if not randf() < 1 / 30.0:
 		return
 	
-	var arch_count = __section.get_architectures().size()
-	var fund_unit = __section.get_total_fund()
+	var total_target_fund = 0
+	var total_target_food = 0
+	var total_target_troop = 0
+	var valid_architectures
+	for a in section.get_architectures():
+		if a.can_transport_resources():
+			valid_architectures.append(a)
+
+	for a in valid_architectures:
+		total_target_fund += _ai_architecture._target_fund(a)
+		total_target_food += _ai_architecture._target_food(a)
+		total_target_troop += _ai_architecture._target_troop_quantity(a)
+
 	# TODO
 
 

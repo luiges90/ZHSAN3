@@ -717,14 +717,15 @@ func take_equipment(kind, quantity):
 	equipments[kind.id] -= quantity
 
 func _move_resource_packs():
-	for p in _resource_packs.duplicate():
-		p.day_left -= 1
-		if p.day_left <= 0:
-			fund += p.fund
-			food += p.food
-			troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.morale) / (troop + p.troop))
-			troop += p.troop
-			_resource_packs.erase(p)
+	if can_transport_resources():
+		for p in _resource_packs.duplicate():
+			p.day_left -= 1
+			if p.day_left <= 0:
+				fund += p.fund
+				food += p.food
+				troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.morale) / (troop + p.troop))
+				troop += p.troop
+				_resource_packs.erase(p)
 
 ####################################
 #                UI                #
