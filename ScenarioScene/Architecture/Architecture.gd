@@ -96,10 +96,19 @@ func load_data(json: Dictionary, objects):
 
 	_recently_battled = json["_RecentlyBattled"]
 
-	_resource_packs = parse_json(Util.dict_try_get(json, "_ResourcePacks", "[]"))
+	var resource_pack_json = Util.dict_try_get(json, "_ResourcePacks", [])
+	_resource_packs = []
+	for p in resource_pack_json:
+		var pack = ResourcePack.new()
+		pack.set_from_json_dict(p)
+		_resource_packs.append(pack)
 	
 	
 func save_data() -> Dictionary:
+	var resource_pack_for_json = []
+	for p in _resource_packs:
+		resource_pack_for_json.append(p.dict_for_json())
+	
 	return {
 		"_Id": id,
 		"Name": gname,
@@ -121,7 +130,7 @@ func save_data() -> Dictionary:
 		"Equipments": equipments,
 		"_AutoTask": auto_task,
 		"_RecentlyBattled": _recently_battled,
-		"_ResourcePacks": _resource_packs
+		"_ResourcePacks": resource_pack_for_json
 	}
 
 ####################################
@@ -249,7 +258,7 @@ func expected_fund_income():
 
 
 func _expected_food_expenditure():
-	var soldier_expenditure = troop
+	var soldier_expenditure = troop + get_troop_in_packs()
 	
 	var equipment_expenditure = 0
 	for equipment in equipments:
@@ -315,7 +324,11 @@ func get_fund_in_packs():
 	return result
 	
 func get_fund_in_packs_str():
-	return str(get_fund_in_packs())
+	var result = ""
+	for p in _resource_packs:
+		if p.fund > 0:
+			result += tr("RESOURCE_PACK_ITEM").format({"amount": p.fund, "day": p.day_left})
+	return result
 	
 func get_food_in_packs():
 	var result = 0
@@ -324,7 +337,11 @@ func get_food_in_packs():
 	return result
 	
 func get_food_in_packs_str():
-	return str(get_food_in_packs())
+	var result = ""
+	for p in _resource_packs:
+		if p.food > 0:
+			result += tr("RESOURCE_PACK_ITEM").format({"amount": p.food, "day": p.day_left})
+	return result
 
 func get_troop_in_packs():
 	var result = 0
@@ -333,7 +350,11 @@ func get_troop_in_packs():
 	return result
 	
 func get_troop_in_packs_str():
-	return str(get_troop_in_packs())
+	var result = ""
+	for p in _resource_packs:
+		if p.troop > 0:
+			result += tr("RESOURCE_PACK_ITEM").format({"amount": p.troop, "day": p.day_left})
+	return result
 
 ####################################
 #           Get function           #
@@ -533,19 +554,19 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	pack.fund = fund_to_transport * _transport_loss(destination)
 	pack.food = food_to_transport * _transport_loss(destination)
 	pack.troop = troop_to_transport
-	pack.troop_morale = troop_morale * _transport_loss(destination)
+	pack.troop_morale = int(troop_morale * _transport_loss(destination))
 	pack.day_left = _transport_eta(destination)
 	destination._resource_packs.append(pack)
 
 
 func _transport_eta(arch):
-	var result = int(ScenarioUtil.object_distance(self, arch) * 0.8) + 1
+	var result = int(ScenarioUtil.object_distance(self, arch) * 0.4) + 1
 	for p in get_workable_persons():
 		result = p.apply_influences("modify_transport_time", {"value": result, "person": p, "architecture": self})
 	return result
 
 func _transport_loss(arch):
-	var eta = int(ScenarioUtil.object_distance(self, arch) * 0.8) + 1
+	var eta = int(ScenarioUtil.object_distance(self, arch) * 0.4) + 1
 	for p in get_workable_persons():
 		eta = p.apply_influences("modify_transport_loss", {"value": eta, "person": p, "architecture": self})
 	
