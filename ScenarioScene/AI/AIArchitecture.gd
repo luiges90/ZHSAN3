@@ -15,10 +15,10 @@ func _arch_enough_food(arch: Architecture):
 	return arch.expected_food_income() > 0
 
 func _target_fund(arch: Architecture):
-	return arch._expected_fund_expenditure() * 12 + 50 * arch.get_workable_persons().size()
+	return arch._expected_fund_expenditure() * 12 + 50 * (arch.get_workable_persons().size() + 3)
 
 func _target_food(arch: Architecture):
-	return arch._expected_food_expenditure() * 12
+	return (arch._expected_food_expenditure() + 3000) * 12
 	
 func _target_troop_quantity(arch: Architecture):
 	var frontline = ai._frontline_connected_archs(arch)
