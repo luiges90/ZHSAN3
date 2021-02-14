@@ -59,7 +59,7 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 	
 	__class_architectures(section)
 
-	if false and not randf() < 1 / 10.0:
+	if not randf() < 1 / 10.0:
 		return
 	
 	# calculate expected resources
@@ -123,7 +123,7 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 			from.sort_custom(self, "__sort_by_transport_eta")
 			for a2 in from:
 				if a2.fund > target_fund[a2]:
-					var to_transfer = int(min(a2.fund - target_fund[a2], max(1000, (target_fund[a] - a.fund) * 3)))
+					var to_transfer = int(min(a2.fund - target_fund[a2], max(1000, (target_fund[a] - a.fund) * 12)))
 					if to_transfer > 1000:
 						a2.transport_resources(a, to_transfer, 0, 0)
 						__surplus_fund[a] += to_transfer
@@ -138,7 +138,7 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 			from.sort_custom(self, "__sort_by_transport_eta")
 			for a2 in from:
 				if a2.food > target_food[a2]:
-					var to_transfer = int(min(a2.food - target_food[a2], max(100000, (target_food[a] - a.food) * 3)))
+					var to_transfer = int(min(a2.food - target_food[a2], max(100000, (target_food[a] - a.food) * 12)))
 					if to_transfer > 100000:
 						a2.transport_resources(a, 0, to_transfer, 0)
 						__surplus_food[a] += to_transfer
@@ -153,7 +153,7 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 			from.sort_custom(self, "__sort_by_transport_eta")
 			for a2 in from:
 				if a2.troop > target_troop[a2]:
-					var to_transfer = int(min(a2.troop - target_troop[a2], max(1000, (target_troop[a] - a.troop) * 3)))
+					var to_transfer = int(min(a2.troop - target_troop[a2], max(1000, (target_troop[a] - a.troop) * 12)))
 					if to_transfer > 1000:
 						a2.transport_resources(a, 0, 0, to_transfer)
 						__surplus_troop[a] += to_transfer
