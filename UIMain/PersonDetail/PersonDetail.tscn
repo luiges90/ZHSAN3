@@ -599,9 +599,9 @@ __meta__ = {
 
 [node name="StuntsHeader" type="HBoxContainer" parent="."]
 margin_left = 508.0
-margin_top = 248.0
-margin_right = 548.0
-margin_bottom = 275.0
+margin_top = 288.0
+margin_right = 601.0
+margin_bottom = 315.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -633,12 +633,12 @@ text = "SKILL_EDIT_INSTRUCTION"
 
 [node name="Stunts" type="GridContainer" parent="."]
 margin_left = 508.0
-margin_top = 280.0
+margin_top = 320.0
 margin_right = 464.0
-margin_bottom = 280.0
+margin_bottom = 320.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
-columns = 10
+columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

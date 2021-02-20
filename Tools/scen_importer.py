@@ -5,13 +5,13 @@ skill_data = importlib.import_module('scen_importer_skill_data')
 import_persons = True
 dev = True
 
-# TODO skills to add: 10800, 10810, 11110, 11120, 20000, 20010, 20020
-def convert_specials(p):
+# TODO skills to add: 10800, 10810, 20000, 20010, 20020
+def convert_specials(p, title_level):
     if k['ID'] in skill_data.SKILLS_LIST:
         return skill_data.SKILLS_LIST[k['ID']]
     else:
         skill_ids = [int(x) for x in filter(None, p['SkillsString'].split(' '))]
-        # title_ids = [int(x) for x in filter(None, p['RealTitlesString'].split(' '))]
+        title_ids = [int(x) for x in filter(None, p['RealTitlesString'].split(' '))]
         stunt_ids = [int(x) for x in filter(None, p['StuntsString'].split(' '))]
 
         new_skills = {}
@@ -67,7 +67,7 @@ def convert_specials(p):
             new_skills[110] = max(new_skills.get(110, 0), max(0, ((p['BasePolitics'] * 0.5 + p['BaseGlamour'] * 0.5) - 70) / 15))
         if 2 in skill_ids and 12 in skill_ids:
             new_skills[120] = max(new_skills.get(120, 0), max(0, ((p['BaseIntelligence'] * 0.75 + p['BasePolitics'] * 0.25) - 70) / 15))
-        if skill_classes_total[0] > 7:
+        if skill_classes_total[0] > 5 or (p['BasePolitics'] * 0.5 + p['BaseGlamour'] * 0.5) >= 80:
             new_skills[10] = new_skills[10] + 1 if new_skills.get(10, 0) > 0 else 0
             new_skills[20] = new_skills[20] + 1 if new_skills.get(20, 0) > 0 else 0
             new_skills[30] = new_skills[30] + 1 if new_skills.get(30, 0) > 0 else 0
@@ -78,42 +78,39 @@ def convert_specials(p):
             new_skills[130] = max(new_skills.get(130, 0), max(0, ((p['BasePolitics'] * 0.25 + p['BaseGlamour'] * 0.75) - 70) / 20))
             new_skills[140] = max(new_skills.get(140, 0), max(0, ((p['BaseIntelligence'] * 0.5 + p['BasePolitics'] * 0.5) - 70) / 20))
             new_skills[150] = max(new_skills.get(150, 0), max(0, ((p['BasePolitics'] * 0.25 + p['BaseGlamour'] * 0.75) - 70) / 20))
-        if skill_classes_total[0] > 14:
-            new_skills[10] = new_skills[10] + 1 if new_skills.get(10, 0) > 0 else 0
-            new_skills[20] = new_skills[20] + 1 if new_skills.get(20, 0) > 0 else 0
-            new_skills[30] = new_skills[30] + 1 if new_skills.get(30, 0) > 0 else 0
-            new_skills[40] = new_skills[40] + 1 if new_skills.get(40, 0) > 0 else 0
-            new_skills[50] = new_skills[50] + 1 if new_skills.get(50, 0) > 0 else 0
-            new_skills[60] = new_skills[60] + 1 if new_skills.get(60, 0) > 0 else 0
-            new_skills[70] = new_skills[70] + 1 if new_skills.get(70, 0) > 0 else 0
+            new_skills[130] = new_skills[130] + max(0, title_level / 2 - 2) if new_skills.get(130, 0) > 0 else 0
+            new_skills[140] = new_skills[140] + max(0, title_level / 2 - 2) if new_skills.get(140, 0) > 0 else 0
+            new_skills[150] = new_skills[150] + max(0, title_level / 2 - 2) if new_skills.get(150, 0) > 0 else 0
+        if skill_classes_total[0] > 10 or (p['BasePolitics'] * 0.5 + p['BaseGlamour'] * 0.5) >= 90 or title_level >= 6:
+            new_skills[10] = new_skills[10] + max(1, title_level / 2 - 2) if new_skills.get(10, 0) > 0 else 0
+            new_skills[20] = new_skills[20] + max(1, title_level / 2 - 2) if new_skills.get(20, 0) > 0 else 0
+            new_skills[30] = new_skills[30] + max(1, title_level / 2 - 2) if new_skills.get(30, 0) > 0 else 0
+            new_skills[40] = new_skills[40] + max(1, title_level / 2 - 2) if new_skills.get(40, 0) > 0 else 0
+            new_skills[50] = new_skills[50] + max(1, title_level / 2 - 2) if new_skills.get(50, 0) > 0 else 0
+            new_skills[60] = new_skills[60] + max(1, title_level / 2 - 2) if new_skills.get(60, 0) > 0 else 0
+            new_skills[70] = new_skills[70] + max(1, title_level / 2 - 2) if new_skills.get(70, 0) > 0 else 0
             new_skills[160] = max(new_skills.get(160, 0), max(0, ((p['BaseIntelligence'] * 0.5 + p['BasePolitics'] * 0.5) - 75) / 10))
             new_skills[170] = max(new_skills.get(170, 0), max(0, ((p['BaseCommand'] * 0.5 + p['BaseIntelligence'] * 0.5) - 75) / 10))
+            new_skills[160] = new_skills[160] + max(0, title_level / 2 - 2) if new_skills.get(160, 0) > 0 else 0
+            new_skills[170] = new_skills[170] + max(0, title_level / 2 - 2) if new_skills.get(170, 0) > 0 else 0
 
         if 20 in skill_ids:
             new_skills[10500] = max(new_skills.get(10500, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 50) / 30))
             new_stunts[40] = max(new_stunts.get(40, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 30))
-            new_stunts[130] = max(new_stunts.get(130, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 70) / 30))
-            new_stunts[230] = max(new_stunts.get(230, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 70) / 30))
             skill_classes_total[2] += 1
         if 21 in skill_ids:
             new_skills[10600] = max(new_skills.get(10600, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 30))
             new_stunts[40] = max(new_stunts.get(40, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 30))
-            new_stunts[130] = max(new_stunts.get(130, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 30))
-            new_stunts[230] = max(new_stunts.get(230, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 30))
             skill_classes_total[2] += 1
         if 22 in skill_ids:
             new_skills[10610] = max(new_skills.get(10610, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 30))
             new_stunts[40] = max(new_stunts.get(40, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 30))
-            new_stunts[130] = max(new_stunts.get(130, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 30))
-            new_stunts[230] = max(new_stunts.get(230, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 30))
             skill_classes_total[2] += 1
         if 23 in skill_ids:
             skill_classes_total[2] += 1
         if 24 in skill_ids:
             new_skills[10501] = max(new_skills.get(10501, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 50) / 20))
             new_stunts[40] = max(new_stunts.get(40, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 20))
-            new_stunts[130] = max(new_stunts.get(130, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 70) / 20))
-            new_stunts[230] = max(new_stunts.get(230, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 70) / 20))
             skill_classes_total[2] += 3
         if 25 in skill_ids:
             skill_classes_total[2] += 2
@@ -121,26 +118,41 @@ def convert_specials(p):
             new_skills[300] = max(new_skills.get(300, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BasePolitics'] * 0.25) - 50) / 20))
             new_skills[310] = max(new_skills.get(310, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BasePolitics'] * 0.75) - 50) / 20))
             skill_classes_total[2] += 2
-        
+        if skill_classes_total[2] > 3 or p['BaseCommand'] >= 80:
+            new_skills[300] = new_skills[300] + 1 if new_skills.get(300, 0) > 0 else 0
+            new_skills[310] = new_skills[310] + 1 if new_skills.get(310, 0) > 0 else 0
+            new_skills[10500] = new_skills[10500] + 1 if new_skills.get(10500, 0) > 0 else 0
+            new_skills[10501] = new_skills[10501] + 1 if new_skills.get(10501, 0) > 0 else 0
+            new_skills[10600] = new_skills[10600] + 1 if new_skills.get(10600, 0) > 0 else 0
+            new_skills[10610] = new_skills[10610] + 1 if new_skills.get(10610, 0) > 0 else 0
+            new_stunts[40] = new_stunts[40] + 1 if new_stunts.get(40, 0) > 0 else 0
+            new_stunts[130] = max(new_stunts.get(130, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 75) / 10))
+            new_stunts[230] = max(new_stunts.get(230, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 75) / 10))
+        if skill_classes_total[2] > 5 or p['BaseCommand'] >= 90 or title_level >= 6:
+            new_skills[300] = new_skills[300] + max(1, title_level / 2 - 2) if new_skills.get(300, 0) > 0 else 0
+            new_skills[310] = new_skills[310] + max(1, title_level / 2 - 2) if new_skills.get(310, 0) > 0 else 0
+            new_skills[10500] = new_skills[10500] + max(1, title_level / 2 - 2) if new_skills.get(10500, 0) > 0 else 0
+            new_skills[10501] = new_skills[10501] + max(1, title_level / 2 - 2) if new_skills.get(10501, 0) > 0 else 0
+            new_skills[10600] = new_skills[10600] + max(1, title_level / 2 - 2) if new_skills.get(10600, 0) > 0 else 0
+            new_skills[10610] = new_skills[10610] + max(1, title_level / 2 - 2) if new_skills.get(10610, 0) > 0 else 0
+            new_stunts[40] = new_stunts[40] + max(1, title_level / 2 - 2) if new_stunts.get(40, 0) > 0 else 0
+            new_stunts[130] = new_stunts[130] + max(1, title_level / 2 - 2) if new_stunts.get(130, 0) > 0 else 0
+            new_stunts[230] = new_stunts[230] + max(1, title_level / 2 - 2) if new_stunts.get(230, 0) > 0 else 0
+
+
         if 30 in skill_ids:
             new_skills[10210] = max(new_skills.get(10210, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 30))
             new_stunts[20] = max(new_stunts.get(20, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 30))
-            new_stunts[110] = max(new_stunts.get(110, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 30))
-            new_stunts[200] = max(new_stunts.get(200, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 30))
             new_stunts[2000] = max(new_stunts.get(2000, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 30))
             skill_classes_total[3] += 1
         if 31 in skill_ids:
             new_skills[10200] = max(new_skills.get(10200, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 25))
             new_stunts[10] = max(new_stunts.get(10, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 25))
-            new_stunts[100] = max(new_stunts.get(100, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 25))
-            new_stunts[210] = max(new_stunts.get(210, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 25))
             new_stunts[2000] = max(new_stunts.get(2000, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 25))
             skill_classes_total[3] += 2
         if 32 in skill_ids:
             new_skills[10210] = max(new_skills.get(10210, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 20))
             new_stunts[20] = max(new_stunts.get(20, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 20))
-            new_stunts[110] = max(new_stunts.get(110, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 20))
-            new_stunts[210] = max(new_stunts.get(210, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 20))
             new_stunts[2000] = max(new_stunts.get(2000, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 20))
             skill_classes_total[3] += 3
         if 33 in skill_ids:
@@ -150,7 +162,6 @@ def convert_specials(p):
             new_skills[10700] = max(new_skills.get(10700, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BasePolitics'] * 0.25) - 40) / 20))
             new_skills[11020] = max(new_skills.get(11020, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 20))
             new_stunts[30] = max(new_stunts.get(30, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 20))
-            new_stunts[120] = max(new_stunts.get(120, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 20))
             skill_classes_total[3] += 3
         if 35 in skill_ids:
             new_skills[10210] = max(new_skills.get(10210, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 20))
@@ -159,31 +170,31 @@ def convert_specials(p):
         if 36 in skill_ids:
             new_skills[10200] = max(new_skills.get(10200, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 15))
             new_stunts[10] = max(new_stunts.get(10, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 15))
-            new_stunts[110] = max(new_stunts.get(110, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 15))
-            new_stunts[200] = max(new_stunts.get(200, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 15))
             skill_classes_total[3] += 4
         if skill_classes_total[3] > 3 and skill_classes_total[2] > 0:
             new_skills[10220] = max(new_skills.get(10220, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 20))
+        if skill_classes_total[3] > 5 or (p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) >= 80:
+            new_skills[10200] = new_skills[10200] + 1 if new_skills.get(10200, 0) > 0 else 0
+            new_skills[10210] = new_skills[10210] + 1 if new_skills.get(10210, 0) > 0 else 0
+            new_skills[10220] = new_skills[10220] + 1 if new_skills.get(10220, 0) > 0 else 0
+        if skill_classes_total[3] > 9 or (p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) >= 90 or title_level >= 6:
+            new_skills[10200] = new_skills[10200] + max(1, title_level / 2 - 2) if new_skills.get(10200, 0) > 0 else 0
+            new_skills[10210] = new_skills[10210] + max(1, title_level / 2 - 2) if new_skills.get(10210, 0) > 0 else 0
+            new_skills[10220] = new_skills[10220] + max(1, title_level / 2 - 2) if new_skills.get(10220, 0) > 0 else 0
 
         if 40 in skill_ids:
             new_skills[10310] = max(new_skills.get(10310, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 30))
             new_stunts[20] = max(new_stunts.get(20, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 30))
-            new_stunts[110] = max(new_stunts.get(110, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 30))
-            new_stunts[200] = max(new_stunts.get(200, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 30))
             new_stunts[2100] = max(new_stunts.get(2100, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 30))
             skill_classes_total[4] += 1
         if 41 in skill_ids:
             new_skills[10300] = max(new_skills.get(10300, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 25))
             new_stunts[10] = max(new_stunts.get(10, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 25))
-            new_stunts[100] = max(new_stunts.get(100, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 25))
-            new_stunts[210] = max(new_stunts.get(210, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 25))
             new_stunts[2100] = max(new_stunts.get(2100, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 25))
             skill_classes_total[4] += 2
         if 42 in skill_ids:
             new_skills[10300] = max(new_skills.get(10300, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 20))
             new_stunts[10] = max(new_stunts.get(10, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 20))
-            new_stunts[100] = max(new_stunts.get(100, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 20))
-            new_stunts[210] = max(new_stunts.get(210, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 20))
             new_stunts[2100] = max(new_stunts.get(2100, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 50) / 20))
             skill_classes_total[4] += 3
         if 43 in skill_ids:
@@ -200,8 +211,6 @@ def convert_specials(p):
         if 46 in skill_ids:
             new_skills[10300] = max(new_skills.get(10300, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 15))
             new_stunts[10] = max(new_stunts.get(10, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 15))
-            new_stunts[110] = max(new_stunts.get(110, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 15))
-            new_stunts[200] = max(new_stunts.get(200, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 60) / 15))
             skill_classes_total[4] += 4
         if skill_classes_total[4] > 3 and skill_classes_total[2] > 0:
             new_skills[10320] = max(new_skills.get(10320, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 20))
@@ -213,6 +222,14 @@ def convert_specials(p):
             new_skills[10610] += 1
         if skill_classes_total[3] + skill_classes_total[4] > 12 and new_skills.get(10610, 0) > 0:
             new_skills[10610] += 1
+        if skill_classes_total[4] > 5 or (p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) >= 80:
+            new_skills[10300] = new_skills[10300] + 1 if new_skills.get(10300, 0) > 0 else 0
+            new_skills[10310] = new_skills[10310] + 1 if new_skills.get(10310, 0) > 0 else 0
+            new_skills[10320] = new_skills[10320] + 1 if new_skills.get(10320, 0) > 0 else 0
+        if skill_classes_total[4] > 9 or (p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) >= 90 or title_level >= 6:
+            new_skills[10300] = new_skills[10300] + max(1, title_level / 2 - 2) if new_skills.get(10300, 0) > 0 else 0
+            new_skills[10310] = new_skills[10310] + max(1, title_level / 2 - 2) if new_skills.get(10310, 0) > 0 else 0
+            new_skills[10320] = new_skills[10320] + max(1, title_level / 2 - 2) if new_skills.get(10320, 0) > 0 else 0
 
         if 50 in skill_ids:
             new_skills[10400] = max(new_skills.get(10400, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 40) / 30))
@@ -254,8 +271,30 @@ def convert_specials(p):
             skill_classes_total[5] += 4
         if skill_classes_total[5] > 3:
             new_skills[10410] = max(new_skills.get(10410, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 40) / 20))
-        if skill_classes_total[3] + skill_classes_total[4] + skill_classes_total[5] > 18:
+        if skill_classes_total[3] + skill_classes_total[4] + skill_classes_total[5] > 15:
             new_skills[10900] = max(new_skills.get(10900, 0), max(0, ((p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) - 60) / 20))
+        if skill_classes_total[5] > 5 or (p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) >= 80:
+            new_skills[10400] = new_skills[10400] + 1 if new_skills.get(10400, 0) > 0 else 0
+            new_skills[10410] = new_skills[10410] + 1 if new_skills.get(10410, 0) > 0 else 0
+            new_skills[10420] = new_skills[10420] + 1 if new_skills.get(10420, 0) > 0 else 0
+        if skill_classes_total[5] > 9 or (p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) >= 90 or title_level >= 6:
+            new_skills[10400] = new_skills[10400] + max(1, title_level / 2 - 2) if new_skills.get(10400, 0) > 0 else 0
+            new_skills[10410] = new_skills[10410] + max(1, title_level / 2 - 2) if new_skills.get(10410, 0) > 0 else 0
+            new_skills[10420] = new_skills[10420] + max(1, title_level / 2 - 2) if new_skills.get(10420, 0) > 0 else 0
+        if skill_classes_total[3] + skill_classes_total[4] + skill_classes_total[5] > 8:
+            new_stunts[10] = new_stunts[10] + 1 if new_stunts.get(10, 0) > 0 else 0
+            new_stunts[20] = new_stunts[20] + 1 if new_stunts.get(20, 0) > 0 else 0
+            new_stunts[100] = max(new_stunts.get(100, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 15))
+            new_stunts[110] = max(new_stunts.get(110, 0), max(0, (p['BaseCommand'] - 60) / 15))
+            new_stunts[200] = max(new_stunts.get(200, 0), max(0, ((p['BaseStrength'] * 0.25 + p['BaseIntelligence'] * 0.75) - 70) / 10))
+            new_stunts[210] = max(new_stunts.get(210, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 70) / 10))
+        if skill_classes_total[3] + skill_classes_total[4] + skill_classes_total[5] > 15 or title_level >= 6:
+            new_stunts[10] = new_stunts[10] + max(1, title_level / 2 - 2) if new_stunts.get(10, 0) > 0 else 0
+            new_stunts[20] = new_stunts[20] + max(1, title_level / 2 - 2) if new_stunts.get(20, 0) > 0 else 0
+            new_stunts[100] = new_stunts[100] + max(1, title_level / 2 - 2) if new_stunts.get(100, 0) > 0 else 0
+            new_stunts[110] = new_stunts[110] + max(1, title_level / 2 - 2) if new_stunts.get(110, 0) > 0 else 0
+            new_stunts[200] = new_stunts[200] + max(1, title_level / 2 - 2) if new_stunts.get(200, 0) > 0 else 0
+            new_stunts[210] = new_stunts[210] + max(1, title_level / 2 - 2) if new_stunts.get(210, 0) > 0 else 0
 
         if 60 in skill_ids:
             skill_classes_total[6] += 1
@@ -295,6 +334,12 @@ def convert_specials(p):
             new_skills[10110] = max(new_skills.get(10110, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BasePolitics'] * 0.25) - 40) / 25))
             new_skills[10710] = max(new_skills.get(10700, 0), max(0, ((p['BaseCommand'] * 0.25 + p['BaseIntelligence'] * 0.75) - 40) / 25))
             skill_classes_total[7] += 2
+        if skill_classes_total[5] > 5 or (p['BaseCommand'] * 0.5 + p['BaseIntelligence'] * 0.5) >= 80:
+            new_skills[10700] = new_skills[10700] + 1 if new_skills.get(10700, 0) > 0 else 0
+            new_skills[10710] = new_skills[10710] + 1 if new_skills.get(10710, 0) > 0 else 0
+        if skill_classes_total[5] > 9 or (p['BaseCommand'] * 0.5 + p['BaseStrength'] * 0.5) >= 90 or title_level >= 6:
+            new_skills[10700] = new_skills[10700] + max(1, title_level / 2 - 2) if new_skills.get(10700, 0) > 0 else 0
+            new_skills[10710] = new_skills[10710] + max(1, title_level / 2 - 2) if new_skills.get(10710, 0) > 0 else 0
 
         if 80 in skill_ids:
             skill_classes_total[8] += 3
@@ -310,7 +355,7 @@ def convert_specials(p):
             skill_classes_total[8] += 2
         if 86 in skill_ids:
             skill_classes_total[8] += 2
-        if skill_classes_total[8] > 8:
+        if skill_classes_total[8] > 6:
             new_skills[10000] = max(new_skills.get(10000, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseGlamour'] * 0.75) - 70) / 15))
 
         if 90 in skill_ids:
@@ -332,6 +377,20 @@ def convert_specials(p):
             new_skills[11130] = max(new_skills.get(11130, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BaseGlamour'] * 0.25) - 70) / 15))
             new_stunts[1000] = max(new_stunts.get(1000, 0), max(0, ((p['BaseIntelligence'] * 0.75 + p['BaseGlamour'] * 0.25) - 60) / 15))
             skill_classes_total[9] += 2
+        if skill_classes_total[9] > 4 or p['BaseIntelligence'] >= 80:
+            new_skills[11100] = new_skills[11100] + 1 if new_skills.get(11100, 0) > 0 else 0
+            new_skills[11130] = new_skills[11130] + 1 if new_skills.get(11130, 0) > 0 else 0
+            new_skills[11110] = max(new_skills.get(11110, 0), max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 70) / 10))
+            new_skills[11120] = max(new_skills.get(11120, 0), max(0, ((p['BaseCommand'] * 0.75 + p['BaseIntelligence'] * 0.25) - 70) / 10))
+            new_stunts[1100] = new_stunts[1100] + 1 if new_stunts.get(1100, 0) > 0 else 0
+            new_stunts[1200] = new_stunts[1200] + 1 if new_stunts.get(1200, 0) > 0 else 0
+        if skill_classes_total[9] > 7 or p['BaseIntelligence'] >= 90 or title_level >= 6:
+            new_skills[11100] = new_skills[11100] + max(1, title_level / 2 - 2) if new_skills.get(11100, 0) > 0 else 0
+            new_skills[11110] = new_skills[11110] + max(1, title_level / 2 - 2) if new_skills.get(11110, 0) > 0 else 0
+            new_skills[11120] = new_skills[11120] + max(1, title_level / 2 - 2) if new_skills.get(11120, 0) > 0 else 0
+            new_skills[11130] = new_skills[11130] + max(1, title_level / 2 - 2) if new_skills.get(11130, 0) > 0 else 0
+            new_stunts[1100] = new_stunts[1100] + max(1, title_level / 2 - 2) if new_stunts.get(1100, 0) > 0 else 0
+            new_stunts[1200] = new_stunts[1200] + max(1, title_level / 2 - 2) if new_stunts.get(1200, 0) > 0 else 0
 
         if 100 in skill_ids:
             skill_classes_total[10] += 2
@@ -355,18 +414,66 @@ def convert_specials(p):
             new_stunts[3010] = 1
         if 13 in stunt_ids:
             new_stunts[30] = max(new_stunts.get(30, 0), 1 + max(0, ((p['BaseStrength'] * 0.75 + p['BasePolitics'] * 0.25) - 50) / 20))
-            new_stunts[1020] = max(new_stunts.get(1020, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BasePolitics'] * 0.25) - 60) / 15))
-            new_stunts[2020] = max(new_stunts.get(2020, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BaseIntelligence'] * 0.25) - 70) / 10))
+            new_stunts[120] = max(new_stunts.get(120, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BasePolitics'] * 0.25) - 60) / 15))
+            new_stunts[220] = max(new_stunts.get(220, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BaseIntelligence'] * 0.25) - 70) / 10))
+
+        if 42 in title_ids:
+            new_skills[130] = max(new_skills.get(130, 0), 3)
+        if 43 in title_ids:
+            new_skills[140] = max(new_skills.get(140, 0), 3)
+        if 70 in title_ids:
+            new_skills[100] = max(new_skills.get(100, 0), 3)
+        if 71 in title_ids:
+            new_skills[110] = max(new_skills.get(110, 0), 3)
+        if 81 in title_ids:
+            new_skills[120] = max(new_skills.get(120, 0), 3)
+        if 80 in title_ids:
+            new_skills[20020] = max(new_skills.get(20020, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.75 + p['BaseGlamour'] * 0.25) - 60) / 10))
+        if 228 in title_ids:
+            new_skills[10810] = max(new_skills.get(10810, 0), 1 + max(0, ((p['BaseCommand'] * 0.25 + p['BaseStrength'] * 0.75) - 60) / 10))
+        if 229 in title_ids or 262 in title_ids:
+            new_skills[10900] = max(new_skills.get(10900, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+        if 230 in title_ids:
+            new_skills[10710] = max(new_skills.get(10710, 0), 1 + max(0, ((p['BaseCommand'] * 0.75 + p['BasePolitics'] * 0.25) - 60) / 10))
+        if 252 in title_ids:
+            new_skills[11110] = max(new_skills.get(11110, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+            new_stunts[200] = max(new_stunts.get(200, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+            new_stunts[210] = max(new_stunts.get(210, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+            new_stunts[220] = max(new_stunts.get(220, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+            new_stunts[230] = max(new_stunts.get(230, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+            new_stunts[1200] = max(new_stunts.get(1200, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+        if 253 in title_ids:
+            new_skills[11110] = max(new_skills.get(11110, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+            new_stunts[1000] = max(new_stunts.get(1000, 0), 1 + max(0, ((p['BaseIntelligence'] * 0.25 + p['BaseGlamour'] * 0.75) - 60) / 10))
+        if 300 in title_ids or 320 in title_ids:
+            bonus = 3 if 300 in title_ids else 1
+            new_skills[10200] = max(new_skills.get(10200, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+            new_skills[10210] = max(new_skills.get(10210, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+            new_skills[10220] = max(new_skills.get(10220, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+        if 301 in title_ids or 321 in title_ids:
+            bonus = 3 if 301 in title_ids else 1
+            new_skills[10300] = max(new_skills.get(10300, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+            new_skills[10310] = max(new_skills.get(10310, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+            new_skills[10320] = max(new_skills.get(10320, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+        if 302 in title_ids or 322 in title_ids:
+            bonus = 3 if 302 in title_ids else 1
+            new_skills[10400] = max(new_skills.get(10400, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+            new_skills[10410] = max(new_skills.get(10410, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+            new_skills[10420] = max(new_skills.get(10420, 0), bonus + max(0, ((p['BaseCommand'] * 0.75 + p['BaseStrength'] * 0.25) - 60) / 10))
+        if 360 in title_ids:
+            new_stunts[1200] = max(new_stunts.get(1200, 0), 1 + max(0, (p['BaseIntelligence'] - 60) / 10))
         
         filtered_new_skills = {}
         for s in new_skills:
-            if new_skills[s] > 0:
-                filtered_new_skills[s] = new_skills[s]
+            v = int(new_skills[s])
+            if v > 0:
+                filtered_new_skills[s] = v
 
         filtered_new_stunts = {}
         for s in new_stunts:
-            if new_stunts[s] > 0:
-                filtered_new_stunts[s] = new_stunts[s]
+            v = int(new_stunts[s])
+            if v > 0:
+                filtered_new_stunts[s] = v
 
         return {
             "Skills": filtered_new_skills,
@@ -588,7 +695,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     spouse_id_list = [x for x in obj['SpouseIds'] if x['Key'] == k['ID']]
                     brother_id_list = [x for x in obj['BrotherIds'] if x['Key'] == k['ID']]
 
-                    converted_specials = convert_specials(k)
+                    title_level = max([0] + [e['Value']['Level'] for e in common['AllTitles']['Titles'] if e['Key'] in [int(x) for x in filter(None, k['RealTitlesString'].split(' '))]])
+                    converted_specials = convert_specials(k, title_level)
                     r.append({
                         "_Id": k['ID'],
                         "Status": status,
