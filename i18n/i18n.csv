@@ -181,6 +181,7 @@ ASSIGN_ADVISOR,Assign Advisor,委任军师,委任軍師
 REMOVE_ADVISOR,Remove Advisor,解任军师,解任軍師
 RELEVANCE,Relevance,相关,相關
 CONVINCE,Convince,说服,說服
+AUTO_CONVINCE,Auto Convince,自动说服,自動說服
 CONVINCE_TARGET,Convince Target,说服目标,說服目標
 ADVISOR_RECOMMENDED,Advisor Recommended,军师建议,軍師建議
 CONVINCE_ABILITY,Convince,说服能力,說服能力

@@ -8,6 +8,7 @@ signal architecture_toggle_auto_task
 signal architecture_create_troop
 signal remove_advisor
 signal transport_clicked
+signal auto_convince
 
 var showing_architecture
 var _opening_list
@@ -205,3 +206,8 @@ func _on_Convince_pressed():
 func _on_Transport_pressed():
 	_select_item()
 	call_deferred("emit_signal", "transport_clicked", showing_architecture)
+
+
+func _on_AutoConvince_pressed():
+	_select_item()
+	call_deferred("emit_signal", "auto_convince", showing_architecture)

@@ -75,6 +75,7 @@ func _register_menus():
 	
 	$UICanvas/UIMain/ArchitectureMenu.connect("architecture_toggle_auto_task", $Scenario, "on_architecture_toggle_auto_task")
 	$UICanvas/UIMain/ArchitectureMenu.connect("remove_advisor", $Scenario, "on_architecture_remove_advisor")
+	$UICanvas/UIMain/ArchitectureMenu.connect("auto_convince", $Scenario, "on_architecture_auto_convince")
 	
 	$UICanvas/UIMain/SaveLoadMenu.connect("file_slot_clicked", $Scenario, "_on_file_slot_clicked")
 	

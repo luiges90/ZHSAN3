@@ -158,13 +158,12 @@ margin_bottom = 172.123
 text = "PRODUCE_EQUIPMENT"
 
 [node name="OfficersMenu" type="VBoxContainer" parent="H" index="3"]
-visible = false
 margin_left = 235.0
-margin_right = 353.0
-margin_bottom = 276.0
+margin_right = 400.0
+margin_bottom = 310.0
 
 [node name="Blank" type="Button" parent="H/OfficersMenu" index="0"]
-margin_right = 118.0
+margin_right = 165.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 0, 72 )
 custom_styles/hover = SubResource( 1 )
@@ -175,21 +174,27 @@ custom_styles/normal = SubResource( 5 )
 
 [node name="Move" type="Button" parent="H/OfficersMenu" index="1"]
 margin_top = 68.0
-margin_right = 118.0
+margin_right = 165.0
 margin_bottom = 106.123
 text = "MOVE"
 
 [node name="Call" type="Button" parent="H/OfficersMenu" index="2"]
 margin_top = 102.0
-margin_right = 118.0
+margin_right = 165.0
 margin_bottom = 140.123
 text = "CALL"
 
 [node name="Convince" type="Button" parent="H/OfficersMenu" index="3"]
 margin_top = 136.0
-margin_right = 118.0
+margin_right = 165.0
 margin_bottom = 174.123
 text = "CONVINCE"
+
+[node name="AutoConvince" type="Button" parent="H/OfficersMenu" index="4"]
+margin_top = 170.0
+margin_right = 165.0
+margin_bottom = 208.123
+text = "AUTO_CONVINCE"
 
 [node name="FactionMenu" type="VBoxContainer" parent="H" index="4"]
 visible = false
@@ -272,6 +277,7 @@ text = "FACTION_PERSONS"
 [connection signal="pressed" from="H/OfficersMenu/Move" to="." method="_on_Move_pressed"]
 [connection signal="pressed" from="H/OfficersMenu/Call" to="." method="_on_Call_pressed"]
 [connection signal="pressed" from="H/OfficersMenu/Convince" to="." method="_on_Convince_pressed"]
+[connection signal="pressed" from="H/OfficersMenu/AutoConvince" to="." method="_on_AutoConvince_pressed"]
 [connection signal="pressed" from="H/FactionMenu/AssignAdvisor" to="." method="_on_AssignAdvisor_pressed"]
 [connection signal="pressed" from="H/FactionMenu/RemoveAdvisor" to="." method="_on_RemoveAdvisor_pressed"]
 [connection signal="pressed" from="H/FactionDetailsMenu/FactionDetail" to="." method="_on_FactionDetail_pressed"]

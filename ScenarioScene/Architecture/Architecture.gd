@@ -31,6 +31,8 @@ var troop_combativity: int setget forbidden
 
 var equipments = {} setget forbidden
 
+var auto_convince = false
+
 var auto_task: bool
 
 var _destroyed: bool = false
@@ -96,6 +98,8 @@ func load_data(json: Dictionary, objects):
 
 	_recently_battled = json["_RecentlyBattled"]
 
+	auto_convince = Util.dict_try_get(json, "AutoConvince", false)
+
 	var resource_pack_json = Util.dict_try_get(json, "_ResourcePacks", [])
 	_resource_packs = []
 	for p in resource_pack_json:
@@ -128,6 +132,7 @@ func save_data() -> Dictionary:
 		"TroopMorale": troop_morale,
 		"TroopCombativity": troop_combativity,
 		"Equipments": equipments,
+		"AutoConvince": auto_convince,
 		"_AutoTask": auto_task,
 		"_RecentlyBattled": _recently_battled,
 		"_ResourcePacks": resource_pack_for_json
@@ -571,6 +576,10 @@ func _transport_loss(arch):
 		eta = p.apply_influences("modify_transport_loss", {"value": eta, "person": p, "architecture": self})
 	
 	return min(1.0, 1.81342 / (1.75862 + 0.024067 * eta))
+	
+
+func toggle_auto_convince():
+	auto_convince = not auto_convince
 	
 
 ####################################

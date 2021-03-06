@@ -513,6 +513,9 @@ func on_architecture_remove_advisor(current_architecture):
 	$GameRecordCreator.remove_advisor(current_architecture.get_belonged_faction())
 	current_architecture.get_belonged_faction()._set_advisor(null)
 	
+func on_architecture_auto_convince(current_architecture):
+	current_architecture.toggle_auto_convince()
+	
 func _on_person_selected(task, current_architecture, selected_person_ids, other = {}):
 	var selected_persons = []
 	for id in selected_person_ids:
