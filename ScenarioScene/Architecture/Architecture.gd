@@ -376,7 +376,7 @@ func enemy_troop_quantity_in_range(distance: int):
 	
 func enemy_troop_in_architecture():
 	var troop = scenario.get_troop_at_position(map_position)
-	if troop != null and get_belonged_faction().is_enemy_to(troop.get_belonged_faction()):
+	if troop != null and get_belonged_faction() != null and  get_belonged_faction().is_enemy_to(troop.get_belonged_faction()):
 		return troop
 	return null
 	
