@@ -405,8 +405,8 @@ func surrounded():
 
 	var enemy_troops = enemy_troop_in_range(1)
 	if enemy_troops.size() < 3:
-		return false
-	return true
+		return true
+	return false
 
 	
 ####################################
