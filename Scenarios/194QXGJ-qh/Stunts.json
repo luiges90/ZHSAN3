@@ -209,7 +209,7 @@
                 "Operation": "troop_has_no_active_stunt"
             },
             {
-                "Operation": "friendly_troop_nearby_count_at_least",
+                "Operation": "allies_troop_nearby_count_at_least",
                 "Value": 1,
                 "Distance": 3
             }

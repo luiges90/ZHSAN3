@@ -97,7 +97,11 @@ func get_stored_path_to(position) -> Array:
 		return _stored_paths[position] 
 	else:
 		get_movement_area()
-		return _stored_paths[position] 
+		if position in _stored_paths:
+			return _stored_paths[position] 
+		else:
+			push_warning(str(position) + ' not found in movement area')
+			return []
 
 func _step_forward(last_position_item, position, area, position_queue, stored_paths):
 	var movement_cost = troop.get_movement_cost(position, true)[0]
