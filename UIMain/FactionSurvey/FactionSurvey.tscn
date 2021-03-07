@@ -7,6 +7,7 @@
 
 [node name="FactionSurvey" instance=ExtResource( 1 )]
 anchor_left = 1.0
+anchor_right = 1.0
 margin_left = -340.0
 margin_bottom = -96.0
 script = ExtResource( 2 )

@@ -24,13 +24,15 @@ func show_data(faction):
 func _populate_architecture_data(arch_list):
 	var item_list = tabs['ARCHITECTURE_LIST'] as GridContainer
 	Util.delete_all_children(item_list)
-	item_list.columns = 2
+	item_list.columns = 3
 	item_list.add_child(_title(tr('NAME')))
 	item_list.add_child(_title(tr('PERSON_COUNT')))
+	item_list.add_child(_title(tr('WILD_PERSON_COUNT')))
 	for arch in arch_list:
 		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_label_click", arch))
 		var person_text = str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())
 		item_list.add_child(_clickable_label(person_text, self, "__on_label_click", arch))
+		item_list.add_child(_clickable_label(arch.get_wild_persons().size(), self, "__on_label_click", arch))
 
 func __on_label_click(label, arch):
 	call_deferred("emit_signal", 'focus_camera', arch.map_position)

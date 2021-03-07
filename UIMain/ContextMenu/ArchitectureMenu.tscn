@@ -158,6 +158,7 @@ margin_bottom = 172.123
 text = "PRODUCE_EQUIPMENT"
 
 [node name="OfficersMenu" type="VBoxContainer" parent="H" index="3"]
+visible = false
 margin_left = 235.0
 margin_right = 400.0
 margin_bottom = 310.0
