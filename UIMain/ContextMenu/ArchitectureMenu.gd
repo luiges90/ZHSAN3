@@ -49,6 +49,8 @@ func show_menu(arch, mouse_x, mouse_y, right_clicked):
 		$H/MainMenu/Transport.hint_tooltip = tr('TRANSPORT_DISABLED_HINT_SURROUNDED')
 	else:
 		$H/MainMenu/Transport.hint_tooltip = ""
+		
+	$H/OfficersMenu/AutoConvince.text = tr('MANUAL_CONVINCE') if arch.auto_convince else tr('AUTO_CONVINCE')
 	
 	show()
 	
