@@ -32,7 +32,7 @@ func _populate_architecture_data(arch_list):
 		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_label_click", arch))
 		var person_text = str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size())
 		item_list.add_child(_clickable_label(person_text, self, "__on_label_click", arch))
-		item_list.add_child(_clickable_label(arch.get_wild_persons().size(), self, "__on_label_click", arch))
+		item_list.add_child(_clickable_label(str(arch.get_wild_persons().size()), self, "__on_label_click", arch))
 
 func __on_label_click(label, arch):
 	call_deferred("emit_signal", 'focus_camera', arch.map_position)
