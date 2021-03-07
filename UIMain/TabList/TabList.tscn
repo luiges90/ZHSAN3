@@ -5,7 +5,8 @@
 [ext_resource path="res://UIMain/TabList/PersonList.gd" type="Script" id=3]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=4]
 [ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=5]
-[ext_resource path="res://UIMain/TabList/PersonMove.wav" type="AudioStream" id=6]
+[ext_resource path="res://UIMain/Sounds/PersonMove.wav" type="AudioStream" id=6]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

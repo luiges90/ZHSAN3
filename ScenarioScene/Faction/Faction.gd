@@ -144,6 +144,13 @@ func get_convince_targets():
 	__get_convince_targets = result
 	return result
 
+func get_architectures_can_transport_resource_to(from = null):
+	var valid_architectures = []
+	for a in get_architectures():
+		if a.can_transport_resources() and a != from:
+			valid_architectures.append(a)
+	return valid_architectures
+
 ####################################
 #           Manipulation           #
 ####################################

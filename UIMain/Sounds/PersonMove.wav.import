@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/PersonMove.wav-1610b2140c444b5909c091a886595d41.sample"
+path="res://.import/PersonMove.wav-7043d1e29999f335a6563b01d70ad308.sample"
 
 [deps]
 
-source_file="res://UIMain/TabList/PersonMove.wav"
-dest_files=[ "res://.import/PersonMove.wav-1610b2140c444b5909c091a886595d41.sample" ]
+source_file="res://UIMain/Sounds/PersonMove.wav"
+dest_files=[ "res://.import/PersonMove.wav-7043d1e29999f335a6563b01d70ad308.sample" ]
 
 [params]
 

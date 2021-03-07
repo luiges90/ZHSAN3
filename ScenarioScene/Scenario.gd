@@ -537,20 +537,22 @@ func _on_person_selected(task, current_architecture, selected_person_ids, other 
 			selected_persons[0].go_for_convince(other['target'])
 			
 
-func _on_architecture_selected(task, current_architecture, selected_arch_ids, other = {}):
-	var selected_person_ids = other['selected_person_ids']
-	var a = architectures[selected_arch_ids[0]]
-	for id in selected_person_ids:
-		var p = persons[id]
-		p.move_to_architecture(a)
+func _on_architecture_selected(current_action, current_architecture, selected_arch_ids, other = {}):
+	if current_action == ArchitectureList.Action.MOVE_TO:
+		var selected_person_ids = other['selected_person_ids']
+		var a = architectures[selected_arch_ids[0]]
+		for id in selected_person_ids:
+			var p = persons[id]
+			p.move_to_architecture(a)
 		
-func _on_military_kind_selected(task, current_architecture, selected_kind_ids, other = {}):
-	var selected_person_ids = other['selected_person_ids']
-	var a = military_kinds[selected_kind_ids[0]].id
-	for id in selected_person_ids:
-		var p = persons[id]
-		p.set_working_task(Person.Task.PRODUCE_EQUIPMENT)
-		p.set_produce_equipment(a)
+func _on_military_kind_selected(current_action, current_architecture, selected_kind_ids, other = {}):
+	if current_action == MilitaryKindList.Action.PRODUCE_EQUIPMENT:
+		var selected_person_ids = other['selected_person_ids']
+		var a = military_kinds[selected_kind_ids[0]].id
+		for id in selected_person_ids:
+			var p = persons[id]
+			p.set_working_task(Person.Task.PRODUCE_EQUIPMENT)
+			p.set_produce_equipment(a)
 		
 func on_architecture_toggle_auto_task(current_architecture):
 	current_architecture.auto_task = !current_architecture.auto_task
@@ -633,6 +635,9 @@ func _on_troop_occupy_clicked(troop):
 	
 func _on_focus_camera(position):
 	$MainCamera.move_to(position)
+	
+func _on_confirm_transport_resources(from_architecture, to_architecture, to_transport_fund, to_transport_food, to_transport_troop):
+	from_architecture.transport_resources(to_architecture, to_transport_fund, to_transport_food, to_transport_troop)
 	
 ########################################
 #         Other signal Logic           #

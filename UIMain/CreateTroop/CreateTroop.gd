@@ -111,11 +111,11 @@ func _on_SelectMilitaryKind_pressed():
 		($Select as AudioStreamPlayer).play()
 	call_deferred("emit_signal", "select_military_kind", current_architecture, get_available_kinds())
 
-
-func _on_MilitaryKindList_military_kind_selected_for_troop(current_action, selected_kinds):
-	var kind = current_architecture.scenario.military_kinds[selected_kinds[0]]
-	current_troop.military_kind = kind
-	set_data()
+func _on_MilitaryKindList_military_kind_selected(current_action, selected_kinds):
+	if current_action == MilitaryKindList.Action.SELECT_TROOP_MILITARY_KIND:
+		var kind = current_architecture.scenario.military_kinds[selected_kinds[0]]
+		current_troop.military_kind = kind
+		set_data()
 
 
 func _on_QuantitySlider_value_changed(value):
@@ -131,3 +131,6 @@ func _on_Create_pressed():
 		($Select as AudioStreamPlayer).play()
 	call_deferred("emit_signal", "create_troop_select_position", current_architecture, current_troop)
 	hide()
+
+
+

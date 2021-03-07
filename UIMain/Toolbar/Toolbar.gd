@@ -25,7 +25,7 @@ func _change_digit(node, change):
 		i = 9
 	node.text = str(i)
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
 		if event.scancode == KEY_SPACE:
 			if $DateRunner/UnitDigit/Text.text == '0' and $DateRunner/TensDigit/Text10.text == '0':

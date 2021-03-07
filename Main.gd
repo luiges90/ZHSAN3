@@ -16,6 +16,7 @@ func _ready():
 	_register_lists()
 	_register_detail_page_edits()
 	_register_menus()
+	_register_misc_uis()
 	
 	$UICanvas/UIMain/FactionSurvey.connect("focus_camera", $Scenario, "_on_focus_camera")
 	$Scenario.connect("faction_survey_updated", $UICanvas/UIMain/FactionSurvey, "update_data")
@@ -104,6 +105,9 @@ func _register_map_ui():
 	$Scenario.connect("scenario_troop_removed", $UICanvas/UIMain/Map, "_on_troop_removed")
 	
 	$UICanvas/UIMain/Map.connect("focus_camera", $Scenario, "_on_focus_camera")
+	
+func _register_misc_uis():
+	$UICanvas/UIMain/TransportDialog.connect("confirm_transport_resources", $Scenario, "_on_confirm_transport_resources")
 
 func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")

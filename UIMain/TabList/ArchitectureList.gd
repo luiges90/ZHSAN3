@@ -1,7 +1,7 @@
 extends TabList
 class_name ArchitectureList
 
-enum Action { LIST, MOVE_TO }
+enum Action { LIST, MOVE_TO, TRANSPORT_RESOURCE_TO }
 
 signal architecture_selected
 signal architecture_row_clicked
@@ -40,6 +40,9 @@ func show_data(arch_list: Array):
 			_max_selection = 0
 		Action.MOVE_TO: 
 			$Title.text = tr('MOVE')
+			_max_selection = 1
+		Action.TRANSPORT_RESOURCE_TO:
+			$Title.text = tr('TRANSPORT')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
@@ -277,6 +280,10 @@ func _on_Confirm_pressed():
 			})
 			$PersonMove.play()
 			._on_Confirm_pressed()
+		Action.TRANSPORT_RESOURCE_TO:
+			call_deferred("emit_signal", "architecture_selected", current_action, current_architecture, selected_arch, {})
+			$ConfirmSound.play()
+			._on_Confirm_pressed()
 		_:
 			$ConfirmSound.play()
 			._on_Confirm_pressed()
@@ -305,3 +312,9 @@ func _on_PersonList_person_selected(task, arch, selected_person_ids):
 					selectable_archs.append(a)
 			show_data(selectable_archs)
 		
+
+
+func _on_TransportDialog_select_architecture(from_architecture):
+	current_action = Action.TRANSPORT_RESOURCE_TO
+	current_architecture = from_architecture
+	show_data(from_architecture.get_belonged_faction().get_architectures_can_transport_resource_to(from_architecture))

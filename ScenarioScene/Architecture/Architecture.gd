@@ -409,7 +409,7 @@ func surrounded():
 		return true
 
 	var enemy_troops = enemy_troop_in_range(1)
-	if enemy_troops.size() < 3:
+	if enemy_troops.size() >= 3:
 		return true
 	return false
 
@@ -556,8 +556,8 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	troop -= troop_to_transport
 
 	var pack = ResourcePack.new()
-	pack.fund = fund_to_transport * _transport_loss(destination)
-	pack.food = food_to_transport * _transport_loss(destination)
+	pack.fund = int(fund_to_transport * _transport_loss(destination))
+	pack.food = int(food_to_transport * _transport_loss(destination))
 	pack.troop = troop_to_transport
 	pack.troop_morale = int(troop_morale * _transport_loss(destination))
 	pack.day_left = _transport_eta(destination)

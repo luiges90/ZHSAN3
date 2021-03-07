@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://UIMain/TransportDialog/TransportDialog.gd" type="Script" id=4]
 [ext_resource path="res://Fonts/font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://UIMain/TransportDialog/arrow.png" type="Texture" id=6]
+[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=7]
+[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=8]
+[ext_resource path="res://UIMain/Sounds/PersonMove.wav" type="AudioStream" id=9]
 
 [node name="TransportDialog" type="Panel"]
 margin_right = 600.0
@@ -147,7 +150,7 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.65
 margin_top = 102.0
-text = "1000"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -156,7 +159,7 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.65
 margin_top = 138.0
-text = "1000"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -165,7 +168,7 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.65
 margin_top = 172.0
-text = "1000"
+text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -239,3 +242,18 @@ grow_horizontal = 0
 grow_vertical = 0
 disabled = true
 text = "CONFIRM"
+
+[node name="ConfirmSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="CancelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+[connection signal="pressed" from="ToArchitecture" to="." method="_on_ToArchitecture_pressed"]
+[connection signal="text_entered" from="TransportFund" to="." method="_on_TransportFund_text_entered"]
+[connection signal="text_entered" from="TransportFood" to="." method="_on_TransportFood_text_entered"]
+[connection signal="text_entered" from="TransportTroop" to="." method="_on_TransportTroop_text_entered"]
+[connection signal="pressed" from="ActionButtons/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="ActionButtons/Confirm" to="." method="_on_Confirm_pressed"]

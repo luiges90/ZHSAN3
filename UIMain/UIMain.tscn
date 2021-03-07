@@ -66,7 +66,6 @@ margin_bottom = -48.0
 
 [node name="FactionSurvey" parent="." instance=ExtResource( 21 )]
 anchor_top = 0.0
-anchor_right = 1.0
 anchor_bottom = 0.0
 margin_bottom = 400.0
 full_size = 360
@@ -83,6 +82,17 @@ margin_bottom = -48.0
 
 [node name="PersonBubble" parent="." instance=ExtResource( 27 )]
 visible = false
+
+[node name="TransportDialog" parent="." instance=ExtResource( 29 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -200.0
+margin_right = 300.0
+margin_bottom = 200.0
 
 [node name="CreateTroop" parent="." instance=ExtResource( 12 )]
 visible = false
@@ -164,17 +174,6 @@ margin_bottom = 300.0
 
 [node name="InfoList" parent="." instance=ExtResource( 24 )]
 visible = false
-
-[node name="TransportDialog" parent="." instance=ExtResource( 29 )]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -200.0
-margin_right = 300.0
-margin_bottom = 200.0
 
 [node name="PersonDialog" parent="." instance=ExtResource( 28 )]
 visible = false
@@ -261,15 +260,17 @@ __meta__ = {
 
 [node name="PlayerTurn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 26 )
+[connection signal="select_architecture" from="TransportDialog" to="ArchitectureList" method="_on_TransportDialog_select_architecture"]
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
 [connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
 [connection signal="person_row_clicked" from="PersonList" to="PersonDetail" method="_on_PersonList_person_row_clicked"]
-[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
-[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="architecture_row_clicked" from="ArchitectureList" to="ArchitectureDetail" method="_on_ArchitectureList_architecture_row_clicked"]
-[connection signal="military_kind_selected_for_troop" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected_for_troop"]
+[connection signal="architecture_selected" from="ArchitectureList" to="TransportDialog" method="_on_ArchitectureList_architecture_selected"]
+[connection signal="military_kind_selected" from="MilitaryKindList" to="CreateTroop" method="_on_MilitaryKindList_military_kind_selected"]
 [connection signal="architecture_clicked" from="ArchitectureAndTroopMenu" to="ArchitectureMenu" method="_on_ArchitectureAndTroopMenu_architecture_clicked"]
 [connection signal="troop_clicked" from="ArchitectureAndTroopMenu" to="TroopMenu" method="_on_ArchitectureAndTroopMenu_troop_clicked"]
 [connection signal="architecture_create_troop" from="ArchitectureMenu" to="CreateTroop" method="_on_ArchitectureMenu_architecture_create_troop"]

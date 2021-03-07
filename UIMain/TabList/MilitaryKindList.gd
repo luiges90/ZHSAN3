@@ -4,7 +4,6 @@ class_name MilitaryKindList
 enum Action { LIST, PRODUCE_EQUIPMENT, SELECT_TROOP_MILITARY_KIND }
 
 signal military_kind_selected
-signal military_kind_selected_for_troop
 
 # sorted military kind list
 var _sorted_list
@@ -177,7 +176,7 @@ func _on_Confirm_pressed():
 				"selected_person_ids": _selected_person_ids
 			})
 		Action.SELECT_TROOP_MILITARY_KIND:
-			call_deferred("emit_signal", "military_kind_selected_for_troop", current_action, selected_kinds)
+			call_deferred("emit_signal", "military_kind_selected", current_action, selected_kinds, {})
 	$ConfirmSound.play()
 	._on_Confirm_pressed()
 
