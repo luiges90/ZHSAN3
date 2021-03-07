@@ -89,6 +89,9 @@ func _assign_task(arch: Architecture, scenario):
 	
 	if not enough_food:
 		a *= 99
+
+	if arch.endurance <= min(50, arch.kind.endurance):
+		e *= 99
 	
 	var task_priority = [a, c, m, e, r, t, q]
 	while list.size() > 0:
