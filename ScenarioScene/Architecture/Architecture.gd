@@ -251,7 +251,7 @@ func _expected_fund_expenditure():
 	return officer_expenditure
 	
 func expected_fund_income():
-	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100
+	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 1000.0
 	for p in get_workable_persons():
 		income = p.apply_influences('modify_person_fund_income', {"value": income, "person": p, "architecture": self})
 	
@@ -273,7 +273,7 @@ func _expected_food_expenditure():
 	return soldier_expenditure + equipment_expenditure
 	
 func expected_food_income():
-	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale)
+	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100.0
 	for p in get_workable_persons():
 		income = p.apply_influences('modify_person_food_income', {"value": income, "person": p, "architecture": self})
 		
@@ -568,7 +568,7 @@ func _transport_eta(arch):
 	var result = int(ScenarioUtil.object_distance(self, arch) * 0.4) + 1
 	for p in get_workable_persons():
 		result = p.apply_influences("modify_transport_time", {"value": result, "person": p, "architecture": self})
-	return result
+	return int(result)
 
 func _transport_loss(arch):
 	var eta = int(ScenarioUtil.object_distance(self, arch) * 0.4) + 1

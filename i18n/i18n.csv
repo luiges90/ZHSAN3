@@ -226,4 +226,4 @@ RESOURCES,Resources,资源,資源
 DELIVERING_FUND,Fund under delivery,正运送资金,正運送資金
 DELIVERING_FOOD,Food under delivery,正运送粮草,正運送糧草
 DELIVERING_TROOP,Troop under delivery,正运送士兵,正運送士兵
-RESOURCE_PACK_ITEM,"{amount} in {day} days, ",{day}天{amount}；,{day}天{amount}；
+RESOURCE_PACK_ITEM,"{amount} in {day} turns, ",{day}回合{amount}；,{day}回合{amount}；

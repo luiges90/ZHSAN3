@@ -12,7 +12,7 @@ func _arch_enough_fund(arch: Architecture):
 	return arch.expected_fund_income() > arch.get_workable_persons().size() * 50
 	
 func _arch_enough_food(arch: Architecture):
-	return arch.expected_food_income() > 0
+	return arch.expected_food_income() > arch._expected_food_expenditure() # one month of storage
 
 func _target_fund(arch: Architecture):
 	return arch._expected_fund_expenditure() * 12 + 50 * (arch.get_workable_persons().size() + 3)
