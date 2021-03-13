@@ -538,7 +538,7 @@ func set_recently_battled():
 	
 
 func can_transport_resources():
-	return not surrounded()
+	return not surrounded() and get_belonged_faction() != null and get_belonged_faction().get_architectures().size() > 1
 
 
 func transport_resources(destination, fund_to_transport: int, food_to_transport: int, troop_to_transport: int):

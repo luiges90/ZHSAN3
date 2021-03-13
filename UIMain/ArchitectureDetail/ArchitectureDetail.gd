@@ -14,10 +14,10 @@ func set_data():
 	$Data/FactionPersons.text = str(current_architecture.get_faction_persons().size())
 	$Data/WildPersons.text = str(current_architecture.get_wild_persons().size())
 	
-	$Data/Population.text = "%s (+%s)" % [Util.nstr(current_architecture.population), Util.nstr(current_architecture.expected_population_gain() * 30)]
+	$Data/Population.text = "%s (%s)" % [Util.nstr(current_architecture.population), Util.nstr(current_architecture.expected_population_gain() * 30)]
 	$Data/MilitaryPopulation.text = Util.nstr(current_architecture.military_population)
-	$Data/Fund.text = "%s (+%s)" % [Util.nstr(current_architecture.fund), Util.nstr(current_architecture.expected_fund_income())]
-	$Data/Food.text = "%s (+%s)" % [Util.nstr(current_architecture.food), Util.nstr(current_architecture.expected_food_income())]
+	$Data/Fund.text = "%s (%s)" % [Util.nstr(current_architecture.fund), Util.nstr(current_architecture.expected_fund_income())]
+	$Data/Food.text = "%s (%s)" % [Util.nstr(current_architecture.food), Util.nstr(current_architecture.expected_food_income())]
 	$Data/Agriculture.text = Util.nstr(current_architecture.agriculture)
 	$Data/Commerce.text = Util.nstr(current_architecture.commerce)
 	$Data/Morale.text = Util.nstr(current_architecture.morale)

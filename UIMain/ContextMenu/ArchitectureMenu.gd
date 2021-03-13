@@ -46,7 +46,10 @@ func show_menu(arch, mouse_x, mouse_y, right_clicked):
 	
 	$H/MainMenu/Transport.disabled = not arch.can_transport_resources()
 	if $H/MainMenu/Transport.disabled:
-		$H/MainMenu/Transport.hint_tooltip = tr('TRANSPORT_DISABLED_HINT_SURROUNDED')
+		if arch.surrounded():
+			$H/MainMenu/Transport.hint_tooltip = tr('TRANSPORT_DISABLED_HINT_SURROUNDED')
+		else:
+			$H/MainMenu/Transport.hint_tooltip = ""
 	else:
 		$H/MainMenu/Transport.hint_tooltip = ""
 		
