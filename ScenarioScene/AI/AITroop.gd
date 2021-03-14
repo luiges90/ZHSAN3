@@ -7,6 +7,9 @@ func _init(ai):
 	self.ai = ai
 
 func run_troop(troop, scenario):
+	if troop.order_made:
+		return
+	
 	if consider_retreat(troop):
 		troop._ai_state = Troop.AIState.RETREAT
 		

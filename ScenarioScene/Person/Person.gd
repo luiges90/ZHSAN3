@@ -362,7 +362,9 @@ func get_status_str() -> String:
 			_: return '--'
 
 func get_belonged_faction():
-	if _status == Status.CAPTIVE:
+	if _status == Status.WILD or _status == Status.NONE:
+		return null
+	elif _status == Status.CAPTIVE:
 		if _old_faction_id == -1 or not scenario.factions.has(_old_faction_id):
 			return null
 		return scenario.factions[_old_faction_id]
@@ -720,8 +722,8 @@ func convince_recommended(other_person):
 	var advisor = get_belonged_faction().get_intelligent_advisor()
 	return displayed_convince_probability(other_person) >= 100 - advisor.get_probability_precision_as_advisor()
 	
-func convince_eta_days(other_person):
-	return _move_eta(other_person.get_location()) * 2
+func outside_task_eta_days(target):
+	return _move_eta(target.get_location()) * 2
 	
 func get_loyalty():
 	if get_belonged_faction() == null:
@@ -1001,7 +1003,7 @@ func set_task_target(target):
 
 func go_for_convince(target):
 	working_task = Task.CONVINCE
-	task_days = convince_eta_days(target)
+	task_days = outside_task_eta_days(target)
 	task_target = target
 	
 func do_convince():

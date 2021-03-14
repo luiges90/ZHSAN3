@@ -251,7 +251,7 @@ func _expected_fund_expenditure():
 	return officer_expenditure
 	
 func expected_fund_income():
-	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 1000.0
+	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 20.0
 	for p in get_workable_persons():
 		income = p.apply_influences('modify_person_fund_income', {"value": income, "person": p, "architecture": self})
 	
@@ -273,7 +273,7 @@ func _expected_food_expenditure():
 	return soldier_expenditure + equipment_expenditure
 	
 func expected_food_income():
-	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale) / 100.0
+	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale) / 2.0
 	for p in get_workable_persons():
 		income = p.apply_influences('modify_person_food_income', {"value": income, "person": p, "architecture": self})
 		
@@ -646,7 +646,7 @@ func _develop_military():
 			Person.Task.PRODUCE_EQUIPMENT: _produce_equipment(p)
 			
 func _develop_cost(p):
-	var base = 20
+	var base = 2
 	p.apply_influences("modify_person_develop_internal_cost", {"value": base, "person": p, "architecture": self})
 	return base
 

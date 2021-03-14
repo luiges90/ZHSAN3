@@ -12,7 +12,7 @@ func _arch_enough_fund(arch: Architecture):
 	return arch.expected_fund_income() > arch.get_workable_persons().size() * 50
 	
 func _arch_enough_food(arch: Architecture):
-	return arch.expected_food_income() > arch._expected_food_expenditure() # one month of storage
+	return arch.expected_food_income() > arch._expected_food_expenditure() # one month of extra income for storage
 
 func _target_fund(arch: Architecture):
 	return arch._expected_fund_expenditure() * 12 + 50 * (arch.get_workable_persons().size() + 3)
@@ -53,7 +53,7 @@ func _outside_task(arch: Architecture, scenario):
 			var convince_targets = arch.get_belonged_faction().get_convince_targets()
 			var convincer = Util.max_by(workable_persons, "get_convince_ability")[1]
 			for target in convince_targets:
-				if convincer.convince_probability(target) > 0.5 and not _convincing_persons.has(target.id):
+				if convincer.convince_probability(target) > 0.5 and not _convincing_persons.has(target.id) and convincer.outside_task_eta_days(target) < 5:
 					convincer.go_for_convince(target)
 					_convincing_persons[target.id] = target
 					convincer.connect("convince_success", self, "_on_convince_done")

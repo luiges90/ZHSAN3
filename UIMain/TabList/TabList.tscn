@@ -7,7 +7,6 @@
 [ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=5]
 [ext_resource path="res://UIMain/Sounds/PersonMove.wav" type="AudioStream" id=6]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 1 )

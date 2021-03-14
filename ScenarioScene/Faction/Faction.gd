@@ -136,6 +136,7 @@ func get_convince_targets():
 			Util.append_all(candidates, arch.get_captive_persons())
 		else:
 			candidates = arch.get_faction_persons()
+			Util.append_all(candidates, arch.get_wild_persons())
 		var filtered_candidates = []
 		for c in candidates:
 			if c.get_loyalty() < 100:

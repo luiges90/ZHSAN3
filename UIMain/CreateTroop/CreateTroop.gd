@@ -111,7 +111,7 @@ func _on_SelectMilitaryKind_pressed():
 		($Select as AudioStreamPlayer).play()
 	call_deferred("emit_signal", "select_military_kind", current_architecture, get_available_kinds())
 
-func _on_MilitaryKindList_military_kind_selected(current_action, selected_kinds):
+func _on_MilitaryKindList_military_kind_selected(current_action, selected_kinds, params):
 	if current_action == MilitaryKindList.Action.SELECT_TROOP_MILITARY_KIND:
 		var kind = current_architecture.scenario.military_kinds[selected_kinds[0]]
 		current_troop.military_kind = kind
