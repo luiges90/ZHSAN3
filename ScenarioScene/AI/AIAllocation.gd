@@ -125,7 +125,7 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 				if a2.fund > target_fund[a2]:
 					var to_transfer = int(min(a2.fund - target_fund[a2], max(1000, (target_fund[a] - a.fund) * 12)))
 					if to_transfer > 1000:
-						a2.transport_resources(a, to_transfer, 0, 0)
+						a2.transport_resources(a, to_transfer, 0, 0, {})
 						__surplus_fund[a] += to_transfer
 				if __surplus_fund[a] >= 0:
 					break
@@ -140,7 +140,7 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 				if a2.food > target_food[a2]:
 					var to_transfer = int(min(a2.food - target_food[a2], max(100000, (target_food[a] - a.food) * 12)))
 					if to_transfer > 100000:
-						a2.transport_resources(a, 0, to_transfer, 0)
+						a2.transport_resources(a, 0, to_transfer, 0, {})
 						__surplus_food[a] += to_transfer
 				if __surplus_food[a] >= 0:
 					break
@@ -154,8 +154,12 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 			for a2 in from:
 				if a2.troop > target_troop[a2]:
 					var to_transfer = int(min(a2.troop - target_troop[a2], max(1000, (target_troop[a] - a.troop) * 12)))
+					var ratio = to_transfer / float(a2.troop)
+					var to_transport_equipment = {}
+					for e in a2.equipments:
+						to_transport_equipment[e] = a2.equipments[e] * ratio
 					if to_transfer > 1000:
-						a2.transport_resources(a, 0, 0, to_transfer)
+						a2.transport_resources(a, 0, 0, to_transfer, to_transport_equipment)
 						__surplus_troop[a] += to_transfer
 				if __surplus_troop[a] >= 0:
 					break

@@ -549,11 +549,10 @@ func can_transport_resources():
 	return not surrounded() and get_belonged_faction() != null and get_belonged_faction().get_architectures().size() > 1
 
 
-func transport_resources(destination, fund_to_transport: int, food_to_transport: int, troop_to_transport: int):
+func transport_resources(destination, fund_to_transport: int, food_to_transport: int, troop_to_transport: int, to_transport_equipments_id_key):
 	assert(fund_to_transport >= 0)
 	assert(food_to_transport >= 0)
 	assert(troop_to_transport >= 0)
-	assert(fund_to_transport > 0 || food_to_transport > 0 || troop_to_transport > 0)
 	assert(fund_to_transport <= fund)
 	assert(food_to_transport <= food)
 	assert(troop_to_transport <= troop)
@@ -562,6 +561,10 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	fund -= fund_to_transport
 	food -= food_to_transport
 	troop -= troop_to_transport
+	var to_transfer_equipments = {}
+	for e in to_transport_equipments_id_key:
+		equipments[e] -= to_transport_equipments_id_key[e]
+		to_transfer_equipments[e] = to_transport_equipments_id_key[e]
 
 	var pack = ResourcePack.new()
 	pack.fund = int(fund_to_transport * _transport_loss(destination))
@@ -569,6 +572,7 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	pack.troop = troop_to_transport
 	pack.troop_morale = int(troop_morale * _transport_loss(destination))
 	pack.day_left = _transport_eta(destination)
+	pack.equipments = to_transfer_equipments
 	destination._resource_packs.append(pack)
 
 
@@ -807,6 +811,8 @@ func _move_resource_packs():
 				if p.troop > 0:
 					troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.troop_morale) / (troop + p.troop))
 					troop += p.troop
+				for e in p.equipments:
+					equipments[e] += p.equipments[e]
 				_resource_packs.erase(p)
 
 ####################################

@@ -636,8 +636,11 @@ func _on_troop_occupy_clicked(troop):
 func _on_focus_camera(position):
 	$MainCamera.move_to(position)
 	
-func _on_confirm_transport_resources(from_architecture, to_architecture, to_transport_fund, to_transport_food, to_transport_troop):
-	from_architecture.transport_resources(to_architecture, to_transport_fund, to_transport_food, to_transport_troop)
+func _on_confirm_transport_resources(from_architecture, to_architecture, to_transport_fund, to_transport_food, to_transport_troop, to_transport_equipments):
+	var to_transport_equipments_id_key = {}
+	for e in to_transport_equipments:
+		to_transport_equipments_id_key[e.id] = to_transport_equipments[e]
+	from_architecture.transport_resources(to_architecture, to_transport_fund, to_transport_food, to_transport_troop, to_transport_equipments_id_key)
 	
 ########################################
 #         Other signal Logic           #

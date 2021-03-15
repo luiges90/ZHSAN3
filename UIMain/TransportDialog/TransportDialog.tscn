@@ -12,7 +12,7 @@
 
 [node name="TransportDialog" type="Panel"]
 margin_right = 600.0
-margin_bottom = 260.0
+margin_bottom = 400.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -32,13 +32,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FromArchitecture" type="Label" parent="."]
-anchor_left = 0.15
-anchor_right = 0.5
+[node name="S" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 16.0
 margin_top = 64.0
 margin_right = -16.0
-margin_bottom = 18.0
+margin_bottom = -64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="G" type="GridContainer" parent="S"]
+margin_right = 568.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="S/G"]
+margin_top = 6.0
+margin_right = 54.0
+margin_bottom = 24.0
+
+[node name="FromArchitecture" type="Label" parent="S/G"]
+margin_left = 58.0
+margin_top = 2.0
+margin_right = 225.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )
 text = "郴縣"
 align = 1
@@ -46,33 +70,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_right = 0.65
-margin_top = 60.0
+[node name="TextureRect" type="TextureRect" parent="S/G"]
+margin_left = 229.0
+margin_right = 396.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
 texture = ExtResource( 6 )
 stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ToArchitecture" type="Button" parent="."]
-anchor_left = 0.65
-anchor_right = 1.0
-margin_left = 16.0
-margin_top = 60.0
-margin_right = -16.0
-margin_bottom = 94.0
+[node name="ToArchitecture" type="Button" parent="S/G"]
+margin_left = 400.0
+margin_right = 567.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 108.0
-margin_right = 59.0
-margin_bottom = 126.0
+[node name="Label2" type="Label" parent="S/G"]
+margin_top = 40.0
+margin_right = 54.0
+margin_bottom = 58.0
 custom_fonts/font = ExtResource( 5 )
 text = "FUND"
 align = 1
@@ -80,11 +102,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 142.0
-margin_right = 59.0
-margin_bottom = 126.0
+[node name="FromFund" type="Label" parent="S/G"]
+margin_left = 58.0
+margin_top = 40.0
+margin_right = 225.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransportFund" type="LineEdit" parent="S/G"]
+margin_left = 229.0
+margin_top = 35.0
+margin_right = 396.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToFund" type="Label" parent="S/G"]
+margin_left = 400.0
+margin_top = 40.0
+margin_right = 567.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="S/G"]
+margin_top = 72.0
+margin_right = 54.0
+margin_bottom = 90.0
 custom_fonts/font = ExtResource( 5 )
 text = "FOOD"
 align = 1
@@ -92,11 +150,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label4" type="Label" parent="."]
-margin_left = 16.0
-margin_top = 176.0
-margin_right = 59.0
-margin_bottom = 126.0
+[node name="FromFood" type="Label" parent="S/G"]
+margin_left = 58.0
+margin_top = 72.0
+margin_right = 225.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransportFood" type="LineEdit" parent="S/G"]
+margin_left = 229.0
+margin_top = 67.0
+margin_right = 396.0
+margin_bottom = 95.0
+size_flags_horizontal = 3
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToFood" type="Label" parent="S/G"]
+margin_left = 400.0
+margin_top = 72.0
+margin_right = 567.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 5 )
+text = "100,000 (-1,000)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="S/G"]
+margin_top = 104.0
+margin_right = 54.0
+margin_bottom = 122.0
 custom_fonts/font = ExtResource( 5 )
 text = "TROOP"
 align = 1
@@ -104,13 +198,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FromFund" type="Label" parent="."]
-anchor_left = 0.15
-anchor_right = 0.15
-margin_left = 16.0
-margin_top = 108.0
-margin_right = 59.0
-margin_bottom = 126.0
+[node name="FromTroop" type="Label" parent="S/G"]
+margin_left = 58.0
+margin_top = 104.0
+margin_right = 225.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
 align = 1
@@ -118,96 +211,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FromFood" type="Label" parent="."]
-anchor_left = 0.15
-anchor_right = 0.15
-margin_left = 16.0
-margin_top = 142.0
-margin_right = 59.0
-margin_bottom = 126.0
+[node name="TransportTroop" type="LineEdit" parent="S/G"]
+margin_left = 229.0
+margin_top = 99.0
+margin_right = 396.0
+margin_bottom = 127.0
+size_flags_horizontal = 3
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToTroop" type="Label" parent="S/G"]
+margin_left = 400.0
+margin_top = 104.0
+margin_right = 567.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FromTroop" type="Label" parent="."]
-anchor_left = 0.15
-anchor_right = 0.15
-margin_left = 16.0
-margin_top = 176.0
-margin_right = 59.0
-margin_bottom = 126.0
-custom_fonts/font = ExtResource( 5 )
-text = "100,000 (-1,000)"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TransportFund" type="LineEdit" parent="."]
-anchor_left = 0.5
-anchor_right = 0.65
-margin_top = 102.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TransportFood" type="LineEdit" parent="."]
-anchor_left = 0.5
-anchor_right = 0.65
-margin_top = 138.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TransportTroop" type="LineEdit" parent="."]
-anchor_left = 0.5
-anchor_right = 0.65
-margin_top = 172.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ToFund" type="Label" parent="."]
-anchor_left = 0.65
-anchor_right = 1.0
-margin_left = 16.0
-margin_top = 108.0
-margin_right = -16.0
-margin_bottom = 126.0
-custom_fonts/font = ExtResource( 5 )
-text = "100,000 (-1,000)"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ToFood" type="Label" parent="."]
-anchor_left = 0.65
-anchor_right = 1.0
-margin_left = 16.0
-margin_top = 142.0
-margin_right = -16.0
-margin_bottom = 126.0
-custom_fonts/font = ExtResource( 5 )
-text = "100,000 (-1,000)"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ToTroop" type="Label" parent="."]
-anchor_left = 0.65
-anchor_right = 1.0
-margin_left = 16.0
-margin_top = 176.0
-margin_right = -16.0
-margin_bottom = 126.0
-custom_fonts/font = ExtResource( 5 )
-text = "100,000 (-1,000)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -251,9 +274,9 @@ stream = ExtResource( 8 )
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-[connection signal="pressed" from="ToArchitecture" to="." method="_on_ToArchitecture_pressed"]
-[connection signal="text_entered" from="TransportFund" to="." method="_on_TransportFund_text_entered"]
-[connection signal="text_entered" from="TransportFood" to="." method="_on_TransportFood_text_entered"]
-[connection signal="text_entered" from="TransportTroop" to="." method="_on_TransportTroop_text_entered"]
+[connection signal="pressed" from="S/G/ToArchitecture" to="." method="_on_ToArchitecture_pressed"]
+[connection signal="text_entered" from="S/G/TransportFund" to="." method="_on_TransportFund_text_entered"]
+[connection signal="text_entered" from="S/G/TransportFood" to="." method="_on_TransportFood_text_entered"]
+[connection signal="text_entered" from="S/G/TransportTroop" to="." method="_on_TransportTroop_text_entered"]
 [connection signal="pressed" from="ActionButtons/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="ActionButtons/Confirm" to="." method="_on_Confirm_pressed"]

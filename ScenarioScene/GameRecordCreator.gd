@@ -288,6 +288,7 @@ func person_available_by_sibling(person, other_person):
 						"other_person": _color_text(YELLOW, other_person.get_name()),
 						"location": _color_text(CYAN, person.get_location().get_name())
 					}))
+			
 			call_deferred("emit_signal", "add_game_record", 
 				_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_GROWN_JOIN").format({
 					"person": _color_text(YELLOW, person.get_name()),
@@ -300,10 +301,10 @@ func person_convince_success(person, other_person):
 		var faction = person.get_belonged_faction()
 		var fcolor = faction.color if faction != null else Color.white
 		if !_scenario.is_observer():
-			call_deferred("emit_signal", "add_person_dialog", person,
-				_get_dialog("person_convince_success_source", person, {'other': other_person}).format({
-					"person": _color_text(YELLOW, person.get_name()),
-					"other_person": _color_text(YELLOW, other_person.get_name()),
+			call_deferred("emit_signal", "add_person_dialog", other_person,
+				_get_dialog("person_convince_success_destination", other_person, {'other': person}).format({
+					"person": _color_text(YELLOW, other_person.get_name()),
+					"other_person": _color_text(YELLOW, person.get_name()),
 					"faction": _color_text(RED, person.get_belonged_faction().get_name()),
 					"architecture": _color_text(CYAN, person.get_location().get_name())
 				}))
