@@ -514,6 +514,13 @@ func change_faction(to_section):
 	food = food / 10
 	for k in equipments:
 		equipments[k] = equipments[k] / 10
+
+	# reduce morale
+	var faction = to_section.get_belonged_faction()
+	if faction != null:
+		morale = int(clamp(faction.get_leader().karma + 50, 0, 100))
+	else:
+		morale = 0
 	
 	# switch faction
 	var old_section = get_belonged_section()
@@ -526,9 +533,10 @@ func change_faction(to_section):
 		old_faction.destroy()
 	
 	# update UI
-	var faction = to_section.get_belonged_faction()
 	if faction != null:
 		($Flag as Sprite).modulate = faction.color
+	else:
+		($Flag as Sprite).modulate = Color.white
 	
 	call_deferred("emit_signal", 'faction_changed', self)
 
