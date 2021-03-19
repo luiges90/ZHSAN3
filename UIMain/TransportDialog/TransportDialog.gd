@@ -31,9 +31,6 @@ func update_views():
 	$S/G/FromFund.text = str(from_architecture.fund - to_transport_fund) + "(-" + str(to_transport_fund) + ")"
 	$S/G/FromFood.text = str(from_architecture.food - to_transport_food) + "(-" + str(to_transport_food) + ")"
 	$S/G/FromTroop.text = str(from_architecture.troop - to_transport_troop) + "(-" + str(to_transport_troop) + ")"
-	$S/G/TransportFund.text = str(to_transport_fund)
-	$S/G/TransportFood.text = str(to_transport_food)
-	$S/G/TransportTroop.text = str(to_transport_troop)
 	
 	if to_architecture != null:
 		$S/G/ToArchitecture.text = to_architecture.get_name()
@@ -62,7 +59,7 @@ func update_views():
 				
 				var le_amount = LineEdit.new()
 				$S/G.add_child(le_amount)
-				le_amount.connect("text_entered", self, "_on_equipment_text_entered", [mk], 0)
+				le_amount.connect("text_changed", self, "_on_equipment_text_changed", [mk], 0)
 				items['amount'] = le_amount
 				
 				var lbl_to = Label.new()
@@ -74,15 +71,13 @@ func update_views():
 	
 	var has_transporting_equipment = false
 	for mk in military_kind_labels:
+		var to_transfer = Util.dict_try_get(to_transport_equipments, mk, 0)
+		military_kind_labels[mk]['from'].text = str(from_architecture.equipments[mk.id] - to_transfer) + "(-" + str(to_transfer) + ")"
 		if to_architecture != null:
-			var to_transfer = Util.dict_try_get(to_transport_equipments, mk, 0)
-			military_kind_labels[mk]['from'].text = str(from_architecture.equipments[mk.id] - to_transfer) + "(-" + str(to_transfer) + ")"
 			military_kind_labels[mk]['to'].text = str(to_architecture.equipments[mk.id] + to_transfer) + "(+" + str(to_transfer) + ")"
 		else:
-			military_kind_labels[mk]['from'].text = ''
 			military_kind_labels[mk]['to'].text = ''
 			
-		military_kind_labels[mk]['amount'].text = str(Util.dict_try_get(to_transport_equipments, mk, 0))
 		has_transporting_equipment = has_transporting_equipment or int(military_kind_labels[mk]['amount'].text) > 0
 
 	$ActionButtons/Confirm.disabled = not (to_transport_fund > 0 or to_transport_food > 0 or to_transport_troop > 0 or has_transporting_equipment)
@@ -120,22 +115,24 @@ func _on_Confirm_pressed():
 	hide()
 
 
-func _on_TransportFund_text_entered(new_text):
+func _on_TransportFund_text_changed(new_text):
 	to_transport_fund = int($S/G/TransportFund.text)
 	update_views()
 	
 
-func _on_TransportFood_text_entered(new_text):
+func _on_TransportFood_text_changed(new_text):
 	to_transport_food = int($S/G/TransportFood.text)
 	update_views()
 
 
-func _on_TransportTroop_text_entered(new_text):
+func _on_TransportTroop_text_changed(new_text):
 	to_transport_troop = int($S/G/TransportTroop.text)
 	update_views()
 
 
-func _on_equipment_text_entered(new_text, military_kind):
+func _on_equipment_text_changed(new_text, military_kind):
 	to_transport_equipments[military_kind] = int(new_text)
 	update_views()
 	
+
+
