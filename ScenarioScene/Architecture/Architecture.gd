@@ -31,7 +31,7 @@ var troop_combativity: int setget forbidden
 
 var equipments = {} setget forbidden
 
-var auto_convince = false
+var auto_convince = true
 
 var auto_task: bool
 
@@ -93,12 +93,11 @@ func load_data(json: Dictionary, objects):
 	troop_combativity = int(json["TroopCombativity"])
 	
 	auto_task = json.get("_AutoTask", false)
+	auto_convince = Util.dict_try_get(json, "_AutoConvince", false)
 	
 	equipments = Util.convert_dict_to_int_key(json["Equipments"])
 
 	_recently_battled = json["_RecentlyBattled"]
-
-	auto_convince = Util.dict_try_get(json, "AutoConvince", false)
 
 	var resource_pack_json = Util.dict_try_get(json, "_ResourcePacks", [])
 	_resource_packs = []
@@ -132,8 +131,8 @@ func save_data() -> Dictionary:
 		"TroopMorale": troop_morale,
 		"TroopCombativity": troop_combativity,
 		"Equipments": equipments,
-		"AutoConvince": auto_convince,
 		"_AutoTask": auto_task,
+		"_AutoConvince": auto_convince,
 		"_RecentlyBattled": _recently_battled,
 		"_ResourcePacks": resource_pack_for_json
 	}
