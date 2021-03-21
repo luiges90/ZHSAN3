@@ -93,7 +93,7 @@ func load_data(json: Dictionary, objects):
 	troop_combativity = int(json["TroopCombativity"])
 	
 	auto_task = json.get("_AutoTask", false)
-	auto_convince = Util.dict_try_get(json, "_AutoConvince", false)
+	auto_convince = Util.dict_try_get(json, "_AutoConvince", true)
 	
 	equipments = Util.convert_dict_to_int_key(json["Equipments"])
 

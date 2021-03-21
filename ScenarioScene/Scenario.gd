@@ -54,6 +54,7 @@ signal troop_clicked
 signal troop_survey_updated
 signal architecture_and_troop_clicked
 signal faction_survey_updated
+signal person_move_clicked
 
 signal empty_space_right_clicked
 
@@ -530,6 +531,7 @@ func _on_person_selected(task, current_architecture, selected_person_ids, other 
 		PersonList.Action.CALL:
 			for p in selected_persons:
 				p.move_to_architecture(current_architecture)
+			call_deferred("emit_signal", "person_move_clicked", selected_persons, current_architecture)
 		PersonList.Action.SELECT_ADVISOR:
 			current_architecture.get_belonged_faction()._set_advisor(selected_persons[0])
 			$GameRecordCreator.assign_advisor(selected_persons[0])
