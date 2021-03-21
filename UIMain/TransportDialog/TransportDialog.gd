@@ -23,11 +23,16 @@ func _on_ArchitectureMenu_transport_clicked(from_architecture):
 	to_transport_troop = 0
 	to_transport_equipments = {}
 	
-	update_views()
+	update_views(true)
 	show()
 
 
-func update_views():
+func update_views(initing):
+	if initing:
+		$S/G/TransportFund.text = ''
+		$S/G/TransportFood.text = ''
+		$S/G/TransportTroop.text = ''
+	
 	$S/G/FromFund.text = str(from_architecture.fund - to_transport_fund) + "(-" + str(to_transport_fund) + ")"
 	$S/G/FromFood.text = str(from_architecture.food - to_transport_food) + "(-" + str(to_transport_food) + ")"
 	$S/G/FromTroop.text = str(from_architecture.troop - to_transport_troop) + "(-" + str(to_transport_troop) + ")"
@@ -71,6 +76,9 @@ func update_views():
 	
 	var has_transporting_equipment = false
 	for mk in military_kind_labels:
+		if initing:
+			military_kind_labels[mk]['amount'].text = ''
+			
 		var to_transfer = Util.dict_try_get(to_transport_equipments, mk, 0)
 		military_kind_labels[mk]['from'].text = str(from_architecture.equipments[mk.id] - to_transfer) + "(-" + str(to_transfer) + ")"
 		if to_architecture != null:
@@ -99,7 +107,7 @@ func _on_ToArchitecture_pressed():
 func _on_ArchitectureList_architecture_selected(current_action, current_architecture, selected_arch_ids, other = {}):
 	if current_action == ArchitectureList.Action.TRANSPORT_RESOURCE_TO:
 		to_architecture = current_architecture.scenario.architectures[selected_arch_ids[0]]
-		update_views()
+		update_views(false)
 
 
 func _on_Cancel_pressed():
@@ -117,22 +125,22 @@ func _on_Confirm_pressed():
 
 func _on_TransportFund_text_changed(new_text):
 	to_transport_fund = int($S/G/TransportFund.text)
-	update_views()
+	update_views(false)
 	
 
 func _on_TransportFood_text_changed(new_text):
 	to_transport_food = int($S/G/TransportFood.text)
-	update_views()
+	update_views(false)
 
 
 func _on_TransportTroop_text_changed(new_text):
 	to_transport_troop = int($S/G/TransportTroop.text)
-	update_views()
+	update_views(false)
 
 
 func _on_equipment_text_changed(new_text, military_kind):
 	to_transport_equipments[military_kind] = int(new_text)
-	update_views()
+	update_views(false)
 	
 
 
