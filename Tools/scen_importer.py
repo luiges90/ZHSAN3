@@ -363,6 +363,8 @@ def convert_specials(p, title_level):
             new_stunts[1200] = max(new_stunts.get(1200, 0), max(0, ((p['BaseIntelligence'] * 0.75 + p['BaseGlamour'] * 0.25) - 60) / 15))
             skill_classes_total[9] += 2
         if 91 in skill_ids:
+            new_stunts[1300] = min(1, max(new_stunts.get(1300, 0), max(0, ((p['BaseStrength'] * 0.75 + p['BaseIntelligence'] * 0.25) - 60) / 15)))
+            new_stunts[1400] = min(1, max(new_stunts.get(1400, 0), max(0, (p['BaseIntelligence'] - 60) / 15)))
             skill_classes_total[9] += 2
         if 92 in skill_ids:
             skill_classes_total[9] += 1
