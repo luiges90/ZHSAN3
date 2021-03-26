@@ -811,7 +811,7 @@ func _move_resource_packs():
 					troop_morale = Util.f2ri((troop * troop_morale + p.troop * p.troop_morale) / (troop + p.troop))
 					troop += p.troop
 				for e in p.equipments:
-					equipments[e] += p.equipments[e]
+					equipments[int(e)] += p.equipments[e]
 				_resource_packs.erase(p)
 
 ####################################
