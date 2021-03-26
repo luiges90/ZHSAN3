@@ -321,6 +321,7 @@ VScrollBar/styles/scroll_focus = SubResource( 28 )
 [node name="PersonBubble" type="Panel"]
 margin_right = 320.0
 margin_bottom = 80.0
+mouse_filter = 2
 theme = SubResource( 30 )
 script = ExtResource( 19 )
 __meta__ = {
@@ -345,6 +346,7 @@ margin_left = 80.0
 margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -8.0
+mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "往[color=#0FF]耒阳[/color]前進！"
 text = "往耒阳前進！"
