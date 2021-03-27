@@ -14,6 +14,7 @@ var gname: String setget forbidden
 var map_position: Vector2 setget forbidden
 
 var military_kind setget forbidden
+var naval_military_kind setget forbidden
 var quantity: int setget forbidden
 var morale: int setget forbidden
 var combativity: int setget forbidden
@@ -115,6 +116,7 @@ func load_data(json: Dictionary, objects):
 		add_person(objects["persons"][int(id)])
 	
 	military_kind = scenario.military_kinds[int(json["MilitaryKind"])]
+	naval_military_kind = scenario.military_kinds[int(json["NavalMilitaryKind"])]
 	quantity = json["Quantity"]
 	morale = json["Morale"]
 	combativity = json["Combativity"]
@@ -186,6 +188,7 @@ func save_data() -> Dictionary:
 		"PersonList": Util.id_list(get_persons()),
 		"StartingArchitecture": _starting_arch.id,
 		"MilitaryKind": military_kind.id,
+		"NavalMilitaryKind": naval_military_kind.id,
 		"Quantity": quantity,
 		"Morale": morale,
 		"Combativity": combativity,

@@ -286,6 +286,8 @@ func _load_data(path):
 	file.close()
 	
 	for kind in movement_kinds:
+		if movement_kinds[kind].naval:
+			continue
 		var err = file.open(path + "/paths/" + str(kind) + '.json', File.READ)
 		if err != OK:
 			file.open("res://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)

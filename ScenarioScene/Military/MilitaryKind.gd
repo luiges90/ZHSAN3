@@ -2,7 +2,7 @@ extends Node
 class_name MilitaryKind
 
 enum MilitaryType {
-	INFANTRY, BOWMAN, CALVARY, SIEGE
+	INFANTRY, BOWMAN, CALVARY, SIEGE, NAVAL
 }
 
 var id: int setget forbidden
