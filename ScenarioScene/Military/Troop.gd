@@ -4,8 +4,6 @@ class_name Troop
 enum OrderType { MOVE, FOLLOW, ATTACK, ACTIVATE_STUNT, ENTER }
 enum AIState { MARCH, COMBAT, RETREAT }
 
-enum Status { NORMAL, CHAOS, FORCED_RETREAT, FORCED_ATTACK, STOP }
-
 var id: int setget forbidden
 var scenario
 
@@ -18,8 +16,6 @@ var naval_military_kind setget forbidden
 var quantity: int setget forbidden
 var morale: int setget forbidden
 var combativity: int setget forbidden
-
-var status = Status.NORMAL setget forbidden
 
 var active_stunt_effects: Array setget forbidden
 
@@ -586,11 +582,6 @@ func add_combativity(delta):
 	combativity = clamp(combativity, 0, 100)
 
 
-func set_status(in_status):
-	status = in_status
-	update_status_sprite()
-
-
 ####################################
 #              Stunts              #
 ####################################
@@ -1019,29 +1010,6 @@ func day_event():
 ####################################
 #                UI                #
 ####################################
-func update_status_sprite():
-	$TroopArea/ChaosSprite.visible = false
-	$TroopArea/ForcedRetreatSprite.visible = false
-	$TroopArea/ForcedAttractSprite.visible = false
-	$TroopArea/StopSprite.visible = false
-	$TroopArea/ChaosSprite.playing = false
-	$TroopArea/ForcedRetreatSprite.playing = false
-	$TroopArea/ForcedAttractSprite.playing = false
-	$TroopArea/StopSprite.playing = false
-	match status:
-		Status.CHAOS: 
-			$TroopArea/ChaosSprite.visible = true
-			$TroopArea/ChaosSprite.playing = true
-		Status.FORCED_RETREAT: 
-			$TroopArea/ForcedRetreatSprite.visible = true
-			$TroopArea/ForcedRetreatSprite.playing = true
-		Status.FORCED_ATTACK: 
-			$TroopArea/ForcedRetreatSprite.visible = true
-			$TroopArea/ForcedRetreatSprite.playing = true
-		Status.STOP: 
-			$TroopArea/StopSprite.visible = true
-			$TroopArea/StopSprite.playing = true
-	
 
 func update_troop_title():
 	if quantity > 0:
