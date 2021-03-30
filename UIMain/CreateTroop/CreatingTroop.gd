@@ -2,6 +2,7 @@ extends Node
 class_name CreatingTroop
 
 var military_kind
+var naval_military_kind
 var quantity: int 
 var morale: int
 var combativity: int

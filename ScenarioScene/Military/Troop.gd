@@ -239,13 +239,16 @@ func remove_person(p, force: bool = false):
 	elif not force:
 		_leader = persons[0]
 
-func create_troop_set_data(in_id: int, starting_arch, kind, in_quantity: int, in_morale: int, in_combativity: int, pos: Vector2):
+func create_troop_set_data(in_id: int, starting_arch, in_military_kind, in_naval_military_kind, in_quantity: int, in_morale: int, in_combativity: int, pos: Vector2):
 	id = in_id
 	_starting_arch = starting_arch
 	set_belonged_section(starting_arch.get_belonged_section())
-	military_kind = kind
+	military_kind = in_military_kind
+	naval_military_kind = in_naval_military_kind
 	if military_kind.has_equipments():
 		starting_arch.take_equipment(military_kind, in_quantity)
+	if naval_military_kind.has_equipments():
+		starting_arch.take_equipment(naval_military_kind, in_quantity)
 	quantity = in_quantity
 	morale = in_morale
 	combativity = in_combativity

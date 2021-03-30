@@ -575,7 +575,7 @@ func create_troop(arch, troop, position) -> Troop:
 		id = 1
 	else:
 		id = id + 1
-	instance.create_troop_set_data(id, arch, troop.military_kind, troop.quantity, troop.morale, troop.combativity, position)
+	instance.create_troop_set_data(id, arch, troop.military_kind, troop.naval_military_kind, troop.quantity, troop.morale, troop.combativity, position)
 	
 	for p in troop.persons:
 		instance.add_person(p)
