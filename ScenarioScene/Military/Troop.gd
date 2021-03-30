@@ -268,6 +268,9 @@ func set_belonged_section(section, force = false):
 	if not force:
 		section.add_troop(self, true)
 	
+func get_active_military_kind():
+	return military_kind
+
 func get_starting_architecture():
 	return _starting_arch
 
@@ -305,8 +308,8 @@ func get_intelligence():
 	return intelligence
 
 func get_offence():
-	var troop_base = military_kind.base_offence * military_kind.terrain_strength[get_current_terrain().id]
-	var troop_quantity = military_kind.offence * quantity / military_kind.max_quantity_multiplier
+	var troop_base = get_active_military_kind().base_offence * get_active_military_kind().terrain_strength[get_current_terrain().id]
+	var troop_quantity = get_active_military_kind().offence * quantity / get_active_military_kind().max_quantity_multiplier
 	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 	
@@ -321,8 +324,8 @@ func get_offence():
 	return int(base)
 	
 func get_defence():
-	var troop_base = military_kind.base_defence * military_kind.terrain_strength[get_current_terrain().id]
-	var troop_quantity = military_kind.defence * quantity / military_kind.max_quantity_multiplier
+	var troop_base = get_active_military_kind().base_defence * get_active_military_kind().terrain_strength[get_current_terrain().id]
+	var troop_quantity = get_active_military_kind().defence * quantity / get_active_military_kind().max_quantity_multiplier
 	var ability_factor = (get_command() + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 
@@ -340,14 +343,14 @@ func get_offence_over_defence():
 	return get_offence() / get_defence()
 
 func get_speed():
-	var base = military_kind.speed
+	var base = get_active_military_kind().speed
 
 	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.2, base * 2)
 
 	return int(base)
 	
 func get_initiative():
-	var base = military_kind.initiative * military_kind.terrain_strength[get_current_terrain().id]
+	var base = get_active_military_kind().initiative * get_active_military_kind().terrain_strength[get_current_terrain().id]
 
 	base = clamp(apply_influences("modify_troop_initiative", {"value": base}), base * 0.2, base * 5)
 
@@ -374,7 +377,7 @@ func get_movement_cost(position, ignore_troops):
 	
 	var terrain = scenario.get_terrain_at_position(position)
 	if terrain != null:
-		return [military_kind.movement_kind.movement_cost[terrain.id], null]
+		return [get_active_military_kind().movement_kind.movement_cost[terrain.id], null]
 	return [INF, null]
 	
 func enemy_troop_in_range(distance: int):
@@ -658,7 +661,7 @@ func apply_influences(operation, params: Dictionary):
 		all_params["troop"] = self
 		
 		all_params["value"] = value
-		value = military_kind.apply_influences(operation, all_params)
+		value = get_active_military_kind().apply_influences(operation, all_params)
 
 		for s in active_stunt_effects:
 			all_params["value"] = value
@@ -763,7 +766,7 @@ func execute_attack():
 		var target = current_order.target
 		if is_instance_valid(self) and is_instance_valid(target) and not self._destroyed and not target._destroyed:
 			var dist = Util.m_dist(map_position, current_order.target.map_position)
-			if dist >= military_kind.range_min and dist <= military_kind.range_max:
+			if dist >= get_active_military_kind().range_min and dist <= get_active_military_kind().range_max:
 				var target_valid = (target is Architecture and target.endurance > 0) or (not target is Architecture and target.quantity > 0)
 				var self_valid = quantity > 0
 				if self_valid and target_valid:
@@ -778,19 +781,19 @@ func execute_attack():
 					var actual_target_offence = target.get_offence()
 					var actual_target_defence = target.get_defence()
 					if not (target is Architecture):
-						actual_offence *= military_kind.get_type_offensive_effectivenss(target.military_kind)
-						actual_defence *= military_kind.get_type_defensive_effectivenss(target.military_kind)
-						actual_target_offence *= target.military_kind.get_type_offensive_effectivenss(military_kind)
-						actual_target_defence *= target.military_kind.get_type_defensive_effectivenss(military_kind)
+						actual_offence *= get_active_military_kind().get_type_offensive_effectivenss(target.get_active_military_kind())
+						actual_defence *= get_active_military_kind().get_type_defensive_effectivenss(target.get_active_military_kind())
+						actual_target_offence *= target.get_active_military_kind().get_type_offensive_effectivenss(get_active_military_kind())
+						actual_target_defence *= target.get_active_military_kind().get_type_defensive_effectivenss(get_active_military_kind())
 					
 					var damage = exp(0.693147 * log(float(actual_offence) / actual_target_defence) + 6.21461) + 1
 					var counter_damage
-					if military_kind.receive_counter_attacks:
+					if get_active_military_kind().receive_counter_attacks:
 						counter_damage = exp(0.693147 * log(float(actual_target_offence) / actual_defence) + 6.21461) * 0.5 + 1
 					else:
 						counter_damage = 0
 					if target is Architecture:
-						damage = damage * military_kind.architecture_attack_factor
+						damage = damage * get_active_military_kind().architecture_attack_factor
 						damage = apply_influences("modify_damage_on_architecture", {"value": damage, "target": target})
 					else:
 						var target_on_arch = target.get_on_architecture()
@@ -807,7 +810,7 @@ func execute_attack():
 						exp_factor += 0.5
 					
 					damage = max(1, int(damage))
-					if military_kind.receive_counter_attacks:
+					if get_active_military_kind().receive_counter_attacks:
 						counter_damage = max(1, int(counter_damage))
 
 					var damage_for_merit = damage * (10 if target is Architecture else 1)
@@ -815,7 +818,7 @@ func execute_attack():
 					for p in get_persons():
 						if p == get_leader():
 							p.add_combat_exp(20)
-							p.add_military_type_exp(military_kind.type, 20 * exp_factor)
+							p.add_military_type_exp(get_active_military_kind().type, 20 * exp_factor)
 							p.add_command_exp(20)
 							p.add_strength_exp(30)
 							p.add_merit((merit_rate - 0.5) * 25)
@@ -828,7 +831,7 @@ func execute_attack():
 							p.troop_damage_received += counter_damage
 						else:
 							p.add_combat_exp(10)
-							p.add_military_type_exp(military_kind.type, 10 * exp_factor)
+							p.add_military_type_exp(get_active_military_kind().type, 10 * exp_factor)
 							p.add_command_exp(10)
 							p.add_strength_exp(15)
 							p.add_merit((merit_rate - 0.5) * 12.5)
@@ -840,7 +843,7 @@ func execute_attack():
 						for p in target.get_persons():
 							if p == get_leader():
 								p.add_combat_exp(20)
-								p.add_military_type_exp(military_kind.type, 20 * exp_factor)
+								p.add_military_type_exp(get_active_military_kind().type, 20 * exp_factor)
 								p.add_command_exp(40)
 								p.add_strength_exp(10)
 								p.add_merit((merit_rate - 0.5) * 25)
@@ -850,7 +853,7 @@ func execute_attack():
 								p.troop_damage_received += damage
 							else:
 								p.add_combat_exp(10)
-								p.add_military_type_exp(military_kind.type, 10 * exp_factor)
+								p.add_military_type_exp(get_active_military_kind().type, 10 * exp_factor)
 								p.add_command_exp(20)
 								p.add_strength_exp(5)
 								p.add_merit((merit_rate - 0.5) * 12.5)
@@ -973,7 +976,7 @@ func day_event():
 			_starting_arch = move_to
 			call_deferred("emit_signal", "starting_architecture_changed", self)
 	
-	var food_required = int((1 + military_kind.food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.25)
+	var food_required = int((1 + get_active_military_kind().food_per_soldier) * Util.m_dist(map_position, _starting_arch.map_position) * 0.25)
 	if not _starting_arch.consume_food(food_required):
 		if not _food_shortage:
 			_food_shortage = true
@@ -1018,11 +1021,11 @@ func update_troop_title():
 func _update_military_kind_sprite():
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 	if animated_sprite != null:
-		var textures = SharedData.troop_images.get(military_kind.id, null)
+		var textures = SharedData.troop_images.get(get_active_military_kind().id, null)
 		if textures != null:
-			animated_sprite.frames = SharedData.troop_sprite_frames[military_kind.id]
+			animated_sprite.frames = SharedData.troop_sprite_frames[get_active_military_kind().id]
 
-	var sounds = SharedData.troop_sounds.get(military_kind.id, null)
+	var sounds = SharedData.troop_sounds.get(get_active_military_kind().id, null)
 	if sounds != null:
 		$MovingSound.stream = sounds["moving"]
 		$AttackSound.stream = sounds["attack"]
