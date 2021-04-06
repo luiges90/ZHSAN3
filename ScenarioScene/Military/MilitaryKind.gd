@@ -90,6 +90,34 @@ func save_data() -> Dictionary:
 func get_name():
 	return gname
 
+func is_naval():
+	return type == MilitaryType.NAVAL
+
+func get_offence():
+	return offence
+
+func get_defence():
+	return defence
+
+func get_speed():
+	return speed
+
+func get_initiative():
+	return initiative
+
+
+func get_terrain_strengths():
+	return terrain_strength
+
+func get_movement_costs():
+	return movement_kind.movement_cost
+
+func get_architecture_attack_factor():
+	return architecture_attack_factor
+
+func is_receive_counter_attacks():
+	return receive_counter_attacks
+
 func get_movement_kind_with_name():
 	var result = {}
 	var costs = movement_kind.movement_cost
@@ -102,6 +130,12 @@ func get_terrain_strength_with_name():
 	for i in terrain_strength:
 		result[scenario.terrain_details[int(i)].get_name()] = terrain_strength[i]
 	return result
+
+func get_range_max():
+	return range_max
+
+func get_range_min():
+	return range_min
 	
 func has_equipments():
 	return equipment_cost > 0

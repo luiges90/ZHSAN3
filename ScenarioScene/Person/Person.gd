@@ -513,13 +513,14 @@ func get_troop_leader_ability(params = null):
 	var strength_factor = 1
 	var critical_factor = 1
 	var anti_critical_factor = 1
+	var range_factor = sqrt(mk.range_max) - sqrt(mk.range_min) + 1
 	for s in skills:
 		command_factor *= Influences.influence_troop_leader_defensive_factor(s, skills[s], out_params)
 		strength_factor *= Influences.influence_troop_leader_offensive_factor(s, skills[s], out_params)
 		critical_factor *= Influences.influence_troop_leader_critical_factor(s, skills[s], out_params)
 		anti_critical_factor *= Influences.influence_troop_leader_anti_critical_factor(s, skills[s], out_params)
 	
-	return command * command_factor * 0.7 * anti_critical_factor + strength * strength_factor * 0.3 * critical_factor
+	return (command * command_factor * 0.7 * anti_critical_factor + strength * strength_factor * 0.3 * critical_factor) * range_factor
 	
 func get_max_troop_quantity() -> int:
 	var base = 5000

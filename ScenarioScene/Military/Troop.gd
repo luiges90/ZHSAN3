@@ -240,6 +240,13 @@ func remove_person(p, force: bool = false):
 		_leader = persons[0]
 
 func create_troop_set_data(in_id: int, starting_arch, in_military_kind, in_naval_military_kind, in_quantity: int, in_morale: int, in_combativity: int, pos: Vector2):
+	assert(in_quantity > 0)
+	assert(in_morale > 0)
+	assert(starting_arch != null)
+	assert(pos != null)
+	assert(in_military_kind != null)
+	assert(in_naval_military_kind != null)
+
 	id = in_id
 	_starting_arch = starting_arch
 	set_belonged_section(starting_arch.get_belonged_section())
@@ -272,7 +279,7 @@ func set_belonged_section(section, force = false):
 		section.add_troop(self, true)
 	
 func get_active_military_kind():
-	return military_kind
+	return naval_military_kind if get_current_terrain().is_naval else military_kind
 
 func get_starting_architecture():
 	return _starting_arch
@@ -358,6 +365,24 @@ func get_initiative():
 	base = clamp(apply_influences("modify_troop_initiative", {"value": base}), base * 0.2, base * 5)
 
 	return int(base)
+
+func get_terrain_strengths():
+	return military_kind.terrain_strength
+
+func get_movement_costs():
+	return military_kind.movement_kind.movement_cost
+
+func is_receive_counter_attacks():
+	return get_active_military_kind().receive_counter_attacks
+
+func get_architecture_attack_factor():
+	return get_active_military_kind().architecture_attack_factor
+
+func get_range_max():
+	return get_active_military_kind().range_max
+
+func get_range_min():
+	return get_active_military_kind().range_min
 	
 static func cmp_initiative(a, b):
 	return a.get_initiative() > b.get_initiative()
@@ -796,7 +821,7 @@ func execute_attack():
 					else:
 						counter_damage = 0
 					if target is Architecture:
-						damage = damage * get_active_military_kind().architecture_attack_factor
+						damage = damage * get_architecture_attack_factor()
 						damage = apply_influences("modify_damage_on_architecture", {"value": damage, "target": target})
 					else:
 						var target_on_arch = target.get_on_architecture()

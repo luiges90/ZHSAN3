@@ -33,9 +33,12 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 			break
 		
 		var avail_military_kinds = {}
+		var avail_naval_military_kinds = {}
 		if from_architecture == target:
 			for mk in from_architecture.equipments:
-				if from_architecture.equipments[mk] > 100:
+				if mk.is_naval():
+					avail_naval_military_kinds[mk] = from_architecture.equipments[mk]
+				elif from_architecture.equipments[mk] > 100:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
 		else:
 			var avail_movement_kinds = scenario.get_ai_path_available_movement_kinds(from_architecture, target)
@@ -44,11 +47,20 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
 		if avail_military_kinds.size() <= 0:
 			break
+
+		var max_value = 0
+		var selected_naval_military_kind = null
+		for mk in avail_naval_military_kinds:
+			var v = ___get_ai_value(mk)
+			if ___get_ai_value(mk) > max_value:
+				max_value = v
+				selected_naval_military_kind = mk
 		
 		var candidates = []
 		for equipment_id in avail_military_kinds:
 			var troop = CreatingTroop.new()
 			troop.military_kind = scenario.military_kinds[equipment_id]
+			troop.naval_military_kind = selected_naval_military_kind
 			
 			var leader = Util.max_by(persons, "get_troop_leader_ability", {"military_kind": troop.military_kind})[1]
 			troop.persons = [leader]
@@ -132,12 +144,12 @@ func ___get_ai_value(troop):
 	var defence = troop.get_defence()
 	var speed = troop.get_speed()
 	var initiative = troop.get_initiative()
-	var siege = troop.military_kind.architecture_attack_factor
+	var siege = troop.get_architecture_attack_factor()
 
 	var terrain_factor = 0
 	var terrain_speed_factor = 0
-	var terrain_strengths = troop.military_kind.terrain_strength
-	var terrain_movement = troop.military_kind.movement_kind.movement_cost
+	var terrain_strengths = troop.get_terrain_strengths()
+	var terrain_movement = troop.get_movement_costs()
 	for ts in terrain_strengths:
 		terrain_factor += terrain_strengths[ts] * Util.dict_try_get(___nearby_terrain, ts, 0)
 	for tm in terrain_movement:
@@ -147,7 +159,7 @@ func ___get_ai_value(troop):
 	speed *= terrain_speed_factor
 	initiative *= terrain_factor
 
-	if not troop.military_kind.receive_counter_attacks:
+	if not troop.is_receive_counter_attacks():
 		offence *= 1.2
 		defence *= 0.8
 
@@ -155,4 +167,6 @@ func ___get_ai_value(troop):
 		offence = offence * 2 + offence * siege
 		defence = defence * 2
 
-	return (offence + defence) * speed * sqrt(initiative)
+	var range_factor = sqrt(troop.get_range_max()) - sqrt(troop.get_range_min()) + 1
+
+	return (offence + defence) * speed * sqrt(initiative) * range_factor

@@ -4,6 +4,7 @@
     "TerrainIds": [
       0
     ],
+    "IsNaval": false,
     "_Id": 0
   },
   {
@@ -11,6 +12,7 @@
     "TerrainIds": [
       1
     ],
+    "IsNaval": false,
     "_Id": 1
   },
   {
@@ -18,6 +20,7 @@
     "TerrainIds": [
       2
     ],
+    "IsNaval": false,
     "_Id": 2
   },
   {
@@ -25,6 +28,7 @@
     "TerrainIds": [
       3
     ],
+    "IsNaval": false,
     "_Id": 3
   },
   {
@@ -32,6 +36,7 @@
     "TerrainIds": [
       4
     ],
+    "IsNaval": false,
     "_Id": 4
   },
   {
@@ -39,6 +44,7 @@
     "TerrainIds": [
       5
     ],
+    "IsNaval": false,
     "_Id": 5
   },
   {
@@ -46,6 +52,7 @@
     "TerrainIds": [
       6
     ],
+    "IsNaval": true,
     "_Id": 6
   },
   {
@@ -53,6 +60,7 @@
     "TerrainIds": [
       7
     ],
+    "IsNaval": false,
     "_Id": 7
   },
   {
@@ -60,6 +68,7 @@
     "TerrainIds": [
       8
     ],
+    "IsNaval": false,
     "_Id": 8
   },
   {
@@ -67,6 +76,7 @@
     "TerrainIds": [
       9
     ],
+    "IsNaval": false,
     "_Id": 9
   },
   {
@@ -74,6 +84,7 @@
     "TerrainIds": [
       10
     ],
+    "IsNaval": false,
     "_Id": 10
   }
 ]
