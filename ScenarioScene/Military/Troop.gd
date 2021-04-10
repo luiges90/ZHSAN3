@@ -48,6 +48,8 @@ var _leader
 
 var _scenario_loaded = false
 
+var _displaying_military_kind_sprite
+
 var pathfinder: PathFinder
 
 signal troop_clicked
@@ -278,8 +280,11 @@ func set_belonged_section(section, force = false):
 	if not force:
 		section.add_troop(self, true)
 	
-func get_active_military_kind():
-	return naval_military_kind if get_current_terrain().is_naval else military_kind
+func get_active_military_kind(force = false):
+	var kind = naval_military_kind if get_current_terrain().is_naval else military_kind
+	if _displaying_military_kind_sprite != kind and not force:
+		_update_military_kind_sprite()
+	return kind
 
 func get_starting_architecture():
 	return _starting_arch
@@ -1047,6 +1052,8 @@ func update_troop_title():
 		$TroopTitle.show_data(self)
 
 func _update_military_kind_sprite():
+	_displaying_military_kind_sprite = get_active_military_kind(true)
+	
 	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
 	if animated_sprite != null:
 		var textures = SharedData.troop_images.get(get_active_military_kind().id, null)

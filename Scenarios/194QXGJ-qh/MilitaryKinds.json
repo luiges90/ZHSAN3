@@ -283,8 +283,8 @@
     "Name": "樓船",
     "BaseOffence": 90.0,
     "Offence": 0.9,
-    "RangeMax": 1,
-    "RangeMin": 2,
+    "RangeMax": 2,
+    "RangeMin": 1,
     "Speed": 25,
     "FoodPerSoldier": 0,
     "TerrainStrength": {
