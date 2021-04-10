@@ -30,7 +30,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="A"]
-margin_right = 749.0
+margin_right = 836.0
 margin_bottom = 36.0
 custom_fonts/font = ExtResource( 6 )
 text = "TROOP_DETAIL"
@@ -41,7 +41,7 @@ __meta__ = {
 
 [node name="H1" type="HBoxContainer" parent="A"]
 margin_top = 52.0
-margin_right = 749.0
+margin_right = 836.0
 margin_bottom = 200.0
 custom_constants/separation = 8
 
@@ -94,15 +94,15 @@ __meta__ = {
 
 [node name="Content" type="GridContainer" parent="A/H1"]
 margin_left = 111.0
-margin_right = 749.0
+margin_right = 836.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
-columns = 5
+columns = 6
 
 [node name="Label14" type="Label" parent="A/H1/Content"]
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -114,8 +114,8 @@ __meta__ = {
 }
 
 [node name="Label13" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
-margin_right = 246.0
+margin_left = 120.0
+margin_right = 231.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -127,8 +127,8 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="A/H1/Content"]
-margin_left = 254.0
-margin_right = 373.0
+margin_left = 239.0
+margin_right = 350.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -140,8 +140,8 @@ __meta__ = {
 }
 
 [node name="Label11" type="Label" parent="A/H1/Content"]
-margin_left = 381.0
-margin_right = 507.0
+margin_left = 358.0
+margin_right = 469.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -153,8 +153,8 @@ __meta__ = {
 }
 
 [node name="Label12" type="Label" parent="A/H1/Content"]
-margin_left = 515.0
-margin_right = 636.0
+margin_left = 477.0
+margin_right = 603.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -165,9 +165,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label17" type="Label" parent="A/H1/Content"]
+margin_left = 611.0
+margin_right = 722.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Faction" type="Label" parent="A/H1/Content"]
 margin_top = 26.0
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -177,9 +189,9 @@ __meta__ = {
 }
 
 [node name="Section" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
+margin_left = 120.0
 margin_top = 26.0
-margin_right = 246.0
+margin_right = 231.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -189,9 +201,9 @@ __meta__ = {
 }
 
 [node name="Quantity" type="Label" parent="A/H1/Content"]
-margin_left = 254.0
+margin_left = 239.0
 margin_top = 26.0
-margin_right = 373.0
+margin_right = 350.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
@@ -202,9 +214,9 @@ __meta__ = {
 }
 
 [node name="Order" type="Label" parent="A/H1/Content"]
-margin_left = 381.0
+margin_left = 358.0
 margin_top = 26.0
-margin_right = 507.0
+margin_right = 469.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -214,9 +226,21 @@ __meta__ = {
 }
 
 [node name="Target" type="Label" parent="A/H1/Content"]
-margin_left = 515.0
+margin_left = 477.0
 margin_top = 26.0
-margin_right = 636.0
+margin_right = 603.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blank" type="Label" parent="A/H1/Content"]
+margin_left = 611.0
+margin_top = 26.0
+margin_right = 722.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -227,7 +251,7 @@ __meta__ = {
 
 [node name="Label9" type="Label" parent="A/H1/Content"]
 margin_top = 52.0
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -238,10 +262,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
+[node name="Label18" type="Label" parent="A/H1/Content"]
+margin_left = 120.0
 margin_top = 52.0
-margin_right = 246.0
+margin_right = 231.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "NAVAL_KIND"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="A/H1/Content"]
+margin_left = 239.0
+margin_top = 52.0
+margin_right = 350.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -253,9 +291,9 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="A/H1/Content"]
-margin_left = 254.0
+margin_left = 358.0
 margin_top = 52.0
-margin_right = 373.0
+margin_right = 469.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -267,9 +305,9 @@ __meta__ = {
 }
 
 [node name="Label5" type="Label" parent="A/H1/Content"]
-margin_left = 381.0
+margin_left = 477.0
 margin_top = 52.0
-margin_right = 507.0
+margin_right = 603.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -281,9 +319,9 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="A/H1/Content"]
-margin_left = 515.0
+margin_left = 611.0
 margin_top = 52.0
-margin_right = 636.0
+margin_right = 722.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -296,7 +334,21 @@ __meta__ = {
 
 [node name="MilitaryKind" type="Label" parent="A/H1/Content"]
 margin_top = 78.0
-margin_right = 119.0
+margin_right = 112.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "----"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NavalKind" type="Label" parent="A/H1/Content"]
+margin_left = 120.0
+margin_top = 78.0
+margin_right = 231.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 1, 1, 0, 1 )
@@ -308,9 +360,9 @@ __meta__ = {
 }
 
 [node name="Offence" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
+margin_left = 239.0
 margin_top = 78.0
-margin_right = 246.0
+margin_right = 350.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -321,9 +373,9 @@ __meta__ = {
 }
 
 [node name="Defence" type="Label" parent="A/H1/Content"]
-margin_left = 254.0
+margin_left = 358.0
 margin_top = 78.0
-margin_right = 373.0
+margin_right = 469.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -334,9 +386,9 @@ __meta__ = {
 }
 
 [node name="Morale" type="Label" parent="A/H1/Content"]
-margin_left = 381.0
+margin_left = 477.0
 margin_top = 78.0
-margin_right = 507.0
+margin_right = 603.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -347,9 +399,9 @@ __meta__ = {
 }
 
 [node name="Combativity" type="Label" parent="A/H1/Content"]
-margin_left = 515.0
+margin_left = 611.0
 margin_top = 78.0
-margin_right = 636.0
+margin_right = 722.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -361,7 +413,7 @@ __meta__ = {
 
 [node name="Label7" type="Label" parent="A/H1/Content"]
 margin_top = 104.0
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -373,9 +425,9 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
+margin_left = 120.0
 margin_top = 104.0
-margin_right = 246.0
+margin_right = 231.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -387,9 +439,9 @@ __meta__ = {
 }
 
 [node name="Label10" type="Label" parent="A/H1/Content"]
-margin_left = 254.0
+margin_left = 239.0
 margin_top = 104.0
-margin_right = 373.0
+margin_right = 350.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -401,9 +453,9 @@ __meta__ = {
 }
 
 [node name="Label15" type="Label" parent="A/H1/Content"]
-margin_left = 381.0
+margin_left = 358.0
 margin_top = 104.0
-margin_right = 507.0
+margin_right = 469.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -415,9 +467,9 @@ __meta__ = {
 }
 
 [node name="Label16" type="Label" parent="A/H1/Content"]
-margin_left = 515.0
+margin_left = 477.0
 margin_top = 104.0
-margin_right = 636.0
+margin_right = 603.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -428,9 +480,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label19" type="Label" parent="A/H1/Content"]
+margin_left = 611.0
+margin_top = 104.0
+margin_right = 722.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Speed" type="Label" parent="A/H1/Content"]
 margin_top = 130.0
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "0"
@@ -441,9 +506,9 @@ __meta__ = {
 }
 
 [node name="Initiative" type="Label" parent="A/H1/Content"]
-margin_left = 127.0
+margin_left = 120.0
 margin_top = 130.0
-margin_right = 246.0
+margin_right = 231.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "0"
@@ -454,9 +519,9 @@ __meta__ = {
 }
 
 [node name="Critical" type="Label" parent="A/H1/Content"]
-margin_left = 254.0
+margin_left = 239.0
 margin_top = 130.0
-margin_right = 373.0
+margin_right = 350.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "0"
@@ -467,9 +532,9 @@ __meta__ = {
 }
 
 [node name="AntiCritical" type="Label" parent="A/H1/Content"]
-margin_left = 381.0
+margin_left = 358.0
 margin_top = 130.0
-margin_right = 507.0
+margin_right = 469.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "0"
@@ -480,9 +545,9 @@ __meta__ = {
 }
 
 [node name="CriticalRate" type="Label" parent="A/H1/Content"]
-margin_left = 515.0
+margin_left = 477.0
 margin_top = 130.0
-margin_right = 636.0
+margin_right = 603.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 text = "0"

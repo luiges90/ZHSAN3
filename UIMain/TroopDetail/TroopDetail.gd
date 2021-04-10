@@ -34,6 +34,7 @@ func set_data():
 	
 	$A/H1/V1/Leader.text = current_troop.get_leader().get_name()
 	$A/H1/Content/MilitaryKind.text = current_troop.military_kind.get_name()
+	$A/H1/Content/NavalKind.text = current_troop.naval_military_kind.get_name()
 	
 	$A/H1/Content/Order.text = tr(current_troop.get_order_text())
 	$A/H1/Content/Target.text = current_troop.get_order_target_text()
