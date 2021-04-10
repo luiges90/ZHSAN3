@@ -85,6 +85,24 @@ func critical_damage_rate():
 	rate = apply_influences('modify_troop_critical_damage_rate', {"value": rate})
 	return rate
 
+func get_architecture_attack_factor():
+	return military_kind.architecture_attack_factor
+
+func get_terrain_strengths():
+	return military_kind.terrain_strength
+
+func get_movement_costs():
+	return military_kind.movement_kind.movement_cost
+
+func is_receive_counter_attacks():
+	return military_kind.receive_counter_attacks
+
+func get_range_max():
+	return military_kind.range_max
+
+func get_range_min():
+	return military_kind.range_min
+
 ####################################
 #         Influence System         #
 ####################################

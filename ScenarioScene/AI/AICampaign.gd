@@ -36,25 +36,28 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 		var avail_naval_military_kinds = {}
 		if from_architecture == target:
 			for mk in from_architecture.equipments:
-				if mk.is_naval():
+				if scenario.military_kinds[mk].is_naval():
 					avail_naval_military_kinds[mk] = from_architecture.equipments[mk]
 				elif from_architecture.equipments[mk] > 100:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
 		else:
 			var avail_movement_kinds = scenario.get_ai_path_available_movement_kinds(from_architecture, target)
 			for mk in scenario.military_kinds:
-				if avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments.has(mk) and from_architecture.equipments[mk] > 1000:
+				if scenario.military_kinds[mk].is_naval():
+					avail_naval_military_kinds[mk] = scenario.military_kinds[mk]
+				elif avail_movement_kinds.has(scenario.military_kinds[mk].movement_kind.id) and from_architecture.equipments.has(mk) and from_architecture.equipments[mk] > 1000:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
-		if avail_military_kinds.size() <= 0:
+		if avail_military_kinds.size() <= 0 or avail_naval_military_kinds.size() <= 0:
 			break
 
 		var max_value = 0
 		var selected_naval_military_kind = null
 		for mk in avail_naval_military_kinds:
-			var v = ___get_ai_value(mk)
-			if ___get_ai_value(mk) > max_value:
+			var military_kind = scenario.military_kinds[mk]
+			var v = ___get_ai_value(military_kind)
+			if ___get_ai_value(military_kind) > max_value:
 				max_value = v
-				selected_naval_military_kind = mk
+				selected_naval_military_kind = military_kind
 		
 		var candidates = []
 		for equipment_id in avail_military_kinds:

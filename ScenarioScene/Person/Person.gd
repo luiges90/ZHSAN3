@@ -513,7 +513,7 @@ func get_troop_leader_ability(params = null):
 	var strength_factor = 1
 	var critical_factor = 1
 	var anti_critical_factor = 1
-	var range_factor = sqrt(mk.range_max) - sqrt(mk.range_min) + 1
+	var range_factor = sqrt(mk.range_max) - sqrt(mk.range_min) + 1 if mk != null else 1
 	for s in skills:
 		command_factor *= Influences.influence_troop_leader_defensive_factor(s, skills[s], out_params)
 		strength_factor *= Influences.influence_troop_leader_offensive_factor(s, skills[s], out_params)
