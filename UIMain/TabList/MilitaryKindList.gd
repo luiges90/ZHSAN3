@@ -1,7 +1,7 @@
 extends TabList
 class_name MilitaryKindList
 
-enum Action { LIST, PRODUCE_EQUIPMENT, SELECT_TROOP_MILITARY_KIND }
+enum Action { LIST, PRODUCE_EQUIPMENT, SELECT_TROOP_MILITARY_KIND, SELECT_TROOP_NAVAL_KIND }
 
 signal military_kind_selected
 
@@ -34,6 +34,9 @@ func show_data(list: Array):
 			_max_selection = 1
 		Action.SELECT_TROOP_MILITARY_KIND:
 			$Title.text = tr('SELECT_TROOP_MILITARY_KIND')
+			_max_selection = 1
+		Action.SELECT_TROOP_NAVAL_KIND:
+			$Title.text = tr('SELECT_TROOP_NAVAL_KIND')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
@@ -176,7 +179,9 @@ func _on_Confirm_pressed():
 				"selected_person_ids": _selected_person_ids
 			})
 		Action.SELECT_TROOP_MILITARY_KIND:
-			call_deferred("emit_signal", "military_kind_selected", current_action, selected_kinds, {})
+			call_deferred("emit_signal", "military_kind_selected", current_action, selected_kinds, {"naval": false})
+		Action.SELECT_TROOP_NAVAL_KIND:
+			call_deferred("emit_signal", "military_kind_selected", current_action, selected_kinds, {"naval": true})
 	$ConfirmSound.play()
 	._on_Confirm_pressed()
 
@@ -197,6 +202,9 @@ func __on_clickable_label_click(label, receiver, object, checkbox):
 		if checkbox != null:
 			_checkbox_change_status(checkbox)
 
-func _on_CreateTroop_select_military_kind(arch, military_kinds):
-	current_action = Action.SELECT_TROOP_MILITARY_KIND
+func _on_CreateTroop_select_military_kind(arch, military_kinds, naval):
+	if naval:
+		current_action = Action.SELECT_TROOP_NAVAL_KIND
+	else:
+		current_action = Action.SELECT_TROOP_MILITARY_KIND
 	show_data(military_kinds)

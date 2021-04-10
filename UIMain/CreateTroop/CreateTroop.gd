@@ -55,6 +55,8 @@ func set_data():
 			$All/H1/V1/PersonList.add_child(label)
 	if current_troop.military_kind != null:
 		$All/H1/V2/C/MilitaryKind.text = current_troop.military_kind.get_name()
+	if current_troop.naval_military_kind != null:
+		$All/H1/V2/C/NavalKind.text = current_troop.naval_military_kind.get_name()
 	
 	$All/Buttons/Create.disabled = true
 	if current_troop.persons.size() > 0 and current_troop.military_kind != null:
@@ -75,14 +77,15 @@ func set_data():
 		$All/H1/V2/C/AntiCritical.text = str(current_troop.anti_critical_chance() * 100) + "%"
 		$All/H1/V2/C/CriticalRate.text = "x" + str(current_troop.critical_damage_rate())
 		
-		$All/Buttons/Create.disabled = current_troop.quantity <= 0
+		$All/Buttons/Create.disabled = current_troop.quantity <= 0 or current_troop.military_kind == null or current_troop.naval_military_kind == null
 
 
-func get_available_kinds():
+func get_available_kinds(naval):
 	var available_kinds = []
 	for kind in eligible_military_kinds:
 		if not current_architecture.scenario.military_kinds[kind].has_equipments() or current_architecture.equipments[kind] > 0:
-			available_kinds.append(eligible_military_kinds[kind])
+			if kind.is_naval == naval:
+				available_kinds.append(eligible_military_kinds[kind])
 	return available_kinds
 
 
@@ -109,12 +112,22 @@ func _on_SelectLeader_pressed():
 func _on_SelectMilitaryKind_pressed():
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	call_deferred("emit_signal", "select_military_kind", current_architecture, get_available_kinds())
+	call_deferred("emit_signal", "select_military_kind", current_architecture, get_available_kinds(false), false)
+	
+
+func _on_SelectNavalKind_pressed():
+	if GameConfig.se_enabled:
+		($Select as AudioStreamPlayer).play()
+	call_deferred("emit_signal", "select_military_kind", current_architecture, get_available_kinds(true), true)
+	
 
 func _on_MilitaryKindList_military_kind_selected(current_action, selected_kinds, params):
 	if current_action == MilitaryKindList.Action.SELECT_TROOP_MILITARY_KIND:
 		var kind = current_architecture.scenario.military_kinds[selected_kinds[0]]
-		current_troop.military_kind = kind
+		if params["naval"]:
+			current_troop.naval_military_kind = kind
+		else:
+			current_troop.military_kind = kind
 		set_data()
 
 
@@ -131,6 +144,8 @@ func _on_Create_pressed():
 		($Select as AudioStreamPlayer).play()
 	call_deferred("emit_signal", "create_troop_select_position", current_architecture, current_troop)
 	hide()
+
+
 
 
 

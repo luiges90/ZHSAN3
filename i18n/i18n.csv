@@ -100,9 +100,11 @@ CREATE_TROOP,Create Troop,出征,出征
 PERSONS,Persons,人物,人物
 LEADER,Leader,主将,主將
 MILITARY_KIND,Military Kind,兵装,兵裝
+NAVAL_KIND,Naval Kind,船只,船隻
 SELECT_TROOP_PERSON,Select Person,选择人物,選擇人物
 SELECT_TROOP_LEADER,Select Leader,选择主将,選擇主將
 SELECT_TROOP_MILITARY_KIND,Select Military Kind,选择兵种,選擇兵種
+SELECT_TROOP_NAVAL_KIND,Select Naval Kind,选择船隻,選擇船隻
 ATTACK,Attack,攻击,攻擊
 ENTER,Enter,入城,入城
 FOLLOW,Follow,跟随,跟隨

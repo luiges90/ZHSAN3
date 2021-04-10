@@ -30,7 +30,7 @@ __meta__ = {
 }
 
 [node name="TroopName" type="Label" parent="All"]
-margin_right = 749.0
+margin_right = 836.0
 margin_bottom = 36.0
 custom_fonts/font = ExtResource( 2 )
 text = "CREATE_TROOP"
@@ -41,7 +41,7 @@ __meta__ = {
 
 [node name="Buttons" type="HBoxContainer" parent="All"]
 margin_top = 52.0
-margin_right = 749.0
+margin_right = 836.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 0, 36 )
 size_flags_horizontal = 3
@@ -49,7 +49,7 @@ custom_constants/separation = 8
 alignment = 1
 
 [node name="SelectPersons" type="Button" parent="All/Buttons"]
-margin_right = 181.0
+margin_right = 151.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 text = "PERSONS"
@@ -58,8 +58,8 @@ __meta__ = {
 }
 
 [node name="SelectLeader" type="Button" parent="All/Buttons"]
-margin_left = 189.0
-margin_right = 370.0
+margin_left = 159.0
+margin_right = 310.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 disabled = true
@@ -69,8 +69,8 @@ __meta__ = {
 }
 
 [node name="SelectMilitaryKind" type="Button" parent="All/Buttons"]
-margin_left = 378.0
-margin_right = 559.0
+margin_left = 318.0
+margin_right = 486.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 text = "MILITARY_KIND"
@@ -78,9 +78,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SelectNavalKind" type="Button" parent="All/Buttons"]
+margin_left = 494.0
+margin_right = 645.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+text = "NAVAL_KIND"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Create" type="Button" parent="All/Buttons"]
-margin_left = 567.0
-margin_right = 749.0
+margin_left = 653.0
+margin_right = 835.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 disabled = true
@@ -91,7 +101,7 @@ __meta__ = {
 
 [node name="H1" type="HBoxContainer" parent="All"]
 margin_top = 104.0
-margin_right = 749.0
+margin_right = 836.0
 margin_bottom = 246.0
 custom_constants/separation = 8
 
@@ -119,22 +129,22 @@ __meta__ = {
 
 [node name="V2" type="VBoxContainer" parent="All/H1"]
 margin_left = 111.0
-margin_right = 749.0
+margin_right = 836.0
 margin_bottom = 142.0
 size_flags_horizontal = 3
 custom_constants/separation = 8
 
 [node name="H2" type="VBoxContainer" parent="All/H1/V2"]
-margin_right = 638.0
+margin_right = 725.0
 margin_bottom = 38.0
 rect_min_size = Vector2( 0, 36 )
 
 [node name="H3" type="HBoxContainer" parent="All/H1/V2/H2"]
-margin_right = 638.0
+margin_right = 725.0
 margin_bottom = 18.0
 
 [node name="Label4" type="Label" parent="All/H1/V2/H2/H3"]
-margin_right = 610.0
+margin_right = 697.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -144,8 +154,8 @@ __meta__ = {
 }
 
 [node name="Quantity" type="Label" parent="All/H1/V2/H2/H3"]
-margin_left = 614.0
-margin_right = 638.0
+margin_left = 701.0
+margin_right = 725.0
 margin_bottom = 18.0
 grow_horizontal = 0
 text = "0/0"
@@ -156,7 +166,7 @@ __meta__ = {
 
 [node name="QuantitySlider" type="HSlider" parent="All/H1/V2/H2"]
 margin_top = 22.0
-margin_right = 638.0
+margin_right = 725.0
 margin_bottom = 38.0
 grow_vertical = 0
 max_value = 1.0
@@ -166,15 +176,15 @@ __meta__ = {
 
 [node name="C" type="GridContainer" parent="All/H1/V2"]
 margin_top = 46.0
-margin_right = 638.0
+margin_right = 725.0
 margin_bottom = 142.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
-columns = 5
+columns = 6
 
 [node name="Label9" type="Label" parent="All/H1/V2/C"]
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -185,9 +195,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label13" type="Label" parent="All/H1/V2/C"]
+margin_left = 120.0
+margin_right = 231.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "NAVAL_KIND"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label2" type="Label" parent="All/H1/V2/C"]
-margin_left = 127.0
-margin_right = 246.0
+margin_left = 239.0
+margin_right = 350.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -199,8 +222,8 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="All/H1/V2/C"]
-margin_left = 254.0
-margin_right = 373.0
+margin_left = 358.0
+margin_right = 469.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -212,8 +235,8 @@ __meta__ = {
 }
 
 [node name="Label5" type="Label" parent="All/H1/V2/C"]
-margin_left = 381.0
-margin_right = 507.0
+margin_left = 477.0
+margin_right = 603.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -225,8 +248,8 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="All/H1/V2/C"]
-margin_left = 515.0
-margin_right = 636.0
+margin_left = 611.0
+margin_right = 722.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -239,7 +262,21 @@ __meta__ = {
 
 [node name="MilitaryKind" type="Label" parent="All/H1/V2/C"]
 margin_top = 26.0
-margin_right = 119.0
+margin_right = 112.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "----"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NavalKind" type="Label" parent="All/H1/V2/C"]
+margin_left = 120.0
+margin_top = 26.0
+margin_right = 231.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 1, 1, 0, 1 )
@@ -251,9 +288,9 @@ __meta__ = {
 }
 
 [node name="Offence" type="Label" parent="All/H1/V2/C"]
-margin_left = 127.0
+margin_left = 239.0
 margin_top = 26.0
-margin_right = 246.0
+margin_right = 350.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
@@ -264,9 +301,9 @@ __meta__ = {
 }
 
 [node name="Defence" type="Label" parent="All/H1/V2/C"]
-margin_left = 254.0
+margin_left = 358.0
 margin_top = 26.0
-margin_right = 373.0
+margin_right = 469.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
@@ -277,9 +314,9 @@ __meta__ = {
 }
 
 [node name="Morale" type="Label" parent="All/H1/V2/C"]
-margin_left = 381.0
+margin_left = 477.0
 margin_top = 26.0
-margin_right = 507.0
+margin_right = 603.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
@@ -290,9 +327,9 @@ __meta__ = {
 }
 
 [node name="Combativity" type="Label" parent="All/H1/V2/C"]
-margin_left = 515.0
+margin_left = 611.0
 margin_top = 26.0
-margin_right = 636.0
+margin_right = 722.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "0"
@@ -304,7 +341,7 @@ __meta__ = {
 
 [node name="Label7" type="Label" parent="All/H1/V2/C"]
 margin_top = 52.0
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -316,9 +353,9 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="All/H1/V2/C"]
-margin_left = 127.0
+margin_left = 120.0
 margin_top = 52.0
-margin_right = 246.0
+margin_right = 231.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -330,9 +367,9 @@ __meta__ = {
 }
 
 [node name="Label10" type="Label" parent="All/H1/V2/C"]
-margin_left = 254.0
+margin_left = 239.0
 margin_top = 52.0
-margin_right = 373.0
+margin_right = 350.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -344,9 +381,9 @@ __meta__ = {
 }
 
 [node name="Label11" type="Label" parent="All/H1/V2/C"]
-margin_left = 381.0
+margin_left = 358.0
 margin_top = 52.0
-margin_right = 507.0
+margin_right = 469.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -358,9 +395,9 @@ __meta__ = {
 }
 
 [node name="Label12" type="Label" parent="All/H1/V2/C"]
-margin_left = 515.0
+margin_left = 477.0
 margin_top = 52.0
-margin_right = 636.0
+margin_right = 603.0
 margin_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -371,9 +408,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label14" type="Label" parent="All/H1/V2/C"]
+margin_left = 611.0
+margin_top = 52.0
+margin_right = 722.0
+margin_bottom = 70.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Speed" type="Label" parent="All/H1/V2/C"]
 margin_top = 78.0
-margin_right = 119.0
+margin_right = 112.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -384,9 +434,9 @@ __meta__ = {
 }
 
 [node name="Initiative" type="Label" parent="All/H1/V2/C"]
-margin_left = 127.0
+margin_left = 120.0
 margin_top = 78.0
-margin_right = 246.0
+margin_right = 231.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -397,9 +447,9 @@ __meta__ = {
 }
 
 [node name="Critical" type="Label" parent="All/H1/V2/C"]
-margin_left = 254.0
+margin_left = 239.0
 margin_top = 78.0
-margin_right = 373.0
+margin_right = 350.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -410,9 +460,9 @@ __meta__ = {
 }
 
 [node name="AntiCritical" type="Label" parent="All/H1/V2/C"]
-margin_left = 381.0
+margin_left = 358.0
 margin_top = 78.0
-margin_right = 507.0
+margin_right = 469.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -423,9 +473,9 @@ __meta__ = {
 }
 
 [node name="CriticalRate" type="Label" parent="All/H1/V2/C"]
-margin_left = 515.0
+margin_left = 477.0
 margin_top = 78.0
-margin_right = 636.0
+margin_right = 603.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 text = "0"
@@ -447,5 +497,6 @@ stream = ExtResource( 6 )
 [connection signal="pressed" from="All/Buttons/SelectPersons" to="." method="_on_SelectPersons_pressed"]
 [connection signal="pressed" from="All/Buttons/SelectLeader" to="." method="_on_SelectLeader_pressed"]
 [connection signal="pressed" from="All/Buttons/SelectMilitaryKind" to="." method="_on_SelectMilitaryKind_pressed"]
+[connection signal="pressed" from="All/Buttons/SelectNavalKind" to="." method="_on_SelectNavalKind_pressed"]
 [connection signal="pressed" from="All/Buttons/Create" to="." method="_on_Create_pressed"]
 [connection signal="value_changed" from="All/H1/V2/H2/QuantitySlider" to="." method="_on_QuantitySlider_value_changed"]
