@@ -59,12 +59,14 @@ func set_data():
 		$All/H1/V2/C/NavalKind.text = current_troop.naval_military_kind.get_name()
 	
 	$All/Buttons/Create.disabled = true
-	if current_troop.persons.size() > 0 and current_troop.military_kind != null:
-		var max_quantity = current_troop.military_kind.max_quantity_multiplier * current_troop.persons[0].get_max_troop_quantity()
-		max_quantity = int(max_quantity)
+	if current_troop.persons.size() > 0 and current_troop.military_kind != null and current_troop.naval_military_kind != null:
+		var max_quantity = min(current_troop.military_kind.max_quantity_multiplier, current_troop.naval_military_kind.max_quantity_multiplier)
+		max_quantity = int(max_quantity * current_troop.persons[0].get_max_troop_quantity())
 		max_quantity = min(max_quantity, floor(current_architecture.troop / 100) * 100)
 		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].has_equipments():
 			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / 100) * 100)
+		if current_architecture.scenario.military_kinds[current_troop.naval_military_kind.id].has_equipments():
+			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.naval_military_kind.id] / 100) * 100)
 		$All/H1/V2/H2/H3/Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
 		$All/H1/V2/H2/QuantitySlider.step = 100
 		$All/H1/V2/H2/QuantitySlider.min_value = 0
@@ -84,7 +86,7 @@ func get_available_kinds(naval):
 	var available_kinds = []
 	for kind in eligible_military_kinds:
 		if not current_architecture.scenario.military_kinds[kind].has_equipments() or current_architecture.equipments[kind] > 0:
-			if kind.is_naval == naval:
+			if eligible_military_kinds[kind].is_naval() == naval:
 				available_kinds.append(eligible_military_kinds[kind])
 	return available_kinds
 
@@ -122,7 +124,7 @@ func _on_SelectNavalKind_pressed():
 	
 
 func _on_MilitaryKindList_military_kind_selected(current_action, selected_kinds, params):
-	if current_action == MilitaryKindList.Action.SELECT_TROOP_MILITARY_KIND:
+	if current_action == MilitaryKindList.Action.SELECT_TROOP_MILITARY_KIND or current_action == MilitaryKindList.Action.SELECT_TROOP_NAVAL_KIND:
 		var kind = current_architecture.scenario.military_kinds[selected_kinds[0]]
 		if params["naval"]:
 			current_troop.naval_military_kind = kind
