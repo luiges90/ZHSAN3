@@ -87,6 +87,7 @@ RANGE,Range,攻击距离,攻擊距離
 SPEED,Speed,速度,速度
 INITIATIVE,Initiative,先行,先行
 MAX_QUANTITY_MULITPLIER,Max Quantity,兵力上限,兵力上限
+AMOUNT_PER_SOLDIER,Amount per Soldier,每兵装占用士兵数,每兵裝佔用士兵數
 QUANTITY,Quantity,兵力,兵力
 GAME_INFO,Information,各项信息,各項信息
 EQUIPMENTS,Equipments,兵装,兵裝

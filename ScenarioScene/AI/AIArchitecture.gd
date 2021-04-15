@@ -40,7 +40,7 @@ func _selected_equipment(arch: Architecture, scenario) -> MilitaryKind:
 	var result
 	for mk in arch.equipments:
 		var military_kind = scenario.military_kinds[mk]
-		var value = arch.equipments[mk] / ai._military_kind_power(military_kind) * military_kind.equipment_cost
+		var value = arch.equipments[mk] / ai._military_kind_power(military_kind) * military_kind.equipment_cost * scenario.military_kinds[mk].amount_to_troop_ratio
 		if value < min_value:
 			min_value = value
 			result = military_kind
@@ -82,7 +82,7 @@ func _assign_task(arch: Architecture, scenario):
 	var e = -9e9 if arch.kind.endurance <= 0 or fund < 20 or has_enemy_troop_next_to_city else arch.kind.endurance / float(arch.endurance + 1)
 	var r = -9e9 if arch.population <= 0 or fund < 50 or arch.morale <= 100 or arch.military_population <= 0 or not enough_food else _target_troop_quantity(arch) / (arch.troop + 1)
 	var t = -9e9 if arch.troop <= 0 or fund < 20 or arch.troop_morale >= target_troop_morale else (target_troop_morale * 2 / (arch.troop_morale + 10.0) - 1)
-	var q = -9e9 if arch.troop <= 0 or fund < 100 or not enough_fund or not enough_food else _target_equipment_quantity(arch) / (arch.equipments[min_equipment.id] + 1)
+	var q = -9e9 if arch.troop <= 0 or fund < 100 or not enough_fund or not enough_food else _target_equipment_quantity(arch) / (arch.equipments[min_equipment.id] + 1) / min_equipment.amount_to_troop_ratio
 	
 	if not enough_fund:
 		c *= 99

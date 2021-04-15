@@ -110,6 +110,15 @@ static func random_shift_position(pos: Vector2) -> Vector2:
 		else:
 			return Vector2(pos.x, pos.y + 1)
 
+static func gcd(a: int, b: int) -> int:
+	while b != 0:
+		var t = b
+		b = a % b
+		a = t
+	return a
+
+static func lcm(a: int, b: int) -> int:
+	return a * b / gcd(a, b)
 	
 ##############################################
 #                 Collections                #

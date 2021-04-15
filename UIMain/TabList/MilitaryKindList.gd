@@ -52,10 +52,10 @@ func _populate_basic_data(mk_list: Array, action):
 	_sorted_list = mk_list # default military kind list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 9
+		item_list.columns = 10
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 8
+		item_list.columns = 9
 	item_list.add_child(_title_sorting(tr('KIND_NAME'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('COST'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('OFFENCE'), self, "_on_title_sorting_click", mk_list))
@@ -64,6 +64,7 @@ func _populate_basic_data(mk_list: Array, action):
 	item_list.add_child(_title_sorting(tr('SPEED'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('INITIATIVE'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('MAX_QUANTITY_MULITPLIER'), self, "_on_title_sorting_click", mk_list))
+	item_list.add_child(_title_sorting(tr('AMOUNT_PER_SOLDIER'), self, "_on_title_sorting_click", mk_list))
 	match _current_order:
 		_sorting_order.DESC:
 			_sorted_list = _sorting_list(mk_list.duplicate())
@@ -82,6 +83,7 @@ func _populate_basic_data(mk_list: Array, action):
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.speed), self, mk, cb))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.initiative), self, mk, cb))
 		item_list.add_child(_clickable_label_with_long_pressed_event("x" + str(mk.max_quantity_multiplier), self, mk, cb))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.amount_to_troop_ratio), self, mk, cb))
 
 func _populate_movement_details_data(mk_list: Array, action):
 	if mk_list.size() <= 0: 

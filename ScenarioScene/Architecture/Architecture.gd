@@ -775,7 +775,7 @@ func _produce_equipment(p: Person):
 	var equipment = p.producing_equipment
 	var cost = scenario.military_kinds[equipment].equipment_cost
 	if fund > cost:
-		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.4)
+		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.4 / scenario.military_kinds[equipment].amount_to_troop_ratio)
 		if fund < cost * amount:
 			amount = floor(fund / cost)
 		fund -= amount * cost
@@ -791,7 +791,10 @@ func accept_entering_troop(in_troop):
 	assert(in_troop.quantity > 0)
 	troop_morale = int((troop * troop_morale + in_troop.quantity * in_troop.morale) / (troop + in_troop.quantity))
 	troop += in_troop.quantity
-	equipments[in_troop.military_kind.id] += in_troop.quantity
+	if in_troop.military_kind.has_equipments():
+		equipments[in_troop.military_kind.id] += in_troop.quantity / in_troop.military_kind.amount_to_troop_ratio
+	if in_troop.naval_military_kind.has_equipments():
+		equipments[in_troop.naval_military_kind.id] += in_troop.quantity / in_troop.naval_military_kind.amount_to_troop_ratio
 	
 	var list = in_troop.get_all_persons().duplicate()
 	for p in list:

@@ -15,6 +15,7 @@
     "RangeMin":1,
     "Speed":15,
     "FoodPerSoldier":0,
+    "AmountToTroopRatio":1.0,
     "TerrainStrength":{
       "1":1.1,
       "2":1,
@@ -54,6 +55,7 @@
     "RangeMin":1,
     "Speed":18,
     "FoodPerSoldier":0,
+    "AmountToTroopRatio": 1.0,
     "TerrainStrength":{
       "1":1.1,
       "2":1,
@@ -93,6 +95,7 @@
     "RangeMin":1,
     "Speed":18,
     "FoodPerSoldier":0,
+    "AmountToTroopRatio": 1.0,
     "TerrainStrength":{
       "1":1,
       "2":1,
@@ -132,6 +135,7 @@
     "RangeMin":1,
     "Speed":24,
     "FoodPerSoldier":2,
+    "AmountToTroopRatio": 1.0,
     "TerrainStrength":{
       "1":1.1,
       "2":1.1,
@@ -172,6 +176,7 @@
     "RangeMin": 1,
     "Speed": 12,
     "FoodPerSoldier": 1,
+    "AmountToTroopRatio": 100.0,
     "TerrainStrength": {
       "1": 1,
       "2": 1,
@@ -209,6 +214,7 @@
     "RangeMin": 2,
     "Speed": 10,
     "FoodPerSoldier": 1,
+    "AmountToTroopRatio": 100.0,
     "TerrainStrength": {
       "1": 1,
       "2": 1,
@@ -252,6 +258,7 @@
     "RangeMin": 1,
     "Speed": 15,
     "FoodPerSoldier": 0,
+    "AmountToTroopRatio": 1.0,
     "TerrainStrength": {
       "1": 1,
       "2": 1,
@@ -287,6 +294,7 @@
     "RangeMin": 1,
     "Speed": 25,
     "FoodPerSoldier": 0,
+    "AmountToTroopRatio": 100.0,
     "TerrainStrength": {
       "1": 1,
       "2": 1,

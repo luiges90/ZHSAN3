@@ -34,6 +34,8 @@ var equipment_cost: float setget forbidden
 var influences: Array setget forbidden
 var conditions: Array setget forbidden
 
+var amount_to_troop_ratio: float setget forbidden
+
 func forbidden(x):
 	assert(false)
 
@@ -51,6 +53,7 @@ func load_data(json: Dictionary, objects):
 	speed = json["Speed"]
 	initiative = json["Initiative"]
 	food_per_soldier = json["FoodPerSoldier"]
+	amount_to_troop_ratio = Util.dict_try_get(json, "AmountToTroopRatio", 1.0)
 	equipment_cost = json["EquipmentCost"]
 	movement_kind = scenario.movement_kinds[int(json["MovementKind"])]
 	terrain_strength = Util.convert_dict_to_int_key(json["TerrainStrength"])
@@ -77,6 +80,7 @@ func save_data() -> Dictionary:
 		"Initiative": initiative,
 		"EquipmentCost": equipment_cost,
 		"FoodPerSoldier": food_per_soldier,
+		"AmountToTroopRatio": amount_to_troop_ratio,
 		"MovementKind": movement_kind.id,
 		"TerrainStrength": terrain_strength,
 		"ReceiveCounterAttacks": receive_counter_attacks,

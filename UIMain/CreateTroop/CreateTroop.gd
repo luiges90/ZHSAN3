@@ -62,13 +62,16 @@ func set_data():
 	if current_troop.persons.size() > 0 and current_troop.military_kind != null and current_troop.naval_military_kind != null:
 		var max_quantity = min(current_troop.military_kind.max_quantity_multiplier, current_troop.naval_military_kind.max_quantity_multiplier)
 		max_quantity = int(max_quantity * current_troop.persons[0].get_max_troop_quantity())
-		max_quantity = min(max_quantity, floor(current_architecture.troop / 100) * 100)
+		var quantity_precision = int(Util.lcm(100, current_troop.military_kind.amount_to_troop_ratio))
+		var naval_quantity_precision = int(Util.lcm(100, current_troop.naval_military_kind.amount_to_troop_ratio))
+		var total_precision = Util.lcm(quantity_precision, naval_quantity_precision)
+		max_quantity = min(max_quantity, floor(current_architecture.troop / total_precision) * total_precision)
 		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].has_equipments():
-			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / 100) * 100)
+			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] * quantity_precision))
 		if current_architecture.scenario.military_kinds[current_troop.naval_military_kind.id].has_equipments():
-			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.naval_military_kind.id] / 100) * 100)
+			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.naval_military_kind.id] * naval_quantity_precision))
 		$All/H1/V2/H2/H3/Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
-		$All/H1/V2/H2/QuantitySlider.step = 100
+		$All/H1/V2/H2/QuantitySlider.step = total_precision
 		$All/H1/V2/H2/QuantitySlider.min_value = 0
 		$All/H1/V2/H2/QuantitySlider.max_value = max_quantity
 		$All/H1/V2/C/Offence.text = str(current_troop.get_offence())
