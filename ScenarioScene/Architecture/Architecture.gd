@@ -800,6 +800,9 @@ func accept_entering_troop(in_troop):
 	for p in list:
 		p.set_location(self)
 
+func take_troop(quantity):
+	troop -= quantity
+
 func take_equipment(kind, quantity):
 	equipments[kind.id] -= quantity
 
