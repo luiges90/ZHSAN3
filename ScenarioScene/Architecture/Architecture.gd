@@ -562,6 +562,8 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 	troop -= troop_to_transport
 	var to_transfer_equipments = {}
 	for e in to_transport_equipments_id_key:
+		assert(to_transport_equipments_id_key[e] >= 0)
+		assert(equipments[e] >= to_transport_equipments_id_key[e])
 		equipments[e] -= to_transport_equipments_id_key[e]
 		to_transfer_equipments[e] = to_transport_equipments_id_key[e]
 
@@ -793,18 +795,20 @@ func accept_entering_troop(in_troop):
 	troop_morale = int((troop * troop_morale + in_troop.quantity * in_troop.morale) / (troop + in_troop.quantity))
 	troop += in_troop.quantity
 	if in_troop.military_kind.has_equipments():
-		equipments[in_troop.military_kind.id] += in_troop.quantity / in_troop.military_kind.amount_to_troop_ratio
+		equipments[in_troop.military_kind.id] += int(in_troop.quantity / in_troop.military_kind.amount_to_troop_ratio)
 	if in_troop.naval_military_kind.has_equipments():
-		equipments[in_troop.naval_military_kind.id] += in_troop.quantity / in_troop.naval_military_kind.amount_to_troop_ratio
+		equipments[in_troop.naval_military_kind.id] += int(in_troop.quantity / in_troop.naval_military_kind.amount_to_troop_ratio)
 	
 	var list = in_troop.get_all_persons().duplicate()
 	for p in list:
 		p.set_location(self)
 
 func take_troop(quantity):
+	assert(troop >= quantity)
 	troop -= quantity
 
 func take_equipment(kind, quantity):
+	assert(equipments[kind.id] >= quantity)
 	equipments[kind.id] -= quantity
 
 func _move_resource_packs():

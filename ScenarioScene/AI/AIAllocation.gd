@@ -157,7 +157,7 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 					var ratio = to_transfer / float(a2.troop)
 					var to_transport_equipment = {}
 					for e in a2.equipments:
-						to_transport_equipment[e] = a2.equipments[e] * ratio
+						to_transport_equipment[e] = int(a2.equipments[e] * ratio / section.scenario.military_kinds[e].amount_to_troop_ratio)
 					if to_transfer > 1000:
 						a2.transport_resources(a, 0, 0, to_transfer, to_transport_equipment)
 						__surplus_troop[a] += to_transfer
