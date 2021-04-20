@@ -547,6 +547,7 @@ func set_attack_order(troop, arch):
 
 func set_activate_stunt_order(stunt, level, target):
 	assert(!order_made)
+	assert(target != null)
 	order_made = true
 	_order_before_activate_stunt = current_order
 	current_order = {

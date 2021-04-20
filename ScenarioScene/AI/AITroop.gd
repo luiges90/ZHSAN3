@@ -33,7 +33,7 @@ func run_troop(troop, scenario):
 				if success_chance > 0.5:
 					target_candidates.append(t)
 			var target = Util.random_from(target_candidates) # TODO pick target
-			if troop.combativity >= stunt.combativity_cost and stunt.check_ai_conditions(troop):
+			if target != null and troop.combativity >= stunt.combativity_cost and stunt.check_ai_conditions(troop):
 				troop.set_activate_stunt_order(stunt, avail_stunts[stunt], target) 
 				activated = true
 				break

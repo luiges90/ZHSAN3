@@ -49,6 +49,9 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 					avail_military_kinds[mk] = from_architecture.equipments[mk]
 		if avail_military_kinds.size() <= 0 or avail_naval_military_kinds.size() <= 0:
 			break
+			
+		# TODO dynamic reserves
+		var reserve = 5000
 
 		var candidates = []
 		for equipment_id in avail_military_kinds:
@@ -62,6 +65,7 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 			troop.combativity = from_architecture.troop_combativity
 			var quantity_precision = int(Util.lcm(100, troop.military_kind.amount_to_troop_ratio))
 			troop.quantity = min(from_architecture.equipments[equipment_id] / quantity_precision * quantity_precision, leader.get_max_troop_quantity() * troop.military_kind.max_quantity_multiplier)
+			troop.quantity = min(troop.quantity, from_architecture.troop - reserve)
 			
 			if troop.quantity > 0:
 				var max_value = 0
@@ -84,6 +88,13 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 				for p in troop.persons:
 					if p.get_location() != from_architecture:
 						valid = false
+				if troop.quantity > from_architecture.troop:
+					valid = false
+					stop_creating_troop = true
+				if troop.military_kind.has_equipments() and troop.quantity >= from_architecture.equipments[troop.military_kind.id]:
+					valid = false
+				if troop.naval_military_kind.has_equipments() and troop.quantity >= from_architecture.equipments[troop.naval_military_kind.id]:
+					valid = false
 				if valid and ai._ai_troop.consider_make_troop(troop, from_architecture == target):
 					inner_troops_created = true
 					var position = Util.random_from(avail_positions)
