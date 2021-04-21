@@ -209,8 +209,14 @@
                 "Operation": "troop_has_no_active_stunt"
             },
             {
-                "Operation": "allies_troop_nearby_count_at_least",
+                "Operation": "enemy_architecture_nearby_count_at_least",
+                "Operator": ["not"],
                 "Value": 1,
+                "Distance": 4
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 2,
                 "Distance": 3
             }
         ],
@@ -269,7 +275,7 @@
             },
             {
                 "Operation": "allies_troop_nearby_count_at_least",
-                "Value": 3,
+                "Value": 4,
                 "Distance": 3
             },
             {
@@ -325,7 +331,7 @@
             },
             {
                 "Operation": "allies_troop_nearby_count_at_least",
-                "Value": 3,
+                "Value": 4,
                 "Distance": 3
             },
             {
@@ -389,7 +395,7 @@
             },
             {
                 "Operation": "allies_troop_nearby_count_at_least",
-                "Value": 3,
+                "Value": 4,
                 "Distance": 3
             },
             {
@@ -449,7 +455,7 @@
             },
             {
                 "Operation": "allies_troop_nearby_count_at_least",
-                "Value": 3,
+                "Value": 4,
                 "Distance": 3
             }
         ],

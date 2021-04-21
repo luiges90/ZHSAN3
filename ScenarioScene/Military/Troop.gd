@@ -437,7 +437,7 @@ func friendly_architectures_in_range(distance: int):
 	for a in scenario.architectures:
 		var architecture = scenario.architectures[a]
 		var other_faction = architecture.get_belonged_faction()
-		if (other_faction == null or other_faction.is_friend_to(get_belonged_faction())) and Util.m_dist(architecture.map_position, self.map_position) <= distance:
+		if (other_faction != null and other_faction.is_friend_to(get_belonged_faction())) and Util.m_dist(architecture.map_position, self.map_position) <= distance:
 			results.append(architecture)
 	return results
 
