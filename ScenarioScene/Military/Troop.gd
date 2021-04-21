@@ -327,7 +327,7 @@ func get_intelligence():
 
 func get_offence():
 	var troop_base = get_active_military_kind().base_offence * get_active_military_kind().terrain_strength[get_current_terrain().id]
-	var troop_quantity = get_active_military_kind().offence * quantity / get_active_military_kind().max_quantity_multiplier
+	var troop_quantity = 30 * sqrt(get_active_military_kind().offence * quantity / get_active_military_kind().max_quantity_multiplier)
 	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 	
@@ -343,7 +343,7 @@ func get_offence():
 	
 func get_defence():
 	var troop_base = get_active_military_kind().base_defence * get_active_military_kind().terrain_strength[get_current_terrain().id]
-	var troop_quantity = get_active_military_kind().defence * quantity / get_active_military_kind().max_quantity_multiplier
+	var troop_quantity = 30 * sqrt(get_active_military_kind().defence * quantity / get_active_military_kind().max_quantity_multiplier)
 	var ability_factor = (get_command() + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 

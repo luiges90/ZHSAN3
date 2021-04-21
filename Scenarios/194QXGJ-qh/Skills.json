@@ -1801,7 +1801,7 @@
 	{
 		"_Id": 11100,
 		"Name": "鼓舞",
-		"Description": "戰鬥時，部隊士氣每天增加每等級3點",
+		"Description": "戰鬥時，部隊士氣每天增加每等級2點",
 		"Color": [
 			0.96,
 			0.69,
@@ -1825,14 +1825,14 @@
 		"Influences": [
 			{
 				"Operation": "add_morale_per_day_during_battle",
-				"Value": 3
+				"Value": 2
 			}
 		]
 	},
 	{
 		"_Id": 11110,
 		"Name": "奏樂",
-		"Description": "戰鬥時，部隊戰意每天增加每等級3點",
+		"Description": "戰鬥時，部隊戰意每天增加每等級2點",
 		"Color": [
 			0.96,
 			0.69,
@@ -1856,7 +1856,7 @@
 		"Influences": [
 			{
 				"Operation": "add_combativity_per_day_during_battle",
-				"Value": 3
+				"Value": 2
 			}
 		]
 	},

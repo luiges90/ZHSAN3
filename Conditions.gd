@@ -42,23 +42,31 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 						if _op_cond(op_not, params['military_kind'].type != condition['Id']):
 							return false
 			'is_terrain':
-				if params.has('troop') and params['troop'].has_method('get_current_terrain'):
-					if condition['Id'] is Array:
+				if params.has('troop'):
+					if not params['troop'].has_method('get_current_terrain'):
+						return false
+					elif condition['Id'] is Array:
 						if _op_cond(op_not, not (params['troop'].get_current_terrain().id in condition['Id'])):
 							return false
 					else:
 						if _op_cond(op_not, params['troop'].get_current_terrain().id != condition['Id']):
 							return false
 			'is_on_own_architecture':
-				if params.has('troop') and params['troop'].has_method('get_on_architecture'):
-					var arch = params['troop'].get_on_architecture()
-					if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction())):
+				if params.has('troop'):
+					if not params['troop'].has_method('get_on_architecture'):
 						return false
+					else:
+						var arch = params['troop'].get_on_architecture()
+						if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction())):
+							return false
 			'is_on_enemy_architecture':
-				if params.has('troop') and params['troop'].has_method('get_on_architecture'):
-					var arch = params['troop'].get_on_architecture()
-					if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction())):
+				if params.has('troop'):
+					if not params['troop'].has_method('get_on_architecture'):
 						return false
+					else:
+						var arch = params['troop'].get_on_architecture()
+						if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction())):
+							return false
 			'target_is_troop':
 				if params.has('target'):
 					if _op_cond(op_not, params['target'].object_type() != ScenarioUtil.ObjectType.TROOP):
