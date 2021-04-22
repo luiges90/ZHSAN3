@@ -20,6 +20,7 @@ func _on_ArchitectureMenu_architecture_create_troop(arch, persons, military_kind
 	eligible_military_kinds = military_kinds
 	
 	$All/H1/V2/H2/QuantitySlider.value = 0
+	$All/H1/V2/H2/H3/Quantity.text = "0/0"
 	
 	current_troop = CreatingTroop.new()
 	current_troop.morale = current_architecture.troop_morale
@@ -67,9 +68,9 @@ func set_data():
 		var total_precision = Util.lcm(quantity_precision, naval_quantity_precision)
 		max_quantity = min(max_quantity, floor(current_architecture.troop / total_precision) * total_precision)
 		if current_architecture.scenario.military_kinds[current_troop.military_kind.id].has_equipments():
-			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] * quantity_precision))
+			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.military_kind.id] / quantity_precision) * quantity_precision)
 		if current_architecture.scenario.military_kinds[current_troop.naval_military_kind.id].has_equipments():
-			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.naval_military_kind.id] * naval_quantity_precision))
+			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.naval_military_kind.id] / quantity_precision) * naval_quantity_precision)
 		$All/H1/V2/H2/H3/Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
 		$All/H1/V2/H2/QuantitySlider.step = total_precision
 		$All/H1/V2/H2/QuantitySlider.min_value = 0
