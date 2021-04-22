@@ -10,6 +10,8 @@ var _sorted_list
 
 var _selected_person_ids
 
+var _current_architecture
+
 func _ready():
 	_add_tab('BASIC')
 	_add_tab('MOVEMENT_DETAILS')
@@ -20,6 +22,7 @@ func _ready():
 
 	
 func _on_InfoMenu_military_kind_clicked(scenario):
+	_current_architecture = null
 	current_action = Action.LIST
 	show_data(scenario.military_kinds.values())
 
@@ -65,6 +68,9 @@ func _populate_basic_data(mk_list: Array, action):
 	item_list.add_child(_title_sorting(tr('INITIATIVE'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('MAX_QUANTITY_MULITPLIER'), self, "_on_title_sorting_click", mk_list))
 	item_list.add_child(_title_sorting(tr('AMOUNT_PER_SOLDIER'), self, "_on_title_sorting_click", mk_list))
+	if _current_architecture != null:
+		item_list.columns += 1
+		item_list.add_child(_title_sorting(tr('AMOUNT_IN_ARCHITECTURE'), self, "_on_title_sorting_click", mk_list))
 	match _current_order:
 		_sorting_order.DESC:
 			_sorted_list = _sorting_list(mk_list.duplicate())
@@ -84,6 +90,8 @@ func _populate_basic_data(mk_list: Array, action):
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.initiative), self, mk, cb))
 		item_list.add_child(_clickable_label_with_long_pressed_event("x" + str(mk.max_quantity_multiplier), self, mk, cb))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(mk.amount_to_troop_ratio), self, mk, cb))
+		if _current_architecture != null:
+			item_list.add_child(_clickable_label_with_long_pressed_event(str(_current_architecture.get_equipment_text(mk)), self, mk, cb))
 
 func _populate_movement_details_data(mk_list: Array, action):
 	if mk_list.size() <= 0: 
@@ -171,6 +179,20 @@ func __get_compare_value(_clicked_label, a, b):
 	elif _clicked_label == tr("MAX_QUANTITY_MULITPLIER"):
 		a1 = a.max_quantity_multiplier
 		b1 = b.max_quantity_multiplier
+	elif _clicked_label == tr('AMOUNT_IN_ARCHITECTURE'):
+		if _current_architecture != null:
+			if a.has_equipments():
+				a1 = _current_architecture.equipments[a.id]
+			else:
+				a1 = 0
+			if b.has_equipments():
+				b1 = _current_architecture.equipments[b.id]
+			else:
+				b1 = 0
+		else:
+			a1 = 0
+			b1 = 0
+		
 	return [a1, b1]
 
 func _on_Confirm_pressed():
@@ -188,6 +210,7 @@ func _on_Confirm_pressed():
 	._on_Confirm_pressed()
 
 func _on_PersonList_person_selected(task, arch, selected_person_ids):
+	_current_architecture = arch
 	match task:
 		PersonList.Action.PRODUCE_EQUIPMENT:
 			current_action = Action.PRODUCE_EQUIPMENT
@@ -205,6 +228,7 @@ func __on_clickable_label_click(label, receiver, object, checkbox):
 			_checkbox_change_status(checkbox)
 
 func _on_CreateTroop_select_military_kind(arch, military_kinds, naval):
+	_current_architecture = arch
 	if naval:
 		current_action = Action.SELECT_TROOP_NAVAL_KIND
 	else:

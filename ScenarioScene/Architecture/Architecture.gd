@@ -311,6 +311,12 @@ func get_offence():
 		base *= scenario.scenario_config.ai_troop_offence_rate
 		
 	return base
+	
+func get_equipment_text(military_kind):
+	if military_kind.has_equipments():
+		return str(equipments[military_kind.id])
+	else:
+		return "----"
 
 func get_total_equipments():
 	var r = 0
