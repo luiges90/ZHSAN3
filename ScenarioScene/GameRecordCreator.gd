@@ -328,7 +328,7 @@ func person_convince_failure(person, other_person):
 		}))
 
 func person_move_complete(person):
-	if person.get_belonged_faction().player_controlled:
+	if person.get_belonged_faction() != null and person.get_belonged_faction().player_controlled:
 		var faction = person.get_belonged_faction()
 		var fcolor = faction.color if faction != null else Color.white
 		call_deferred("emit_signal", "add_game_record", 

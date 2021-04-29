@@ -484,6 +484,7 @@ func __connect_signals_for_creating_troop(troop):
 	troop.connect("target_troop_destroyed", $GameRecordCreator, "_on_troop_target_troop_destroyed")	
 	troop.connect("start_stunt", $GameRecordCreator, "_on_troop_start_stunt")
 	
+	
 	_on_troop_created(troop, troop.map_position)
 	
 

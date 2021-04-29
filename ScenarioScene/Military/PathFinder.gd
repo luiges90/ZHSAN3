@@ -94,7 +94,11 @@ func get_stored_path_to(position) -> Array:
 		return _stored_to_ai_path[position]
 		
 	if _stored_paths.size() > 0:
-		return _stored_paths[position] 
+		if position in _stored_paths:
+			return _stored_paths[position] 
+		else:
+			push_warning(str(position) + ' not found in movement area')
+			return []
 	else:
 		get_movement_area()
 		if position in _stored_paths:
