@@ -195,6 +195,7 @@ ETA,ETA,需时天数,需時天數
 CAPITAL_NAME,Capital,首都,首都
 LOYALTY,Loyalty,忠诚度,忠誠度
 SE_ENABLED,Sound Effect,启用音效,啟用音效
+BGM_ENABLED,BGM,启用背景音乐,啟用背景音樂
 TROOP_ANIMATION_SPEED,Troop Animation Speed,部队动画速度,部隊動畫速度
 DIALOG_SHOW_TIME,Dialog showing time length,对话显示时间,對話顯示時間
 BUBBLE_SHOW_TIME,Dialog Bubbles showing time length,气泡对话显示时间,氣泡對話顯示時間

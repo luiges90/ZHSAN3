@@ -2,6 +2,7 @@ extends Node
 
 var day_per_turn = 3
 
+var bgm_enabled = true
 var se_enabled = true
 
 var enable_troop_animations = true
@@ -32,6 +33,7 @@ func load_game_config():
 	if obj != null:
 		GameConfig.day_per_turn = obj["day_per_turn"]
 	
+		GameConfig.bgm_enabled = Util.dict_try_get(obj, "bgm_enabled", true)
 		GameConfig.se_enabled = obj["se_enabled"]
 	
 		GameConfig.enable_troop_animations = obj["enable_troop_animations"]
@@ -63,6 +65,7 @@ func save_game_config():
 	var obj = {
 		"day_per_turn": GameConfig.day_per_turn,
 
+		"bgm_enabled": GameConfig.bgm_enabled,
 		"se_enabled": GameConfig.se_enabled,
 
 		"enable_troop_animations": GameConfig.enable_troop_animations,

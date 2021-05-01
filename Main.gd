@@ -56,6 +56,7 @@ func _register_date_runner():
 	$UICanvas/UIMain/Toolbar.connect("start_date_runner", $Scenario/DateRunner, "_on_start_date_runner")
 	$UICanvas/UIMain/Toolbar.connect("stop_date_runner", $Scenario/DateRunner, "_on_stop_date_runner")
 	$Scenario/DateRunner.connect("day_passed", $UICanvas/UIMain/Toolbar, "_on_day_passed")
+	$Scenario/DateRunner.connect("season_passed", $UICanvas/UIMain/BGM, "_on_season_passed")
 	$Scenario/DateRunner.connect("date_runner_stopped", $UICanvas/UIMain, "_on_date_runner_stopped")
 	
 func _register_lists():
@@ -114,5 +115,6 @@ func _all_loaded():
 	connect("all_loaded", $Scenario, "_on_all_loaded")
 	connect("all_loaded", $Scenario/DateRunner, "_on_all_loaded")
 	connect("all_loaded", $UICanvas/UIMain/FactionSurvey, "_on_all_loaded", [$Scenario])
+	connect("all_loaded", $UICanvas/UIMain/BGM, "_on_all_loaded", [$Scenario])
 	
 	call_deferred("emit_signal", "all_loaded")

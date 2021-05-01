@@ -760,7 +760,7 @@ func ___on_day_passed_thread(_unused):
 	__day_passed_finished = true
 
 	
-func _on_month_passed():
+func _on_month_passed(_month):
 	for faction in factions.values():
 		faction.month_event()
 		
@@ -891,6 +891,9 @@ func get_living_persons():
 	
 func get_year():
 	return ($DateRunner as DateRunner).year
+	
+func get_season():
+	return ($DateRunner as DateRunner).get_season()
 	
 ########################################
 #          Data Management             #

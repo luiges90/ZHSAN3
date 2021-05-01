@@ -5,6 +5,7 @@ extends Panel
 func _ready():
 	GameConfig.load_game_config()
 
+	$G/BGM.pressed = GameConfig.bgm_enabled
 	$G/SE.pressed = GameConfig.se_enabled
 	$G/TroopAnimation.pressed = GameConfig.enable_troop_animations
 	$G/TroopAnimationSpeed.text = str(GameConfig.troop_animation_speed)
@@ -21,6 +22,7 @@ func _on_Cancel_pressed():
 
 
 func _on_Confirm_pressed():
+	GameConfig.bgm_enabled = $G/BGM.pressed
 	GameConfig.se_enabled = $G/SE.pressed
 	GameConfig.enable_troop_animations = $G/TroopAnimation.pressed
 	GameConfig.troop_animation_speed = int($G/TroopAnimationSpeed.text)

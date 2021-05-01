@@ -39,9 +39,9 @@ func _on_start_date_runner(day_count):
 		if day > 30:
 			day -= 30
 			month += 1
-			call_deferred("emit_signal", "month_passed")
+			call_deferred("emit_signal", "month_passed", month)
 			if month == 3 or month == 6 or month == 9 or month == 12:
-				call_deferred("emit_signal", "season_passed")
+				call_deferred("emit_signal", "season_passed", get_season())
 			if month > 12:
 				month -= 12
 				year += 1

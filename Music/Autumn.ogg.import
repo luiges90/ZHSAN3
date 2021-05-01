@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Autumn.ogg-2551f903f20e3c0d349975a13930248f.oggstr"
+
+[deps]
+
+source_file="res://Music/Autumn.ogg"
+dest_files=[ "res://.import/Autumn.ogg-2551f903f20e3c0d349975a13930248f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
