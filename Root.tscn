@@ -166,6 +166,7 @@ stream = ExtResource( 9 )
 stream = ExtResource( 11 )
 volume_db = -20.0
 autoplay = true
+
 [connection signal="pressed" from="MainMenu/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="MainMenu/LoadGame" to="." method="_on_LoadGame_pressed"]
 [connection signal="pressed" from="MainMenu/Options" to="." method="_on_Options_pressed"]

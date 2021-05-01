@@ -505,7 +505,7 @@ func change_faction(to_section):
 				# TODO penalties, signal
 
 	# redirect all resource packs
-	if old_faction != null:
+	if old_faction != null and move_to != null:
 		for p in _resource_packs:
 			p.fund *= _transport_loss(move_to)
 			p.food *= _transport_loss(move_to)
