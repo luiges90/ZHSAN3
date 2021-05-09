@@ -699,6 +699,14 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
 
                     title_level = max([0] + [e['Value']['Level'] for e in common['AllTitles']['Titles'] if e['Key'] in [int(x) for x in filter(None, k['RealTitlesString'].split(' '))]])
                     converted_specials = convert_specials(k, title_level)
+
+                    close_ids = [x['Value'] for x in obj['CloseIds'] if str(x['Key']) == str(k['ID'])]
+                    close_ids = [] if len(close_ids) == 0 else close_ids[0]
+                    hated_ids = [x['Value'] for x in obj['HatedIds'] if str(x['Key']) == str(k['ID'])]
+                    hated_ids = [] if len(hated_ids) == 0 else hated_ids[0]
+                    person_relations = {x: 50 for x in close_ids}.copy()
+                    person_relations.update({x: -50 for x in hated_ids})
+
                     r.append({
                         "_Id": k['ID'],
                         "Status": status,
@@ -743,7 +751,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                         "Ideal": k['Ideal'],
                         "LoyaltyShift": 0,
                         "Ambition": k['Ambition'] * 20 + 10,
-                        "Morality": k['PersonalLoyalty'] * 20 + 10
+                        "Morality": k['PersonalLoyalty'] * 20 + 10,
+                        "PersonRelations": person_relations
                     })
                 fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
                 

@@ -145,7 +145,7 @@ static func dict_try_get(dict: Dictionary, key, default):
 	else:
 		return default
 		
-static func dict_inc(dict: Dictionary, key, value: int):
+static func dict_inc(dict: Dictionary, key, value):
 	if dict.has(key):
 		dict[key] += value
 	else:
