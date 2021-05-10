@@ -417,7 +417,7 @@ func get_biography_text():
 		return ""
 
 func get_person_relation(other):
-	return 50 - get_ideal_difference(other) + Util.dict_try_get(person_relations, other.id, 0)
+	return 50 - get_ideal_difference(other) + Util.dict_try_get(person_relations, other.id, {'value': 0})['value']
 
 #####################################
 #         Getters / Abilities       #
@@ -741,7 +741,7 @@ func get_loyalty():
 		return 999
 	
 	var loyalty = 110
-	loyalty -= get_ideal_difference(leader) / 3
+	loyalty += get_person_relation(leader) / 3
 
 	loyalty += get_morality() / 5 - 10
 	loyalty -= get_ambition() / 10 - 5
@@ -1071,6 +1071,20 @@ func day_event():
 		if randf() < 1 / ((75 - ideal_diff) / 15.0 + 5):
 			if loyalty_shift > 0:
 				loyalty_shift -= 1
+
+	# relation decay
+	for p in person_relations.duplicate():
+		if person_relations['value'] > 0:
+			person_relations['value'] -= person_relations['decay']
+			if person_relations['value'] <= 0:
+				person_relations.erase(p)
+		elif person_relations['value'] < 0:
+			person_relations['value'] += person_relations['decay']
+			if person_relations['value'] >= 0:
+				person_relations.erase(p)
+		else:
+			person_relations.erase(p)
+				
 			
 	# check death
 	if get_location() != null and scenario.get_year() >= get_expected_death_year() and randf() < 1 / 240.0:
