@@ -232,3 +232,4 @@ DELIVERING_FUND,Fund under delivery,正运送资金,正運送資金
 DELIVERING_FOOD,Food under delivery,正运送粮草,正運送糧草
 DELIVERING_TROOP,Troop under delivery,正运送士兵,正運送士兵
 RESOURCE_PACK_ITEM,"{amount} in {day} turns, ",{day}回合{amount}；,{day}回合{amount}；
+RELATION_TO_LEADER,"Relation to Leader",对君主关系,對君主關係

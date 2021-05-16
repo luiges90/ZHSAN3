@@ -417,7 +417,13 @@ func get_biography_text():
 		return ""
 
 func get_person_relation(other):
-	return 50 - get_ideal_difference(other) + Util.dict_try_get(person_relations, other.id, {'value': 0})['value']
+	if self == other:
+		return 100
+	return int(50 - get_ideal_difference(other) + Util.dict_try_get(person_relations, other.id, {'value': 0})['value'])
+
+func get_person_relation_to_leader():
+	var faction = get_belonged_faction()
+	return get_person_relation(faction.get_leader()) if faction != null else 0
 
 #####################################
 #         Getters / Abilities       #

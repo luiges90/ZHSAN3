@@ -408,11 +408,12 @@ func _populate_personal_relation_data(person_list: Array, action):
 	var sorted_list = person_list # sorted person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 6
+		item_list.columns = 7
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 5
+		item_list.columns = 6
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
+	item_list.add_child(_title_sorting(tr('RELATION_TO_LEADER'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('FATHER'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('MOTHER'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('SPOUSE'), self, "_on_title_sorting_click", person_list))
@@ -428,6 +429,7 @@ func _populate_personal_relation_data(person_list: Array, action):
 			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_person_relation_to_leader()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_father_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_mother_name(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_spouse_names(), self, person, checkbox))
@@ -559,6 +561,9 @@ func __get_compare_value(_clicked_label, a, b):
 	elif _clicked_label == tr("SIEGE_WEAPON_EXPERIENCE"):
 		a1 = a.get_military_type_experience(MilitaryKind.MilitaryType.SIEGE)
 		b1 = b.get_military_type_experience(MilitaryKind.MilitaryType.SIEGE)
+	elif _clicked_label == tr('RELATION_TO_LEADER'):
+		a1 = a.get_person_relation_to_leader()
+		b1 = b.get_person_relation_to_leader()
 	return [a1, b1]
 
 func _on_Confirm_pressed():
