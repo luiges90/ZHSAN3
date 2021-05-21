@@ -1,0 +1,874 @@
+[
+  {
+    "ArchitectureList": [
+      0
+    ],
+    "Name": "洛阳军区",
+    "TroopList": [],
+    "_Id": 0
+  },
+  {
+    "ArchitectureList": [
+      5
+    ],
+    "Name": "许县军区",
+    "TroopList": [],
+    "_Id": 1
+  },
+  {
+    "ArchitectureList": [
+      84
+    ],
+    "Name": "江州军区",
+    "TroopList": [],
+    "_Id": 2
+  },
+  {
+    "ArchitectureList": [
+      49
+    ],
+    "Name": "柴桑军区",
+    "TroopList": [],
+    "_Id": 3
+  },
+  {
+    "ArchitectureList": [
+      168
+    ],
+    "Name": "温县军区",
+    "TroopList": [],
+    "_Id": 4
+  },
+  {
+    "ArchitectureList": [
+      134
+    ],
+    "Name": "信都军区",
+    "TroopList": [],
+    "_Id": 5
+  },
+  {
+    "ArchitectureList": [
+      136
+    ],
+    "Name": "南皮军区",
+    "TroopList": [],
+    "_Id": 6
+  },
+  {
+    "ArchitectureList": [
+      110
+    ],
+    "Name": "临泾军区",
+    "TroopList": [],
+    "_Id": 7
+  },
+  {
+    "ArchitectureList": [
+      144
+    ],
+    "Name": "土垠军区",
+    "TroopList": [],
+    "_Id": 8
+  },
+  {
+    "ArchitectureList": [
+      127
+    ],
+    "Name": "邺县军区",
+    "TroopList": [],
+    "_Id": 9
+  },
+  {
+    "ArchitectureList": [
+      80
+    ],
+    "Name": "成都军区",
+    "TroopList": [],
+    "_Id": 10
+  },
+  {
+    "ArchitectureList": [
+      9
+    ],
+    "Name": "襄阳军区",
+    "TroopList": [],
+    "_Id": 11
+  },
+  {
+    "ArchitectureList": [
+      141
+    ],
+    "Name": "蓟县军区",
+    "TroopList": [],
+    "_Id": 12
+  },
+  {
+    "ArchitectureList": [
+      40
+    ],
+    "Name": "沛县军区",
+    "TroopList": [],
+    "_Id": 13
+  },
+  {
+    "ArchitectureList": [
+      106
+    ],
+    "Name": "槐里军区",
+    "TroopList": [],
+    "_Id": 14
+  },
+  {
+    "ArchitectureList": [
+      113
+    ],
+    "Name": "襄武军区",
+    "TroopList": [],
+    "_Id": 15
+  },
+  {
+    "ArchitectureList": [
+      74
+    ],
+    "Name": "龙编军区",
+    "TroopList": [],
+    "_Id": 16
+  },
+  {
+    "ArchitectureList": [
+      35
+    ],
+    "Name": "郯县军区",
+    "TroopList": [],
+    "_Id": 17
+  },
+  {
+    "ArchitectureList": [
+      23
+    ],
+    "Name": "寿春军区",
+    "TroopList": [],
+    "_Id": 18
+  },
+  {
+    "ArchitectureList": [
+      29
+    ],
+    "Name": "都昌军区",
+    "TroopList": [],
+    "_Id": 19
+  },
+  {
+    "ArchitectureList": [
+      147
+    ],
+    "Name": "襄平军区",
+    "TroopList": [],
+    "_Id": 20
+  },
+  {
+    "ArchitectureList": [
+      31
+    ],
+    "Name": "定陶军区",
+    "TroopList": [],
+    "_Id": 21
+  },
+  {
+    "ArchitectureList": [
+      43
+    ],
+    "Name": "建业军区",
+    "TroopList": [],
+    "_Id": 22
+  },
+  {
+    "ArchitectureList": [
+      45
+    ],
+    "Name": "山阴军区",
+    "TroopList": [],
+    "_Id": 23
+  },
+  {
+    "ArchitectureList": [
+      174
+    ],
+    "Name": "乌程军区",
+    "TroopList": [],
+    "_Id": 24
+  },
+  {
+    "ArchitectureList": [
+      100
+    ],
+    "Name": "南郑军区",
+    "TroopList": [],
+    "_Id": 25
+  },
+  {
+    "ArchitectureList": [
+      17
+    ],
+    "Name": "陈留军区",
+    "TroopList": [],
+    "_Id": 26
+  },
+  {
+    "ArchitectureList": [
+      11
+    ],
+    "Name": "弘农军区",
+    "TroopList": [],
+    "_Id": 27
+  },
+  {
+    "ArchitectureList": [
+      137
+    ],
+    "Name": "真定军区",
+    "TroopList": [],
+    "_Id": 28
+  },
+  {
+    "ArchitectureList": [
+      129
+    ],
+    "Name": "晋阳军区",
+    "TroopList": [],
+    "_Id": 29
+  },
+  {
+    "ArchitectureList": [
+      94
+    ],
+    "Name": "梇栋军区",
+    "TroopList": [],
+    "_Id": 30
+  },
+  {
+    "ArchitectureList": [
+      160
+    ],
+    "Name": "白狼山军区",
+    "TroopList": [],
+    "_Id": 31
+  },
+  {
+    "ArchitectureList": [
+      102
+    ],
+    "Name": "下辨军区",
+    "TroopList": [],
+    "_Id": 32
+  },
+  {
+    "ArchitectureList": [
+      159
+    ],
+    "Name": "东部鲜卑军区",
+    "TroopList": [],
+    "_Id": 33
+  },
+  {
+    "ArchitectureList": [
+      161
+    ],
+    "Name": "夫余军区",
+    "TroopList": [],
+    "_Id": 34
+  },
+  {
+    "ArchitectureList": [
+      149
+    ],
+    "Name": "丸都军区",
+    "TroopList": [],
+    "_Id": 35
+  },
+  {
+    "ArchitectureList": [
+      93
+    ],
+    "Name": "南蛮军区",
+    "TroopList": [],
+    "_Id": 36
+  },
+  {
+    "ArchitectureList": [
+      114
+    ],
+    "Name": "羌胡军区",
+    "TroopList": [],
+    "_Id": 37
+  },
+  {
+    "ArchitectureList": [
+      48
+    ],
+    "Name": "侯官军区",
+    "TroopList": [],
+    "_Id": 38
+  },
+  {
+    "ArchitectureList": [
+      155
+    ],
+    "Name": "盛乐军区",
+    "TroopList": [],
+    "_Id": 39
+  },
+  {
+    "ArchitectureList": [
+      123
+    ],
+    "Name": "美稷军区",
+    "TroopList": [],
+    "_Id": 40
+  },
+  {
+    "ArchitectureList": [
+      64
+    ],
+    "Name": "郴县军区",
+    "TroopList": [],
+    "_Id": 41
+  },
+  {
+    "ArchitectureList": [
+      60
+    ],
+    "Name": "临湘军区",
+    "TroopList": [],
+    "_Id": 42
+  },
+  {
+    "ArchitectureList": [
+      61
+    ],
+    "Name": "临沅军区",
+    "TroopList": [],
+    "_Id": 43
+  },
+  {
+    "ArchitectureList": [
+      63
+    ],
+    "Name": "泉陵军区",
+    "TroopList": [],
+    "_Id": 44
+  },
+  {
+    "ArchitectureList": [
+      158
+    ],
+    "Name": "宛陵军区",
+    "TroopList": [],
+    "_Id": 45
+  },
+  {
+    "ArchitectureList": [
+      6
+    ],
+    "Name": "谯县军区",
+    "TroopList": [],
+    "_Id": 46
+  },
+  {
+    "ArchitectureList": [
+      86
+    ],
+    "Name": "永安军区",
+    "TroopList": [],
+    "_Id": 47
+  },
+  {
+    "ArchitectureList": [
+      58
+    ],
+    "Name": "夷洲军区",
+    "TroopList": [],
+    "_Id": 48
+  },
+  {
+    "ArchitectureList": [
+      103
+    ],
+    "Name": "阴平军区",
+    "TroopList": [],
+    "_Id": 49
+  },
+  {
+    "ArchitectureList": [
+      24
+    ],
+    "Name": "合肥军区",
+    "TroopList": [],
+    "_Id": 50
+  },
+  {
+    "ArchitectureList": [
+      91
+    ],
+    "Name": "味县军区",
+    "TroopList": [],
+    "_Id": 51
+  },
+  {
+    "ArchitectureList": [
+      71
+    ],
+    "Name": "合浦军区",
+    "TroopList": [],
+    "_Id": 52
+  },
+  {
+    "ArchitectureList": [
+      98
+    ],
+    "Name": "梓潼军区",
+    "TroopList": [],
+    "_Id": 53
+  },
+  {
+    "ArchitectureList": [
+      68
+    ],
+    "Name": "临江军区",
+    "TroopList": [],
+    "_Id": 54
+  },
+  {
+    "ArchitectureList": [
+      162
+    ],
+    "Name": "陈县军区",
+    "TroopList": [],
+    "_Id": 55
+  },
+  {
+    "ArchitectureList": [
+      62
+    ],
+    "Name": "湘南军区",
+    "TroopList": [],
+    "_Id": 56
+  },
+  {
+    "ArchitectureList": [
+      46
+    ],
+    "Name": "始新军区",
+    "TroopList": [],
+    "_Id": 57
+  },
+  {
+    "ArchitectureList": [
+      96
+    ],
+    "Name": "雒县军区",
+    "TroopList": [],
+    "_Id": 58
+  },
+  {
+    "ArchitectureList": [
+      105
+    ],
+    "Name": "长安军区",
+    "TroopList": [],
+    "_Id": 59
+  },
+  {
+    "ArchitectureList": [
+      190
+    ],
+    "Name": "高陵军区",
+    "TroopList": [],
+    "_Id": 60
+  },
+  {
+    "ArchitectureList": [
+      143
+    ],
+    "Name": "渔阳军区",
+    "TroopList": [],
+    "_Id": 61
+  },
+  {
+    "ArchitectureList": [
+      2
+    ],
+    "Name": "金城军区",
+    "TroopList": [],
+    "_Id": 62
+  },
+  {
+    "ArchitectureList": [
+      178
+    ],
+    "Name": "成固军区",
+    "TroopList": [],
+    "_Id": 63
+  },
+  {
+    "ArchitectureList": [
+      187
+    ],
+    "Name": "枹罕军区",
+    "TroopList": [],
+    "_Id": 64
+  },
+  {
+    "ArchitectureList": [
+      112
+    ],
+    "Name": "冀县军区",
+    "TroopList": [],
+    "_Id": 65
+  },
+  {
+    "ArchitectureList": [
+      126
+    ],
+    "Name": "平阳军区",
+    "TroopList": [],
+    "_Id": 66
+  },
+  {
+    "ArchitectureList": [
+      66
+    ],
+    "Name": "番禹军区",
+    "TroopList": [],
+    "_Id": 67
+  },
+  {
+    "ArchitectureList": [
+      213
+    ],
+    "Name": "泾县军区",
+    "TroopList": [],
+    "_Id": 68
+  },
+  {
+    "ArchitectureList": [
+      180
+    ],
+    "Name": "郪县军区",
+    "TroopList": [],
+    "_Id": 69
+  },
+  {
+    "ArchitectureList": [
+      22
+    ],
+    "Name": "皖县军区",
+    "TroopList": [],
+    "_Id": 70
+  },
+  {
+    "ArchitectureList": [
+      193
+    ],
+    "Name": "长子军区",
+    "TroopList": [],
+    "_Id": 71
+  },
+  {
+    "ArchitectureList": [
+      53
+    ],
+    "Name": "南城军区",
+    "TroopList": [],
+    "_Id": 72
+  },
+  {
+    "ArchitectureList": [
+      51
+    ],
+    "Name": "鄱阳军区",
+    "TroopList": [],
+    "_Id": 73
+  },
+  {
+    "ArchitectureList": [
+      175
+    ],
+    "Name": "富春军区",
+    "TroopList": [],
+    "_Id": 74
+  },
+  {
+    "ArchitectureList": [
+      54
+    ],
+    "Name": "高昌军区",
+    "TroopList": [],
+    "_Id": 75
+  },
+  {
+    "ArchitectureList": [
+      214
+    ],
+    "Name": "思平军区",
+    "TroopList": [],
+    "_Id": 76
+  },
+  {
+    "ArchitectureList": [
+      125
+    ],
+    "Name": "怀县军区",
+    "TroopList": [],
+    "_Id": 77
+  },
+  {
+    "ArchitectureList": [
+      19
+    ],
+    "Name": "濮阳军区",
+    "TroopList": [],
+    "_Id": 78
+  },
+  {
+    "ArchitectureList": [
+      37
+    ],
+    "Name": "昌邑军区",
+    "TroopList": [],
+    "_Id": 79
+  },
+  {
+    "ArchitectureList": [
+      78
+    ],
+    "Name": "卢县军区",
+    "TroopList": [],
+    "_Id": 80
+  },
+  {
+    "ArchitectureList": [
+      42
+    ],
+    "Name": "广陵港军区",
+    "TroopList": [],
+    "_Id": 81
+  },
+  {
+    "ArchitectureList": [
+      203
+    ],
+    "Name": "阳翟军区",
+    "TroopList": [],
+    "_Id": 82
+  },
+  {
+    "ArchitectureList": [
+      52
+    ],
+    "Name": "南昌军区",
+    "TroopList": [],
+    "_Id": 83
+  },
+  {
+    "ArchitectureList": [
+      21
+    ],
+    "Name": "平舆军区",
+    "TroopList": [],
+    "_Id": 84
+  },
+  {
+    "ArchitectureList": [
+      34
+    ],
+    "Name": "开阳军区",
+    "TroopList": [],
+    "_Id": 85
+  },
+  {
+    "ArchitectureList": [
+      7
+    ],
+    "Name": "宛县军区",
+    "TroopList": [],
+    "_Id": 86
+  },
+  {
+    "ArchitectureList": [
+      79
+    ],
+    "Name": "乐成军区",
+    "TroopList": [],
+    "_Id": 87
+  },
+  {
+    "ArchitectureList": [
+      116
+    ],
+    "Name": "西都军区",
+    "TroopList": [],
+    "_Id": 88
+  },
+  {
+    "ArchitectureList": [
+      119
+    ],
+    "Name": "禄福军区",
+    "TroopList": [],
+    "_Id": 89
+  },
+  {
+    "ArchitectureList": [
+      118
+    ],
+    "Name": "觻得军区",
+    "TroopList": [],
+    "_Id": 90
+  },
+  {
+    "ArchitectureList": [
+      117
+    ],
+    "Name": "姑臧军区",
+    "TroopList": [],
+    "_Id": 91
+  },
+  {
+    "ArchitectureList": [
+      139
+    ],
+    "Name": "涿县军区",
+    "TroopList": [],
+    "_Id": 92
+  },
+  {
+    "ArchitectureList": [
+      215
+    ],
+    "Name": "揭阳军区",
+    "TroopList": [],
+    "_Id": 93
+  },
+  {
+    "ArchitectureList": [
+      65
+    ],
+    "Name": "临贺军区",
+    "TroopList": [],
+    "_Id": 94
+  },
+  {
+    "ArchitectureList": [
+      212
+    ],
+    "Name": "海西军区",
+    "TroopList": [],
+    "_Id": 95
+  },
+  {
+    "ArchitectureList": [
+      165
+    ],
+    "Name": "寻阳军区",
+    "TroopList": [],
+    "_Id": 96
+  },
+  {
+    "ArchitectureList": [
+      204
+    ],
+    "Name": "新息军区",
+    "TroopList": [],
+    "_Id": 97
+  },
+  {
+    "ArchitectureList": [
+      30
+    ],
+    "Name": "黄县军区",
+    "TroopList": [],
+    "_Id": 98
+  },
+  {
+    "ArchitectureList": [
+      186
+    ],
+    "Name": "狄道军区",
+    "TroopList": [],
+    "_Id": 99
+  },
+  {
+    "ArchitectureList": [
+      142
+    ],
+    "Name": "沮阳军区",
+    "TroopList": [],
+    "_Id": 100
+  },
+  {
+    "ArchitectureList": [
+      107
+    ],
+    "Name": "临晋军区",
+    "TroopList": [],
+    "_Id": 101
+  },
+  {
+    "ArchitectureList": [
+      56
+    ],
+    "Name": "山越军区",
+    "TroopList": [],
+    "_Id": 102
+  },
+  {
+    "ArchitectureList": [
+      82
+    ],
+    "Name": "武阳军区",
+    "TroopList": [],
+    "_Id": 103
+  },
+  {
+    "ArchitectureList": [
+      182
+    ],
+    "Name": "陈仓军区",
+    "TroopList": [],
+    "_Id": 104
+  },
+  {
+    "ArchitectureList": [
+      172
+    ],
+    "Name": "壶关军区",
+    "TroopList": [],
+    "_Id": 105
+  },
+  {
+    "ArchitectureList": [
+      211
+    ],
+    "Name": "东武阳军区",
+    "TroopList": [],
+    "_Id": 106
+  },
+  {
+    "ArchitectureList": [
+      44
+    ],
+    "Name": "吴县军区",
+    "TroopList": [],
+    "_Id": 107
+  },
+  {
+    "ArchitectureList": [
+      39
+    ],
+    "Name": "下邳军区",
+    "TroopList": [],
+    "_Id": 108
+  }
+]

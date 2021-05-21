@@ -1,9 +1,12 @@
+import os
 import json
 import importlib
 skill_data = importlib.import_module('scen_importer_skill_data')
 
+output_folder = '../Scenarios/280LWSG-qh'
+file_name = '280LWSG-qh'
+
 import_persons = True
-dev = True
 
 # TODO skills to add: 10800, 10810, 20000, 20010, 20020
 def convert_specials(p, title_level):
@@ -482,9 +485,9 @@ def convert_specials(p, title_level):
             "Stunts": filtered_new_stunts
         }
 
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
 
-output_folder = '../Scenarios/194QXGJ-qh'
-file_name = '194QXGJ-qh'
 with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
     all_factions = []
     common = json.loads(cfin.read(), strict=False)
@@ -588,8 +591,6 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
             
         faction_person_ids = []
         no_faction_person_ids = []
-        if dev:
-            faction_person_ids += [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388]
         with open(output_folder + '/Architectures.json', mode='w', encoding='utf-8') as fout:
             r = []
             states = {x['ID']: x['Name'] for x in obj['States']['GameObjects']}
@@ -615,7 +616,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "Name": k['Name'],
                     "Title": states[k['StateID']] + ' ' + k['Name'],
                     "MapPosition": [position_center[0], position_center[1] - 1],
-                    "PersonList": persons + no_faction_persons if not dev or k["ID"] != 64 else [1375,1376,1377,1378,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388],
+                    "PersonList": persons + no_faction_persons,
                     "Population": k['Population'],
                     "MilitaryPopulation": k['Population'] * 0.4,
                     "Fund": k['Fund'],
@@ -663,21 +664,6 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "_Id": k['ID'],
                     "Name": k['Name']
                 })
-            if dev:
-                r.append({
-                    "_Id": 100,
-                    "Name": '耒火',
-                    "Leader": 1376,
-                    "Advisor": -1,
-                    "Color": [255, 0, 255],
-                    "SectionList": [500],
-                    "PlayerControlled": False,
-                    "Capital": 64
-                })
-                all_factions.append({
-                    "_Id": 100,
-                    "Name": '耒火'
-                })
             fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
         
         if import_persons:
@@ -707,6 +693,10 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     person_relations = {x: {'value': 100, 'decay': 0.0} for x in close_ids}.copy()
                     person_relations.update({x: {'value': -100, 'decay': 0.0} for x in hated_ids})
 
+                    popularity = int(min(10000, k['Reputation'] / 5))
+                    prestige = int(min(10000, k['Reputation'] / 5))
+                    karma = k['Karma'] * 100
+
                     r.append({
                         "_Id": k['ID'],
                         "Status": status,
@@ -734,9 +724,9 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                         "PoliticsExperience": 0,
                         "GlamourExperience": 0,
                         "MilitaryTypeExperience": {},
-                        "Popularity": int(min(10000, k['Reputation'] / 5)),
-                        "Prestige": int(min(10000, k['Reputation'] / 5)),
-                        "Karma": k['Karma'] * 100,
+                        "Popularity": popularity,
+                        "Prestige": prestige,
+                        "Karma": karma,
                         "Merit": 0,
                         "Task": 0,
                         "TaskTarget": -1,

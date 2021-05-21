@@ -426,12 +426,12 @@ func get_person_relation(other):
 	result += other.get_prestige() / 500.0 # -20 to 20
 	result += other.get_popularity() / 2000.0 # 0 to 5
 	result += other.get_karma() / 1000.0 * (max(0, get_karma() / 2500.0 + 1)) # -50 to 50
-	result += min(0, -((get_ambition() + other.get_ambition()) / 20 - 5) * 6) # -30 to 0
+	result += min(0, -((get_ambition() + other.get_ambition()) / 20 - 5) * 8) # -40 to 0
 
 	result += Util.dict_try_get(person_relations, other.id, {'value': 0})['value']
 
 	if is_intimate_to(other):
-		result += 100
+		result += 50
 	if is_close_blood_to(other):
 		result += 10
 	if is_same_strain_to(other):

@@ -1,0 +1,162 @@
+[
+  {
+    "Agriculture": 0,
+    "Commerce": 0,
+    "Endurance": 900,
+    "Image": "2.png",
+    "Morale": 1000,
+    "Name": "关隘",
+    "Population": 35000,
+    "_Id": 2
+  },
+  {
+    "Agriculture": 550,
+    "Commerce": 550,
+    "Endurance": 350,
+    "Image": "3.png",
+    "Morale": 1000,
+    "Name": "港口",
+    "Population": 130000,
+    "_Id": 3
+  },
+  {
+    "Agriculture": 0,
+    "Commerce": 0,
+    "Endurance": 350,
+    "Image": "4.png",
+    "Morale": 1000,
+    "Name": "军营",
+    "Population": 35000,
+    "_Id": 4
+  },
+  {
+    "Agriculture": 0,
+    "Commerce": 0,
+    "Endurance": 4500,
+    "Image": "5.png",
+    "Morale": 1000,
+    "Name": "关隘",
+    "Population": 35000,
+    "_Id": 5
+  },
+  {
+    "Agriculture": 0,
+    "Commerce": 0,
+    "Endurance": 200,
+    "Image": "9.png",
+    "Morale": 1000,
+    "Name": "荒城",
+    "Population": 50000,
+    "_Id": 9
+  },
+  {
+    "Agriculture": 200,
+    "Commerce": 200,
+    "Endurance": 1200,
+    "Image": "10.png",
+    "Morale": 1000,
+    "Name": "关城",
+    "Population": 35000,
+    "_Id": 10
+  },
+  {
+    "Agriculture": 400,
+    "Commerce": 400,
+    "Endurance": 600,
+    "Image": "11.png",
+    "Morale": 1000,
+    "Name": "异族据点",
+    "Population": 250000,
+    "_Id": 11
+  },
+  {
+    "Agriculture": 900,
+    "Commerce": 900,
+    "Endurance": 900,
+    "Image": "12.png",
+    "Morale": 1000,
+    "Name": "都城",
+    "Population": 250000,
+    "_Id": 12
+  },
+  {
+    "Agriculture": 750,
+    "Commerce": 600,
+    "Endurance": 800,
+    "Image": "20.png",
+    "Morale": 1000,
+    "Name": "中原城池",
+    "Population": 200000,
+    "_Id": 20
+  },
+  {
+    "Agriculture": 600,
+    "Commerce": 750,
+    "Endurance": 800,
+    "Image": "21.png",
+    "Morale": 1000,
+    "Name": "河北城池",
+    "Population": 200000,
+    "_Id": 21
+  },
+  {
+    "Agriculture": 350,
+    "Commerce": 350,
+    "Endurance": 700,
+    "Image": "22.png",
+    "Morale": 1000,
+    "Name": "西北城池",
+    "Population": 150000,
+    "_Id": 22
+  },
+  {
+    "Agriculture": 600,
+    "Commerce": 600,
+    "Endurance": 700,
+    "Image": "23.png",
+    "Morale": 1000,
+    "Name": "吴越城池",
+    "Population": 200000,
+    "_Id": 23
+  },
+  {
+    "Agriculture": 700,
+    "Commerce": 550,
+    "Endurance": 900,
+    "Image": "24.png",
+    "Morale": 1000,
+    "Name": "巴蜀城池",
+    "Population": 200000,
+    "_Id": 24
+  },
+  {
+    "Agriculture": 650,
+    "Commerce": 650,
+    "Endurance": 800,
+    "Image": "25.png",
+    "Morale": 1000,
+    "Name": "荆楚城池",
+    "Population": 200000,
+    "_Id": 25
+  },
+  {
+    "Agriculture": 400,
+    "Commerce": 350,
+    "Endurance": 800,
+    "Image": "26.png",
+    "Morale": 1000,
+    "Name": "漠北城池",
+    "Population": 150000,
+    "_Id": 26
+  },
+  {
+    "Agriculture": 500,
+    "Commerce": 400,
+    "Endurance": 600,
+    "Image": "27.png",
+    "Morale": 1000,
+    "Name": "南中城池",
+    "Population": 150000,
+    "_Id": 27
+  }
+]

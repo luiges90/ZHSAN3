@@ -1,0 +1,2069 @@
+[
+	{
+		"_Id": 10,
+		"Name": "農政",
+		"Description": "農業能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_agriculture_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 20,
+		"Name": "商才",
+		"Description": "商業能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_commerce_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 30,
+		"Name": "民心",
+		"Description": "民心能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_morale_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 40,
+		"Name": "修補",
+		"Description": "耐久能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_endurance_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 50,
+		"Name": "招兵",
+		"Description": "招兵能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_recruit_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 60,
+		"Name": "操練",
+		"Description": "訓練能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_training_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 70,
+		"Name": "生產",
+		"Description": "生產兵裝能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_produce_equipment_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 100,
+		"Name": "富豪",
+		"Description": "城池資金收入每等級增加10%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "prestige_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_fund_income",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 110,
+		"Name": "米道",
+		"Description": "城池糧草收入每等級增加10%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "prestige_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_food_income",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 115,
+		"Name": "貪瀆",
+		"Description": "城池資金糧草收入每等級減少10%",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"MaxLevel": 9,
+		"Influences": [
+			{
+				"Operation": "modify_person_fund_income",
+				"Value": -0.1
+			},
+			{
+				"Operation": "modify_person_food_income",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 120,
+		"Name": "文化",
+		"Description": "城池人口增長每等級增加10%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "popularity_at_least",
+				"Value": 2500
+			},
+			{
+				"Operation": "prestige_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "karma_at_least",
+				"Value": 1000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_population_gain",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 125,
+		"Name": "野蠻",
+		"Description": "城池人口增長每等級減少10%",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"MaxLevel": 18,
+		"Influences": [
+			{
+				"Operation": "modify_person_population_gain",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 130,
+		"Name": "師君",
+		"Description": "城池的人口在戰爭的狀態下下降率減少25%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 750
+			},
+			{
+				"Operation": "popularity_at_least",
+				"Value": 500
+			},
+			{
+				"Operation": "prestige_at_least",
+				"Value": 250
+			},
+			{
+				"Operation": "karma_at_least",
+				"Value": 250
+			}
+		],
+		"MaxLevel": 4,
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_population_loss",
+				"Value": -0.25
+			}
+		]
+	},
+	{
+		"_Id": 140,
+		"Name": "行曹",
+		"Description": "減緩城池內政數值的自然下降每等級25%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"MaxLevel": 3,
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_internal_decay",
+				"Value": -0.25
+			}
+		]
+	},
+	{
+		"_Id": 145,
+		"Name": "暴政",
+		"Description": "加速城池內政數值的自然下降每等級20%、城池的人口在戰爭的狀態下下降率增加50%",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_internal_decay",
+				"Value": 0.2
+			},
+			{
+				"Operation": "modify_person_architecture_population_loss",
+				"Value": 0.5
+			}
+		]
+	},
+	{
+		"_Id": 150,
+		"Name": "眾望",
+		"Description": "執行內政時所需資金減少每等級25%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "popularity_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "prestige_at_least",
+				"Value": 500
+			},
+			{
+				"Operation": "karma_at_least",
+				"Value": 500
+			}
+		],
+		"Conditions": [],
+		"MaxLevel": 4,
+		"Influences": [
+			{
+				"Operation": "modify_person_develop_internal_cost",
+				"Value": -0.25
+			}
+		]
+	},
+	{
+		"_Id": 160,
+		"Name": "能吏",
+		"Description": "增加城市內政開發率5%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_internal_development_rate",
+				"Value": 0.05
+			}
+		]
+	},
+	{
+		"_Id": 170,
+		"Name": "軍政",
+		"Description": "增加城市軍事開發率5%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_military_development_rate",
+				"Value": 0.05
+			}
+		]
+	},
+	{
+		"_Id": 200,
+		"Name": "說服",
+		"Description": "說服能力每等級增加20%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"LearnConditions": [
+			{
+				"Operation": "stratagem_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_convince_ability",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 300,
+		"Name": "運輸",
+		"Description": "減少城市運送物資所需時間10%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"MaxLevel": 9,
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_transport_time",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 310,
+		"Name": "輜重",
+		"Description": "減緩城市運送物資損耗10%",
+		"Color": [
+			0.13,
+			0.56,
+			0.82
+		],
+		"MaxLevel": 9,
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_transport_loss",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 10000,
+		"Name": "動員",
+		"Description": "領兵數上限每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "popularity_at_least",
+				"Value": 2500
+			},
+			{
+				"Operation": "prestige_at_least",
+				"Value": 2500
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_max_troop_quantity",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10100,
+		"Name": "城守",
+		"Description": "在城池內時，城池防禦每等級增加20%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 1000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_defence",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 10110,
+		"Name": "墨守",
+		"Description": "在城池內時，城池反擊力每等級增加50%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "internal_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "politics_experience_at_least",
+				"Value": 1000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_architecture_offence",
+				"Value": 0.5
+			}
+		]
+	},
+	{
+		"_Id": 10200,
+		"Name": "步攻",
+		"Description": "作為主將時，步兵攻擊力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 0,
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 30000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 0
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_offence",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10210,
+		"Name": "步守",
+		"Description": "作為主將時，步兵防禦力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 0,
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "troop_damage_received_at_least",
+				"Value": 30000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 0
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_defence",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10220,
+		"Name": "步速",
+		"Description": "作為主將時，步兵移動速度及先行每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 0,
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 0
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10300,
+		"Name": "弓攻",
+		"Description": "作為主將時，弓兵攻擊力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 1,
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 30000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 1
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_offence",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10310,
+		"Name": "弓守",
+		"Description": "作為主將時，弓兵防禦力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 1,
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "troop_damage_received_at_least",
+				"Value": 30000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 1
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_defence",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10320,
+		"Name": "弓速",
+		"Description": "作為主將時，弓兵移動速度及先行每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 1,
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 1
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10400,
+		"Name": "騎攻",
+		"Description": "作為主將時，騎兵攻擊力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 2,
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 30000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 1
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_offence",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10410,
+		"Name": "騎守",
+		"Description": "作為主將時，騎兵防禦力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 2,
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "troop_damage_received_at_least",
+				"Value": 30000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 2
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_defence",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10420,
+		"Name": "騎速",
+		"Description": "作為主將時，騎兵移動速度及先行每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 1,
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 2
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10500,
+		"Name": "馳騁",
+		"Description": "作為主將時，在平地的騎兵移動速度及先行每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 2,
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": 2
+			},
+			{
+				"Operation": "is_terrain",
+				"Id": [
+					1,
+					2,
+					8
+				]
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10501,
+		"Name": "強行",
+		"Description": "作為主將時，步兵及弓兵的移動速度及先行每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 0,
+				"Value": 2000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 1,
+				"Value": 2000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_military_type",
+				"Id": [
+					0,
+					1
+				]
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10600,
+		"Name": "林戰",
+		"Description": "作為主將時，在森林裡部隊各項能力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 0,
+				"Value": 1000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 1,
+				"Value": 1000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 10000
+			},
+			{
+				"Operation": "troop_damage_received_at_least",
+				"Value": 10000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_terrain",
+				"Id": 3
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_offence",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_defence",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10610,
+		"Name": "山戰",
+		"Description": "作為主將時，在山地裡部隊各項能力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 0,
+				"Value": 1000
+			},
+			{
+				"Operation": "military_type_experience_at_least",
+				"military_type": 1,
+				"Value": 1000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 10000
+			},
+			{
+				"Operation": "troop_damage_received_at_least",
+				"Value": 10000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_terrain",
+				"Id": 5
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_offence",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_defence",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10700,
+		"Name": "攻城",
+		"Description": "作為主將攻擊城池時，傷害每等級增加20%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "arch_damage_dealt_at_least",
+				"Value": 10000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "target_is_architecture"
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_damage",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 10710,
+		"Name": "守戰",
+		"Description": "作為主將守城時，部隊各項能力每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 2000
+			},
+			{
+				"Operation": "arch_damage_dealt_at_least",
+				"Value": 5000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			},
+			{
+				"Operation": "is_on_own_architecture"
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_offence",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_defence",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_speed",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_troop_initiative",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 10800,
+		"Name": "捕虜",
+		"Description": "所屬部隊擊破敵部隊時容易俘虜敵將",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "capture_count_at_least",
+				"Value": 10
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_capture_ability",
+				"Value": 0.25
+			}
+		]
+	},
+	{
+		"_Id": 10810,
+		"Name": "血路",
+		"Description": "部隊被擊破時自身不易被俘虜",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "routed_count_at_least",
+				"Value": 5
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_escape_ability",
+				"Value": 0.5
+			}
+		]
+	},
+	{
+		"_Id": 10815,
+		"Name": "欠運",
+		"Description": "部隊被擊破時自身容易被俘虜",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"MaxLevel": 5,
+		"Influences": [
+			{
+				"Operation": "modify_person_escape_ability",
+				"Value": -0.2
+			}
+		]
+	},
+	{
+		"_Id": 10900,
+		"Name": "戰術",
+		"Description": "戰法持續天數每等級增加1回合",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 3000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "add_active_stunt_days",
+				"Value": 1
+			}
+		]
+	},
+	{
+		"_Id": 11000,
+		"Name": "暴擊",
+		"Description": "作為主將時，部隊暴擊率每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 2500
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 20000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "add_troop_critical",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 11010,
+		"Name": "抗暴",
+		"Description": "作為主將時，部隊抗暴擊率每等級增加10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 2500
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "troop_damage_received_at_least",
+				"Value": 20000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "add_troop_anti_critical",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 11020,
+		"Name": "爆發",
+		"Description": "作為主將時，部隊暴擊造成傷害每等級增加25%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 2500
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "troop_damage_dealt_at_least",
+				"Value": 20000
+			}
+		],
+		"Conditions": [
+			{
+				"Operation": "is_leader"
+			}
+		],
+		"Influences": [
+			{
+				"Operation": "modify_troop_critical_damage_rate",
+				"Value": 0.25
+			}
+		]
+	},
+	{
+		"_Id": 11100,
+		"Name": "鼓舞",
+		"Description": "戰鬥時，部隊士氣每天增加每等級2點",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 5000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 3000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "add_morale_per_day_during_battle",
+				"Value": 2
+			}
+		]
+	},
+	{
+		"_Id": 11110,
+		"Name": "奏樂",
+		"Description": "戰鬥時，部隊戰意每天增加每等級2點",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 5000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "add_combativity_per_day_during_battle",
+				"Value": 2
+			}
+		]
+	},
+	{
+		"_Id": 11120,
+		"Name": "一心",
+		"Description": "減輕士氣、戰意衰減每等級10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 4000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"MaxLevel": 9,
+		"Influences": [
+			{
+				"Operation": "modify_morale_loss",
+				"Value": -0.1
+			},
+			{
+				"Operation": "modify_combativity_loss",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 11125,
+		"Name": "消沉",
+		"Description": "增加士氣、戰意衰減每等級20%",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_morale_loss",
+				"Value": 0.2
+			},
+			{
+				"Operation": "modify_combativity_loss",
+				"Value": 0.2
+			}
+		]
+	},
+	{
+		"_Id": 11130,
+		"Name": "激勵",
+		"Description": "強化士氣、戰意增長每等級10%",
+		"Color": [
+			0.96,
+			0.69,
+			0.13
+		],
+		"LearnConditions": [
+			{
+				"Operation": "combat_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "command_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "strength_experience_at_least",
+				"Value": 3000
+			},
+			{
+				"Operation": "glamour_experience_at_least",
+				"Value": 4000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_morale_gain",
+				"Value": 0.1
+			},
+			{
+				"Operation": "modify_combativity_gain",
+				"Value": 0.1
+			}
+		]
+	},
+	{
+		"_Id": 20000,
+		"Name": "傳令",
+		"Description": "自身調動所需時間每等級減少10%",
+		"Color": [
+			0,
+			0.78,
+			0.11
+		],
+		"LearnConditions": [
+			{
+				"Operation": "stratagem_experience_at_least",
+				"Value": 5000
+			}
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_movement_time",
+				"Value": -0.1
+			}
+		]
+	},
+	{
+		"_Id": 20010,
+		"Name": "寡欲",
+		"Description": "自身俸祿每等級減少20%",
+		"Color": [
+			0,
+			0.78,
+			0.11
+		],
+		"LearnConditions": [
+			{
+				"Operation": "intelligence_experience_at_least",
+				"Value": 1000
+			},
+			{
+				"Operation": "karma_at_least",
+				"Value": 1500
+			},
+			{
+				"Operation": "morality_at_least",
+				"Value": 60
+			}
+		],
+		"MaxLevel": 4,
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_salary",
+				"Value": -0.2
+			}
+		]
+	},
+	{
+		"_Id": 20015,
+		"Name": "強欲",
+		"Description": "自身俸祿每等級增加25%",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_salary",
+				"Value": 0.25
+			}
+		]
+	},
+	{
+		"_Id": 20020,
+		"Name": "潛在",
+		"Description": "自身經驗每等級增加25%",
+		"Color": [
+			0,
+			0.78,
+			0.11
+		],
+		"Conditions": [],
+		"Influences": [
+			{
+				"Operation": "modify_person_experience_gain",
+				"Value": 0.25
+			}
+		]
+	},
+	{
+		"_Id": 20025,
+		"Name": "笨拙",
+		"Description": "自身經驗每等級減少25%",
+		"Color": [
+			1,
+			0,
+			0.62
+		],
+		"LearnConditions": [],
+		"Conditions": [],
+		"MaxLevel": 4,
+		"Influences": [
+			{
+				"Operation": "modify_person_experience_gain",
+				"Value": -0.25
+			}
+		]
+	}
+]

@@ -1,0 +1,1746 @@
+[
+  {
+    "Advisor": -1,
+    "Capital": 0,
+    "Color": [
+      0.0,
+      0.0,
+      0.749
+    ],
+    "Leader": 7003,
+    "Name": "汉",
+    "PlayerControlled": false,
+    "SectionList": [
+      0
+    ],
+    "_Id": 0
+  },
+  {
+    "Advisor": -1,
+    "Capital": 5,
+    "Color": [
+      0.627,
+      0.0,
+      0.0
+    ],
+    "Leader": 343,
+    "Name": "曹操",
+    "PlayerControlled": false,
+    "SectionList": [
+      1
+    ],
+    "_Id": 1
+  },
+  {
+    "Advisor": -1,
+    "Capital": 84,
+    "Color": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "Leader": 635,
+    "Name": "刘备",
+    "PlayerControlled": false,
+    "SectionList": [
+      2
+    ],
+    "_Id": 2
+  },
+  {
+    "Advisor": -1,
+    "Capital": 49,
+    "Color": [
+      0.471,
+      0.941,
+      0.0
+    ],
+    "Leader": 370,
+    "Name": "孙坚",
+    "PlayerControlled": false,
+    "SectionList": [
+      3
+    ],
+    "_Id": 3
+  },
+  {
+    "Advisor": -1,
+    "Capital": 168,
+    "Color": [
+      0.353,
+      0.58,
+      0.714
+    ],
+    "Leader": 225,
+    "Name": "司马懿",
+    "PlayerControlled": false,
+    "SectionList": [
+      4
+    ],
+    "_Id": 4
+  },
+  {
+    "Advisor": -1,
+    "Capital": 134,
+    "Color": [
+      0.039,
+      0.749,
+      0.929
+    ],
+    "Leader": 403,
+    "Name": "张角",
+    "PlayerControlled": false,
+    "SectionList": [
+      5
+    ],
+    "_Id": 5
+  },
+  {
+    "Advisor": -1,
+    "Capital": 136,
+    "Color": [
+      0.0,
+      1.0,
+      1.0
+    ],
+    "Leader": 18,
+    "Name": "袁绍",
+    "PlayerControlled": false,
+    "SectionList": [
+      6
+    ],
+    "_Id": 6
+  },
+  {
+    "Advisor": -1,
+    "Capital": 110,
+    "Color": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "Leader": 493,
+    "Name": "董卓",
+    "PlayerControlled": false,
+    "SectionList": [
+      7
+    ],
+    "_Id": 7
+  },
+  {
+    "Advisor": -1,
+    "Capital": 144,
+    "Color": [
+      0.133,
+      0.412,
+      0.992
+    ],
+    "Leader": 180,
+    "Name": "公孙瓒",
+    "PlayerControlled": false,
+    "SectionList": [
+      8
+    ],
+    "_Id": 8
+  },
+  {
+    "Advisor": -1,
+    "Capital": 127,
+    "Color": [
+      0.753,
+      0.502,
+      0.502
+    ],
+    "Leader": 120,
+    "Name": "韩馥",
+    "PlayerControlled": false,
+    "SectionList": [
+      9
+    ],
+    "_Id": 9
+  },
+  {
+    "Advisor": -1,
+    "Capital": 80,
+    "Color": [
+      0.608,
+      0.0,
+      0.306
+    ],
+    "Leader": 614,
+    "Name": "刘焉",
+    "PlayerControlled": false,
+    "SectionList": [
+      10
+    ],
+    "_Id": 10
+  },
+  {
+    "Advisor": -1,
+    "Capital": 9,
+    "Color": [
+      0.812,
+      0.894,
+      0.078
+    ],
+    "Leader": 636,
+    "Name": "刘表",
+    "PlayerControlled": false,
+    "SectionList": [
+      11
+    ],
+    "_Id": 11
+  },
+  {
+    "Advisor": -1,
+    "Capital": 141,
+    "Color": [
+      0.608,
+      0.0,
+      0.306
+    ],
+    "Leader": 618,
+    "Name": "刘虞",
+    "PlayerControlled": false,
+    "SectionList": [
+      12
+    ],
+    "_Id": 12
+  },
+  {
+    "Advisor": -1,
+    "Capital": 40,
+    "Color": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "Leader": 660,
+    "Name": "吕布",
+    "PlayerControlled": false,
+    "SectionList": [
+      13
+    ],
+    "_Id": 13
+  },
+  {
+    "Advisor": -1,
+    "Capital": 106,
+    "Color": [
+      0.0,
+      0.251,
+      0.502
+    ],
+    "Leader": 517,
+    "Name": "马腾",
+    "PlayerControlled": false,
+    "SectionList": [
+      14
+    ],
+    "_Id": 14
+  },
+  {
+    "Advisor": -1,
+    "Capital": 113,
+    "Color": [
+      0.8,
+      0.576,
+      0.784
+    ],
+    "Leader": 109,
+    "Name": "韩遂",
+    "PlayerControlled": false,
+    "SectionList": [
+      15
+    ],
+    "_Id": 15
+  },
+  {
+    "Advisor": -1,
+    "Capital": 74,
+    "Color": [
+      0.627,
+      0.0,
+      0.0
+    ],
+    "Leader": 9336,
+    "Name": "士燮",
+    "PlayerControlled": false,
+    "SectionList": [
+      16
+    ],
+    "_Id": 16
+  },
+  {
+    "Advisor": -1,
+    "Capital": 35,
+    "Color": [
+      0.325,
+      0.651,
+      0.0
+    ],
+    "Leader": 484,
+    "Name": "陶谦",
+    "PlayerControlled": false,
+    "SectionList": [
+      17
+    ],
+    "_Id": 17
+  },
+  {
+    "Advisor": -1,
+    "Capital": 23,
+    "Color": [
+      0.753,
+      0.502,
+      1.0
+    ],
+    "Leader": 16,
+    "Name": "袁术",
+    "PlayerControlled": false,
+    "SectionList": [
+      18
+    ],
+    "_Id": 18
+  },
+  {
+    "Advisor": -1,
+    "Capital": 29,
+    "Color": [
+      0.592,
+      0.294,
+      0.0
+    ],
+    "Leader": 190,
+    "Name": "孔融",
+    "PlayerControlled": false,
+    "SectionList": [
+      19
+    ],
+    "_Id": 19
+  },
+  {
+    "Advisor": -1,
+    "Capital": 147,
+    "Color": [
+      0.333,
+      0.667,
+      0.667
+    ],
+    "Leader": 182,
+    "Name": "公孙度",
+    "PlayerControlled": false,
+    "SectionList": [
+      20
+    ],
+    "_Id": 20
+  },
+  {
+    "Advisor": -1,
+    "Capital": 31,
+    "Color": [
+      0.133,
+      0.412,
+      0.992
+    ],
+    "Leader": 631,
+    "Name": "刘岱",
+    "PlayerControlled": false,
+    "SectionList": [
+      21
+    ],
+    "_Id": 21
+  },
+  {
+    "Advisor": -1,
+    "Capital": 43,
+    "Color": [
+      1.0,
+      0.267,
+      0.267
+    ],
+    "Leader": 642,
+    "Name": "刘繇",
+    "PlayerControlled": false,
+    "SectionList": [
+      22
+    ],
+    "_Id": 22
+  },
+  {
+    "Advisor": -1,
+    "Capital": 45,
+    "Color": [
+      0.753,
+      0.502,
+      0.502
+    ],
+    "Leader": 50,
+    "Name": "王朗",
+    "PlayerControlled": false,
+    "SectionList": [
+      23
+    ],
+    "_Id": 23
+  },
+  {
+    "Advisor": -1,
+    "Capital": 174,
+    "Color": [
+      0.824,
+      0.749,
+      0.804
+    ],
+    "Leader": 160,
+    "Name": "严白虎",
+    "PlayerControlled": false,
+    "SectionList": [
+      24
+    ],
+    "_Id": 24
+  },
+  {
+    "Advisor": -1,
+    "Capital": 100,
+    "Color": [
+      0.753,
+      0.502,
+      1.0
+    ],
+    "Leader": 442,
+    "Name": "张鲁",
+    "PlayerControlled": false,
+    "SectionList": [
+      25
+    ],
+    "_Id": 25
+  },
+  {
+    "Advisor": -1,
+    "Capital": 17,
+    "Color": [
+      0.471,
+      0.941,
+      0.0
+    ],
+    "Leader": 430,
+    "Name": "张邈",
+    "PlayerControlled": false,
+    "SectionList": [
+      26
+    ],
+    "_Id": 26
+  },
+  {
+    "Advisor": -1,
+    "Capital": 11,
+    "Color": [
+      0.157,
+      0.0,
+      0.318
+    ],
+    "Leader": 414,
+    "Name": "张济",
+    "PlayerControlled": false,
+    "SectionList": [
+      27
+    ],
+    "_Id": 27
+  },
+  {
+    "Advisor": -1,
+    "Capital": 137,
+    "Color": [
+      0.384,
+      0.384,
+      0.384
+    ],
+    "Leader": 398,
+    "Name": "张燕",
+    "PlayerControlled": false,
+    "SectionList": [
+      28
+    ],
+    "_Id": 28
+  },
+  {
+    "Advisor": -1,
+    "Capital": 129,
+    "Color": [
+      0.471,
+      0.941,
+      0.0
+    ],
+    "Leader": 465,
+    "Name": "丁原",
+    "PlayerControlled": false,
+    "SectionList": [
+      29
+    ],
+    "_Id": 29
+  },
+  {
+    "Advisor": -1,
+    "Capital": 94,
+    "Color": [
+      0.502,
+      0.502,
+      1.0
+    ],
+    "Leader": 568,
+    "Name": "孟获",
+    "PlayerControlled": false,
+    "SectionList": [
+      30
+    ],
+    "_Id": 30
+  },
+  {
+    "Advisor": -1,
+    "Capital": 160,
+    "Color": [
+      0.608,
+      0.0,
+      0.306
+    ],
+    "Leader": 9040,
+    "Name": "乌丸",
+    "PlayerControlled": false,
+    "SectionList": [
+      31
+    ],
+    "_Id": 31
+  },
+  {
+    "Advisor": -1,
+    "Capital": 102,
+    "Color": [
+      1.0,
+      0.267,
+      0.267
+    ],
+    "Leader": 9002,
+    "Name": "氐",
+    "PlayerControlled": false,
+    "SectionList": [
+      32
+    ],
+    "_Id": 32
+  },
+  {
+    "Advisor": -1,
+    "Capital": 159,
+    "Color": [
+      0.49,
+      0.0,
+      0.0
+    ],
+    "Leader": 9057,
+    "Name": "东部鲜卑",
+    "PlayerControlled": false,
+    "SectionList": [
+      33
+    ],
+    "_Id": 33
+  },
+  {
+    "Advisor": -1,
+    "Capital": 161,
+    "Color": [
+      1.0,
+      0.267,
+      0.267
+    ],
+    "Leader": 9007,
+    "Name": "夫余",
+    "PlayerControlled": false,
+    "SectionList": [
+      34
+    ],
+    "_Id": 34
+  },
+  {
+    "Advisor": -1,
+    "Capital": 149,
+    "Color": [
+      1.0,
+      1.0,
+      0.502
+    ],
+    "Leader": 9010,
+    "Name": "高句丽",
+    "PlayerControlled": false,
+    "SectionList": [
+      35
+    ],
+    "_Id": 35
+  },
+  {
+    "Advisor": -1,
+    "Capital": 93,
+    "Color": [
+      0.471,
+      0.941,
+      0.0
+    ],
+    "Leader": 9026,
+    "Name": "南蛮",
+    "PlayerControlled": false,
+    "SectionList": [
+      36
+    ],
+    "_Id": 36
+  },
+  {
+    "Advisor": -1,
+    "Capital": 114,
+    "Color": [
+      0.533,
+      0.0,
+      0.0
+    ],
+    "Leader": 9033,
+    "Name": "羌",
+    "PlayerControlled": false,
+    "SectionList": [
+      37
+    ],
+    "_Id": 37
+  },
+  {
+    "Advisor": -1,
+    "Capital": 48,
+    "Color": [
+      0.812,
+      0.894,
+      0.078
+    ],
+    "Leader": 9086,
+    "Name": "潘临",
+    "PlayerControlled": false,
+    "SectionList": [
+      38
+    ],
+    "_Id": 38
+  },
+  {
+    "Advisor": -1,
+    "Capital": 155,
+    "Color": [
+      0.627,
+      0.0,
+      0.0
+    ],
+    "Leader": 9067,
+    "Name": "拓跋鲜卑",
+    "PlayerControlled": false,
+    "SectionList": [
+      39
+    ],
+    "_Id": 39
+  },
+  {
+    "Advisor": -1,
+    "Capital": 123,
+    "Color": [
+      0.0,
+      1.0,
+      1.0
+    ],
+    "Leader": 9074,
+    "Name": "匈奴",
+    "PlayerControlled": false,
+    "SectionList": [
+      40
+    ],
+    "_Id": 40
+  },
+  {
+    "Advisor": -1,
+    "Capital": 64,
+    "Color": [
+      0.553,
+      0.553,
+      0.78
+    ],
+    "Leader": 431,
+    "Name": "赵范",
+    "PlayerControlled": false,
+    "SectionList": [
+      41
+    ],
+    "_Id": 41
+  },
+  {
+    "Advisor": -1,
+    "Capital": 60,
+    "Color": [
+      0.502,
+      0.502,
+      0.0
+    ],
+    "Leader": 105,
+    "Name": "韩玄",
+    "PlayerControlled": false,
+    "SectionList": [
+      42
+    ],
+    "_Id": 42
+  },
+  {
+    "Advisor": -1,
+    "Capital": 61,
+    "Color": [
+      0.0,
+      0.251,
+      0.0
+    ],
+    "Leader": 149,
+    "Name": "金旋",
+    "PlayerControlled": false,
+    "SectionList": [
+      43
+    ],
+    "_Id": 43
+  },
+  {
+    "Advisor": -1,
+    "Capital": 63,
+    "Color": [
+      0.333,
+      0.667,
+      0.667
+    ],
+    "Leader": 632,
+    "Name": "刘度",
+    "PlayerControlled": false,
+    "SectionList": [
+      44
+    ],
+    "_Id": 44
+  },
+  {
+    "Advisor": -1,
+    "Capital": 158,
+    "Color": [
+      0.471,
+      0.941,
+      0.0
+    ],
+    "Leader": 367,
+    "Name": "孙权",
+    "PlayerControlled": false,
+    "SectionList": [
+      45
+    ],
+    "_Id": 45
+  },
+  {
+    "Advisor": -1,
+    "Capital": 6,
+    "Color": [
+      0.592,
+      0.294,
+      0.0
+    ],
+    "Leader": 347,
+    "Name": "曹丕",
+    "PlayerControlled": false,
+    "SectionList": [
+      46
+    ],
+    "_Id": 46
+  },
+  {
+    "Advisor": -1,
+    "Capital": 86,
+    "Color": [
+      0.502,
+      0.0,
+      1.0
+    ],
+    "Leader": 629,
+    "Name": "刘禅",
+    "PlayerControlled": false,
+    "SectionList": [
+      47
+    ],
+    "_Id": 47
+  },
+  {
+    "Advisor": -1,
+    "Capital": 58,
+    "Color": [
+      0.0,
+      0.769,
+      0.384
+    ],
+    "Leader": 362,
+    "Name": "孙休",
+    "PlayerControlled": false,
+    "SectionList": [
+      48
+    ],
+    "_Id": 48
+  },
+  {
+    "Advisor": -1,
+    "Capital": 103,
+    "Color": [
+      0.133,
+      0.412,
+      0.992
+    ],
+    "Leader": 481,
+    "Name": "邓艾",
+    "PlayerControlled": false,
+    "SectionList": [
+      49
+    ],
+    "_Id": 49
+  },
+  {
+    "Advisor": -1,
+    "Capital": 24,
+    "Color": [
+      0.8,
+      0.576,
+      0.784
+    ],
+    "Leader": 101,
+    "Name": "毋丘俭",
+    "PlayerControlled": false,
+    "SectionList": [
+      50
+    ],
+    "_Id": 50
+  },
+  {
+    "Advisor": -1,
+    "Capital": 91,
+    "Color": [
+      0.0,
+      0.251,
+      0.0
+    ],
+    "Leader": 574,
+    "Name": "雍闿",
+    "PlayerControlled": false,
+    "SectionList": [
+      51
+    ],
+    "_Id": 51
+  },
+  {
+    "Advisor": -1,
+    "Capital": 71,
+    "Color": [
+      0.608,
+      0.0,
+      0.306
+    ],
+    "Leader": 9454,
+    "Name": "张津",
+    "PlayerControlled": false,
+    "SectionList": [
+      52
+    ],
+    "_Id": 52
+  },
+  {
+    "Advisor": -1,
+    "Capital": 98,
+    "Color": [
+      0.196,
+      0.247,
+      0.255
+    ],
+    "Leader": 263,
+    "Name": "钟会",
+    "PlayerControlled": false,
+    "SectionList": [
+      53
+    ],
+    "_Id": 53
+  },
+  {
+    "Advisor": -1,
+    "Capital": 68,
+    "Color": [
+      0.094,
+      0.439,
+      0.627
+    ],
+    "Leader": 118,
+    "Name": "甘宁",
+    "PlayerControlled": false,
+    "SectionList": [
+      54
+    ],
+    "_Id": 54
+  },
+  {
+    "Advisor": -1,
+    "Capital": 162,
+    "Color": [
+      0.024,
+      0.741,
+      0.671
+    ],
+    "Leader": 9556,
+    "Name": "刘宠",
+    "PlayerControlled": false,
+    "SectionList": [
+      55
+    ],
+    "_Id": 55
+  },
+  {
+    "Advisor": -1,
+    "Capital": 62,
+    "Color": [
+      0.0,
+      0.251,
+      0.502
+    ],
+    "Leader": 39,
+    "Name": "区星",
+    "PlayerControlled": false,
+    "SectionList": [
+      56
+    ],
+    "_Id": 56
+  },
+  {
+    "Advisor": -1,
+    "Capital": 46,
+    "Color": [
+      1.0,
+      1.0,
+      0.502
+    ],
+    "Leader": 9547,
+    "Name": "陈败",
+    "PlayerControlled": false,
+    "SectionList": [
+      57
+    ],
+    "_Id": 57
+  },
+  {
+    "Advisor": -1,
+    "Capital": 96,
+    "Color": [
+      0.753,
+      0.502,
+      0.502
+    ],
+    "Leader": 9529,
+    "Name": "马相",
+    "PlayerControlled": false,
+    "SectionList": [
+      58
+    ],
+    "_Id": 58
+  },
+  {
+    "Advisor": -1,
+    "Capital": 105,
+    "Color": [
+      0.384,
+      0.384,
+      0.384
+    ],
+    "Leader": 598,
+    "Name": "李傕",
+    "PlayerControlled": false,
+    "SectionList": [
+      59
+    ],
+    "_Id": 59
+  },
+  {
+    "Advisor": -1,
+    "Capital": 190,
+    "Color": [
+      1.0,
+      0.267,
+      0.267
+    ],
+    "Leader": 9282,
+    "Name": "骆矅",
+    "PlayerControlled": false,
+    "SectionList": [
+      60
+    ],
+    "_Id": 60
+  },
+  {
+    "Advisor": -1,
+    "Capital": 143,
+    "Color": [
+      0.439,
+      0.549,
+      0.588
+    ],
+    "Leader": 9554,
+    "Name": "张举",
+    "PlayerControlled": false,
+    "SectionList": [
+      61
+    ],
+    "_Id": 61
+  },
+  {
+    "Advisor": -1,
+    "Capital": 2,
+    "Color": [
+      0.824,
+      0.749,
+      0.804
+    ],
+    "Leader": 9557,
+    "Name": "北宫伯玉",
+    "PlayerControlled": false,
+    "SectionList": [
+      62
+    ],
+    "_Id": 62
+  },
+  {
+    "Advisor": -1,
+    "Capital": 178,
+    "Color": [
+      0.0,
+      0.459,
+      0.918
+    ],
+    "Leader": 9553,
+    "Name": "张修",
+    "PlayerControlled": false,
+    "SectionList": [
+      63
+    ],
+    "_Id": 63
+  },
+  {
+    "Advisor": -1,
+    "Capital": 187,
+    "Color": [
+      0.502,
+      0.0,
+      1.0
+    ],
+    "Leader": 9344,
+    "Name": "宋建",
+    "PlayerControlled": false,
+    "SectionList": [
+      64
+    ],
+    "_Id": 64
+  },
+  {
+    "Advisor": -1,
+    "Capital": 112,
+    "Color": [
+      0.157,
+      0.0,
+      0.318
+    ],
+    "Leader": 136,
+    "Name": "姜维",
+    "PlayerControlled": false,
+    "SectionList": [
+      65
+    ],
+    "_Id": 65
+  },
+  {
+    "Advisor": -1,
+    "Capital": 126,
+    "Color": [
+      0.243,
+      1.0,
+      0.62
+    ],
+    "Leader": 9179,
+    "Name": "白波军",
+    "PlayerControlled": false,
+    "SectionList": [
+      66
+    ],
+    "_Id": 66
+  },
+  {
+    "Advisor": -1,
+    "Capital": 66,
+    "Color": [
+      0.133,
+      0.412,
+      0.992
+    ],
+    "Leader": 72,
+    "Name": "郭马",
+    "PlayerControlled": false,
+    "SectionList": [
+      67
+    ],
+    "_Id": 67
+  },
+  {
+    "Advisor": -1,
+    "Capital": 213,
+    "Color": [
+      0.847,
+      0.69,
+      0.784
+    ],
+    "Leader": 9478,
+    "Name": "祖郎",
+    "PlayerControlled": false,
+    "SectionList": [
+      68
+    ],
+    "_Id": 68
+  },
+  {
+    "Advisor": -1,
+    "Capital": 180,
+    "Color": [
+      0.024,
+      0.741,
+      0.671
+    ],
+    "Leader": 9527,
+    "Name": "马秦",
+    "PlayerControlled": false,
+    "SectionList": [
+      69
+    ],
+    "_Id": 69
+  },
+  {
+    "Advisor": -1,
+    "Capital": 22,
+    "Color": [
+      0.412,
+      0.412,
+      0.412
+    ],
+    "Leader": 9566,
+    "Name": "陆康",
+    "PlayerControlled": false,
+    "SectionList": [
+      70
+    ],
+    "_Id": 70
+  },
+  {
+    "Advisor": -1,
+    "Capital": 193,
+    "Color": [
+      0.471,
+      0.941,
+      0.0
+    ],
+    "Leader": 437,
+    "Name": "张杨",
+    "PlayerControlled": false,
+    "SectionList": [
+      71
+    ],
+    "_Id": 71
+  },
+  {
+    "Advisor": -1,
+    "Capital": 53,
+    "Color": [
+      0.533,
+      0.0,
+      0.0
+    ],
+    "Leader": 9579,
+    "Name": "周凤",
+    "PlayerControlled": false,
+    "SectionList": [
+      72
+    ],
+    "_Id": 72
+  },
+  {
+    "Advisor": -1,
+    "Capital": 51,
+    "Color": [
+      0.384,
+      0.384,
+      0.384
+    ],
+    "Leader": 9090,
+    "Name": "彭虎",
+    "PlayerControlled": false,
+    "SectionList": [
+      73
+    ],
+    "_Id": 73
+  },
+  {
+    "Advisor": -1,
+    "Capital": 175,
+    "Color": [
+      0.8,
+      0.576,
+      0.784
+    ],
+    "Leader": 9581,
+    "Name": "彭式",
+    "PlayerControlled": false,
+    "SectionList": [
+      74
+    ],
+    "_Id": 74
+  },
+  {
+    "Advisor": -1,
+    "Capital": 54,
+    "Color": [
+      0.812,
+      0.894,
+      0.078
+    ],
+    "Leader": 9592,
+    "Name": "李桓",
+    "PlayerControlled": false,
+    "SectionList": [
+      75
+    ],
+    "_Id": 75
+  },
+  {
+    "Advisor": -1,
+    "Capital": 214,
+    "Color": [
+      0.49,
+      0.0,
+      0.0
+    ],
+    "Leader": 9593,
+    "Name": "仍弩",
+    "PlayerControlled": false,
+    "SectionList": [
+      76
+    ],
+    "_Id": 76
+  },
+  {
+    "Advisor": -1,
+    "Capital": 125,
+    "Color": [
+      0.753,
+      0.502,
+      0.502
+    ],
+    "Leader": 28,
+    "Name": "王匡",
+    "PlayerControlled": false,
+    "SectionList": [
+      77
+    ],
+    "_Id": 77
+  },
+  {
+    "Advisor": -1,
+    "Capital": 19,
+    "Color": [
+      0.812,
+      0.894,
+      0.078
+    ],
+    "Leader": 140,
+    "Name": "乔瑁",
+    "PlayerControlled": false,
+    "SectionList": [
+      78
+    ],
+    "_Id": 78
+  },
+  {
+    "Advisor": -1,
+    "Capital": 37,
+    "Color": [
+      0.847,
+      0.69,
+      0.784
+    ],
+    "Leader": 9,
+    "Name": "袁遗",
+    "PlayerControlled": false,
+    "SectionList": [
+      79
+    ],
+    "_Id": 79
+  },
+  {
+    "Advisor": -1,
+    "Capital": 78,
+    "Color": [
+      0.49,
+      0.0,
+      0.0
+    ],
+    "Leader": 555,
+    "Name": "鲍信",
+    "PlayerControlled": false,
+    "SectionList": [
+      80
+    ],
+    "_Id": 80
+  },
+  {
+    "Advisor": -1,
+    "Capital": 42,
+    "Color": [
+      0.8,
+      0.576,
+      0.784
+    ],
+    "Leader": 671,
+    "Name": "张超",
+    "PlayerControlled": false,
+    "SectionList": [
+      81
+    ],
+    "_Id": 81
+  },
+  {
+    "Advisor": -1,
+    "Capital": 203,
+    "Color": [
+      1.0,
+      1.0,
+      0.502
+    ],
+    "Leader": 184,
+    "Name": "孔伷",
+    "PlayerControlled": false,
+    "SectionList": [
+      82
+    ],
+    "_Id": 82
+  },
+  {
+    "Advisor": -1,
+    "Capital": 52,
+    "Color": [
+      0.718,
+      0.718,
+      0.718
+    ],
+    "Leader": 9569,
+    "Name": "诸葛玄",
+    "PlayerControlled": false,
+    "SectionList": [
+      83
+    ],
+    "_Id": 83
+  },
+  {
+    "Advisor": -1,
+    "Capital": 21,
+    "Color": [
+      0.78,
+      0.086,
+      0.796
+    ],
+    "Leader": 639,
+    "Name": "刘辟",
+    "PlayerControlled": false,
+    "SectionList": [
+      84
+    ],
+    "_Id": 84
+  },
+  {
+    "Advisor": -1,
+    "Capital": 34,
+    "Color": [
+      0.251,
+      0.0,
+      0.502
+    ],
+    "Leader": 346,
+    "Name": "臧霸",
+    "PlayerControlled": false,
+    "SectionList": [
+      85
+    ],
+    "_Id": 85
+  },
+  {
+    "Advisor": -1,
+    "Capital": 7,
+    "Color": [
+      0.251,
+      0.0,
+      0.502
+    ],
+    "Leader": 9197,
+    "Name": "侯音",
+    "PlayerControlled": false,
+    "SectionList": [
+      86
+    ],
+    "_Id": 86
+  },
+  {
+    "Advisor": -1,
+    "Capital": 79,
+    "Color": [
+      0.718,
+      0.718,
+      0.718
+    ],
+    "Leader": 9599,
+    "Name": "田银",
+    "PlayerControlled": false,
+    "SectionList": [
+      87
+    ],
+    "_Id": 87
+  },
+  {
+    "Advisor": -1,
+    "Capital": 116,
+    "Color": [
+      0.635,
+      0.635,
+      0.0
+    ],
+    "Leader": 9320,
+    "Name": "曲演",
+    "PlayerControlled": false,
+    "SectionList": [
+      88
+    ],
+    "_Id": 88
+  },
+  {
+    "Advisor": -1,
+    "Capital": 119,
+    "Color": [
+      0.157,
+      0.0,
+      0.318
+    ],
+    "Leader": 9603,
+    "Name": "黄华",
+    "PlayerControlled": false,
+    "SectionList": [
+      89
+    ],
+    "_Id": 89
+  },
+  {
+    "Advisor": -1,
+    "Capital": 118,
+    "Color": [
+      0.243,
+      1.0,
+      0.62
+    ],
+    "Leader": 9191,
+    "Name": "和鸾",
+    "PlayerControlled": false,
+    "SectionList": [
+      90
+    ],
+    "_Id": 90
+  },
+  {
+    "Advisor": -1,
+    "Capital": 117,
+    "Color": [
+      0.78,
+      0.086,
+      0.796
+    ],
+    "Leader": 9423,
+    "Name": "颜俊",
+    "PlayerControlled": false,
+    "SectionList": [
+      91
+    ],
+    "_Id": 91
+  },
+  {
+    "Advisor": -1,
+    "Capital": 139,
+    "Color": [
+      0.502,
+      0.0,
+      1.0
+    ],
+    "Leader": 9608,
+    "Name": "赵犊",
+    "PlayerControlled": false,
+    "SectionList": [
+      92
+    ],
+    "_Id": 92
+  },
+  {
+    "Advisor": -1,
+    "Capital": 215,
+    "Color": [
+      0.0,
+      0.251,
+      0.502
+    ],
+    "Leader": 9609,
+    "Name": "吴砀",
+    "PlayerControlled": false,
+    "SectionList": [
+      93
+    ],
+    "_Id": 93
+  },
+  {
+    "Advisor": -1,
+    "Capital": 65,
+    "Color": [
+      0.0,
+      0.404,
+      0.808
+    ],
+    "Leader": 9256,
+    "Name": "廖式",
+    "PlayerControlled": false,
+    "SectionList": [
+      94
+    ],
+    "_Id": 94
+  },
+  {
+    "Advisor": -1,
+    "Capital": 212,
+    "Color": [
+      0.039,
+      0.749,
+      0.929
+    ],
+    "Leader": 9417,
+    "Name": "薛州",
+    "PlayerControlled": false,
+    "SectionList": [
+      95
+    ],
+    "_Id": 95
+  },
+  {
+    "Advisor": -1,
+    "Capital": 165,
+    "Color": [
+      0.196,
+      0.247,
+      0.255
+    ],
+    "Leader": 9549,
+    "Name": "陈策",
+    "PlayerControlled": false,
+    "SectionList": [
+      96
+    ],
+    "_Id": 96
+  },
+  {
+    "Advisor": -1,
+    "Capital": 204,
+    "Color": [
+      0.502,
+      0.502,
+      0.0
+    ],
+    "Leader": 9552,
+    "Name": "瞿恭",
+    "PlayerControlled": false,
+    "SectionList": [
+      97
+    ],
+    "_Id": 97
+  },
+  {
+    "Advisor": -1,
+    "Capital": 30,
+    "Color": [
+      0.502,
+      0.502,
+      1.0
+    ],
+    "Leader": 9175,
+    "Name": "管承",
+    "PlayerControlled": false,
+    "SectionList": [
+      98
+    ],
+    "_Id": 98
+  },
+  {
+    "Advisor": -1,
+    "Capital": 186,
+    "Color": [
+      0.592,
+      0.294,
+      0.0
+    ],
+    "Leader": 9573,
+    "Name": "李越",
+    "PlayerControlled": false,
+    "SectionList": [
+      99
+    ],
+    "_Id": 99
+  },
+  {
+    "Advisor": -1,
+    "Capital": 142,
+    "Color": [
+      0.435,
+      1.0,
+      0.718
+    ],
+    "Leader": 9495,
+    "Name": "高艾",
+    "PlayerControlled": false,
+    "SectionList": [
+      100
+    ],
+    "_Id": 100
+  },
+  {
+    "Advisor": -1,
+    "Capital": 107,
+    "Color": [
+      0.675,
+      0.675,
+      0.8
+    ],
+    "Leader": 9574,
+    "Name": "郑甘",
+    "PlayerControlled": false,
+    "SectionList": [
+      101
+    ],
+    "_Id": 101
+  },
+  {
+    "Advisor": -1,
+    "Capital": 56,
+    "Color": [
+      0.812,
+      0.894,
+      0.078
+    ],
+    "Leader": 9085,
+    "Name": "黄乱",
+    "PlayerControlled": false,
+    "SectionList": [
+      102
+    ],
+    "_Id": 102
+  },
+  {
+    "Advisor": -1,
+    "Capital": 82,
+    "Color": [
+      0.553,
+      0.553,
+      0.78
+    ],
+    "Leader": 9322,
+    "Name": "任岐",
+    "PlayerControlled": false,
+    "SectionList": [
+      103
+    ],
+    "_Id": 103
+  },
+  {
+    "Advisor": -1,
+    "Capital": 182,
+    "Color": [
+      0.608,
+      0.0,
+      0.306
+    ],
+    "Leader": 9560,
+    "Name": "王国",
+    "PlayerControlled": false,
+    "SectionList": [
+      104
+    ],
+    "_Id": 104
+  },
+  {
+    "Advisor": -1,
+    "Capital": 172,
+    "Color": [
+      0.333,
+      0.667,
+      0.667
+    ],
+    "Leader": 164,
+    "Name": "高干",
+    "PlayerControlled": false,
+    "SectionList": [
+      105
+    ],
+    "_Id": 105
+  },
+  {
+    "Advisor": -1,
+    "Capital": 211,
+    "Color": [
+      0.635,
+      0.635,
+      0.0
+    ],
+    "Leader": 9441,
+    "Name": "臧洪",
+    "PlayerControlled": false,
+    "SectionList": [
+      106
+    ],
+    "_Id": 106
+  },
+  {
+    "Advisor": -1,
+    "Capital": 44,
+    "Color": [
+      0.094,
+      0.439,
+      0.627
+    ],
+    "Leader": 142,
+    "Name": "许贡",
+    "PlayerControlled": false,
+    "SectionList": [
+      107
+    ],
+    "_Id": 107
+  },
+  {
+    "Advisor": -1,
+    "Capital": 39,
+    "Color": [
+      0.333,
+      0.667,
+      0.667
+    ],
+    "Leader": 9118,
+    "Name": "陈瑀",
+    "PlayerControlled": false,
+    "SectionList": [
+      108
+    ],
+    "_Id": 108
+  }
+]
