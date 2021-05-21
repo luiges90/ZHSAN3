@@ -704,8 +704,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     close_ids = [] if len(close_ids) == 0 else close_ids[0]
                     hated_ids = [x['Value'] for x in obj['HatedIds'] if str(x['Key']) == str(k['ID'])]
                     hated_ids = [] if len(hated_ids) == 0 else hated_ids[0]
-                    person_relations = {x: {'value': 50, 'decay': 0.0} for x in close_ids}.copy()
-                    person_relations.update({x: {'value': 50, 'decay': 0.0} for x in hated_ids})
+                    person_relations = {x: {'value': 100, 'decay': 0.0} for x in close_ids}.copy()
+                    person_relations.update({x: {'value': -100, 'decay': 0.0} for x in hated_ids})
 
                     r.append({
                         "_Id": k['ID'],

@@ -416,10 +416,28 @@ func get_biography_text():
 	else:
 		return ""
 
+# range: -100 to 100
 func get_person_relation(other):
 	if self == other:
-		return 100
-	return int(50 - get_ideal_difference(other) + Util.dict_try_get(person_relations, other.id, {'value': 0})['value'])
+		return 999
+
+	var result = -get_ideal_difference(other) / 2.0 # -37.5 to 37.5
+
+	result += other.get_prestige() / 500.0 # -20 to 20
+	result += other.get_popularity() / 2000.0 # 0 to 5
+	result += other.get_karma() / 1000.0 * (max(0, get_karma() / 2500.0 + 1)) # -50 to 50
+	result += min(0, -((get_ambition() + other.get_ambition()) / 20 - 5) * 6) # -30 to 0
+
+	result += Util.dict_try_get(person_relations, other.id, {'value': 0})['value']
+
+	if is_intimate_to(other):
+		result += 100
+	if is_close_blood_to(other):
+		result += 10
+	if is_same_strain_to(other):
+		result += 10
+
+	return int(result)
 
 func get_person_relation_to_leader():
 	var faction = get_belonged_faction()
@@ -679,32 +697,26 @@ func get_persons_with_same_strain():
 			result.append(p)
 	return result
 	
+# range: -75 to 75
 func get_ideal_offset(other_person) -> int:
 	var r = abs(ideal - other_person.ideal)
 	if r > 75:
 		r = abs(150 - r)
 	return r
 	
+# range: -75 to 75
 func get_ideal_difference(other_person) -> float:
 	var diff = get_ideal_offset(other_person)
-	diff += abs(get_command() - other_person.get_command()) / 20.0 # 0 - 5
-	diff += abs(get_strength() - other_person.get_strength()) / 20.0 # 0 - 5
-	diff += abs(get_intelligence() - other_person.get_intelligence()) / 20.0 # 0 - 5
-	diff += abs(get_politics() - other_person.get_politics()) / 20.0 # 0 - 5
-	diff += abs(get_glamour() - other_person.get_glamour()) / 20.0 # 0 - 5
-	diff += abs(get_age() - other_person.get_age()) / 10.0 # 0 - 10
-	diff += abs(get_popularity() - other_person.get_popularity()) / 500.0 # 0 - 20
-	diff += abs(get_karma() - other_person.get_karma()) / 100.0 # 0 - 200
-	diff += abs(get_prestige() - other_person.get_prestige()) / 250.0 # 0 - 80
+	diff -= 15
+	diff += abs(get_command() - other_person.get_command()) / 50.0 # 0 - 2
+	diff += abs(get_strength() - other_person.get_strength()) / 50.0 # 0 - 2
+	diff += abs(get_intelligence() - other_person.get_intelligence()) / 50.0 # 0 - 2
+	diff += abs(get_politics() - other_person.get_politics()) / 50.0 # 0 - 2
+	diff += abs(get_glamour() - other_person.get_glamour()) / 50.0 # 0 - 2
+	diff += abs(get_age() - other_person.get_age()) / 20.0 # 0 - 5
 	diff += abs(get_ambition() - other_person.get_ambition()) / 10 # 0 - 10
-	diff += abs(get_morality() - other_person.get_morality()) / 5 # 0 - 20
+	diff += abs(get_morality() - other_person.get_morality()) / 10 # 0 - 10
 
-	if is_intimate_to(other_person):
-		diff = min(diff * 0.5, diff - 40)
-	if is_close_blood_to(other_person):
-		diff = min(diff * 0.75, diff - 15)
-	if is_same_strain_to(other_person):
-		diff = min(diff * 0.9, diff - 5)
 	return diff
 
 func is_intimate_to(other_person) -> bool:
@@ -746,18 +758,11 @@ func get_loyalty():
 	if self == leader:
 		return 999
 	
-	var loyalty = 110
-	loyalty += get_person_relation(leader) / 3
+	var loyalty = 100
+	loyalty += get_person_relation(leader)
 
-	loyalty += get_morality() / 5 - 10
-	loyalty -= get_ambition() / 10 - 5
-
-	if is_intimate_to(leader):
-		loyalty += 100
-	if is_close_blood_to(leader):
-		loyalty += 20
-	if is_same_strain_to(leader):
-		loyalty += 10
+	loyalty += get_morality() / 2 - 25
+	loyalty -= get_ambition() / 5 - 10
 	
 	var prestige = leader.get_prestige()
 	if prestige >= 0:
