@@ -312,7 +312,10 @@ func get_salary():
 	return base
 	
 func get_age():
-	return scenario.get_year() - born_year + 1
+	if scenario.scenario_config.person_natural_death:
+		return scenario.get_year() - born_year + 1
+	else:
+		return 30
 	
 func cmp_age_desc(a, b):
 	return a.get_age() > b.get_age()
