@@ -1098,9 +1098,11 @@ func day_event():
 				
 			
 	# check death
-	if get_location() != null and scenario.get_year() >= get_expected_death_year() and randf() < 1 / 240.0:
-		die()
+	if scenario.scenario_config.person_natural_death:
+		if get_location() != null and scenario.get_year() >= get_expected_death_year() and randf() < 1 / 240.0:
+			die()
 
+			
 func month_event():
 	# try to be available
 	if alive and get_location() == null and scenario.get_year() >= available_year and randf() < 0.2:

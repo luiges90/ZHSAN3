@@ -39,14 +39,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CONFIG_DIFFICULTY" type="MarginContainer" parent="Tabs"]
+[node name="BASIC" type="MarginContainer" parent="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 34.0
 
-[node name="G" type="GridContainer" parent="Tabs/CONFIG_DIFFICULTY"]
+[node name="G" type="GridContainer" parent="Tabs/BASIC"]
 margin_right = 1888.0
 margin_bottom = 846.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 2
+
+[node name="PersonNaturalDeath" type="CheckBox" parent="Tabs/BASIC/G"]
+margin_right = 232.0
+margin_bottom = 18.0
+text = "PERSON_NATURAL_DEATH"
+
+[node name="CONFIG_DIFFICULTY" type="MarginContainer" parent="Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 42.0
+
+[node name="G" type="GridContainer" parent="Tabs/CONFIG_DIFFICULTY"]
+margin_right = 1888.0
+margin_bottom = 838.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 columns = 2
@@ -159,5 +177,7 @@ text = "CANCEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="visibility_changed" from="Tabs/BASIC/G/PersonNaturalDeath" to="." method="_on_PersonNaturalDeath_visibility_changed"]
 [connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]

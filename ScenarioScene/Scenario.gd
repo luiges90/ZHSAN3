@@ -207,7 +207,8 @@ func _save_data(path):
 		"AITroopRecruitRate": scenario_config.ai_troop_recruit_rate,
 		"AITroopTrainingRate": scenario_config.ai_troop_training_rate,
 		"AITroopOffenceRate": scenario_config.ai_troop_offence_rate,
-		"AITroopDefenceRate": scenario_config.ai_troop_defence_rate
+		"AITroopDefenceRate": scenario_config.ai_troop_defence_rate,
+		"OfficerDeath": scenario_config.officer_death
 	}))
 	file.close()
 
@@ -246,16 +247,17 @@ func _load_data(path):
 		_starting_camera_zoom_to = Util.load_position(obj["Camera"]["Zoom"])
 	file.close()
 	
-	file.open(path + "/ScenarioConfig.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	scenario_config = ScenarioConfig.new()
-	scenario_config.ai_fund_rate = float(obj['AIFundRate'])
-	scenario_config.ai_food_rate = float(obj['AIFoodRate'])
-	scenario_config.ai_troop_recruit_rate = float(obj['AITroopRecruitRate'])
-	scenario_config.ai_troop_training_rate = float(obj['AITroopTrainingRate'])
-	scenario_config.ai_troop_offence_rate = float(obj['AITroopOffenceRate'])
-	scenario_config.ai_troop_defence_rate = float(obj['AITroopDefenceRate'])
-	file.close()
+	if file.open(path + "/ScenarioConfig.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		scenario_config = ScenarioConfig.new()
+		scenario_config.ai_fund_rate = float(Util.dict_try_get(obj, 'AIFundRate', 1.0))
+		scenario_config.ai_food_rate = float(Util.dict_try_get(obj, 'AIFoodRate', 1.0))
+		scenario_config.ai_troop_recruit_rate = float(Util.dict_try_get(obj, 'AITroopRecruitRate', 1.0))
+		scenario_config.ai_troop_training_rate = float(Util.dict_try_get(obj, 'AITroopTrainingRate', 1.0))
+		scenario_config.ai_troop_offence_rate = float(Util.dict_try_get(obj, 'AITroopOffenceRate', 1.0))
+		scenario_config.ai_troop_defence_rate = float(Util.dict_try_get(obj, 'AITroopDefenceRate', 1.0))
+		scenario_config.person_natural_death = Util.dict_try_get(obj, "PersonNaturalDeath", true)
+		file.close()
 	
 	file.open(path + "/Skills.json", File.READ)
 	obj = parse_json(file.get_as_text())
