@@ -424,7 +424,7 @@ func get_person_relation(other):
 	if self == other:
 		return 999
 
-	var result = -get_ideal_difference(other) / 2.0 # -37.5 to 37.5
+	var result = (75 - get_ideal_difference(other)) / 2.0 # -37.5 to 37.5
 
 	result += other.get_prestige() / 500.0 # -20 to 20
 	result += other.get_popularity() / 2000.0 # 0 to 5
