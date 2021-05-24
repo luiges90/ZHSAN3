@@ -1095,13 +1095,13 @@ func day_event():
 
 	# relation decay
 	for p in person_relations.duplicate():
-		if person_relations['value'] > 0:
-			person_relations['value'] -= person_relations['decay']
-			if person_relations['value'] <= 0:
+		if person_relations[p]['value'] > 0:
+			person_relations[p]['value'] -= person_relations[p]['decay']
+			if person_relations[p]['value'] <= 0:
 				person_relations.erase(p)
-		elif person_relations['value'] < 0:
-			person_relations['value'] += person_relations['decay']
-			if person_relations['value'] >= 0:
+		elif person_relations[p]['value'] < 0:
+			person_relations[p]['value'] += person_relations[p]['decay']
+			if person_relations[p]['value'] >= 0:
 				person_relations.erase(p)
 		else:
 			person_relations.erase(p)

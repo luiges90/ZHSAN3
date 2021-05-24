@@ -208,7 +208,7 @@ func _save_data(path):
 		"AITroopTrainingRate": scenario_config.ai_troop_training_rate,
 		"AITroopOffenceRate": scenario_config.ai_troop_offence_rate,
 		"AITroopDefenceRate": scenario_config.ai_troop_defence_rate,
-		"OfficerDeath": scenario_config.officer_death
+		"OfficerDeath": scenario_config.person_natural_death
 	}))
 	file.close()
 

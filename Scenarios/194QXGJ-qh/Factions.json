@@ -638,21 +638,5 @@
       39
     ],
     "_Id": 88
-  },
-  {
-    "Advisor": -1,
-    "Capital": 64,
-    "Color": [
-      255,
-      0,
-      255
-    ],
-    "Leader": 1376,
-    "Name": "耒火",
-    "PlayerControlled": false,
-    "SectionList": [
-      500
-    ],
-    "_Id": 100
   }
 ]

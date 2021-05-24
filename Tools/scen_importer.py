@@ -3,8 +3,8 @@ import json
 import importlib
 skill_data = importlib.import_module('scen_importer_skill_data')
 
-output_folder = '../Scenarios/280LWSG-qh'
 file_name = '280LWSG-qh'
+output_folder = '../Scenarios/' + file_name
 
 import_persons = True
 

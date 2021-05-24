@@ -28,8 +28,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "148": 100,
-      "496": 100
+      "148": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "496": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 33,
     "PoliticsExperience": 0,
@@ -80,7 +86,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "56": 100
+      "56": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -131,9 +140,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "511": 100,
-      "519": 100,
-      "635": 100
+      "511": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "519": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 86,
     "PoliticsExperience": 0,
@@ -189,8 +207,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "136": 100,
-      "649": 100
+      "136": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "649": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -239,7 +263,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "543": 100
+      "543": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 51,
     "PoliticsExperience": 0,
@@ -338,7 +365,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "558": -100
+      "558": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 57,
     "PoliticsExperience": 0,
@@ -461,7 +491,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "481": -100
+      "481": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -614,8 +647,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "136": -100,
-      "167": 100
+      "136": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "167": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 59,
     "PoliticsExperience": 0,
@@ -668,7 +707,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "635": 100
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 83,
     "PoliticsExperience": 0,
@@ -881,7 +923,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 16,
     "PoliticsExperience": 0,
@@ -940,9 +985,18 @@
     "Morality": 30,
     "MotherId": 622,
     "PersonRelations": {
-      "18": 100,
-      "343": -100,
-      "622": 100
+      "18": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "622": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 38,
     "PoliticsExperience": 0,
@@ -996,8 +1050,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "17": 100,
-      "493": -100
+      "17": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "493": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -1120,7 +1180,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "17": -100
+      "17": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 35,
     "PoliticsExperience": 0,
@@ -1327,7 +1390,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "515": -100
+      "515": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 68,
     "PoliticsExperience": 0,
@@ -1649,7 +1715,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "220": 100
+      "220": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -1701,7 +1770,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "653": 100
+      "653": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 62,
     "PoliticsExperience": 0,
@@ -1822,8 +1894,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "339": 100,
-      "460": 100
+      "339": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "460": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -2079,7 +2157,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "655": 100
+      "655": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -2282,8 +2363,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "48": 100,
-      "61": 100
+      "48": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "61": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -2395,7 +2482,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "379": -100
+      "379": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 61,
     "PoliticsExperience": 0,
@@ -2446,7 +2536,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "290": -100
+      "290": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 58,
     "PoliticsExperience": 0,
@@ -2516,8 +2609,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "98": 100,
-      "441": 100
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "441": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -2622,9 +2721,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "42": 100,
-      "57": 100,
-      "233": 100
+      "42": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "57": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "233": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 82,
     "PoliticsExperience": 0,
@@ -2679,7 +2787,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "635": -100
+      "635": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -2781,7 +2892,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "268": 100
+      "268": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 86,
     "PoliticsExperience": 0,
@@ -2834,7 +2948,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "344": 100
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 70,
     "PoliticsExperience": 0,
@@ -3041,7 +3158,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "1": 100
+      "1": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -3093,8 +3213,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "48": 100,
-      "233": 100
+      "48": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "233": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -3253,7 +3379,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "415": 100
+      "415": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -3324,7 +3453,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "42": 100
+      "42": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -3427,10 +3559,22 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "254": 100,
-      "343": 100,
-      "461": 100,
-      "641": 100
+      "254": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "461": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "641": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 84,
     "PoliticsExperience": 0,
@@ -3658,7 +3802,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "570": 100
+      "570": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 62,
     "PoliticsExperience": 0,
@@ -3784,8 +3931,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "439": 100,
-      "609": 100
+      "439": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "609": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 51,
     "PoliticsExperience": 0,
@@ -3862,7 +4015,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "409": 100
+      "409": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 41,
     "PoliticsExperience": 0,
@@ -3921,9 +4077,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "191": -100,
-      "303": -100,
-      "411": -100
+      "191": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "303": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "411": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 68,
     "PoliticsExperience": 0,
@@ -4187,8 +4352,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "78": 100,
-      "340": 100
+      "78": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "340": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -4303,11 +4474,26 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "76": 100,
-      "85": 100,
-      "336": 100,
-      "341": 100,
-      "343": 100
+      "76": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "85": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "336": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "341": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 61,
     "PoliticsExperience": 0,
@@ -4530,11 +4716,26 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "101": 100,
-      "288": 100,
-      "344": 100,
-      "416": 100,
-      "611": 100
+      "101": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "288": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "416": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "611": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 92,
     "PoliticsExperience": 0,
@@ -4585,9 +4786,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "99": 100,
-      "347": 100,
-      "570": 100
+      "99": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "347": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "570": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 65,
     "PoliticsExperience": 0,
@@ -4699,11 +4909,26 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "78": 100,
-      "336": 100,
-      "341": 100,
-      "343": 100,
-      "474": 100
+      "78": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "336": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "341": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "474": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 70,
     "PoliticsExperience": 0,
@@ -4769,8 +4994,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "136": 100,
-      "344": 100
+      "136": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 55,
     "PoliticsExperience": 0,
@@ -4838,7 +5069,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "347": 100
+      "347": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 21,
     "PoliticsExperience": 0,
@@ -4936,9 +5170,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "226": 100,
-      "228": 100,
-      "504": 100
+      "226": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "228": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "504": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -5206,8 +5449,14 @@
     "Morality": 90,
     "MotherId": 248,
     "PersonRelations": {
-      "108": 100,
-      "554": 100
+      "108": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "554": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 26,
     "PoliticsExperience": 0,
@@ -5322,7 +5571,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "550": -100
+      "550": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 52,
     "PoliticsExperience": 0,
@@ -5426,14 +5678,38 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "241": 100,
-      "290": 100,
-      "439": 100,
-      "441": 100,
-      "493": -100,
-      "533": -100,
-      "538": -100,
-      "660": -100
+      "241": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "290": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "439": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "441": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "493": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "533": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "538": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 62,
     "PoliticsExperience": 0,
@@ -5514,8 +5790,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "83": 100,
-      "570": 100
+      "83": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "570": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -5618,10 +5900,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "82": 100,
-      "288": 100,
-      "328": 100,
-      "344": 100
+      "82": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "288": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "328": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 56,
     "PoliticsExperience": 0,
@@ -5872,7 +6166,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "185": -100
+      "185": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 87,
     "PoliticsExperience": 0,
@@ -5929,7 +6226,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "434": 100
+      "434": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 58,
     "PoliticsExperience": 0,
@@ -5995,8 +6295,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "94": 100,
-      "554": 100
+      "94": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "554": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 47,
     "PoliticsExperience": 0,
@@ -6055,7 +6361,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "525": 100
+      "525": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 61,
     "PoliticsExperience": 0,
@@ -6266,9 +6575,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "163": 100,
-      "358": 100,
-      "602": 100
+      "163": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "358": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "602": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 86,
     "PoliticsExperience": 0,
@@ -6421,9 +6739,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "163": 100,
-      "365": 100,
-      "466": 100
+      "163": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "365": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "466": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 51,
     "PoliticsExperience": 0,
@@ -6537,9 +6864,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "175": -100,
-      "354": 100,
-      "651": 100
+      "175": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "354": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "651": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 18,
     "PoliticsExperience": 0,
@@ -6709,10 +7045,22 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "241": 100,
-      "441": 100,
-      "640": 100,
-      "645": 100
+      "241": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "441": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "640": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "645": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 60,
     "PoliticsExperience": 0,
@@ -6772,9 +7120,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "306": 100,
-      "366": 100,
-      "532": 100
+      "306": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "366": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "532": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 71,
     "PoliticsExperience": 0,
@@ -6828,7 +7185,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "545": 100
+      "545": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 32,
     "PoliticsExperience": 0,
@@ -6895,9 +7255,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "289": -100,
-      "452": 100,
-      "575": -100
+      "289": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "452": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "575": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 49,
     "PoliticsExperience": 0,
@@ -7074,8 +7443,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "173": 100,
-      "333": 100
+      "173": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "333": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 32,
     "PoliticsExperience": 0,
@@ -7178,7 +7553,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "276": 100
+      "276": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -7278,7 +7656,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "341": 100
+      "341": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 40,
     "PoliticsExperience": 0,
@@ -7524,14 +7905,38 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "3": 100,
-      "11": -100,
-      "86": 100,
-      "167": -100,
-      "269": -100,
-      "486": 100,
-      "539": 100,
-      "649": 100
+      "3": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "11": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "86": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "167": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "269": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "486": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "539": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "649": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 67,
     "PoliticsExperience": 0,
@@ -7722,7 +8127,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "639": 100
+      "639": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 22,
     "PoliticsExperience": 0,
@@ -7971,9 +8379,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "145": -100,
-      "343": 100,
-      "471": 100
+      "145": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "471": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 20,
     "PoliticsExperience": 0,
@@ -8031,7 +8448,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "303": -100
+      "303": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 56,
     "PoliticsExperience": 0,
@@ -8187,8 +8607,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "0": 100,
-      "496": 100
+      "0": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "496": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 19,
     "PoliticsExperience": 0,
@@ -8343,9 +8769,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "538": 100,
-      "557": 100,
-      "601": 100
+      "538": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "557": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "601": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 81,
     "PoliticsExperience": 0,
@@ -8503,8 +8938,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "185": 100,
-      "432": 100
+      "185": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "432": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 67,
     "PoliticsExperience": 0,
@@ -8682,9 +9123,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "282": 100,
-      "422": 100,
-      "564": 100
+      "282": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "422": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "564": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 84,
     "PoliticsExperience": 0,
@@ -9014,9 +9464,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "116": 100,
-      "365": 100,
-      "466": 100
+      "116": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "365": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "466": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 65,
     "PoliticsExperience": 0,
@@ -9127,7 +9586,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 87,
     "PoliticsExperience": 0,
@@ -9237,9 +9699,18 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "11": 100,
-      "136": -100,
-      "629": 100
+      "11": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "136": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "629": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 10,
     "PoliticsExperience": 0,
@@ -9337,9 +9808,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "439": 100,
-      "446": -100,
-      "660": 100
+      "439": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "446": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 46,
     "PoliticsExperience": 0,
@@ -9569,8 +10049,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "127": 100,
-      "333": 100
+      "127": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "333": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 56,
     "PoliticsExperience": 0,
@@ -9676,8 +10162,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "118": -100,
-      "636": 100
+      "118": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "636": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 38,
     "PoliticsExperience": 0,
@@ -9939,9 +10431,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "618": -100,
-      "635": 100,
-      "669": 100
+      "618": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "669": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 46,
     "PoliticsExperience": 0,
@@ -10223,9 +10724,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "154": 100,
-      "556": 100,
-      "634": 100
+      "154": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "556": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "634": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 52,
     "PoliticsExperience": 0,
@@ -10395,7 +10905,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "573": 100
+      "573": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 57,
     "PoliticsExperience": 0,
@@ -10515,7 +11028,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "582": 100
+      "582": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -10569,8 +11085,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "71": -100,
-      "411": 100
+      "71": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "411": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 55,
     "PoliticsExperience": 0,
@@ -10936,8 +11458,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "375": 100,
-      "635": 100
+      "375": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -11145,9 +11673,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "225": 100,
-      "347": 100,
-      "448": 100
+      "225": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "347": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "448": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 57,
     "PoliticsExperience": 0,
@@ -11353,10 +11890,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "280": 100,
-      "380": 100,
-      "405": 100,
-      "457": 100
+      "280": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "380": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "405": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "457": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -11464,7 +12013,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "98": 100
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 50,
     "PoliticsExperience": 0,
@@ -11630,7 +12182,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "410": 100
+      "410": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 90,
     "PoliticsExperience": 0,
@@ -11683,7 +12238,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "592": 100
+      "592": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 36,
     "PoliticsExperience": 0,
@@ -11795,7 +12353,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "233": 100
+      "233": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 83,
     "PoliticsExperience": 0,
@@ -11947,9 +12508,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "617": -100,
-      "630": 100,
-      "635": -100
+      "617": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "630": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 58,
     "PoliticsExperience": 0,
@@ -12047,10 +12617,22 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "394": 100,
-      "617": -100,
-      "630": 100,
-      "635": -100
+      "394": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "617": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "630": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -12099,7 +12681,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "30": 100
+      "30": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -12348,11 +12933,26 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "202": 100,
-      "328": 100,
-      "347": 100,
-      "411": 100,
-      "448": 100
+      "202": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "328": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "347": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "411": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "448": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 93,
     "PoliticsExperience": 0,
@@ -12446,9 +13046,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "89": 100,
-      "286": 100,
-      "542": -100
+      "89": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "286": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "542": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -12511,9 +13120,18 @@
     "Morality": 30,
     "MotherId": 418,
     "PersonRelations": {
-      "228": 100,
-      "292": 100,
-      "454": 100
+      "228": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "292": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "454": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 82,
     "PoliticsExperience": 0,
@@ -12575,8 +13193,14 @@
     "Morality": 30,
     "MotherId": 418,
     "PersonRelations": {
-      "227": 100,
-      "454": 100
+      "227": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "454": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 88,
     "PoliticsExperience": 0,
@@ -12682,7 +13306,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "350": 100
+      "350": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -12843,9 +13470,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "48": 100,
-      "57": 100,
-      "214": 100
+      "48": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "57": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "214": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 82,
     "PoliticsExperience": 0,
@@ -13057,7 +13693,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "543": -100
+      "543": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 45,
     "PoliticsExperience": 0,
@@ -13259,9 +13898,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "98": 100,
-      "121": 100,
-      "503": 100
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "121": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "503": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 33,
     "PoliticsExperience": 0,
@@ -13315,8 +13963,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "267": 100,
-      "367": 100
+      "267": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "367": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 38,
     "PoliticsExperience": 0,
@@ -13485,12 +14139,30 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "266": 100,
-      "289": -100,
-      "370": 100,
-      "466": 100,
-      "661": 100,
-      "667": 100
+      "266": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "466": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "661": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "667": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 86,
     "PoliticsExperience": 0,
@@ -13678,7 +14350,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "568": 100
+      "568": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 24,
     "PoliticsExperience": 0,
@@ -13798,7 +14473,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "367": 100
+      "367": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 60,
     "PoliticsExperience": 0,
@@ -14011,10 +14689,22 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "63": 100,
-      "276": 100,
-      "343": 100,
-      "461": 100
+      "63": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "276": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "461": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 98,
     "PoliticsExperience": 0,
@@ -14135,9 +14825,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "261": 100,
-      "454": 100,
-      "537": 100
+      "261": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "454": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "537": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -14291,7 +14990,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "276": 100
+      "276": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 88,
     "PoliticsExperience": 0,
@@ -14405,9 +15107,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "256": 100,
-      "454": 100,
-      "537": 100
+      "256": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "454": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "537": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -14522,8 +15233,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "275": 100,
-      "481": -100
+      "275": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "481": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -14686,9 +15403,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "245": 100,
-      "375": 100,
-      "387": 100
+      "245": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "375": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "387": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 77,
     "PoliticsExperience": 0,
@@ -14744,7 +15470,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "242": 100
+      "242": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 42,
     "PoliticsExperience": 0,
@@ -14793,7 +15522,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "51": 100
+      "51": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 77,
     "PoliticsExperience": 0,
@@ -14850,8 +15582,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "136": -100,
-      "289": -100
+      "136": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 71,
     "PoliticsExperience": 0,
@@ -15165,7 +15903,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "263": 100
+      "263": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -15218,10 +15959,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "129": 100,
-      "254": 100,
-      "259": 100,
-      "404": 100
+      "129": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "254": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "259": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "404": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 91,
     "PoliticsExperience": 0,
@@ -15339,7 +16092,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "511": 100
+      "511": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -15448,12 +16204,30 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "206": 100,
-      "373": -100,
-      "380": 100,
-      "405": 100,
-      "457": 100,
-      "478": -100
+      "206": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "373": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "380": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "405": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "457": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "478": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -15565,10 +16339,22 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "157": 100,
-      "422": 100,
-      "564": 100,
-      "667": 100
+      "157": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "422": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "564": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "667": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 89,
     "PoliticsExperience": 0,
@@ -15721,7 +16507,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 55,
     "PoliticsExperience": 0,
@@ -15885,12 +16674,30 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "82": 100,
-      "101": 100,
-      "344": 100,
-      "416": 100,
-      "543": -100,
-      "611": 100
+      "82": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "101": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "416": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "543": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "611": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -15952,15 +16759,42 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "124": -100,
-      "165": 100,
-      "269": -100,
-      "395": 100,
-      "452": -100,
-      "511": 100,
-      "519": 100,
-      "635": 100,
-      "652": -100
+      "124": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "165": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "269": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "452": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "511": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "519": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "652": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 95,
     "PoliticsExperience": 0,
@@ -16055,8 +16889,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "45": -100,
-      "98": 100
+      "45": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 48,
     "PoliticsExperience": 0,
@@ -16129,7 +16969,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "382": 100
+      "382": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 70,
     "PoliticsExperience": 0,
@@ -16182,7 +17025,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "227": 100
+      "227": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 26,
     "PoliticsExperience": 0,
@@ -16239,7 +17085,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "635": 100
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -16300,7 +17149,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "469": 100
+      "469": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 65,
     "PoliticsExperience": 0,
@@ -16474,7 +17326,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "570": -100
+      "570": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 56,
     "PoliticsExperience": 0,
@@ -16575,7 +17430,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "368": 100
+      "368": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 13,
     "PoliticsExperience": 0,
@@ -16624,7 +17482,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "339": 100
+      "339": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -16737,7 +17598,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "570": -100
+      "570": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 41,
     "PoliticsExperience": 0,
@@ -16788,12 +17652,30 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "18": 100,
-      "71": -100,
-      "145": -100,
-      "305": -100,
-      "475": -100,
-      "552": 100
+      "18": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "71": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "145": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "305": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "475": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "552": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -16899,7 +17781,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "303": -100
+      "303": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -16948,7 +17833,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "122": 100
+      "122": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -17469,7 +18357,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "481": 100
+      "481": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 53,
     "PoliticsExperience": 0,
@@ -17929,8 +18820,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "358": -100,
-      "386": 100
+      "358": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "386": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 61,
     "PoliticsExperience": 0,
@@ -18040,7 +18937,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "328": 100
+      "328": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 52,
     "PoliticsExperience": 0,
@@ -18091,12 +18991,30 @@
     "Morality": 50,
     "MotherId": 300,
     "PersonRelations": {
-      "52": -100,
-      "225": 100,
-      "288": -100,
-      "300": 100,
-      "327": 100,
-      "339": 100
+      "52": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "225": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "288": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "300": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "327": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "339": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 82,
     "PoliticsExperience": 0,
@@ -18354,8 +19272,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "127": 100,
-      "173": 100
+      "127": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "173": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 27,
     "PoliticsExperience": 0,
@@ -18464,7 +19388,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "471": 100
+      "471": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 68,
     "PoliticsExperience": 0,
@@ -18517,9 +19444,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "78": 100,
-      "85": 100,
-      "341": 100
+      "78": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "85": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "341": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 35,
     "PoliticsExperience": 0,
@@ -18642,7 +19578,10 @@
     "Morality": 70,
     "MotherId": 548,
     "PersonRelations": {
-      "339": 100
+      "339": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 35,
     "PoliticsExperience": 0,
@@ -18703,12 +19642,30 @@
     "Morality": 50,
     "MotherId": 548,
     "PersonRelations": {
-      "33": 100,
-      "300": 100,
-      "328": 100,
-      "338": 100,
-      "347": -100,
-      "460": 100
+      "33": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "300": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "328": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "338": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "347": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "460": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 70,
     "PoliticsExperience": 0,
@@ -18761,7 +19718,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "76": 100
+      "76": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -18822,10 +19782,22 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "78": 100,
-      "85": 100,
-      "131": 100,
-      "336": 100
+      "78": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "85": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "131": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "336": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 46,
     "PoliticsExperience": 0,
@@ -18955,15 +19927,42 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "63": 100,
-      "78": 100,
-      "85": 100,
-      "190": -100,
-      "253": -100,
-      "254": 100,
-      "471": 100,
-      "493": -100,
-      "582": -100
+      "63": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "78": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "85": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "190": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "253": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "254": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "471": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "493": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "582": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 94,
     "PoliticsExperience": 0,
@@ -19060,11 +20059,26 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "82": 100,
-      "86": 100,
-      "101": 100,
-      "225": -100,
-      "288": 100
+      "82": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "86": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "101": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "225": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "288": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -19169,7 +20183,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "360": 100
+      "360": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 56,
     "PoliticsExperience": 0,
@@ -19229,15 +20246,42 @@
     "Morality": 30,
     "MotherId": 548,
     "PersonRelations": {
-      "41": -100,
-      "52": -100,
-      "83": 100,
-      "202": 100,
-      "225": 100,
-      "336": -100,
-      "339": -100,
-      "448": 100,
-      "570": 100
+      "41": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "52": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "83": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "202": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "225": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "336": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "339": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "448": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "570": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 86,
     "PoliticsExperience": 0,
@@ -19401,7 +20445,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": 100
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -19608,7 +20655,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "118": 100
+      "118": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 62,
     "PoliticsExperience": 0,
@@ -19659,7 +20709,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "365": 100
+      "365": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 53,
     "PoliticsExperience": 0,
@@ -19818,9 +20871,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "113": 100,
-      "380": 100,
-      "386": -100
+      "113": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "380": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "386": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 71,
     "PoliticsExperience": 0,
@@ -19930,7 +20992,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "346": 100
+      "346": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 39,
     "PoliticsExperience": 0,
@@ -20040,9 +21105,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "379": -100,
-      "433": 100,
-      "562": 100
+      "379": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "433": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "562": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -20189,10 +21263,22 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "116": 100,
-      "163": 100,
-      "466": 100,
-      "493": -100
+      "116": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "163": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "466": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "493": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -20264,8 +21350,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "122": 100,
-      "532": 100
+      "122": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "532": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 84,
     "PoliticsExperience": 0,
@@ -20322,9 +21414,18 @@
     "Morality": 50,
     "MotherId": 198,
     "PersonRelations": {
-      "242": 100,
-      "250": 100,
-      "419": -100
+      "242": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "250": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "419": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 89,
     "PoliticsExperience": 0,
@@ -20394,11 +21495,26 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "1": -100,
-      "299": 100,
-      "565": -100,
-      "638": -100,
-      "666": -100
+      "1": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "299": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "565": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "638": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "666": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 6,
     "PoliticsExperience": 0,
@@ -20449,7 +21565,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "370": 100
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 71,
     "PoliticsExperience": 0,
@@ -20509,11 +21628,26 @@
     "Morality": 70,
     "MotherId": 198,
     "PersonRelations": {
-      "245": 100,
-      "375": 100,
-      "387": 100,
-      "389": 100,
-      "619": -100
+      "245": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "375": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "387": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "389": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "619": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 70,
     "PoliticsExperience": 0,
@@ -20597,7 +21731,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "602": 100
+      "602": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -20648,7 +21785,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "368": -100
+      "368": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 57,
     "PoliticsExperience": 0,
@@ -20699,9 +21839,18 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "280": -100,
-      "386": 100,
-      "543": 100
+      "280": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "386": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "543": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 26,
     "PoliticsExperience": 0,
@@ -20805,11 +21954,26 @@
     "Morality": 70,
     "MotherId": 198,
     "PersonRelations": {
-      "198": 100,
-      "266": 100,
-      "370": 100,
-      "387": 100,
-      "635": 100
+      "198": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "266": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "387": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 63,
     "PoliticsExperience": 0,
@@ -21027,10 +22191,22 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "44": -100,
-      "237": -100,
-      "478": -100,
-      "654": -100
+      "44": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "237": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "478": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "654": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 17,
     "PoliticsExperience": 0,
@@ -21079,11 +22255,26 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "206": 100,
-      "280": 100,
-      "358": 100,
-      "405": 100,
-      "457": 100
+      "206": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "280": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "358": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "405": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "457": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -21193,8 +22384,14 @@
     "Morality": 50,
     "MotherId": 198,
     "PersonRelations": {
-      "291": 100,
-      "370": 100
+      "291": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 16,
     "PoliticsExperience": 0,
@@ -21253,7 +22450,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "386": 100
+      "386": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -21413,9 +22613,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "358": -100,
-      "373": 100,
-      "383": 100
+      "358": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "373": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "383": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 64,
     "PoliticsExperience": 0,
@@ -21468,9 +22677,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "266": 100,
-      "370": 100,
-      "375": 100
+      "266": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "375": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -21574,7 +22792,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "370": 100
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 58,
     "PoliticsExperience": 0,
@@ -21849,8 +23070,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "217": 100,
-      "219": 100
+      "217": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "219": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 56,
     "PoliticsExperience": 0,
@@ -21899,11 +23126,26 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100,
-      "456": 100,
-      "505": 100,
-      "542": 100,
-      "635": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "456": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "505": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "542": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 71,
     "PoliticsExperience": 0,
@@ -22247,7 +23489,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "451": 100
+      "451": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -22423,8 +23668,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "78": 100,
-      "276": 100
+      "78": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "276": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 88,
     "PoliticsExperience": 0,
@@ -22481,10 +23732,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "206": 100,
-      "280": 100,
-      "380": 100,
-      "457": 100
+      "206": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "280": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "380": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "457": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 77,
     "PoliticsExperience": 0,
@@ -22695,7 +23958,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "70": 100
+      "70": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 44,
     "PoliticsExperience": 0,
@@ -22753,8 +24019,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "211": 100,
-      "370": 100
+      "211": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 95,
     "PoliticsExperience": 0,
@@ -22811,9 +24083,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "71": -100,
-      "191": 100,
-      "225": 100
+      "71": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "191": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "225": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 57,
     "PoliticsExperience": 0,
@@ -23049,7 +24330,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "60": 100
+      "60": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 45,
     "PoliticsExperience": 0,
@@ -23116,11 +24400,26 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "82": 100,
-      "101": 100,
-      "288": 100,
-      "344": 100,
-      "611": 100
+      "82": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "101": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "288": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "611": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -23279,8 +24578,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "370": 100,
-      "564": -100
+      "370": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "564": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 97,
     "PoliticsExperience": 0,
@@ -23336,10 +24641,22 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "556": 100,
-      "570": 100,
-      "582": 100,
-      "635": 100
+      "556": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "570": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "582": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 82,
     "PoliticsExperience": 0,
@@ -23439,10 +24756,22 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "157": 100,
-      "282": 100,
-      "564": 100,
-      "668": 100
+      "157": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "282": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "564": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "668": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -23502,7 +24831,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "635": -100
+      "635": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 59,
     "PoliticsExperience": 0,
@@ -23574,7 +24906,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "660": 100
+      "660": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 65,
     "PoliticsExperience": 0,
@@ -23898,8 +25233,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "18": 100,
-      "446": 100
+      "18": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "446": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -24002,13 +25343,34 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "154": 100,
-      "343": -100,
-      "493": -100,
-      "557": 100,
-      "592": 100,
-      "633": -100,
-      "660": -100
+      "154": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "493": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "557": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "592": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "633": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 22,
     "PoliticsExperience": 0,
@@ -24079,8 +25441,14 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "362": 100,
-      "562": 100
+      "362": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "562": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -24131,7 +25499,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "107": 100
+      "107": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 46,
     "PoliticsExperience": 0,
@@ -24422,11 +25793,26 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "69": 100,
-      "98": 100,
-      "169": 100,
-      "609": 100,
-      "660": 100
+      "69": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "169": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "609": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 58,
     "PoliticsExperience": 0,
@@ -24568,9 +25954,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "46": 100,
-      "98": 100,
-      "121": 100
+      "46": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "121": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -24623,7 +26018,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "624": -100
+      "624": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -24725,7 +26123,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "559": 100
+      "559": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 27,
     "PoliticsExperience": 0,
@@ -24829,9 +26230,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "169": -100,
-      "430": 100,
-      "660": 100
+      "169": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "430": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 83,
     "PoliticsExperience": 0,
@@ -24898,9 +26308,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "16": -100,
-      "370": -100,
-      "455": 100
+      "16": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "370": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "455": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 83,
     "PoliticsExperience": 0,
@@ -24952,9 +26371,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "202": 100,
-      "225": 100,
-      "347": 100
+      "202": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "225": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "347": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 96,
     "PoliticsExperience": 0,
@@ -25007,8 +26435,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "635": 100,
-      "660": -100
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 77,
     "PoliticsExperience": 0,
@@ -25113,7 +26547,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "401": 100
+      "401": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -25164,8 +26601,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "124": 100,
-      "289": -100
+      "124": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 23,
     "PoliticsExperience": 0,
@@ -25270,11 +26713,26 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "227": 100,
-      "228": 100,
-      "261": 100,
-      "481": 100,
-      "537": 100
+      "227": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "228": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "261": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "481": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "537": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -25353,9 +26811,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "447": 100,
-      "635": 100,
-      "660": -100
+      "447": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -25423,7 +26890,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "395": 100
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 53,
     "PoliticsExperience": 0,
@@ -25488,10 +26958,22 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "206": 100,
-      "280": 100,
-      "380": 100,
-      "405": 100
+      "206": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "280": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "380": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "405": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -25605,7 +27087,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "593": 100
+      "593": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 24,
     "PoliticsExperience": 0,
@@ -25659,8 +27144,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "33": 100,
-      "339": 100
+      "33": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "339": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -25712,8 +27203,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "63": 100,
-      "254": 100
+      "63": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "254": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -25825,7 +27322,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "339": 100
+      "339": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -25926,7 +27426,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "493": -100
+      "493": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 40,
     "PoliticsExperience": 0,
@@ -25985,10 +27488,22 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "116": 100,
-      "163": 100,
-      "245": 100,
-      "365": 100
+      "116": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "163": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "245": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "365": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -26152,7 +27667,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "294": 100
+      "294": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 55,
     "PoliticsExperience": 0,
@@ -26268,10 +27786,22 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "85": 100,
-      "144": 100,
-      "335": 100,
-      "343": 100
+      "85": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "144": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "335": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 29,
     "PoliticsExperience": 0,
@@ -26383,7 +27913,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "481": -100
+      "481": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 15,
     "PoliticsExperience": 0,
@@ -26434,8 +27967,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "18": -100,
-      "180": -100
+      "18": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "180": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -26491,8 +28030,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "303": -100,
-      "552": -100
+      "303": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "552": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 87,
     "PoliticsExperience": 0,
@@ -26600,7 +28145,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "635": 100
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -26669,8 +28217,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "280": 100,
-      "379": -100
+      "280": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "379": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -26721,8 +28275,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "167": -100,
-      "528": 100
+      "167": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "528": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 91,
     "PoliticsExperience": 0,
@@ -26826,10 +28386,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "243": 100,
-      "263": -100,
-      "316": 100,
-      "454": 100
+      "243": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "263": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "316": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "454": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 81,
     "PoliticsExperience": 0,
@@ -27123,7 +28695,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "136": 100
+      "136": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -27490,8 +29065,14 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "424": 100,
-      "604": 100
+      "424": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "604": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 19,
     "PoliticsExperience": 0,
@@ -27659,8 +29240,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "0": 100,
-      "148": 100
+      "0": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "148": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 37,
     "PoliticsExperience": 0,
@@ -27922,7 +29509,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "577": 100
+      "577": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -28042,7 +29632,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "241": 100
+      "241": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 27,
     "PoliticsExperience": 0,
@@ -28093,8 +29686,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "89": 100,
-      "226": 100
+      "89": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "226": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -28146,11 +29745,26 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100,
-      "395": 100,
-      "512": 100,
-      "515": 100,
-      "517": 100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "512": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "515": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "517": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 46,
     "PoliticsExperience": 0,
@@ -28264,12 +29878,30 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100,
-      "505": 100,
-      "512": 100,
-      "515": 100,
-      "516": 100,
-      "517": 100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "505": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "512": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "515": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "516": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "517": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 45,
     "PoliticsExperience": 0,
@@ -28475,9 +30107,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "2": 100,
-      "278": 100,
-      "289": 100
+      "2": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "278": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 68,
     "PoliticsExperience": 0,
@@ -28534,12 +30175,30 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100,
-      "505": 100,
-      "507": 100,
-      "515": 100,
-      "516": 100,
-      "517": 100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "505": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "507": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "515": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "516": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "517": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 54,
     "PoliticsExperience": 0,
@@ -28718,13 +30377,34 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100,
-      "505": 100,
-      "507": 100,
-      "512": 100,
-      "516": 100,
-      "588": -100,
-      "597": 100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "505": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "507": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "512": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "516": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "588": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "597": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 26,
     "PoliticsExperience": 0,
@@ -28788,12 +30468,30 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100,
-      "505": 100,
-      "507": 100,
-      "512": 100,
-      "515": 100,
-      "517": 100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "505": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "507": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "512": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "515": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "517": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 52,
     "PoliticsExperience": 0,
@@ -28846,12 +30544,30 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100,
-      "505": 100,
-      "507": 100,
-      "512": 100,
-      "515": 100,
-      "516": 100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "505": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "507": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "512": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "515": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "516": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 59,
     "PoliticsExperience": 0,
@@ -28961,8 +30677,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "2": 100,
-      "289": 100
+      "2": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 90,
     "PoliticsExperience": 0,
@@ -29027,7 +30749,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "368": 100
+      "368": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 65,
     "PoliticsExperience": 0,
@@ -29131,7 +30856,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "395": 100
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 69,
     "PoliticsExperience": 0,
@@ -29287,7 +31015,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "109": 100
+      "109": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 24,
     "PoliticsExperience": 0,
@@ -29443,7 +31174,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "479": 100
+      "479": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 92,
     "PoliticsExperience": 0,
@@ -29660,8 +31394,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "122": 100,
-      "366": 100
+      "122": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "366": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 83,
     "PoliticsExperience": 0,
@@ -29714,8 +31454,14 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "98": -100,
-      "538": 100
+      "98": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "538": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 23,
     "PoliticsExperience": 0,
@@ -29930,9 +31676,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "256": 100,
-      "261": 100,
-      "454": 100
+      "256": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "261": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "454": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 82,
     "PoliticsExperience": 0,
@@ -29985,8 +31740,14 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "98": -100,
-      "151": 100
+      "98": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "151": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 24,
     "PoliticsExperience": 0,
@@ -30037,7 +31798,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "136": 100
+      "136": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 46,
     "PoliticsExperience": 0,
@@ -30197,7 +31961,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "395": 100
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 32,
     "PoliticsExperience": 0,
@@ -30258,10 +32025,22 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "4": 100,
-      "237": -100,
-      "288": -100,
-      "373": 100
+      "4": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "237": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "288": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "373": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 34,
     "PoliticsExperience": 0,
@@ -30367,7 +32146,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "123": 100
+      "123": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 25,
     "PoliticsExperience": 0,
@@ -30642,10 +32424,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "96": -100,
-      "98": -100,
-      "107": -100,
-      "115": -100
+      "96": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "98": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "107": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "115": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 42,
     "PoliticsExperience": 0,
@@ -30754,8 +32548,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "303": -100,
-      "475": -100
+      "303": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "475": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 70,
     "PoliticsExperience": 0,
@@ -30859,8 +32659,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "94": 100,
-      "108": 100
+      "94": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "108": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 36,
     "PoliticsExperience": 0,
@@ -30921,7 +32727,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": 100
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -30978,10 +32787,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "185": 100,
-      "420": 100,
-      "570": 100,
-      "635": 100
+      "185": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "420": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "570": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -31042,9 +32863,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "151": 100,
-      "432": 100,
-      "601": 100
+      "151": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "432": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "601": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -31171,7 +33001,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "444": 100
+      "444": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 23,
     "PoliticsExperience": 0,
@@ -31327,8 +33160,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "362": 100,
-      "433": 100
+      "362": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "433": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -31433,10 +33272,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "157": 100,
-      "282": 100,
-      "419": -100,
-      "422": 100
+      "157": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "282": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "419": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "422": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 86,
     "PoliticsExperience": 0,
@@ -31546,9 +33397,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "567": 100,
-      "641": 100,
-      "655": 100
+      "567": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "641": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "655": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 84,
     "PoliticsExperience": 0,
@@ -31611,8 +33471,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "566": 100,
-      "655": 100
+      "566": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "655": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -31664,7 +33530,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "248": 100
+      "248": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 45,
     "PoliticsExperience": 0,
@@ -31784,14 +33653,38 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "83": 100,
-      "99": 100,
-      "297": -100,
-      "302": -100,
-      "420": 100,
-      "556": 100,
-      "603": 100,
-      "640": -100
+      "83": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "99": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "297": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "302": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "420": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "556": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "603": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "640": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -31953,7 +33846,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "188": 100
+      "188": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 62,
     "PoliticsExperience": 0,
@@ -32064,9 +33960,18 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "124": -100,
-      "289": 100,
-      "633": -100
+      "124": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "633": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -32171,8 +34076,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "501": 100,
-      "600": 100
+      "501": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "600": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 87,
     "PoliticsExperience": 0,
@@ -32456,9 +34367,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "190": 100,
-      "339": 100,
-      "420": 100
+      "190": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "339": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "420": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 79,
     "PoliticsExperience": 0,
@@ -32775,7 +34695,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "515": -100
+      "515": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 26,
     "PoliticsExperience": 0,
@@ -32824,7 +34747,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "515": -100
+      "515": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -32982,8 +34908,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "212": 100,
-      "432": 100
+      "212": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "432": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 37,
     "PoliticsExperience": 0,
@@ -33043,7 +34975,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "459": 100
+      "459": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 11,
     "PoliticsExperience": 0,
@@ -33266,7 +35201,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "515": 100
+      "515": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 77,
     "PoliticsExperience": 0,
@@ -33436,7 +35374,10 @@
     "Morality": 70,
     "MotherId": 371,
     "PersonRelations": {
-      "577": 100
+      "577": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -33507,8 +35448,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "151": 100,
-      "557": 100
+      "151": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "557": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -33559,9 +35506,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "113": 100,
-      "371": 100,
-      "661": 100
+      "113": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "371": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "661": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 87,
     "PoliticsExperience": 0,
@@ -33643,8 +35599,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100,
-      "570": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "570": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -33716,7 +35678,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "493": 100
+      "493": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -33775,7 +35740,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "660": 100
+      "660": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 15,
     "PoliticsExperience": 0,
@@ -33826,7 +35794,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "344": 100
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 69,
     "PoliticsExperience": 0,
@@ -33990,8 +35961,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "69": 100,
-      "439": 100
+      "69": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "439": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -34155,11 +36132,26 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "82": 100,
-      "101": 100,
-      "288": 100,
-      "344": 100,
-      "416": 100
+      "82": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "101": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "288": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "344": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "416": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 71,
     "PoliticsExperience": 0,
@@ -34489,7 +36481,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "180": -100
+      "180": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -34643,7 +36638,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "651": 100
+      "651": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 57,
     "PoliticsExperience": 0,
@@ -34701,7 +36699,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "17": 100
+      "17": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 49,
     "PoliticsExperience": 0,
@@ -34806,7 +36807,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "442": -100
+      "442": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 38,
     "PoliticsExperience": 0,
@@ -34958,7 +36962,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "635": 100
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -35056,7 +37063,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "167": 100
+      "167": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 4,
     "PoliticsExperience": 0,
@@ -35105,8 +37115,14 @@
     "Morality": 50,
     "MotherId": 217,
     "PersonRelations": {
-      "217": 100,
-      "219": 100
+      "217": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "219": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 65,
     "PoliticsExperience": 0,
@@ -35255,8 +37271,14 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "432": -100,
-      "575": -100
+      "432": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "575": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 81,
     "PoliticsExperience": 0,
@@ -35310,7 +37332,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "185": 100
+      "185": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 43,
     "PoliticsExperience": 0,
@@ -35372,14 +37397,38 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "180": 100,
-      "217": -100,
-      "219": -100,
-      "289": 100,
-      "293": 100,
-      "395": 100,
-      "511": -100,
-      "669": 100
+      "180": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "217": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "219": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "293": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "511": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "669": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 90,
     "PoliticsExperience": 0,
@@ -35466,7 +37515,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "175": 100
+      "175": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 81,
     "PoliticsExperience": 0,
@@ -35634,7 +37686,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "139": 100
+      "139": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 34,
     "PoliticsExperience": 0,
@@ -35695,8 +37750,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "121": 100,
-      "570": -100
+      "121": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "570": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 50,
     "PoliticsExperience": 0,
@@ -35759,9 +37820,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "63": 100,
-      "566": 100,
-      "655": 100
+      "63": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "566": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "655": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 73,
     "PoliticsExperience": 0,
@@ -35973,8 +38043,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "98": 100,
-      "121": 100
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "121": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 49,
     "PoliticsExperience": 0,
@@ -36185,8 +38261,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "3": 100,
-      "136": 100
+      "3": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "136": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 68,
     "PoliticsExperience": 0,
@@ -36298,8 +38380,14 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "118": 100,
-      "621": 100
+      "118": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "621": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 40,
     "PoliticsExperience": 0,
@@ -36368,7 +38456,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "289": -100
+      "289": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -36421,7 +38512,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "31": 100
+      "31": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 77,
     "PoliticsExperience": 0,
@@ -36473,7 +38567,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "379": -100
+      "379": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 62,
     "PoliticsExperience": 0,
@@ -36525,10 +38622,22 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "38": 100,
-      "566": 100,
-      "567": 100,
-      "641": 100
+      "38": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "566": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "567": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "641": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -36791,13 +38900,34 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "98": -100,
-      "169": 100,
-      "424": 100,
-      "432": -100,
-      "439": 100,
-      "446": 100,
-      "670": 100
+      "98": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "169": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "424": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "432": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "439": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "446": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "670": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 13,
     "PoliticsExperience": 0,
@@ -36873,9 +39003,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "245": 100,
-      "602": 100,
-      "667": 100
+      "245": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "602": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "667": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -36943,7 +39082,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "660": 100
+      "660": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 18,
     "PoliticsExperience": 0,
@@ -37210,9 +39352,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "245": 100,
-      "282": 100,
-      "661": 100
+      "245": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "282": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "661": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 90,
     "PoliticsExperience": 0,
@@ -37286,7 +39437,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "422": 100
+      "422": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -37339,9 +39493,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "180": 100,
-      "493": -100,
-      "635": 100
+      "180": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "493": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -37413,7 +39576,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "660": 100
+      "660": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 20,
     "PoliticsExperience": 0,
@@ -42505,7 +44671,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "91": 100
+      "91": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 23,
     "PoliticsExperience": 0,
@@ -42554,7 +44723,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "91": 100
+      "91": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 4,
     "PoliticsExperience": 0,
@@ -42603,8 +44775,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "635": 100,
-      "636": 100
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "636": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 90,
     "PoliticsExperience": 0,
@@ -42668,7 +44846,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "370": -100
+      "370": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 88,
     "PoliticsExperience": 0,
@@ -42720,8 +44901,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "98": 100,
-      "343": -100
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 72,
     "PoliticsExperience": 0,
@@ -42821,8 +45008,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "143": -100,
-      "343": 100
+      "143": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 90,
     "PoliticsExperience": 0,
@@ -42873,8 +45066,14 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100,
-      "635": 100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 23,
     "PoliticsExperience": 0,
@@ -42925,9 +45124,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100,
-      "293": 100,
-      "557": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "293": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "557": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 94,
     "PoliticsExperience": 0,
@@ -42981,9 +45189,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "175": -100,
-      "190": 100,
-      "582": 100
+      "175": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "190": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "582": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 76,
     "PoliticsExperience": 0,
@@ -43032,7 +45249,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 78,
     "PoliticsExperience": 0,
@@ -43083,7 +45303,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "343": 100
+      "343": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 74,
     "PoliticsExperience": 0,
@@ -43230,7 +45453,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "91": -100
+      "91": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -43279,7 +45505,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "91": -100
+      "91": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 62,
     "PoliticsExperience": 0,
@@ -44242,14 +46471,38 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "180": 100,
-      "217": -100,
-      "219": -100,
-      "289": 100,
-      "293": 100,
-      "395": 100,
-      "511": -100,
-      "669": 100
+      "180": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "217": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "219": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "293": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "511": {
+        "decay": 0.0,
+        "value": -100
+      },
+      "669": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 90,
     "PoliticsExperience": 0,
@@ -44336,9 +46589,18 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "447": 100,
-      "635": 100,
-      "660": -100
+      "447": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "660": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -44406,7 +46668,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "582": 100
+      "582": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 75,
     "PoliticsExperience": 0,
@@ -46002,7 +48267,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "568": 100
+      "568": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 31,
     "PoliticsExperience": 0,
@@ -46644,7 +48912,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "9040": 100
+      "9040": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 31,
     "PoliticsExperience": 0,
@@ -48755,7 +51026,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "9074": 100
+      "9074": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 50,
     "PoliticsExperience": 0,
@@ -49752,7 +52026,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "367": 100
+      "367": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 56,
     "PoliticsExperience": 0,
@@ -50418,7 +52695,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "458": 100
+      "458": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 61,
     "PoliticsExperience": 0,
@@ -51073,9 +53353,18 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100,
-      "293": 100,
-      "9298": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "293": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "9298": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 84,
     "PoliticsExperience": 0,
@@ -52175,7 +54464,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "432": -100
+      "432": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 11,
     "PoliticsExperience": 0,
@@ -52682,7 +54974,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "343": -100
+      "343": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 77,
     "PoliticsExperience": 0,
@@ -52780,7 +55075,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "635": 100
+      "635": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -53387,10 +55685,22 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "98": 100,
-      "107": 100,
-      "108": 100,
-      "121": 100
+      "98": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "107": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "108": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "121": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 24,
     "PoliticsExperience": 0,
@@ -53650,7 +55960,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "347": 100
+      "347": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 64,
     "PoliticsExperience": 0,
@@ -56089,7 +58402,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "515": -100
+      "515": {
+        "decay": 0.0,
+        "value": -100
+      }
     },
     "Politics": 13,
     "PoliticsExperience": 0,
@@ -59665,9 +61981,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100,
-      "293": 100,
-      "9330": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "293": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "9330": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 86,
     "PoliticsExperience": 0,
@@ -61250,9 +63575,18 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "289": 100,
-      "293": 100,
-      "9298": 100
+      "289": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "293": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "9298": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 85,
     "PoliticsExperience": 0,
@@ -62242,7 +64576,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "367": 100
+      "367": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 66,
     "PoliticsExperience": 0,
@@ -64640,7 +66977,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "432": 100
+      "432": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 68,
     "PoliticsExperience": 0,
@@ -64744,7 +67084,10 @@
     "Morality": 30,
     "MotherId": -1,
     "PersonRelations": {
-      "395": 100
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 65,
     "PoliticsExperience": 0,
@@ -65205,7 +67548,10 @@
     "Morality": 10,
     "MotherId": -1,
     "PersonRelations": {
-      "290": 100
+      "290": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 12,
     "PoliticsExperience": 0,
@@ -66948,8 +69294,14 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "432": 100,
-      "629": 100
+      "432": {
+        "decay": 0.0,
+        "value": 100
+      },
+      "629": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 63,
     "PoliticsExperience": 0,
@@ -67106,7 +69458,10 @@
     "Morality": 50,
     "MotherId": -1,
     "PersonRelations": {
-      "395": 100
+      "395": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 31,
     "PoliticsExperience": 0,
@@ -69135,7 +71490,10 @@
     "Morality": 90,
     "MotherId": -1,
     "PersonRelations": {
-      "225": 100
+      "225": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 84,
     "PoliticsExperience": 0,
@@ -76347,7 +78705,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "9630": 100
+      "9630": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 80,
     "PoliticsExperience": 0,
@@ -76408,7 +78769,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "9629": 100
+      "9629": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 82,
     "PoliticsExperience": 0,
@@ -76525,7 +78889,10 @@
     "Morality": 70,
     "MotherId": -1,
     "PersonRelations": {
-      "347": 100
+      "347": {
+        "decay": 0.0,
+        "value": 100
+      }
     },
     "Politics": 67,
     "PoliticsExperience": 0,
