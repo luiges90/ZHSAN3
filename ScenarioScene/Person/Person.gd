@@ -424,7 +424,7 @@ func get_person_relation(other):
 	if self == other:
 		return 999
 
-	var result = (75 - get_ideal_difference(other)) / 2.0 # -37.5 to 37.5
+	var result = (75 - get_ideal_difference(other)) / 3.0 # -25 to 25
 
 	result += other.get_prestige() / 500.0 # -20 to 20
 	result += other.get_popularity() / 2000.0 # 0 to 5
@@ -499,36 +499,43 @@ func get_military_type_experience(type):
 	
 func get_agriculture_ability():
 	var base = 0.25 * get_intelligence() + 0.5 * get_politics() + 0.25 * get_glamour()
+	base *= 1 + sqrt(get_popularity()) * 0.1 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.15 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.1
 	base = apply_influences('modify_person_agriculture_ability', {"value": base, "person": self})
 	return base
 	
 func get_commerce_ability():
 	var base = 0.5 * get_intelligence() + 0.25 * get_politics() + 0.25 * get_glamour()
+	base *= 1 + sqrt(get_popularity()) * 0.15 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.2 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.2
 	base = apply_influences('modify_person_commerce_ability', {"value": base, "person": self})
 	return base
 	
 func get_morale_ability():
 	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.5 * get_glamour()
+	base *= 1 + sqrt(get_popularity()) * 0.1 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.1 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.4
 	base = apply_influences('modify_person_morale_ability', {"value": base, "person": self})
 	return base
 	
 func get_endurance_ability():
 	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.25 * get_intelligence() + 0.25 * get_politics()
+	base *= 1 + sqrt(get_popularity()) * 0.025 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.05 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.05
 	base = apply_influences('modify_person_endurance_ability', {"value": base, "person": self})
 	return base
 	
 func get_recruit_troop_ability():
 	var base = 0.5 * get_strength() + 0.5 * get_glamour()
+	base *= 1 + sqrt(get_popularity()) * 0.3 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.2 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.05
 	base = apply_influences('modify_person_recruit_ability', {"value": base, "person": self})
 	return base
 	
 func get_train_troop_ability():
 	var base = 0.5 * get_command() + 0.5 * get_strength()
+	base *= 1 + sqrt(get_popularity()) * 0.2 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.05 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.05
 	base = apply_influences('modify_person_training_ability', {"value": base, "person": self})
 	return base
 	
 func get_produce_equipment_ability():
 	var base = 0.5 * get_intelligence() + 0.5 * get_politics()
+	base *= 1 + sqrt(get_popularity()) * 0.025 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.05 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.05
 	base = apply_influences('modify_person_produce_equipment_ability', {"value": base, "person": self})
 	return base
 
