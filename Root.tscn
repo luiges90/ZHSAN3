@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Images/StartBackground.png" type="Texture" id=1]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=9]
 [ext_resource path="res://RootScene/Options.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Music/Start.ogg" type="AudioStream" id=11]
+[ext_resource path="res://CustomOfficerMenu.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -39,7 +40,7 @@ __meta__ = {
 }
 
 [node name="NewGame" type="Button" parent="MainMenu"]
-margin_right = 354.0
+margin_right = 350.0
 margin_bottom = 36.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
@@ -50,7 +51,7 @@ __meta__ = {
 
 [node name="LoadGame" type="Button" parent="MainMenu"]
 margin_top = 56.0
-margin_right = 354.0
+margin_right = 350.0
 margin_bottom = 92.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
@@ -61,7 +62,7 @@ __meta__ = {
 
 [node name="Options" type="Button" parent="MainMenu"]
 margin_top = 112.0
-margin_right = 354.0
+margin_right = 350.0
 margin_bottom = 148.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
@@ -70,20 +71,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Other" type="Button" parent="MainMenu"]
+[node name="CustomOfficers" type="Button" parent="MainMenu"]
 margin_top = 168.0
-margin_right = 354.0
+margin_right = 350.0
 margin_bottom = 204.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
-text = "OTHER_FEATURES"
+text = "CUSTOM_OFFICERS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Credits" type="Button" parent="MainMenu"]
 margin_top = 224.0
-margin_right = 354.0
+margin_right = 350.0
 margin_bottom = 260.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
@@ -94,7 +95,7 @@ __meta__ = {
 
 [node name="Quit" type="Button" parent="MainMenu"]
 margin_top = 280.0
-margin_right = 354.0
+margin_right = 350.0
 margin_bottom = 316.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
@@ -103,31 +104,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OtherMenu" type="VBoxContainer" parent="."]
+[node name="CustomOfficerMenu" type="VBoxContainer" parent="."]
 visible = false
 margin_left = 50.0
 margin_top = 100.0
 margin_right = 300.0
-margin_bottom = 136.0
+margin_bottom = 192.0
 custom_constants/separation = 20
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ImportScenario" type="Button" parent="OtherMenu"]
-margin_right = 343.0
+[node name="Click" type="AudioStreamPlayer" parent="CustomOfficerMenu"]
+stream = ExtResource( 8 )
+
+[node name="Close" type="AudioStreamPlayer" parent="CustomOfficerMenu"]
+stream = ExtResource( 9 )
+
+[node name="New" type="Button" parent="CustomOfficerMenu"]
+margin_right = 341.0
 margin_bottom = 36.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
-text = "IMPORT_SCENARIO"
+text = "NEW_OFFICER"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" type="Button" parent="OtherMenu"]
+[node name="Edit" type="Button" parent="CustomOfficerMenu"]
 margin_top = 56.0
-margin_right = 343.0
+margin_right = 341.0
 margin_bottom = 92.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+text = "EDIT_OFFICER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete" type="Button" parent="CustomOfficerMenu"]
+margin_top = 112.0
+margin_right = 341.0
+margin_bottom = 148.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+text = "DELETE_OFFICER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="CustomOfficerMenu"]
+margin_top = 168.0
+margin_right = 341.0
+margin_bottom = 204.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "BACK"
@@ -170,8 +200,9 @@ autoplay = true
 [connection signal="pressed" from="MainMenu/NewGame" to="." method="_on_NewGame_pressed"]
 [connection signal="pressed" from="MainMenu/LoadGame" to="." method="_on_LoadGame_pressed"]
 [connection signal="pressed" from="MainMenu/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MainMenu/CustomOfficers" to="." method="_on_CustomOfficers_pressed"]
 [connection signal="pressed" from="MainMenu/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="pressed" from="OtherMenu/ImportScenario" to="." method="_on_ImportScenario_pressed"]
-[connection signal="pressed" from="OtherMenu/Back" to="." method="_on_Back_pressed"]
+[connection signal="back_button_pressed" from="CustomOfficerMenu" to="." method="_on_CustomOfficerMenu_back_button_pressed"]
+[connection signal="pressed" from="CustomOfficerMenu/Back" to="CustomOfficerMenu" method="_on_Back_pressed"]
 [connection signal="file_slot_clicked" from="SaveLoadMenu" to="." method="_on_SaveLoadMenu_file_slot_clicked"]
 [connection signal="confirmed_scenario" from="ScenarioSelector" to="." method="_on_ScenarioSelector_confirmed_scenario"]

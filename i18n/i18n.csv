@@ -44,7 +44,7 @@ QUIT_GAME,Quit,离开,離開
 FILE_BLANK,<Blank>,＜空白＞,＜空白＞
 NEW_GAME,New Game,新游戏,新遊戲
 OPTIONS,Options,设置,設置
-OTHER_FEATURES,Other Features,其他功能,其他功能
+CUSTOM_OFFICERS,Custom Officers,自创武将,自創武將
 CREDITS,Credits,制作人员,製作人員
 IMPORT_SCENARIO,Import Scenario,导入剧本,導入劇本
 BACK,Back,返回,返回
@@ -234,3 +234,6 @@ DELIVERING_TROOP,Troop under delivery,正运送士兵,正運送士兵
 RESOURCE_PACK_ITEM,"{amount} in {day} turns, ",{day}回合{amount}；,{day}回合{amount}；
 RELATION_TO_LEADER,"Relation to Leader",对君主关系,對君主關係
 PERSON_NATURAL_DEATH,"Officer dies naturally",武将自然死亡,武將自然死亡
+NEW_OFFICER,Create Officer,创作新武将,創作新武將
+EDIT_OFFICER,Edit Officer,编辑新武将,編輯新武將
+DELETE_OFFICER,Delete Officer,删除新武将,刪除新武將

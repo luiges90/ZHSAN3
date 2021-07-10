@@ -48,3 +48,13 @@ func _on_Options_pressed():
 	$Click.play()
 	$Options.show()
 	
+
+func _on_CustomOfficers_pressed():
+	__hide_all()
+	$MainMenu.hide()
+	$Click.play()
+	$CustomOfficerMenu.show()
+
+
+func _on_CustomOfficerMenu_back_button_pressed():
+	$MainMenu.show()
