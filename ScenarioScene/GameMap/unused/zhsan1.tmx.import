@@ -2,12 +2,12 @@
 
 importer="vnen.tiled_importer"
 type="PackedScene"
-path="res://.import/zhsan1.tmx-c3e8ea18a66f7707ba140276e00a823d.scn"
+path="res://.import/zhsan1.tmx-706fb6b068ee7cca03c681fd29da60c7.scn"
 
 [deps]
 
-source_file="res://ScenarioScene/GameMap/zhsan1.tmx"
-dest_files=[ "res://.import/zhsan1.tmx-c3e8ea18a66f7707ba140276e00a823d.scn" ]
+source_file="res://ScenarioScene/GameMap/unused/zhsan1.tmx"
+dest_files=[ "res://.import/zhsan1.tmx-706fb6b068ee7cca03c681fd29da60c7.scn" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="vnen.tiled_tileset_importer"
 type="TileSet"
-path="res://.import/zhsan3.tsx-bb7395f4a720e8f981e759a9812c7693.res"
+path="res://.import/zhsan3.tsx-993632cddaf46019ec64d25861e24e9a.res"
 
 [deps]
 
-source_file="res://ScenarioScene/GameMap/zhsan3.tsx"
-dest_files=[ "res://.import/zhsan3.tsx-bb7395f4a720e8f981e759a9812c7693.res" ]
+source_file="res://ScenarioScene/GameMap/unused/zhsan3.tsx"
+dest_files=[ "res://.import/zhsan3.tsx-993632cddaf46019ec64d25861e24e9a.res" ]
 
 [params]
 

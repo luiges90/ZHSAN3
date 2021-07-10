@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zhsan3_tile.png-bc4227061bb8571ab122d9247dc8b10e.stex"
+path="res://.import/zhsan1_tile.png-6c08a6144f71c32be44b80108a04c9b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ScenarioScene/GameMap/zhsan3_tile.png"
-dest_files=[ "res://.import/zhsan3_tile.png-bc4227061bb8571ab122d9247dc8b10e.stex" ]
+source_file="res://ScenarioScene/GameMap/unused/zhsan1_tile.png"
+dest_files=[ "res://.import/zhsan1_tile.png-6c08a6144f71c32be44b80108a04c9b3.stex" ]
 
 [params]
 
