@@ -266,13 +266,14 @@ stream = ExtResource( 26 )
 volume_db = -20.0
 autoplay = true
 script = ExtResource( 30 )
+
 [connection signal="select_architecture" from="TransportDialog" to="ArchitectureList" method="_on_TransportDialog_select_architecture"]
 [connection signal="select_leader" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_leader"]
 [connection signal="select_military_kind" from="CreateTroop" to="MilitaryKindList" method="_on_CreateTroop_select_military_kind"]
 [connection signal="select_person" from="CreateTroop" to="PersonList" method="_on_CreateTroop_select_person"]
 [connection signal="person_row_clicked" from="PersonList" to="PersonDetail" method="_on_PersonList_person_row_clicked"]
-[connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="MilitaryKindList" method="_on_PersonList_person_selected"]
+[connection signal="person_selected" from="PersonList" to="CreateTroop" method="_on_PersonList_person_selected"]
 [connection signal="person_selected" from="PersonList" to="ArchitectureList" method="_on_PersonList_person_selected"]
 [connection signal="architecture_row_clicked" from="ArchitectureList" to="ArchitectureDetail" method="_on_ArchitectureList_architecture_row_clicked"]
 [connection signal="architecture_selected" from="ArchitectureList" to="TransportDialog" method="_on_ArchitectureList_architecture_selected"]

@@ -53,8 +53,8 @@ func _on_CustomOfficers_pressed():
 	__hide_all()
 	$MainMenu.hide()
 	$Click.play()
-	$CustomOfficerMenu.show()
+	$CustomOfficer.show()
 
 
-func _on_CustomOfficerMenu_back_button_pressed():
+func _on_CustomOfficer_back_button_pressed():
 	$MainMenu.show()

@@ -23,8 +23,8 @@ func _input(event):
 			_shift_held_down = event.pressed
 
 
-func set_data():
-	$Edit.visible = GameConfig.enable_edit
+func set_data(editing = false):
+	$Edit.visible = editing or GameConfig.enable_edit
 	for e in _editables:
 		find_node(e).visible = true
 		find_node(e + 'Edit').visible = false
@@ -34,16 +34,18 @@ func set_data():
 	$StuntsHeader/Label2.visible = false
 	
 	$_Id.text = str(current_person.id)
-	$Description.bbcode_text = current_person.get_biography_text()
+	if !editing:
+		$Description.bbcode_text = current_person.get_biography_text()
 	
 	$Portrait.texture = current_person.get_portrait()
 	$Name.text = current_person.get_full_name()
 	
 	$Status/Gender.text = current_person.get_gender_str()
-	$Status/Faction.text = current_person.get_belonged_faction_str()
-	$Status/Section.text = current_person.get_belonged_section_str()
-	$Status/Location.text = current_person.get_location_str()
-	$Status/Status.text = current_person.get_status_str()
+	if !editing:
+		$Status/Faction.text = current_person.get_belonged_faction_str()
+		$Status/Section.text = current_person.get_belonged_section_str()
+		$Status/Location.text = current_person.get_location_str()
+		$Status/Status.text = current_person.get_status_str()
 	$Status/Popularity.text = current_person.get_popularity_str()
 	$Status/Prestige.text = current_person.get_prestige_str()
 	$Status/Karma.text = current_person.get_karma_str()
@@ -59,6 +61,9 @@ func set_data():
 	
 	_update_skill_list()
 	_update_stunt_list()
+	
+	if editing:
+		_on_Edit_pressed()
 
 func _update_skill_list():
 	Util.delete_all_children($Skills)
@@ -89,9 +94,9 @@ func _update_stunt_list():
 		$Stunts.add_child(label)
 
 
-func _on_PersonList_person_row_clicked(person):
+func _on_PersonList_person_row_clicked(person, editing = false):
 	current_person = person
-	set_data()
+	set_data(editing)
 	show()
 
 func _on_skill_clicked(skill):

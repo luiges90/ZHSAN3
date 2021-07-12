@@ -205,7 +205,6 @@ margin_top = 26.0
 margin_right = 224.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-text = "耒火"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,7 +216,6 @@ margin_top = 26.0
 margin_right = 340.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-text = "耒火軍團"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -229,7 +227,6 @@ margin_top = 26.0
 margin_right = 456.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-text = "耒陽"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -241,7 +238,6 @@ margin_top = 26.0
 margin_right = 572.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
-text = "君主"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -664,6 +660,7 @@ text = "EDIT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="hide" from="." to="." method="_on_PersonDetail_hide"]
 [connection signal="text_changed" from="Status/MeritEdit" to="." method="_on_MeritEdit_text_changed"]
 [connection signal="text_changed" from="Status/KarmaEdit" to="." method="_on_KarmaEdit_text_changed"]
