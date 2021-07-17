@@ -234,7 +234,10 @@ func _populate_basic_data(person_list: Array, action):
 			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
+		if person.get_location() != null:
+			item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
+		else:
+			item_list.add_child(_clickable_label_with_long_pressed_event("", self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))

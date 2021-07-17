@@ -128,9 +128,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Click" type="AudioStreamPlayer" parent="CustomOfficer/CustomOfficerMenu"]
-stream = ExtResource( 8 )
-
 [node name="New" type="Button" parent="CustomOfficer/CustomOfficerMenu"]
 margin_right = 341.0
 margin_bottom = 36.0
@@ -173,6 +170,9 @@ text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Click" type="AudioStreamPlayer" parent="CustomOfficer/CustomOfficerMenu"]
+stream = ExtResource( 8 )
 
 [node name="PersonDetail" parent="CustomOfficer" instance=ExtResource( 14 )]
 visible = false
@@ -239,6 +239,7 @@ autoplay = true
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/New" to="CustomOfficer" method="_on_New_pressed"]
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/Edit" to="CustomOfficer" method="_on_Edit_pressed"]
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/Back" to="CustomOfficer" method="_on_Back_pressed"]
+[connection signal="on_save" from="CustomOfficer/PersonDetail" to="CustomOfficer" method="_on_PersonDetail_on_save"]
 [connection signal="on_select_skills" from="CustomOfficer/PersonDetail" to="CustomOfficer" method="_on_PersonDetail_on_select_skills"]
 [connection signal="on_select_stunts" from="CustomOfficer/PersonDetail" to="CustomOfficer" method="_on_PersonDetail_on_select_stunts"]
 [connection signal="edit_skill_item_selected" from="CustomOfficer/InfoList" to="CustomOfficer" method="_on_InfoList_edit_skill_item_selected"]

@@ -134,8 +134,8 @@ func load_data(json: Dictionary, objects):
 	prestige = int(json["Prestige"])
 	karma = int(json["Karma"])
 	merit = int(json["Merit"])
-	working_task = int(json["Task"])
-	producing_equipment = null if json["ProducingEquipment"] == null else int(json["ProducingEquipment"])
+	working_task = int(json["Task"]) if json["Task"] != null else Task.NONE
+	producing_equipment = Util.dict_try_get(json, "ProducingEquipment", null)
 	strain = int(json["Strain"])
 	ideal = int(json["Ideal"])
 	loyalty_shift = int(json["LoyaltyShift"])
@@ -312,7 +312,7 @@ func get_salary():
 	return base
 	
 func get_age():
-	if scenario.scenario_config.person_natural_death:
+	if scenario.scenario_config != null and scenario.scenario_config.person_natural_death:
 		return scenario.get_year() - born_year + 1
 	else:
 		return 30
@@ -449,6 +449,12 @@ func get_person_relation_to_leader():
 #####################################
 #         Getters / Abilities       #
 #####################################
+func get_id():
+	return id
+	
+func _set_id(v):
+	id = v
+
 func get_command():
 	return command + command_exp / 1000
 	

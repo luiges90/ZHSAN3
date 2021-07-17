@@ -269,3 +269,5 @@ static func resize_texture(texture, old_size: Vector2, new_size: Vector2):
 	image.create_from_image(sprite)
 	return image
 
+static func coalesce(a, b):
+	return a if a else b
