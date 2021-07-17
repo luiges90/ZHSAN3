@@ -1,8 +1,8 @@
 extends Node
 class_name Scenario
 
-onready var tile_size: int = $Map.tile_size
-onready var map_size: Vector2 = $Map.map_size
+onready var tile_size: int = $Map.tile_size if has_node("Map") else 0
+onready var map_size: Vector2 = $Map.map_size if has_node("Map") else Vector2(0,0)
 
 const GROUP_GAME_INSTANCES = "game_instances"
 
@@ -73,13 +73,15 @@ func forbidden(x):
 	assert(false)
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready(headless = false):
 	var ai_script = preload("AI/AI.gd")
 	ai = ai_script.new()
 	
-	var camera = $MainCamera as MainCamera
-	camera.scenario = self
-	($DateRunner as DateRunner).scenario = self
+	var camera
+	if not headless:
+		camera = $MainCamera as MainCamera
+		camera.scenario = self
+		($DateRunner as DateRunner).scenario = self
 	
 	if SharedData.loading_file_path == null:
 		SharedData.loading_file_path = "res://Scenarios/194QXGJ-qh"
@@ -88,23 +90,24 @@ func _ready():
 		var pos = SharedData.loading_file_path.find('Scenarios')
 		if pos >= 0:
 			current_scenario_name = SharedData.loading_file_path.substr(pos + 10)
-	_load_data(SharedData.loading_file_path)
+	_load_data(SharedData.loading_file_path, headless)
 	
-	if _starting_camera_move_to != null:
-		camera.position = _starting_camera_move_to
-		camera.zoom = _starting_camera_zoom_to
-		camera.call_deferred("emit_signal", "camera_moved", camera.get_viewing_rect(), camera.zoom)
-		call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
-	else:
-		var player_factions = get_player_factions()
-		if player_factions.size() > 0:
-			var fid = player_factions[0]
-			camera.position = factions[fid].get_architectures()[0].position
+	if not headless:
+		if _starting_camera_move_to != null:
+			camera.position = _starting_camera_move_to
+			camera.zoom = _starting_camera_zoom_to
 			camera.call_deferred("emit_signal", "camera_moved", camera.get_viewing_rect(), camera.zoom)
 			call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
-	
-	$DateRunner.connect("day_passed", self, "_on_day_passed")
-	$DateRunner.connect("month_passed", self, "_on_month_passed")
+		else:
+			var player_factions = get_player_factions()
+			if player_factions.size() > 0:
+				var fid = player_factions[0]
+				camera.position = factions[fid].get_architectures()[0].position
+				camera.call_deferred("emit_signal", "camera_moved", camera.get_viewing_rect(), camera.zoom)
+				call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
+		
+		$DateRunner.connect("day_passed", self, "_on_day_passed")
+		$DateRunner.connect("month_passed", self, "_on_month_passed")
 	
 	
 	
@@ -124,7 +127,7 @@ func _on_file_slot_clicked(mode, path: String):
 	if mode == SaveLoadMenu.MODE.SAVE:
 		_save_data(path)
 	else:
-		_load_data(path)
+		_load_data(path, false)
 	
 func _save_data(path):
 	var dir = Directory.new()
@@ -223,29 +226,34 @@ func __save_items(d: Dictionary):
 		arr.push_back(item.save_data())
 	return arr
 
-func _load_data(path):
+func _load_data(path, headless):
 	_loading_scenario = true
-	for n in get_tree().get_nodes_in_group(GROUP_GAME_INSTANCES):
-		remove_child(n)
-		n.queue_free()
+	if not headless:
+		for n in get_tree().get_nodes_in_group(GROUP_GAME_INSTANCES):
+			remove_child(n)
+			n.queue_free()
 	
 	var file = File.new()
-	file.open(path + "/Scenario.json", File.READ)
-	var obj = parse_json(file.get_as_text())
+	var obj
+	var current_faction_id
 	
-	var date = $DateRunner as DateRunner
-	date.year = obj["GameData"]["Year"]
-	date.month = obj["GameData"]["Month"]
-	date.day = obj["GameData"]["Day"]
-	var current_faction_id = obj["CurrentFactionId"]
-	var current_name = obj.get("Scenario")
-	if current_name != null:
-		current_scenario_name = current_name
-	turn_passed = obj["GameData"]["TurnPassed"]
-	if obj.has("Camera"):
-		_starting_camera_move_to = Util.load_position(obj["Camera"]["Position"])
-		_starting_camera_zoom_to = Util.load_position(obj["Camera"]["Zoom"])
-	file.close()
+	if not headless:
+		file.open(path + "/Scenario.json", File.READ)
+		obj = parse_json(file.get_as_text())
+		
+		var date = $DateRunner as DateRunner
+		date.year = obj["GameData"]["Year"]
+		date.month = obj["GameData"]["Month"]
+		date.day = obj["GameData"]["Day"]
+		current_faction_id = obj["CurrentFactionId"]
+		var current_name = obj.get("Scenario")
+		if current_name != null:
+			current_scenario_name = current_name
+		turn_passed = obj["GameData"]["TurnPassed"]
+		if obj.has("Camera"):
+			_starting_camera_move_to = Util.load_position(obj["Camera"]["Position"])
+			_starting_camera_zoom_to = Util.load_position(obj["Camera"]["Zoom"])
+		file.close()
 	
 	if file.open(path + "/ScenarioConfig.json", File.READ) == OK:
 		obj = parse_json(file.get_as_text())
@@ -259,192 +267,194 @@ func _load_data(path):
 		scenario_config.person_natural_death = Util.dict_try_get(obj, "PersonNaturalDeath", true)
 		file.close()
 	
-	file.open(path + "/Skills.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = Skill.new()
-		__load_item(instance, item, skills, {})
-	file.close()
+	if file.open(path + "/Skills.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = Skill.new()
+			__load_item(instance, item, skills, {})
+		file.close()
 
-	file.open(path + "/Stunts.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = Stunt.new()
-		__load_item(instance, item, stunts, {})
-	file.close()
+	if file.open(path + "/Stunts.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = Stunt.new()
+			__load_item(instance, item, stunts, {})
+		file.close()
 	
-	file.open(path + "/TerrainDetails.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = TerrainDetail.new()
-		__load_item(instance, item, terrain_details, {})
-	file.close()
+	if file.open(path + "/TerrainDetails.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = TerrainDetail.new()
+			__load_item(instance, item, terrain_details, {})
+		file.close()
 	
-	file.open(path + "/MovementKinds.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = MovementKind.new()
-		__load_item(instance, item, movement_kinds, {})
-	file.close()
+	if file.open(path + "/MovementKinds.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = MovementKind.new()
+			__load_item(instance, item, movement_kinds, {})
+		file.close()
 	
 	for kind in movement_kinds:
 		if movement_kinds[kind].naval:
 			continue
 		var err = file.open(path + "/paths/" + str(kind) + '.json', File.READ)
 		if err != OK:
-			file.open("res://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)
+			err = file.open("res://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)
+		if err == OK:
+			obj = parse_json(file.get_as_text())
+			var ai_path = AIPaths.new()
+			ai_path.load_data(obj)
+			ai_paths[kind] = ai_path
+			file.close()
+			
+	if file.open(path + "/MilitaryKinds.json", File.READ) == OK:
 		obj = parse_json(file.get_as_text())
-		var ai_path = AIPaths.new()
-		ai_path.load_data(obj)
-		ai_paths[kind] = ai_path
+		for item in obj:
+			var instance = MilitaryKind.new()
+			__load_item(instance, item, military_kinds, {})
 		file.close()
-		
-	file.open(path + "/MilitaryKinds.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = MilitaryKind.new()
-		__load_item(instance, item, military_kinds, {})
-	file.close()
-	SharedData._load_troop_sprite_frames(military_kinds.values())
+		SharedData._load_troop_sprite_frames(military_kinds.values())
 	
-	file.open(path + "/ArchitectureKinds.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = ArchitectureKind.new()
-		__load_item(instance, item, architecture_kinds, {})
-	file.close()
+	if file.open(path + "/ArchitectureKinds.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = ArchitectureKind.new()
+			__load_item(instance, item, architecture_kinds, {})
+		file.close()
 	
-	file.open(path + "/Biographies.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = Biography.new()
-		__load_item(instance, item, biographies, {})
-	file.close()
+	if file.open(path + "/Biographies.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = Biography.new()
+			__load_item(instance, item, biographies, {})
+		file.close()
 
-	file.open(path + "/Persons.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	var person_json = {}
-	for item in obj:
-		var instance = Person.new()
-		instance.connect('person_died', $GameRecordCreator, 'person_died')
-		instance.connect("person_available", self, "_on_person_available")
-		instance.connect("convince_success", $GameRecordCreator, "person_convince_success")
-		instance.connect("convince_failure", $GameRecordCreator, "person_convince_failure")
-		instance.connect("move_complete", $GameRecordCreator, "person_move_complete")
-		__load_item(instance, item, persons, {"skills": skills, "stunts": stunts})
-		person_json[instance.id] = item
-	file.close()
-	for pid in persons:
-		var father_id = int(person_json[pid]["FatherId"])
-		if father_id >= 0:
-			persons[pid].set_father(persons[father_id])
-		var mother_id = int(person_json[pid]["MotherId"])
-		if mother_id >= 0:
-			persons[pid].set_father(persons[mother_id])
-		var spouse_ids = person_json[pid]["SpouseIds"]
-		for s in spouse_ids:
-			persons[pid].add_spouse(persons[int(s)])
-		var brother_ids = person_json[pid]["BrotherIds"]
-		for b in brother_ids:
-			persons[pid].add_brother(persons[int(b)])
-		var task_target_id = int(person_json[pid]["TaskTarget"])
-		if task_target_id >= 0:
-			persons[pid].set_task_target(persons[task_target_id])
+	if file.open(path + "/Persons.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		var person_json = {}
+		for item in obj:
+			var instance = Person.new()
+			instance.connect('person_died', $GameRecordCreator, 'person_died')
+			instance.connect("person_available", self, "_on_person_available")
+			instance.connect("convince_success", $GameRecordCreator, "person_convince_success")
+			instance.connect("convince_failure", $GameRecordCreator, "person_convince_failure")
+			instance.connect("move_complete", $GameRecordCreator, "person_move_complete")
+			__load_item(instance, item, persons, {"skills": skills, "stunts": stunts})
+			person_json[instance.id] = item
+		file.close()
+		for pid in persons:
+			var father_id = int(person_json[pid]["FatherId"])
+			if father_id >= 0:
+				persons[pid].set_father(persons[father_id])
+			var mother_id = int(person_json[pid]["MotherId"])
+			if mother_id >= 0:
+				persons[pid].set_father(persons[mother_id])
+			var spouse_ids = person_json[pid]["SpouseIds"]
+			for s in spouse_ids:
+				persons[pid].add_spouse(persons[int(s)])
+			var brother_ids = person_json[pid]["BrotherIds"]
+			for b in brother_ids:
+				persons[pid].add_brother(persons[int(b)])
+			var task_target_id = int(person_json[pid]["TaskTarget"])
+			if task_target_id >= 0:
+				persons[pid].set_task_target(persons[task_target_id])
 	
-	file.open(path + "/Architectures.json", File.READ)
-	var architecture_scene = preload("Architecture/Architecture.tscn")
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = architecture_scene.instance()
-		instance.connect("architecture_clicked", self, "_on_architecture_clicked")
-		instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
-		instance.connect("faction_changed", self, "_on_architecture_faction_changed")
-		__load_item(instance, item, architectures, {"persons": persons})
-		instance.setup_after_load()
-	file.close()
-	for item in architectures:
-		architectures[item].set_adjacency(architectures, ai_paths)
+	if file.open(path + "/Architectures.json", File.READ) == OK:
+		var architecture_scene = preload("Architecture/Architecture.tscn")
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = architecture_scene.instance()
+			instance.connect("architecture_clicked", self, "_on_architecture_clicked")
+			instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
+			instance.connect("faction_changed", self, "_on_architecture_faction_changed")
+			__load_item(instance, item, architectures, {"persons": persons})
+			instance.setup_after_load()
+		file.close()
+		for item in architectures:
+			architectures[item].set_adjacency(architectures, ai_paths)
 		
-	file.open(path + "/Troops.json", File.READ)
-	var troop_scene = preload("Military/Troop.tscn")
-	obj = parse_json(file.get_as_text())
-	var troop_json = {}
-	for item in obj:
-		var instance = troop_scene.instance()
-		__load_item(instance, item, troops, {"persons": persons, "stunts": stunts})
-		troop_json[instance.id] = item
-	file.close()
-	for tid in troops:
-		var order_type = troop_json[tid]["_CurrentOrderType"]
-		if order_type != null:
-			var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
-			var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
-			var order_target_stunt = troop_json[tid]["_CurrentOrderStunt"]
-			var order_target_stunt_level = troop_json[tid]["_CurrentOrderStuntLevel"]
-			
-			var target 
-			if order_target_type == "Position":
-				target = Util.load_position(order_target_raw)
-			elif order_target_type == "Architecture":
-				target = architectures[int(order_target_raw)]
-			elif order_target_type == "Troop":
-				target = troops[int(order_target_raw)]
-			
-			if order_type == Troop.OrderType.MOVE:
-				troops[tid].set_move_order(target)
-			elif order_type == Troop.OrderType.ATTACK:
-				troops[tid].set_attack_order(target, null)
-			elif order_type == Troop.OrderType.FOLLOW:
-				troops[tid].set_follow_order(target)
-			elif order_type == Troop.OrderType.ENTER:
-				troops[tid].set_enter_order(target.map_position)
-			elif order_type == Troop.OrderType.ACTIVATE_STUNT:
-				var stunt
-				if order_target_stunt >= 0:
-					stunt = stunts[int(order_target_stunt)]
+	if file.open(path + "/Troops.json", File.READ) == OK:
+		var troop_scene = preload("Military/Troop.tscn")
+		obj = parse_json(file.get_as_text())
+		var troop_json = {}
+		for item in obj:
+			var instance = troop_scene.instance()
+			__load_item(instance, item, troops, {"persons": persons, "stunts": stunts})
+			troop_json[instance.id] = item
+		file.close()
+		for tid in troops:
+			var order_type = troop_json[tid]["_CurrentOrderType"]
+			if order_type != null:
+				var order_target_raw = troop_json[tid]["_CurrentOrderTarget"]
+				var order_target_type = troop_json[tid]["_CurrentOrderTargetType"]
+				var order_target_stunt = troop_json[tid]["_CurrentOrderStunt"]
+				var order_target_stunt_level = troop_json[tid]["_CurrentOrderStuntLevel"]
+				
+				var target 
+				if order_target_type == "Position":
+					target = Util.load_position(order_target_raw)
+				elif order_target_type == "Architecture":
+					target = architectures[int(order_target_raw)]
+				elif order_target_type == "Troop":
+					target = troops[int(order_target_raw)]
+				
+				if order_type == Troop.OrderType.MOVE:
+					troops[tid].set_move_order(target)
+				elif order_type == Troop.OrderType.ATTACK:
+					troops[tid].set_attack_order(target, null)
+				elif order_type == Troop.OrderType.FOLLOW:
+					troops[tid].set_follow_order(target)
+				elif order_type == Troop.OrderType.ENTER:
+					troops[tid].set_enter_order(target.map_position)
+				elif order_type == Troop.OrderType.ACTIVATE_STUNT:
+					var stunt
+					if order_target_stunt >= 0:
+						stunt = stunts[int(order_target_stunt)]
+					else:
+						assert(false, "Stunt not found: " + str(order_target_stunt))
+					troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level, target)
 				else:
-					assert(false, "Stunt not found: " + str(order_target_stunt))
-				troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level, target)
-			else:
-				assert(false, "Unexpected order type " + str(order_type))
+					assert(false, "Unexpected order type " + str(order_type))
 
-		for s in troop_json[tid]["_ActiveStunts"]:
-			var stunt
-			if s["stunt"] >= 0:
-				stunt = stunts[int(s["stunt"])]
-			else:
-				assert(false, "Stunt not found: " + str(s["stunt"]))
-			troops[tid].active_stunt_effects.append({
-				"stunt": stunt,
-				"level": s["level"],
-				"days": s["days"]
-			})
-			troops[tid].call_deferred("_update_stunt_animations")
+			for s in troop_json[tid]["_ActiveStunts"]:
+				var stunt
+				if s["stunt"] >= 0:
+					stunt = stunts[int(s["stunt"])]
+				else:
+					assert(false, "Stunt not found: " + str(s["stunt"]))
+				troops[tid].active_stunt_effects.append({
+					"stunt": stunt,
+					"level": s["level"],
+					"days": s["days"]
+				})
+				troops[tid].call_deferred("_update_stunt_animations")
 		
 	
-	file.open(path + "/Sections.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = Section.new()
-		__load_item(instance, item, sections, {"architectures": architectures, "troops": troops})
+	if file.open(path + "/Sections.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = Section.new()
+			__load_item(instance, item, sections, {"architectures": architectures, "troops": troops})
 	
-	file.open(path + "/Factions.json", File.READ)
-	obj = parse_json(file.get_as_text())
-	for item in obj:
-		var instance = Faction.new()
-		instance.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
-		__load_item(instance, item, factions, {"sections": sections})
-		instance._set_leader(persons[int(item["Leader"])])
-		if item["Advisor"] >= 0:
-			instance._set_advisor(persons[int(item["Advisor"])])
-		instance.set_capital(architectures[int(item["Capital"])])
-	file.close()
+	if file.open(path + "/Factions.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = Faction.new()
+			instance.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
+			__load_item(instance, item, factions, {"sections": sections})
+			instance._set_leader(persons[int(item["Leader"])])
+			if item["Advisor"] >= 0:
+				instance._set_advisor(persons[int(item["Advisor"])])
+			instance.set_capital(architectures[int(item["Capital"])])
+		file.close()
 	
 	for t in troops:
 		__connect_signals_for_creating_troop(troops[t])
 	
-	__handle_game_start(current_faction_id)
-	call_deferred("emit_signal", "scenario_loaded", self)
+	if not headless:
+		__handle_game_start(current_faction_id)
+		call_deferred("emit_signal", "scenario_loaded", self)
 
 	_loading_scenario = false
 

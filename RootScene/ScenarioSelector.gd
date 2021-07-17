@@ -20,12 +20,12 @@ func _ready():
 		elif not in_dir_name.begins_with(".") and dir.current_is_dir():
 			var scen_path = "res://Scenarios/" + in_dir_name + "/Scenario.json"
 			var file = File.new()
-			file.open(scen_path, File.READ)
-			var obj = parse_json(file.get_as_text())
-			if obj != null:
-				obj['__FileName'] = in_dir_name
-				_scenario_data.append(obj)
-			file.close()
+			if file.open(scen_path, File.READ) == OK:
+				var obj = parse_json(file.get_as_text())
+				if obj != null:
+					obj['__FileName'] = in_dir_name
+					_scenario_data.append(obj)
+				file.close()
 			
 	for scen in _scenario_data:
 		var hcontainer = HBoxContainer.new()

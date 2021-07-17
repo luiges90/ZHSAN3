@@ -7,6 +7,12 @@ var current_person = Person.new()
 
 func _ready():
 	__load_custom_officers()
+
+	var scenario = Scenario.new()
+	SharedData.loading_file_path = "res://Scenarios/_Common"
+	scenario._ready(true)
+
+	current_person.scenario = scenario
 	
 
 func __load_custom_officers():
@@ -37,3 +43,19 @@ func _on_New_pressed():
 
 func _on_Edit_pressed():
 	$PersonList.show_data(custom_persons)
+
+
+func _on_PersonDetail_on_select_skills(person):
+	$InfoList._on_PersonDetail_edit_skills_clicked(person)
+
+
+func _on_PersonDetail_on_select_stunts(person):
+	$InfoList._on_PersonDetail_edit_stunts_clicked(person)
+
+
+func _on_InfoList_edit_skill_item_selected(selected):
+	$PersonDetail._on_InfoList_edit_skill_item_selected(selected)
+	
+
+func _on_InfoList_edit_stunt_item_selected(selected):
+	$PersonDetail._on_InfoList_edit_stunt_item_selected(selected)

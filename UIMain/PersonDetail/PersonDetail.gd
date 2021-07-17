@@ -3,6 +3,7 @@ class_name PersonDetail
 
 signal on_select_skills
 signal on_select_stunts
+signal on_save
 
 var current_person: Person
 var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
@@ -10,13 +11,14 @@ var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Moral
 
 var _shift_held_down = false
 var has_active_subwindow = false
+var _editing = false
 
 func _on_PersonDetail_hide():
 	$Close.play()
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed and not has_active_subwindow:
+		if event.button_index == BUTTON_RIGHT and event.pressed and not has_active_subwindow and not _editing:
 			hide()
 	elif event is InputEventKey:
 		if event.scancode == KEY_SHIFT:
@@ -24,7 +26,9 @@ func _input(event):
 
 
 func set_data(editing = false):
+	_editing = editing
 	$Edit.visible = editing or GameConfig.enable_edit
+	$Save.visible = editing
 	for e in _editables:
 		find_node(e).visible = true
 		find_node(e + 'Edit').visible = false
@@ -212,3 +216,7 @@ func _on_InfoList_edit_stunt_item_selected(selected):
 	current_person.set_stunts(selected)
 	_update_stunt_list()
 	has_active_subwindow = false
+
+
+func _on_Save_pressed():
+	call_deferred("emit_signal", "on_save", current_person)

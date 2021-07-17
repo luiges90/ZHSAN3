@@ -1,0 +1,1195 @@
+[
+    {
+        "_Id": 10,
+        "Name": "攻擊命令",
+        "Description": "增加部隊攻擊力每等級20%",
+        "TileEffect": "OffenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 40,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "strength_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            },
+            {
+                "Operation": "troop_damage_dealt_at_least",
+                "Value": 20000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "troop_quantity_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "troop_morale_at_least",
+                "Value": 30
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 6
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offence",
+                "Value": 0.2
+            }
+        ]
+    },
+    {
+        "_Id": 20,
+        "Name": "防禦命令",
+        "Description": "增加部隊防禦力每等級20%",
+        "TileEffect": "DefenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 40,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            },
+            {
+                "Operation": "troop_damage_received_at_least",
+                "Value": 20000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 6
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_defence",
+                "Value": 0.2
+            }
+        ]
+    },
+    {
+        "_Id": 30,
+        "Name": "攻城命令",
+        "Description": "增加部隊對城牆攻擊力每等級50%",
+        "TileEffect": "SiegeBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 40,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            },
+            {
+                "Operation": "arch_damage_dealt_at_least",
+                "Value": 5000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "troop_quantity_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "troop_morale_at_least",
+                "Value": 40
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Operator": ["not"],
+                "Value": 1,
+                "Distance": 6
+            },
+            {
+                "Operation": "enemy_architecture_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_damage_on_architecture",
+                "Value": 0.5
+            }
+        ]
+    },
+    {
+        "_Id": 40,
+        "Name": "速攻命令",
+        "Description": "增加部隊速度每等級20%",
+        "TileEffect": "SpeedBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 40,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "enemy_architecture_nearby_count_at_least",
+                "Operator": ["not"],
+                "Value": 1,
+                "Distance": 4
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_speed",
+                "Value": 0.2
+            }
+        ]
+    },
+    {
+        "_Id": 100,
+        "Name": "攻擊指揮",
+        "Description": "增加3格內我方部隊攻擊力每等級5%",
+        "TileEffect": "OffenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 3,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 5000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "troop_damage_dealt_at_least",
+                "Value": 20000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "troop_quantity_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "troop_morale_at_least",
+                "Value": 30
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 4,
+                "Distance": 3
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 6
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offence",
+                "Value": 0.05
+            }
+        ]
+    },
+    {
+        "_Id": 110,
+        "Name": "防禦指揮",
+        "Description": "增加3格內我方部隊防禦力每等級5%",
+        "TileEffect": "DefenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 3,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 5000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "troop_damage_received_at_least",
+                "Value": 20000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 4,
+                "Distance": 3
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 6
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_defence",
+                "Value": 0.05
+            }
+        ]
+    },
+    {
+        "_Id": 120,
+        "Name": "攻城指揮",
+        "Description": "增加3格內我方部隊對城牆攻擊力每等級10%",
+        "TileEffect": "SiegeBoost",
+        "TargetRange": 0,
+        "EffectRange": 3,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 5000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "arch_damage_dealt_at_least",
+                "Value": 5000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "troop_quantity_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "troop_morale_at_least",
+                "Value": 40
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 4,
+                "Distance": 3
+            },
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Operator": [
+                    "not"
+                ],
+                "Value": 1,
+                "Distance": 6
+            },
+            {
+                "Operation": "enemy_architecture_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_damage_on_architecture",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 130,
+        "Name": "速攻指揮",
+        "Description": "增加3格內我方部隊速度每等級5%",
+        "TileEffect": "SpeedBoost",
+        "TargetRange": 0,
+        "EffectRange": 3,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0.0,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 60,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 7500
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 4,
+                "Distance": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_speed",
+                "Value": 0.05
+            }
+        ]
+    },
+    {
+        "_Id": 200,
+        "Name": "攻擊弱化",
+        "Description": "弱化2格內敵方部隊攻擊力每等級5%",
+        "TileEffect": "OffenseNerf",
+        "TargetRange": 3,
+        "EffectRange": 2,
+        "TargetType": 1,
+        "SuccessChance": 0.5,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 6000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "troop_damage_received_at_least",
+                "Value": 30000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 3,
+                "Distance": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offence",
+                "Value": -0.05
+            }
+        ]
+    },
+    {
+        "_Id": 210,
+        "Name": "防禦弱化",
+        "Description": "弱化2格內敵方部隊防禦力每等級5%",
+        "TileEffect": "DefenseNerf",
+        "TargetRange": 3,
+        "EffectRange": 2,
+        "TargetType": 1,
+        "SuccessChance": 0.5,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 6000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "troop_damage_dealt_at_least",
+                "Value": 30000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 3,
+                "Distance": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_defence",
+                "Value": -0.05
+            }
+        ]
+    },
+    {
+        "_Id": 220,
+        "Name": "攻城弱化",
+        "Description": "弱化2格內敵方部隊對城牆攻擊力每等級10%",
+        "TileEffect": "SiegeNerf",
+        "TargetRange": 3,
+        "EffectRange": 2,
+        "TargetType": 1,
+        "SuccessChance": 0.5,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 50,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 6000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "arch_damage_dealt_at_least",
+                "Value": 10000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 3
+            },
+            {
+                "Operation": "friendly_architecture_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_damage_on_architecture",
+                "Value": -0.1
+            }
+        ]
+    },
+    {
+        "_Id": 230,
+        "Name": "速度弱化",
+        "Description": "弱化2格內敵方部隊速度每等級5%",
+        "TileEffect": "SpeedNerf",
+        "TargetRange": 3,
+        "EffectRange": 2,
+        "TargetType": 1,
+        "SuccessChance": 0.5,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.96,
+            0.69,
+            0.13
+        ],
+        "CombativityCost": 60,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 6000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 10,
+                "Value": 70
+            },
+            {
+                "Operation": "arch_damage_dealt_at_least",
+                "Value": 10000
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 4,
+                "Distance": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_speed",
+                "Value": -0.05
+            }
+        ]
+    },
+    {
+        "_Id": 1000,
+        "Name": "鼓舞",
+        "Description": "增加2格內我方部隊士氣每等級5點",
+        "TileEffect": "MoraleIncrease",
+        "TargetRange": 0,
+        "EffectRange": 2,
+        "TargetType": 0,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 2,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.13,
+            0.96,
+            0.69
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            },
+            {
+                "Operation": "glamour_at_least",
+                "LevelIncrement": 5,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "troop_morale_at_least",
+                "Operator":["not"],
+                "Value": 80
+            },
+            {
+                "Operation": "allies_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "add_morale_per_day_during_battle",
+                "Value": 5
+            }
+        ]
+    },
+    {
+        "_Id": 1100,
+        "Name": "膽怯",
+        "Description": "減少1格內敵方部隊士氣每等級5點",
+        "TileEffect": "MoraleDecrease",
+        "TargetRange": 2,
+        "EffectRange": 1,
+        "TargetType": 1,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.69,
+            0.96,
+            0.13
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "LevelIncrement": 5,
+                "Value": 60
+            },
+            {
+                "Operation": "strength_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "add_morale_per_day_during_battle",
+                "Value": -5
+            }
+        ]
+    },
+    {
+        "_Id": 1200,
+        "Name": "攻心",
+        "Description": "減少1格內敵方部隊戰意每等級5點",
+        "TileEffect": "MoraleDecrease",
+        "TargetRange": 2,
+        "EffectRange": 1,
+        "TargetType": 1,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 2,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.69,
+            0.96,
+            0.13
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "LevelIncrement": 10,
+                "Value": 60
+            },
+            {
+                "Operation": "glamour_at_least",
+                "LevelIncrement": 5,
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "add_combativity_per_day_during_battle",
+                "Value": -5
+            }
+        ]
+    },
+    {
+        "_Id": 1300,
+        "Name": "止步",
+        "Description": "大幅減少1格內敵方部隊速度",
+        "TileEffect": "SpeedNerf",
+        "TargetRange": 2,
+        "EffectRange": 1,
+        "TargetType": 1,
+        "SuccessChance": 0.6,
+        "CompetitionAbility": 1,
+        "AbilityChanceRate": 0.005,
+        "Color": [
+            0.69,
+            0.96,
+            0.13
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "MaxLevel": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 2000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "Value": 75
+            },
+            {
+                "Operation": "strength_at_least",
+                "Value": 60
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_speed",
+                "Value": -0.8
+            }
+        ]
+    },
+    {
+        "_Id": 1400,
+        "Name": "混亂",
+        "Description": "使1格內敵方部隊陷入混亂",
+        "TileEffect": "Chaos",
+        "TargetRange": 2,
+        "EffectRange": 1,
+        "TargetType": 1,
+        "SuccessChance": 0.4,
+        "CompetitionAbility": 2,
+        "AbilityChanceRate": 0.01,
+        "Color": [
+            0.69,
+            0.96,
+            0.13
+        ],
+        "CombativityCost": 20,
+        "Duration": 1,
+        "MaxLevel": 1,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "intelligence_at_least",
+                "Value": 80
+            }
+        ],
+        "Conditions": [],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_speed",
+                "Value": -0.5
+            },
+            {
+                "Operation": "modify_troop_defence",
+                "Value": -0.2
+            },
+            {
+                "Operation": "modify_troop_offence",
+                "Value": -0.2
+            },
+            {
+                "Operation": "modify_troop_siege",
+                "Value": -0.2
+            }
+        ]
+    },
+    {
+        "_Id": 2000,
+        "Name": "盾陣",
+        "Description": "短時間內大幅提升步兵的防禦力",
+        "TileEffect": "DefenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0,
+        "Color": [
+            0.96,
+            0.13,
+            0.69
+        ],
+        "CombativityCost": 20,
+        "Duration": 2,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "military_type_experience_at_least",
+                "military_type": 0,
+                "Value": 3000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 20,
+                "Value": 60
+            }
+        ],
+        "Conditions": [
+            {
+				"Operation": "is_military_type",
+				"Id": 0
+			}
+        ],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_defence",
+                "Value": 1.0
+            }
+        ]
+    },
+    {
+        "_Id": 2100,
+        "Name": "齊射",
+        "Description": "短時間內大幅提升弓兵的攻擊力",
+        "TileEffect": "OffenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0,
+        "Color": [
+            0.96,
+            0.13,
+            0.69
+        ],
+        "CombativityCost": 20,
+        "Duration": 2,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "military_type_experience_at_least",
+                "military_type": 1,
+                "Value": 3000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 20,
+                "Value": 60
+            }
+        ],
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 1
+            }
+        ],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offence",
+                "Value": 1.0
+            }
+        ]
+    },
+    {
+        "_Id": 2200,
+        "Name": "突擊",
+        "Description": "短時間內大幅提升騎兵的攻擊力",
+        "TileEffect": "OffenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0,
+        "Color": [
+            0.96,
+            0.13,
+            0.69
+        ],
+        "CombativityCost": 20,
+        "Duration": 2,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 3000
+            },
+            {
+                "Operation": "military_type_experience_at_least",
+                "military_type": 2,
+                "Value": 3000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 20,
+                "Value": 60
+            }
+        ],
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 2
+            }
+        ],
+        "AIConditions": [
+            {
+                "Operation": "enemy_troop_nearby_count_at_least",
+                "Value": 2,
+                "Distance": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offence",
+                "Value": 1.0
+            }
+        ]
+    },
+    {
+        "_Id": 3000,
+        "Name": "遁走",
+        "Description": "士兵低下時迅速脫離戰場",
+        "TileEffect": "SpeedBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0,
+        "MaxLevel": 1,
+        "Color": [
+            0.69,
+            0.13,
+            0.96
+        ],
+        "CombativityCost": 30,
+        "Duration": 5,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 5000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 20,
+                "Value": 70
+            },
+            {
+                "Operation": "glamour_at_least",
+                "LevelIncrement": 20,
+                "Value": 70
+            }
+        ],
+        "Conditions": [
+            {
+                "Operation": "troop_quantity_at_least",
+                "Operator": ["not"],
+                "Value": 1000
+            }
+        ],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_speed",
+                "Value": 0.5
+            }
+        ]
+    },
+    {
+        "_Id": 3010,
+        "Name": "驅逐",
+        "Description": "兵臨城下，起兵驅逐",
+        "TileEffect": "DefenseBoost",
+        "TargetRange": 0,
+        "EffectRange": 0,
+        "TargetType": 0,
+        "SuccessChance": 1.0,
+        "CompetitionAbility": 0,
+        "AbilityChanceRate": 0,
+        "MaxLevel": 1,
+        "Color": [
+            0.69,
+            0.13,
+            0.96
+        ],
+        "CombativityCost": 50,
+        "Duration": 4,
+        "LearnConditions": [
+            {
+                "Operation": "combat_experience_at_least",
+                "Value": 5000
+            },
+            {
+                "Operation": "command_at_least",
+                "LevelIncrement": 20,
+                "Value": 80
+            }
+        ],
+        "Conditions": [
+            {
+                "Operation": "morale_at_least",
+                "Value": 90
+            },
+            {
+                "Operation": "friendly_architecture_nearby_count_at_least",
+                "Value": 1,
+                "Distance": 4
+            }
+        ],
+        "AIConditions": [
+            {
+                "Operation": "troop_has_no_active_stunt"
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_troop_offense",
+                "Value": 0.5
+            },
+            {
+                "Operation": "modify_troop_defense",
+                "Value": 0.5
+            }
+        ]
+    }
+]

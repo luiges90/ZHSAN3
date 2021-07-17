@@ -661,6 +661,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Save" type="Button" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -120.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 48.0
+text = "SAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="hide" from="." to="." method="_on_PersonDetail_hide"]
 [connection signal="text_changed" from="Status/MeritEdit" to="." method="_on_MeritEdit_text_changed"]
 [connection signal="text_changed" from="Status/KarmaEdit" to="." method="_on_KarmaEdit_text_changed"]
@@ -676,3 +689,4 @@ __meta__ = {
 [connection signal="pressed" from="SkillsHeader/Edit" to="." method="_on_Skills_Edit_pressed"]
 [connection signal="pressed" from="StuntsHeader/Edit" to="." method="_on_Stunts_Edit_pressed"]
 [connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]
+[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
