@@ -28,7 +28,7 @@ func _input(event):
 func set_data(editing = false):
 	_editing = editing
 	$Edit.visible = editing or GameConfig.enable_edit
-	$Save.visible = editing
+	$EditingButtons.visible = editing
 	for e in _editables:
 		find_node(e).visible = true
 		find_node(e + 'Edit').visible = false
@@ -220,3 +220,17 @@ func _on_InfoList_edit_stunt_item_selected(selected):
 
 func _on_Save_pressed():
 	call_deferred("emit_signal", "on_save", current_person)
+
+
+func _on_Cancel_pressed():
+	var btn_ok = $ConfirmationDialog.get_ok()
+	btn_ok.text = tr("EXIT")
+	
+	var btn_cancel = $ConfirmationDialog.get_cancel()
+	btn_cancel.text = tr("RETURN")
+
+	$ConfirmationDialog.popup()
+
+
+func _on_ConfirmationDialog_confirmed():
+	hide()

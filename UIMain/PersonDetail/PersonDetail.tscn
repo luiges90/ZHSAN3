@@ -661,15 +661,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Save" type="Button" parent="."]
+[node name="EditingButtons" type="HBoxContainer" parent="."]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -120.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = 48.0
+grow_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="EditingButtons"]
+margin_right = 121.0
+margin_bottom = 32.0
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="Button" parent="EditingButtons"]
+margin_left = 125.0
+margin_right = 224.0
+margin_bottom = 32.0
 text = "SAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+window_title = "CONFIRM_EXIT"
+dialog_text = "UNSAVED_CHANGES_WILL_BE_LOST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -689,4 +720,6 @@ __meta__ = {
 [connection signal="pressed" from="SkillsHeader/Edit" to="." method="_on_Skills_Edit_pressed"]
 [connection signal="pressed" from="StuntsHeader/Edit" to="." method="_on_Stunts_Edit_pressed"]
 [connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]
-[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="EditingButtons/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="EditingButtons/Save" to="." method="_on_Save_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

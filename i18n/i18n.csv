@@ -238,3 +238,7 @@ NEW_OFFICER,Create Officer,创作新武将,創作新武將
 EDIT_OFFICER,Edit Officer,编辑新武将,編輯新武將
 DELETE_OFFICER,Delete Officer,删除新武将,刪除新武將
 SAVE,Save,保存,保存
+EXIT,Exit,"退出","退出"
+CONFIRM_EXIT,"Confirm Exit","确定退出？","確定退出？"
+UNSAVED_CHANGES_WILL_BE_LOST,"Unsaved changes will be lost.","未保存的资料将会丢失","未保存的資料將會丟失"
+RETURN,"Return","返回","返回"
