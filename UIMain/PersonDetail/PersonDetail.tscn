@@ -199,6 +199,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GenderButton" type="Button" parent="Status"]
+visible = false
+margin_left = 116.0
+margin_top = 26.0
+margin_right = 224.0
+margin_bottom = 44.0
+
 [node name="Faction" type="Label" parent="Status"]
 margin_left = 116.0
 margin_top = 26.0
@@ -706,6 +713,7 @@ __meta__ = {
 }
 
 [connection signal="hide" from="." to="." method="_on_PersonDetail_hide"]
+[connection signal="pressed" from="Status/GenderButton" to="." method="_on_GenderButton_pressed"]
 [connection signal="text_changed" from="Status/MeritEdit" to="." method="_on_MeritEdit_text_changed"]
 [connection signal="text_changed" from="Status/KarmaEdit" to="." method="_on_KarmaEdit_text_changed"]
 [connection signal="text_changed" from="Status/PopularityEdit" to="." method="_on_PopularityEdit_text_changed"]

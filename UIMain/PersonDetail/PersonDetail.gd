@@ -45,6 +45,7 @@ func set_data(editing = false):
 	$Name.text = current_person.get_full_name()
 	
 	$Status/Gender.text = current_person.get_gender_str()
+	$Status/GenderButton.text = current_person.get_gender_str()
 	if !editing:
 		$Status/Faction.text = current_person.get_belonged_faction_str()
 		$Status/Section.text = current_person.get_belonged_section_str()
@@ -140,6 +141,8 @@ func _on_Edit_pressed():
 	$SkillsHeader/Label2.visible = true
 	$StuntsHeader/Edit.visible = true
 	$StuntsHeader/Label2.visible = true
+	$Status/Gender.visible = false
+	$Status/GenderButton.visible = true
 	
 	for e in _editables:
 		var nonedit = find_node(e)
@@ -234,3 +237,10 @@ func _on_Cancel_pressed():
 
 func _on_ConfirmationDialog_confirmed():
 	hide()
+
+
+func _on_GenderButton_pressed():
+	current_person._set_gender(not current_person.gender)
+	$Status/Gender.text = current_person.get_gender_str()
+	$Status/GenderButton.text = current_person.get_gender_str()
+	$Portrait.texture = current_person.get_portrait()

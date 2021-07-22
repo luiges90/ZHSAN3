@@ -454,6 +454,9 @@ func get_id():
 	
 func _set_id(v):
 	id = v
+	
+func _set_gender(v):
+	gender = v
 
 func get_command():
 	return command + command_exp / 1000
