@@ -615,6 +615,15 @@ margin_right = 207.0
 margin_bottom = 40.0
 align = 1
 
+[node name="IdealEdit" type="LineEdit" parent="Relations"]
+visible = false
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
 [node name="Father" type="Label" parent="Relations"]
 margin_left = 211.0
 margin_top = 22.0
@@ -813,6 +822,7 @@ __meta__ = {
 [connection signal="text_changed" from="Abilities/IntelligenceEdit" to="." method="_on_IntelligenceEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/PoliticsEdit" to="." method="_on_PoliticsEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/GlamourEdit" to="." method="_on_GlamourEdit_text_changed"]
+[connection signal="text_changed" from="Relations/IdealEdit" to="." method="_on_IdealEdit_text_changed"]
 [connection signal="pressed" from="SkillsHeader/Edit" to="." method="_on_Skills_Edit_pressed"]
 [connection signal="pressed" from="StuntsHeader/Edit" to="." method="_on_Stunts_Edit_pressed"]
 [connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]

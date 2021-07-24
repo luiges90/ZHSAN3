@@ -7,7 +7,7 @@ signal on_save
 
 var current_person: Person
 var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
-				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour']
+				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour', 'Ideal']
 
 var _shift_held_down = false
 var has_active_subwindow = false
@@ -250,3 +250,7 @@ func _on_GenderButton_pressed():
 	$Status/Gender.text = current_person.get_gender_str()
 	$Status/GenderButton.text = current_person.get_gender_str()
 	$Portrait.texture = current_person.get_portrait()
+
+
+func _on_IdealEdit_text_changed(new_text):
+	current_person.set_ideal(int(new_text))

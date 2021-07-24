@@ -322,6 +322,9 @@ func cmp_age_desc(a, b):
 	
 func get_expected_death_year():
 	return death_year if dead_reason == DeadReason.NATURAL else death_year + 10 + get_strength() / 10
+	
+func set_ideal(v):
+	ideal = v
 
 #####################################
 #    Getters / Tasks and Statuses   #
