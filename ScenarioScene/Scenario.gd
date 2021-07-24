@@ -349,7 +349,7 @@ func _load_data(path, headless):
 				persons[pid].set_father(persons[father_id])
 			var mother_id = int(person_json[pid]["MotherId"])
 			if mother_id >= 0:
-				persons[pid].set_father(persons[mother_id])
+				persons[pid].set_mother(persons[mother_id])
 			var spouse_ids = person_json[pid]["SpouseIds"]
 			for s in spouse_ids:
 				persons[pid].add_spouse(persons[int(s)])
