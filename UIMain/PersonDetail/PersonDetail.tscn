@@ -554,11 +554,100 @@ size_flags_horizontal = 3
 text = "60"
 align = 1
 
-[node name="SkillsHeader" type="HBoxContainer" parent="."]
+[node name="Relations" type="GridContainer" parent="."]
+anchor_right = 1.0
 margin_left = 508.0
 margin_top = 128.0
+margin_right = -16.0
+margin_bottom = 172.0
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Relations"]
+margin_right = 207.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "IDEAL"
+align = 1
+
+[node name="Label" type="Label" parent="Relations"]
+margin_left = 211.0
+margin_right = 418.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "FATHER"
+align = 1
+
+[node name="Label2" type="Label" parent="Relations"]
+margin_left = 422.0
+margin_right = 629.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "MOTHER"
+align = 1
+
+[node name="Label3" type="Label" parent="Relations"]
+margin_left = 633.0
+margin_right = 840.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "SPOUSE"
+align = 1
+
+[node name="Label4" type="Label" parent="Relations"]
+margin_left = 844.0
+margin_right = 1051.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "BROTHER"
+align = 1
+
+[node name="Ideal" type="Label" parent="Relations"]
+margin_top = 22.0
+margin_right = 207.0
+margin_bottom = 40.0
+align = 1
+
+[node name="Father" type="Label" parent="Relations"]
+margin_left = 211.0
+margin_top = 22.0
+margin_right = 418.0
+margin_bottom = 40.0
+align = 1
+
+[node name="Mother" type="Label" parent="Relations"]
+margin_left = 422.0
+margin_top = 22.0
+margin_right = 629.0
+margin_bottom = 40.0
+align = 1
+
+[node name="Spouses" type="Label" parent="Relations"]
+margin_left = 633.0
+margin_top = 22.0
+margin_right = 840.0
+margin_bottom = 40.0
+align = 1
+
+[node name="Brothers" type="Label" parent="Relations"]
+margin_left = 844.0
+margin_top = 22.0
+margin_right = 1051.0
+margin_bottom = 40.0
+align = 1
+
+[node name="SkillsHeader" type="HBoxContainer" parent="."]
+margin_left = 508.0
+margin_top = 180.0
 margin_right = 591.0
-margin_bottom = 155.0
+margin_bottom = 207.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -590,9 +679,9 @@ text = "SKILL_EDIT_INSTRUCTION"
 
 [node name="Skills" type="GridContainer" parent="."]
 margin_left = 508.0
-margin_top = 160.0
+margin_top = 212.0
 margin_right = 508.0
-margin_bottom = 160.0
+margin_bottom = 212.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 columns = 10
@@ -637,7 +726,7 @@ text = "SKILL_EDIT_INSTRUCTION"
 [node name="Stunts" type="GridContainer" parent="."]
 margin_left = 508.0
 margin_top = 320.0
-margin_right = 464.0
+margin_right = 508.0
 margin_bottom = 320.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
@@ -698,7 +787,6 @@ __meta__ = {
 }
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

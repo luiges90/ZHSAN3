@@ -64,6 +64,12 @@ func set_data(editing = false):
 	$Abilities/Politics.text = current_person.get_politics_detail_str()
 	$Abilities/Glamour.text = current_person.get_glamour_detail_str()
 	
+	$Relations/Ideal.text = str(current_person.ideal)
+	$Relations/Father.text = current_person.get_father_name()
+	$Relations/Mother.text = current_person.get_mother_name()
+	$Relations/Spouses.text = current_person.get_spouse_names()
+	$Relations/Brothers.text = current_person.get_brother_names()
+
 	_update_skill_list()
 	_update_stunt_list()
 	
