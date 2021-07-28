@@ -8,14 +8,6 @@ var _scenario
 
 var _editing_person_id = null
 
-func _ready():
-	_scenario = Scenario.new()
-	SharedData.loading_file_path = "res://Scenarios/_Common"
-	_scenario._ready(true)
-	
-	__load_custom_officers()
-	
-
 func __load_custom_officers():
 	var file = File.new()
 	var err = file.open("user://custom_persons.json", File.READ)
@@ -89,3 +81,12 @@ func _on_PersonDetail_on_save(person):
 	for p in custom_persons:
 		data.append(p.save_data())
 	file.store_line(to_json(data))
+
+
+func _on_CustomOfficer_visibility_changed():
+	_scenario = Scenario.new()
+	SharedData.loading_file_path = "res://Scenarios/_Common"
+	_scenario._ready(true)
+	
+	__load_custom_officers()
+	

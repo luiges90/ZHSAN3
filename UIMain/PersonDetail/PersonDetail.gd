@@ -7,7 +7,8 @@ signal on_save
 
 var current_person: Person
 var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
-				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour', 'Ideal']
+				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour', 'Ideal',
+				  'Father', 'Mother', 'Spouses', 'Brothers']
 
 var _shift_held_down = false
 var has_active_subwindow = false
@@ -254,3 +255,21 @@ func _on_GenderButton_pressed():
 
 func _on_IdealEdit_text_changed(new_text):
 	current_person.set_ideal(int(new_text))
+
+
+func _on_FatherEdit_pressed():
+	var candidates = []
+	for pid in current_person.scenario.persons:
+		var p = current_person.scenario.persons[pid]
+		if !p.gender and p.born_year <= current_person.born_year + 16 and p.dead_year - 1 >= current_person.born_year and !p.is_close_blood_to(current_person):
+			candidates.append(p)
+	$PersonList.show_data(candidates)
+
+
+func _on_MotherEdit_pressed():
+	var candidates = []
+	for pid in current_person.scenario.persons:
+		var p = current_person.scenario.persons[pid]
+		if p.gender and p.born_year <= current_person.born_year + 16 and p.dead_year >= current_person.born_year and !p.is_close_blood_to(current_person):
+			candidates.append(p)
+	$PersonList.show_data(candidates)

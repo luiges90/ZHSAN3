@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Images/PersonPortrait/default-male-martial.jpg" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UIMain/PersonDetail/PersonDetail.gd" type="Script" id=4]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=5]
 [ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UIMain/TabList/PersonList.tscn" type="PackedScene" id=7]
 
 [node name="PersonDetail" type="Panel"]
 anchor_right = 1.0
@@ -631,12 +632,26 @@ margin_right = 418.0
 margin_bottom = 40.0
 align = 1
 
+[node name="FatherEdit" type="Button" parent="Relations"]
+visible = false
+margin_left = 422.0
+margin_top = 22.0
+margin_right = 629.0
+margin_bottom = 40.0
+
 [node name="Mother" type="Label" parent="Relations"]
 margin_left = 422.0
 margin_top = 22.0
 margin_right = 629.0
 margin_bottom = 40.0
 align = 1
+
+[node name="MotherEdit" type="Button" parent="Relations"]
+visible = false
+margin_left = 422.0
+margin_top = 22.0
+margin_right = 629.0
+margin_bottom = 40.0
 
 [node name="Spouses" type="Label" parent="Relations"]
 margin_left = 633.0
@@ -645,12 +660,26 @@ margin_right = 840.0
 margin_bottom = 40.0
 align = 1
 
+[node name="SpousesEdit" type="Button" parent="Relations"]
+visible = false
+margin_left = 422.0
+margin_top = 22.0
+margin_right = 629.0
+margin_bottom = 40.0
+
 [node name="Brothers" type="Label" parent="Relations"]
 margin_left = 844.0
 margin_top = 22.0
 margin_right = 1051.0
 margin_bottom = 40.0
 align = 1
+
+[node name="BrothersEdit" type="Button" parent="Relations"]
+visible = false
+margin_left = 422.0
+margin_top = 22.0
+margin_right = 629.0
+margin_bottom = 40.0
 
 [node name="SkillsHeader" type="HBoxContainer" parent="."]
 margin_left = 508.0
@@ -809,6 +838,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PersonList" parent="." instance=ExtResource( 7 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [connection signal="hide" from="." to="." method="_on_PersonDetail_hide"]
 [connection signal="pressed" from="Status/GenderButton" to="." method="_on_GenderButton_pressed"]
 [connection signal="text_changed" from="Status/MeritEdit" to="." method="_on_MeritEdit_text_changed"]
@@ -823,6 +859,8 @@ __meta__ = {
 [connection signal="text_changed" from="Abilities/PoliticsEdit" to="." method="_on_PoliticsEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/GlamourEdit" to="." method="_on_GlamourEdit_text_changed"]
 [connection signal="text_changed" from="Relations/IdealEdit" to="." method="_on_IdealEdit_text_changed"]
+[connection signal="pressed" from="Relations/FatherEdit" to="." method="_on_FatherEdit_pressed"]
+[connection signal="pressed" from="Relations/MotherEdit" to="." method="_on_MotherEdit_pressed"]
 [connection signal="pressed" from="SkillsHeader/Edit" to="." method="_on_Skills_Edit_pressed"]
 [connection signal="pressed" from="StuntsHeader/Edit" to="." method="_on_Stunts_Edit_pressed"]
 [connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]
