@@ -16,7 +16,9 @@ enum Action {
 	SELECT_TROOP_LEADER,
 	SELECT_ADVISOR,
 	CONVINCE_TARGET,
-	CONVINCE_PERSON
+	CONVINCE_PERSON,
+	EDIT_MODE_SELECT_FATHER,
+	EDIT_MODE_SELECT_MOTHER
 }
 
 signal person_selected
@@ -59,6 +61,12 @@ func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
 	current_architecture = arch
 	show_data(persons)
 
+
+func edit_mode_select_relation(persons: Array, action):
+	current_action = action
+	current_architecture = null
+	show_data(persons)
+	
 
 func show_data(person_list: Array):
 	.show_data(person_list)
@@ -107,6 +115,12 @@ func show_data(person_list: Array):
 			_max_selection = 1
 		Action.CONVINCE_PERSON:
 			$Title.text = tr('CONVINCE_PERSON')
+			_max_selection = 1
+		Action.EDIT_MODE_SELECT_FATHER:
+			$Title.text = tr('PERSON_LIST')
+			_max_selection = 1
+		Action.EDIT_MODE_SELECT_MOTHER:
+			$Title.text = tr('PERSON_LIST')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
@@ -200,22 +214,30 @@ func _populate_relevant_data(person_list: Array, action):
 		_:
 			_remove_tab('RELEVANCE')
 
-		
+func __is_action_edit_mode_select_relation(action):
+	return action == Action.EDIT_MODE_SELECT_FATHER or action == Action.EDIT_MODE_SELECT_MOTHER
 
 func _populate_basic_data(person_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		item_list.columns = 13
+		if __is_action_edit_mode_select_relation(action):
+			item_list.columns = 11
+		else:
+			item_list.columns = 13
 		item_list.add_child(_title(''))
 	else:
 		item_list.columns = 12
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('LOCATION'), self, "_on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
+	if !__is_action_edit_mode_select_relation(action):
+		item_list.add_child(_title_sorting(tr('LOCATION'), self, "_on_title_sorting_click", person_list))
+		item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('GENDER'), self, "_on_title_sorting_click", person_list))
-	item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
+	if !__is_action_edit_mode_select_relation(action):
+		item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
+	else:
+		item_list.add_child(_title_sorting(tr('BORN_YEAR'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('LOYALTY'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('MERIT'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('POPULARITY'), self, "_on_title_sorting_click", person_list))
@@ -234,13 +256,17 @@ func _populate_basic_data(person_list: Array, action):
 			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
-		if person.get_location() != null:
-			item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
-		else:
-			item_list.add_child(_clickable_label_with_long_pressed_event("", self, person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
+		if !__is_action_edit_mode_select_relation(action):
+			if person.get_location() != null:
+				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
+			else:
+				item_list.add_child(_clickable_label_with_long_pressed_event("", self, person, checkbox))
+			item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))
+		if !__is_action_edit_mode_select_relation(action):
+			item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))
+		else:
+			item_list.add_child(_clickable_label_with_long_pressed_event(str(person.born_year), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_loyalty()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_merit()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_popularity()), self, person, checkbox))
@@ -572,6 +598,9 @@ func __get_compare_value(_clicked_label, a, b):
 	elif _clicked_label == tr('IDEAL'):
 		a1 = a.ideal
 		b1 = b.ideal
+	elif _clicked_label == tr('BORN_YEAR'):
+		a1 = a.born_year
+		b1 = b.born_year
 	return [a1, b1]
 
 func _on_Confirm_pressed():

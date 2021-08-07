@@ -335,11 +335,16 @@ func _load_data(path, headless):
 		var person_json = {}
 		for item in obj:
 			var instance = Person.new()
-			instance.connect('person_died', $GameRecordCreator, 'person_died')
+			
 			instance.connect("person_available", self, "_on_person_available")
-			instance.connect("convince_success", $GameRecordCreator, "person_convince_success")
-			instance.connect("convince_failure", $GameRecordCreator, "person_convince_failure")
-			instance.connect("move_complete", $GameRecordCreator, "person_move_complete")
+			
+			var game_record_creator = get_node_or_null("GameRecordCreator")
+			if game_record_creator != null:
+				instance.connect('person_died', game_record_creator, 'person_died')
+				instance.connect("convince_success", game_record_creator, "person_convince_success")
+				instance.connect("convince_failure", game_record_creator, "person_convince_failure")
+				instance.connect("move_complete", game_record_creator, "person_move_complete")
+				
 			__load_item(instance, item, persons, {"skills": skills, "stunts": stunts})
 			person_json[instance.id] = item
 		file.close()

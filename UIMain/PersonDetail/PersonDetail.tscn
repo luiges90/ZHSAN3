@@ -929,3 +929,4 @@ anchor_bottom = 1.0
 [connection signal="pressed" from="EditingButtons/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="pressed" from="EditingButtons/Save" to="." method="_on_Save_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
+[connection signal="person_selected" from="PersonList" to="." method="_on_PersonList_person_selected"]
