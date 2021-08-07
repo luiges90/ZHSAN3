@@ -561,22 +561,50 @@ margin_left = 508.0
 margin_top = 128.0
 margin_right = -16.0
 margin_bottom = 172.0
-columns = 5
+columns = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="Relations"]
-margin_right = 207.0
+margin_right = 147.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "IDEAL"
 align = 1
 
+[node name="Label6" type="Label" parent="Relations"]
+margin_left = 151.0
+margin_right = 298.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "BORN_YEAR"
+align = 1
+
+[node name="AgeLabel" type="Label" parent="Relations"]
+margin_left = 302.0
+margin_right = 449.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "AGE"
+align = 1
+
+[node name="DeathYearLabel" type="Label" parent="Relations"]
+visible = false
+margin_left = 453.0
+margin_right = 600.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "DEATH_YEAR"
+align = 1
+
 [node name="Label" type="Label" parent="Relations"]
-margin_left = 211.0
-margin_right = 418.0
+margin_left = 453.0
+margin_right = 600.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -584,8 +612,8 @@ text = "FATHER"
 align = 1
 
 [node name="Label2" type="Label" parent="Relations"]
-margin_left = 422.0
-margin_right = 629.0
+margin_left = 604.0
+margin_right = 751.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -593,8 +621,8 @@ text = "MOTHER"
 align = 1
 
 [node name="Label3" type="Label" parent="Relations"]
-margin_left = 633.0
-margin_right = 840.0
+margin_left = 755.0
+margin_right = 902.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -602,8 +630,8 @@ text = "SPOUSE"
 align = 1
 
 [node name="Label4" type="Label" parent="Relations"]
-margin_left = 844.0
-margin_right = 1051.0
+margin_left = 906.0
+margin_right = 1053.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -612,7 +640,7 @@ align = 1
 
 [node name="Ideal" type="Label" parent="Relations"]
 margin_top = 22.0
-margin_right = 207.0
+margin_right = 147.0
 margin_bottom = 40.0
 align = 1
 
@@ -625,10 +653,43 @@ size_flags_horizontal = 3
 text = "100"
 align = 1
 
-[node name="Father" type="Label" parent="Relations"]
-margin_left = 211.0
+[node name="BornYear" type="Label" parent="Relations"]
+margin_left = 151.0
 margin_top = 22.0
-margin_right = 418.0
+margin_right = 298.0
+margin_bottom = 40.0
+align = 1
+
+[node name="BornYearEdit" type="LineEdit" parent="Relations"]
+visible = false
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
+[node name="Age" type="Label" parent="Relations"]
+margin_left = 302.0
+margin_top = 22.0
+margin_right = 449.0
+margin_bottom = 40.0
+align = 1
+
+[node name="DeathYearEdit" type="LineEdit" parent="Relations"]
+visible = false
+margin_left = 453.0
+margin_top = 22.0
+margin_right = 600.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
+[node name="Father" type="Label" parent="Relations"]
+margin_left = 453.0
+margin_top = 22.0
+margin_right = 600.0
 margin_bottom = 40.0
 align = 1
 
@@ -640,9 +701,9 @@ margin_right = 629.0
 margin_bottom = 40.0
 
 [node name="Mother" type="Label" parent="Relations"]
-margin_left = 422.0
+margin_left = 604.0
 margin_top = 22.0
-margin_right = 629.0
+margin_right = 751.0
 margin_bottom = 40.0
 align = 1
 
@@ -654,9 +715,9 @@ margin_right = 629.0
 margin_bottom = 40.0
 
 [node name="Spouses" type="Label" parent="Relations"]
-margin_left = 633.0
+margin_left = 755.0
 margin_top = 22.0
-margin_right = 840.0
+margin_right = 902.0
 margin_bottom = 40.0
 align = 1
 
@@ -668,9 +729,9 @@ margin_right = 629.0
 margin_bottom = 40.0
 
 [node name="Brothers" type="Label" parent="Relations"]
-margin_left = 844.0
+margin_left = 906.0
 margin_top = 22.0
-margin_right = 1051.0
+margin_right = 1053.0
 margin_bottom = 40.0
 align = 1
 
@@ -859,6 +920,7 @@ anchor_bottom = 1.0
 [connection signal="text_changed" from="Abilities/PoliticsEdit" to="." method="_on_PoliticsEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/GlamourEdit" to="." method="_on_GlamourEdit_text_changed"]
 [connection signal="text_changed" from="Relations/IdealEdit" to="." method="_on_IdealEdit_text_changed"]
+[connection signal="text_changed" from="Relations/BornYearEdit" to="." method="_on_BornYearEdit_text_changed"]
 [connection signal="pressed" from="Relations/FatherEdit" to="." method="_on_FatherEdit_pressed"]
 [connection signal="pressed" from="Relations/MotherEdit" to="." method="_on_MotherEdit_pressed"]
 [connection signal="pressed" from="SkillsHeader/Edit" to="." method="_on_Skills_Edit_pressed"]

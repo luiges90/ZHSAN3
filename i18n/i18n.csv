@@ -150,6 +150,8 @@ FACTION_PERSONS,Total Officers,势力武将,勢力武將
 WILD_PERSONS,Unaffilated Officers,在野武將,在野武將
 FRONTLINE,Front line,前线,前線
 TOTAL_EQUIPMENT,Equipment,兵装数,兵裝數
+BORN_YEAR,Born year,出生年,出生年
+DEATH_YEAR,Death year,死亡年,死亡年
 AGE,Age,年龄,年齡
 PERSONAL_RELATIONS,Personal Relations,人物关系,人物關系
 FATHER,Father,父亲,父親

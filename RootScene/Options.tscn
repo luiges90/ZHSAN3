@@ -51,7 +51,7 @@ margin_bottom = 18.0
 margin_top = 22.0
 margin_right = 270.0
 margin_bottom = 40.0
-text = "SE_ENABLED"
+text = "BGM_ENABLED"
 
 [node name="Control4" type="Control" parent="G"]
 margin_left = 274.0
@@ -174,5 +174,6 @@ text = "CANCEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]

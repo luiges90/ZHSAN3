@@ -8,7 +8,7 @@ signal on_save
 var current_person: Person
 var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
 				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour', 'Ideal',
-				  'Father', 'Mother', 'Spouses', 'Brothers']
+				  'BornYear', 'Father', 'Mother', 'Spouses', 'Brothers']
 
 var _shift_held_down = false
 var has_active_subwindow = false
@@ -66,6 +66,8 @@ func set_data(editing = false):
 	$Abilities/Glamour.text = current_person.get_glamour_detail_str()
 	
 	$Relations/Ideal.text = str(current_person.ideal)
+	$Relations/BornYear.text = str(current_person.born_year)
+	$Relations/Age.text = str(current_person.get_age())
 	$Relations/Father.text = current_person.get_father_name()
 	$Relations/Mother.text = current_person.get_mother_name()
 	$Relations/Spouses.text = current_person.get_spouse_names()
@@ -151,6 +153,12 @@ func _on_Edit_pressed():
 	$Status/Gender.visible = false
 	$Status/GenderButton.visible = true
 	
+	$Relations/AgeLabel.visible = false
+	$Relations/Age.visible = false
+	$Relations/DeathYearLabel.visible = true
+	$Relations/DeathYearEdit.visible = true
+	$Relations/DeathYearEdit.text = str(current_person.death_year)
+	
 	for e in _editables:
 		var nonedit = find_node(e)
 		var edit = find_node(e + 'Edit')
@@ -163,6 +171,7 @@ func _on_Edit_pressed():
 			'Politics': edit.text = str(current_person.politics)
 			'Glamour': edit.text = str(current_person.glamour)
 			_: edit.text = nonedit.text
+			
 
 
 func _on_MeritEdit_text_changed(new_text):
@@ -207,6 +216,15 @@ func _on_PoliticsEdit_text_changed(new_text):
 
 func _on_GlamourEdit_text_changed(new_text):
 	current_person.set_glamour(int(new_text))
+	
+	
+func _on_BornYearEdit_text_changed(new_text):
+	current_person.set_born_year(int(new_text))
+
+
+func _on_DeathYearEdit_text_changed(new_text):
+	current_person.set_death_year(int(new_text))
+
 
 
 func _on_Skills_Edit_pressed():
@@ -261,7 +279,7 @@ func _on_FatherEdit_pressed():
 	var candidates = []
 	for pid in current_person.scenario.persons:
 		var p = current_person.scenario.persons[pid]
-		if !p.gender and p.born_year <= current_person.born_year + 16 and p.dead_year - 1 >= current_person.born_year and !p.is_close_blood_to(current_person):
+		if !p.gender and p.born_year <= current_person.born_year + 16 and p.death_year - 1 >= current_person.born_year and !p.is_close_blood_to(current_person):
 			candidates.append(p)
 	$PersonList.show_data(candidates)
 
@@ -270,6 +288,8 @@ func _on_MotherEdit_pressed():
 	var candidates = []
 	for pid in current_person.scenario.persons:
 		var p = current_person.scenario.persons[pid]
-		if p.gender and p.born_year <= current_person.born_year + 16 and p.dead_year >= current_person.born_year and !p.is_close_blood_to(current_person):
+		if p.gender and p.born_year <= current_person.born_year + 16 and p.death_year >= current_person.born_year and !p.is_close_blood_to(current_person):
 			candidates.append(p)
 	$PersonList.show_data(candidates)
+
+

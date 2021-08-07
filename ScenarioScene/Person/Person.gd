@@ -325,6 +325,12 @@ func get_expected_death_year():
 	
 func set_ideal(v):
 	ideal = v
+	
+func set_born_year(v):
+	born_year = v
+
+func set_death_year(v):
+	death_year = v
 
 #####################################
 #    Getters / Tasks and Statuses   #
