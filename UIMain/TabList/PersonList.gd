@@ -18,7 +18,8 @@ enum Action {
 	CONVINCE_TARGET,
 	CONVINCE_PERSON,
 	EDIT_MODE_SELECT_FATHER,
-	EDIT_MODE_SELECT_MOTHER
+	EDIT_MODE_SELECT_MOTHER,
+	EDIT_MODE_CHOOSE_EDIT_OFFICER
 }
 
 signal person_selected
@@ -62,7 +63,7 @@ func _on_ArchitectureMenu_person_list_clicked(arch, persons: Array, action):
 	show_data(persons)
 
 
-func edit_mode_select_relation(persons: Array, action):
+func edit_mode_select(persons: Array, action):
 	current_action = action
 	current_architecture = null
 	show_data(persons)
@@ -117,10 +118,13 @@ func show_data(person_list: Array):
 			$Title.text = tr('CONVINCE_PERSON')
 			_max_selection = 1
 		Action.EDIT_MODE_SELECT_FATHER:
-			$Title.text = tr('PERSON_LIST')
+			$Title.text = tr('FATHER')
 			_max_selection = 1
 		Action.EDIT_MODE_SELECT_MOTHER:
-			$Title.text = tr('PERSON_LIST')
+			$Title.text = tr('MOTHER')
+			_max_selection = 1
+		Action.EDIT_MODE_CHOOSE_EDIT_OFFICER:
+			$Title.text = tr('EDIT_OFFICER')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
@@ -214,15 +218,16 @@ func _populate_relevant_data(person_list: Array, action):
 		_:
 			_remove_tab('RELEVANCE')
 
-func __is_action_edit_mode_select_relation(action):
-	return action == Action.EDIT_MODE_SELECT_FATHER or action == Action.EDIT_MODE_SELECT_MOTHER
+func __is_action_edit_mode_select(action):
+	return action == Action.EDIT_MODE_SELECT_FATHER or action == Action.EDIT_MODE_SELECT_MOTHER or \
+		action == Action.EDIT_MODE_CHOOSE_EDIT_OFFICER
 
 func _populate_basic_data(person_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer
 	_sorted_list = person_list # default person list
 	Util.delete_all_children(item_list)
 	if action != Action.LIST:
-		if __is_action_edit_mode_select_relation(action):
+		if __is_action_edit_mode_select(action):
 			item_list.columns = 11
 		else:
 			item_list.columns = 13
@@ -230,11 +235,11 @@ func _populate_basic_data(person_list: Array, action):
 	else:
 		item_list.columns = 12
 	item_list.add_child(_title_sorting(tr('PERSON_NAME'), self, "_on_title_sorting_click", person_list))
-	if !__is_action_edit_mode_select_relation(action):
+	if !__is_action_edit_mode_select(action):
 		item_list.add_child(_title_sorting(tr('LOCATION'), self, "_on_title_sorting_click", person_list))
 		item_list.add_child(_title_sorting(tr('STATUS'), self, "_on_title_sorting_click", person_list))
 	item_list.add_child(_title_sorting(tr('GENDER'), self, "_on_title_sorting_click", person_list))
-	if !__is_action_edit_mode_select_relation(action):
+	if !__is_action_edit_mode_select(action):
 		item_list.add_child(_title_sorting(tr('AGE'), self, "_on_title_sorting_click", person_list))
 	else:
 		item_list.add_child(_title_sorting(tr('BORN_YEAR'), self, "_on_title_sorting_click", person_list))
@@ -256,14 +261,14 @@ func _populate_basic_data(person_list: Array, action):
 			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
-		if !__is_action_edit_mode_select_relation(action):
+		if !__is_action_edit_mode_select(action):
 			if person.get_location() != null:
 				item_list.add_child(_clickable_label_with_long_pressed_event(person.get_location().get_name(), self, person, checkbox))
 			else:
 				item_list.add_child(_clickable_label_with_long_pressed_event("", self, person, checkbox))
 			item_list.add_child(_clickable_label_with_long_pressed_event(person.get_status_str(), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_gender_str(), self, person, checkbox))
-		if !__is_action_edit_mode_select_relation(action):
+		if !__is_action_edit_mode_select(action):
 			item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_age()), self, person, checkbox))
 		else:
 			item_list.add_child(_clickable_label_with_long_pressed_event(str(person.born_year), self, person, checkbox))

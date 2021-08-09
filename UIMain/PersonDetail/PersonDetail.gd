@@ -281,7 +281,7 @@ func _on_FatherEdit_pressed():
 		var p = current_person.scenario.persons[pid]
 		if !p.gender and p.born_year + 16 <= current_person.born_year and p.death_year - 1 >= current_person.born_year and !p.is_close_blood_to(current_person):
 			candidates.append(p)
-	$PersonList.edit_mode_select_relation(candidates, PersonList.Action.EDIT_MODE_SELECT_FATHER)
+	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_FATHER)
 
 
 func _on_MotherEdit_pressed():
@@ -290,7 +290,7 @@ func _on_MotherEdit_pressed():
 		var p = current_person.scenario.persons[pid]
 		if p.gender and p.born_year + 16 <= current_person.born_year and p.death_year >= current_person.born_year and !p.is_close_blood_to(current_person):
 			candidates.append(p)
-	$PersonList.edit_mode_select_relation(candidates, PersonList.Action.EDIT_MODE_SELECT_MOTHER)
+	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_MOTHER)
 
 
 func _on_PersonList_person_selected(current_action, current_architecture, selected):
