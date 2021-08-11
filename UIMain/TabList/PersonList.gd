@@ -19,6 +19,8 @@ enum Action {
 	CONVINCE_PERSON,
 	EDIT_MODE_SELECT_FATHER,
 	EDIT_MODE_SELECT_MOTHER,
+	EDIT_MODE_SELECT_SPOUSE,
+	EDIT_MODE_SELECT_BROTHER,
 	EDIT_MODE_CHOOSE_EDIT_OFFICER
 }
 
@@ -123,6 +125,12 @@ func show_data(person_list: Array):
 		Action.EDIT_MODE_SELECT_MOTHER:
 			$Title.text = tr('MOTHER')
 			_max_selection = 1
+		Action.EDIT_MODE_SELECT_SPOUSE:
+			$Title.text = tr('SPOUSE')
+			_max_selection = -1
+		Action.EDIT_MODE_SELECT_BROTHER:
+			$Title.text = tr('BROTHER')
+			_max_selection = -1
 		Action.EDIT_MODE_CHOOSE_EDIT_OFFICER:
 			$Title.text = tr('EDIT_OFFICER')
 			_max_selection = 1
@@ -220,6 +228,7 @@ func _populate_relevant_data(person_list: Array, action):
 
 func __is_action_edit_mode_select(action):
 	return action == Action.EDIT_MODE_SELECT_FATHER or action == Action.EDIT_MODE_SELECT_MOTHER or \
+		action == Action.EDIT_MODE_SELECT_SPOUSE or action == Action.EDIT_MODE_SELECT_BROTHER or \
 		action == Action.EDIT_MODE_CHOOSE_EDIT_OFFICER
 
 func _populate_basic_data(person_list: Array, action):

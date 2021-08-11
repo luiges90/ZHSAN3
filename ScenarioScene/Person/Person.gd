@@ -756,6 +756,37 @@ func is_close_blood_to(other_person) -> bool:
 
 func is_same_strain_to(other_person) -> bool:
 	return other_person.strain == strain
+	
+func is_related_blood_to(other_person) -> bool:
+	if is_close_blood_to(other_person):
+		return true
+	var p_grandfather = father.father if father != null else null
+	var p_grandmother = father.mother if father != null else null
+	var m_grandfather = mother.father if mother != null else null
+	var m_grandmother = mother.mother if mother != null else null
+	var op_grandfather = other_person.father.father if other_person.father != null else null
+	var op_grandmother = other_person.father.mother if other_person.father != null else null
+	var om_grandfather = other_person.mother.father if other_person.mother != null else null
+	var om_grandmother = other_person.mother.mother if other_person.mother != null else null
+	if p_grandfather != null and p_grandfather == other_person.father:
+		return true
+	if m_grandfather != null and m_grandfather == other_person.father:
+		return true
+	if op_grandfather != null and op_grandfather == father:
+		return true
+	if om_grandfather != null and om_grandfather == father:
+		return true
+	if p_grandmother != null and p_grandmother == other_person.mother:
+		return true
+	if m_grandmother != null and m_grandmother == other_person.mother:
+		return true
+	if op_grandmother != null and op_grandmother == mother:
+		return true
+	if om_grandmother != null and om_grandmother == mother:
+		return true
+		
+	return false
+
 
 func convince_probability(other_person) -> float:
 	var self_diff = other_person.get_ideal_difference(self)

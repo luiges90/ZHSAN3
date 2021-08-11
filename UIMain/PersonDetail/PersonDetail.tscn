@@ -923,6 +923,8 @@ anchor_bottom = 1.0
 [connection signal="text_changed" from="Relations/BornYearEdit" to="." method="_on_BornYearEdit_text_changed"]
 [connection signal="pressed" from="Relations/FatherEdit" to="." method="_on_FatherEdit_pressed"]
 [connection signal="pressed" from="Relations/MotherEdit" to="." method="_on_MotherEdit_pressed"]
+[connection signal="pressed" from="Relations/SpousesEdit" to="." method="_on_SpousesEdit_pressed"]
+[connection signal="pressed" from="Relations/BrothersEdit" to="." method="_on_BrothersEdit_pressed"]
 [connection signal="pressed" from="SkillsHeader/Edit" to="." method="_on_Skills_Edit_pressed"]
 [connection signal="pressed" from="StuntsHeader/Edit" to="." method="_on_Stunts_Edit_pressed"]
 [connection signal="pressed" from="Edit" to="." method="_on_Edit_pressed"]

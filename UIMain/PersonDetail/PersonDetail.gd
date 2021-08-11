@@ -279,7 +279,7 @@ func _on_FatherEdit_pressed():
 	var candidates = []
 	for pid in current_person.scenario.persons:
 		var p = current_person.scenario.persons[pid]
-		if !p.gender and p.born_year + 16 <= current_person.born_year and p.death_year - 1 >= current_person.born_year and !p.is_close_blood_to(current_person):
+		if !p.gender and p.born_year + 16 <= current_person.born_year and p.death_year - 1 >= current_person.born_year and !p.is_related_blood_to(current_person):
 			candidates.append(p)
 	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_FATHER)
 
@@ -288,7 +288,7 @@ func _on_MotherEdit_pressed():
 	var candidates = []
 	for pid in current_person.scenario.persons:
 		var p = current_person.scenario.persons[pid]
-		if p.gender and p.born_year + 16 <= current_person.born_year and p.death_year >= current_person.born_year and !p.is_close_blood_to(current_person):
+		if p.gender and p.born_year + 16 <= current_person.born_year and p.death_year >= current_person.born_year and !p.is_related_blood_to(current_person):
 			candidates.append(p)
 	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_MOTHER)
 
@@ -298,3 +298,21 @@ func _on_PersonList_person_selected(current_action, current_architecture, select
 		current_person.set_father(selected[0])
 	elif current_action == PersonList.Action.EDIT_MODE_SELECT_MOTHER:
 		current_person.set_mother(selected[0])
+
+
+func _on_SpousesEdit_pressed():
+	var candidates = []
+	for pid in current_person.scenario.persons:
+		var p = current_person.scenario.persons[pid]
+		if p.gender != current_person.gender and abs(p.born_year - current_person.born_year) <= 25 and !p.is_related_blood_to(current_person):
+			candidates.append(p)
+	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_SPOUSE)
+	
+
+func _on_BrothersEdit_pressed():
+	var candidates = []
+	for pid in current_person.scenario.persons:
+		var p = current_person.scenario.persons[pid]
+		if p.gender == current_person.gender and abs(p.born_year - current_person.born_year) <= 25 and !p.is_related_blood_to(current_person):
+			candidates.append(p)
+	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_BROTHER)
