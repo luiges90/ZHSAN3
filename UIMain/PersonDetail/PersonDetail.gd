@@ -44,6 +44,15 @@ func set_data(editing = false):
 	
 	$Portrait.texture = current_person.get_portrait()
 	$Name.text = current_person.get_full_name()
+	$SurnameEdit.text = current_person.surname
+	if current_person.surname.length() == 0:
+		$SurnameEdit.text = tr('SURNAME')
+	$GivenNameEdit.text = current_person.given_name
+	if current_person.given_name.length() == 0:
+		$GivenNameEdit.text = tr('GIVEN_NAME')
+	$CourtesyNameEdit.text = current_person.courtesy_name
+	if current_person.courtesy_name.length() == 0:
+		$CourtesyNameEdit.text = tr('COURTESY_NAME')
 	
 	$Status/Gender.text = current_person.get_gender_str()
 	$Status/GenderButton.text = current_person.get_gender_str()
@@ -150,8 +159,13 @@ func _on_Edit_pressed():
 	$SkillsHeader/Label2.visible = true
 	$StuntsHeader/Edit.visible = true
 	$StuntsHeader/Label2.visible = true
+	
 	$Status/Gender.visible = false
 	$Status/GenderButton.visible = true
+	$Name.visible = false
+	$SurnameEdit.visible = true
+	$GivenNameEdit.visible = true
+	$CourtesyNameEdit.visible = true
 	
 	$Relations/AgeLabel.visible = false
 	$Relations/Age.visible = false
@@ -316,3 +330,15 @@ func _on_BrothersEdit_pressed():
 		if p.gender == current_person.gender and abs(p.born_year - current_person.born_year) <= 25 and !p.is_related_blood_to(current_person):
 			candidates.append(p)
 	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_BROTHER)
+
+
+func _on_SurnameEdit_text_changed(new_text):
+	current_person.set_surname(new_text)
+
+
+func _on_GivenNameEdit_text_changed(new_text):
+	current_person.set_given_name(new_text)
+
+
+func _on_CourtesyNameEdit_text_changed(new_text):
+	current_person.set_courtesy_name(new_text)

@@ -41,6 +41,8 @@ func _on_New_pressed():
 	
 	current_person = Person.new()
 	current_person.scenario = _scenario
+	current_person.set_born_year(170)
+	current_person.set_death_year(230)
 	$PersonDetail._on_PersonList_person_row_clicked(current_person, true)
 	
 

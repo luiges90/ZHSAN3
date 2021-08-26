@@ -331,6 +331,15 @@ func set_born_year(v):
 
 func set_death_year(v):
 	death_year = v
+	
+func set_surname(v):
+	surname = v
+
+func set_given_name(v):
+	given_name = v
+	
+func set_courtesy_name(v):
+	courtesy_name = v
 
 #####################################
 #    Getters / Tasks and Statuses   #

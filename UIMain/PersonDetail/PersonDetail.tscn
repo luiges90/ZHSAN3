@@ -34,6 +34,24 @@ margin_top = 16.0
 custom_fonts/font = ExtResource( 3 )
 text = "耒火(字字)"
 
+[node name="SurnameEdit" type="LineEdit" parent="."]
+visible = false
+margin_left = 288.0
+margin_top = 16.0
+custom_fonts/font = ExtResource( 3 )
+
+[node name="GivenNameEdit" type="LineEdit" parent="."]
+visible = false
+margin_left = 410.0
+margin_top = 16.0
+custom_fonts/font = ExtResource( 3 )
+
+[node name="CourtesyNameEdit" type="LineEdit" parent="."]
+visible = false
+margin_left = 532.0
+margin_top = 16.0
+custom_fonts/font = ExtResource( 3 )
+
 [node name="Description" type="RichTextLabel" parent="."]
 anchor_bottom = 1.0
 margin_left = 17.0
@@ -907,6 +925,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [connection signal="hide" from="." to="." method="_on_PersonDetail_hide"]
+[connection signal="text_changed" from="SurnameEdit" to="." method="_on_SurnameEdit_text_changed"]
+[connection signal="text_changed" from="GivenNameEdit" to="." method="_on_GivenNameEdit_text_changed"]
+[connection signal="text_changed" from="CourtesyNameEdit" to="." method="_on_CourtesyNameEdit_text_changed"]
 [connection signal="pressed" from="Status/GenderButton" to="." method="_on_GenderButton_pressed"]
 [connection signal="text_changed" from="Status/MeritEdit" to="." method="_on_MeritEdit_text_changed"]
 [connection signal="text_changed" from="Status/KarmaEdit" to="." method="_on_KarmaEdit_text_changed"]
