@@ -81,7 +81,7 @@ func _on_PersonDetail_on_save(person):
 	file.open("user://custom_persons.json", File.WRITE)
 	var data = []
 	for p in custom_persons:
-		data.append(p.save_data())
+		data.append(custom_persons[p].save_data())
 	file.store_line(to_json(data))
 
 
@@ -94,5 +94,5 @@ func _on_CustomOfficer_visibility_changed():
 	
 
 func _on_PersonList_person_selected(current_action, current_architecture, selected):
-	var person = custom_persons[selected]
-	$PersonDetail._on_PersonList_person_row_clicked(selected, true)
+	var person = custom_persons[selected[0]]
+	$PersonDetail._on_PersonList_person_row_clicked(person, true)

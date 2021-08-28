@@ -205,7 +205,7 @@ func _on_PrestigeEdit_text_changed(new_text):
 
 
 func _on_AmbitionEdit_text_changed(new_text):
-	current_person.set_ambiiton(int(new_text))
+	current_person.set_ambition(int(new_text))
 
 
 func _on_MoralityEdit_text_changed(new_text):
