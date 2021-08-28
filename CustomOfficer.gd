@@ -67,12 +67,12 @@ func _on_InfoList_edit_stunt_item_selected(selected):
 
 
 func _on_PersonDetail_on_save(person):
-	if custom_persons.size() > 0:
-		var free_id = custom_persons.keys().max()
-		person._set_id(free_id + 1)
-	else:
-		person._set_id(30000)
 	if _editing_person_id == null:
+		if custom_persons.size() > 0:
+			var free_id = custom_persons.keys().max()
+			person._set_id(free_id + 1)
+		else:
+			person._set_id(30000)
 		custom_persons[person.id] = person
 	
 	$PersonDetail.hide()
@@ -95,4 +95,5 @@ func _on_CustomOfficer_visibility_changed():
 
 func _on_PersonList_person_selected(current_action, current_architecture, selected):
 	var person = custom_persons[selected[0]]
+	_editing_person_id = person.id
 	$PersonDetail._on_PersonList_person_row_clicked(person, true)
