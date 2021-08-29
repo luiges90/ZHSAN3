@@ -71,13 +71,13 @@ margin_top = 64.0
 margin_right = -16.0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
-columns = 11
+columns = 13
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label10" type="Label" parent="Status"]
-margin_right = 108.0
+margin_right = 89.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -88,8 +88,8 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="Status"]
-margin_left = 116.0
-margin_right = 224.0
+margin_left = 97.0
+margin_right = 186.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -100,8 +100,8 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="Status"]
-margin_left = 232.0
-margin_right = 340.0
+margin_left = 194.0
+margin_right = 283.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -112,8 +112,8 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="Status"]
-margin_left = 348.0
-margin_right = 456.0
+margin_left = 291.0
+margin_right = 380.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -124,8 +124,8 @@ __meta__ = {
 }
 
 [node name="Label9" type="Label" parent="Status"]
-margin_left = 464.0
-margin_right = 572.0
+margin_left = 388.0
+margin_right = 477.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -136,8 +136,8 @@ __meta__ = {
 }
 
 [node name="Label14" type="Label" parent="Status"]
-margin_left = 580.0
-margin_right = 688.0
+margin_left = 485.0
+margin_right = 574.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -148,8 +148,8 @@ __meta__ = {
 }
 
 [node name="Label11" type="Label" parent="Status"]
-margin_left = 696.0
-margin_right = 804.0
+margin_left = 582.0
+margin_right = 671.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -160,8 +160,8 @@ __meta__ = {
 }
 
 [node name="Label12" type="Label" parent="Status"]
-margin_left = 812.0
-margin_right = 920.0
+margin_left = 679.0
+margin_right = 780.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -172,8 +172,8 @@ __meta__ = {
 }
 
 [node name="Label13" type="Label" parent="Status"]
-margin_left = 928.0
-margin_right = 1036.0
+margin_left = 788.0
+margin_right = 877.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -184,8 +184,8 @@ __meta__ = {
 }
 
 [node name="Label15" type="Label" parent="Status"]
-margin_left = 1044.0
-margin_right = 1152.0
+margin_left = 885.0
+margin_right = 974.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -196,8 +196,8 @@ __meta__ = {
 }
 
 [node name="Label16" type="Label" parent="Status"]
-margin_left = 1160.0
-margin_right = 1268.0
+margin_left = 982.0
+margin_right = 1071.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
@@ -207,9 +207,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label17" type="Label" parent="Status"]
+margin_left = 1079.0
+margin_right = 1177.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "BRAVENESS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label18" type="Label" parent="Status"]
+margin_left = 1185.0
+margin_right = 1274.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "CALMNESS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Gender" type="Label" parent="Status"]
 margin_top = 26.0
-margin_right = 108.0
+margin_right = 89.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "男"
@@ -226,9 +250,9 @@ margin_right = 224.0
 margin_bottom = 44.0
 
 [node name="Faction" type="Label" parent="Status"]
-margin_left = 116.0
+margin_left = 97.0
 margin_top = 26.0
-margin_right = 224.0
+margin_right = 186.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -237,9 +261,9 @@ __meta__ = {
 }
 
 [node name="Section" type="Label" parent="Status"]
-margin_left = 232.0
+margin_left = 194.0
 margin_top = 26.0
-margin_right = 340.0
+margin_right = 283.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -248,9 +272,9 @@ __meta__ = {
 }
 
 [node name="Location" type="Label" parent="Status"]
-margin_left = 348.0
+margin_left = 291.0
 margin_top = 26.0
-margin_right = 456.0
+margin_right = 380.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -259,9 +283,9 @@ __meta__ = {
 }
 
 [node name="Status" type="Label" parent="Status"]
-margin_left = 464.0
+margin_left = 388.0
 margin_top = 26.0
-margin_right = 572.0
+margin_right = 477.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
@@ -270,9 +294,9 @@ __meta__ = {
 }
 
 [node name="Merit" type="Label" parent="Status"]
-margin_left = 580.0
+margin_left = 485.0
 margin_top = 26.0
-margin_right = 688.0
+margin_right = 574.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "10"
@@ -292,9 +316,9 @@ text = "10"
 align = 1
 
 [node name="Karma" type="Label" parent="Status"]
-margin_left = 696.0
+margin_left = 582.0
 margin_top = 26.0
-margin_right = 804.0
+margin_right = 671.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "10"
@@ -314,9 +338,9 @@ text = "10"
 align = 1
 
 [node name="Popularity" type="Label" parent="Status"]
-margin_left = 812.0
+margin_left = 679.0
 margin_top = 26.0
-margin_right = 920.0
+margin_right = 780.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
@@ -336,9 +360,9 @@ text = "100"
 align = 1
 
 [node name="Prestige" type="Label" parent="Status"]
-margin_left = 928.0
+margin_left = 788.0
 margin_top = 26.0
-margin_right = 1036.0
+margin_right = 877.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
@@ -357,9 +381,9 @@ text = "100"
 align = 1
 
 [node name="Ambition" type="Label" parent="Status"]
-margin_left = 1044.0
+margin_left = 885.0
 margin_top = 26.0
-margin_right = 1152.0
+margin_right = 974.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
@@ -378,9 +402,9 @@ text = "100"
 align = 1
 
 [node name="Morality" type="Label" parent="Status"]
-margin_left = 1160.0
+margin_left = 982.0
 margin_top = 26.0
-margin_right = 1268.0
+margin_right = 1071.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
@@ -390,6 +414,48 @@ __meta__ = {
 }
 
 [node name="MoralityEdit" type="LineEdit" parent="Status"]
+visible = false
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
+[node name="Braveness" type="Label" parent="Status"]
+margin_left = 1079.0
+margin_top = 26.0
+margin_right = 1177.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BravenessEdit" type="LineEdit" parent="Status"]
+visible = false
+margin_top = 52.0
+margin_right = 134.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+
+[node name="Calmness" type="Label" parent="Status"]
+margin_left = 1185.0
+margin_top = 26.0
+margin_right = 1274.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CalmnessEdit" type="LineEdit" parent="Status"]
 visible = false
 margin_top = 52.0
 margin_right = 134.0
@@ -935,6 +1001,8 @@ anchor_bottom = 1.0
 [connection signal="text_changed" from="Status/PrestigeEdit" to="." method="_on_PrestigeEdit_text_changed"]
 [connection signal="text_changed" from="Status/AmbitionEdit" to="." method="_on_AmbitionEdit_text_changed"]
 [connection signal="text_changed" from="Status/MoralityEdit" to="." method="_on_MoralityEdit_text_changed"]
+[connection signal="text_changed" from="Status/BravenessEdit" to="." method="_on_BravenessEdit_text_changed"]
+[connection signal="text_changed" from="Status/CalmnessEdit" to="." method="_on_CalmnessEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/CommandEdit" to="." method="_on_CommandEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/StrengthEdit" to="." method="_on_StrengthEdit_text_changed"]
 [connection signal="text_changed" from="Abilities/IntelligenceEdit" to="." method="_on_IntelligenceEdit_text_changed"]

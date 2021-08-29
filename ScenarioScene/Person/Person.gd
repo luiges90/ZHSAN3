@@ -296,6 +296,24 @@ func get_morality_str():
 func set_morality(v):
 	morality = clamp(v, 0, 100)
 	
+func get_braveness():
+	return braveness
+	
+func get_braveness_str():
+	return str(braveness)
+	
+func set_braveness(v):
+	braveness = clamp(v, 0, 100)
+	
+func get_calmness():
+	return calmness
+	
+func get_calmness_str():
+	return str(calmness)
+	
+func set_calmness(v):
+	calmness = clamp(v, 0, 100)
+	
 func get_portrait():
 	if SharedData.person_portraits.has(id):
 		return SharedData.person_portraits[id]

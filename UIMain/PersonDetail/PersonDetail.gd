@@ -8,7 +8,7 @@ signal on_save
 var current_person: Person
 var _editables = ['Merit', 'Karma', 'Popularity', 'Prestige', 'Ambition', 'Morality',
 				  'Command', 'Strength', 'Intelligence', 'Politics', 'Glamour', 'Ideal',
-				  'BornYear', 'Father', 'Mother', 'Spouses', 'Brothers']
+				  'BornYear', 'Father', 'Mother', 'Spouses', 'Brothers', "Braveness", "Calmness"]
 
 var _shift_held_down = false
 var has_active_subwindow = false
@@ -65,6 +65,8 @@ func set_data(editing = false, custom_persons = {}):
 	$Status/Merit.text = current_person.get_merit_str()
 	$Status/Ambition.text = current_person.get_ambition_str()
 	$Status/Morality.text = current_person.get_morality_str()
+	$Status/Braveness.text = current_person.get_braveness_str()
+	$Status/Calmness.text = current_person.get_calmness_str()
 
 	$Abilities/Command.text = current_person.get_command_detail_str()
 	$Abilities/Strength.text = current_person.get_strength_detail_str()
@@ -382,3 +384,11 @@ func _on_GivenNameEdit_text_changed(new_text):
 
 func _on_CourtesyNameEdit_text_changed(new_text):
 	current_person.set_courtesy_name(new_text)
+
+
+func _on_BravenessEdit_text_changed(new_text):
+	current_person.set_braveness(int(new_text))
+
+
+func _on_CalmnessEdit_text_changed(new_text):
+	current_person.set_calmness(int(new_text))
