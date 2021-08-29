@@ -45,14 +45,8 @@ func set_data(editing = false):
 	$Portrait.texture = current_person.get_portrait()
 	$Name.text = current_person.get_full_name()
 	$SurnameEdit.text = current_person.surname
-	if current_person.surname.length() == 0:
-		$SurnameEdit.text = tr('SURNAME')
 	$GivenNameEdit.text = current_person.given_name
-	if current_person.given_name.length() == 0:
-		$GivenNameEdit.text = tr('GIVEN_NAME')
 	$CourtesyNameEdit.text = current_person.courtesy_name
-	if current_person.courtesy_name.length() == 0:
-		$CourtesyNameEdit.text = tr('COURTESY_NAME')
 	
 	$Status/Gender.text = current_person.get_gender_str()
 	$Status/GenderButton.text = current_person.get_gender_str()

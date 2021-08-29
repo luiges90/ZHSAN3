@@ -43,6 +43,9 @@ func _on_New_pressed():
 	current_person.scenario = _scenario
 	current_person.set_born_year(170)
 	current_person.set_death_year(230)
+	current_person.set_surname(tr('SURNAME'))
+	current_person.set_given_name(tr('GIVEN_NAME'))
+	current_person.set_courtesy_name(tr('COURTESY_NAME'))
 	$PersonDetail._on_PersonList_person_row_clicked(current_person, true)
 	
 
