@@ -85,6 +85,7 @@ var capture_count: int
 var be_captured_count: int
 
 var person_relations = {} setget forbidden
+var is_custom = false
 
 signal person_died
 signal person_available
@@ -153,6 +154,7 @@ func load_data(json: Dictionary, objects):
 	capture_count = Util.dict_try_get(json, "CaptureCount", 0)
 	be_captured_count = Util.dict_try_get(json, "BeCapturedCount", 0)
 	person_relations = Util.dict_try_get(json, "PersonRelations", {})
+	is_custom = Util.dict_try_get(json, "_IsCustom", false)
 	
 	
 func save_data() -> Dictionary:
@@ -208,7 +210,8 @@ func save_data() -> Dictionary:
 		"RoutedCount": routed_count,
 		"CaptureCount": capture_count,
 		"BeCapturedCount": be_captured_count,
-		"PersonRelations": person_relations
+		"PersonRelations": person_relations,
+		"_IsCustom": is_custom
 	}
 	
 #####################################

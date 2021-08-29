@@ -13,14 +13,10 @@ func __load_custom_officers():
 	var err = file.open("user://custom_persons.json", File.READ)
 	
 	if err == OK:
-		var json = file.get_as_text()
-		var data = parse_json(json)
-		custom_persons = {}
-		for d in data:
-			var person = Person.new()
-			person.load_data(d, {"skills": _scenario.skills, "stunts": _scenario.stunts})
-			person.scenario = _scenario
-			custom_persons[person.id] = person
+		for pid in _scenario.persons:
+			var p = _scenario.persons[pid]
+			if p.is_custom:
+				custom_persons[pid] = p
 	elif err == ERR_FILE_NOT_FOUND:
 		file.open("user://custom_persons.json", File.WRITE)
 		file.store_line("{}")
@@ -41,6 +37,7 @@ func _on_New_pressed():
 	
 	current_person = Person.new()
 	current_person.scenario = _scenario
+	current_person.is_custom = true
 	current_person.set_born_year(170)
 	current_person.set_death_year(230)
 	current_person.set_surname(tr('SURNAME'))
