@@ -15,6 +15,7 @@ enum AvailableReason { BROTHER, SPOUSE, CHILDREN, SIBLING, NONE }
 var id: int setget forbidden
 var scenario
 
+var enabled: bool = true setget forbidden
 var alive: bool setget forbidden
 var gender: bool setget forbidden
 
@@ -75,6 +76,8 @@ var loyalty_shift: int
 
 var ambition: int setget forbidden
 var morality: int setget forbidden
+var braveness: int setget forbidden
+var calmness: int setget forbidden
 
 var troop_damage_dealt: int
 var troop_damage_received: int
@@ -142,6 +145,8 @@ func load_data(json: Dictionary, objects):
 	loyalty_shift = int(json["LoyaltyShift"])
 	ambition = int(json["Ambition"])
 	morality = int(json["Morality"])
+	braveness = int(Util.dict_try_get(json, "Braveness", "0"))
+	calmness = int(Util.dict_try_get(json, "Calmness", "0"))
 	for id in json["Skills"]:
 		skills[objects["skills"][int(id)]] = json["Skills"][id]
 	for id in json["Stunts"]:
@@ -203,6 +208,8 @@ func save_data() -> Dictionary:
 		"LoyaltyShift": loyalty_shift,
 		"Ambition": ambition,
 		"Morality": morality,
+		"Braveness": braveness,
+		"Calmness": calmness,
 		"TroopDamageDealt": troop_damage_dealt,
 		"TroopDamageReceived": troop_damage_received,
 		"ArchDamageDealt": arch_damage_dealt,

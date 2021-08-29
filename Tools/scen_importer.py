@@ -3,7 +3,7 @@ import json
 import importlib
 skill_data = importlib.import_module('scen_importer_skill_data')
 
-file_name = '280LWSG-qh'
+file_name = '194QXGJ-qh'
 output_folder = '../Scenarios/' + file_name
 
 import_persons = True
@@ -742,6 +742,8 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                         "LoyaltyShift": 0,
                         "Ambition": k['Ambition'] * 20 + 10,
                         "Morality": k['PersonalLoyalty'] * 20 + 10,
+                        "Braveness": k['BaseBraveness'] * 10,
+                        "Calmness": k['BaseCalmness'] * 10,
                         "PersonRelations": person_relations
                     })
                 fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
