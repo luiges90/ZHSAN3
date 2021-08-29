@@ -14,6 +14,8 @@ var _shift_held_down = false
 var has_active_subwindow = false
 var _editing = false
 
+var _custom_persons = {}
+
 func _on_PersonDetail_hide():
 	$Close.play()
 
@@ -26,8 +28,10 @@ func _input(event):
 			_shift_held_down = event.pressed
 
 
-func set_data(editing = false):
+func set_data(editing = false, custom_persons = {}):
+	_custom_persons = custom_persons
 	_editing = editing
+	
 	$Edit.visible = editing or GameConfig.enable_edit
 	$EditingButtons.visible = editing
 	for e in _editables:
@@ -72,9 +76,13 @@ func set_data(editing = false):
 	$Relations/BornYear.text = str(current_person.born_year)
 	$Relations/Age.text = str(current_person.get_age())
 	$Relations/Father.text = current_person.get_father_name()
+	$Relations/FatherEdit.text = current_person.get_father_name()
 	$Relations/Mother.text = current_person.get_mother_name()
+	$Relations/MotherEdit.text = current_person.get_mother_name()
 	$Relations/Spouses.text = current_person.get_spouse_names()
+	$Relations/SpousesEdit.text = current_person.get_spouse_names()
 	$Relations/Brothers.text = current_person.get_brother_names()
+	$Relations/BrothersEdit.text = current_person.get_brother_names()
 
 	_update_skill_list()
 	_update_stunt_list()
@@ -111,9 +119,9 @@ func _update_stunt_list():
 		$Stunts.add_child(label)
 
 
-func _on_PersonList_person_row_clicked(person, editing = false):
+func _on_PersonList_person_row_clicked(person, editing = false, custom_persons = []):
 	current_person = person
-	set_data(editing)
+	set_data(editing, custom_persons)
 	show()
 
 func _on_skill_clicked(skill):
@@ -289,6 +297,10 @@ func _on_FatherEdit_pressed():
 		var p = current_person.scenario.persons[pid]
 		if !p.gender and p.born_year + 16 <= current_person.born_year and p.death_year - 1 >= current_person.born_year and !p.is_related_blood_to(current_person):
 			candidates.append(p)
+	for pid in _custom_persons:
+		var p = _custom_persons[pid]
+		if !p.gender and p.born_year + 16 <= current_person.born_year and p.death_year - 1 >= current_person.born_year and !p.is_related_blood_to(current_person):
+			candidates.append(p)
 	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_FATHER)
 
 
@@ -298,20 +310,50 @@ func _on_MotherEdit_pressed():
 		var p = current_person.scenario.persons[pid]
 		if p.gender and p.born_year + 16 <= current_person.born_year and p.death_year >= current_person.born_year and !p.is_related_blood_to(current_person):
 			candidates.append(p)
+	for pid in _custom_persons:
+		var p = _custom_persons[pid]
+		if p.gender and p.born_year + 16 <= current_person.born_year and p.death_year >= current_person.born_year and !p.is_related_blood_to(current_person):
+			candidates.append(p)
 	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_MOTHER)
 
 
 func _on_PersonList_person_selected(current_action, current_architecture, selected):
 	if current_action == PersonList.Action.EDIT_MODE_SELECT_FATHER:
 		current_person.set_father(selected[0])
+		$Relations/Father.text = current_person.get_father_name()
+		$Relations/FatherEdit.text = current_person.get_father_name()
 	elif current_action == PersonList.Action.EDIT_MODE_SELECT_MOTHER:
 		current_person.set_mother(selected[0])
+		$Relations/Mother.text = current_person.get_mother_name()
+		$Relations/MotherEdit.text = current_person.get_mother_name()
+	elif current_action == PersonList.Action.EDIT_MODE_SELECT_SPOUSE:
+		current_person.clear_spouses()
+		for pid in selected:
+			var p = Util.dict_try_get(current_person.scenario.persons, pid, null)
+			if p == null:
+				p = _custom_persons[pid]
+			current_person.add_spouse(p)
+		$Relations/Spouses.text = current_person.get_spouse_names()
+		$Relations/SpousesEdit.text = current_person.get_spouse_names()
+	elif current_action == PersonList.Action.EDIT_MODE_SELECT_BROTHER:
+		current_person.clear_brothers()
+		for pid in selected:
+			var p = Util.dict_try_get(current_person.scenario.persons, pid, null)
+			if p == null:
+				p = _custom_persons[pid]
+			current_person.add_brother(p)
+		$Relations/Brothers.text = current_person.get_brother_names()
+		$Relations/BrothersEdit.text = current_person.get_brother_names()
 
 
 func _on_SpousesEdit_pressed():
 	var candidates = []
 	for pid in current_person.scenario.persons:
 		var p = current_person.scenario.persons[pid]
+		if p.gender != current_person.gender and abs(p.born_year - current_person.born_year) <= 25 and !p.is_related_blood_to(current_person):
+			candidates.append(p)
+	for pid in _custom_persons:
+		var p = _custom_persons[pid]
 		if p.gender != current_person.gender and abs(p.born_year - current_person.born_year) <= 25 and !p.is_related_blood_to(current_person):
 			candidates.append(p)
 	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_SPOUSE)
@@ -322,6 +364,10 @@ func _on_BrothersEdit_pressed():
 	for pid in current_person.scenario.persons:
 		var p = current_person.scenario.persons[pid]
 		if p.gender == current_person.gender and abs(p.born_year - current_person.born_year) <= 25 and !p.is_related_blood_to(current_person):
+			candidates.append(p)
+	for pid in _custom_persons:
+		var p = _custom_persons[pid]
+		if p.gender != current_person.gender and abs(p.born_year - current_person.born_year) <= 25 and !p.is_related_blood_to(current_person):
 			candidates.append(p)
 	$PersonList.edit_mode_select(candidates, PersonList.Action.EDIT_MODE_SELECT_BROTHER)
 

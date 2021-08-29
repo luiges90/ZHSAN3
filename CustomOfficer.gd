@@ -46,7 +46,7 @@ func _on_New_pressed():
 	current_person.set_surname(tr('SURNAME'))
 	current_person.set_given_name(tr('GIVEN_NAME'))
 	current_person.set_courtesy_name(tr('COURTESY_NAME'))
-	$PersonDetail._on_PersonList_person_row_clicked(current_person, true)
+	$PersonDetail._on_PersonList_person_row_clicked(current_person, true, custom_persons)
 	
 
 func _on_Edit_pressed():
@@ -99,4 +99,4 @@ func _on_CustomOfficer_visibility_changed():
 func _on_PersonList_person_selected(current_action, current_architecture, selected):
 	var person = custom_persons[selected[0]]
 	_editing_person_id = person.id
-	$PersonDetail._on_PersonList_person_row_clicked(person, true)
+	$PersonDetail._on_PersonList_person_row_clicked(person, true, custom_persons)

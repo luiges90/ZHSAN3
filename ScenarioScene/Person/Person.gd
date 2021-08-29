@@ -1070,11 +1070,17 @@ func set_father(other):
 func set_mother(other):
 	mother = other
 	
+func clear_spouses():
+	spouses.clear()
+	
 func add_spouse(other):
 	if not spouses.has(other):
 		spouses.append(other)
 	if not other.spouses.has(self):
 		other.spouses.append(self)
+		
+func clear_brothers():
+	brothers.clear()
 	
 func add_brother(other):
 	if not brothers.has(other):
