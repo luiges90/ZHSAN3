@@ -15,7 +15,6 @@ enum AvailableReason { BROTHER, SPOUSE, CHILDREN, SIBLING, NONE }
 var id: int setget forbidden
 var scenario
 
-var enabled: bool = true setget forbidden
 var alive: bool setget forbidden
 var gender: bool setget forbidden
 

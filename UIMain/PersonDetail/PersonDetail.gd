@@ -321,11 +321,13 @@ func _on_MotherEdit_pressed():
 
 func _on_PersonList_person_selected(current_action, current_architecture, selected):
 	if current_action == PersonList.Action.EDIT_MODE_SELECT_FATHER:
-		current_person.set_father(selected[0])
+		var p = Util.dict_try_get(current_person.scenario.persons, selected[0], null)
+		current_person.set_father(p)
 		$Relations/Father.text = current_person.get_father_name()
 		$Relations/FatherEdit.text = current_person.get_father_name()
 	elif current_action == PersonList.Action.EDIT_MODE_SELECT_MOTHER:
-		current_person.set_mother(selected[0])
+		var p = Util.dict_try_get(current_person.scenario.persons, selected[0], null)
+		current_person.set_mother(p)
 		$Relations/Mother.text = current_person.get_mother_name()
 		$Relations/MotherEdit.text = current_person.get_mother_name()
 	elif current_action == PersonList.Action.EDIT_MODE_SELECT_SPOUSE:
