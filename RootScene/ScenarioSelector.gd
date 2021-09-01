@@ -50,6 +50,7 @@ func _on_scenario_clicked(node, scen):
 		node.set_pressed(true)
 		
 		_selected_scenario = scen['__FileName']
+		$CustomOfficers.disabled = _selected_scenario == null
 		
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()
@@ -65,6 +66,7 @@ func _on_scenario_clicked(node, scen):
 			
 			$FactionContainer/Factions.add_child(hcontainer)
 			
+			
 func _on_faction_clicked(node, scen, faction):
 	if node.is_pressed():
 		for n in get_tree().get_nodes_in_group("RadioButton_Faction"):
@@ -72,6 +74,8 @@ func _on_faction_clicked(node, scen, faction):
 		node.set_pressed(true)
 		
 		_selected_faction = faction['_Id']
+		
+		$Confirm.disabled = _selected_faction == null
 
 
 func _on_Cancel_pressed():
@@ -82,4 +86,7 @@ func _on_Confirm_pressed():
 	SharedData.loading_file_path = "res://Scenarios/" + _selected_scenario
 	SharedData.starting_faction_id = _selected_faction
 	call_deferred("emit_signal", "confirmed_scenario")
+	
 
+func _on_CustomOfficers_pressed():
+	$CustomOfficerSetup.show()

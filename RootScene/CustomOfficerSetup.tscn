@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://RootScene/CustomOfficerSetup.gd" type="Script" id=2]
+
+[node name="CustomOfficerSetup" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -140.0
+margin_top = -56.0
+margin_right = -16.0
+margin_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CONFIRM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -272.0
+margin_top = -56.0
+margin_right = -148.0
+margin_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 1 )
+window_title = "CONFIRM_EXIT"
+dialog_text = "UNSAVED_CHANGES_WILL_BE_LOST"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
