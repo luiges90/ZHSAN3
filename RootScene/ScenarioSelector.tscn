@@ -3,7 +3,7 @@
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
 [ext_resource path="res://RootScene/ScenarioSelector.gd" type="Script" id=3]
-[ext_resource path="res://RootScene/CustomOfficerSetup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UIMain/TabList/PersonList.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.376471 )
@@ -69,15 +69,54 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Confirm" type="Button" parent="."]
+[node name="HL" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -56.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CustomOfficers" type="Button" parent="HL"]
+margin_right = 199.0
+margin_bottom = 40.0
+grow_vertical = 0
+disabled = true
+text = "CUSTOM_OFFICERS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewFactions" type="Button" parent="HL"]
+margin_left = 203.0
+margin_right = 376.0
+margin_bottom = 40.0
+grow_vertical = 0
+disabled = true
+text = "NEW_FACTIONS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HR" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -140.0
 margin_top = -56.0
 margin_right = -16.0
 margin_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="HR"]
+margin_right = 124.0
+margin_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 0
 disabled = true
@@ -86,15 +125,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cancel" type="Button" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -272.0
-margin_top = -56.0
-margin_right = -148.0
-margin_bottom = -16.0
+[node name="Cancel" type="Button" parent="HR"]
+margin_left = 128.0
+margin_right = 249.0
+margin_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CANCEL"
@@ -102,22 +136,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CustomOfficers" type="Button" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -56.0
-margin_bottom = -16.0
-grow_vertical = 0
-disabled = true
-text = "CUSTOM_OFFICERS"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CustomOfficerSetup" parent="." instance=ExtResource( 4 )]
+[node name="PersonList" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[connection signal="pressed" from="Confirm" to="." method="_on_Confirm_pressed"]
-[connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]
-[connection signal="pressed" from="CustomOfficers" to="." method="_on_CustomOfficers_pressed"]
+[connection signal="pressed" from="HL/CustomOfficers" to="." method="_on_CustomOfficers_pressed"]
+[connection signal="pressed" from="HL/NewFactions" to="." method="_on_NewFactions_pressed"]
+[connection signal="pressed" from="HR/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="HR/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="person_selected" from="PersonList" to="." method="_on_PersonList_person_selected"]

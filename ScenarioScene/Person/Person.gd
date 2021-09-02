@@ -146,10 +146,12 @@ func load_data(json: Dictionary, objects):
 	morality = int(json["Morality"])
 	braveness = int(Util.dict_try_get(json, "Braveness", "0"))
 	calmness = int(Util.dict_try_get(json, "Calmness", "0"))
-	for id in json["Skills"]:
-		skills[objects["skills"][int(id)]] = json["Skills"][id]
-	for id in json["Stunts"]:
-		stunts[objects["stunts"][int(id)]] = json["Stunts"][id]
+	if objects.has("skills"):
+		for id in json["Skills"]:
+			skills[objects["skills"][int(id)]] = json["Skills"][id]
+	if objects.has("stunts"):
+		for id in json["Stunts"]:
+			stunts[objects["stunts"][int(id)]] = json["Stunts"][id]
 	troop_damage_dealt = Util.dict_try_get(json, "TroopDamageDealt", 0)
 	troop_damage_received = Util.dict_try_get(json, "TroopDamageReceived", 0)
 	arch_damage_dealt = Util.dict_try_get(json, "ArchDamageDealt", 0)
@@ -339,7 +341,7 @@ func get_salary():
 	return base
 	
 func get_age():
-	if scenario.scenario_config != null and scenario.scenario_config.person_natural_death:
+	if scenario != null and scenario.scenario_config != null and scenario.scenario_config.person_natural_death:
 		return scenario.get_year() - born_year + 1
 	else:
 		return 30

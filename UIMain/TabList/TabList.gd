@@ -233,6 +233,12 @@ func _get_selected_list() -> Array:
 			var id = int(checkbox.get_meta("id"))
 			selected[id] = true
 	return selected.keys()
+	
+func select_items(ids: Array):
+	for checkbox in get_tree().get_nodes_in_group("checkboxes"):
+		var id = int(checkbox.get_meta("id"))
+		if ids.has(id):
+			checkbox.set_pressed(true)
 
 ####################################
 #            Own events            #

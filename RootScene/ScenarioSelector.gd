@@ -6,6 +6,9 @@ var _scenario_data = []
 var _selected_scenario
 var _selected_faction
 
+var _all_custom_persons = {}
+var _selected_custom_persons = []
+
 signal confirmed_scenario
 
 func _ready():
@@ -41,6 +44,15 @@ func _ready():
 		
 		$ScenarioContainer/Scenarios.add_child(hcontainer)
 		
+	var file = File.new()		
+	if file.open('user://custom_persons.json', File.READ) == OK:
+		var obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = Person.new()
+			instance.load_data(item, {})
+			_all_custom_persons[instance.id] = instance
+		file.close()
+		
 		
 func _on_scenario_clicked(node, scen):
 	Util.delete_all_children($FactionContainer/Factions)
@@ -50,7 +62,8 @@ func _on_scenario_clicked(node, scen):
 		node.set_pressed(true)
 		
 		_selected_scenario = scen['__FileName']
-		$CustomOfficers.disabled = _selected_scenario == null
+		$HL/CustomOfficers.disabled = _selected_scenario == null
+		$HL/NewFactions.disabled = _selected_scenario == null
 		
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()
@@ -89,4 +102,14 @@ func _on_Confirm_pressed():
 	
 
 func _on_CustomOfficers_pressed():
-	$CustomOfficerSetup.show()
+	$PersonList.select_custom_officers(_all_custom_persons.values(), _selected_custom_persons)
+
+
+func _on_PersonList_person_selected(current_action, current_architecture, selected):
+	_selected_custom_persons = []
+	for pid in selected:
+		_selected_custom_persons.append(_all_custom_persons[pid])
+		
+
+func _on_NewFactions_pressed():
+	pass

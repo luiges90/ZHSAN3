@@ -12,18 +12,17 @@ func __load_custom_officers():
 	var file = File.new()
 	var err = file.open("user://custom_persons.json", File.READ)
 	
-	if err == OK:
-		for pid in _scenario.persons:
-			var p = _scenario.persons[pid]
-			if p.is_custom:
-				custom_persons[pid] = p
-	elif err == ERR_FILE_NOT_FOUND:
+	if err == ERR_FILE_NOT_FOUND:
 		file.open("user://custom_persons.json", File.WRITE)
 		file.store_line("{}")
 		file.close()
-		custom_persons = {}
-	else:
-		custom_persons = {}
+		
+	custom_persons = {}
+	for pid in _scenario.persons:
+		var p = _scenario.persons[pid]
+		if p.is_custom:
+			custom_persons[pid] = p
+
 
 
 func _on_Back_pressed():
