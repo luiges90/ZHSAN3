@@ -7,6 +7,8 @@ var _selected_scenario
 var _selected_faction
 
 var _all_custom_persons = {}
+var _all_architectures = {}
+var _all_factions = {}
 var _selected_custom_persons = []
 
 signal confirmed_scenario
@@ -44,7 +46,7 @@ func _ready():
 		
 		$ScenarioContainer/Scenarios.add_child(hcontainer)
 		
-	var file = File.new()		
+	var file = File.new()
 	if file.open('user://custom_persons.json', File.READ) == OK:
 		var obj = parse_json(file.get_as_text())
 		for item in obj:
@@ -63,7 +65,6 @@ func _on_scenario_clicked(node, scen):
 		
 		_selected_scenario = scen['__FileName']
 		$HL/CustomOfficers.disabled = _selected_scenario == null
-		$HL/NewFactions.disabled = _selected_scenario == null
 		
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()
@@ -79,7 +80,12 @@ func _on_scenario_clicked(node, scen):
 			
 			$FactionContainer/Factions.add_child(hcontainer)
 			
-			
+			_all_factions[faction['_Id']] = faction
+		
+		for a in scen['Architectures']:
+			_all_architectures[a['_Id']] = a
+		
+		
 func _on_faction_clicked(node, scen, faction):
 	if node.is_pressed():
 		for n in get_tree().get_nodes_in_group("RadioButton_Faction"):
@@ -109,7 +115,17 @@ func _on_PersonList_person_selected(current_action, current_architecture, select
 	_selected_custom_persons = []
 	for pid in selected:
 		_selected_custom_persons.append(_all_custom_persons[pid])
+	$HL/NewFactions.disabled = selected.size() <= 0
 		
 
 func _on_NewFactions_pressed():
-	pass
+	var avail_arch = []
+	for a in _all_architectures:
+		var taken = false
+		for f in _all_factions:
+			if _all_factions[f]['Architectures'].has(a):
+				taken = true
+				break
+		if not taken:
+			avail_arch.append(_all_architectures[a])
+	$ArchitectureList.select_architecture_for_new_faction(avail_arch)

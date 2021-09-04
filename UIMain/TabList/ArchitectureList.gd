@@ -1,7 +1,7 @@
 extends TabList
 class_name ArchitectureList
 
-enum Action { LIST, MOVE_TO, TRANSPORT_RESOURCE_TO }
+enum Action { LIST, MOVE_TO, TRANSPORT_RESOURCE_TO, SELECT_ARCHITECTURE_FOR_NEW_FACTION }
 
 signal architecture_selected
 signal architecture_row_clicked
@@ -27,6 +27,10 @@ func handle_input(event):
 				_detail_showing = false
 			else:
 				.handle_input(event)
+				
+func select_architecture_for_new_faction(arch_list: Array):
+	current_action = Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION
+	show_data(arch_list)
 	
 func _on_InfoMenu_architectures_clicked(scenario):
 	current_action = Action.LIST
@@ -44,14 +48,18 @@ func show_data(arch_list: Array):
 		Action.TRANSPORT_RESOURCE_TO:
 			$Title.text = tr('TRANSPORT')
 			_max_selection = 1
+		Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
+			$Title.text = tr('SELECT_ARCHITECTURE_FOR_NEW_FACTION')
+			_max_selection = -1
 	$SelectionButtons.visible = _max_selection != 0
 
 	_selected_table = "architecture_list" 
 	_populate_basic_data(arch_list, current_action)
-	_populate_internal_data(arch_list, current_action)
-	_populate_resource_data(arch_list, current_action)
-	_populate_military_data(arch_list, current_action)
-	_populate_equipments_data(arch_list, current_action)
+	if current_action != Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
+		_populate_internal_data(arch_list, current_action)
+		_populate_resource_data(arch_list, current_action)
+		_populate_military_data(arch_list, current_action)
+		_populate_equipments_data(arch_list, current_action)
 	show()
 	._post_show()
 
@@ -59,35 +67,43 @@ func _populate_basic_data(arch_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer
 	_sorted_list = arch_list # default arch list
 	Util.delete_all_children(item_list)
-	if action != Action.LIST:
-		item_list.columns = 9
+	if action == Action.LIST:
+		item_list.columns = 8
+	elif action == Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
+		item_list.columns = 2
 		item_list.add_child(_title(''))
 	else:
-		item_list.columns = 8
+		item_list.columns = 9
+		item_list.add_child(_title(''))
 	item_list.add_child(_title_sorting(tr('NAME'), self, "_on_title_sorting_click", arch_list))
-	item_list.add_child(_title_sorting(tr('KIND_NAME'), self, "_on_title_sorting_click", arch_list))
-	item_list.add_child(_title_sorting(tr('FACTION_NAME'), self, "_on_title_sorting_click", arch_list))
-	item_list.add_child(_title_sorting(tr('POPULATION'), self, "_on_title_sorting_click", arch_list))
-	item_list.add_child(_title_sorting(tr('FOOD'), self, "_on_title_sorting_click", arch_list))
-	item_list.add_child(_title_sorting(tr('FUND'), self, "_on_title_sorting_click", arch_list))
-	item_list.add_child(_title_sorting(tr('PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
-	item_list.add_child(_title_sorting(tr('WILD_PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
+	if action != Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
+		item_list.add_child(_title_sorting(tr('KIND_NAME'), self, "_on_title_sorting_click", arch_list))
+		item_list.add_child(_title_sorting(tr('FACTION_NAME'), self, "_on_title_sorting_click", arch_list))
+		item_list.add_child(_title_sorting(tr('POPULATION'), self, "_on_title_sorting_click", arch_list))
+		item_list.add_child(_title_sorting(tr('FOOD'), self, "_on_title_sorting_click", arch_list))
+		item_list.add_child(_title_sorting(tr('FUND'), self, "_on_title_sorting_click", arch_list))
+		item_list.add_child(_title_sorting(tr('PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
+		item_list.add_child(_title_sorting(tr('WILD_PERSON_COUNT'), self, "_on_title_sorting_click", arch_list))
 	match _current_order:
 		_sorting_order.DESC:
 			_sorted_list = _sorting_list(arch_list.duplicate())
 		_sorting_order.ASC:
 			_sorted_list = _sorting_list(arch_list.duplicate())
 	for arch in _sorted_list:
-		if action != Action.LIST:
-			item_list.add_child(_checkbox(arch.id))
-		item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
-		item_list.add_child(_clickable_label(arch.kind.get_name(), self, "__on_clickable_label_click", arch))
-		item_list.add_child(_clickable_label(arch.get_belonged_faction_str(), self, "__on_clickable_label_click", arch))
-		item_list.add_child(_clickable_label(Util.nstr(arch.population), self, "__on_clickable_label_click", arch))
-		item_list.add_child(_clickable_label(Util.nstr(arch.food), self, "__on_clickable_label_click", arch))
-		item_list.add_child(_clickable_label(Util.nstr(arch.fund), self, "__on_clickable_label_click", arch))
-		item_list.add_child(_clickable_label(str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size()), self, "__on_clickable_label_click", arch))
-		item_list.add_child(_clickable_label(str(arch.get_wild_persons().size()), self, "__on_clickable_label_click", arch))
+		if action == Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
+			item_list.add_child(_checkbox(arch['_Id']))
+			item_list.add_child(_clickable_label(arch['Name'], self, "__on_clickable_label_click", arch))
+		else:
+			if action != Action.LIST:
+				item_list.add_child(_checkbox(arch.id))
+			item_list.add_child(_clickable_label(arch.get_name(), self, "__on_clickable_label_click", arch))
+			item_list.add_child(_clickable_label(arch.kind.get_name(), self, "__on_clickable_label_click", arch))
+			item_list.add_child(_clickable_label(arch.get_belonged_faction_str(), self, "__on_clickable_label_click", arch))
+			item_list.add_child(_clickable_label(Util.nstr(arch.population), self, "__on_clickable_label_click", arch))
+			item_list.add_child(_clickable_label(Util.nstr(arch.food), self, "__on_clickable_label_click", arch))
+			item_list.add_child(_clickable_label(Util.nstr(arch.fund), self, "__on_clickable_label_click", arch))
+			item_list.add_child(_clickable_label(str(arch.get_idling_persons().size()) + "/" + str(arch.get_workable_persons().size()) + "/" + str(arch.get_faction_persons().size()), self, "__on_clickable_label_click", arch))
+			item_list.add_child(_clickable_label(str(arch.get_wild_persons().size()), self, "__on_clickable_label_click", arch))
 	
 func _populate_internal_data(arch_list: Array, action):
 	var item_list = tabs['INTERNAL'] as GridContainer

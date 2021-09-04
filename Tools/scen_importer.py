@@ -3,7 +3,7 @@ import json
 import importlib
 skill_data = importlib.import_module('scen_importer_skill_data')
 
-file_name = '194QXGJ-qh'
+file_name = '280LWSG-qh'
 output_folder = '../Scenarios/' + file_name
 
 import_persons = True
@@ -490,6 +490,8 @@ if not os.path.exists(output_folder):
 
 with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
     all_factions = []
+    all_section_architectures = {}
+    all_architectures = []
     common = json.loads(cfin.read(), strict=False)
     with open(file_name + '.json', mode='r', encoding='utf-8') as fin:
         obj = json.loads(fin.read(), strict=False)
@@ -631,6 +633,10 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                     "Equipments": {},
                     "_RecentlyBattled": 0
                 })
+                all_architectures.append({
+                    "_Id": k['ID'],
+                    "Name": k['Name']
+                })
             fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
             
         with open(output_folder + '/Sections.json', mode='w', encoding='utf-8') as fout:
@@ -643,6 +649,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                   "ArchitectureList": archs,
                   "TroopList": []
                 })
+                all_section_architectures[k['ID']] = archs
             fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
                 
         with open(output_folder + '/Factions.json', mode='w', encoding='utf-8') as fout:
@@ -660,9 +667,14 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                   "PlayerControlled": False,
                   "Capital": k['CapitalID']
                 })
+
+                archs = []
+                for s in sects:
+                    archs += all_section_architectures[s]
                 all_factions.append({
                     "_Id": k['ID'],
-                    "Name": k['Name']
+                    "Name": k['Name'],
+                    "Architectures": archs
                 })
             fout.write(json.dumps(r, indent=2, ensure_ascii=False, sort_keys=True))
         
@@ -771,6 +783,7 @@ with open('CommonData.json', mode='r', encoding='utf-8') as cfin:
                 "TurnPassed": 0
               },
               "Name": obj['ScenarioTitle'],
-              "Factions": all_factions
+              "Factions": all_factions,
+              "Architectures": all_architectures
             }, indent=2, ensure_ascii=False, sort_keys=True))
 

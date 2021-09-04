@@ -45,8 +45,6 @@ FILE_BLANK,<Blank>,＜空白＞,＜空白＞
 NEW_GAME,New Game,新游戏,新遊戲
 OPTIONS,Options,设置,設置
 CUSTOM_OFFICERS,Custom Officers,自创武将,自創武將
-NEW_FACTIONS,New Factions,自创势力,自創勢力
-SELECT_CUSTOM_OFFICER,Select Custom Officers,选择自创武将,選擇自創武將
 CREDITS,Credits,制作人员,製作人員
 IMPORT_SCENARIO,Import Scenario,导入剧本,導入劇本
 BACK,Back,返回,返回
@@ -252,3 +250,7 @@ GIVEN_NAME,"","名","名"
 COURTESY_NAME,"","字","字"
 BRAVENESS,"Braveness","勇猛度","勇猛度"
 CALMNESS,"Calmness","冷靜度","冷靜度"
+NEW_FACTIONS,New Factions,自创势力,自創勢力
+SELECT_CUSTOM_OFFICER,Select Custom Officers,选择自创武将,選擇自創武將
+SELECT_ARCHITECTURE_FOR_NEW_FACTION,Select Architecture for New Faction,新势力所属建筑,新勢力所屬建築
+SELECT_CUSTOM_OFFICER_FOR_NEW_FACTION,Select Custom Officers for New Faction,新势力所属武将,新勢力所屬武將

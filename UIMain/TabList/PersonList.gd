@@ -22,7 +22,8 @@ enum Action {
 	EDIT_MODE_SELECT_SPOUSE,
 	EDIT_MODE_SELECT_BROTHER,
 	EDIT_MODE_CHOOSE_EDIT_OFFICER,
-	SELECT_CUSTOM_OFFICER
+	SELECT_CUSTOM_OFFICER,
+	SELECT_CUSTOM_OFFICER_FOR_NEW_FACTION
 }
 
 signal person_selected
@@ -81,6 +82,11 @@ func select_custom_officers(all_persons: Array, selected: Array):
 	for p in selected:
 		items.append(p.id)
 	select_items(items)
+	
+func select_custom_officers_for_new_faction(all_persons: Array):
+	current_action = Action . SELECT_CUSTOM_OFFICER_FOR_NEW_FACTION
+	current_architecture = null
+	show_data(all_persons)
 
 
 func show_data(person_list: Array):
@@ -148,6 +154,9 @@ func show_data(person_list: Array):
 			_max_selection = 1
 		Action.SELECT_CUSTOM_OFFICER:
 			$Title.text = tr('SELECT_CUSTOM_OFFICER')
+			_max_selection = -1
+		Action.SELECT_CUSTOM_OFFICER_FOR_NEW_FACTION:
+			$Title.text = tr('SELECT_CUSTOM_OFFICER_FOR_NEW_FACTION')
 			_max_selection = -1
 	$SelectionButtons.visible = _max_selection != 0
 

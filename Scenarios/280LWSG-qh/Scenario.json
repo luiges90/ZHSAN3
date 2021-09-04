@@ -1,439 +1,1628 @@
 {
+  "Architectures": [
+    {
+      "Name": "洛阳",
+      "_Id": 0
+    },
+    {
+      "Name": "函谷关",
+      "_Id": 1
+    },
+    {
+      "Name": "金城",
+      "_Id": 2
+    },
+    {
+      "Name": "潼关",
+      "_Id": 3
+    },
+    {
+      "Name": "武关",
+      "_Id": 4
+    },
+    {
+      "Name": "许县",
+      "_Id": 5
+    },
+    {
+      "Name": "谯县",
+      "_Id": 6
+    },
+    {
+      "Name": "宛县",
+      "_Id": 7
+    },
+    {
+      "Name": "新野",
+      "_Id": 8
+    },
+    {
+      "Name": "襄阳",
+      "_Id": 9
+    },
+    {
+      "Name": "江陵",
+      "_Id": 10
+    },
+    {
+      "Name": "弘农",
+      "_Id": 11
+    },
+    {
+      "Name": "上庸",
+      "_Id": 12
+    },
+    {
+      "Name": "西城",
+      "_Id": 13
+    },
+    {
+      "Name": "乌林港",
+      "_Id": 14
+    },
+    {
+      "Name": "巴丘",
+      "_Id": 15
+    },
+    {
+      "Name": "鄂县",
+      "_Id": 16
+    },
+    {
+      "Name": "陈留",
+      "_Id": 17
+    },
+    {
+      "Name": "白马津",
+      "_Id": 18
+    },
+    {
+      "Name": "濮阳",
+      "_Id": 19
+    },
+    {
+      "Name": "孟津",
+      "_Id": 20
+    },
+    {
+      "Name": "平舆",
+      "_Id": 21
+    },
+    {
+      "Name": "皖县",
+      "_Id": 22
+    },
+    {
+      "Name": "寿春",
+      "_Id": 23
+    },
+    {
+      "Name": "合肥",
+      "_Id": 24
+    },
+    {
+      "Name": "无盐",
+      "_Id": 26
+    },
+    {
+      "Name": "奉高",
+      "_Id": 27
+    },
+    {
+      "Name": "临淄",
+      "_Id": 28
+    },
+    {
+      "Name": "都昌",
+      "_Id": 29
+    },
+    {
+      "Name": "黄县",
+      "_Id": 30
+    },
+    {
+      "Name": "定陶",
+      "_Id": 31
+    },
+    {
+      "Name": "散关",
+      "_Id": 32
+    },
+    {
+      "Name": "东武",
+      "_Id": 33
+    },
+    {
+      "Name": "开阳",
+      "_Id": 34
+    },
+    {
+      "Name": "郯县",
+      "_Id": 35
+    },
+    {
+      "Name": "任城",
+      "_Id": 36
+    },
+    {
+      "Name": "昌邑",
+      "_Id": 37
+    },
+    {
+      "Name": "彭城",
+      "_Id": 38
+    },
+    {
+      "Name": "下邳",
+      "_Id": 39
+    },
+    {
+      "Name": "沛县",
+      "_Id": 40
+    },
+    {
+      "Name": "淮阴",
+      "_Id": 41
+    },
+    {
+      "Name": "广陵港",
+      "_Id": 42
+    },
+    {
+      "Name": "建业",
+      "_Id": 43
+    },
+    {
+      "Name": "吴县",
+      "_Id": 44
+    },
+    {
+      "Name": "山阴",
+      "_Id": 45
+    },
+    {
+      "Name": "始新",
+      "_Id": 46
+    },
+    {
+      "Name": "章安",
+      "_Id": 47
+    },
+    {
+      "Name": "侯官",
+      "_Id": 48
+    },
+    {
+      "Name": "柴桑",
+      "_Id": 49
+    },
+    {
+      "Name": "虎林港",
+      "_Id": 50
+    },
+    {
+      "Name": "鄱阳",
+      "_Id": 51
+    },
+    {
+      "Name": "南昌",
+      "_Id": 52
+    },
+    {
+      "Name": "南城",
+      "_Id": 53
+    },
+    {
+      "Name": "高昌",
+      "_Id": 54
+    },
+    {
+      "Name": "建安",
+      "_Id": 55
+    },
+    {
+      "Name": "山越",
+      "_Id": 56
+    },
+    {
+      "Name": "夷西渡口",
+      "_Id": 57
+    },
+    {
+      "Name": "夷洲",
+      "_Id": 58
+    },
+    {
+      "Name": "己吾",
+      "_Id": 59
+    },
+    {
+      "Name": "临湘",
+      "_Id": 60
+    },
+    {
+      "Name": "临沅",
+      "_Id": 61
+    },
+    {
+      "Name": "湘南",
+      "_Id": 62
+    },
+    {
+      "Name": "泉陵",
+      "_Id": 63
+    },
+    {
+      "Name": "郴县",
+      "_Id": 64
+    },
+    {
+      "Name": "临贺",
+      "_Id": 65
+    },
+    {
+      "Name": "番禹",
+      "_Id": 66
+    },
+    {
+      "Name": "夷道",
+      "_Id": 67
+    },
+    {
+      "Name": "临江",
+      "_Id": 68
+    },
+    {
+      "Name": "广信",
+      "_Id": 69
+    },
+    {
+      "Name": "江油关",
+      "_Id": 70
+    },
+    {
+      "Name": "合浦",
+      "_Id": 71
+    },
+    {
+      "Name": "皖口港",
+      "_Id": 72
+    },
+    {
+      "Name": "布山",
+      "_Id": 73
+    },
+    {
+      "Name": "龙编",
+      "_Id": 74
+    },
+    {
+      "Name": "沓中",
+      "_Id": 75
+    },
+    {
+      "Name": "夏口港",
+      "_Id": 76
+    },
+    {
+      "Name": "安风",
+      "_Id": 77
+    },
+    {
+      "Name": "卢县",
+      "_Id": 78
+    },
+    {
+      "Name": "乐成",
+      "_Id": 79
+    },
+    {
+      "Name": "成都",
+      "_Id": 80
+    },
+    {
+      "Name": "汉嘉",
+      "_Id": 81
+    },
+    {
+      "Name": "武阳",
+      "_Id": 82
+    },
+    {
+      "Name": "江阳",
+      "_Id": 83
+    },
+    {
+      "Name": "江州",
+      "_Id": 84
+    },
+    {
+      "Name": "易京",
+      "_Id": 85
+    },
+    {
+      "Name": "永安",
+      "_Id": 86
+    },
+    {
+      "Name": "绵竹关",
+      "_Id": 87
+    },
+    {
+      "Name": "邛都",
+      "_Id": 88
+    },
+    {
+      "Name": "且兰",
+      "_Id": 89
+    },
+    {
+      "Name": "朱提",
+      "_Id": 90
+    },
+    {
+      "Name": "味县",
+      "_Id": 91
+    },
+    {
+      "Name": "乌巢",
+      "_Id": 92
+    },
+    {
+      "Name": "南蛮",
+      "_Id": 93
+    },
+    {
+      "Name": "梇栋",
+      "_Id": 94
+    },
+    {
+      "Name": "不韦",
+      "_Id": 95
+    },
+    {
+      "Name": "雒县",
+      "_Id": 96
+    },
+    {
+      "Name": "阆中",
+      "_Id": 97
+    },
+    {
+      "Name": "梓潼",
+      "_Id": 98
+    },
+    {
+      "Name": "剑阁",
+      "_Id": 99
+    },
+    {
+      "Name": "南郑",
+      "_Id": 100
+    },
+    {
+      "Name": "阳平关",
+      "_Id": 101
+    },
+    {
+      "Name": "下辨",
+      "_Id": 102
+    },
+    {
+      "Name": "阴平",
+      "_Id": 103
+    },
+    {
+      "Name": "官渡",
+      "_Id": 104
+    },
+    {
+      "Name": "长安",
+      "_Id": 105
+    },
+    {
+      "Name": "槐里",
+      "_Id": 106
+    },
+    {
+      "Name": "临晋",
+      "_Id": 107
+    },
+    {
+      "Name": "祋栩",
+      "_Id": 108
+    },
+    {
+      "Name": "漆县",
+      "_Id": 109
+    },
+    {
+      "Name": "临泾",
+      "_Id": 110
+    },
+    {
+      "Name": "上邽",
+      "_Id": 111
+    },
+    {
+      "Name": "冀县",
+      "_Id": 112
+    },
+    {
+      "Name": "襄武",
+      "_Id": 113
+    },
+    {
+      "Name": "羌胡",
+      "_Id": 114
+    },
+    {
+      "Name": "榆中",
+      "_Id": 115
+    },
+    {
+      "Name": "西都",
+      "_Id": 116
+    },
+    {
+      "Name": "姑臧",
+      "_Id": 117
+    },
+    {
+      "Name": "觻得",
+      "_Id": 118
+    },
+    {
+      "Name": "禄福",
+      "_Id": 119
+    },
+    {
+      "Name": "敦煌",
+      "_Id": 120
+    },
+    {
+      "Name": "居延",
+      "_Id": 121
+    },
+    {
+      "Name": "乌孙",
+      "_Id": 122
+    },
+    {
+      "Name": "美稷",
+      "_Id": 123
+    },
+    {
+      "Name": "安邑",
+      "_Id": 124
+    },
+    {
+      "Name": "怀县",
+      "_Id": 125
+    },
+    {
+      "Name": "平阳",
+      "_Id": 126
+    },
+    {
+      "Name": "邺县",
+      "_Id": 127
+    },
+    {
+      "Name": "界桥",
+      "_Id": 128
+    },
+    {
+      "Name": "晋阳",
+      "_Id": 129
+    },
+    {
+      "Name": "离石",
+      "_Id": 130
+    },
+    {
+      "Name": "原平",
+      "_Id": 131
+    },
+    {
+      "Name": "雁门关",
+      "_Id": 132
+    },
+    {
+      "Name": "平原",
+      "_Id": 133
+    },
+    {
+      "Name": "信都",
+      "_Id": 134
+    },
+    {
+      "Name": "厌次",
+      "_Id": 135
+    },
+    {
+      "Name": "南皮",
+      "_Id": 136
+    },
+    {
+      "Name": "真定",
+      "_Id": 137
+    },
+    {
+      "Name": "卢奴",
+      "_Id": 138
+    },
+    {
+      "Name": "涿县",
+      "_Id": 139
+    },
+    {
+      "Name": "高柳",
+      "_Id": 140
+    },
+    {
+      "Name": "蓟县",
+      "_Id": 141
+    },
+    {
+      "Name": "沮阳",
+      "_Id": 142
+    },
+    {
+      "Name": "渔阳",
+      "_Id": 143
+    },
+    {
+      "Name": "土垠",
+      "_Id": 144
+    },
+    {
+      "Name": "伊阙关",
+      "_Id": 145
+    },
+    {
+      "Name": "昌黎",
+      "_Id": 146
+    },
+    {
+      "Name": "襄平",
+      "_Id": 147
+    },
+    {
+      "Name": "轘辕关",
+      "_Id": 148
+    },
+    {
+      "Name": "丸都",
+      "_Id": 149
+    },
+    {
+      "Name": "朝鲜",
+      "_Id": 150
+    },
+    {
+      "Name": "带方港",
+      "_Id": 151
+    },
+    {
+      "Name": "广成关",
+      "_Id": 152
+    },
+    {
+      "Name": "葭萌关",
+      "_Id": 153
+    },
+    {
+      "Name": "虎牢关",
+      "_Id": 154
+    },
+    {
+      "Name": "盛乐",
+      "_Id": 155
+    },
+    {
+      "Name": "街亭",
+      "_Id": 156
+    },
+    {
+      "Name": "曲阿港",
+      "_Id": 157
+    },
+    {
+      "Name": "宛陵",
+      "_Id": 158
+    },
+    {
+      "Name": "东部鲜卑",
+      "_Id": 159
+    },
+    {
+      "Name": "白狼山",
+      "_Id": 160
+    },
+    {
+      "Name": "夫余",
+      "_Id": 161
+    },
+    {
+      "Name": "陈县",
+      "_Id": 162
+    },
+    {
+      "Name": "六县",
+      "_Id": 163
+    },
+    {
+      "Name": "睢阳",
+      "_Id": 164
+    },
+    {
+      "Name": "寻阳",
+      "_Id": 165
+    },
+    {
+      "Name": "东平陵",
+      "_Id": 166
+    },
+    {
+      "Name": "临济",
+      "_Id": 167
+    },
+    {
+      "Name": "温县",
+      "_Id": 168
+    },
+    {
+      "Name": "黎阳",
+      "_Id": 169
+    },
+    {
+      "Name": "馆陶",
+      "_Id": 170
+    },
+    {
+      "Name": "甘陵",
+      "_Id": 171
+    },
+    {
+      "Name": "壶关",
+      "_Id": 172
+    },
+    {
+      "Name": "高句骊",
+      "_Id": 173
+    },
+    {
+      "Name": "乌程",
+      "_Id": 174
+    },
+    {
+      "Name": "富春",
+      "_Id": 175
+    },
+    {
+      "Name": "樊城",
+      "_Id": 176
+    },
+    {
+      "Name": "南乡",
+      "_Id": 177
+    },
+    {
+      "Name": "成固",
+      "_Id": 178
+    },
+    {
+      "Name": "当阳",
+      "_Id": 179
+    },
+    {
+      "Name": "郪县",
+      "_Id": 180
+    },
+    {
+      "Name": "涪县",
+      "_Id": 181
+    },
+    {
+      "Name": "陈仓",
+      "_Id": 182
+    },
+    {
+      "Name": "郿县",
+      "_Id": 183
+    },
+    {
+      "Name": "五丈原",
+      "_Id": 184
+    },
+    {
+      "Name": "允吾",
+      "_Id": 185
+    },
+    {
+      "Name": "狄道",
+      "_Id": 186
+    },
+    {
+      "Name": "枹罕",
+      "_Id": 187
+    },
+    {
+      "Name": "富平",
+      "_Id": 188
+    },
+    {
+      "Name": "陇县",
+      "_Id": 189
+    },
+    {
+      "Name": "高陵",
+      "_Id": 190
+    },
+    {
+      "Name": "上洛",
+      "_Id": 191
+    },
+    {
+      "Name": "华阴",
+      "_Id": 192
+    },
+    {
+      "Name": "长子",
+      "_Id": 193
+    },
+    {
+      "Name": "肤施",
+      "_Id": 194
+    },
+    {
+      "Name": "临戎",
+      "_Id": 195
+    },
+    {
+      "Name": "九原",
+      "_Id": 196
+    },
+    {
+      "Name": "云中",
+      "_Id": 197
+    },
+    {
+      "Name": "蒲坂津",
+      "_Id": 198
+    },
+    {
+      "Name": "代县",
+      "_Id": 199
+    },
+    {
+      "Name": "元氏",
+      "_Id": 200
+    },
+    {
+      "Name": "廮陶",
+      "_Id": 201
+    },
+    {
+      "Name": "滇池",
+      "_Id": 202
+    },
+    {
+      "Name": "阳翟",
+      "_Id": 203
+    },
+    {
+      "Name": "新息",
+      "_Id": 204
+    },
+    {
+      "Name": "西陵",
+      "_Id": 205
+    },
+    {
+      "Name": "夷陵",
+      "_Id": 206
+    },
+    {
+      "Name": "秭归",
+      "_Id": 207
+    },
+    {
+      "Name": "江津",
+      "_Id": 208
+    },
+    {
+      "Name": "历阳",
+      "_Id": 209
+    },
+    {
+      "Name": "牛渚",
+      "_Id": 210
+    },
+    {
+      "Name": "东武阳",
+      "_Id": 211
+    },
+    {
+      "Name": "海西",
+      "_Id": 212
+    },
+    {
+      "Name": "泾县",
+      "_Id": 213
+    },
+    {
+      "Name": "思平",
+      "_Id": 214
+    },
+    {
+      "Name": "揭阳",
+      "_Id": 215
+    }
+  ],
   "CurrentFactionId": 1,
   "Factions": [
     {
+      "Architectures": [
+        0
+      ],
       "Name": "汉",
       "_Id": 0
     },
     {
+      "Architectures": [
+        5
+      ],
       "Name": "曹操",
       "_Id": 1
     },
     {
+      "Architectures": [
+        84
+      ],
       "Name": "刘备",
       "_Id": 2
     },
     {
+      "Architectures": [
+        49
+      ],
       "Name": "孙坚",
       "_Id": 3
     },
     {
+      "Architectures": [
+        168
+      ],
       "Name": "司马懿",
       "_Id": 4
     },
     {
+      "Architectures": [
+        134
+      ],
       "Name": "张角",
       "_Id": 5
     },
     {
+      "Architectures": [
+        136
+      ],
       "Name": "袁绍",
       "_Id": 6
     },
     {
+      "Architectures": [
+        110
+      ],
       "Name": "董卓",
       "_Id": 7
     },
     {
+      "Architectures": [
+        144
+      ],
       "Name": "公孙瓒",
       "_Id": 8
     },
     {
+      "Architectures": [
+        127
+      ],
       "Name": "韩馥",
       "_Id": 9
     },
     {
+      "Architectures": [
+        80
+      ],
       "Name": "刘焉",
       "_Id": 10
     },
     {
+      "Architectures": [
+        9
+      ],
       "Name": "刘表",
       "_Id": 11
     },
     {
+      "Architectures": [
+        141
+      ],
       "Name": "刘虞",
       "_Id": 12
     },
     {
+      "Architectures": [
+        40
+      ],
       "Name": "吕布",
       "_Id": 13
     },
     {
+      "Architectures": [
+        106
+      ],
       "Name": "马腾",
       "_Id": 14
     },
     {
+      "Architectures": [
+        113
+      ],
       "Name": "韩遂",
       "_Id": 15
     },
     {
+      "Architectures": [
+        74
+      ],
       "Name": "士燮",
       "_Id": 16
     },
     {
+      "Architectures": [
+        35
+      ],
       "Name": "陶谦",
       "_Id": 17
     },
     {
+      "Architectures": [
+        23
+      ],
       "Name": "袁术",
       "_Id": 18
     },
     {
+      "Architectures": [
+        29
+      ],
       "Name": "孔融",
       "_Id": 19
     },
     {
+      "Architectures": [
+        147
+      ],
       "Name": "公孙度",
       "_Id": 20
     },
     {
+      "Architectures": [
+        31
+      ],
       "Name": "刘岱",
       "_Id": 21
     },
     {
+      "Architectures": [
+        43
+      ],
       "Name": "刘繇",
       "_Id": 22
     },
     {
+      "Architectures": [
+        45
+      ],
       "Name": "王朗",
       "_Id": 23
     },
     {
+      "Architectures": [
+        174
+      ],
       "Name": "严白虎",
       "_Id": 24
     },
     {
+      "Architectures": [
+        100
+      ],
       "Name": "张鲁",
       "_Id": 25
     },
     {
+      "Architectures": [
+        17
+      ],
       "Name": "张邈",
       "_Id": 26
     },
     {
+      "Architectures": [
+        11
+      ],
       "Name": "张济",
       "_Id": 27
     },
     {
+      "Architectures": [
+        137
+      ],
       "Name": "张燕",
       "_Id": 28
     },
     {
+      "Architectures": [
+        129
+      ],
       "Name": "丁原",
       "_Id": 29
     },
     {
+      "Architectures": [
+        94
+      ],
       "Name": "孟获",
       "_Id": 30
     },
     {
+      "Architectures": [
+        160
+      ],
       "Name": "乌丸",
       "_Id": 31
     },
     {
+      "Architectures": [
+        102
+      ],
       "Name": "氐",
       "_Id": 32
     },
     {
+      "Architectures": [
+        159
+      ],
       "Name": "东部鲜卑",
       "_Id": 33
     },
     {
+      "Architectures": [
+        161
+      ],
       "Name": "夫余",
       "_Id": 34
     },
     {
+      "Architectures": [
+        149
+      ],
       "Name": "高句丽",
       "_Id": 35
     },
     {
+      "Architectures": [
+        93
+      ],
       "Name": "南蛮",
       "_Id": 36
     },
     {
+      "Architectures": [
+        114
+      ],
       "Name": "羌",
       "_Id": 37
     },
     {
+      "Architectures": [
+        48
+      ],
       "Name": "潘临",
       "_Id": 38
     },
     {
+      "Architectures": [
+        155
+      ],
       "Name": "拓跋鲜卑",
       "_Id": 39
     },
     {
+      "Architectures": [
+        123
+      ],
       "Name": "匈奴",
       "_Id": 40
     },
     {
+      "Architectures": [
+        64
+      ],
       "Name": "赵范",
       "_Id": 41
     },
     {
+      "Architectures": [
+        60
+      ],
       "Name": "韩玄",
       "_Id": 42
     },
     {
+      "Architectures": [
+        61
+      ],
       "Name": "金旋",
       "_Id": 43
     },
     {
+      "Architectures": [
+        63
+      ],
       "Name": "刘度",
       "_Id": 44
     },
     {
+      "Architectures": [
+        158
+      ],
       "Name": "孙权",
       "_Id": 45
     },
     {
+      "Architectures": [
+        6
+      ],
       "Name": "曹丕",
       "_Id": 46
     },
     {
+      "Architectures": [
+        86
+      ],
       "Name": "刘禅",
       "_Id": 47
     },
     {
+      "Architectures": [
+        58
+      ],
       "Name": "孙休",
       "_Id": 48
     },
     {
+      "Architectures": [
+        103
+      ],
       "Name": "邓艾",
       "_Id": 49
     },
     {
+      "Architectures": [
+        24
+      ],
       "Name": "毋丘俭",
       "_Id": 50
     },
     {
+      "Architectures": [
+        91
+      ],
       "Name": "雍闿",
       "_Id": 51
     },
     {
+      "Architectures": [
+        71
+      ],
       "Name": "张津",
       "_Id": 52
     },
     {
+      "Architectures": [
+        98
+      ],
       "Name": "钟会",
       "_Id": 53
     },
     {
+      "Architectures": [
+        68
+      ],
       "Name": "甘宁",
       "_Id": 54
     },
     {
+      "Architectures": [
+        162
+      ],
       "Name": "刘宠",
       "_Id": 55
     },
     {
+      "Architectures": [
+        62
+      ],
       "Name": "区星",
       "_Id": 56
     },
     {
+      "Architectures": [
+        46
+      ],
       "Name": "陈败",
       "_Id": 57
     },
     {
+      "Architectures": [
+        96
+      ],
       "Name": "马相",
       "_Id": 58
     },
     {
+      "Architectures": [
+        105
+      ],
       "Name": "李傕",
       "_Id": 59
     },
     {
+      "Architectures": [
+        190
+      ],
       "Name": "骆矅",
       "_Id": 60
     },
     {
+      "Architectures": [
+        143
+      ],
       "Name": "张举",
       "_Id": 61
     },
     {
+      "Architectures": [
+        2
+      ],
       "Name": "北宫伯玉",
       "_Id": 62
     },
     {
+      "Architectures": [
+        178
+      ],
       "Name": "张修",
       "_Id": 63
     },
     {
+      "Architectures": [
+        187
+      ],
       "Name": "宋建",
       "_Id": 64
     },
     {
+      "Architectures": [
+        112
+      ],
       "Name": "姜维",
       "_Id": 65
     },
     {
+      "Architectures": [
+        126
+      ],
       "Name": "白波军",
       "_Id": 66
     },
     {
+      "Architectures": [
+        66
+      ],
       "Name": "郭马",
       "_Id": 67
     },
     {
+      "Architectures": [
+        213
+      ],
       "Name": "祖郎",
       "_Id": 68
     },
     {
+      "Architectures": [
+        180
+      ],
       "Name": "马秦",
       "_Id": 69
     },
     {
+      "Architectures": [
+        22
+      ],
       "Name": "陆康",
       "_Id": 70
     },
     {
+      "Architectures": [
+        193
+      ],
       "Name": "张杨",
       "_Id": 71
     },
     {
+      "Architectures": [
+        53
+      ],
       "Name": "周凤",
       "_Id": 72
     },
     {
+      "Architectures": [
+        51
+      ],
       "Name": "彭虎",
       "_Id": 73
     },
     {
+      "Architectures": [
+        175
+      ],
       "Name": "彭式",
       "_Id": 74
     },
     {
+      "Architectures": [
+        54
+      ],
       "Name": "李桓",
       "_Id": 75
     },
     {
+      "Architectures": [
+        214
+      ],
       "Name": "仍弩",
       "_Id": 76
     },
     {
+      "Architectures": [
+        125
+      ],
       "Name": "王匡",
       "_Id": 77
     },
     {
+      "Architectures": [
+        19
+      ],
       "Name": "乔瑁",
       "_Id": 78
     },
     {
+      "Architectures": [
+        37
+      ],
       "Name": "袁遗",
       "_Id": 79
     },
     {
+      "Architectures": [
+        78
+      ],
       "Name": "鲍信",
       "_Id": 80
     },
     {
+      "Architectures": [
+        42
+      ],
       "Name": "张超",
       "_Id": 81
     },
     {
+      "Architectures": [
+        203
+      ],
       "Name": "孔伷",
       "_Id": 82
     },
     {
+      "Architectures": [
+        52
+      ],
       "Name": "诸葛玄",
       "_Id": 83
     },
     {
+      "Architectures": [
+        21
+      ],
       "Name": "刘辟",
       "_Id": 84
     },
     {
+      "Architectures": [
+        34
+      ],
       "Name": "臧霸",
       "_Id": 85
     },
     {
+      "Architectures": [
+        7
+      ],
       "Name": "侯音",
       "_Id": 86
     },
     {
+      "Architectures": [
+        79
+      ],
       "Name": "田银",
       "_Id": 87
     },
     {
+      "Architectures": [
+        116
+      ],
       "Name": "曲演",
       "_Id": 88
     },
     {
+      "Architectures": [
+        119
+      ],
       "Name": "黄华",
       "_Id": 89
     },
     {
+      "Architectures": [
+        118
+      ],
       "Name": "和鸾",
       "_Id": 90
     },
     {
+      "Architectures": [
+        117
+      ],
       "Name": "颜俊",
       "_Id": 91
     },
     {
+      "Architectures": [
+        139
+      ],
       "Name": "赵犊",
       "_Id": 92
     },
     {
+      "Architectures": [
+        215
+      ],
       "Name": "吴砀",
       "_Id": 93
     },
     {
+      "Architectures": [
+        65
+      ],
       "Name": "廖式",
       "_Id": 94
     },
     {
+      "Architectures": [
+        212
+      ],
       "Name": "薛州",
       "_Id": 95
     },
     {
+      "Architectures": [
+        165
+      ],
       "Name": "陈策",
       "_Id": 96
     },
     {
+      "Architectures": [
+        204
+      ],
       "Name": "瞿恭",
       "_Id": 97
     },
     {
+      "Architectures": [
+        30
+      ],
       "Name": "管承",
       "_Id": 98
     },
     {
+      "Architectures": [
+        186
+      ],
       "Name": "李越",
       "_Id": 99
     },
     {
+      "Architectures": [
+        142
+      ],
       "Name": "高艾",
       "_Id": 100
     },
     {
+      "Architectures": [
+        107
+      ],
       "Name": "郑甘",
       "_Id": 101
     },
     {
+      "Architectures": [
+        56
+      ],
       "Name": "黄乱",
       "_Id": 102
     },
     {
+      "Architectures": [
+        82
+      ],
       "Name": "任岐",
       "_Id": 103
     },
     {
+      "Architectures": [
+        182
+      ],
       "Name": "王国",
       "_Id": 104
     },
     {
+      "Architectures": [
+        172
+      ],
       "Name": "高干",
       "_Id": 105
     },
     {
+      "Architectures": [
+        211
+      ],
       "Name": "臧洪",
       "_Id": 106
     },
     {
+      "Architectures": [
+        44
+      ],
       "Name": "许贡",
       "_Id": 107
     },
     {
+      "Architectures": [
+        39
+      ],
       "Name": "陈瑀",
       "_Id": 108
     }
