@@ -69,13 +69,15 @@ func _populate_basic_data(arch_list: Array, action):
 	Util.delete_all_children(item_list)
 	if action == Action.LIST:
 		item_list.columns = 8
+		item_list.add_child(_title_sorting(tr('NAME'), self, "_on_title_sorting_click", arch_list))
 	elif action == Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
 		item_list.columns = 2
 		item_list.add_child(_title(''))
+		item_list.add_child(_title(tr('NAME')))
 	else:
 		item_list.columns = 9
 		item_list.add_child(_title(''))
-	item_list.add_child(_title_sorting(tr('NAME'), self, "_on_title_sorting_click", arch_list))
+		item_list.add_child(_title_sorting(tr('NAME'), self, "_on_title_sorting_click", arch_list))
 	if action != Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
 		item_list.add_child(_title_sorting(tr('KIND_NAME'), self, "_on_title_sorting_click", arch_list))
 		item_list.add_child(_title_sorting(tr('FACTION_NAME'), self, "_on_title_sorting_click", arch_list))
@@ -92,7 +94,7 @@ func _populate_basic_data(arch_list: Array, action):
 	for arch in _sorted_list:
 		if action == Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
 			item_list.add_child(_checkbox(arch['_Id']))
-			item_list.add_child(_clickable_label(arch['Name'], self, "__on_clickable_label_click", arch))
+			item_list.add_child(_label(arch['Name']))
 		else:
 			if action != Action.LIST:
 				item_list.add_child(_checkbox(arch.id))
