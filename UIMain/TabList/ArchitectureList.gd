@@ -298,11 +298,8 @@ func _on_Confirm_pressed():
 			})
 			$PersonMove.play()
 			._on_Confirm_pressed()
-		Action.TRANSPORT_RESOURCE_TO:
-			call_deferred("emit_signal", "architecture_selected", current_action, current_architecture, selected_arch, {})
-			$ConfirmSound.play()
-			._on_Confirm_pressed()
 		_:
+			call_deferred("emit_signal", "architecture_selected", current_action, current_architecture, selected_arch, {})
 			$ConfirmSound.play()
 			._on_Confirm_pressed()
 

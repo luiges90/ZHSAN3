@@ -1,5 +1,5 @@
 ﻿keys,en,zh_CN,zh_TW
-ZHSAN3,'ZHSAN' World of Three Kingdoms alpha-6,中华三国志3.0 alpha-6,中華三國志3.0 alpha-6
+ZHSAN3,'ZHSAN' World of Three Kingdoms alpha-7,中华三国志3.0 alpha-7,中華三國志3.0 alpha-7
 SEPARATOR,", ",、,、
 SELECT_SCENARIO,Select scenario,选择剧本,選擇劇本
 MAP,Map,地圖,地圖
@@ -253,4 +253,4 @@ CALMNESS,"Calmness","冷靜度","冷靜度"
 NEW_FACTIONS,New Factions,自创势力,自創勢力
 SELECT_CUSTOM_OFFICER,Select Custom Officers,选择自创武将,選擇自創武將
 SELECT_ARCHITECTURE_FOR_NEW_FACTION,Select Architecture for New Faction,新势力所属建筑,新勢力所屬建築
-SELECT_CUSTOM_OFFICER_FOR_NEW_FACTION,Select Custom Officers for New Faction,新势力所属武将,新勢力所屬武將
+SELECT_CUSTOM_OFFICER_LEADER_FOR_NEW_FACTION,Select Leader for New Faction,新势力君主,新勢力君主

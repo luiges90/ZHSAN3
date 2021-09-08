@@ -9,7 +9,10 @@ var _selected_faction
 var _all_custom_persons = {}
 var _all_architectures = {}
 var _all_factions = {}
+
 var _selected_custom_persons = []
+var _selected_leader = null
+var _selected_custom_faction_architectures = []
 
 signal confirmed_scenario
 
@@ -63,8 +66,8 @@ func _on_scenario_clicked(node, scen):
 			n.set_pressed(false)
 		node.set_pressed(true)
 		
-		_selected_scenario = scen['__FileName']
-		$HL/CustomOfficers.disabled = _selected_scenario == null
+		_selected_scenario = scen
+		$HL/CustomOfficers.disabled = _selected_scenario['__FileName'] == null
 		
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()
@@ -83,7 +86,7 @@ func _on_scenario_clicked(node, scen):
 			_all_factions[faction['_Id']] = faction
 		
 		for a in scen['Architectures']:
-			_all_architectures[a['_Id']] = a
+			_all_architectures[int(a['_Id'])] = a
 		
 		
 func _on_faction_clicked(node, scen, faction):
@@ -92,9 +95,12 @@ func _on_faction_clicked(node, scen, faction):
 			n.set_pressed(false)
 		node.set_pressed(true)
 		
-		_selected_faction = faction['_Id']
+		if faction is Dictionary:
+			_selected_faction = faction['_Id']
+		else:
+			_selected_faction = faction
 		
-		$Confirm.disabled = _selected_faction == null
+		$HR/Confirm.disabled = _selected_faction == null
 
 
 func _on_Cancel_pressed():
@@ -102,7 +108,7 @@ func _on_Cancel_pressed():
 
 
 func _on_Confirm_pressed():
-	SharedData.loading_file_path = "res://Scenarios/" + _selected_scenario
+	SharedData.loading_file_path = "res://Scenarios/" + _selected_scenario['__FileName']
 	SharedData.starting_faction_id = _selected_faction
 	call_deferred("emit_signal", "confirmed_scenario")
 	
@@ -111,12 +117,33 @@ func _on_CustomOfficers_pressed():
 	$PersonList.select_custom_officers(_all_custom_persons.values(), _selected_custom_persons)
 
 
+var ___new_faction_hcontainer = null
 func _on_PersonList_person_selected(current_action, current_architecture, selected):
-	_selected_custom_persons = []
-	for pid in selected:
-		_selected_custom_persons.append(_all_custom_persons[pid])
-	$HL/NewFactions.disabled = selected.size() <= 0
+	if current_action == PersonList.Action.SELECT_CUSTOM_OFFICER:
+		_selected_custom_persons = []
+		for pid in selected:
+			_selected_custom_persons.append(_all_custom_persons[pid])
+		$HL/NewFactions.disabled = selected.size() <= 0
+	elif current_action == PersonList.Action.SELECT_CUSTOM_OFFICER_LEADER_FOR_NEW_FACTION:
+		if ___new_faction_hcontainer != null:
+			$FactionContainer/Factions.remove_child(___new_faction_hcontainer)
 		
+		_selected_leader = _all_custom_persons[selected[0]]
+		
+		var hcontainer = HBoxContainer.new()
+			
+		var radioButton = CheckBox.new()
+		hcontainer.add_child(radioButton)
+		radioButton.connect("pressed", self, "_on_faction_clicked", [radioButton, _selected_scenario, _selected_leader.id])
+		radioButton.add_to_group("RadioButton_Faction")
+		
+		var label = Label.new()
+		label.text = _selected_leader.get_name()
+		hcontainer.add_child(label)
+		
+		$FactionContainer/Factions.add_child(hcontainer)
+		___new_faction_hcontainer = hcontainer
+
 
 func _on_NewFactions_pressed():
 	var avail_arch = []
@@ -129,3 +156,12 @@ func _on_NewFactions_pressed():
 		if not taken:
 			avail_arch.append(_all_architectures[a])
 	$ArchitectureList.select_architecture_for_new_faction(avail_arch)
+
+
+func _on_ArchitectureList_architecture_selected(current_action, current_architecture, selected_arch, obj):
+	_selected_custom_faction_architectures = []
+	for aid in selected_arch:
+		_selected_custom_faction_architectures.append(_all_architectures[aid])
+		
+	$PersonList.select_custom_officers_for_new_faction(_selected_custom_persons)
+	

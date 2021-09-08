@@ -147,4 +147,5 @@ visible = false
 [connection signal="pressed" from="HL/NewFactions" to="." method="_on_NewFactions_pressed"]
 [connection signal="pressed" from="HR/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="HR/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="architecture_selected" from="ArchitectureList" to="." method="_on_ArchitectureList_architecture_selected"]
 [connection signal="person_selected" from="PersonList" to="." method="_on_PersonList_person_selected"]
