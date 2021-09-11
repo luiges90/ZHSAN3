@@ -34,7 +34,7 @@ func save_data() -> Dictionary:
 	}
 	
 ####################################
-#           GÌ°èet function           #
+#           Get function           #
 ####################################
 func get_name():
 	return gname

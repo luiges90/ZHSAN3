@@ -52,7 +52,7 @@ func save_data() -> Dictionary:
 	}
 	
 ####################################
-#           G���et function           #
+#           Get function           #
 ####################################
 
 func get_architectures() -> Array:

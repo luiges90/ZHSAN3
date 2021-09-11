@@ -14,6 +14,8 @@ var _selected_custom_persons = []
 var _selected_leader = null
 var _selected_custom_faction_architectures = []
 
+var custom_factions = []
+
 signal confirmed_scenario
 
 func _ready():
@@ -110,6 +112,8 @@ func _on_Cancel_pressed():
 func _on_Confirm_pressed():
 	SharedData.loading_file_path = "res://Scenarios/" + _selected_scenario['__FileName']
 	SharedData.starting_faction_id = _selected_faction
+	SharedData.custom_factions = custom_factions
+
 	call_deferred("emit_signal", "confirmed_scenario")
 	
 
@@ -143,6 +147,11 @@ func _on_PersonList_person_selected(current_action, current_architecture, select
 		
 		$FactionContainer/Factions.add_child(hcontainer)
 		___new_faction_hcontainer = hcontainer
+		
+		custom_factions.append({
+			"leader": _selected_leader,
+			"architectures": _selected_custom_faction_architectures
+		})
 
 
 func _on_NewFactions_pressed():

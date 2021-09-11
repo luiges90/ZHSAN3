@@ -454,13 +454,15 @@ func _load_data(path, headless):
 				})
 				troops[tid].call_deferred("_update_stunt_animations")
 		
-	
+	var section_ids = []
 	if file.open(path + "/Sections.json", File.READ) == OK:
 		obj = parse_json(file.get_as_text())
 		for item in obj:
 			var instance = Section.new()
 			__load_item(instance, item, sections, {"architectures": architectures, "troops": troops})
+			section_ids.append(instance.id)
 	
+	var faction_ids = []
 	if file.open(path + "/Factions.json", File.READ) == OK:
 		obj = parse_json(file.get_as_text())
 		for item in obj:
@@ -471,10 +473,46 @@ func _load_data(path, headless):
 			if item["Advisor"] >= 0:
 				instance._set_advisor(persons[int(item["Advisor"])])
 			instance.set_capital(architectures[int(item["Capital"])])
+			faction_ids.append(instance.id)
 		file.close()
 	
 	for t in troops:
 		__connect_signals_for_creating_troop(troops[t])
+
+	var section_id = section_ids.max() + 1
+	var faction_id = faction_ids.max() + 1
+	for f in SharedData.custom_factions:
+		var f_leader = f["leader"]
+		var f_architecture_id = f["architectures"]
+		var capital = architectures[int(f_architecture_id[0]["_Id"])]
+		
+		var section = Section.new()
+		__load_item(section, {
+			"_Id": section_id, 
+			"Name": capital.name + tr('SECTION'), 
+			"ArchitectureList": architectures, 
+			"TroopList": []
+		}, sections, {"architectures": architectures, "troops": troops})
+
+		var faction = Faction.new()
+		faction.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
+		__load_item(faction, 
+			{
+				"Advisor": -1,
+				"Capital": capital.id,
+				"Color": [],
+				"Leader": f_leader.id,
+				"Name": f_leader.name,
+				"PlayerControlled": true,
+				"SectionList": [section_id],
+				"_Id": f_leader.id
+			}, factions, {"sections": sections})
+		faction._set_leader(persons[f_leader.id])
+		faction.set_capital(capital)
+
+		section_id += 1
+		faction_id += 1
+		
 	
 	if not headless:
 		__handle_game_start(current_faction_id)
