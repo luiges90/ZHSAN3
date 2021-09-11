@@ -149,8 +149,7 @@ func _on_PersonList_person_selected(current_action, current_architecture, select
 		
 		custom_factions.append({
 			"leader": _selected_leader,
-			"architectures": _selected_custom_faction_architectures,
-			"persons": _selected_custom_persons
+			"architectures": _selected_custom_faction_architectures
 		})
 
 
@@ -159,9 +158,10 @@ func _on_NewFactions_pressed():
 	for a in _all_architectures:
 		var taken = false
 		for f in _all_factions:
-			if _all_factions[f]['Architectures'].has(a):
-				taken = true
-				break
+			for i in _all_factions[f]['Architectures']:
+				if a == i:
+					taken = true
+					break
 		if not taken:
 			avail_arch.append(_all_architectures[a])
 	$ArchitectureList.select_architecture_for_new_faction(avail_arch)
