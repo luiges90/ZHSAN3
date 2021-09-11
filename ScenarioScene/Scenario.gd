@@ -479,46 +479,46 @@ func _load_data(path, headless):
 	for t in troops:
 		__connect_signals_for_creating_troop(troops[t])
 
-	var section_id = section_ids.max() + 1
-	var faction_id = faction_ids.max() + 1
-	for f in SharedData.custom_factions:
-		var f_leader = f["leader"]
-		var f_architecture_id = []
-		for arch in f["architectures"]:
-			f_architecture_id.append(arch["_Id"])
-		var capital = architectures[int(f_architecture_id[0])]
+	if not headless:
+		var section_id = section_ids.max() + 1
+		var faction_id = faction_ids.max() + 1
+		for f in SharedData.custom_factions:
+			var f_leader = f["leader"]
+			var f_architecture_id = []
+			for arch in f["architectures"]:
+				f_architecture_id.append(arch["_Id"])
+			var capital = architectures[int(f_architecture_id[0])]
 
-		for p in f["persons"]:
-			capital.add_person(persons[p.id])
-			persons[p.id].join_architecture(capital)
-		
-		var section = Section.new()
-		__load_item(section, {
-			"_Id": section_id, 
-			"Name": capital.get_name() + tr('SECTION'), 
-			"ArchitectureList": f_architecture_id, 
-			"TroopList": []
-		}, sections, {"architectures": architectures, "troops": troops})
+			for p in f["persons"]:
+				capital.add_person(persons[p.id])
+				persons[p.id].join_architecture(capital)
+			
+			var section = Section.new()
+			__load_item(section, {
+				"_Id": section_id, 
+				"Name": capital.get_name() + tr('SECTION'), 
+				"ArchitectureList": f_architecture_id, 
+				"TroopList": []
+			}, sections, {"architectures": architectures, "troops": troops})
 
-		var faction = Faction.new()
-		faction.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
-		__load_item(faction, 
-			{
-				"Advisor": -1,
-				"Capital": capital.id,
-				"Color": [randf(), randf(), randf()],
-				"Leader": f_leader.id,
-				"Name": f_leader.get_name(),
-				"PlayerControlled": SharedData.starting_faction_id == f_leader.id,
-				"SectionList": [section_id],
-				"_Id": f_leader.id
-			}, factions, {"sections": sections})
-		faction._set_leader(persons[f_leader.id])
-		faction.set_capital(capital)
+			var faction = Faction.new()
+			faction.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
+			__load_item(faction, 
+				{
+					"Advisor": -1,
+					"Capital": capital.id,
+					"Color": [randf(), randf(), randf()],
+					"Leader": f_leader.id,
+					"Name": f_leader.get_name(),
+					"PlayerControlled": SharedData.starting_faction_id == f_leader.id,
+					"SectionList": [section_id],
+					"_Id": f_leader.id
+				}, factions, {"sections": sections})
+			faction._set_leader(persons[f_leader.id])
+			faction.set_capital(capital)
 
-		section_id += 1
-		faction_id += 1
-		
+			section_id += 1
+			faction_id += 1
 	
 	if not headless:
 		__handle_game_start(current_faction_id)

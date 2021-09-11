@@ -149,8 +149,12 @@ func _on_PersonList_person_selected(current_action, current_architecture, select
 		
 		custom_factions.append({
 			"leader": _selected_leader,
+			"persons": _selected_custom_persons,
 			"architectures": _selected_custom_faction_architectures
 		})
+		_selected_custom_persons = []
+		_selected_leader = null
+		_selected_custom_faction_architectures = []
 
 
 func _on_NewFactions_pressed():
