@@ -70,6 +70,7 @@ func _on_scenario_clicked(node, scen):
 		
 		_selected_scenario = scen
 		$HL/CustomOfficers.disabled = _selected_scenario['__FileName'] == null
+		$HR/Confirm.disabled = _selected_scenario['__FileName'] == null
 		
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()
@@ -101,8 +102,6 @@ func _on_faction_clicked(node, scen, faction):
 			_selected_faction = faction['_Id']
 		else:
 			_selected_faction = faction
-		
-		$HR/Confirm.disabled = _selected_faction == null
 
 
 func _on_Cancel_pressed():
@@ -150,7 +149,8 @@ func _on_PersonList_person_selected(current_action, current_architecture, select
 		
 		custom_factions.append({
 			"leader": _selected_leader,
-			"architectures": _selected_custom_faction_architectures
+			"architectures": _selected_custom_faction_architectures,
+			"persons": _selected_custom_persons
 		})
 
 

@@ -115,24 +115,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Cancel" type="Button" parent="HR"]
+margin_right = 121.0
+margin_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Confirm" type="Button" parent="HR"]
-margin_right = 124.0
+margin_left = 125.0
+margin_right = 249.0
 margin_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 0
 disabled = true
 text = "CONFIRM"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Cancel" type="Button" parent="HR"]
-margin_left = 128.0
-margin_right = 249.0
-margin_bottom = 40.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "CANCEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,7 +145,7 @@ visible = false
 
 [connection signal="pressed" from="HL/CustomOfficers" to="." method="_on_CustomOfficers_pressed"]
 [connection signal="pressed" from="HL/NewFactions" to="." method="_on_NewFactions_pressed"]
-[connection signal="pressed" from="HR/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="HR/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="pressed" from="HR/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="architecture_selected" from="ArchitectureList" to="." method="_on_ArchitectureList_architecture_selected"]
 [connection signal="person_selected" from="PersonList" to="." method="_on_PersonList_person_selected"]

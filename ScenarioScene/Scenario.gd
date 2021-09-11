@@ -483,14 +483,20 @@ func _load_data(path, headless):
 	var faction_id = faction_ids.max() + 1
 	for f in SharedData.custom_factions:
 		var f_leader = f["leader"]
-		var f_architecture_id = f["architectures"]
-		var capital = architectures[int(f_architecture_id[0]["_Id"])]
+		var f_architecture_id = []
+		for arch in f["architectures"]:
+			f_architecture_id.append(arch["_Id"])
+		var capital = architectures[int(f_architecture_id[0])]
+
+		for p in f["persons"]:
+			capital.add_person(persons[p.id])
+			persons[p.id].join_architecture(capital)
 		
 		var section = Section.new()
 		__load_item(section, {
 			"_Id": section_id, 
-			"Name": capital.name + tr('SECTION'), 
-			"ArchitectureList": architectures, 
+			"Name": capital.get_name() + tr('SECTION'), 
+			"ArchitectureList": f_architecture_id, 
 			"TroopList": []
 		}, sections, {"architectures": architectures, "troops": troops})
 
@@ -500,10 +506,10 @@ func _load_data(path, headless):
 			{
 				"Advisor": -1,
 				"Capital": capital.id,
-				"Color": [],
+				"Color": [randf(), randf(), randf()],
 				"Leader": f_leader.id,
-				"Name": f_leader.name,
-				"PlayerControlled": true,
+				"Name": f_leader.get_name(),
+				"PlayerControlled": SharedData.starting_faction_id == f_leader.id,
 				"SectionList": [section_id],
 				"_Id": f_leader.id
 			}, factions, {"sections": sections})
