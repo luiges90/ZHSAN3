@@ -343,6 +343,8 @@ func get_salary():
 func get_age():
 	if scenario != null and scenario.scenario_config != null and scenario.scenario_config.person_natural_death:
 		return scenario.get_year() - born_year + 1
+	elif SharedData.selected_scenario_start_year > 0:
+		return SharedData.selected_scenario_start_year - born_year + 1
 	else:
 		return 30
 	

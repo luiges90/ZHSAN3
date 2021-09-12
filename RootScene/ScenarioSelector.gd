@@ -71,6 +71,8 @@ func _on_scenario_clicked(node, scen):
 		_selected_scenario = scen
 		$HL/CustomOfficers.disabled = _selected_scenario['__FileName'] == null
 		$HR/Confirm.disabled = _selected_scenario['__FileName'] == null
+
+		SharedData.selected_scenario_start_year = _selected_scenario["GameData"]["Year"]
 		
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()

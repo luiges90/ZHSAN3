@@ -13,6 +13,7 @@ var loading_file_path
 var starting_faction_id
 var starting_scenario_config
 var custom_factions
+var selected_scenario_start_year
 
 ###########################
 #        Resources        #
