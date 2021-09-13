@@ -177,6 +177,11 @@ func _on_ArchitectureList_architecture_selected(current_action, current_architec
 	_selected_custom_faction_architectures = []
 	for aid in selected_arch:
 		_selected_custom_faction_architectures.append(_all_architectures[aid])
+
+	var _candidates = []
+	for p in _selected_custom_persons:
+		if p.get_age() >= 15:
+			_candidates.append(p)
 		
-	$PersonList.select_custom_officers_for_new_faction(_selected_custom_persons)
+	$PersonList.select_leader_for_new_faction(_candidates)
 	

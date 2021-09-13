@@ -72,6 +72,7 @@ func _on_PersonDetail_on_save(person):
 			person._set_id(free_id + 1)
 		else:
 			person._set_id(30000)
+		person.set_inactive()
 		custom_persons[person.id] = person
 	
 	$PersonDetail.hide()

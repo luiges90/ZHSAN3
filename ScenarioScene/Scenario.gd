@@ -490,8 +490,11 @@ func _load_data(path, headless):
 			var capital = architectures[int(f_architecture_id[0])]
 
 			for p in f["persons"]:
-				capital.add_person(persons[p.id])
-				persons[p.id].join_architecture(capital)
+				if persons[p.id].get_age() >= 15:
+					capital.add_person(persons[p.id])
+					persons[p.id].join_architecture(capital)
+				else:
+					persons[p.id].set_active()
 			
 			var section = Section.new()
 			__load_item(section, {

@@ -57,7 +57,7 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 						return false
 					else:
 						var arch = params['troop'].get_on_architecture()
-						if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction())):
+						if _op_cond(op_not, arch == null or arch.get_belonged_faction() == null or !arch.get_belonged_faction().is_friend_to(params['troop'].get_belonged_faction())):
 							return false
 			'is_on_enemy_architecture':
 				if params.has('troop'):
@@ -65,7 +65,7 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 						return false
 					else:
 						var arch = params['troop'].get_on_architecture()
-						if _op_cond(op_not, arch == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction())):
+						if _op_cond(op_not, arch == null or arch.get_belonged_faction() == null or !arch.get_belonged_faction().is_enemy_to(params['troop'].get_belonged_faction())):
 							return false
 			'target_is_troop':
 				if params.has('target'):

@@ -7,7 +7,7 @@ enum Task { NONE,
 	RECRUIT_TROOP, TRAIN_TROOP, PRODUCE_EQUIPMENT,
 	CONVINCE }
 enum Status { NONE,
-	NORMAL, WILD, CAPTIVE
+	NORMAL, WILD, CAPTIVE, INACTIVE
 }
 enum DeadReason { NATURAL, UNNNATURAL }
 enum AvailableReason { BROTHER, SPOUSE, CHILDREN, SIBLING, NONE }
@@ -955,6 +955,12 @@ func become_captured(capturer):
 func become_free():
 	_status = Status.NORMAL
 	_old_faction_id = -1
+	
+func set_inactive():
+	_status = Status.INACTIVE
+
+func set_active():
+	_status = Status.NONE
 
 func _move_eta(arch):
 	var result = get_location().move_eta(arch)
@@ -973,6 +979,9 @@ func join_architecture(location_arch):
 	
 	
 func become_available():
+	if _status == Status.INACTIVE:
+		return
+		
 	var brother_sorted = brothers.duplicate()
 	brother_sorted.sort_custom(self, "cmp_age_desc")
 	for b in brother_sorted:

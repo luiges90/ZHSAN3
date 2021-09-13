@@ -83,7 +83,7 @@ func select_custom_officers(all_persons: Array, selected: Array):
 		items.append(p.id)
 	select_items(items)
 	
-func select_custom_officers_for_new_faction(all_persons: Array):
+func select_leader_for_new_faction(all_persons: Array):
 	current_action = Action.SELECT_CUSTOM_OFFICER_LEADER_FOR_NEW_FACTION
 	current_architecture = null
 	show_data(all_persons)
