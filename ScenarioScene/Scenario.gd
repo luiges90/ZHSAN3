@@ -83,14 +83,17 @@ func _ready(headless = false):
 		camera.scenario = self
 		($DateRunner as DateRunner).scenario = self
 	
+	var new_game = false
 	if SharedData.loading_file_path == null:
 		SharedData.loading_file_path = "res://Scenarios/194QXGJ-qh"
 		current_scenario_name = "194QXGJ-qh"
+		new_game = true
 	else: 
 		var pos = SharedData.loading_file_path.find('Scenarios')
 		if pos >= 0:
 			current_scenario_name = SharedData.loading_file_path.substr(pos + 10)
-	_load_data(SharedData.loading_file_path, headless)
+			new_game = true
+	_load_data(SharedData.loading_file_path, new_game, headless)
 	
 	if not headless:
 		if _starting_camera_move_to != null:
@@ -127,7 +130,7 @@ func _on_file_slot_clicked(mode, path: String):
 	if mode == SaveLoadMenu.MODE.SAVE:
 		_save_data(path)
 	else:
-		_load_data(path, false)
+		_load_data(path, false, false)
 	
 func _save_data(path):
 	var dir = Directory.new()
@@ -226,7 +229,7 @@ func __save_items(d: Dictionary):
 		arr.push_back(item.save_data())
 	return arr
 
-func _load_data(path, headless):
+func _load_data(path, new_game, headless):
 	_loading_scenario = true
 	if not headless:
 		for n in get_tree().get_nodes_in_group(GROUP_GAME_INSTANCES):
@@ -349,40 +352,41 @@ func _load_data(path, headless):
 			person_json[instance.id] = item
 		file.close()
 	
-	if file.open('user://custom_persons.json', File.READ) == OK:
-		obj = parse_json(file.get_as_text())
-		for item in obj:
-			var instance = Person.new()
-			
-			instance.connect("person_available", self, "_on_person_available")
-			
-			var game_record_creator = get_node_or_null("GameRecordCreator")
-			if game_record_creator != null:
-				instance.connect('person_died', game_record_creator, 'person_died')
-				instance.connect("convince_success", game_record_creator, "person_convince_success")
-				instance.connect("convince_failure", game_record_creator, "person_convince_failure")
-				instance.connect("move_complete", game_record_creator, "person_move_complete")
+	if new_game:
+		if file.open('user://custom_persons.json', File.READ) == OK:
+			obj = parse_json(file.get_as_text())
+			for item in obj:
+				var instance = Person.new()
 				
-			__load_item(instance, item, persons, {"skills": skills, "stunts": stunts})
-			person_json[instance.id] = item
-		file.close()
-		
-	for pid in persons:
-		var father_id = int(person_json[pid]["FatherId"])
-		if father_id >= 0:
-			persons[pid].set_father(persons[father_id])
-		var mother_id = int(person_json[pid]["MotherId"])
-		if mother_id >= 0:
-			persons[pid].set_mother(persons[mother_id])
-		var spouse_ids = person_json[pid]["SpouseIds"]
-		for s in spouse_ids:
-			persons[pid].add_spouse(persons[int(s)])
-		var brother_ids = person_json[pid]["BrotherIds"]
-		for b in brother_ids:
-			persons[pid].add_brother(persons[int(b)])
-		var task_target_id = int(person_json[pid]["TaskTarget"])
-		if task_target_id >= 0:
-			persons[pid].set_task_target(persons[task_target_id])
+				instance.connect("person_available", self, "_on_person_available")
+				
+				var game_record_creator = get_node_or_null("GameRecordCreator")
+				if game_record_creator != null:
+					instance.connect('person_died', game_record_creator, 'person_died')
+					instance.connect("convince_success", game_record_creator, "person_convince_success")
+					instance.connect("convince_failure", game_record_creator, "person_convince_failure")
+					instance.connect("move_complete", game_record_creator, "person_move_complete")
+					
+				__load_item(instance, item, persons, {"skills": skills, "stunts": stunts})
+				person_json[instance.id] = item
+			file.close()
+			
+		for pid in persons:
+			var father_id = int(person_json[pid]["FatherId"])
+			if father_id >= 0:
+				persons[pid].set_father(persons[father_id])
+			var mother_id = int(person_json[pid]["MotherId"])
+			if mother_id >= 0:
+				persons[pid].set_mother(persons[mother_id])
+			var spouse_ids = person_json[pid]["SpouseIds"]
+			for s in spouse_ids:
+				persons[pid].add_spouse(persons[int(s)])
+			var brother_ids = person_json[pid]["BrotherIds"]
+			for b in brother_ids:
+				persons[pid].add_brother(persons[int(b)])
+			var task_target_id = int(person_json[pid]["TaskTarget"])
+			if task_target_id >= 0:
+				persons[pid].set_task_target(persons[task_target_id])
 	
 	if file.open(path + "/Architectures.json", File.READ) == OK:
 		var architecture_scene = preload("Architecture/Architecture.tscn")
@@ -479,7 +483,7 @@ func _load_data(path, headless):
 	for t in troops:
 		__connect_signals_for_creating_troop(troops[t])
 
-	if not headless:
+	if not headless and SharedData.custom_factions != null:
 		var section_id = section_ids.max() + 1
 		var faction_id = faction_ids.max() + 1
 		for f in SharedData.custom_factions:

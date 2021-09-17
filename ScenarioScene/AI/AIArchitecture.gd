@@ -30,7 +30,7 @@ func _target_troop_quantity(arch: Architecture):
 	return troops
 	
 func _target_equipment_quantity(arch: Architecture):
-	return _target_troop_quantity(arch) / 2.0
+	return _target_troop_quantity(arch)
 
 func _target_troop_morale(arch: Architecture):
 	return 100

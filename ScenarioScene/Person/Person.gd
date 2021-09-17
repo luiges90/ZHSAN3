@@ -829,13 +829,27 @@ func is_related_blood_to(other_person) -> bool:
 
 
 func convince_probability(other_person) -> float:
+	if other_person.get_belonged_faction() != null and other_person == other_person.get_belonged_faction().leader:
+		return -1.0
+	
 	var self_diff = other_person.get_ideal_difference(self)
 	var leader_diff = other_person.get_ideal_difference(get_belonged_faction().leader)
+	var other_diff = -other_person.get_ideal_difference(get_old_faction().leader)
+	var ideal_factor = (1 - (self_diff * 0.2 + leader_diff * 0.4 + other_diff * 0.4)) / 75.0 * 100.0
+	
+	var self_relation = other_person.get_person_relation(self)
+	var leader_relation = other_person.get_person_relation(get_belonged_faction().leader)
+	var other_relation = -other_person.get_person_relation(get_old_faction().leader)
+	var relation_factor = self_relation * 0.2 + leader_relation * 0.4 + other_relation * 0.4
+	
 	var ability = get_convince_ability()
 	var advisor = get_belonged_faction().get_intelligent_advisor()
-	var advisor_factor = max(0, -8.22565 * exp(-0.01875 * advisor.get_intelligence()) + 2.19742)
-
-	return (1 - (self_diff * 0.3 + leader_diff * 0.7) / 100.0 + (ability + advisor_factor * 10.0) / 100.0) * (1 - (other_person.get_loyalty() - 50) / 50.0)
+	var advisor_factor = max(0, -8.22565 * exp(-0.01875 * advisor.get_intelligence()) + 2.19742) # 0 - 1
+	var ability_factor = (ability + advisor_factor * 20.0) / 120.0
+	
+	var loyalty_factor = (1 - (other_person.get_loyalty() - 50) / 50.0)
+	
+	return (ideal_factor * 0.3 + relation_factor * 0.5 + ability_factor * 0.2) * loyalty_factor
 	
 func displayed_convince_probability(other_person):
 	var prob = convince_probability(other_person)

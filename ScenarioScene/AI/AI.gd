@@ -61,7 +61,7 @@ func _military_kind_power(military_kind: MilitaryKind) -> float:
 	var offence_factor = military_kind.offence * (sqrt(military_kind.range_max) - sqrt(military_kind.range_min - 1))
 	var defence_factor = military_kind.defence
 	var siege_factor = military_kind.architecture_attack_factor * 20 * offence_factor
-	return offence_factor + defence_factor + siege_factor
+	return offence_factor * 0.45 + defence_factor * 0.45 + siege_factor * 0.1
 
 func _frontline_connected_archs(arch: Architecture) -> Array:
 	var archs = []
