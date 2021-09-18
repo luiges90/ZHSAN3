@@ -137,7 +137,7 @@ func save_data() -> Dictionary:
 		"TroopMorale": troop_morale,
 		"TroopCombativity": troop_combativity,
 		"Equipments": equipments,
-		"Specialties": Util.id_key_dict(specialties)
+		"Specialties": Util.id_key_dict(specialties),
 		"_AutoTask": auto_task,
 		"_AutoConvince": auto_convince,
 		"_RecentlyBattled": _recently_battled,
@@ -658,7 +658,7 @@ func _decay_internal():
 	factor += enemy_troop_quantity_in_range(4) / 5000.0
 	for p in get_workable_persons():
 		factor = p.apply_influences("modify_person_architecture_internal_decay", {"value": factor, "person": p, "architecture": self})
-	factor = decrease = apply_influences("modify_architecture_internal_decay", {"value": factor, "architecture": self})
+	factor = apply_influences("modify_architecture_internal_decay", {"value": factor, "architecture": self})
 		
 	agriculture -= Util.f2ri(agriculture * 0.005 * factor)
 	commerce -= Util.f2ri(commerce * 0.005 * factor)
