@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UIMain/ContextMenu/ArchitectureMenu.gd"
 }, {
+"base": "Node",
+"class": "ArchitectureSpecialty",
+"language": "GDScript",
+"path": "res://ScenarioScene/Architecture/ArchitectureSpecialty.gd"
+}, {
 "base": "Panel",
 "class": "ArchitectureSurvey",
 "language": "GDScript",
@@ -332,6 +337,7 @@ _global_script_class_icons={
 "ArchitectureKind": "",
 "ArchitectureList": "",
 "ArchitectureMenu": "",
+"ArchitectureSpecialty": "",
 "ArchitectureSurvey": "",
 "Biography": "",
 "ContextMenu": "",

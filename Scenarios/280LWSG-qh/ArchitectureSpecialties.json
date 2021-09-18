@@ -1,0 +1,311 @@
+[
+    {
+        "_Id": 10,
+        "Name": "農業",
+        "Description": "農業開發增長每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_agriculture_growth",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 20,
+        "Name": "商業",
+        "Description": "商業開發增長每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_commerce_growth",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 30,
+        "Name": "民心",
+        "Description": "民心開發增長每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_morale_growth",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 40,
+        "Name": "耐久",
+        "Description": "耐久開發增長每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_endurance_growth",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 50,
+        "Name": "招兵",
+        "Description": "招兵速度每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_recruit_speed",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 60,
+        "Name": "訓練",
+        "Description": "訓練速度每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_train_speed",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 70,
+        "Name": "步兵",
+        "Description": "步兵兵裝生產速度每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Value": 0
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_speed",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 71,
+        "Name": "弓兵",
+        "Description": "弓兵兵裝生產速度每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Value": 1
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_speed",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 72,
+        "Name": "騎兵",
+        "Description": "騎兵兵裝生產速度每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Value": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_speed",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 100,
+        "Name": "市集",
+        "Description": "資金收入每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_fund_income",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 110,
+        "Name": "農田",
+        "Description": "糧草收入每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_food_income",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 120,
+        "Name": "文化",
+        "Description": "人口增長每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_population_growth",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 130,
+        "Name": "義舍",
+        "Description": "城池的人口在戰爭的狀態下下降率減少25%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 4,
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_population_loss",
+                "Value": -0.25
+            }
+        ]
+    },
+    {
+        "_Id": 140,
+        "Name": "行曹",
+        "Description": "減緩城池內政數值的自然下降每等級25%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 3,
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_internal_decay",
+                "Value": -0.25
+            }
+        ]
+    },
+    {
+        "_Id": 150,
+        "Name": "眾望",
+        "Description": "執行內政時所需資金減少每等級25%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 3,
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_develop_internal_cost",
+                "Value": -0.25
+            }
+        ]
+    },
+    {
+        "_Id": 300,
+        "Name": "運輸",
+        "Description": "減少由此地出發的運送物資所需時間10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 9,
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_transport_time",
+                "Value": -0.1
+            }
+        ]
+    },
+    {
+        "_Id": 310,
+        "Name": "輜重",
+        "Description": "減少由此地出發的運送物資損耗10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 9,
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_transport_loss",
+                "Value": -0.1
+            }
+        ]
+    }
+]

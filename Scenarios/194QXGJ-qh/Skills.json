@@ -579,7 +579,19 @@
 		"Conditions": [],
 		"Influences": [
 			{
-				"Operation": "modify_person_architecture_internal_development_rate",
+				"Operation": "modify_person_agriculture_ability",
+				"Value": 0.05
+			},
+			{
+				"Operation": "modify_person_commerce_ability",
+				"Value": 0.05
+			},
+			{
+				"Operation": "modify_person_morale_ability",
+				"Value": 0.05
+			},
+			{
+				"Operation": "modify_person_endurance_ability",
 				"Value": 0.05
 			}
 		]
@@ -610,7 +622,15 @@
 		"Conditions": [],
 		"Influences": [
 			{
-				"Operation": "modify_person_architecture_military_development_rate",
+				"Operation": "modify_person_recruit_ability",
+				"Value": 0.05
+			},
+			{
+				"Operation": "modify_person_training_ability",
+				"Value": 0.05
+			},
+			{
+				"Operation": "modify_person_produce_equipment_ability",
 				"Value": 0.05
 			}
 		]
@@ -669,7 +689,7 @@
 		"Conditions": [],
 		"Influences": [
 			{
-				"Operation": "modify_transport_time",
+				"Operation": "modify_person_architecture_transport_time",
 				"Value": -0.1
 			}
 		]
@@ -697,7 +717,7 @@
 		"Conditions": [],
 		"Influences": [
 			{
-				"Operation": "modify_transport_loss",
+				"Operation": "modify_person_architecture_transport_loss",
 				"Value": -0.1
 			}
 		]

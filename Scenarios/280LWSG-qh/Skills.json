@@ -669,7 +669,7 @@
 		"Conditions": [],
 		"Influences": [
 			{
-				"Operation": "modify_transport_time",
+				"Operation": "modify_person_architecture_transport_time",
 				"Value": -0.1
 			}
 		]
@@ -697,7 +697,7 @@
 		"Conditions": [],
 		"Influences": [
 			{
-				"Operation": "modify_transport_loss",
+				"Operation": "modify_person_architecture_transport_loss",
 				"Value": -0.1
 			}
 		]

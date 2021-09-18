@@ -35,6 +35,8 @@ var auto_convince = true
 
 var auto_task: bool
 
+var specialties = {} setget forbidden
+
 var _destroyed: bool = false
 
 var _recently_battled: int setget forbidden
@@ -97,6 +99,10 @@ func load_data(json: Dictionary, objects):
 	
 	equipments = Util.convert_dict_to_int_key(json["Equipments"])
 
+	if json.has("Specialties"):
+		for id in json["Specialties"]:
+			specialties[objects["architecture_specialties"][int(id)]] = json["Specialties"][id]
+
 	_recently_battled = json["_RecentlyBattled"]
 
 	var resource_pack_json = Util.dict_try_get(json, "_ResourcePacks", [])
@@ -131,6 +137,7 @@ func save_data() -> Dictionary:
 		"TroopMorale": troop_morale,
 		"TroopCombativity": troop_combativity,
 		"Equipments": equipments,
+		"Specialties": Util.id_key_dict(specialties)
 		"_AutoTask": auto_task,
 		"_AutoConvince": auto_convince,
 		"_RecentlyBattled": _recently_battled,
@@ -253,6 +260,7 @@ func expected_fund_income():
 	var income = commerce * sqrt(sqrt(population + 1000)) * sqrt(morale) / 20.0
 	for p in get_workable_persons():
 		income = p.apply_influences('modify_person_fund_income', {"value": income, "person": p, "architecture": self})
+	income = apply_influences('modify_architecture_fund_income', {"value": income, "architecture": self})
 	
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -275,6 +283,7 @@ func expected_food_income():
 	var income = agriculture * sqrt(sqrt(population + 1000)) * sqrt(morale) / 2.0
 	for p in get_workable_persons():
 		income = p.apply_influences('modify_person_food_income', {"value": income, "person": p, "architecture": self})
+	income = apply_influences('modify_architecture_food_income', {"value": income, "architecture": self})
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -287,6 +296,7 @@ func expected_population_gain():
 
 	for p in get_workable_persons():
 		base = p.apply_influences('modify_person_population_gain', {"value": base, "person": p, "architecture": self})
+	base = apply_influences('modify_architecture_population_gain', {"value": base, "architecture": self})
 	
 	return base
 	
@@ -294,7 +304,8 @@ func get_defence():
 	var base = 1500 + endurance + morale * 3 + troop * 0.05
 	for p in get_workable_persons():
 		base = p.apply_influences('modify_person_architecture_defence', {"value": base, "person": p, "architecture": self})
-		
+	base = apply_influences('modify_architecture_defence', {"value": base, "architecture": self})
+	
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
 		base *= scenario.scenario_config.ai_troop_defence_rate
@@ -305,6 +316,7 @@ func get_offence():
 	var base = endurance + morale * 0.5 + troop * 0.1
 	for p in get_workable_persons():
 		base = p.apply_influences('modify_person_architecture_offence', {"value": base, "person": p, "architecture": self})
+	base = apply_influences('modify_architecture_offence', {"value": base, "architecture": self})
 		
 	var f = get_belonged_faction()
 	if f != null and not f.player_controlled:
@@ -586,13 +598,16 @@ func transport_resources(destination, fund_to_transport: int, food_to_transport:
 func _transport_eta(arch):
 	var result = int(ScenarioUtil.object_distance(self, arch) * 0.4) + 1
 	for p in get_workable_persons():
-		result = p.apply_influences("modify_transport_time", {"value": result, "person": p, "architecture": self})
+		result = p.apply_influences("modify_person_architecture_transport_time", {"value": result, "person": p, "architecture": self})
+	result = apply_influences('modify_architecture_transport_time', {"value": result, "architecture": self})
+
 	return int(result)
 
 func _transport_loss(arch):
 	var eta = int(ScenarioUtil.object_distance(self, arch) * 0.4) + 1
 	for p in get_workable_persons():
-		eta = p.apply_influences("modify_transport_loss", {"value": eta, "person": p, "architecture": self})
+		eta = p.apply_influences("modify_person_architecture_transport_loss", {"value": eta, "person": p, "architecture": self})
+	eta = apply_influences('modify_architecture_transport_loss', {"value": eta, "architecture": self})
 	
 	return min(1.0, 1.81342 / (1.75862 + 0.024067 * eta))
 	
@@ -613,7 +628,8 @@ func _develop_population():
 		decrease += enemy_troop.quantity / 200.0
 	decrease += enemy_troop_quantity_in_range(4) / 2000.0
 	for p in get_workable_persons():
-		p.apply_influences("modify_person_architecture_population_loss", {"value": decrease, "person": p, "architecture": self})
+		decrease = p.apply_influences("modify_person_architecture_population_loss", {"value": decrease, "person": p, "architecture": self})
+	decrease = apply_influences("modify_architecture_population_loss", {"value": decrease, "architecture": self})
 	
 	population = Util.f2ri(population + population_increase - decrease)
 	military_population += Util.f2ri(population_increase * 0.4)
@@ -641,7 +657,8 @@ func _decay_internal():
 		factor += enemy_troop.quantity / 1000.0
 	factor += enemy_troop_quantity_in_range(4) / 5000.0
 	for p in get_workable_persons():
-		p.apply_influences("modify_person_architecture_internal_decay", {"value": factor, "person": p, "architecture": self})
+		factor = p.apply_influences("modify_person_architecture_internal_decay", {"value": factor, "person": p, "architecture": self})
+	factor = decrease = apply_influences("modify_architecture_internal_decay", {"value": factor, "architecture": self})
 		
 	agriculture -= Util.f2ri(agriculture * 0.005 * factor)
 	commerce -= Util.f2ri(commerce * 0.005 * factor)
@@ -666,7 +683,9 @@ func _develop_military():
 			
 func _develop_cost(p):
 	var base = 2
-	p.apply_influences("modify_person_develop_internal_cost", {"value": base, "person": p, "architecture": self})
+	base = p.apply_influences("modify_person_develop_internal_cost", {"value": base, "person": p, "architecture": self})
+	base = apply_influences("modify_architecture_develop_internal_cost", {"value": base, "person": p, "architecture": self})
+
 	return base
 
 func _develop_agriculture(p: Person):
@@ -675,6 +694,7 @@ func _develop_agriculture(p: Person):
 		fund -= cost
 		if kind.agriculture > 0:
 			var delta = Util.f2ri(p.get_agriculture_ability() * 0.04 / max(1, float(agriculture) / kind.agriculture))
+			delta = apply_influences("modify_architecture_agriculture_growth", {"value": delta, "architecture": self})
 			agriculture += delta
 			p.add_internal_exp(5)
 			p.add_intelligence_exp(5)
@@ -691,6 +711,7 @@ func _develop_commerce(p: Person):
 		fund -= cost
 		if kind.commerce > 0:
 			var delta = Util.f2ri(p.get_commerce_ability() * 0.04 / max(1, float(commerce) / kind.commerce))
+			delta = apply_influences("modify_architecture_commerce_growth", {"value": delta, "architecture": self})
 			commerce += delta
 			p.add_internal_exp(5)
 			p.add_intelligence_exp(10)
@@ -707,6 +728,7 @@ func _develop_morale(p: Person):
 		fund -= cost
 		if kind.morale > 0:
 			var delta = Util.f2ri(p.get_morale_ability() * 0.04 / max(1, float(morale) / kind.morale))
+			delta = apply_influences("modify_architecture_morale_growth", {"value": delta, "architecture": self})
 			morale += delta
 			p.add_internal_exp(5)
 			p.add_command_exp(5)
@@ -729,6 +751,7 @@ func _develop_endurance(p: Person):
 		fund -= cost
 		if kind.endurance > 0:
 			var delta = Util.f2ri(p.get_endurance_ability() * 0.04 / max(1, float(endurance) / kind.endurance))
+			delta = apply_influences("modify_architecture_endurance_growth", {"value": delta, "architecture": self})
 			endurance += delta
 			p.add_internal_exp(5)
 			p.add_command_exp(5)
@@ -744,13 +767,15 @@ func _recruit_troop(p: Person):
 	if fund > 50 and military_population > 0 and morale > 100:
 		fund -= 50
 		var quantity = min(min(Util.f2ri(p.get_recruit_troop_ability() * sqrt(sqrt(military_population)) * morale * 0.001), population), military_population)
+		var ai_extra_quantity = 0
 		if quantity > 0:
 			var f = get_belonged_faction()
 			if f != null and not f.player_controlled:
-				quantity *= scenario.scenario_config.ai_troop_recruit_rate
+				ai_extra_quantity = quantity * scenario.scenario_config.ai_troop_recruit_rate
+			quantity = apply_influences("modify_architecture_recruit_speed", {"value": quantity, "architecture": self})
 			
 			var old_quantity = troop
-			troop += quantity
+			troop += quantity + ai_extra_quantity
 			population -= quantity
 			military_population -= quantity
 			troop_morale = Util.f2ri((troop_morale * old_quantity + 50 * quantity) / float(troop))
@@ -766,6 +791,7 @@ func _train_troop(p: Person):
 	if fund > 20:
 		fund -= 20
 		var delta = Util.f2ri(p.get_train_troop_ability() * (110.0 / (troop_morale + 10.0) - 1) * 0.1 * (10000.0 / max(1000.0, troop)))
+		delta = apply_influences("modify_architecture_train_speed", {"value": delta, "architecture": self})
 		
 		var f = get_belonged_faction()
 		if f != null and not f.player_controlled:
@@ -784,6 +810,8 @@ func _produce_equipment(p: Person):
 	var cost = scenario.military_kinds[equipment].equipment_cost
 	if fund > cost:
 		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.4 / scenario.military_kinds[equipment].amount_to_troop_ratio)
+		amount = apply_influences("modify_architecture_produce_equipment_speed", {"value": amount, "architecture": self})
+
 		if fund < cost * amount:
 			amount = floor(fund / cost)
 		if amount > 0:
@@ -830,6 +858,19 @@ func _move_resource_packs():
 				for e in p.equipments:
 					equipments[int(e)] += p.equipments[e]
 				_resource_packs.erase(p)
+
+####################################
+#         Influence System         #
+####################################
+func apply_influences(operation, params: Dictionary):
+	if params.has("value"):
+		var value = params["value"]
+		var all_params = params.duplicate()
+		all_params["person"] = self
+		for specialty in specialties:
+			all_params["value"] = value
+			value = specialty.apply_influences(operation, specialties[specialty], all_params)
+		return value
 
 ####################################
 #                UI                #
