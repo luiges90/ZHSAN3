@@ -834,12 +834,12 @@ func convince_probability(other_person) -> float:
 	
 	var self_diff = other_person.get_ideal_difference(self)
 	var leader_diff = other_person.get_ideal_difference(get_belonged_faction().leader)
-	var other_diff = -other_person.get_ideal_difference(get_old_faction().leader)
+	var other_diff = -other_person.get_ideal_difference(get_old_faction().leader) if get_old_faction() != null else 0
 	var ideal_factor = (1 - (self_diff * 0.2 + leader_diff * 0.4 + other_diff * 0.4)) / 75.0 * 100.0
 	
 	var self_relation = other_person.get_person_relation(self)
 	var leader_relation = other_person.get_person_relation(get_belonged_faction().leader)
-	var other_relation = -other_person.get_person_relation(get_old_faction().leader)
+	var other_relation = -other_person.get_person_relation(get_old_faction().leader) if get_old_faction() != null else 0
 	var relation_factor = self_relation * 0.2 + leader_relation * 0.4 + other_relation * 0.4
 	
 	var ability = get_convince_ability()
