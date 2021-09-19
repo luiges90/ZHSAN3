@@ -477,3 +477,12 @@ columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 270.0
+custom_colors/font_color = Color( 0, 1, 1, 1 )
+text = "SPECALITIES"
+__meta__ = {
+"_edit_use_anchors_": false
+}

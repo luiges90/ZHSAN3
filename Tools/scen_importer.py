@@ -10,7 +10,7 @@ for file_name in file_names:
     import_persons = True
 
     # TODO skills to add: 10800, 10810, 20000, 20010, 20020
-    def convert_specials(p, title_level):
+    def convert_person_specials(p, title_level):
         if k['ID'] in skill_data.SKILLS_LIST:
             return skill_data.SKILLS_LIST[k['ID']]
         else:
@@ -486,6 +486,84 @@ for file_name in file_names:
                 "Stunts": filtered_new_stunts
             }
 
+    def convert_architecture_specials(spec):
+        result = {}
+        
+        if 1000 in spec or 1060 in spec:
+            result[10] = result.get(10, 0) + 1
+        if 1010 in spec or 1070 in spec:
+            result[10] = result.get(10, 0) + 2
+        if 1080 in spec:
+            result[10] = result.get(10, 0) + 3
+        if 1090 in spec:
+            result[10] = result.get(10, 0) + 4
+        if 1001 in spec in 1061 in spec:
+            result[20] = result.get(20, 0) + 1
+        if 1011 in spec in 1071 in spec:
+            result[20] = result.get(20, 0) + 2
+        if 1081 in spec:
+            result[20] = result.get(20, 0) + 3
+        if 1091 in spec:
+            result[20] = result.get(20, 0) + 4
+        if 1004 in spec or 1005 in spec:
+            result[30] = result.get(30, 0) + 1
+        if 1014 in spec or 1015 in spec:
+            result[30] = result.get(30, 0) + 2
+        if 1003 in spec or 1063 in spec:
+            result[40] = result.get(40, 0) + 1
+        if 1013 in spec or 1073 in spec:
+            result[40] = result.get(40, 0) + 2
+        if 1083 in spec:
+            result[40] = result.get(40, 0) + 3
+        if 1093 in spec:
+            result[40] = result.get(40, 0) + 4
+        if 1200 in spec or 1300 in spec:
+            result[70] = result.get(70, 0) + 1
+        if 1201 in spec or 1301 in spec:
+            result[70] = result.get(70, 0) + 2
+        if 1210 in spec or 1310 in spec:
+            result[71] = result.get(71, 0) + 1
+        if 1211 in spec or 1311 in spec:
+            result[71] = result.get(71, 0) + 2
+        if 1220 in spec or 1320 in spec:
+            result[72] = result.get(72, 0) + 1
+        if 1221 in spec or 1321 in spec:
+            result[72] = result.get(72, 0) + 2
+        if 1230 in spec or 1330 in spec:
+            result[73] = result.get(73, 0) + 1
+        if 1231 in spec or 1331 in spec:
+            result[73] = result.get(73, 0) + 2
+        if 1240 in spec or 1340 in spec:
+            result[74] = result.get(74, 0) + 1
+        if 1241 in spec or 1341 in spec:
+            result[74] = result.get(74, 0) + 2
+        if 1100 in spec:
+            result[80] = result.get(80, 0) + 2
+        if 1101 in spec:
+            result[81] = result.get(81, 0) + 2
+        if 1102 in spec:
+            result[82] = result.get(82, 0) + 2
+        if 1103 in spec:
+            result[83] = result.get(82, 0) + 2
+        if 1104 in spec:
+            result[84] = result.get(82, 0) + 2
+        if 31050 in spec:
+            result[120] = result.get(120, 0) + 1
+        if 31051 in spec:
+            result[120] = result.get(120, 0) + 2
+        if 31052 in spec:
+            result[120] = result.get(120, 0) + 3
+        if 31053 in spec:
+            result[120] = result.get(120, 0) + 4
+        if 31054 in spec:
+            result[120] = result.get(120, 0) + 5
+        if 31055 in spec:
+            result[120] = result.get(120, 0) + 6
+        if 31056 in spec:
+            result[120] = result.get(120, 0) + 7
+
+        return result
+
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
@@ -613,6 +691,9 @@ for file_name in file_names:
                     faction_person_ids += persons
                     no_faction_persons = [int(x) for x in k['NoFactionPersonsString'].split(' ') if x]
                     no_faction_person_ids += no_faction_persons
+
+                    old_characteristics = k['CharacteristicsString'].split(' ')
+                    specialties = convert_architecture_specials(old_characteristics)
                     r.append({
                         "_Id": k["ID"],
                         "Kind": k['KindId'],
@@ -632,6 +713,7 @@ for file_name in file_names:
                         "TroopMorale": 0,
                         "TroopCombativity": 20,
                         "Equipments": {},
+                        "Specialties": specialties,
                         "_RecentlyBattled": 0
                     })
                     all_architectures.append({
@@ -697,7 +779,7 @@ for file_name in file_names:
                         brother_id_list = [x for x in obj['BrotherIds'] if x['Key'] == k['ID']]
 
                         title_level = max([0] + [e['Value']['Level'] for e in common['AllTitles']['Titles'] if e['Key'] in [int(x) for x in filter(None, k['RealTitlesString'].split(' '))]])
-                        converted_specials = convert_specials(k, title_level)
+                        converted_specials = convert_person_specials(k, title_level)
 
                         close_ids = [x['Value'] for x in obj['CloseIds'] if str(x['Key']) == str(k['ID'])]
                         close_ids = [] if len(close_ids) == 0 else close_ids[0]
