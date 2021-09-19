@@ -52,7 +52,12 @@
       9630
     ],
     "Population": 200000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 3,
+      "70": 2,
+      "72": 1,
+      "120": 7
+    },
     "Title": "司隶 洛阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -77,7 +82,9 @@
     "Name": "函谷关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 函谷关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -131,7 +138,9 @@
     "Name": "潼关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 潼关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -156,7 +165,9 @@
     "Name": "武关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 武关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -296,7 +307,11 @@
       9621
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 2,
+      "74": 1,
+      "120": 5
+    },
     "Title": "豫州 许县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -417,7 +432,13 @@
       9632
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "70": 2,
+      "80": 2,
+      "81": 2,
+      "120": 2
+    },
     "Title": "豫州 谯县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -445,7 +466,11 @@
       9388
     ],
     "Population": 200000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "70": 2,
+      "120": 7
+    },
     "Title": "荆北 宛县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -470,7 +495,11 @@
     "Name": "新野",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1,
+      "80": 2,
+      "120": 1
+    },
     "Title": "荆北 新野",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -537,7 +566,12 @@
       9534
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 2,
+      "73": 1,
+      "80": 2,
+      "120": 4
+    },
     "Title": "荆北 襄阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -562,7 +596,13 @@
     "Name": "江陵",
     "PersonList": [],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "20": 1,
+      "73": 1,
+      "83": 2,
+      "120": 2
+    },
     "Title": "荆北 江陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -593,7 +633,11 @@
       415
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "20": 1,
+      "120": 2
+    },
     "Title": "司隶 弘农",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -618,7 +662,9 @@
     "Name": "上庸",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1
+    },
     "Title": "益州 上庸",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -643,7 +689,9 @@
     "Name": "西城",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "益州 西城",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -668,7 +716,9 @@
     "Name": "乌林港",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "83": 2
+    },
     "Title": "荆北 乌林港",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -693,7 +743,9 @@
     "Name": "巴丘",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 1
+    },
     "Title": "荆南 巴丘",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -718,7 +770,11 @@
     "Name": "鄂县",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "73": 1,
+      "120": 1
+    },
     "Title": "荆南 鄂县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -749,7 +805,10 @@
       9463
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "120": 6
+    },
     "Title": "兖州 陈留",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -774,7 +833,9 @@
     "Name": "白马津",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1
+    },
     "Title": "兖州 白马津",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -801,7 +862,10 @@
       140
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 1,
+      "120": 5
+    },
     "Title": "兖州 濮阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -826,7 +890,9 @@
     "Name": "孟津",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1
+    },
     "Title": "司隶 孟津",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -863,7 +929,10 @@
       9308
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 1,
+      "120": 6
+    },
     "Title": "豫州 平舆",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -891,7 +960,11 @@
       9566
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "80": 2,
+      "120": 2
+    },
     "Title": "淮南 皖县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -939,7 +1012,11 @@
       9316
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 1,
+      "74": 1,
+      "120": 2
+    },
     "Title": "淮南 寿春",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -971,7 +1048,11 @@
       544
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 1,
+      "80": 2,
+      "120": 2
+    },
     "Title": "淮南 合肥",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -996,7 +1077,10 @@
     "Name": "无盐",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1,
+      "120": 5
+    },
     "Title": "兖州 无盐",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1021,7 +1105,10 @@
     "Name": "奉高",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "120": 5
+    },
     "Title": "兖州 奉高",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1046,7 +1133,11 @@
     "Name": "临淄",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "20": 3,
+      "120": 5
+    },
     "Title": "青州 临淄",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1078,7 +1169,10 @@
       9475
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "80": 2,
+      "120": 6
+    },
     "Title": "青州 都昌",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1106,7 +1200,10 @@
       9572
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "83": 2,
+      "120": 5
+    },
     "Title": "青州 黄县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1137,7 +1234,10 @@
       9382
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "120": 6
+    },
     "Title": "兖州 定陶",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1162,7 +1262,9 @@
     "Name": "散关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4
+    },
     "Title": "雍州 散关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1187,7 +1289,10 @@
     "Name": "东武",
     "PersonList": [],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 3,
+      "120": 4
+    },
     "Title": "徐州 东武",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1219,7 +1324,10 @@
       9436
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "120": 4
+    },
     "Title": "徐州 开阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1258,7 +1366,9 @@
       9461
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 6
+    },
     "Title": "徐州 郯县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1283,7 +1393,10 @@
     "Name": "任城",
     "PersonList": [],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "120": 2
+    },
     "Title": "兖州 任城",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1310,7 +1423,11 @@
       9
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "70": 1,
+      "120": 6
+    },
     "Title": "兖州 昌邑",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1335,7 +1452,12 @@
     "Name": "彭城",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 2,
+      "40": 4,
+      "70": 2,
+      "120": 5
+    },
     "Title": "徐州 彭城",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1364,7 +1486,11 @@
       9367
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "80": 2,
+      "120": 6
+    },
     "Title": "徐州 下邳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1411,7 +1537,10 @@
       9462
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "120": 1
+    },
     "Title": "豫州 沛县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1436,7 +1565,10 @@
     "Name": "淮阴",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "120": 1
+    },
     "Title": "徐州 淮阴",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1463,7 +1595,9 @@
       671
     ],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1
+    },
     "Title": "徐州 广陵港",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1498,7 +1632,13 @@
       9471
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4,
+      "70": 2,
+      "73": 2,
+      "83": 2,
+      "120": 2
+    },
     "Title": "扬州 建业",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1525,7 +1665,10 @@
       142
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "120": 5
+    },
     "Title": "扬州 吴县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1554,7 +1697,9 @@
       238
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 2
+    },
     "Title": "扬州 山阴",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1582,7 +1727,10 @@
       9548
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "83": 2,
+      "120": 1
+    },
     "Title": "扬州 始新",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1607,7 +1755,10 @@
     "Name": "章安",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "83": 2
+    },
     "Title": "扬州 章安",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1639,7 +1790,9 @@
       9578
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "73": 2
+    },
     "Title": "扬州 侯官",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1697,7 +1850,13 @@
       9355
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "20": 2,
+      "70": 1,
+      "73": 3,
+      "120": 5
+    },
     "Title": "扬州 柴桑",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1722,7 +1881,11 @@
     "Name": "虎林港",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "73": 1,
+      "83": 2
+    },
     "Title": "扬州 虎林港",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1763,7 +1926,10 @@
       9591
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "120": 1
+    },
     "Title": "扬州 鄱阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1792,7 +1958,10 @@
       9569
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1,
+      "120": 5
+    },
     "Title": "扬州 南昌",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1821,7 +1990,11 @@
       9580
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "80": 2,
+      "120": 1
+    },
     "Title": "扬州 南城",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1849,7 +2022,11 @@
       9592
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1,
+      "40": 1,
+      "120": 4
+    },
     "Title": "扬州 高昌",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1874,7 +2051,10 @@
     "Name": "建安",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "120": 1
+    },
     "Title": "扬州 建安",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1905,7 +2085,11 @@
       9230
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 1,
+      "80": 2,
+      "120": 1
+    },
     "Title": "扬州 山越",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -1930,7 +2114,9 @@
     "Name": "夷西渡口",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2
+    },
     "Title": "夷州 夷西渡口",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2021,7 +2207,10 @@
       9444
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 4,
+      "120": 1
+    },
     "Title": "夷州 夷洲",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2046,7 +2235,10 @@
     "Name": "己吾",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "80": 2,
+      "120": 1
+    },
     "Title": "兖州 己吾",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2076,7 +2268,10 @@
       9429
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "120": 6
+    },
     "Title": "荆南 临湘",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2105,7 +2300,11 @@
       149
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 1,
+      "80": 2,
+      "120": 4
+    },
     "Title": "荆南 临沅",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2135,7 +2334,10 @@
       9564
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "120": 2
+    },
     "Title": "荆南 湘南",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2164,7 +2366,9 @@
       632
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "荆南 泉陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2194,7 +2398,9 @@
       559
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "荆南 郴县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2222,7 +2428,10 @@
       9256
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1,
+      "120": 1
+    },
     "Title": "交州 临贺",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2253,7 +2462,12 @@
       9598
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "20": 1,
+      "83": 2,
+      "120": 4
+    },
     "Title": "交州 番禹",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2278,7 +2492,9 @@
     "Name": "夷道",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "80": 2
+    },
     "Title": "荆南 夷道",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2333,7 +2549,10 @@
     "Name": "广信",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "120": 5
+    },
     "Title": "交州 广信",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2358,7 +2577,9 @@
     "Name": "江油关",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "益州 江油关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2388,7 +2609,10 @@
       9454
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "120": 1
+    },
     "Title": "交州 合浦",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2438,7 +2662,9 @@
     "Name": "布山",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "交州 布山",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2475,7 +2701,11 @@
       9453
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "80": 2,
+      "120": 2
+    },
     "Title": "交州 龙编",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2500,7 +2730,9 @@
     "Name": "沓中",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1
+    },
     "Title": "凉州 沓中",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2525,7 +2757,9 @@
     "Name": "夏口港",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "83": 2
+    },
     "Title": "荆北 夏口港",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2550,7 +2784,9 @@
     "Name": "安风",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "淮南 安风",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2578,7 +2814,10 @@
       9096
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "120": 4
+    },
     "Title": "兖州 卢县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2606,7 +2845,10 @@
       9599
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "120": 1
+    },
     "Title": "冀州 乐成",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2670,7 +2912,13 @@
       9536
     ],
     "Population": 200000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 4,
+      "20": 4,
+      "40": 4,
+      "71": 3,
+      "120": 7
+    },
     "Title": "益州 成都",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2695,7 +2943,10 @@
     "Name": "汉嘉",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 2,
+      "120": 5
+    },
     "Title": "益州 汉嘉",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2723,7 +2974,9 @@
       9322
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 2
+    },
     "Title": "益州 武阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2748,7 +3001,10 @@
     "Name": "江阳",
     "PersonList": [],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "120": 1
+    },
     "Title": "益州 江阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2823,7 +3079,9 @@
       9619
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 4
+    },
     "Title": "益州 江州",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2848,7 +3106,10 @@
     "Name": "易京",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4,
+      "120": 1
+    },
     "Title": "冀州 易京",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2938,7 +3199,10 @@
       9526
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4,
+      "120": 4
+    },
     "Title": "益州 永安",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2963,7 +3227,9 @@
     "Name": "绵竹关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 3
+    },
     "Title": "益州 绵竹关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -2988,7 +3254,10 @@
     "Name": "邛都",
     "PersonList": [],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "120": 1
+    },
     "Title": "南中 邛都",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3013,7 +3282,9 @@
     "Name": "且兰",
     "PersonList": [],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "南中 且兰",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3038,7 +3309,9 @@
     "Name": "朱提",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2
+    },
     "Title": "南中 朱提",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3068,7 +3341,9 @@
       574
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1
+    },
     "Title": "南中 味县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3093,7 +3368,9 @@
     "Name": "乌巢",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 3
+    },
     "Title": "兖州 乌巢",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3123,7 +3400,9 @@
       9032
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "南中 南蛮",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3165,7 +3444,10 @@
       9029
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 4,
+      "120": 1
+    },
     "Title": "南中 梇栋",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3190,7 +3472,9 @@
     "Name": "不韦",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "南中 不韦",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3218,7 +3502,10 @@
       9563
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 3,
+      "120": 1
+    },
     "Title": "益州 雒县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3243,7 +3530,11 @@
     "Name": "阆中",
     "PersonList": [],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 3,
+      "71": 1,
+      "120": 2
+    },
     "Title": "益州 阆中",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3278,7 +3569,12 @@
       9373
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "40": 2,
+      "70": 1,
+      "120": 1
+    },
     "Title": "益州 梓潼",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3303,7 +3599,9 @@
     "Name": "剑阁",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "益州 剑阁",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3339,7 +3637,13 @@
       9447
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "20": 2,
+      "40": 4,
+      "70": 1,
+      "120": 2
+    },
     "Title": "益州 南郑",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3364,7 +3668,9 @@
     "Name": "阳平关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4
+    },
     "Title": "益州 阳平关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3396,7 +3702,10 @@
       9005
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "120": 1
+    },
     "Title": "凉州 下辨",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3462,7 +3771,9 @@
     "Name": "官渡",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "兖州 官渡",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3499,7 +3810,13 @@
       9541
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 4,
+      "40": 4,
+      "70": 2,
+      "72": 2,
+      "120": 4
+    },
     "Title": "司隶 长安",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3533,7 +3850,10 @@
       9428
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 3,
+      "72": 1
+    },
     "Title": "司隶 槐里",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3561,7 +3881,10 @@
       9575
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "72": 1
+    },
     "Title": "司隶 临晋",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3586,7 +3909,9 @@
     "Name": "祋栩",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 祋栩",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3611,7 +3936,9 @@
     "Name": "漆县",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 漆县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3656,7 +3983,9 @@
       9458
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 1
+    },
     "Title": "凉州 临泾",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3681,7 +4010,9 @@
     "Name": "上邽",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1
+    },
     "Title": "雍州 上邽",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3711,7 +4042,9 @@
       9252
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 1
+    },
     "Title": "凉州 冀县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3749,7 +4082,9 @@
       9562
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2
+    },
     "Title": "凉州 襄武",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3782,7 +4117,10 @@
       9039
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2,
+      "120": 1
+    },
     "Title": "凉州 羌胡",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3807,7 +4145,9 @@
     "Name": "榆中",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 1
+    },
     "Title": "凉州 榆中",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3837,7 +4177,9 @@
       9602
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 2
+    },
     "Title": "凉州 西都",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3865,7 +4207,10 @@
       9607
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2,
+      "120": 2
+    },
     "Title": "凉州 姑臧",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3922,7 +4267,9 @@
       9605
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1
+    },
     "Title": "凉州 禄福",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3947,7 +4294,9 @@
     "Name": "敦煌",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1
+    },
     "Title": "凉州 敦煌",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -3997,7 +4346,9 @@
     "Name": "乌孙",
     "PersonList": [],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2
+    },
     "Title": "漠北 乌孙",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4033,7 +4384,11 @@
       9489
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 3,
+      "82": 2,
+      "120": 2
+    },
     "Title": "并州 美稷",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4058,7 +4413,9 @@
     "Name": "安邑",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "司隶 安邑",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4086,7 +4443,10 @@
       549
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "120": 5
+    },
     "Title": "司隶 怀县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4119,7 +4479,10 @@
       9246
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 3,
+      "120": 1
+    },
     "Title": "司隶 平阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4155,7 +4518,12 @@
       9460
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "70": 1,
+      "80": 2,
+      "120": 6
+    },
     "Title": "冀州 邺县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4180,7 +4548,9 @@
     "Name": "界桥",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "冀州 界桥",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4207,7 +4577,12 @@
       465
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 3,
+      "20": 3,
+      "72": 2,
+      "120": 2
+    },
     "Title": "并州 晋阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4257,7 +4632,10 @@
     "Name": "原平",
     "PersonList": [],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "120": 1
+    },
     "Title": "并州 原平",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4282,7 +4660,10 @@
     "Name": "雁门关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4,
+      "71": 1
+    },
     "Title": "并州 雁门关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4307,7 +4688,11 @@
     "Name": "平原",
     "PersonList": [],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "70": 1,
+      "120": 6
+    },
     "Title": "青州 平原",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4352,7 +4737,10 @@
       9546
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "120": 6
+    },
     "Title": "冀州 信都",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4377,7 +4765,9 @@
     "Name": "厌次",
     "PersonList": [],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "青州 厌次",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4460,7 +4850,13 @@
       9540
     ],
     "Population": 200000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 3,
+      "20": 3,
+      "80": 2,
+      "82": 2,
+      "120": 7
+    },
     "Title": "冀州 南皮",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4494,7 +4890,9 @@
       9518
     ],
     "Population": 80000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 2
+    },
     "Title": "冀州 真定",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4519,7 +4917,9 @@
     "Name": "卢奴",
     "PersonList": [],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 6
+    },
     "Title": "冀州 卢奴",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4547,7 +4947,10 @@
       9608
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 1,
+      "120": 6
+    },
     "Title": "幽州 涿县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4572,7 +4975,9 @@
     "Name": "高柳",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2
+    },
     "Title": "幽州 高柳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4603,7 +5008,11 @@
       9402
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "20": 2,
+      "120": 4
+    },
     "Title": "幽州 蓟县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4630,7 +5039,9 @@
       9495
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2
+    },
     "Title": "幽州 沮阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4658,7 +5069,9 @@
       9555
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "幽州 渔阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4706,7 +5119,13 @@
       9511
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "20": 2,
+      "72": 1,
+      "82": 2,
+      "120": 2
+    },
     "Title": "幽州 土垠",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4731,7 +5150,9 @@
     "Name": "伊阙关",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4
+    },
     "Title": "司隶 伊阙关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4756,7 +5177,9 @@
     "Name": "昌黎",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "幽州 昌黎",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4801,7 +5224,10 @@
       9427
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1,
+      "120": 1
+    },
     "Title": "幽州 襄平",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4826,7 +5252,9 @@
     "Name": "轘辕关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 轘辕关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4859,7 +5287,10 @@
       9016
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 2,
+      "120": 2
+    },
     "Title": "漠北 丸都",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4884,7 +5315,9 @@
     "Name": "朝鲜",
     "PersonList": [],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 2
+    },
     "Title": "幽州 朝鲜",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4909,7 +5342,9 @@
     "Name": "带方港",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1
+    },
     "Title": "幽州 带方港",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4934,7 +5369,9 @@
     "Name": "广成关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 广成关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4959,7 +5396,9 @@
     "Name": "葭萌关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4
+    },
     "Title": "益州 葭萌关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -4984,7 +5423,9 @@
     "Name": "虎牢关",
     "PersonList": [],
     "Population": 0,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4
+    },
     "Title": "司隶 虎牢关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5015,7 +5456,10 @@
       9138
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 2,
+      "120": 2
+    },
     "Title": "漠北 盛乐",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5065,7 +5509,9 @@
     "Name": "曲阿港",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "扬州 曲阿港",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5172,7 +5618,10 @@
       9530
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 2,
+      "120": 4
+    },
     "Title": "扬州 宛陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5213,7 +5662,10 @@
       9073
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "72": 1,
+      "120": 2
+    },
     "Title": "漠北 东部鲜卑",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5255,7 +5707,11 @@
       9054
     ],
     "Population": 100000,
-    "Specialties": {},
+    "Specialties": {
+      "70": 1,
+      "72": 1,
+      "120": 2
+    },
     "Title": "漠北 白狼山",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5314,7 +5770,9 @@
       9622
     ],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 6
+    },
     "Title": "豫州 陈县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5339,7 +5797,9 @@
     "Name": "六县",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "淮南 六县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5364,7 +5824,9 @@
     "Name": "睢阳",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "豫州 睢阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5416,7 +5878,9 @@
     "Name": "东平陵",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "青州 东平陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5441,7 +5905,9 @@
     "Name": "临济",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "青州 临济",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5518,7 +5984,10 @@
       9486
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "120": 5
+    },
     "Title": "司隶 温县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5543,7 +6012,9 @@
     "Name": "黎阳",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "冀州 黎阳",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5568,7 +6039,9 @@
     "Name": "馆陶",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "冀州 馆陶",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5593,7 +6066,9 @@
     "Name": "甘陵",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 5
+    },
     "Title": "冀州 甘陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5623,7 +6098,9 @@
       9452
     ],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1
+    },
     "Title": "并州 壶关",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5678,7 +6155,9 @@
       9476
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "扬州 乌程",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5706,7 +6185,10 @@
       9582
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 1,
+      "120": 1
+    },
     "Title": "扬州 富春",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5731,7 +6213,10 @@
     "Name": "樊城",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 1,
+      "120": 1
+    },
     "Title": "荆北 樊城",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5783,7 +6268,9 @@
       9553
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 3
+    },
     "Title": "益州 成固",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5836,7 +6323,9 @@
       9528
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "益州 郪县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5861,7 +6350,9 @@
     "Name": "涪县",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "益州 涪县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -5888,7 +6379,9 @@
       9560
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 4
+    },
     "Title": "司隶 陈仓",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6067,7 +6560,9 @@
     "Name": "陇县",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2
+    },
     "Title": "凉州 陇县",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6094,7 +6589,9 @@
       9282
     ],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "20": 2
+    },
     "Title": "司隶 高陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6119,7 +6616,9 @@
     "Name": "上洛",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2
+    },
     "Title": "司隶 上洛",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6176,7 +6675,10 @@
       9418
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "80": 2,
+      "120": 1
+    },
     "Title": "并州 长子",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6251,7 +6753,9 @@
     "Name": "九原",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "82": 2
+    },
     "Title": "并州 九原",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6301,7 +6805,9 @@
     "Name": "蒲坂津",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2
+    },
     "Title": "司隶 蒲坂津",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6351,7 +6857,10 @@
     "Name": "元氏",
     "PersonList": [],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 2,
+      "120": 5
+    },
     "Title": "冀州 元氏",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6376,7 +6885,9 @@
     "Name": "廮陶",
     "PersonList": [],
     "Population": 150000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 6
+    },
     "Title": "冀州 廮陶",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6401,7 +6912,9 @@
     "Name": "滇池",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "南中 滇池",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6428,7 +6941,11 @@
       184
     ],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "20": 2,
+      "120": 1
+    },
     "Title": "豫州 阳翟",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6458,7 +6975,10 @@
       9571
     ],
     "Population": 120000,
-    "Specialties": {},
+    "Specialties": {
+      "80": 2,
+      "120": 1
+    },
     "Title": "豫州 新息",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6483,7 +7003,9 @@
     "Name": "西陵",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "荆北 西陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6508,7 +7030,9 @@
     "Name": "夷陵",
     "PersonList": [],
     "Population": 30000,
-    "Specialties": {},
+    "Specialties": {
+      "40": 3
+    },
     "Title": "荆北 夷陵",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6558,7 +7082,10 @@
     "Name": "江津",
     "PersonList": [],
     "Population": 5000,
-    "Specialties": {},
+    "Specialties": {
+      "10": 2,
+      "20": 2
+    },
     "Title": "荆南 江津",
     "Troop": 0,
     "TroopCombativity": 20,
@@ -6583,7 +7110,9 @@
     "Name": "历阳",
     "PersonList": [],
     "Population": 40000,
-    "Specialties": {},
+    "Specialties": {
+      "120": 1
+    },
     "Title": "淮南 历阳",
     "Troop": 0,
     "TroopCombativity": 20,

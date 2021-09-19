@@ -33,6 +33,20 @@ func set_data():
 	$Data/TroopCombativity.text = Util.nstr(current_architecture.troop_combativity)
 	$Data/Frontline.text = Util.bstr(current_architecture.is_frontline())
 	
+	Util.delete_all_children($Specialties)
+	for s in current_architecture.specialties:
+		var hcontainer = HBoxContainer.new()
+		
+		var name = Label.new()
+		name.text = s.get_name_with_level(current_architecture.specialties[s])
+		name.add_color_override("font_color", s.color)
+		var desc = Label.new()
+		desc.text = s.description
+		
+		hcontainer.add_child(name)
+		hcontainer.add_child(desc)
+		$Specialties.add_child(hcontainer)
+	
 	Util.delete_all_children($EquipmentCounts)
 	for mk in current_architecture.scenario.military_kinds.values():
 		if mk.has_equipments():

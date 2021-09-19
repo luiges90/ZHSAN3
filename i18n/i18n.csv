@@ -254,3 +254,4 @@ NEW_FACTIONS,New Factions,自创势力,自創勢力
 SELECT_CUSTOM_OFFICER,Select Custom Officers,选择自创武将,選擇自創武將
 SELECT_ARCHITECTURE_FOR_NEW_FACTION,Select Architecture for New Faction,新势力所属建筑,新勢力所屬建築
 SELECT_CUSTOM_OFFICER_LEADER_FOR_NEW_FACTION,Select Leader for New Faction,新势力君主,新勢力君主
+SPECIALTIES,"Specialties",特征,特徵

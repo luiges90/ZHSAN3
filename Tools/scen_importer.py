@@ -486,8 +486,9 @@ for file_name in file_names:
                 "Stunts": filtered_new_stunts
             }
 
-    def convert_architecture_specials(spec):
+    def convert_architecture_specials(specialties):
         result = {}
+        spec = [int(x) for x in specialties if len(x) > 0]
         
         if 1000 in spec or 1060 in spec:
             result[10] = result.get(10, 0) + 1
@@ -497,9 +498,9 @@ for file_name in file_names:
             result[10] = result.get(10, 0) + 3
         if 1090 in spec:
             result[10] = result.get(10, 0) + 4
-        if 1001 in spec in 1061 in spec:
+        if 1001 in spec or 1061 in spec:
             result[20] = result.get(20, 0) + 1
-        if 1011 in spec in 1071 in spec:
+        if 1011 in spec or 1071 in spec:
             result[20] = result.get(20, 0) + 2
         if 1081 in spec:
             result[20] = result.get(20, 0) + 3
