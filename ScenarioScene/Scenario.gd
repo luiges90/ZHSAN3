@@ -28,6 +28,7 @@ var sections = Dictionary() setget forbidden
 var architectures = Dictionary() setget forbidden
 var persons = Dictionary() setget forbidden
 var troops = Dictionary() setget forbidden
+var attached_armies = Dictionary() setget forbidden
 
 var biographies = Dictionary() setget forbidden
 
@@ -198,6 +199,10 @@ func _save_data(path):
 	file.open(path + "/Troops.json", File.WRITE)
 	file.store_line(to_json(__save_items(troops)))
 	file.close()
+
+	file.open(path + "/AttachedArmies.json", File.WRITE)
+	file.store_line(to_json(__save_items(attached_armies)))
+	file.close()
 	
 	file.open(path + "/Persons.json", File.WRITE)
 	file.store_line(to_json(__save_items(persons)))
@@ -341,6 +346,13 @@ func _load_data(path, new_game, headless):
 			__load_item(instance, item, biographies, {})
 		file.close()
 
+	if file.open(path + "/AttachedArmies.json", File.READ) == OK:
+		obj = parse_json(file.get_as_text())
+		for item in obj:
+			var instance = AttachedArmy.new()
+			__load_item(instance, item, attached_armies, {})
+		file.close()
+
 	var person_json = {}
 	if file.open(path + "/Persons.json", File.READ) == OK:
 		obj = parse_json(file.get_as_text())
@@ -356,7 +368,7 @@ func _load_data(path, new_game, headless):
 				instance.connect("convince_failure", game_record_creator, "person_convince_failure")
 				instance.connect("move_complete", game_record_creator, "person_move_complete")
 				
-			__load_item(instance, item, persons, {"skills": skills, "stunts": stunts})
+			__load_item(instance, item, persons, {"skills": skills, "stunts": stunts, "attached_armies": attached_armies})
 			person_json[instance.id] = item
 		file.close()
 	

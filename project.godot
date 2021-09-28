@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd"
 }, {
+"base": "Reference",
+"class": "AttachedArmy",
+"language": "GDScript",
+"path": "res://ScenarioScene/Person/AttachedArmy.gd"
+}, {
 "base": "Node",
 "class": "Biography",
 "language": "GDScript",
@@ -339,6 +344,7 @@ _global_script_class_icons={
 "ArchitectureMenu": "",
 "ArchitectureSpecialty": "",
 "ArchitectureSurvey": "",
+"AttachedArmy": "",
 "Biography": "",
 "ContextMenu": "",
 "CreateTroop": "",

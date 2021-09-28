@@ -89,6 +89,8 @@ var be_captured_count: int
 var person_relations = {} setget forbidden
 var is_custom = false
 
+var attached_army setget forbidden
+
 signal person_died
 signal person_available
 
@@ -152,6 +154,9 @@ func load_data(json: Dictionary, objects):
 	if objects.has("stunts"):
 		for id in json["Stunts"]:
 			stunts[objects["stunts"][int(id)]] = json["Stunts"][id]
+	if objects.has("attached_armies"):
+		var id = json["AttachedArmy"]
+		attached_army = objects["attached_armies"][int(id)]
 	troop_damage_dealt = Util.dict_try_get(json, "TroopDamageDealt", 0)
 	troop_damage_received = Util.dict_try_get(json, "TroopDamageReceived", 0)
 	arch_damage_dealt = Util.dict_try_get(json, "ArchDamageDealt", 0)
@@ -161,7 +166,7 @@ func load_data(json: Dictionary, objects):
 	be_captured_count = Util.dict_try_get(json, "BeCapturedCount", 0)
 	person_relations = Util.dict_try_get(json, "PersonRelations", {})
 	is_custom = Util.dict_try_get(json, "_IsCustom", false)
-	
+
 	
 func save_data() -> Dictionary:
 	return {
@@ -211,6 +216,7 @@ func save_data() -> Dictionary:
 		"Morality": morality,
 		"Braveness": braveness,
 		"Calmness": calmness,
+		"AttachedArmy": attached_army.id,
 		"TroopDamageDealt": troop_damage_dealt,
 		"TroopDamageReceived": troop_damage_received,
 		"ArchDamageDealt": arch_damage_dealt,
