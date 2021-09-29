@@ -350,7 +350,7 @@ func _load_data(path, new_game, headless):
 		obj = parse_json(file.get_as_text())
 		for item in obj:
 			var instance = AttachedArmy.new()
-			__load_item(instance, item, attached_armies, {})
+			__load_item(instance, item, attached_armies, {military_kinds: military_kinds})
 		file.close()
 
 	var person_json = {}

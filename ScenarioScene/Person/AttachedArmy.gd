@@ -17,21 +17,21 @@ func forbidden(x):
 ####################################
 
 func load_data(json: Dictionary, objects):
-    id = json["_Id"]
-    military_kind = scenario.military_kinds[int(json["MilitaryKind"])]
-	naval_military_kind = scenario.military_kinds[int(json["NavalMilitaryKind"])]
-    quantity = json["Quantity"]
+	id = json["_Id"]
+	military_kind = objects['military_kinds'][int(json["MilitaryKind"])]
+	naval_military_kind = objects['military_kinds'][int(json["NavalMilitaryKind"])]
+	quantity = json["Quantity"]
 	morale = json["Morale"]
 	combativity = json["Combativity"]
-    experience = json["Experience"]
+	experience = json["Experience"]
 
 func save_data() -> Dictionary:
 	return {
-        "_Id": id,
-        "MilitaryKind": military_kind.id,
-        "NavalMilitaryKind": naval_military_kind.id,
-        "Quantity": quantity,
-        "Morale": morale,
-        "Combativity": combativity,
-        "Experience": experience
-    }
+		"_Id": id,
+		"MilitaryKind": military_kind.id,
+		"NavalMilitaryKind": naval_military_kind.id,
+		"Quantity": quantity,
+		"Morale": morale,
+		"Combativity": combativity,
+		"Experience": experience
+	}

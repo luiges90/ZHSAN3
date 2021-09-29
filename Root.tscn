@@ -235,7 +235,6 @@ autoplay = true
 [connection signal="pressed" from="MainMenu/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="MainMenu/CustomOfficers" to="." method="_on_CustomOfficers_pressed"]
 [connection signal="pressed" from="MainMenu/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="back_button_pressed" from="CustomOfficer" to="." method="_on_CustomOfficer_back_button_pressed"]
 [connection signal="visibility_changed" from="CustomOfficer" to="CustomOfficer" method="_on_CustomOfficer_visibility_changed"]
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/New" to="CustomOfficer" method="_on_New_pressed"]
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/Edit" to="CustomOfficer" method="_on_Edit_pressed"]

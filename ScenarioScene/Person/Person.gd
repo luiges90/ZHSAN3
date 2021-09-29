@@ -154,7 +154,7 @@ func load_data(json: Dictionary, objects):
 	if objects.has("stunts"):
 		for id in json["Stunts"]:
 			stunts[objects["stunts"][int(id)]] = json["Stunts"][id]
-	if objects.has("attached_armies"):
+	if objects.has("attached_armies") and json.has("AttachedArmy"):
 		var id = json["AttachedArmy"]
 		attached_army = objects["attached_armies"][int(id)]
 	troop_damage_dealt = Util.dict_try_get(json, "TroopDamageDealt", 0)
