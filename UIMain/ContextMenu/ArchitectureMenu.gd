@@ -9,6 +9,7 @@ signal architecture_create_troop
 signal remove_advisor
 signal transport_clicked
 signal auto_convince
+signal attach_army
 
 var showing_architecture
 var _opening_list
@@ -174,7 +175,6 @@ func _on_StartCampaign_pressed():
 	call_deferred("emit_signal", "architecture_create_troop", showing_architecture, showing_architecture.get_workable_persons(), showing_architecture.scenario.military_kinds)
 
 
-
 func _on_ArchitectureAndTroopMenu_architecture_clicked(arch, mx, my):
 	show_menu(arch, mx, my, false)
 
@@ -216,3 +216,22 @@ func _on_Transport_pressed():
 func _on_AutoConvince_pressed():
 	_select_item()
 	call_deferred("emit_signal", "auto_convince", showing_architecture)
+
+
+func _on_AttachArmy_pressed():
+	_select_item()
+	
+	var eligible_persons = []
+	for p in showing_architecture.get_faction_persons():
+		if p.attached_army == null:
+			eligible_persons.append(p)
+	
+	call_deferred("emit_signal", "attach_army", showing_architecture, eligible_persons, showing_architecture.scenario.military_kinds)
+
+
+func _on_DetachArmy_pressed():
+	pass #todo
+
+
+func _on_UpdateAttachedArmy_pressed():
+	pass # Replace with function body.

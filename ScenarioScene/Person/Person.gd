@@ -1177,6 +1177,10 @@ func do_convince():
 			call_deferred("emit_signal", 'convince_failure', self, task_target)
 	working_task = Task.MOVE
 	task_target = null
+	
+func set_attached_army(creating_troop):
+	attached_army = AttachedArmy.new().create_from_creating_troop(creating_troop)
+	
 
 ####################################
 #             Day event            #
@@ -1241,3 +1245,4 @@ func month_event():
 	# try to be available
 	if alive and get_location() == null and scenario.get_year() >= available_year and randf() < 0.2:
 		become_available()
+

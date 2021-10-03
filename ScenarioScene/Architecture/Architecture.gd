@@ -28,6 +28,7 @@ var adjacent_archs = {} setget forbidden
 var troop: int setget forbidden
 var troop_morale: int setget forbidden
 var troop_combativity: int setget forbidden
+var troop_experience: int setget forbidden
 
 var equipments = {} setget forbidden
 
@@ -93,6 +94,7 @@ func load_data(json: Dictionary, objects):
 	troop = int(json["Troop"])
 	troop_morale = int(json["TroopMorale"])
 	troop_combativity = int(json["TroopCombativity"])
+	troop_experience = int(Util.dict_try_get(json, "TroopExperience", 0))
 	
 	auto_task = json.get("_AutoTask", false)
 	auto_convince = Util.dict_try_get(json, "_AutoConvince", true)
@@ -136,6 +138,7 @@ func save_data() -> Dictionary:
 		"Troop": troop,
 		"TroopMorale": troop_morale,
 		"TroopCombativity": troop_combativity,
+		"TroopExperience": troop_experience,
 		"Equipments": equipments,
 		"Specialties": Util.id_key_dict(specialties),
 		"_AutoTask": auto_task,
@@ -492,12 +495,12 @@ func change_faction(to_section):
 		
 	if old_faction != null:
 		if move_to != null:
-			for person in get_persons():
+			for person in get_faction_persons():
 				person.move_to_architecture(move_to)
 		else:
 			for t in old_faction.get_troops():
 				t.destroy(null)
-			for person in get_persons():
+			for person in get_faction_persons():
 				person.become_wild()
 			target_faction_destroyed = true
 			

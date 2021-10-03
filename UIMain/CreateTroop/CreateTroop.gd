@@ -1,6 +1,8 @@
 extends Panel
 class_name CreateTroop
 
+enum Action { CREATE_TROOP, ATTACH_ARMY }
+
 signal select_person
 signal select_leader
 signal select_military_kind
@@ -9,6 +11,7 @@ signal create_troop_select_position
 var _confirming = false
 
 var current_troop
+var current_action
 
 var current_architecture
 var eligible_persons
@@ -26,9 +29,29 @@ func _on_ArchitectureMenu_architecture_create_troop(arch, persons, military_kind
 	current_troop.morale = current_architecture.troop_morale
 	current_troop.combativity = current_architecture.troop_combativity
 	
+	current_action = Action.CREATE_TROOP
+	
 	show()
 	set_data()
 	
+
+func _on_ArchitectureMenu_attach_army(arch, persons, military_kinds):
+	current_architecture = arch
+	eligible_persons = persons
+	eligible_military_kinds = military_kinds
+	
+	$All/H1/V2/H2/QuantitySlider.value = 0
+	$All/H1/V2/H2/H3/Quantity.text = "0/0"
+	
+	current_troop = CreatingTroop.new()
+	current_troop.morale = current_architecture.troop_morale
+	current_troop.combativity = current_architecture.troop_combativity
+	
+	current_action = Action.ATTACH_ARMY
+	
+	show()
+	set_data()
+
 
 func _on_CreateTroop_hide():
 	if not _confirming:
@@ -148,10 +171,11 @@ func _on_Create_pressed():
 	_confirming = true
 	if GameConfig.se_enabled:
 		($Select as AudioStreamPlayer).play()
-	call_deferred("emit_signal", "create_troop_select_position", current_architecture, current_troop)
-	hide()
-
-
-
-
+	
+	if current_action == Action.CREATE_TROOP:
+		call_deferred("emit_signal", "create_troop_select_position", current_architecture, current_troop)
+		hide()
+	else:
+		current_troop.get_leader().set_attached_army(current_troop)
+		hide()
 
