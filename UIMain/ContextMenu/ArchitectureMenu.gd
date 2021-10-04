@@ -71,7 +71,7 @@ func _hide_submenus():
 	$H/OfficersMenu.hide()
 	$H/FactionMenu.hide()
 	$H/FactionDetailsMenu.hide()
-
+	$H/AttachedArmyMenu.hide()
 
 func _on_Internal_pressed():
 	_open_submenu()
@@ -235,3 +235,8 @@ func _on_DetachArmy_pressed():
 
 func _on_UpdateAttachedArmy_pressed():
 	pass # Replace with function body.
+
+
+func _on_AttachedArmy_pressed():
+	$H/AttachedArmyMenu/Blank.rect_min_size = Vector2(0, $H/MilitaryMenu/AttachedArmy.rect_position.y + 4)
+	$H/AttachedArmyMenu.show()
