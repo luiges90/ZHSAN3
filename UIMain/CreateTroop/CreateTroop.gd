@@ -30,6 +30,7 @@ func _on_ArchitectureMenu_architecture_create_troop(arch, persons, military_kind
 	current_troop.combativity = current_architecture.troop_combativity
 	
 	current_action = Action.CREATE_TROOP
+	$All/Buttons/Create.text = tr('CREATE_TROOP')
 	
 	show()
 	set_data()
@@ -48,6 +49,7 @@ func _on_ArchitectureMenu_attach_army(arch, persons, military_kinds):
 	current_troop.combativity = current_architecture.troop_combativity
 	
 	current_action = Action.ATTACH_ARMY
+	$All/Buttons/Create.text = tr('ATTACH_ARMY')
 	
 	show()
 	set_data()

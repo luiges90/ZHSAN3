@@ -493,6 +493,7 @@ stream = ExtResource( 5 )
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
 [connection signal="hide" from="." to="." method="_on_CreateTroop_hide"]
 [connection signal="pressed" from="All/Buttons/SelectPersons" to="." method="_on_SelectPersons_pressed"]
 [connection signal="pressed" from="All/Buttons/SelectLeader" to="." method="_on_SelectLeader_pressed"]
