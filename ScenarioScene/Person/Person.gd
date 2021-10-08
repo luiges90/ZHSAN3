@@ -156,7 +156,8 @@ func load_data(json: Dictionary, objects):
 			stunts[objects["stunts"][int(id)]] = json["Stunts"][id]
 	if objects.has("attached_armies") and json.has("AttachedArmy"):
 		var id = json["AttachedArmy"]
-		attached_army = objects["attached_armies"][int(id)]
+		if id >= 0:
+			attached_army = objects["attached_armies"][int(id)]
 	troop_damage_dealt = Util.dict_try_get(json, "TroopDamageDealt", 0)
 	troop_damage_received = Util.dict_try_get(json, "TroopDamageReceived", 0)
 	arch_damage_dealt = Util.dict_try_get(json, "ArchDamageDealt", 0)
@@ -216,7 +217,7 @@ func save_data() -> Dictionary:
 		"Morality": morality,
 		"Braveness": braveness,
 		"Calmness": calmness,
-		"AttachedArmy": attached_army.id,
+		"AttachedArmy": attached_army.id if attached_army != null else -1,
 		"TroopDamageDealt": troop_damage_dealt,
 		"TroopDamageReceived": troop_damage_received,
 		"ArchDamageDealt": arch_damage_dealt,
@@ -1179,7 +1180,9 @@ func do_convince():
 	task_target = null
 	
 func set_attached_army(creating_troop):
-	attached_army = AttachedArmy.new().create_from_creating_troop(creating_troop)
+	assert(attached_army == null)
+	attached_army = AttachedArmy.new()
+	attached_army.create_from_creating_troop(scenario, creating_troop)
 	
 
 ####################################

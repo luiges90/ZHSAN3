@@ -2,6 +2,8 @@ class_name AttachedArmy
 
 var id: int setget forbidden
 
+var scenario
+
 var military_kind setget forbidden
 var naval_military_kind setget forbidden
 var quantity: int setget forbidden
@@ -26,7 +28,7 @@ func load_data(json: Dictionary, objects):
 	morale = json["Morale"]
 	combativity = json["Combativity"]
 	experience = json["Experience"]
-	officer_ids = json["OfficerIds"]
+	officer_ids = Util.to_int_list(json["OfficerIds"])
 
 func save_data() -> Dictionary:
 	return {
@@ -40,12 +42,30 @@ func save_data() -> Dictionary:
 		"OfficerIds": officer_ids
 	}
 
-func create_from_creating_troop(creating_troop):
+func create_from_creating_troop(scen, creating_troop):
+	scenario = scen
+	
+	var id = scen.attached_armies.keys().max()
+	if id == null:
+		id = 1
+	else:
+		id = id + 1
+	
 	military_kind = creating_troop.military_kind
 	naval_military_kind = creating_troop.naval_military_kind
 	quantity = creating_troop.quantity
 	morale = creating_troop.morale
 	combativity = creating_troop.combativity
 	officer_ids = Util.id_list(creating_troop.persons)
+
+	scenario.add_attached_army(self)
 	
 
+func get_officers_list():
+	return scenario.get_persons_from_ids(officer_ids)
+
+func get_officers_name_list():
+	var result = ""
+	for p in get_officers_list():
+		result += p.get_name() + "‧"
+	return result

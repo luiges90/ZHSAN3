@@ -27,7 +27,7 @@ __meta__ = {
 
 [node name="MainMenu" type="VBoxContainer" parent="H" index="0"]
 margin_right = 239.0
-margin_bottom = 374.0
+margin_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -118,7 +118,7 @@ text = "ENDURANCE"
 visible = false
 margin_left = 235.0
 margin_right = 450.0
-margin_bottom = 374.0
+margin_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -267,9 +267,9 @@ text = "FACTION_PERSONS"
 
 [node name="AttachedArmyMenu" type="VBoxContainer" parent="H" index="6"]
 visible = false
-margin_left = 446.0
-margin_right = 695.0
-margin_bottom = 374.0
+margin_left = 235.0
+margin_right = 484.0
+margin_bottom = 310.0
 
 [node name="Blank" type="Button" parent="H/AttachedArmyMenu" index="0"]
 margin_right = 249.0
@@ -298,6 +298,12 @@ margin_top = 232.0
 margin_right = 249.0
 margin_bottom = 270.123
 text = "DETACH_ARMY"
+
+[node name="AttachedArmyList" type="Button" parent="H/AttachedArmyMenu" index="4"]
+margin_top = 266.0
+margin_right = 249.0
+margin_bottom = 304.123
+text = "ATTACHED_ARMY_LIST"
 
 [connection signal="pressed" from="H/MainMenu/Internal" to="." method="_on_Internal_pressed"]
 [connection signal="pressed" from="H/MainMenu/Military" to="." method="_on_Military_pressed"]
@@ -329,3 +335,4 @@ text = "DETACH_ARMY"
 [connection signal="pressed" from="H/AttachedArmyMenu/AttachArmy" to="." method="_on_AttachArmy_pressed"]
 [connection signal="pressed" from="H/AttachedArmyMenu/UpdateAttachedArmy" to="." method="_on_UpdateAttachedArmy_pressed"]
 [connection signal="pressed" from="H/AttachedArmyMenu/DetachArmy" to="." method="_on_DetachArmy_pressed"]
+[connection signal="pressed" from="H/AttachedArmyMenu/AttachedArmyList" to="." method="_on_AttachedArmyList_pressed"]

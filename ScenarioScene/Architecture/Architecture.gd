@@ -433,6 +433,14 @@ func surrounded():
 		return true
 	return false
 
+func get_attached_armies():
+	var result = []
+	for p in get_persons():
+		var army = p.attached_army
+		if army != null:
+			result.append(army)
+	return result
+
 	
 ####################################
 #            Time event            #

@@ -102,6 +102,7 @@ CREATE_TROOP,Create Troop,出征,出征
 PERSONS,Persons,人物,人物
 LEADER,Leader,主将,主將
 MILITARY_KIND,Military Kind,兵装,兵裝
+NAVAL_MILITARY_KIND,Naval Military Kind,船只,船隻
 NAVAL_KIND,Naval Kind,船只,船隻
 SELECT_TROOP_PERSON,Select Person,选择人物,選擇人物
 SELECT_TROOP_LEADER,Select Leader,选择主将,選擇主將
@@ -134,6 +135,7 @@ PRESTIGE,Prestige,声望,聲望
 KARMA,Karma,善名,善名
 AMBITION,Ambition,野心,野心
 MORALITY,Morality,义理,義理
+EXPERIENCE,Experience,经验,經驗
 COMMAND_EXPERIENCE,Command Exp.,统兵经验,統兵經驗
 STRENGTH_EXPERIENCE,Strength Exp.,武艺经验,武藝經驗
 INTELLIGENCE_EXPERIENCE,Intelligence Exp.,智略经验,智略經驗
@@ -259,3 +261,4 @@ ATTACHED_ARMY,"Attached Armies",部曲,部曲
 ATTACH_ARMY,"Attach Army",新编部曲,新編部曲
 DETACH_ARMY,"Detach Army",解除部曲,解除部曲
 UPDATE_ATTACHED_ARMY,"Updated attached Army",更新部曲,更新部曲
+ATTACHED_ARMY_LIST,"Attached Armies List",部曲列表,部曲列表

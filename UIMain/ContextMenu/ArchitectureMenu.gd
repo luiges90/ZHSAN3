@@ -10,6 +10,7 @@ signal remove_advisor
 signal transport_clicked
 signal auto_convince
 signal attach_army
+signal show_attached_army_list
 
 var showing_architecture
 var _opening_list
@@ -240,3 +241,8 @@ func _on_UpdateAttachedArmy_pressed():
 func _on_AttachedArmy_pressed():
 	$H/AttachedArmyMenu/Blank.rect_min_size = Vector2(0, $H/MilitaryMenu/AttachedArmy.rect_position.y + 4)
 	$H/AttachedArmyMenu.show()
+
+
+func _on_AttachedArmyList_pressed():
+	_select_item()
+	call_deferred("emit_signal", "show_attached_army_list", showing_architecture.get_attached_armies())
