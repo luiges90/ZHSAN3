@@ -6,10 +6,13 @@ signal architecture_list_clicked
 signal faction_list_clicked
 signal architecture_toggle_auto_task
 signal architecture_create_troop
+
 signal remove_advisor
 signal transport_clicked
 signal auto_convince
+
 signal attach_army
+signal detach_army
 signal show_attached_army_list
 
 var showing_architecture
@@ -231,7 +234,9 @@ func _on_AttachArmy_pressed():
 
 
 func _on_DetachArmy_pressed():
-	pass #todo
+	_select_item()
+	
+	call_deferred("emit_signal", "detach_army", showing_architecture, showing_architecture.get_attached_armies())
 
 
 func _on_UpdateAttachedArmy_pressed():
@@ -245,4 +250,4 @@ func _on_AttachedArmy_pressed():
 
 func _on_AttachedArmyList_pressed():
 	_select_item()
-	call_deferred("emit_signal", "show_attached_army_list", showing_architecture.get_attached_armies())
+	call_deferred("emit_signal", "show_attached_army_list", showing_architecture, showing_architecture.get_attached_armies())

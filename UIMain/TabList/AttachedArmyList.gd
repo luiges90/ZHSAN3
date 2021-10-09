@@ -1,7 +1,9 @@
 extends TabList
 class_name AttachedArmyList
 
-enum Action { LIST }
+enum Action { LIST, DETACH }
+
+signal attached_army_selected
 
 var _sorted_list
 
@@ -12,8 +14,11 @@ func show_data(army_list: Array):
 	.show_data(army_list)
 	match current_action:
 		Action.LIST: 
-			$Title.text = tr('ARCHITECTURE_LIST')
+			$Title.text = tr('ATTACHED_ARMY_LIST')
 			_max_selection = 0
+		Action.DETACH:
+			$Title.text = tr('DETACH_ARMY')
+			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
 	_selected_table = "architecture_list" 
@@ -31,6 +36,9 @@ func _populate_basic_data(army_list: Array, action):
 
 	if action == Action.LIST:
 		item_list.columns = 7
+	else:
+		item_list.columns = 8
+		item_list.add_child(_title(''))
 	item_list.add_child(_title_sorting(tr('OFFICERS'), self, "_on_title_sorting_click", army_list))
 	item_list.add_child(_title_sorting(tr('MILITARY_KIND'), self, "_on_title_sorting_click", army_list))
 	item_list.add_child(_title_sorting(tr('NAVAL_MILITARY_KIND'), self, "_on_title_sorting_click", army_list))
@@ -85,6 +93,21 @@ func __get_compare_value(_clicked_label, a, b):
 	return [a1, b1]
 
 
-func _on_ArchitectureMenu_show_attached_army_list(armies):
+func _on_ArchitectureMenu_show_attached_army_list(arch, armies):
+	current_architecture = arch
 	current_action = Action.LIST
 	show_data(armies)
+
+
+func _on_ArchitectureMenu_detach_army(arch, armies):
+	current_architecture = arch
+	current_action = Action.DETACH
+	show_data(armies)
+
+
+func _on_Confirm_pressed():
+	var selected_army = _get_selected_list()
+	match current_action:
+		Action.DETACH: 
+			call_deferred("emit_signal", "army_selected", current_action, current_architecture, selected_army, {})
+			._on_Confirm_pressed()

@@ -57,8 +57,6 @@ func create_from_creating_troop(scen, creating_troop):
 	morale = creating_troop.morale
 	combativity = creating_troop.combativity
 	officer_ids = Util.id_list(creating_troop.persons)
-
-	scenario.add_attached_army(self)
 	
 
 func get_officers_list():

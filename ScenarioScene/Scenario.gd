@@ -666,6 +666,11 @@ func _on_military_kind_selected(current_action, current_architecture, selected_k
 			p.set_working_task(Person.Task.PRODUCE_EQUIPMENT)
 			p.set_produce_equipment(a)
 		
+func _on_attached_army_selected(current_action, current_architecture, selected_army_ids, other = {}):
+	if current_action == AttachedArmyList.Action.DETACH:
+		var army = attached_armies[selected_army_ids[0]]
+		army.get_officers_list()[0].remove_attached_army()
+	
 func on_architecture_toggle_auto_task(current_architecture):
 	current_architecture.auto_task = !current_architecture.auto_task
 
@@ -1017,6 +1022,9 @@ func remove_faction(item):
 	
 func add_attached_army(army):
 	attached_armies[army.id] = army
+
+func remove_attached_army(army):
+	attached_armies.erase(army.id)
 
 ########################################
 #                Misc.                 #

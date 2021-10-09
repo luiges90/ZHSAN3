@@ -63,6 +63,7 @@ func _register_lists():
 	$UICanvas/UIMain/PersonList.connect("person_selected", $Scenario, "_on_person_selected")
 	$UICanvas/UIMain/ArchitectureList.connect("architecture_selected", $Scenario, "_on_architecture_selected")
 	$UICanvas/UIMain/MilitaryKindList.connect("military_kind_selected", $Scenario, "_on_military_kind_selected")
+	$UICanvas/UIMain/AttachedArmyList.connect("attached_army_selected", $Scenario, "_on_attached_army_selected")
 
 
 func _register_detail_page_edits():
