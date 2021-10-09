@@ -883,6 +883,9 @@ func get_loyalty():
 
 	loyalty += get_morality() / 2 - 25
 	loyalty -= get_ambition() / 5 - 10
+
+	if attached_army != null:
+		loyalty += attached_army.quantity / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
 	
 	var prestige = leader.get_prestige()
 	if prestige >= 0:
@@ -1184,6 +1187,9 @@ func set_attached_army(creating_troop):
 	attached_army = AttachedArmy.new()
 	attached_army.create_from_creating_troop(scenario, creating_troop)
 	
+	loyalty_shift += attached_army.quantity / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
+
+
 
 ####################################
 #             Day event            #
