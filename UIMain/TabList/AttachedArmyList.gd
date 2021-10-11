@@ -109,5 +109,5 @@ func _on_Confirm_pressed():
 	var selected_army = _get_selected_list()
 	match current_action:
 		Action.DETACH: 
-			call_deferred("emit_signal", "army_selected", current_action, current_architecture, selected_army, {})
+			call_deferred("emit_signal", "attached_army_selected", current_action, current_architecture, selected_army, {})
 			._on_Confirm_pressed()

@@ -1194,9 +1194,9 @@ func set_attached_army(creating_troop):
 
 func remove_attached_army():
 	scenario.remove_attached_army(attached_army)
-	attached_army = null
-
 	loyalty_shift -= attached_army.quantity / 500 * (get_ambition() / 100.0 * 0.4 - 0.2) * 2
+	
+	attached_army = null
 
 ####################################
 #             Day event            #
