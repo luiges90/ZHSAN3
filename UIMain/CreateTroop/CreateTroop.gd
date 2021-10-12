@@ -1,7 +1,7 @@
 extends Panel
 class_name CreateTroop
 
-enum Action { CREATE_TROOP, ATTACH_ARMY }
+enum Action { CREATE_TROOP, ATTACH_ARMY, UPDATE_ATTACHED_ARMY }
 
 signal select_person
 signal select_leader
@@ -177,7 +177,21 @@ func _on_Create_pressed():
 	if current_action == Action.CREATE_TROOP:
 		call_deferred("emit_signal", "create_troop_select_position", current_architecture, current_troop)
 		hide()
-	else:
+	elif current_action == Action.ATTACH_ARMY:
 		current_troop.get_leader().set_attached_army(current_troop)
 		hide()
+	elif current_action == Action.UPDATE_ATTACHED_ARMY:
+		current_troop.get_leader().update_attached_army(current_troop)
+		hide()
 
+
+
+func _on_AttachedArmyList_attached_army_selected(current_action, current_architecture, selected_army_ids, other = {}):
+	if current_action == AttachedArmyList.Action.UPDATE:
+		current_action = Action.UPDATE_ATTACHED_ARMY
+
+		var attached_army = current_architecture.scenario.attached_armies[selected_army_ids[0]]
+
+		current_troop = attached_army.get_creating_troop(current_architecture.scenario)
+		set_data()
+		show()

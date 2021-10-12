@@ -885,7 +885,7 @@ func get_loyalty():
 	loyalty -= get_ambition() / 5 - 10
 
 	if attached_army != null:
-		loyalty += attached_army.quantity / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
+		loyalty += get_cost() / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
 	
 	var prestige = leader.get_prestige()
 	if prestige >= 0:
@@ -1185,16 +1185,24 @@ func do_convince():
 func set_attached_army(creating_troop):
 	assert(attached_army == null)
 	attached_army = AttachedArmy.new()
-	attached_army.create_from_creating_troop(scenario, creating_troop)
+	attached_army.update_from_creating_troop(scenario, creating_troop)
 
 	scenario.add_attached_army(attached_army)
 	
-	loyalty_shift += attached_army.quantity / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
+	loyalty_shift += get_cost() / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
+
+
+func update_attached_army(creating_troop):
+	var old_cost = attached_army.get_cost()
+
+	attached_army.update_from_creating_troop(scenario, creating_troop)
+
+	loyalty_shift += (get_cost() - old_cost) * (get_ambition() / 100.0 * 0.4 - 0.2)
 
 
 func remove_attached_army():
 	scenario.remove_attached_army(attached_army)
-	loyalty_shift -= attached_army.quantity / 500 * (get_ambition() / 100.0 * 0.4 - 0.2) * 2
+	loyalty_shift -= get_cost() / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
 	
 	attached_army = null
 

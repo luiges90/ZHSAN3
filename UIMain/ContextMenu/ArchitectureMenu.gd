@@ -13,6 +13,7 @@ signal auto_convince
 
 signal attach_army
 signal detach_army
+signal update_attached_army
 signal show_attached_army_list
 
 var showing_architecture
@@ -240,7 +241,9 @@ func _on_DetachArmy_pressed():
 
 
 func _on_UpdateAttachedArmy_pressed():
-	pass # Replace with function body.
+	_select_item()
+	
+	call_deferred("emit_signal", "update_attached_army", showing_architecture, showing_architecture.get_attached_armies())
 
 
 func _on_AttachedArmy_pressed():

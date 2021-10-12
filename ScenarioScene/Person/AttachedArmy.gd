@@ -42,7 +42,7 @@ func save_data() -> Dictionary:
 		"OfficerIds": officer_ids
 	}
 
-func create_from_creating_troop(scen, creating_troop):
+func update_from_creating_troop(scen, creating_troop):
 	scenario = scen
 	
 	var id = scen.attached_armies.keys().max()
@@ -57,6 +57,17 @@ func create_from_creating_troop(scen, creating_troop):
 	morale = creating_troop.morale
 	combativity = creating_troop.combativity
 	officer_ids = Util.id_list(creating_troop.persons)
+
+func get_creating_troop(scen):
+	var result = CreatingTroop.new()
+	result.military_kind = military_kind
+	result.naval_military_kind = naval_military_kind
+	result.quantity = quantity
+	result.morale = morale
+	result.combativity = combativity
+	result.persons = [scen.persons[officer_ids[0]].id]
+
+	return result
 	
 
 func get_officers_list():
@@ -67,3 +78,6 @@ func get_officers_name_list():
 	for p in get_officers_list():
 		result += p.get_name() + "‧"
 	return result
+
+func get_cost():
+	return attached_army.quantity * (attached_army.military_kind.equipment_cost + attached_army.naval_military_kind.equipment_cost)
