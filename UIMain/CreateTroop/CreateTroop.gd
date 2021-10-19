@@ -98,6 +98,7 @@ func set_data():
 			max_quantity = min(max_quantity, floor(current_architecture.equipments[current_troop.naval_military_kind.id] / quantity_precision) * naval_quantity_precision)
 		$All/H1/V2/H2/H3/Quantity.text = str(current_troop.quantity) + "/" + str(max_quantity)
 		$All/H1/V2/H2/QuantitySlider.step = total_precision
+		$All/H1/V2/H2/QuantitySlider.value = current_troop.quantity
 		$All/H1/V2/H2/QuantitySlider.min_value = 0
 		$All/H1/V2/H2/QuantitySlider.max_value = max_quantity
 		$All/H1/V2/C/Offence.text = str(current_troop.get_offence())
@@ -188,10 +189,16 @@ func _on_Create_pressed():
 
 func _on_AttachedArmyList_attached_army_selected(current_action, current_architecture, selected_army_ids, other = {}):
 	if current_action == AttachedArmyList.Action.UPDATE:
-		current_action = Action.UPDATE_ATTACHED_ARMY
+		self.current_action = Action.UPDATE_ATTACHED_ARMY
+		self.current_architecture = current_architecture
+		eligible_persons = current_architecture.get_workable_persons()
+		eligible_military_kinds = current_architecture.scenario.military_kinds
 
 		var attached_army = current_architecture.scenario.attached_armies[selected_army_ids[0]]
-
 		current_troop = attached_army.get_creating_troop(current_architecture.scenario)
+		
+		current_action = Action.ATTACH_ARMY
+		$All/Buttons/Create.text = tr('UPDATE_ATTACHED_ARMY')
+		
 		set_data()
 		show()

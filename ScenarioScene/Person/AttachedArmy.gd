@@ -65,7 +65,7 @@ func get_creating_troop(scen):
 	result.quantity = quantity
 	result.morale = morale
 	result.combativity = combativity
-	result.persons = [scen.persons[officer_ids[0]].id]
+	result.persons = [scen.persons[officer_ids[0]]]
 
 	return result
 	
@@ -80,4 +80,4 @@ func get_officers_name_list():
 	return result
 
 func get_cost():
-	return attached_army.quantity * (attached_army.military_kind.equipment_cost + attached_army.naval_military_kind.equipment_cost)
+	return quantity * (military_kind.equipment_cost + naval_military_kind.equipment_cost)
