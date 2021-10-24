@@ -12,6 +12,7 @@ var _confirming = false
 
 var current_troop
 var current_action
+var _before_update_troop
 
 var current_architecture
 var eligible_persons
@@ -179,10 +180,15 @@ func _on_Create_pressed():
 		call_deferred("emit_signal", "create_troop_select_position", current_architecture, current_troop)
 		hide()
 	elif current_action == Action.ATTACH_ARMY:
-		current_troop.get_leader().set_attached_army(current_troop)
+		for p in current_troop.get_persons():
+			p.set_attached_army(current_troop)
 		hide()
 	elif current_action == Action.UPDATE_ATTACHED_ARMY:
-		current_troop.get_leader().update_attached_army(current_troop)
+		for p in _before_update_troop.get_persons():
+			if not (p in current_troop.get_persons()):
+				p.remove_attached_army()
+		for p in current_troop.get_persons():
+			p.set_attached_army(current_troop)
 		hide()
 
 
@@ -196,6 +202,7 @@ func _on_AttachedArmyList_attached_army_selected(current_action, current_archite
 
 		var attached_army = current_architecture.scenario.attached_armies[selected_army_ids[0]]
 		current_troop = attached_army.get_creating_troop(current_architecture.scenario)
+		_before_update_troop = current_troop
 		
 		current_action = Action.ATTACH_ARMY
 		$All/Buttons/Create.text = tr('UPDATE_ATTACHED_ARMY')

@@ -435,10 +435,12 @@ func surrounded():
 
 func get_attached_armies():
 	var result = []
+	var shown_armies = {}
 	for p in get_persons():
 		var army = p.attached_army
-		if army != null:
+		if army != null and not shown_armies.has(army.id):
 			result.append(army)
+			shown_armies[army.id] = army
 	return result
 
 	

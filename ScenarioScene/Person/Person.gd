@@ -1183,21 +1183,16 @@ func do_convince():
 	task_target = null
 	
 func set_attached_army(creating_troop):
-	assert(attached_army == null)
+	var old_cost = 0
+	if attached_army != null:
+		old_cost = attached_army.get_cost()
+	
 	attached_army = AttachedArmy.new()
 	attached_army.update_from_creating_troop(scenario, creating_troop)
 
 	scenario.add_attached_army(attached_army)
 	
 	loyalty_shift += attached_army.get_cost() / 500 * (get_ambition() / 100.0 * 0.4 - 0.2)
-
-
-func update_attached_army(creating_troop):
-	var old_cost = attached_army.get_cost()
-
-	attached_army.update_from_creating_troop(scenario, creating_troop)
-
-	loyalty_shift += (attached_army.get_cost() - old_cost) * (get_ambition() / 100.0 * 0.4 - 0.2)
 
 
 func remove_attached_army():
