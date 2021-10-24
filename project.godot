@@ -430,7 +430,7 @@ gdscript/warnings/integer_division=false
 [display]
 
 window/size/width=1920
-window/size/height=1000
+window/size/height=1080
 
 [editor_plugins]
 
