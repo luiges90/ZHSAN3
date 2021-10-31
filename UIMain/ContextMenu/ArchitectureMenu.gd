@@ -15,6 +15,7 @@ signal attach_army
 signal detach_army
 signal update_attached_army
 signal show_attached_army_list
+signal create_troop_from_attached_army
 
 var showing_architecture
 var _opening_list
@@ -254,3 +255,8 @@ func _on_AttachedArmy_pressed():
 func _on_AttachedArmyList_pressed():
 	_select_item()
 	call_deferred("emit_signal", "show_attached_army_list", showing_architecture, showing_architecture.get_attached_armies())
+
+
+func _on_CreateTroopAttached_pressed():
+	_select_item()
+	call_deferred("emit_signal", "create_troop_from_attached_army", showing_architecture, showing_architecture.get_attached_armies())

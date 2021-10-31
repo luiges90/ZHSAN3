@@ -71,6 +71,8 @@ signal scenario_troop_created
 signal scenario_troop_removed
 signal scenario_troop_position_changed
 
+signal create_troop_from_attached_army_select_position
+
 func forbidden(x):
 	assert(false)
 
@@ -670,6 +672,10 @@ func _on_attached_army_selected(current_action, current_architecture, selected_a
 	if current_action == AttachedArmyList.Action.DETACH:
 		var army = attached_armies[selected_army_ids[0]]
 		army.get_officers_list()[0].remove_attached_army()
+	elif current_action == AttachedArmyList.Action.CREATE_TROOP:
+		var army = attached_armies[selected_army_ids[0]]
+		var troop = army.get_creating_troop(self)
+		call_deferred("emit_signal", "create_troop_from_attached_army_select_position", current_architecture, troop)
 	
 func on_architecture_toggle_auto_task(current_architecture):
 	current_architecture.auto_task = !current_architecture.auto_task

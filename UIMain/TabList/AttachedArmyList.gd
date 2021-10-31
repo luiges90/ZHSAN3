@@ -1,7 +1,7 @@
 extends TabList
 class_name AttachedArmyList
 
-enum Action { LIST, DETACH, UPDATE }
+enum Action { LIST, DETACH, UPDATE, CREATE_TROOP }
 
 signal attached_army_selected
 
@@ -21,6 +21,9 @@ func show_data(army_list: Array):
 			_max_selection = 1
 		Action.UPDATE:
 			$Title.text = tr('UPDATE_ATTACHED_ARMY')
+			_max_selection = 1
+		Action.CREATE_TROOP:
+			$Title.text = tr('ATTACHED_ARMY_TROOP')
 			_max_selection = 1
 	$SelectionButtons.visible = _max_selection != 0
 
@@ -118,4 +121,10 @@ func _on_Confirm_pressed():
 func _on_ArchitectureMenu_update_attached_army(arch, armies):
 	current_architecture = arch
 	current_action = Action.UPDATE
+	show_data(armies)
+
+
+func _on_ArchitectureMenu_create_troop_from_attached_army(arch, armies):
+	current_architecture = arch
+	current_action = Action.CREATE_TROOP
 	show_data(armies)

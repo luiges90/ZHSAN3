@@ -23,6 +23,8 @@ func _ready():
 	$Scenario.connect("person_move_clicked", $UICanvas/UIMain/FactionSurvey, "update_data")
 	
 	$UICanvas/UIMain/CreateTroop.connect("create_troop_select_position", $Scenario/PositionSelector, "_on_create_troop")
+	$Scenario.connect("create_troop_from_attached_army_select_position", $Scenario/PositionSelector, "_on_create_troop")
+	
 	$UICanvas/UIMain.connect("cancel_ui", $Scenario/PositionSelector, "_on_cancel_ui")
 	
 	_register_map_ui()

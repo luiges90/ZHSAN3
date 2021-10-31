@@ -117,14 +117,14 @@ text = "ENDURANCE"
 [node name="MilitaryMenu" type="VBoxContainer" parent="H" index="2"]
 visible = false
 margin_left = 235.0
-margin_right = 450.0
+margin_right = 471.0
 margin_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Blank" type="Button" parent="H/MilitaryMenu" index="0"]
-margin_right = 215.0
+margin_right = 236.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 36 )
 custom_styles/hover = SubResource( 1 )
@@ -135,32 +135,38 @@ custom_styles/normal = SubResource( 5 )
 
 [node name="StartCampaign" type="Button" parent="H/MilitaryMenu" index="1"]
 margin_top = 32.0
-margin_right = 215.0
+margin_right = 236.0
 margin_bottom = 70.1229
 text = "CREATE_TROOP"
 
-[node name="RecruitTroop" type="Button" parent="H/MilitaryMenu" index="2"]
+[node name="CreateTroopAttached" type="Button" parent="H/MilitaryMenu" index="2"]
 margin_top = 66.0
-margin_right = 215.0
+margin_right = 236.0
 margin_bottom = 104.123
+text = "ATTACHED_ARMY_TROOP"
+
+[node name="RecruitTroop" type="Button" parent="H/MilitaryMenu" index="3"]
+margin_top = 100.0
+margin_right = 236.0
+margin_bottom = 138.123
 text = "RECRUIT_TROOP"
 
-[node name="TrainTroop" type="Button" parent="H/MilitaryMenu" index="3"]
-margin_top = 100.0
-margin_right = 215.0
-margin_bottom = 138.123
+[node name="TrainTroop" type="Button" parent="H/MilitaryMenu" index="4"]
+margin_top = 134.0
+margin_right = 236.0
+margin_bottom = 172.123
 text = "TRAIN_TROOP"
 
-[node name="ProduceEquipment" type="Button" parent="H/MilitaryMenu" index="4"]
-margin_top = 134.0
-margin_right = 215.0
-margin_bottom = 172.123
+[node name="ProduceEquipment" type="Button" parent="H/MilitaryMenu" index="5"]
+margin_top = 168.0
+margin_right = 236.0
+margin_bottom = 206.123
 text = "PRODUCE_EQUIPMENT"
 
-[node name="AttachedArmy" type="Button" parent="H/MilitaryMenu" index="5"]
-margin_top = 168.0
-margin_right = 215.0
-margin_bottom = 206.123
+[node name="AttachedArmy" type="Button" parent="H/MilitaryMenu" index="6"]
+margin_top = 202.0
+margin_right = 236.0
+margin_bottom = 240.123
 text = "ATTACHED_ARMY"
 
 [node name="OfficersMenu" type="VBoxContainer" parent="H" index="3"]
@@ -319,6 +325,7 @@ text = "ATTACHED_ARMY_LIST"
 [connection signal="pressed" from="H/InternalMenu/Morale" to="." method="_on_Morale_pressed"]
 [connection signal="pressed" from="H/InternalMenu/Endurance" to="." method="_on_Endurance_pressed"]
 [connection signal="pressed" from="H/MilitaryMenu/StartCampaign" to="." method="_on_StartCampaign_pressed"]
+[connection signal="pressed" from="H/MilitaryMenu/CreateTroopAttached" to="." method="_on_CreateTroopAttached_pressed"]
 [connection signal="pressed" from="H/MilitaryMenu/RecruitTroop" to="." method="_on_RecruitTroop_pressed"]
 [connection signal="pressed" from="H/MilitaryMenu/TrainTroop" to="." method="_on_TrainTroop_pressed"]
 [connection signal="pressed" from="H/MilitaryMenu/ProduceEquipment" to="." method="_on_ProduceEquipment_pressed"]
