@@ -243,3 +243,4 @@ autoplay = true
 [connection signal="edit_skill_item_selected" from="CustomOfficer/InfoList" to="CustomOfficer" method="_on_InfoList_edit_skill_item_selected"]
 [connection signal="edit_stunt_item_selected" from="CustomOfficer/InfoList" to="CustomOfficer" method="_on_InfoList_edit_stunt_item_selected"]
 [connection signal="file_slot_clicked" from="SaveLoadMenu" to="." method="_on_SaveLoadMenu_file_slot_clicked"]
+[connection signal="confirmed_scenario" from="ScenarioSelector" to="." method="_on_ScenarioSelector_confirmed_scenario"]

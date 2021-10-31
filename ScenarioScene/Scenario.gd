@@ -688,13 +688,17 @@ func create_troop(arch, troop, position) -> Troop:
 	var scene = preload("Military/Troop.tscn")
 	var instance = scene.instance()
 	instance.scenario = self
+
+	var in_experience = 0
+	if troop is AttachedArmy:
+		in_experience = troop.experience
 	
 	var id = troops.keys().max()
 	if id == null:
 		id = 1
 	else:
 		id = id + 1
-	instance.create_troop_set_data(id, arch, troop.military_kind, troop.naval_military_kind, troop.quantity, troop.morale, troop.combativity, position)
+	instance.create_troop_set_data(id, arch, troop.military_kind, troop.naval_military_kind, troop.quantity, troop.morale, troop.combativity, in_experience, position)
 	
 	for p in troop.persons:
 		instance.add_person(p)
