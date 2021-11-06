@@ -15,7 +15,7 @@ var turn_passed = 0
 var terrain_details = Dictionary() setget forbidden
 var movement_kinds = Dictionary() setget forbidden
 var architecture_kinds = Dictionary() setget forbidden
-var architecture_specialities = Dictionary() setget forbidden
+var architecture_specialties = Dictionary() setget forbidden
 var military_kinds = Dictionary() setget forbidden
 
 var skills = Dictionary() setget forbidden
@@ -181,6 +181,10 @@ func _save_data(path):
 	file.open(path + "/MilitaryKinds.json", File.WRITE)
 	file.store_line(to_json(__save_items(military_kinds)))
 	file.close()
+
+	file.open(path + "/ArchitectureSpecialties.json", File.WRITE)
+	file.store_line(to_json(__save_items(architecture_specialties)))
+	file.close()
 	
 	file.open(path + "/ArchitectureKinds.json", File.WRITE)
 	file.store_line(to_json(__save_items(architecture_kinds)))
@@ -338,7 +342,7 @@ func _load_data(path, new_game, headless):
 		obj = parse_json(file.get_as_text())
 		for item in obj:
 			var instance = ArchitectureSpecialty.new()
-			__load_item(instance, item, architecture_specialities, {})
+			__load_item(instance, item, architecture_specialties, {})
 		file.close()
 	
 	if file.open(path + "/Biographies.json", File.READ) == OK:
@@ -418,7 +422,7 @@ func _load_data(path, new_game, headless):
 			instance.connect("architecture_clicked", self, "_on_architecture_clicked")
 			instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
 			instance.connect("faction_changed", self, "_on_architecture_faction_changed")
-			__load_item(instance, item, architectures, {"persons": persons, "architecture_specialties": architecture_specialities})
+			__load_item(instance, item, architectures, {"persons": persons, "architecture_specialties": architecture_specialties})
 			instance.setup_after_load()
 		file.close()
 		for item in architectures:

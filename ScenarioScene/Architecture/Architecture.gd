@@ -101,6 +101,7 @@ func load_data(json: Dictionary, objects):
 	
 	equipments = Util.convert_dict_to_int_key(json["Equipments"])
 
+	specialties = {}
 	if json.has("Specialties"):
 		for id in json["Specialties"]:
 			specialties[objects["architecture_specialties"][int(id)]] = json["Specialties"][id]
