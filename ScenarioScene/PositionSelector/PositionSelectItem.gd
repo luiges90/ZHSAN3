@@ -11,10 +11,9 @@ func set_color(in_color):
 	
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			call_deferred("emit_signal", "position_selected")
-			get_tree().set_input_as_handled()
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		call_deferred("emit_signal", "position_selected")
+		get_tree().set_input_as_handled()
 
 
 func _on_Area2D_mouse_entered():

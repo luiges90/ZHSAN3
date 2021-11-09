@@ -879,7 +879,7 @@ func get_loyalty():
 		return 999
 	
 	var loyalty = 100
-	loyalty += get_person_relation(leader)
+	loyalty += get_person_relation(leader) * 2
 
 	loyalty += get_morality() / 2 - 25
 	loyalty -= get_ambition() / 5 - 10

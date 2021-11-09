@@ -38,8 +38,9 @@ __meta__ = {
 [node name="Portrait" type="TextureRect" parent="Background"]
 margin_top = 4.0
 margin_right = 512.0
-margin_bottom = 515.413
+margin_bottom = 516.0
 rect_scale = Vector2( 0.1, 0.1 )
+mouse_filter = 2
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
