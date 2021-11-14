@@ -22,3 +22,8 @@ func _on_Area2D_mouse_entered():
 
 func _on_Area2D_mouse_exited():
 	($Area2D/Sprite as Sprite).modulate = color
+
+
+func _input(event):
+	print(event)
+	pass
