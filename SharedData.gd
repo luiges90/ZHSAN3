@@ -29,6 +29,7 @@ var troop_sounds = {}
 var troop_sprite_frames = {}
 
 func _init():
+	GameConfig.load_game_config()
 	_load_troop_images()
 	_load_troop_sounds()
 	_load_person_portraits()
@@ -114,7 +115,7 @@ func __load_sound_file(file):
 
 func _load_person_portraits():
 	var dir = Directory.new()
-	var path = "res://Images/PersonPortrait"
+	var path = "res://" + GameConfig.mod_directory + "Images/PersonPortrait"
 	dir.open(path)
 	dir.list_dir_begin()
 	while true:

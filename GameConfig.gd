@@ -24,6 +24,8 @@ var auto_save_file_count = 10
 
 var enable_edit = false
 
+var mod_directory = ""
+
 func load_game_config():
 	var file_path = "user://game_config.json"
 	var file = File.new()
@@ -55,6 +57,8 @@ func load_game_config():
 		
 		GameConfig.enable_edit = Util.dict_try_get(obj, "enable_edit", false)
 
+		GameConfig.mod_directory = Util.dict_try_get(obj, "mod_directory", "")
+
 	file.close()
 
 func save_game_config():
@@ -85,7 +89,9 @@ func save_game_config():
 		"auto_save_interval": GameConfig.auto_save_interval,
 		"auto_save_file_count": GameConfig.auto_save_file_count,
 		
-		"enable_edit": GameConfig.enable_edit
+		"enable_edit": GameConfig.enable_edit,
+
+		"mod_directory": GameConfig.mod_directory
 	}
 
 	file.store_line(to_json(obj))
