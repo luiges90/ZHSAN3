@@ -576,6 +576,9 @@ func add_morale(delta):
 
 	morale += delta
 	morale = clamp(morale, 1, 100)
+	
+func add_experience(delta):
+	experience += delta
 
 	
 func get_order_text():
@@ -855,6 +858,7 @@ func execute_attack():
 
 					var damage_for_merit = damage * (10 if target is Architecture else 1)
 					var merit_rate = min(sqrt(damage_for_merit / (counter_damage + 100.0)), 5) + damage_for_merit / 1000.0
+					add_experience(int(merit_rate))
 					for p in get_persons():
 						if p == get_leader():
 							p.add_combat_exp(20)
@@ -880,6 +884,7 @@ func execute_attack():
 					
 					var other_merit_rate = min(sqrt(counter_damage / (damage + 100.0)), 5) + counter_damage / 1000.0
 					if not target is Architecture:
+						target.add_experience(int(merit_rate / 2))
 						for p in target.get_persons():
 							if p == get_leader():
 								p.add_combat_exp(20)
