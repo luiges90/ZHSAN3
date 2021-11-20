@@ -16,11 +16,12 @@ var naval_military_kind setget forbidden
 var quantity: int setget forbidden
 var morale: int setget forbidden
 var combativity: int setget forbidden
-var experience: int setget forbidden
 
 var active_stunt_effects: Array setget forbidden
 
 var order_made: bool setget forbidden
+
+var attached_army setget forbidden
 
 var _recently_battled: int setget forbidden
 
@@ -136,6 +137,11 @@ func load_data(json: Dictionary, objects):
 			"level": int(s["level"]),
 			"days": int(s["days"])
 		})
+		
+	if json.has('AttachedArmy'):
+		var id = int(json["AttachedArmy"])
+		if id >= 0:
+			attached_army = scenario.attached_armies[id]
 	
 	_ai_state = json["_AIState"]
 	var __arch = json["_AIDestinationArchitecture"]
@@ -191,6 +197,7 @@ func save_data() -> Dictionary:
 		"Quantity": quantity,
 		"Morale": morale,
 		"Combativity": combativity,
+		"AttachedArmy": attached_army.id if attached_army != null else -1,
 		"_ActiveStunts": active_stunt_ids,
 		"_OrderMade": order_made,
 		"_FoodShortage": _food_shortage,
@@ -242,14 +249,13 @@ func remove_person(p, force: bool = false):
 	elif not force:
 		_leader = persons[0]
 
-func create_troop_set_data(in_id: int, starting_arch, in_military_kind, in_naval_military_kind, in_quantity: int, in_morale: int, in_combativity: int, in_experience: int, pos: Vector2):
+func create_troop_set_data(in_id: int, starting_arch, in_military_kind, in_naval_military_kind, in_quantity: int, in_morale: int, in_combativity: int, in_attached_army, pos: Vector2):
 	assert(in_quantity > 0)
 	assert(in_morale > 0)
 	assert(starting_arch != null)
 	assert(pos != null)
 	assert(in_military_kind != null)
 	assert(in_naval_military_kind != null)
-	assert(in_experience >= 0)
 
 	id = in_id
 	_starting_arch = starting_arch
@@ -266,7 +272,7 @@ func create_troop_set_data(in_id: int, starting_arch, in_military_kind, in_naval
 	quantity = in_quantity
 	morale = in_morale
 	combativity = in_combativity
-	experience = in_experience
+	attached_army = in_attached_army
 	map_position = pos
 	_update_military_kind_sprite()
 	var camera_rect = scenario.get_camera_viewing_rect() as Rect2
@@ -577,8 +583,16 @@ func add_morale(delta):
 	morale += delta
 	morale = clamp(morale, 1, 100)
 	
+	if attached_army != null:
+		attached_army.morale = morale
+	
+	
+func get_experience():
+	return attached_army.experience if attached_army != null else 0
+	
 func add_experience(delta):
-	experience += delta
+	if attached_army != null:
+		attached_army.experience += delta
 
 	
 func get_order_text():
@@ -858,7 +872,7 @@ func execute_attack():
 
 					var damage_for_merit = damage * (10 if target is Architecture else 1)
 					var merit_rate = min(sqrt(damage_for_merit / (counter_damage + 100.0)), 5) + damage_for_merit / 1000.0
-					add_experience(int(merit_rate))
+					add_experience(Util.f2ri(merit_rate))
 					for p in get_persons():
 						if p == get_leader():
 							p.add_combat_exp(20)
@@ -884,7 +898,7 @@ func execute_attack():
 					
 					var other_merit_rate = min(sqrt(counter_damage / (damage + 100.0)), 5) + counter_damage / 1000.0
 					if not target is Architecture:
-						target.add_experience(int(merit_rate / 2))
+						target.add_experience(Util.f2ri(merit_rate / 2))
 						for p in target.get_persons():
 							if p == get_leader():
 								p.add_combat_exp(20)
@@ -917,12 +931,17 @@ func execute_attack():
 			return false
 	else:
 		return false
-		
+
 func receive_attack_damage(damage, attacker):
-	quantity -= damage
 	add_morale(-Util.f2ri(damage / 100.0 * max(0.0, 1.1 - get_leader().get_glamour() / 100.0)))
+	return add_troop_quantity(-damage, attacker)
+
+func add_troop_quantity(delta, attacker):
+	quantity += delta
+	if attached_army != null:
+		attached_army.quantity += delta
 	return check_destroy(attacker)
-			
+		
 func check_destroy(attacker):
 	if quantity <= 0 or morale <= 0 or len(get_persons()) <= 0:
 		destroy(attacker)
@@ -995,6 +1014,9 @@ func destroy(attacker):
 	# perform destroy
 	call_deferred("emit_signal", "destroyed", self)
 	_destroyed = true
+	
+	if attached_army != null:
+		scenario.remove_attached_army(attached_army)
 		
 func _remove():
 	assert(len(get_all_persons()) == 0)
@@ -1026,7 +1048,7 @@ func day_event():
 		if not _food_shortage:
 			_food_shortage = true
 		else:
-			quantity = int(quantity * 0.9)
+			add_troop_quantity(quantity / 10, null)
 	else:
 		_food_shortage = false
 

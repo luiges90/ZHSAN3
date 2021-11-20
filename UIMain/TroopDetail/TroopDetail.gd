@@ -38,7 +38,7 @@ func set_data():
 	
 	$A/H1/Content/Order.text = tr(current_troop.get_order_text())
 	$A/H1/Content/Target.text = current_troop.get_order_target_text()
-	$A/H1/Content/Experience.text = str(current_troop.experience)
+	$A/H1/Content/Experience.text = str(current_troop.get_experience())
 
 	$A/H1/Content/Quantity.text = str(current_troop.quantity)
 	$A/H1/Content/Offence.text = str(current_troop.get_offence())

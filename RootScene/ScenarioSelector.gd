@@ -74,6 +74,8 @@ func _on_scenario_clicked(node, scen):
 
 		SharedData.selected_scenario_start_year = _selected_scenario["GameData"]["Year"]
 		
+		_all_factions = {}
+		_all_architectures = {}
 		for faction in scen['Factions']:
 			var hcontainer = HBoxContainer.new()
 			
