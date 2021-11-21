@@ -584,7 +584,7 @@ func add_morale(delta):
 	morale = clamp(morale, 1, 100)
 	
 	if attached_army != null:
-		attached_army.morale = morale
+		attached_army.set_morale(morale)
 	
 	
 func get_experience():
@@ -592,7 +592,7 @@ func get_experience():
 	
 func add_experience(delta):
 	if attached_army != null:
-		attached_army.experience += delta
+		attached_army.add_experience(delta)
 
 	
 func get_order_text():
@@ -939,7 +939,7 @@ func receive_attack_damage(damage, attacker):
 func add_troop_quantity(delta, attacker):
 	quantity += delta
 	if attached_army != null:
-		attached_army.quantity += delta
+		attached_army.add_quantity(delta)
 	return check_destroy(attacker)
 		
 func check_destroy(attacker):

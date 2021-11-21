@@ -81,3 +81,12 @@ func get_officers_name_list():
 
 func get_cost():
 	return quantity * (military_kind.equipment_cost + naval_military_kind.equipment_cost)
+	
+func add_experience(delta):
+	experience += delta
+	
+func add_quantity(delta):
+	quantity += delta
+
+func set_morale(v):
+	morale = v
