@@ -579,6 +579,17 @@ func set_recently_battled():
 func can_transport_resources():
 	return not surrounded() and get_belonged_faction() != null and get_belonged_faction().get_architectures().size() > 1
 
+func can_transport_troop_quantity():
+	var result = troop
+	for a in get_attached_armies():
+		result -= a.quantity
+	return result
+	
+func can_transport_equipment_quantity():
+	var result = equipments
+	for a in get_attached_armies():
+		result[a.military_kind.id] -= a.quantity
+	return result
 
 func transport_resources(destination, fund_to_transport: int, food_to_transport: int, troop_to_transport: int, to_transport_equipments_id_key):
 	assert(fund_to_transport >= 0)

@@ -274,6 +274,7 @@ stream = ExtResource( 8 )
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
 [connection signal="pressed" from="S/G/ToArchitecture" to="." method="_on_ToArchitecture_pressed"]
 [connection signal="text_changed" from="S/G/TransportFund" to="." method="_on_TransportFund_text_changed"]
 [connection signal="text_changed" from="S/G/TransportFood" to="." method="_on_TransportFood_text_changed"]

@@ -339,8 +339,9 @@ func get_offence():
 	var troop_quantity = 30 * sqrt(get_active_military_kind().offence * quantity / get_active_military_kind().max_quantity_multiplier)
 	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
+	var experience_factor = 1 + get_experience() / 1000.0
 	
-	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
+	var base = (troop_base + troop_quantity) * ability_factor * morale_factor * experience_factor
 
 	base = clamp(apply_influences("modify_troop_offence", {"value": base}), base * 0.2, base * 5)
 		
@@ -355,8 +356,9 @@ func get_defence():
 	var troop_quantity = 30 * sqrt(get_active_military_kind().defence * quantity / get_active_military_kind().max_quantity_multiplier)
 	var ability_factor = (get_command() + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
+	var experience_factor = 1 + get_experience() / 1000.0
 
-	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
+	var base = (troop_base + troop_quantity) * ability_factor * morale_factor * experience_factor
 
 	base = clamp(apply_influences("modify_troop_defence", {"value": base}), base * 0.2, base * 5)
 		
