@@ -45,12 +45,13 @@ func save_data() -> Dictionary:
 func update_from_creating_troop(scen, creating_troop):
 	scenario = scen
 	
-	var id = scen.attached_armies.keys().max()
-	if id == null:
-		id = 1
+	var new_id = scen.attached_armies.keys().max()
+	if new_id == null:
+		new_id = 1
 	else:
-		id = id + 1
+		new_id = new_id + 1
 	
+	id = new_id
 	military_kind = creating_troop.military_kind
 	naval_military_kind = creating_troop.naval_military_kind
 	quantity = creating_troop.quantity
