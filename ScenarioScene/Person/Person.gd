@@ -992,9 +992,16 @@ func _move_eta(arch):
 	return result
 
 func move_to_architecture(arch):
+	if attached_army != null:
+		var equipment = {}
+		equipment[attached_army.military_kind.id] = attached_army.quantity
+		get_location().transport_resources(arch, 0, 0, attached_army.quantity, equipment)
+		
 	task_days = _move_eta(arch)
 	set_location(arch)
 	working_task = Task.MOVE
+	
+	
 	
 func join_architecture(location_arch):
 	_status = Status.NORMAL
