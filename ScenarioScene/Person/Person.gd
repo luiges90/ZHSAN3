@@ -994,7 +994,7 @@ func _move_eta(arch):
 func move_to_architecture(arch):
 	if attached_army != null:
 		var equipment = {}
-		equipment[attached_army.military_kind.id] = attached_army.quantity
+		equipment[attached_army.military_kind.id] = attached_army.quantity / attached_army.military_kind.amount_to_troop_ratio
 		get_location().transport_resources(arch, 0, 0, attached_army.quantity, equipment)
 		
 	task_days = _move_eta(arch)
