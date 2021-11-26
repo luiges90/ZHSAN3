@@ -113,7 +113,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 0
+                "Id": 0
             }
         ],
         "Influences": [
@@ -135,7 +135,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 1
+                "Id": 1
             }
         ],
         "Influences": [
@@ -157,7 +157,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 2
+                "Id": 2
             }
         ],
         "Influences": [
@@ -179,7 +179,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 3
+                "Id": 3
             }
         ],
         "Influences": [
@@ -201,7 +201,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 4
+                "Id": 4
             }
         ],
         "Influences": [
@@ -224,7 +224,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 0
+                "Id": 0
             }
         ],
         "Influences": [
@@ -247,7 +247,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 1
+                "Id": 1
             }
         ],
         "Influences": [
@@ -270,7 +270,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 2
+                "Id": 2
             }
         ],
         "Influences": [
@@ -293,7 +293,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 3
+                "Id": 3
             }
         ],
         "Influences": [
@@ -316,7 +316,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 4
+                "Id": 4
             }
         ],
         "Influences": [

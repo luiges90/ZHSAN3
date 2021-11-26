@@ -833,11 +833,11 @@ func _train_troop(p: Person):
 func _produce_equipment(p: Person):
 	var equipment = p.producing_equipment
 	var cost = scenario.military_kinds[equipment].equipment_cost
-	cost = apply_influences("modify_architecture_produce_equipment_cost", {"value": cost, "architecture": self, "military_kind": equipment})
+	cost = apply_influences("modify_architecture_produce_equipment_cost", {"value": cost, "architecture": self, "military_kind": scenario.military_kinds[equipment]})
 
 	if fund > cost:
 		var amount = Util.f2ri(p.get_produce_equipment_ability() * 0.4 / scenario.military_kinds[equipment].amount_to_troop_ratio)
-		amount = apply_influences("modify_architecture_produce_equipment_speed", {"value": amount, "architecture": self, "military_kind": equipment})
+		amount = apply_influences("modify_architecture_produce_equipment_speed", {"value": amount, "architecture": self, "military_kind": scenario.military_kinds[equipment]})
 
 		if fund < cost * amount:
 			amount = floor(fund / cost)
