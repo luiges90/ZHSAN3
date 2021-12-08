@@ -390,7 +390,7 @@ func get_location_str():
 	return location.get_name() if location != null else '----'
 	
 func get_old_faction():
-	if _old_faction_id == -1:
+	if _old_faction_id == -1 or not scenario.factions.has(_old_faction_id):
 		return null
 	else:
 		return scenario.factions[_old_faction_id]

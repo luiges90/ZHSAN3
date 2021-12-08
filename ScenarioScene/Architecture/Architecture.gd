@@ -686,9 +686,13 @@ func _decay_internal():
 	factor = apply_influences("modify_architecture_internal_decay", {"value": factor, "architecture": self})
 		
 	agriculture -= Util.f2ri(agriculture * 0.005 * factor)
+	agriculture = max(0, agriculture)
 	commerce -= Util.f2ri(commerce * 0.005 * factor)
+	commerce = max(0, commerce)
 	morale -= Util.f2ri(morale * 0.01 * factor)
+	morale = max(0, morale)
 	endurance -= Util.f2ri(endurance * 0.005 * factor)
+	endurance = max(1, endurance)
 	
 func _develop_internal():
 	if enemy_troop_in_architecture() == null:

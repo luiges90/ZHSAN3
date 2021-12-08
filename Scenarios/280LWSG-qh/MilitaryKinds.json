@@ -283,7 +283,7 @@
     "Type": 4,
     "BaseDefence": 90.0,
     "Defence": 0.9,
-    "EquipmentCost": 150.0,
+    "EquipmentCost": 1.5,
     "Initiative": 15,
     "MaxQuantityMuiltipler": 1.0,
     "MovementKind": 100,

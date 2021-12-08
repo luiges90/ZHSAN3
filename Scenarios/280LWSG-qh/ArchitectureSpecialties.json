@@ -2,7 +2,7 @@
     {
         "_Id": 10,
         "Name": "農業",
-        "Description": "農業開發增長每等級增加10%",
+        "Description": "農業開發增長每等級增加20%",
         "Color": [
             0.13,
             0.56,
@@ -12,14 +12,14 @@
         "Influences": [
             {
                 "Operation": "modify_architecture_agriculture_growth",
-                "Value": 0.1
+                "Value": 0.2
             }
         ]
     },
     {
         "_Id": 20,
         "Name": "商業",
-        "Description": "商業開發增長每等級增加10%",
+        "Description": "商業開發增長每等級增加20%",
         "Color": [
             0.13,
             0.56,
@@ -29,14 +29,14 @@
         "Influences": [
             {
                 "Operation": "modify_architecture_commerce_growth",
-                "Value": 0.1
+                "Value": 0.2
             }
         ]
     },
     {
         "_Id": 30,
         "Name": "民心",
-        "Description": "民心開發增長每等級增加10%",
+        "Description": "民心開發增長每等級增加20%",
         "Color": [
             0.13,
             0.56,
@@ -46,14 +46,14 @@
         "Influences": [
             {
                 "Operation": "modify_architecture_morale_growth",
-                "Value": 0.1
+                "Value": 0.2
             }
         ]
     },
     {
         "_Id": 40,
         "Name": "耐久",
-        "Description": "耐久開發增長每等級增加10%",
+        "Description": "耐久開發增長每等級增加20%",
         "Color": [
             0.13,
             0.56,
@@ -63,7 +63,7 @@
         "Influences": [
             {
                 "Operation": "modify_architecture_endurance_growth",
-                "Value": 0.1
+                "Value": 0.2
             }
         ]
     },
@@ -103,7 +103,7 @@
     },
     {
         "_Id": 70,
-        "Name": "步兵",
+        "Name": "造刀",
         "Description": "步兵兵裝生產速度每等級增加10%",
         "Color": [
             0.13,
@@ -113,7 +113,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 0
+                "Id": 0
             }
         ],
         "Influences": [
@@ -125,7 +125,7 @@
     },
     {
         "_Id": 71,
-        "Name": "弓兵",
+        "Name": "造弓",
         "Description": "弓兵兵裝生產速度每等級增加10%",
         "Color": [
             0.13,
@@ -135,7 +135,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 1
+                "Id": 1
             }
         ],
         "Influences": [
@@ -147,7 +147,7 @@
     },
     {
         "_Id": 72,
-        "Name": "騎兵",
+        "Name": "產馬",
         "Description": "騎兵兵裝生產速度每等級增加10%",
         "Color": [
             0.13,
@@ -157,7 +157,7 @@
         "Conditions": [
             {
                 "Operation": "is_military_type",
-                "Value": 2
+                "Id": 2
             }
         ],
         "Influences": [
@@ -168,9 +168,168 @@
         ]
     },
     {
+        "_Id": 73,
+        "Name": "造器",
+        "Description": "騎兵兵裝生產速度每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_speed",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 74,
+        "Name": "造船",
+        "Description": "騎兵兵裝生產速度每等級增加10%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_speed",
+                "Value": 0.1
+            }
+        ]
+    },
+    {
+        "_Id": 80,
+        "Name": "步兵",
+        "Description": "步兵兵裝所需資金每等級減少20%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 4,
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 0
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_cost",
+                "Value": -0.2
+            }
+        ]
+    },
+    {
+        "_Id": 81,
+        "Name": "弓兵",
+        "Description": "弓兵兵裝所需資金每等級減少20%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 4,
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 1
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_cost",
+                "Value": -0.2
+            }
+        ]
+    },
+    {
+        "_Id": 82,
+        "Name": "騎兵",
+        "Description": "騎兵兵裝所需資金每等級減少20%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 4,
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 2
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_cost",
+                "Value": -0.2
+            }
+        ]
+    },
+    {
+        "_Id": 83,
+        "Name": "兵器",
+        "Description": "騎兵兵裝所需資金每等級減少20%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 4,
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 3
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_cost",
+                "Value": -0.2
+            }
+        ]
+    },
+    {
+        "_Id": 84,
+        "Name": "水軍",
+        "Description": "騎兵兵裝所需資金每等級減少20%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "MaxLevel": 4,
+        "Conditions": [
+            {
+                "Operation": "is_military_type",
+                "Id": 4
+            }
+        ],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_produce_equipment_cost",
+                "Value": -0.2
+            }
+        ]
+    },
+    {
         "_Id": 100,
         "Name": "市集",
-        "Description": "資金收入每等級增加10%",
+        "Description": "資金收入每等級增加20%",
         "Color": [
             0.13,
             0.56,
@@ -180,14 +339,14 @@
         "Influences": [
             {
                 "Operation": "modify_architecture_fund_income",
-                "Value": 0.1
+                "Value": 0.2
             }
         ]
     },
     {
         "_Id": 110,
         "Name": "農田",
-        "Description": "糧草收入每等級增加10%",
+        "Description": "糧草收入每等級增加20%",
         "Color": [
             0.13,
             0.56,
@@ -197,14 +356,14 @@
         "Influences": [
             {
                 "Operation": "modify_architecture_food_income",
-                "Value": 0.1
+                "Value": 0.2
             }
         ]
     },
     {
         "_Id": 120,
         "Name": "文化",
-        "Description": "人口增長每等級增加10%",
+        "Description": "人口增長每等級增加5%",
         "Color": [
             0.13,
             0.56,
@@ -213,8 +372,8 @@
         "Conditions": [],
         "Influences": [
             {
-                "Operation": "modify_architecture_population_growth",
-                "Value": 0.1
+                "Operation": "modify_architecture_population_gain",
+                "Value": 0.05
             }
         ]
     },
@@ -305,6 +464,40 @@
             {
                 "Operation": "modify_architecture_transport_loss",
                 "Value": -0.1
+            }
+        ]
+    },
+    {
+        "_Id": 400,
+        "Name": "攻兵",
+        "Description": "增加建築反擊力20%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_offence",
+                "Value": 0.2
+            }
+        ]
+    },
+    {
+        "_Id": 410,
+        "Name": "守兵",
+        "Description": "增加建築防禦力20%",
+        "Color": [
+            0.13,
+            0.56,
+            0.82
+        ],
+        "Conditions": [],
+        "Influences": [
+            {
+                "Operation": "modify_architecture_defence",
+                "Value": 0.2
             }
         ]
     }
