@@ -133,3 +133,10 @@ func _assign_task(arch: Architecture, scenario):
 				person[1].set_produce_equipment(min_equipment.id)
 				list.remove(person[0])
 				task_priority[6] -= 0.2
+
+func _manage_attached_army(arch: Architecture, scenario):
+	if arch.troop > 5000:
+		var workable_persons = arch.get_workable_persons()
+		for person in workable_persons:
+			if person.get_command() >= 80:
+				pass
