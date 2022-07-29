@@ -81,8 +81,8 @@ func _assign_task(arch: Architecture, scenario):
 	var m = -9e9 if arch.kind.morale <= 0 or fund < 20 or has_enemy_troop_in_city else arch.kind.morale / float(arch.morale + 1)
 	var e = -9e9 if arch.kind.endurance <= 0 or fund < 20 or has_enemy_troop_next_to_city else arch.kind.endurance / float(arch.endurance + 1)
 	var r = -9e9 if arch.population <= 0 or fund < 50 or arch.morale <= 100 or arch.military_population <= 0 or not enough_food else _target_troop_quantity(arch) / (arch.troop + 1)
-	var t = -9e9 if arch.troop <= 0 or fund < 20 or arch.troop_morale >= target_troop_morale else (target_troop_morale * 2 / (arch.troop_morale + 10.0) - 1)
-	var q = -9e9 if arch.troop <= 0 or fund < 100 or not enough_fund or not enough_food else _target_equipment_quantity(arch) / (arch.equipments[min_equipment.id] + 1) / min_equipment.amount_to_troop_ratio
+	var t = -9e9 if arch.troop <= 0 or fund < 20 or arch.troop_morale >= target_troop_morale else target_troop_morale * 2 / (arch.troop_morale + 10.0)
+	var q = -9e9 if arch.troop <= 0 or fund < 100 or not enough_fund or not enough_food or arch.troop < arch.equipments[min_equipment.id] else arch.troop / (arch.equipments[min_equipment.id] + 1) / min_equipment.amount_to_troop_ratio
 	
 	if not enough_fund:
 		c *= 99
@@ -94,6 +94,7 @@ func _assign_task(arch: Architecture, scenario):
 		e *= 99
 	
 	var task_priority = [a, c, m, e, r, t, q]
+	var military_population = arch.military_population
 	while list.size() > 0:
 		var task = Util.max_pos(task_priority)
 		match task[0]:
@@ -101,38 +102,42 @@ func _assign_task(arch: Architecture, scenario):
 				var person = Util.max_by(list, "get_agriculture_ability")
 				person[1].set_working_task(Person.Task.AGRICULTURE)
 				list.remove(person[0])
-				task_priority[0] -= 0.2
+				task_priority[0] -= 0.5
 			1:
 				var person = Util.max_by(list, "get_commerce_ability")
 				person[1].set_working_task(Person.Task.COMMERCE)
 				list.remove(person[0])
-				task_priority[1] -= 0.2
+				task_priority[1] -= 0.5
 			2:
 				var person = Util.max_by(list, "get_morale_ability")
 				person[1].set_working_task(Person.Task.MORALE)
 				list.remove(person[0])
-				task_priority[2] -= 0.2
+				task_priority[2] -= 0.5
 			3:
 				var person = Util.max_by(list, "get_endurance_ability")
 				person[1].set_working_task(Person.Task.ENDURANCE)
 				list.remove(person[0])
-				task_priority[3] -= 0.2
+				task_priority[3] -= 0.5
 			4:
 				var person = Util.max_by(list, "get_recruit_troop_ability")
+				var quantity = min(min(Util.f2ri(person[1].get_recruit_troop_ability() * sqrt(sqrt(arch.military_population)) * arch.morale * 0.001), arch.population), arch.military_population)
 				person[1].set_working_task(Person.Task.RECRUIT_TROOP)
 				list.remove(person[0])
-				task_priority[4] -= 0.2
+				task_priority[4] -= 0.5
+				military_population -= quantity
+				if military_population < 0: #减去该人预期完成量，剩余为负数就不做了
+					task_priority[4] = -9e9
 			5:
 				var person = Util.max_by(list, "get_train_troop_ability")
 				person[1].set_working_task(Person.Task.TRAIN_TROOP)
 				list.remove(person[0])
-				task_priority[5] -= 0.2
+				task_priority[5] -= 0.5
 			6:
 				var person = Util.max_by(list, "get_produce_equipment_ability")
 				person[1].set_working_task(Person.Task.PRODUCE_EQUIPMENT)
 				person[1].set_produce_equipment(min_equipment.id)
 				list.remove(person[0])
-				task_priority[6] -= 0.2
+				task_priority[6] -= 0.5
 
 func _manage_attached_army(arch: Architecture, scenario):
 	if arch.troop > 5000:

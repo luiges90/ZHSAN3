@@ -226,7 +226,7 @@ func _save_data(path):
 		"AITroopTrainingRate": scenario_config.ai_troop_training_rate,
 		"AITroopOffenceRate": scenario_config.ai_troop_offence_rate,
 		"AITroopDefenceRate": scenario_config.ai_troop_defence_rate,
-		"OfficerDeath": scenario_config.person_natural_death
+		"PersonNaturalDeath": scenario_config.person_natural_death
 	}))
 	file.close()
 
@@ -279,7 +279,7 @@ func _load_data(path, new_game, headless):
 		scenario_config.ai_troop_training_rate = float(Util.dict_try_get(obj, 'AITroopTrainingRate', 1.0))
 		scenario_config.ai_troop_offence_rate = float(Util.dict_try_get(obj, 'AITroopOffenceRate', 1.0))
 		scenario_config.ai_troop_defence_rate = float(Util.dict_try_get(obj, 'AITroopDefenceRate', 1.0))
-		scenario_config.person_natural_death = Util.dict_try_get(obj, "PersonNaturalDeath", true)
+		scenario_config.person_natural_death = Util.dict_try_get(obj, "PersonNaturalDeath", false)
 		file.close()
 	
 	if file.open(path + "/Skills.json", File.READ) == OK:

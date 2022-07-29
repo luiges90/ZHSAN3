@@ -76,6 +76,11 @@ static func bstr(b: bool) -> String:
 ##############################################
 #                     Math                   #
 ##############################################
+#根据百分比获取两点直接的距离的点
+static func line_scale(scale: float, a1: Vector2, a2: Vector2) -> Vector2:
+	var pos_x = (a2.x - a1.x) * scale + a1.x
+	var pos_y = (a2.y - a1.y) * scale + a1.y
+	return(Vector2(pos_x,pos_y))
 
 # float to integer with randomized component by remaining frac
 static func f2ri(x: float) -> int:
