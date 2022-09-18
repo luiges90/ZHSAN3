@@ -22,11 +22,11 @@ func _ready():
 	
 func handle_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if _detail_showing:
 				_detail_showing = false
 			else:
-				.handle_input(event)
+				super.handle_input(event)
 				
 func select_architecture_for_new_faction(arch_list: Array):
 	current_action = Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION
@@ -37,7 +37,7 @@ func _on_InfoMenu_architectures_clicked(scenario):
 	show_data(scenario.architectures.values())
 
 func show_data(arch_list: Array):
-	.show_data(arch_list)
+	super.show_data(arch_list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('ARCHITECTURE_LIST')
@@ -61,7 +61,7 @@ func show_data(arch_list: Array):
 		_populate_military_data(arch_list, current_action)
 		_populate_equipments_data(arch_list, current_action)
 	show()
-	._post_show()
+	super._post_show()
 
 func _populate_basic_data(arch_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer
@@ -94,7 +94,7 @@ func _populate_basic_data(arch_list: Array, action):
 	for arch in _sorted_list:
 		if action == Action.SELECT_ARCHITECTURE_FOR_NEW_FACTION:
 			item_list.add_child(_checkbox(arch['_Id']))
-			item_list.add_child(_label(arch['Name']))
+			item_list.add_child(_label(arch['Name'], null))
 		else:
 			if action != Action.LIST:
 				item_list.add_child(_checkbox(arch.id))
@@ -297,11 +297,11 @@ func _on_Confirm_pressed():
 				"selected_person_ids": _selected_person_ids
 			})
 			$PersonMove.play()
-			._on_Confirm_pressed()
+			super._on_Confirm_pressed()
 		_:
 			call_deferred("emit_signal", "architecture_selected", current_action, current_architecture, selected_arch, {})
 			$ConfirmSound.play()
-			._on_Confirm_pressed()
+			super._on_Confirm_pressed()
 
 
 func _on_ArchitectureMenu_architecture_list_clicked(arch, archs: Array, action):

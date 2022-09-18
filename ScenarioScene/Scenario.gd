@@ -1,8 +1,8 @@
 extends Node
 class_name Scenario
 
-onready var tile_size: int = $Map.tile_size if has_node("Map") else 0
-onready var map_size: Vector2 = $Map.map_size if has_node("Map") else Vector2(0,0)
+@onready var tile_size: int = $Map.tile_size if has_node("Map") else 0
+@onready var map_size: Vector2 = $Map.map_size if has_node("Map") else Vector2(0,0)
 
 const GROUP_GAME_INSTANCES = "game_instances"
 
@@ -12,25 +12,85 @@ var current_faction
 
 var turn_passed = 0
 
-var terrain_details = Dictionary() setget forbidden
-var movement_kinds = Dictionary() setget forbidden
-var architecture_kinds = Dictionary() setget forbidden
-var architecture_specialties = Dictionary() setget forbidden
-var military_kinds = Dictionary() setget forbidden
+var terrain_details = Dictionary() :
+	get:
+		return terrain_details # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var movement_kinds = Dictionary() :
+	get:
+		return movement_kinds # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var architecture_kinds = Dictionary() :
+	get:
+		return architecture_kinds # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var architecture_specialties = Dictionary() :
+	get:
+		return architecture_specialties # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var military_kinds = Dictionary() :
+	get:
+		return military_kinds # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var skills = Dictionary() setget forbidden
-var stunts = Dictionary() setget forbidden
+var skills = Dictionary() :
+	get:
+		return skills # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var stunts = Dictionary() :
+	get:
+		return stunts # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var ai_paths = Dictionary() setget forbidden
+var ai_paths = Dictionary() :
+	get:
+		return ai_paths # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var factions = Dictionary() setget forbidden
-var sections = Dictionary() setget forbidden
-var architectures = Dictionary() setget forbidden
-var persons = Dictionary() setget forbidden
-var troops = Dictionary() setget forbidden
-var attached_armies = Dictionary() setget forbidden
+var factions = Dictionary() :
+	get:
+		return factions # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var sections = Dictionary() :
+	get:
+		return sections # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var architectures = Dictionary() :
+	get:
+		return architectures # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var persons = Dictionary() :
+	get:
+		return persons # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var troops = Dictionary() :
+	get:
+		return troops # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var attached_armies = Dictionary() :
+	get:
+		return attached_armies # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var biographies = Dictionary() setget forbidden
+var biographies = Dictionary() :
+	get:
+		return biographies # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var current_scenario_name = null
 
@@ -39,7 +99,11 @@ var _troop_clicked
 var _clicked_at: Vector2
 var _right_clicked = false
 
-var scenario_config: ScenarioConfig setget forbidden
+var scenario_config: ScenarioConfig :
+	get:
+		return scenario_config # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var _loading_scenario = false
 var _starting_camera_move_to
@@ -113,8 +177,8 @@ func _ready(headless = false):
 				camera.call_deferred("emit_signal", "camera_moved", camera.get_viewing_rect(), camera.zoom)
 				call_deferred("emit_signal", "scenario_camera_moved", camera.get_viewing_rect(), camera.zoom, self)
 		
-		$DateRunner.connect("day_passed", self, "_on_day_passed")
-		$DateRunner.connect("month_passed", self, "_on_month_passed")
+		$DateRunner.connect("day_passed",Callable(self,"_on_day_passed"))
+		$DateRunner.connect("month_passed",Callable(self,"_on_month_passed"))
 	
 	
 	
@@ -144,7 +208,7 @@ func _save_data(path):
 	
 	var file = File.new()
 	file.open(path + "/Scenario.json", File.WRITE)
-	file.store_line(to_json(
+	file.store_line(JSON.new().stringify(
 		{
 			"CurrentFactionId": current_faction.id,
 			"Scenario": current_scenario_name,
@@ -154,7 +218,7 @@ func _save_data(path):
 				"Day": date.day,
 				"TurnPassed": turn_passed
 			},
-			"Camera": {
+			"Camera3D": {
 				"Position": Util.save_position($MainCamera.position),
 				"Zoom": Util.save_position($MainCamera.zoom)
 			}
@@ -163,63 +227,63 @@ func _save_data(path):
 	file.close()
 	
 	file.open(path + "/Skills.json", File.WRITE)
-	file.store_line(to_json(__save_items(skills)))
+	file.store_line(JSON.new().stringify(__save_items(skills)))
 	file.close()
 
 	file.open(path + "/Stunts.json", File.WRITE)
-	file.store_line(to_json(__save_items(stunts)))
+	file.store_line(JSON.new().stringify(__save_items(stunts)))
 	file.close()
 	
 	file.open(path + "/TerrainDetails.json", File.WRITE)
-	file.store_line(to_json(__save_items(terrain_details)))
+	file.store_line(JSON.new().stringify(__save_items(terrain_details)))
 	file.close()
 	
 	file.open(path + "/MovementKinds.json", File.WRITE)
-	file.store_line(to_json(__save_items(movement_kinds)))
+	file.store_line(JSON.new().stringify(__save_items(movement_kinds)))
 	file.close()
 	
 	file.open(path + "/MilitaryKinds.json", File.WRITE)
-	file.store_line(to_json(__save_items(military_kinds)))
+	file.store_line(JSON.new().stringify(__save_items(military_kinds)))
 	file.close()
 
 	file.open(path + "/ArchitectureSpecialties.json", File.WRITE)
-	file.store_line(to_json(__save_items(architecture_specialties)))
+	file.store_line(JSON.new().stringify(__save_items(architecture_specialties)))
 	file.close()
 	
 	file.open(path + "/ArchitectureKinds.json", File.WRITE)
-	file.store_line(to_json(__save_items(architecture_kinds)))
+	file.store_line(JSON.new().stringify(__save_items(architecture_kinds)))
 	file.close()
 	
 	file.open(path + "/Factions.json", File.WRITE)
-	file.store_line(to_json(__save_items(factions)))
+	file.store_line(JSON.new().stringify(__save_items(factions)))
 	file.close()
 	
 	file.open(path + "/Sections.json", File.WRITE)
-	file.store_line(to_json(__save_items(sections)))
+	file.store_line(JSON.new().stringify(__save_items(sections)))
 	file.close()
 	
 	file.open(path + "/Architectures.json", File.WRITE)
-	file.store_line(to_json(__save_items(architectures)))
+	file.store_line(JSON.new().stringify(__save_items(architectures)))
 	file.close()
 	
 	file.open(path + "/Troops.json", File.WRITE)
-	file.store_line(to_json(__save_items(troops)))
+	file.store_line(JSON.new().stringify(__save_items(troops)))
 	file.close()
 
 	file.open(path + "/AttachedArmies.json", File.WRITE)
-	file.store_line(to_json(__save_items(attached_armies)))
+	file.store_line(JSON.new().stringify(__save_items(attached_armies)))
 	file.close()
 	
 	file.open(path + "/Persons.json", File.WRITE)
-	file.store_line(to_json(__save_items(persons)))
+	file.store_line(JSON.new().stringify(__save_items(persons)))
 	file.close()
 	
 	file.open(path + "/Biographies.json", File.WRITE)
-	file.store_line(to_json(__save_items(biographies)))
+	file.store_line(JSON.new().stringify(__save_items(biographies)))
 	file.close()
 	
 	file.open(path + "/ScenarioConfig.json", File.WRITE)
-	file.store_line(to_json({
+	file.store_line(JSON.new().stringify({
 		"AIFundRate": scenario_config.ai_fund_rate,
 		"AIFoodRate": scenario_config.ai_food_rate,
 		"AITroopRecruitRate": scenario_config.ai_troop_recruit_rate,
@@ -254,7 +318,9 @@ func _load_data(path, new_game, headless):
 	
 	if not headless:
 		file.open(path + "/Scenario.json", File.READ)
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		
 		var date = $DateRunner as DateRunner
 		date.year = obj["GameData"]["Year"]
@@ -265,13 +331,15 @@ func _load_data(path, new_game, headless):
 		if current_name != null:
 			current_scenario_name = current_name
 		turn_passed = obj["GameData"]["TurnPassed"]
-		if obj.has("Camera"):
-			_starting_camera_move_to = Util.load_position(obj["Camera"]["Position"])
-			_starting_camera_zoom_to = Util.load_position(obj["Camera"]["Zoom"])
+		if obj.has("Camera3D"):
+			_starting_camera_move_to = Util.load_position(obj["Camera3D"]["Position"])
+			_starting_camera_zoom_to = Util.load_position(obj["Camera3D"]["Zoom"])
 		file.close()
 	
 	if file.open(path + "/ScenarioConfig.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		scenario_config = ScenarioConfig.new()
 		scenario_config.ai_fund_rate = float(Util.dict_try_get(obj, 'AIFundRate', 1.0))
 		scenario_config.ai_food_rate = float(Util.dict_try_get(obj, 'AIFoodRate', 1.0))
@@ -283,28 +351,36 @@ func _load_data(path, new_game, headless):
 		file.close()
 	
 	if file.open(path + "/Skills.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = Skill.new()
 			__load_item(instance, item, skills, {})
 		file.close()
 
 	if file.open(path + "/Stunts.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = Stunt.new()
 			__load_item(instance, item, stunts, {})
 		file.close()
 	
 	if file.open(path + "/TerrainDetails.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = TerrainDetail.new()
 			__load_item(instance, item, terrain_details, {})
 		file.close()
 	
 	if file.open(path + "/MovementKinds.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = MovementKind.new()
 			__load_item(instance, item, movement_kinds, {})
@@ -317,14 +393,18 @@ func _load_data(path, new_game, headless):
 		if err != OK:
 			err = file.open("res://Scenarios/" + current_scenario_name + "/paths/" + str(kind) + '.json', File.READ)
 		if err == OK:
-			obj = parse_json(file.get_as_text())
+			var test_json_conv = JSON.new()
+			test_json_conv.parse(file.get_as_text())
+			obj = test_json_conv.get_data()
 			var ai_path = AIPaths.new()
 			ai_path.load_data(obj)
 			ai_paths[kind] = ai_path
 			file.close()
 			
 	if file.open(path + "/MilitaryKinds.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = MilitaryKind.new()
 			__load_item(instance, item, military_kinds, {})
@@ -332,28 +412,36 @@ func _load_data(path, new_game, headless):
 		SharedData._load_troop_sprite_frames(military_kinds.values())
 	
 	if file.open(path + "/ArchitectureKinds.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = ArchitectureKind.new()
 			__load_item(instance, item, architecture_kinds, {})
 		file.close()
 
 	if file.open(path + "/ArchitectureSpecialties.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = ArchitectureSpecialty.new()
 			__load_item(instance, item, architecture_specialties, {})
 		file.close()
 	
 	if file.open(path + "/Biographies.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = Biography.new()
 			__load_item(instance, item, biographies, {})
 		file.close()
 
 	if file.open(path + "/AttachedArmies.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = AttachedArmy.new()
 			__load_item(instance, item, attached_armies, {'military_kinds': military_kinds})
@@ -361,18 +449,20 @@ func _load_data(path, new_game, headless):
 
 	var person_json = {}
 	if file.open(path + "/Persons.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = Person.new()
 			
-			instance.connect("person_available", self, "_on_person_available")
+			instance.connect("person_available",Callable(self,"_on_person_available"))
 			
 			var game_record_creator = get_node_or_null("GameRecordCreator")
 			if game_record_creator != null:
-				instance.connect('person_died', game_record_creator, 'person_died')
-				instance.connect("convince_success", game_record_creator, "person_convince_success")
-				instance.connect("convince_failure", game_record_creator, "person_convince_failure")
-				instance.connect("move_complete", game_record_creator, "person_move_complete")
+				instance.connect('person_died',Callable(game_record_creator,'person_died'))
+				instance.connect("convince_success",Callable(game_record_creator,"person_convince_success"))
+				instance.connect("convince_failure",Callable(game_record_creator,"person_convince_failure"))
+				instance.connect("move_complete",Callable(game_record_creator,"person_move_complete"))
 				
 			__load_item(instance, item, persons, {"skills": skills, "stunts": stunts, "attached_armies": attached_armies})
 			person_json[instance.id] = item
@@ -380,18 +470,20 @@ func _load_data(path, new_game, headless):
 	
 	if new_game:
 		if file.open('user://custom_persons.json', File.READ) == OK:
-			obj = parse_json(file.get_as_text())
+			var test_json_conv = JSON.new()
+			test_json_conv.parse(file.get_as_text())
+			obj = test_json_conv.get_data()
 			for item in obj:
 				var instance = Person.new()
 				
-				instance.connect("person_available", self, "_on_person_available")
+				instance.connect("person_available",Callable(self,"_on_person_available"))
 				
 				var game_record_creator = get_node_or_null("GameRecordCreator")
 				if game_record_creator != null:
-					instance.connect('person_died', game_record_creator, 'person_died')
-					instance.connect("convince_success", game_record_creator, "person_convince_success")
-					instance.connect("convince_failure", game_record_creator, "person_convince_failure")
-					instance.connect("move_complete", game_record_creator, "person_move_complete")
+					instance.connect('person_died',Callable(game_record_creator,'person_died'))
+					instance.connect("convince_success",Callable(game_record_creator,"person_convince_success"))
+					instance.connect("convince_failure",Callable(game_record_creator,"person_convince_failure"))
+					instance.connect("move_complete",Callable(game_record_creator,"person_move_complete"))
 					
 				__load_item(instance, item, persons, {"skills": skills, "stunts": stunts})
 				person_json[instance.id] = item
@@ -416,12 +508,14 @@ func _load_data(path, new_game, headless):
 	
 	if file.open(path + "/Architectures.json", File.READ) == OK:
 		var architecture_scene = preload("Architecture/Architecture.tscn")
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
-			var instance = architecture_scene.instance()
-			instance.connect("architecture_clicked", self, "_on_architecture_clicked")
-			instance.connect("architecture_survey_updated", self, "_on_architecture_survey_updated")
-			instance.connect("faction_changed", self, "_on_architecture_faction_changed")
+			var instance = architecture_scene.instantiate()
+			instance.connect("architecture_clicked",Callable(self,"_on_architecture_clicked"))
+			instance.connect("architecture_survey_updated",Callable(self,"_on_architecture_survey_updated"))
+			instance.connect("faction_changed",Callable(self,"_on_architecture_faction_changed"))
 			__load_item(instance, item, architectures, {"persons": persons, "architecture_specialties": architecture_specialties})
 			instance.setup_after_load()
 		file.close()
@@ -430,10 +524,12 @@ func _load_data(path, new_game, headless):
 		
 	if file.open(path + "/Troops.json", File.READ) == OK:
 		var troop_scene = preload("Military/Troop.tscn")
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		var troop_json = {}
 		for item in obj:
-			var instance = troop_scene.instance()
+			var instance = troop_scene.instantiate()
 			__load_item(instance, item, troops, {"persons": persons, "stunts": stunts})
 			troop_json[instance.id] = item
 		file.close()
@@ -466,17 +562,17 @@ func _load_data(path, new_game, headless):
 					if order_target_stunt >= 0:
 						stunt = stunts[int(order_target_stunt)]
 					else:
-						assert(false, "Stunt not found: " + str(order_target_stunt))
+						assert(false) #,"Stunt not found: " + str(order_target_stunt))
 					troops[tid].set_activate_stunt_order(stunt, order_target_stunt_level, target)
 				else:
-					assert(false, "Unexpected order type " + str(order_type))
+					assert(false) #,"Unexpected order type " + str(order_type))
 
 			for s in troop_json[tid]["_ActiveStunts"]:
 				var stunt
 				if s["stunt"] >= 0:
 					stunt = stunts[int(s["stunt"])]
 				else:
-					assert(false, "Stunt not found: " + str(s["stunt"]))
+					assert(false) #,"Stunt not found: " + str(s["stunt"]))
 				troops[tid].active_stunt_effects.append({
 					"stunt": stunt,
 					"level": s["level"],
@@ -486,7 +582,9 @@ func _load_data(path, new_game, headless):
 		
 	var section_ids = []
 	if file.open(path + "/Sections.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = Section.new()
 			__load_item(instance, item, sections, {"architectures": architectures, "troops": troops})
@@ -494,10 +592,12 @@ func _load_data(path, new_game, headless):
 	
 	var faction_ids = []
 	if file.open(path + "/Factions.json", File.READ) == OK:
-		obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = Faction.new()
-			instance.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
+			instance.connect("destroyed",Callable($GameRecordCreator,"_on_faction_destroyed"))
 			__load_item(instance, item, factions, {"sections": sections})
 			instance._set_leader(persons[int(item["Leader"])])
 			if item["Advisor"] >= 0:
@@ -535,7 +635,7 @@ func _load_data(path, new_game, headless):
 			}, sections, {"architectures": architectures, "troops": troops})
 
 			var faction = Faction.new()
-			faction.connect("destroyed", $GameRecordCreator, "_on_faction_destroyed")
+			faction.connect("destroyed",Callable($GameRecordCreator,"_on_faction_destroyed"))
 			__load_item(faction, 
 				{
 					"Advisor": -1,
@@ -583,19 +683,19 @@ func __handle_game_start(current_faction_id):
 		scenario_config = SharedData.starting_scenario_config
 		
 func __connect_signals_for_creating_troop(troop):
-	troop.connect("troop_clicked", self, "_on_troop_clicked")
-	troop.connect("troop_survey_updated", self, "_on_troop_survey_updated")
-	troop.connect("occupy_architecture", $GameRecordCreator, "_on_troop_occupy_architecture")
-	troop.connect("position_changed", self, "_on_troop_position_changed")
-	troop.connect("removed", self, "_on_troop_removed")
-	troop.connect("destroyed", $GameRecordCreator, "_on_troop_destroyed")
-	troop.connect("person_captured", $GameRecordCreator, "_on_troop_person_captured")
-	troop.connect("person_released", $GameRecordCreator, "_on_troop_person_released")
-	troop.connect("performed_attack", $GameRecordCreator, "_on_troop_performed_attack")
-	troop.connect("received_attack", $GameRecordCreator, "_on_troop_received_attack")
-	troop.connect("target_architecture_destroyed", $GameRecordCreator, "_on_troop_target_architecture_destroyed")
-	troop.connect("target_troop_destroyed", $GameRecordCreator, "_on_troop_target_troop_destroyed")	
-	troop.connect("start_stunt", $GameRecordCreator, "_on_troop_start_stunt")
+	troop.connect("troop_clicked",Callable(self,"_on_troop_clicked"))
+	troop.connect("troop_survey_updated",Callable(self,"_on_troop_survey_updated"))
+	troop.connect("occupy_architecture",Callable($GameRecordCreator,"_on_troop_occupy_architecture"))
+	troop.connect("position_changed",Callable(self,"_on_troop_position_changed"))
+	troop.connect("removed",Callable(self,"_on_troop_removed"))
+	troop.connect("destroyed",Callable($GameRecordCreator,"_on_troop_destroyed"))
+	troop.connect("person_captured",Callable($GameRecordCreator,"_on_troop_person_captured"))
+	troop.connect("person_released",Callable($GameRecordCreator,"_on_troop_person_released"))
+	troop.connect("performed_attack",Callable($GameRecordCreator,"_on_troop_performed_attack"))
+	troop.connect("received_attack",Callable($GameRecordCreator,"_on_troop_received_attack"))
+	troop.connect("target_architecture_destroyed",Callable($GameRecordCreator,"_on_troop_target_architecture_destroyed"))
+	troop.connect("target_troop_destroyed",Callable($GameRecordCreator,"_on_troop_target_troop_destroyed"))	
+	troop.connect("start_stunt",Callable($GameRecordCreator,"_on_troop_start_stunt"))
 	
 	
 	_on_troop_created(troop, troop.map_position)
@@ -690,7 +790,7 @@ func _on_PositionSelector_create_troop(arch, troop, position):
 	
 func create_troop(arch, troop, position) -> Troop:
 	var scene = preload("Military/Troop.tscn")
-	var instance = scene.instance()
+	var instance = scene.instantiate()
 	instance.scenario = self
 
 	var in_experience = 0
@@ -776,7 +876,7 @@ func _on_confirm_transport_resources(from_architecture, to_architecture, to_tran
 ########################################
 #         Other signal Logic           #
 ########################################
-var __day_passed_sec = OS.get_ticks_msec()
+var __day_passed_sec = Time.get_ticks_msec()
 
 func _on_day_passed():
 	# auto save
@@ -799,10 +899,10 @@ func _on_day_passed():
 		var troop_queue = TroopQueue.new(troops.values())
 		var troop_queue_result = troop_queue.execute()
 		if troop_queue_result:
-			yield(troop_queue_result, "completed")
-		if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
-			yield(get_tree(), "idle_frame")
-		__day_passed_sec = OS.get_ticks_msec()
+			await troop_queue_result.completed
+		if Time.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
+			await get_tree().idle_frame
+		__day_passed_sec = Time.get_ticks_msec()
 		
 		# run Factions
 		var last_faction = current_faction
@@ -812,9 +912,9 @@ func _on_day_passed():
 			current_faction = faction
 			call_deferred("emit_signal", "current_faction_set", current_faction)
 			ai.run_faction(faction, self)
-			if OS.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
-				yield(get_tree(), "idle_frame")
-			__day_passed_sec = OS.get_ticks_msec()
+			if Time.get_ticks_msec() - __day_passed_sec >= GameConfig.day_passed_interrupt_time:
+				await get_tree().idle_frame
+			__day_passed_sec = Time.get_ticks_msec()
 			
 		current_faction = last_faction
 		call_deferred("emit_signal", "current_faction_set", current_faction)
@@ -830,7 +930,7 @@ func _on_day_passed():
 			if person.alive:
 				person.day_event()
 		
-		yield(get_tree(), "idle_frame")
+		await get_tree().idle_frame
 		call_deferred("emit_signal", "all_faction_finished")
 		_on_architecture_survey_updated(null)
 
@@ -840,13 +940,13 @@ func __on_day_passed_threaded():
 	var troop_queue = TroopQueue.new(troops.values())
 	var troop_queue_result = troop_queue.execute()
 	if troop_queue_result:
-		yield(troop_queue_result, "completed")
+		await troop_queue_result.completed
 
 	__day_passed_finished = false
-	_day_passed_thread.start(self, "___on_day_passed_thread", 0)
+	_day_passed_thread.start(Callable(self,"___on_day_passed_thread").bind(0))
 
 	while not __day_passed_finished:
-		yield(get_tree(), "idle_frame")
+		await get_tree().idle_frame
 		
 	_day_passed_thread.wait_to_finish()
 
@@ -969,7 +1069,7 @@ func get_terrain_at_position(position):
 			for id in terrain_details[t].terrain_ids:
 				if int(id) == int(terrain_id):
 					return terrain_details[t]
-		assert(false, 'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
+		assert(false) #,'Should have terrain detail set for all tile ID. Not found for ID ' + str(terrain_id))
 	return null
 	
 func get_ai_path_available_movement_kinds(start_arch, end_arch):
@@ -981,7 +1081,7 @@ func get_ai_path(movement_kind_id, start_arch, end_arch):
 	for mk in paths:
 		if mk == movement_kind_id:
 			return paths[mk]
-	assert(false, 'Cannot find AIPath from ' + start_arch.get_name() + ' to ' + end_arch.get_name() + ' for movement kind ' + str(movement_kind_id))
+	assert(false) #,'Cannot find AIPath from ' + start_arch.get_name() + ' to ' + end_arch.get_name() + ' for movement kind ' + str(movement_kind_id))
 
 # TODO may need cache
 func get_troop_at_position(position):
@@ -1070,7 +1170,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		_update_position_label(event.position)
 	elif event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			__right_click_on_blank_detected = true
 		
 

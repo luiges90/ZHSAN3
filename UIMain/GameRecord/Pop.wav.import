@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Pop.wav-e84de595c526bbcc680d520e684b5932.sample"
+type="AudioStreamWAV"
+uid="uid://belawgfeaqc0w"
+path="res://.godot/imported/Pop.wav-e84de595c526bbcc680d520e684b5932.sample"
 
 [deps]
 
 source_file="res://UIMain/GameRecord/Pop.wav"
-dest_files=[ "res://.import/Pop.wav-e84de595c526bbcc680d520e684b5932.sample" ]
+dest_files=["res://.godot/imported/Pop.wav-e84de595c526bbcc680d520e684b5932.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

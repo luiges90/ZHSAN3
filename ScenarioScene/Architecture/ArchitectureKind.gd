@@ -1,18 +1,54 @@
 extends Node
 class_name ArchitectureKind
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var gname: String setget forbidden
-var image: Texture setget forbidden
-var _image_path: String setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var image: Texture2D :
+	get:
+		return image # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var _image_path: String :
+	get:
+		return _image_path # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var agriculture: int setget forbidden
-var commerce: int setget forbidden
-var morale: int setget forbidden
-var endurance: int setget forbidden
-var population: int setget forbidden
+var agriculture: int :
+	get:
+		return agriculture # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var commerce: int :
+	get:
+		return commerce # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var morale: int :
+	get:
+		return morale # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var endurance: int :
+	get:
+		return endurance # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var population: int :
+	get:
+		return population # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 func forbidden(x):
 	assert(false)
@@ -40,5 +76,5 @@ func save_data() -> Dictionary:
 		"Population": population
 	}
 	
-func get_name() -> String:
-	return gname
+func get_name() -> StringName:
+	return StringName(gname)

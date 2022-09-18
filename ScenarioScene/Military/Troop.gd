@@ -4,41 +4,125 @@ class_name Troop
 enum OrderType { MOVE, FOLLOW, ATTACK, ACTIVATE_STUNT, ENTER }
 enum AIState { MARCH, COMBAT, RETREAT }
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var gname: String setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var map_position: Vector2 setget forbidden
+var map_position: Vector2 :
+	get:
+		return map_position # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var military_kind setget forbidden
-var naval_military_kind setget forbidden
-var quantity: int setget forbidden
-var morale: int setget forbidden
-var combativity: int setget forbidden
+var military_kind :
+	get:
+		return military_kind # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var naval_military_kind :
+	get:
+		return naval_military_kind # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var quantity: int :
+	get:
+		return quantity # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var morale: int :
+	get:
+		return morale # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var combativity: int :
+	get:
+		return combativity # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var active_stunt_effects: Array setget forbidden
+var active_stunt_effects: Array :
+	get:
+		return active_stunt_effects # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var order_made: bool setget forbidden
+var order_made: bool :
+	get:
+		return order_made # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var attached_army setget forbidden
+var attached_army :
+	get:
+		return attached_army # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _recently_battled: int setget forbidden
+var _recently_battled: int :
+	get:
+		return _recently_battled # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _person_list = Array() setget forbidden, get_all_persons
+var _person_list = Array() :
+	get:
+		return _person_list # TODOConverter40 Copy here content of get_all_persons
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _belonged_section setget forbidden, get_belonged_section
-var _starting_arch setget forbidden, get_starting_architecture
+var _belonged_section :
+	get:
+		return _belonged_section # TODOConverter40 Copy here content of get_belonged_section
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var _starting_arch :
+	get:
+		return _starting_arch # TODOConverter40 Copy here content of get_starting_architecture
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _order_before_activate_stunt setget forbidden
-var current_order setget forbidden
-var _current_path setget forbidden
-var _current_path_index = 0 setget forbidden
-var _remaining_movement = 0 setget forbidden
+var _order_before_activate_stunt :
+	get:
+		return _order_before_activate_stunt # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var current_order :
+	get:
+		return current_order # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var _current_path :
+	get:
+		return _current_path # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var _current_path_index = 0 :
+	get:
+		return _current_path_index # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var _remaining_movement = 0 :
+	get:
+		return _remaining_movement # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var _food_shortage: bool = false
 
-var _orientation = "e" setget forbidden
+var _orientation = "e" :
+	get:
+		return _orientation # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var _ai_state
 var _ai_destination_architecture
@@ -84,15 +168,15 @@ func object_type():
 	
 func _ready():
 	_update_military_kind_sprite()
-	$TroopArea/AnimatedSprite.animation = "move_e"
-	$TroopArea/AnimatedSprite.play()
+	$TroopArea/AnimatedSprite2D.animation = "move_e"
+	$TroopArea/AnimatedSprite2D.play()
 
 	position.x = map_position.x * scenario.tile_size
 	position.y = map_position.y * scenario.tile_size
 	scale.x = SharedData.TILE_SIZE / 128.0
 	scale.y = SharedData.TILE_SIZE / 128.0
-	scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
-	scenario.connect("scenario_camera_moved", self, "_on_camera_moved")
+	scenario.connect("scenario_loaded",Callable(self,"_on_scenario_loaded"))
+	scenario.connect("scenario_camera_moved",Callable(self,"_on_camera_moved"))
 	
 	var click_area = CollisionShape2D.new()
 	click_area.shape = RectangleShape2D.new()
@@ -216,8 +300,8 @@ func _on_scenario_loaded(scenario):
 	update_troop_title()
 	_scenario_loaded = true
 
-func get_name() -> String:
-	return gname
+func get_name() -> StringName:
+	return StringName(gname)
 
 func get_all_persons() -> Array:
 	return _person_list
@@ -240,7 +324,7 @@ func add_person(p, force: bool = false):
 	_person_list.append(p)
 	if not force:
 		p.set_location(self, true)
-		  
+ 
 func remove_person(p, force: bool = false):
 	Util.remove_object(_person_list, p)
 	var persons = get_persons()
@@ -314,11 +398,11 @@ func get_strength():
 	strength = max(strength, max_strength * 0.7)
 	return strength
 	
-func get_command():
-	var command = get_leader().get_command()
+func is_command_or_control_pressed():
+	var command = get_leader().is_command_or_control_pressed()
 	var max_command = 0
 	for p in get_persons():
-		var sub_command = p.get_command()
+		var sub_command = p.is_command_or_control_pressed()
 		if sub_command > max_command:
 			max_command = sub_command
 	command = max(command, max_command * 0.7)
@@ -337,7 +421,7 @@ func get_intelligence():
 func get_offence():
 	var troop_base = get_active_military_kind().base_offence * get_active_military_kind().terrain_strength[get_current_terrain().id]
 	var troop_quantity = 30 * sqrt(get_active_military_kind().offence * quantity / get_active_military_kind().max_quantity_multiplier)
-	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
+	var ability_factor = ((get_strength() * 0.3 + is_command_or_control_pressed() * 0.7) + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 	var experience_factor = 1 + get_experience() / 1000.0
 	
@@ -354,7 +438,7 @@ func get_offence():
 func get_defence():
 	var troop_base = get_active_military_kind().base_defence * get_active_military_kind().terrain_strength[get_current_terrain().id]
 	var troop_quantity = 30 * sqrt(get_active_military_kind().defence * quantity / get_active_military_kind().max_quantity_multiplier)
-	var ability_factor = (get_command() + 10) / 100.0
+	var ability_factor = (is_command_or_control_pressed() + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 	var experience_factor = 1 + get_experience() / 1000.0
 
@@ -371,7 +455,7 @@ func get_defence():
 func get_offence_over_defence():
 	return get_offence() / get_defence()
 
-func get_speed():
+func get_velocity():
 	var base = get_active_military_kind().speed
 
 	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.2, base * 2)
@@ -481,7 +565,7 @@ func critical_chance():
 	return chance
 	
 func anti_critical_chance():
-	var chance = -0.1 + float(get_command()) / 500.0
+	var chance = -0.1 + float(is_command_or_control_pressed()) / 500.0
 	chance = apply_influences('add_troop_anti_critical', {"value": chance})
 	return chance
 
@@ -659,7 +743,7 @@ func available_stunts():
 func get_stunt_success_chance(stunt, target):
 	var self_ability
 	match stunt.competition_ability:
-		Stunt.CompetitionAbility.COMMAND: self_ability = get_command()
+		Stunt.CompetitionAbility.COMMAND: self_ability = is_command_or_control_pressed()
 		Stunt.CompetitionAbility.STRENGTH: self_ability = get_strength()
 		Stunt.CompetitionAbility.INTELLIGENCE: self_ability = get_intelligence()
 		_: self_ability = 0
@@ -667,7 +751,7 @@ func get_stunt_success_chance(stunt, target):
 	var target_ability
 	if get_belonged_faction().is_enemy_to(target.get_belonged_faction()):
 		match stunt.competition_ability:
-			Stunt.CompetitionAbility.COMMAND: target_ability = target.get_command()
+			Stunt.CompetitionAbility.COMMAND: target_ability = target.is_command_or_control_pressed()
 			Stunt.CompetitionAbility.STRENGTH: target_ability = target.get_strength()
 			Stunt.CompetitionAbility.INTELLIGENCE: target_ability = target.get_intelligence()
 			_: target_ability = 0
@@ -739,7 +823,7 @@ func apply_influences(operation, params: Dictionary):
 var _attack_count_in_turn = 0
 var __step_retry = 0
 func prepare_orders():
-	_remaining_movement = get_speed()
+	_remaining_movement = get_velocity()
 	_current_path = null
 	_current_path_index = 0
 	__step_retry = 0
@@ -754,7 +838,7 @@ enum ExecuteStepType { MOVED, BLOCKED, STOPPED }
 class ExecuteStepResult:
 	var type #:ExecuteStepType
 	var new_position
-	func _init(t, n):
+	func _init(t,n):
 		type = t
 		new_position = n
 
@@ -924,7 +1008,7 @@ func execute_attack():
 					receive_attack_damage(counter_damage, target)
 					target.receive_attack_damage(damage, self)
 					
-					return _animate_attack(target, counter_damage, damage, critical)
+					return await _animate_attack(target, counter_damage, damage, critical)
 				else:
 					return false
 			else:
@@ -1090,7 +1174,7 @@ func update_troop_title():
 func _update_military_kind_sprite():
 	_displaying_military_kind_sprite = get_active_military_kind(true)
 	
-	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+	var animated_sprite = $TroopArea/AnimatedSprite2D as AnimatedSprite2D
 	if animated_sprite != null:
 		var textures = SharedData.troop_images.get(get_active_military_kind().id, null)
 		if textures != null:
@@ -1106,7 +1190,7 @@ func _update_military_kind_sprite():
 		
 func _animate_position(old_position, destination_position):
 	_orientation = _get_animation_orientation(old_position, destination_position)
-	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+	var animated_sprite = $TroopArea/AnimatedSprite2D as AnimatedSprite2D
 	animated_sprite.animation = "move_" + _orientation
 	
 	var destination = destination_position * scenario.tile_size
@@ -1122,7 +1206,7 @@ func _animate_position(old_position, destination_position):
 		var sound_track_idx = animation.add_track(Animation.TYPE_AUDIO)
 		animation.track_set_path(sound_track_idx, "MovingSound")
 		animation.audio_track_insert_key(sound_track_idx, 0, $MovingSound.stream)
-		$AnimationPlayer.add_animation("Move", animation)
+		$AnimationPlayer.add_animation_library("Move", animation)
 		$AnimationPlayer.play("Move")
 		return true
 	else:
@@ -1137,11 +1221,11 @@ func _animate_attack(target, self_damage, target_damage, critical):
 	var viewing_rect = scenario.get_camera_viewing_rect() as Rect2
 	var troop_rect = Rect2($TroopArea.global_position, Vector2(SharedData.TILE_SIZE, SharedData.TILE_SIZE))
 	if GameConfig.enable_troop_animations and viewing_rect.intersects(troop_rect):
-		var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+		var animated_sprite = $TroopArea/AnimatedSprite2D as AnimatedSprite2D
 		animated_sprite.animation = "attack_" + _orientation
 		__anim_self_damage = self_damage
 
-		var other_effect_sprite = target.find_node('EffectSprite')
+		var other_effect_sprite = target.find_child('EffectSprite')
 		
 		if critical:
 			$CriticalSound.play()
@@ -1159,21 +1243,21 @@ func _animate_attack(target, self_damage, target_damage, critical):
 			call_deferred("emit_signal", "received_attack", target, self, critical)
 		
 		if target is Architecture:
-			yield($TroopArea/AnimatedSprite, "animation_finished")
-			yield(other_effect_sprite, "animation_finished")
-			target.find_node("NumberFlashText").text = target.find_node("NumberFlashText").text + "\n↓" + str(target_damage)
-			target.find_node("NumberFlashText").find_node('Timer').start()
+			await $TroopArea/AnimatedSprite2D.animation_finished
+			await other_effect_sprite.animation_finished
+			target.find_child("NumberFlashText").text = target.find_child("NumberFlashText").text + "\n↓" + str(target_damage)
+			target.find_child("NumberFlashText").find_child('Timer').start()
 			if target.endurance <= 0:
 				call_deferred("emit_signal", "target_architecture_destroyed", self, target)
 		else:
-			var area_node = target.find_node("TroopArea")
-			var target_animated_sprite = area_node.find_node("AnimatedSprite") as AnimatedSprite
+			var area_node = target.find_child("TroopArea")
+			var target_animated_sprite = area_node.find_child("AnimatedSprite2D") as AnimatedSprite2D
 			if target_animated_sprite != null:
 				target_animated_sprite.animation = "be_attacked_" + reverse_orientation
 				target.__anim_self_damage = target_damage
 			if target._destroyed:
-				yield($TroopArea/AnimatedSprite, "animation_finished")
-				yield(other_effect_sprite, "animation_finished")
+				await $TroopArea/AnimatedSprite2D.animation_finished
+				await other_effect_sprite.animation_finished
 				call_deferred("emit_signal", "target_troop_destroyed", self, target)
 		
 		return true
@@ -1186,18 +1270,18 @@ func _animate_attack(target, self_damage, target_damage, critical):
 		return false
 	
 func _on_AnimatedSprite_animation_finished():
-	var animated_sprite = $TroopArea/AnimatedSprite as AnimatedSprite
+	var animated_sprite = $TroopArea/AnimatedSprite2D as AnimatedSprite2D
 	if animated_sprite.animation.begins_with("attack_") or animated_sprite.animation.begins_with("be_attacked_"):
 		update_troop_title()
 		animated_sprite.animation = "move_" + _orientation
 		
 		if __anim_self_damage > 0 and not _destroyed:
-			find_node("NumberFlashText").text = find_node("NumberFlashText").text + "\n↓" + str(__anim_self_damage)
-			find_node("NumberFlashText").find_node('Timer').start()
+			find_child("NumberFlashText").text = find_child("NumberFlashText").text + "\n↓" + str(__anim_self_damage)
+			find_child("NumberFlashText").find_child('Timer').start()
 			__anim_self_damage = 0
 		
 		if _destroyed:
-			$TroopArea/AnimatedSprite.hide()
+			$TroopArea/AnimatedSprite2D.hide()
 			$TroopArea/Routed.show()
 			$TroopArea/Routed.play()
 			$TroopArea/Routed/RoutedSound.play()
@@ -1216,8 +1300,8 @@ func _on_camera_moved(camera_rect: Rect2, zoom: Vector2, scen):
 		$Title/TroopTitle.visible = false
 	else:
 		$Title/TroopTitle.visible = true
-		$Title/TroopTitle.rect_scale.x = min(1, min(1, zoom.x) + 0.5 / min(1, zoom.x)) * 1.5
-		$Title/TroopTitle.rect_scale.y = min(1, min(1, zoom.y) + 0.5 / min(1, zoom.y)) * 1.5
+		$Title/TroopTitle.scale.x = min(1, min(1, zoom.x) + 0.5 / min(1, zoom.x)) * 1.5
+		$Title/TroopTitle.scale.y = min(1, min(1, zoom.y) + 0.5 / min(1, zoom.y)) * 1.5
 
 func _get_animation_orientation(from: Vector2, to: Vector2):
 	if from.x == to.x:
@@ -1261,10 +1345,10 @@ func _on_EffectSprite_animation_finished():
 ####################################
 func _on_TroopArea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y, false)
 			get_tree().set_input_as_handled()
-		elif event.button_index == BUTTON_RIGHT and event.pressed:
+		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			call_deferred("emit_signal", "troop_clicked", self, event.global_position.x, event.global_position.y, true)
 			get_tree().set_input_as_handled()
 

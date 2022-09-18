@@ -12,71 +12,263 @@ enum Status { NONE,
 enum DeadReason { NATURAL, UNNNATURAL }
 enum AvailableReason { BROTHER, SPOUSE, CHILDREN, SIBLING, NONE }
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var alive: bool setget forbidden
-var gender: bool setget forbidden
+var alive: bool :
+	get:
+		return alive # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var gender: bool :
+	get:
+		return gender # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var surname: String setget forbidden
-var given_name: String setget forbidden
-var courtesy_name: String setget forbidden
+var surname: String :
+	get:
+		return surname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var given_name: String :
+	get:
+		return given_name # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var courtesy_name: String :
+	get:
+		return courtesy_name # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _location setget set_location, get_location
-var _status = Status.NONE setget forbidden, get_status
-var _old_faction_id = -1 setget forbidden
+var _location :
+	get:
+		return _location # TODOConverter40 Copy here content of get_location
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_location
+var _status = Status.NONE :
+	get:
+		return _status # TODOConverter40 Copy here content of get_status
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var _old_faction_id = -1 :
+	get:
+		return _old_faction_id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var command: int setget forbidden
-var strength: int setget forbidden
-var intelligence: int setget forbidden
-var politics: int setget forbidden
-var glamour: int setget forbidden
+var command: int :
+	get:
+		return command # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var strength: int :
+	get:
+		return strength # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var intelligence: int :
+	get:
+		return intelligence # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var politics: int :
+	get:
+		return politics # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var glamour: int :
+	get:
+		return glamour # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var internal_exp: int setget forbidden
-var combat_exp: int setget forbidden
-var stratagem_exp: int setget forbidden
+var internal_exp: int :
+	get:
+		return internal_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var combat_exp: int :
+	get:
+		return combat_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var stratagem_exp: int :
+	get:
+		return stratagem_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var command_exp: int setget forbidden
-var strength_exp: int setget forbidden
-var intelligence_exp: int setget forbidden
-var politics_exp: int setget forbidden
-var glamour_exp: int setget forbidden
+var command_exp: int :
+	get:
+		return command_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var strength_exp: int :
+	get:
+		return strength_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var intelligence_exp: int :
+	get:
+		return intelligence_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var politics_exp: int :
+	get:
+		return politics_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var glamour_exp: int :
+	get:
+		return glamour_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var military_type_exp: Dictionary setget forbidden
+var military_type_exp: Dictionary :
+	get:
+		return military_type_exp # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var popularity: int setget forbidden
-var prestige: int setget forbidden
-var karma: int setget forbidden
-var merit: int setget forbidden
+var popularity: int :
+	get:
+		return popularity # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var prestige: int :
+	get:
+		return prestige # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var karma: int :
+	get:
+		return karma # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var merit: int :
+	get:
+		return merit # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var available_year: int setget forbidden
-var born_year: int setget forbidden
-var death_year: int setget forbidden
-var available_architecture_id: int setget forbidden
-var dead_reason setget forbidden
+var available_year: int :
+	get:
+		return available_year # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var born_year: int :
+	get:
+		return born_year # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var death_year: int :
+	get:
+		return death_year # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var available_architecture_id: int :
+	get:
+		return available_architecture_id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var dead_reason :
+	get:
+		return dead_reason # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var working_task setget forbidden
-var producing_equipment setget forbidden
+var working_task :
+	get:
+		return working_task # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var producing_equipment :
+	get:
+		return producing_equipment # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var task_days = 0 setget forbidden
-var task_target setget forbidden
+var task_days = 0 :
+	get:
+		return task_days # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var task_target :
+	get:
+		return task_target # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var skills = {} setget forbidden
-var stunts = {} setget forbidden
+var skills = {} :
+	get:
+		return skills # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var stunts = {} :
+	get:
+		return stunts # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var strain: int setget forbidden
-var father setget forbidden
-var mother setget forbidden
-var spouses = [] setget forbidden
-var brothers = [] setget forbidden
+var strain: int :
+	get:
+		return strain # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var father :
+	get:
+		return father # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var mother :
+	get:
+		return mother # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var spouses = [] :
+	get:
+		return spouses # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var brothers = [] :
+	get:
+		return brothers # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var ideal: int setget forbidden
+var ideal: int :
+	get:
+		return ideal # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var loyalty_shift: int
 
-var ambition: int setget forbidden
-var morality: int setget forbidden
-var braveness: int setget forbidden
-var calmness: int setget forbidden
+var ambition: int :
+	get:
+		return ambition # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var morality: int :
+	get:
+		return morality # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var braveness: int :
+	get:
+		return braveness # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var calmness: int :
+	get:
+		return calmness # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var troop_damage_dealt: int
 var troop_damage_received: int
@@ -86,10 +278,18 @@ var routed_count: int
 var capture_count: int
 var be_captured_count: int
 
-var person_relations = {} setget forbidden
+var person_relations = {} :
+	get:
+		return person_relations # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var is_custom = false
 
-var attached_army setget forbidden
+var attached_army :
+	get:
+		return attached_army # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 signal person_died
 signal person_available
@@ -235,8 +435,8 @@ func save_data() -> Dictionary:
 func get_gender_str() -> String:
 	return tr('FEMALE') if gender else tr('MALE')
 
-func get_name() -> String:
-	return surname + given_name
+func get_name() -> StringName:
+	return StringName(surname + given_name)
 	
 func get_full_name() -> String:
 	var name = surname + given_name
@@ -514,14 +714,14 @@ func _set_id(v):
 func _set_gender(v):
 	gender = v
 
-func get_command():
+func is_command_or_control_pressed():
 	return command + command_exp / 1000
 	
-func set_command(v):
+func set_meta_pressed(v):
 	command = v
 	
 func get_command_detail_str():
-	return str(get_command()) + "(+" + str(command_exp / 1000) + ")"
+	return str(is_command_or_control_pressed()) + "(+" + str(command_exp / 1000) + ")"
 	
 func get_strength():
 	return strength + strength_exp / 1000
@@ -575,13 +775,13 @@ func get_commerce_ability():
 	return base
 	
 func get_morale_ability():
-	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.5 * get_glamour()
+	var base = 0.25 * is_command_or_control_pressed() + 0.25 * get_strength() + 0.5 * get_glamour()
 	base *= 1 + sqrt(get_popularity()) * 0.1 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.1 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.4
 	base = apply_influences('modify_person_morale_ability', {"value": base, "person": self})
 	return base
 	
 func get_endurance_ability():
-	var base = 0.25 * get_command() + 0.25 * get_strength() + 0.25 * get_intelligence() + 0.25 * get_politics()
+	var base = 0.25 * is_command_or_control_pressed() + 0.25 * get_strength() + 0.25 * get_intelligence() + 0.25 * get_politics()
 	base *= 1 + sqrt(get_popularity()) * 0.025 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.05 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.05
 	base = apply_influences('modify_person_endurance_ability', {"value": base, "person": self})
 	return base
@@ -593,7 +793,7 @@ func get_recruit_troop_ability():
 	return base
 	
 func get_train_troop_ability():
-	var base = 0.5 * get_command() + 0.5 * get_strength()
+	var base = 0.5 * is_command_or_control_pressed() + 0.5 * get_strength()
 	base *= 1 + sqrt(get_popularity()) * 0.2 + sign(get_prestige()) * sqrt(abs(get_prestige())) * 0.05 + sign(get_karma()) * sqrt(abs(get_karma())) * 0.05
 	base = apply_influences('modify_person_training_ability', {"value": base, "person": self})
 	return base
@@ -604,7 +804,7 @@ func get_produce_equipment_ability():
 	base = apply_influences('modify_person_produce_equipment_ability', {"value": base, "person": self})
 	return base
 
-func get_troop_leader_ability(params = null):
+func get_troop_leader_ability(params):
 	var mk = params["military_kind"] if params != null else null
 	var out_params = {
 		"person": self
@@ -612,7 +812,7 @@ func get_troop_leader_ability(params = null):
 	if mk != null:
 		out_params['military_kind'] = mk
 	
-	var command = get_command()
+	var command = is_command_or_control_pressed()
 	var strength = get_strength()
 	
 	var command_factor = 1
@@ -658,7 +858,7 @@ func get_skills():
 	var sorted = []
 	for s in skills:
 		sorted.append([s, skills[s]])
-	sorted.sort_custom(self, "__sort_key_id")
+	sorted.sort_custom(Callable(self,"__sort_key_id"))
 	var sorted_d = {}
 	for s in sorted:
 		sorted_d[s[0]] = s[1]
@@ -690,7 +890,7 @@ func get_stunts():
 	var sorted = []
 	for s in stunts:
 		sorted.append([s, stunts[s]])
-	sorted.sort_custom(self, "__sort_key_id")
+	sorted.sort_custom(Callable(self,"__sort_key_id"))
 	var sorted_d = {}
 	for s in sorted:
 		sorted_d[s[0]] = s[1]
@@ -748,7 +948,7 @@ func get_brother_names():
 		result = "----"
 	return result
 	
-func get_children():
+func get_childrens():
 	var result = []
 	for id in scenario.persons:
 		var p = scenario.persons[id]
@@ -783,7 +983,7 @@ func get_ideal_offset(other_person) -> int:
 func get_ideal_difference(other_person) -> float:
 	var diff = get_ideal_offset(other_person)
 	diff -= 15
-	diff += abs(get_command() - other_person.get_command()) / 50.0 # 0 - 2
+	diff += abs(is_command_or_control_pressed() - other_person.is_command_or_control_pressed()) / 50.0 # 0 - 2
 	diff += abs(get_strength() - other_person.get_strength()) / 50.0 # 0 - 2
 	diff += abs(get_intelligence() - other_person.get_intelligence()) / 50.0 # 0 - 2
 	diff += abs(get_politics() - other_person.get_politics()) / 50.0 # 0 - 2
@@ -1018,7 +1218,7 @@ func become_available():
 		return
 		
 	var brother_sorted = brothers.duplicate()
-	brother_sorted.sort_custom(self, "cmp_age_desc")
+	brother_sorted.sort_custom(Callable(self,"cmp_age_desc"))
 	for b in brother_sorted:
 		if b._status == Status.NORMAL or b._status == Status.WILD:
 			var arch = b.get_belonged_architecture() if b._status != Status.CAPTIVE else b.get_old_faction().capital
@@ -1028,7 +1228,7 @@ func become_available():
 			return
 	
 	var spouses_sorted = spouses.duplicate()
-	spouses_sorted.sort_custom(self, "cmp_age_desc")
+	spouses_sorted.sort_custom(Callable(self,"cmp_age_desc"))
 	for s in spouses_sorted:
 		if s._status == Status.NORMAL or s._status == Status.WILD:
 			var arch = s.get_belonged_architecture() if s._status != Status.CAPTIVE else s.get_old_faction().capital
@@ -1054,7 +1254,7 @@ func become_available():
 			return
 	
 	var siblings_sorted = get_siblings().duplicate()
-	siblings_sorted.sort_custom(self, "cmp_age_desc")
+	siblings_sorted.sort_custom(Callable(self,"cmp_age_desc"))
 	for p in siblings_sorted:
 		if p._status != Status.NONE:
 			var arch = p.get_belonged_architecture() if p._status != Status.CAPTIVE else p.get_old_faction().capital
@@ -1113,7 +1313,7 @@ func add_stratagem_exp(delta):
 
 func add_command_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})
-	command_exp = Util.f2ri(command_exp + delta * (50.0 / (get_command() + 50)))
+	command_exp = Util.f2ri(command_exp + delta * (50.0 / (is_command_or_control_pressed() + 50)))
 	
 func add_strength_exp(delta):
 	delta = apply_influences("modify_person_experience_gain", {"value": delta, "person": self})

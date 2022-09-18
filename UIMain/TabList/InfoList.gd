@@ -38,7 +38,7 @@ func _on_InfoMenu_stunts_clicked(scenario):
 	
 
 func show_data(data):
-	.show_data(data)
+	super.show_data(data)
 	_allow_empty_selection = true
 	
 	var item_list = tabs['BASIC'] as GridContainer
@@ -75,4 +75,4 @@ func _on_Confirm_pressed():
 		call_deferred("emit_signal", "edit_stunt_item_selected", selected)
 		
 	$ConfirmSound.play()
-	._on_Confirm_pressed()
+	super._on_Confirm_pressed()

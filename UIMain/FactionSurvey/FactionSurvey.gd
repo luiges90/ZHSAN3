@@ -1,8 +1,8 @@
 extends TabList
 class_name FactionSurvey
 
-export var full_size = 632
-export var minimize_size = 60
+@export var full_size = 632
+@export var minimize_size = 60
 var hidden = false
 
 var current_faction
@@ -49,10 +49,10 @@ func update_data():
 
 func _on_Minimize_pressed():
 	if not hidden:
-		$Tabs.hide()
-		rect_size.y = minimize_size
+		$TabBar.hide()
+		size.y = minimize_size
 		hidden = true
 	else:
-		$Tabs.show()
-		rect_size.y = full_size
+		$TabBar.show()
+		size.y = full_size
 		hidden = false

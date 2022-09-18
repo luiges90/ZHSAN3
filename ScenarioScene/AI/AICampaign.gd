@@ -80,7 +80,7 @@ func _create_troops(from_architecture, target, scenario, offensive) -> Array:
 				
 				candidates.append(troop)
 		
-		candidates.sort_custom(self, "__compare_troop_ai_value")
+		candidates.sort_custom(Callable(self,"__compare_troop_ai_value"))
 		var inner_troops_created = false
 		for troop in candidates:
 			if avail_positions.size() > 0 and persons.size() > 0:
@@ -116,7 +116,7 @@ func __starting_architecture_changed(troop):
 		troop._ai_path = troop.scenario.get_ai_path(troop.military_kind.movement_kind.id, troop.get_starting_architecture(), troop._ai_destination_architecture)
 	
 func _setup_starting_architecture_changed_signal(troop):
-	troop.connect("starting_architecture_changed", self, "__starting_architecture_changed")
+	troop.connect("starting_architecture_changed",Callable(self,"__starting_architecture_changed"))
 
 func defence(arch, section, scenario):
 	var enemy_troops = arch.enemy_troop_in_range(6)
@@ -157,7 +157,7 @@ func ___get_ai_value(troop):
 
 	var offence = troop.get_offence()
 	var defence = troop.get_defence()
-	var speed = troop.get_speed()
+	var speed = troop.get_velocity()
 	var initiative = troop.get_initiative()
 	var siege = troop.get_architecture_attack_factor()
 

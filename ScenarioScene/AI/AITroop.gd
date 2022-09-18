@@ -102,7 +102,7 @@ func run_troop(troop, scenario):
 				done = true
 		if not done:
 			var __path = troop._ai_path.duplicate()
-			__path.invert()
+			__path.reverse()
 			for p in __path:
 				var px = p.x
 				var py = p.y

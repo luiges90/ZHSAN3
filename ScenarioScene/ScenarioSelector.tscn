@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="FontFile" id=2]
 [ext_resource path="res://RootScene/ScenarioSelector.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 36
 font_data = ExtResource( 2 )
 
 [node name="ScenarioSelector" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.16626
-margin_top = -1.16632
-margin_right = -1.16626
-margin_bottom = -1.16632
+offset_left = -1.16626
+offset_top = -1.16632
+offset_right = -1.16626
+offset_bottom = -1.16632
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -23,10 +23,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 custom_fonts/font = SubResource( 1 )
 text = "SELECT_SCENARIO"
 align = 1
@@ -38,10 +38,10 @@ __meta__ = {
 [node name="ScenarioContainer" type="ScrollContainer" parent="."]
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 16.0
-margin_top = 64.0
-margin_right = -8.0
-margin_bottom = -8.0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = -8.0
+offset_bottom = -8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -55,10 +55,10 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 64.0
-margin_right = -16.0
-margin_bottom = -64.0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = -16.0
+offset_bottom = -64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,10 +69,10 @@ __meta__ = {
 }
 
 [node name="Confirm" type="Button" parent="."]
-margin_left = 1780.0
-margin_top = 944.0
-margin_right = 1904.0
-margin_bottom = 984.0
+offset_left = 1780.0
+offset_top = 944.0
+offset_right = 1904.0
+offset_bottom = 984.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CONFIRM"
@@ -81,10 +81,10 @@ __meta__ = {
 }
 
 [node name="Cancel" type="Button" parent="."]
-margin_left = 1651.0
-margin_top = 944.0
-margin_right = 1772.0
-margin_bottom = 984.0
+offset_left = 1651.0
+offset_top = 944.0
+offset_right = 1772.0
+offset_bottom = 984.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CANCEL"

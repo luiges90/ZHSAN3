@@ -30,7 +30,7 @@ func _on_create_troop(arch, troop):
 	
 	var positions = arch.create_troop_positions()
 	for p in positions:
-		_create_position_select_item(p, Color.blue)
+		_create_position_select_item(p, Color.BLUE)
 
 
 func _on_select_troop_move_to(troop):
@@ -39,7 +39,7 @@ func _on_select_troop_move_to(troop):
 	current_troop = troop
 	
 	for pos in current_troop.get_movement_area():
-		_create_position_select_item(pos, Color.blue)
+		_create_position_select_item(pos, Color.BLUE)
 		
 
 func _on_select_troop_attack(troop):
@@ -51,11 +51,11 @@ func _on_select_troop_attack(troop):
 	for t in scen.troops:
 		var target_troop = scen.troops[t]
 		if target_troop != null and target_troop != troop and target_troop.get_belonged_faction() != troop.get_belonged_faction():
-			_create_position_select_item(target_troop.map_position, Color.red)
+			_create_position_select_item(target_troop.map_position, Color.RED)
 	for a in scen.architectures:
 		var target_arch = scen.architectures[a]
 		if target_arch != null and target_arch.get_belonged_faction() != troop.get_belonged_faction():
-			_create_position_select_item(target_arch.map_position, Color.red)
+			_create_position_select_item(target_arch.map_position, Color.RED)
 			
 
 
@@ -68,7 +68,7 @@ func _on_select_troop_enter(troop):
 	for a in scen.architectures:
 		var target_arch = scen.architectures[a]
 		if target_arch != null and target_arch.get_belonged_faction() == troop.get_belonged_faction():
-			_create_position_select_item(target_arch.map_position, Color.blue)
+			_create_position_select_item(target_arch.map_position, Color.BLUE)
 
 
 func _on_select_troop_follow(troop):
@@ -80,7 +80,7 @@ func _on_select_troop_follow(troop):
 	for t in scen.troops:
 		var target_troop = scen.troops[t]
 		if target_troop != null and target_troop != troop:
-			_create_position_select_item(target_troop.map_position, Color.yellow)
+			_create_position_select_item(target_troop.map_position, Color.YELLOW)
 
 	
 func _on_select_troop_stunt_target(troop, stunt):
@@ -91,16 +91,16 @@ func _on_select_troop_stunt_target(troop, stunt):
 
 	var valid_targets = stunt.get_valid_target_squares(troop)
 	for t in valid_targets:
-		_create_position_select_item(t, Color.red)
+		_create_position_select_item(t, Color.RED)
 
 
-func _create_position_select_item(position, color = Color.white):
+func _create_position_select_item(position, color = Color.WHITE):
 	var item = preload("PositionSelectItem.tscn")
-	var instance = item.instance()
+	var instance = item.instantiate()
 	
 	instance.position = position * SharedData.TILE_SIZE
 	instance.scale = Vector2(SharedData.TILE_SIZE / 100.0, SharedData.TILE_SIZE / 100.0)
-	instance.connect("position_selected", self, "_on_position_selected", [position])
+	instance.connect("position_selected",Callable(self,"_on_position_selected").bind(position))
 	instance.set_color(color)
 	
 	add_child(instance)

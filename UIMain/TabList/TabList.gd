@@ -42,7 +42,7 @@ const _TYPE_ORDER = [TYPE_STRING, TYPE_INT]
 var _current_mouseover_rect
 
 func _ready():
-	connect("mouse_entered", self, "_on_TabList_mouse_entered")
+	connect("mouse_entered",Callable(self,"_on_TabList_mouse_entered"))
 
 func show_data(list):
 	# Subclasses should first call super and then override this to show data
@@ -62,12 +62,12 @@ func _post_show():
 ####################################
 # Control generation for subclass  #
 ####################################
-func _label(text: String, color = null):
+func _label(text: String, color):
 	var label = Label.new()
 	label.text = text
 	if color != null:
-		label.add_color_override('font_color', color)
-	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
+		label.add_theme_color_override('font_color', color)
+	label.connect("mouse_entered",Callable(self,"_item_mouse_entered").bind(label))
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label
 	
@@ -76,8 +76,8 @@ func _clickable_label(text: String, on_click_func, on_click_func_name, object):
 	label.text = text
 	label.underline = LinkButton.UNDERLINE_MODE_NEVER
 	label.mouse_default_cursor_shape = Control.CURSOR_ARROW
-	label.connect("pressed", on_click_func, on_click_func_name, [label, object])
-	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
+	label.connect("pressed",Callable(on_click_func,on_click_func_name).bind(label, object))
+	label.connect("mouse_entered",Callable(self,"_item_mouse_entered").bind(label))
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label
 
@@ -87,9 +87,9 @@ func _clickable_label_with_long_pressed_event(text: String, on_click_func, objec
 	label.text = text
 	label.underline = LinkButton.UNDERLINE_MODE_NEVER
 	label.mouse_default_cursor_shape = Control.CURSOR_ARROW
-	label.connect("button_down", self, "_long_pressed_down_event", [label])
-	label.connect("button_up", self, "_long_pressed_up_event", [label, on_click_func, object, checkbox])
-	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
+	label.connect("button_down",Callable(self,"_long_pressed_down_event").bind(label))
+	label.connect("button_up",Callable(self,"_long_pressed_up_event").bind(label, on_click_func, object, checkbox))
+	label.connect("mouse_entered",Callable(self,"_item_mouse_entered").bind(label))
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label
 	
@@ -99,8 +99,8 @@ func _title_sorting(text: String, on_click_func, on_click_func_name, object):
 	label.text = text
 	label.underline = LinkButton.UNDERLINE_MODE_NEVER
 	label.mouse_default_cursor_shape = Control.CURSOR_ARROW
-	label.connect("pressed", on_click_func, on_click_func_name, [label, object])
-	label.connect("mouse_entered", self, "_item_mouse_entered", [label])
+	label.connect("pressed",Callable(on_click_func,on_click_func_name).bind(label, object))
+	label.connect("mouse_entered",Callable(self,"_item_mouse_entered").bind(label))
 	label.mouse_filter = Control.MOUSE_FILTER_STOP
 	return label
 	
@@ -109,7 +109,7 @@ func _title(text: String):
 	label.text = text
 	var stylebox = StyleBoxFlat.new()
 	stylebox.bg_color = TITLE_COLOR
-	label.add_stylebox_override("normal", stylebox)
+	label.add_theme_stylebox_override("normal", stylebox)
 	return label
 	
 func _checkbox(id: int, checked: bool = false):
@@ -118,9 +118,9 @@ func _checkbox(id: int, checked: bool = false):
 	checkbox.add_to_group("checkboxes")
 	checkbox.add_to_group("id_" + str(id))
 	checkbox.set_meta("id", id)
-	checkbox.pressed = checked
-	checkbox.connect("pressed", self, "_checkbox_changed", [checkbox])
-	checkbox.connect("mouse_entered", self, "_item_mouse_entered", [checkbox])
+	checkbox.button_pressed = checked
+	checkbox.connect("pressed",Callable(self,"_checkbox_changed").bind(checkbox))
+	checkbox.connect("mouse_entered",Callable(self,"_item_mouse_entered").bind(checkbox))
 	checkbox.mouse_filter = Control.MOUSE_FILTER_STOP
 	if _max_selection == 1:
 		# We handle radio un/select manually, use separate button group for radio button icon
@@ -137,7 +137,7 @@ func _checkbox_changed(in_cb: CheckBox):
 			_on_Confirm_pressed()
 	
 	for group in in_cb.get_groups():
-		if group.find("id_") >= 0:
+		if String(group).find("id_") >= 0:
 			for checkbox in get_tree().get_nodes_in_group(group):
 				checkbox.set_pressed(in_cb.is_pressed())
 				
@@ -160,7 +160,7 @@ func _checkbox_change_status(checkbox: CheckBox):
 # https://godotengine.org/qa/9244/can-override-the-_ready-and-_process-functions-child-classes
 func handle_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			hide()
 
 func _input(event):
@@ -168,19 +168,19 @@ func _input(event):
 
 func _draw():
 	if _current_mouseover_rect != null:
-		draw_rect(_current_mouseover_rect, Color.white, false, 1.0)
+		draw_rect(_current_mouseover_rect, Color.WHITE, false, 1.0)
 
 func _item_mouse_entered(label: Control):
-	var y = label.rect_global_position.y - rect_global_position.y
-	var x = $Tabs.rect_global_position.x - rect_global_position.x
-	var width = $Tabs.rect_size.x
-	var height = label.rect_size.y
+	var y = label.global_position.y - global_position.y
+	var x = $TabBar.global_position.x - global_position.x
+	var width = $TabBar.size.x
+	var height = label.size.y
 	_current_mouseover_rect = Rect2(x, y, width, height)
-	update()
+	# update()
 
 func _on_TabList_mouse_entered():
 	_current_mouseover_rect = null
-	update()
+	# update()
 
 func _add_tab(title, at_position = tabs.size()):
 	if tabs.has(title):
@@ -189,14 +189,14 @@ func _add_tab(title, at_position = tabs.size()):
 	var new_tab_container = ScrollContainer.new()
 	new_tab_container.anchor_right = 1
 	new_tab_container.anchor_bottom = 1
-	new_tab_container.margin_top = 42
+	new_tab_container.offset_top = 42
 	new_tab_container.name = tr(title)
 	
 	var new_tab_data = GridContainer.new()
 	new_tab_container.add_child(new_tab_data)
 	new_tab_container.add_to_group("tab_" + title)
-	$Tabs.add_child(new_tab_container)
-	$Tabs.move_child(new_tab_container, at_position)
+	$TabBar.add_child(new_tab_container)
+	$TabBar.move_child(new_tab_container, at_position)
 	
 	tabs[title] = new_tab_data
 
@@ -205,17 +205,17 @@ func _remove_tab(title):
 		return
 
 	var tab = get_tree().get_nodes_in_group("tab_" + title)[0]
-	$Tabs.remove_child(tab)
+	$TabBar.remove_child(tab)
 
 	tabs.erase(title)
 
 func _long_pressed_down_event(label):
 	long_pressed_object_id = label.get_instance_id()
-	long_pressed_start_time = OS.get_system_time_msecs()
+	long_pressed_start_time = Time.get_unix_time_from_system() * 1000
 	
 func _long_pressed_up_event(label, receiver, object, checkbox):
 	if long_pressed_start_time > 0 and long_pressed_object_id > 0:
-		if OS.get_system_time_msecs() - long_pressed_start_time > LONG_PRESSED_TIME or checkbox == null:
+		if Time.get_unix_time_from_system() * 1000 - long_pressed_start_time > LONG_PRESSED_TIME or checkbox == null:
 			call_deferred("emit_signal", "long_pressed_signal", label, receiver, object, checkbox)
 		else:
 			call_deferred("emit_signal", "single_pressed_signal", label, receiver, object, checkbox)
@@ -302,11 +302,11 @@ func _on_title_sorting_click(label, object):
 # sort the list
 func _sorting_list(list_copy):	
 	if list_copy.size() != 0:
-		list_copy.sort_custom(self,"_custom_comparison")
+		list_copy.sort_custom(Callable(self,"_custom_comparison"))
 		# default comparison is in ascending order
 		match _current_order:
 			_sorting_order.DESC:
-				list_copy.invert()
+				list_copy.reverse()
 	return list_copy
 
 func __get_compare_value(_clicked_label, a, b):

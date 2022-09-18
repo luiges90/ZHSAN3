@@ -15,7 +15,7 @@ func _init(troop):
 class PositionItem:
 	var position: Vector2
 	var movement_left: int
-	func _init(pos, movement):
+	func _init(pos,movement):
 		position = pos
 		movement_left = movement
 
@@ -54,7 +54,7 @@ func find_path_to_ai_path() -> Array:
 	return target_position
 
 func get_movement_area() -> Array:
-	var start_item = PositionItem.new(troop.map_position, troop.get_speed())
+	var start_item = PositionItem.new(troop.map_position, troop.get_velocity())
 	var area = [start_item]
 	var position_queue = [start_item]
 	_stored_paths.clear()
@@ -81,13 +81,6 @@ func get_movement_area() -> Array:
 	
 func _clear_stored_to_ai_path():
 	_stored_to_ai_path.clear()
-	
-func has_stored_path_to(position) -> Array:
-	if _stored_paths.size() > 0:
-		return _stored_paths.has(position)
-	else:
-		get_movement_area()
-		return _stored_paths.has(position)
 	
 func get_stored_path_to(position) -> Array:
 	if _stored_to_ai_path.size() > 0 and _stored_to_ai_path.has(position):

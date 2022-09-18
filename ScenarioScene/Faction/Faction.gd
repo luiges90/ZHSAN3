@@ -1,22 +1,54 @@
 extends Node
 class_name Faction
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var gname: String setget forbidden
-var color: Color setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var color: Color :
+	get:
+		return color # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var leader setget forbidden, get_leader
-var advisor setget forbidden, get_advisor
+var leader :
+	get:
+		return leader # TODOConverter40 Copy here content of get_leader
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var advisor :
+	get:
+		return advisor # TODOConverter40 Copy here content of get_advisor
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _section_list = Array() setget forbidden, get_sections
+var _section_list = Array() :
+	get:
+		return _section_list # TODOConverter40 Copy here content of get_sections
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var capital setget forbidden
+var capital :
+	get:
+		return capital # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var player_controlled: bool
 
-var _destroyed: bool = false setget forbidden
+var _destroyed: bool = false :
+	get:
+		return _destroyed # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 signal destroyed
 
@@ -183,8 +215,8 @@ func change_leader():
 	var successor = null
 	
 	if successor == null:
-		var candidates = leader.get_children()
-		candidates.sort_custom(leader, "cmp_age_desc")
+		var candidates = leader.get_childrens()
+		candidates.sort_custom(Callable(leader,"cmp_age_desc"))
 		for p in candidates:
 			if not p.gender and p.get_belonged_faction() == self:
 				successor = p
@@ -192,7 +224,7 @@ func change_leader():
 				
 	if successor == null:
 		var candidates = leader.get_siblings()
-		candidates.sort_custom(leader, "cmp_age_desc")
+		candidates.sort_custom(Callable(leader,"cmp_age_desc"))
 		for p in candidates:
 			if not p.gender and p.get_belonged_faction() == self:
 				successor = p
@@ -200,7 +232,7 @@ func change_leader():
 	
 	if successor == null:
 		var candidates = leader.get_persons_with_same_strain()
-		candidates.sort_custom(leader, "cmp_age_desc")
+		candidates.sort_custom(Callable(leader,"cmp_age_desc"))
 		for p in candidates:
 			if not p.gender and p.get_belonged_faction() == self:
 				successor = p
@@ -208,7 +240,7 @@ func change_leader():
 				
 	if successor == null:
 		var candidates = leader.brothers
-		candidates.sort_custom(leader, "cmp_age_desc")
+		candidates.sort_custom(Callable(leader,"cmp_age_desc"))
 		for p in candidates:
 			if not p.gender and p.get_belonged_faction() == self:
 				successor = p
@@ -216,7 +248,7 @@ func change_leader():
 	
 	if successor == null:
 		var candidates = get_persons()
-		candidates.sort_custom(leader, "cmp_prestige_desc")
+		candidates.sort_custom(Callable(leader,"cmp_prestige_desc"))
 		for p in candidates:
 			if not p.gender and p.get_belonged_faction() == self:
 				successor = p

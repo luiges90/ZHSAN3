@@ -1,232 +1,210 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://brbd46a6kcb77"]
 
-[ext_resource path="res://Images/StartBackground.png" type="Texture" id=1]
-[ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=2]
-[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://Root.gd" type="Script" id=4]
-[ext_resource path="res://UIMain/SaveLoadMenu/SaveLoadMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://RootScene/ScenarioSelector.tscn" type="PackedScene" id=6]
-[ext_resource path="res://RootScene/GameConfiguration.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=8]
-[ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=9]
-[ext_resource path="res://RootScene/Options.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Music/Start.ogg" type="AudioStream" id=11]
-[ext_resource path="res://CustomOfficer.gd" type="Script" id=12]
-[ext_resource path="res://UIMain/TabList/PersonList.tscn" type="PackedScene" id=13]
-[ext_resource path="res://UIMain/PersonDetail/PersonDetail.tscn" type="PackedScene" id=14]
-[ext_resource path="res://UIMain/TabList/InfoList.tscn" type="PackedScene" id=15]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 3 )
+[ext_resource type="Texture2D" uid="uid://bpy1dcbfgwdy3" path="res://Images/StartBackground.png" id="1"]
+[ext_resource type="Theme" uid="uid://b8quy270ia6hn" path="res://UIMain/MainTheme.tres" id="2"]
+[ext_resource type="Script" path="res://Root.gd" id="4"]
+[ext_resource type="PackedScene" path="res://UIMain/SaveLoadMenu/SaveLoadMenu.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://RootScene/ScenarioSelector.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://RootScene/GameConfiguration.tscn" id="7"]
+[ext_resource type="AudioStream" uid="uid://bbjjxp1gkjyca" path="res://UIMain/Sounds/Click.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://cyhkep5hlk6dk" path="res://UIMain/Sounds/Close.wav" id="9"]
+[ext_resource type="PackedScene" path="res://RootScene/Options.tscn" id="10"]
+[ext_resource type="AudioStream" uid="uid://cf2dg6l7df4pg" path="res://Music/Start.ogg" id="11"]
+[ext_resource type="Script" path="res://CustomOfficer.gd" id="12"]
+[ext_resource type="PackedScene" path="res://UIMain/TabList/PersonList.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://UIMain/PersonDetail/PersonDetail.tscn" id="14"]
+[ext_resource type="PackedScene" path="res://UIMain/TabList/InfoList.tscn" id="15"]
 
 [node name="Root" type="Node"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1")
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
-margin_left = 50.0
-margin_top = 100.0
-margin_right = 300.0
-margin_bottom = 192.0
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 192.0
 
 [node name="NewGame" type="Button" parent="MainMenu"]
-margin_right = 350.0
-margin_bottom = 36.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_right = 250.0
+offset_bottom = 18.0
+theme = ExtResource("2")
 text = "NEW_GAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LoadGame" type="Button" parent="MainMenu"]
-margin_top = 56.0
-margin_right = 350.0
-margin_bottom = 92.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 22.0
+offset_right = 250.0
+offset_bottom = 40.0
+theme = ExtResource("2")
 text = "LOAD_GAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Options" type="Button" parent="MainMenu"]
-margin_top = 112.0
-margin_right = 350.0
-margin_bottom = 148.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 44.0
+offset_right = 250.0
+offset_bottom = 62.0
+theme = ExtResource("2")
 text = "OPTIONS"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CustomOfficers" type="Button" parent="MainMenu"]
-margin_top = 168.0
-margin_right = 350.0
-margin_bottom = 204.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 66.0
+offset_right = 250.0
+offset_bottom = 84.0
+theme = ExtResource("2")
 text = "CUSTOM_OFFICERS"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Credits" type="Button" parent="MainMenu"]
-margin_top = 224.0
-margin_right = 350.0
-margin_bottom = 260.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 88.0
+offset_right = 250.0
+offset_bottom = 106.0
+theme = ExtResource("2")
 text = "CREDITS"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Quit" type="Button" parent="MainMenu"]
-margin_top = 280.0
-margin_right = 350.0
-margin_bottom = 316.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 110.0
+offset_right = 250.0
+offset_bottom = 128.0
+theme = ExtResource("2")
 text = "QUIT_GAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CustomOfficer" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 12 )
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CustomOfficerMenu" type="VBoxContainer" parent="CustomOfficer"]
-margin_left = 50.0
-margin_top = 100.0
-margin_right = 391.0
-margin_bottom = 324.0
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 391.0
+offset_bottom = 324.0
 
 [node name="New" type="Button" parent="CustomOfficer/CustomOfficerMenu"]
-margin_right = 341.0
-margin_bottom = 36.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_right = 341.0
+offset_bottom = 36.0
+theme = ExtResource("2")
 text = "NEW_OFFICER"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Edit" type="Button" parent="CustomOfficer/CustomOfficerMenu"]
-margin_top = 56.0
-margin_right = 341.0
-margin_bottom = 92.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 56.0
+offset_right = 341.0
+offset_bottom = 92.0
+theme = ExtResource("2")
 text = "EDIT_OFFICER"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Delete" type="Button" parent="CustomOfficer/CustomOfficerMenu"]
-margin_top = 112.0
-margin_right = 341.0
-margin_bottom = 148.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 112.0
+offset_right = 341.0
+offset_bottom = 148.0
+theme = ExtResource("2")
 text = "DELETE_OFFICER"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Back" type="Button" parent="CustomOfficer/CustomOfficerMenu"]
-margin_top = 168.0
-margin_right = 341.0
-margin_bottom = 204.0
-theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+layout_mode = 2
+offset_top = 168.0
+offset_right = 341.0
+offset_bottom = 204.0
+theme = ExtResource("2")
 text = "BACK"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Click" type="AudioStreamPlayer" parent="CustomOfficer/CustomOfficerMenu"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
-[node name="PersonDetail" parent="CustomOfficer" instance=ExtResource( 14 )]
+[node name="PersonDetail" parent="CustomOfficer" instance=ExtResource("14")]
 visible = false
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.9
-margin_right = 0.0
-margin_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PersonList" parent="CustomOfficer" instance=ExtResource( 13 )]
+[node name="PersonList" parent="CustomOfficer" instance=ExtResource("13")]
 visible = false
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 0.0
+layout_mode = 1
+anchors_preset = -1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="InfoList" parent="CustomOfficer" instance=ExtResource( 15 )]
+[node name="InfoList" parent="CustomOfficer" instance=ExtResource("15")]
 visible = false
+layout_mode = 1
+anchors_preset = -1
 
 [node name="Close" type="AudioStreamPlayer" parent="CustomOfficer"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
-[node name="SaveLoadMenu" parent="." instance=ExtResource( 5 )]
+[node name="SaveLoadMenu" parent="." instance=ExtResource("5")]
 visible = false
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -300.0
-margin_right = 300.0
-margin_bottom = 0.0
+offset_left = -300.0
+offset_top = -187.0
+offset_right = 300.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScenarioSelector" parent="." instance=ExtResource( 6 )]
+[node name="ScenarioSelector" parent="." instance=ExtResource("6")]
 visible = false
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="GameConfiguration" parent="." instance=ExtResource( 7 )]
+[node name="GameConfiguration" parent="." instance=ExtResource("7")]
 visible = false
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Options" parent="." instance=ExtResource( 10 )]
+[node name="Options" parent="." instance=ExtResource("10")]
 visible = false
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Close" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource("11")
 volume_db = -20.0
 autoplay = true
 
@@ -239,8 +217,4 @@ autoplay = true
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/New" to="CustomOfficer" method="_on_New_pressed"]
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/Edit" to="CustomOfficer" method="_on_Edit_pressed"]
 [connection signal="pressed" from="CustomOfficer/CustomOfficerMenu/Back" to="CustomOfficer" method="_on_Back_pressed"]
-[connection signal="person_selected" from="CustomOfficer/PersonList" to="CustomOfficer" method="_on_PersonList_person_selected"]
-[connection signal="edit_skill_item_selected" from="CustomOfficer/InfoList" to="CustomOfficer" method="_on_InfoList_edit_skill_item_selected"]
-[connection signal="edit_stunt_item_selected" from="CustomOfficer/InfoList" to="CustomOfficer" method="_on_InfoList_edit_stunt_item_selected"]
 [connection signal="file_slot_clicked" from="SaveLoadMenu" to="." method="_on_SaveLoadMenu_file_slot_clicked"]
-[connection signal="confirmed_scenario" from="ScenarioSelector" to="." method="_on_ScenarioSelector_confirmed_scenario"]

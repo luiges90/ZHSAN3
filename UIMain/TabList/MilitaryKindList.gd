@@ -17,8 +17,8 @@ func _ready():
 	_add_tab('MOVEMENT_DETAILS')
 	_add_tab('TERRAIN_STRENGTH')
 	
-	self.connect("single_pressed_signal", self, "__on_clickable_label_click")
-	# self.connect("long_pressed_signal", self, "__on_clickable_label_long_pressed")
+	self.connect("single_pressed_signal",Callable(self,"__on_clickable_label_click"))
+	# self.connect("long_pressed_signal",Callable(self,"__on_clickable_label_long_pressed"))
 
 	
 func _on_InfoMenu_military_kind_clicked(scenario):
@@ -27,7 +27,7 @@ func _on_InfoMenu_military_kind_clicked(scenario):
 	show_data(scenario.military_kinds.values())
 
 func show_data(list: Array):
-	.show_data(list)
+	super.show_data(list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('MILITARY_KIND_LIST')
@@ -48,7 +48,7 @@ func show_data(list: Array):
 	_populate_movement_details_data(list, current_action)
 	_populate_terrain_strength_data(list, current_action)
 	show()
-	._post_show()
+	super._post_show()
 
 func _populate_basic_data(mk_list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer
@@ -207,7 +207,7 @@ func _on_Confirm_pressed():
 		Action.SELECT_TROOP_NAVAL_KIND:
 			call_deferred("emit_signal", "military_kind_selected", current_action, selected_kinds, {"naval": true})
 	$ConfirmSound.play()
-	._on_Confirm_pressed()
+	super._on_Confirm_pressed()
 
 func _on_PersonList_person_selected(task, arch, selected_person_ids):
 	_current_architecture = arch

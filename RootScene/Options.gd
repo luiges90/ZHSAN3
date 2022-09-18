@@ -5,16 +5,16 @@ extends Panel
 func _ready():
 	GameConfig.load_game_config()
 
-	$G/BGM.pressed = GameConfig.bgm_enabled
-	$G/SE.pressed = GameConfig.se_enabled
-	$G/TroopAnimation.pressed = GameConfig.enable_troop_animations
+	$G/BGM.button_pressed = GameConfig.bgm_enabled
+	$G/SE.button_pressed = GameConfig.se_enabled
+	$G/TroopAnimation.button_pressed = GameConfig.enable_troop_animations
 	$G/TroopAnimationSpeed.text = str(GameConfig.troop_animation_speed)
 	$G/DialogShowTime.text = str(GameConfig.dialog_show_time)
 	$G/BubbleShowTime.text = str(GameConfig.bubble_show_time)
-	$G/RadioButtonDirectSelect.pressed = GameConfig.radio_button_direct_select
-	$G/AutoSave.pressed = GameConfig.auto_save
+	$G/RadioButtonDirectSelect.button_pressed = GameConfig.radio_button_direct_select
+	$G/AutoSave.button_pressed = GameConfig.auto_save
 	$G/AutoSaveInterval.text = str(GameConfig.auto_save_interval)
-	$G/EnableInGameEdit.pressed = GameConfig.enable_edit
+	$G/EnableInGameEdit.button_pressed = GameConfig.enable_edit
 
 
 func _on_Cancel_pressed():

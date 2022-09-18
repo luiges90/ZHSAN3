@@ -1,17 +1,49 @@
 class_name AttachedArmy
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var scenario
 
-var military_kind setget forbidden
-var naval_military_kind setget forbidden
-var quantity: int setget forbidden
-var morale: int setget forbidden
-var combativity: int setget forbidden
-var experience: int setget forbidden
+var military_kind :
+	get:
+		return military_kind # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var naval_military_kind :
+	get:
+		return naval_military_kind # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var quantity: int :
+	get:
+		return quantity # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var morale: int :
+	get:
+		return morale # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var combativity: int :
+	get:
+		return combativity # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var experience: int :
+	get:
+		return experience # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var officer_ids setget forbidden
+var officer_ids :
+	get:
+		return officer_ids # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 func forbidden(x):
 	assert(false)

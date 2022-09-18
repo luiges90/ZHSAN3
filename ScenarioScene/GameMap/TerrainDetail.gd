@@ -1,14 +1,30 @@
 extends Node
 class_name TerrainDetail
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var gname: String setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var terrain_ids = [] setget forbidden
+var terrain_ids = [] :
+	get:
+		return terrain_ids # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var is_naval: bool setget forbidden
+var is_naval: bool :
+	get:
+		return is_naval # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
  
 func forbidden(x):
 	assert(false)

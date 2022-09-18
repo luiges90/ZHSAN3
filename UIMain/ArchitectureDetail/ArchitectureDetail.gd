@@ -5,7 +5,7 @@ var current_architecture: Architecture
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			hide()
 
 func set_data():
@@ -39,7 +39,7 @@ func set_data():
 		
 		var name = Label.new()
 		name.text = s.get_name_with_level(current_architecture.specialties[s])
-		name.add_color_override("font_color", s.color)
+		name.add_theme_color_override("font_color", s.color)
 		var desc = Label.new()
 		desc.text = s.description
 		
@@ -52,7 +52,7 @@ func set_data():
 		if mk.has_equipments():
 			var lbl_title = Label.new()
 			lbl_title.text = mk.get_name()
-			lbl_title.add_color_override("font_color", Color.cyan)
+			lbl_title.add_theme_color_override("font_color", Color.CYAN)
 			$EquipmentCounts.add_child(lbl_title)
 			
 			var lbl_count = Label.new()

@@ -47,7 +47,7 @@ func _on_start_date_runner(day_count):
 				year += 1
 				call_deferred("emit_signal", "year_passed")
 		call_deferred("emit_signal", "date_updated", year, month, day, get_season())
-		yield(scenario, "all_faction_finished")
+		await scenario.all_faction_finished
 	stop_date_runner = false
 	call_deferred("emit_signal", "date_runner_stopped")
 	

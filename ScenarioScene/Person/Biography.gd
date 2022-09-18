@@ -1,10 +1,18 @@
 extends Node
 class_name Biography
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var text: String setget forbidden
+var text: String :
+	get:
+		return text # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 func forbidden(x):
 	assert(false)

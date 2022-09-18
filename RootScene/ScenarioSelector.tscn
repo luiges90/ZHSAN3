@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/font_header.tres" type="FontFile" id=2]
 [ext_resource path="res://RootScene/ScenarioSelector.gd" type="Script" id=3]
 [ext_resource path="res://UIMain/TabList/PersonList.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UIMain/TabList/ArchitectureList.tscn" type="PackedScene" id=5]
@@ -23,10 +23,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 custom_fonts/font = ExtResource( 2 )
 text = "SELECT_SCENARIO"
 align = 1
@@ -38,11 +38,11 @@ __meta__ = {
 [node name="ScenarioContainer" type="ScrollContainer" parent="."]
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 16.0
-margin_top = 64.0
-margin_right = -8.0
-margin_bottom = -8.0
-custom_styles/bg = SubResource( 1 )
+offset_left = 16.0
+offset_top = 64.0
+offset_right = -8.0
+offset_bottom = -8.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,11 +56,11 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 64.0
-margin_right = -16.0
-margin_bottom = -64.0
-custom_styles/bg = SubResource( 2 )
+offset_left = 8.0
+offset_top = 64.0
+offset_right = -16.0
+offset_bottom = -64.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,16 +73,16 @@ __meta__ = {
 [node name="HL" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -56.0
-margin_bottom = -16.0
+offset_left = 16.0
+offset_top = -56.0
+offset_bottom = -16.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CustomOfficers" type="Button" parent="HL"]
-margin_right = 199.0
-margin_bottom = 40.0
+offset_right = 199.0
+offset_bottom = 40.0
 grow_vertical = 0
 disabled = true
 text = "CUSTOM_OFFICERS"
@@ -91,9 +91,9 @@ __meta__ = {
 }
 
 [node name="NewFactions" type="Button" parent="HL"]
-margin_left = 203.0
-margin_right = 376.0
-margin_bottom = 40.0
+offset_left = 203.0
+offset_right = 376.0
+offset_bottom = 40.0
 grow_vertical = 0
 disabled = true
 text = "NEW_FACTIONS"
@@ -106,9 +106,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -56.0
-margin_right = -16.0
-margin_bottom = -16.0
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 __meta__ = {
@@ -116,8 +116,8 @@ __meta__ = {
 }
 
 [node name="Cancel" type="Button" parent="HR"]
-margin_right = 121.0
-margin_bottom = 40.0
+offset_right = 121.0
+offset_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CANCEL"
@@ -126,9 +126,9 @@ __meta__ = {
 }
 
 [node name="Confirm" type="Button" parent="HR"]
-margin_left = 125.0
-margin_right = 249.0
-margin_bottom = 40.0
+offset_left = 125.0
+offset_right = 249.0
+offset_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 0
 disabled = true

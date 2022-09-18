@@ -19,7 +19,9 @@ func _update_items():
 	var err = file.open("user://Saves/saves.json", File.READ)
 	if err == OK:
 		var json = file.get_as_text()
-		var obj = parse_json(json)
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(json)
+		var obj = test_json_conv.get_data()
 		for key in obj:
 			var node = get_node("Game" + key)
 			node.text = obj[key]
@@ -44,11 +46,13 @@ func _on_game_pressed(name: String):
 		var file = File.new()
 		file.open(path + "/saves.json", File.READ_WRITE)
 		var json = file.get_as_text()
-		var obj = parse_json(json)
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(json)
+		var obj = test_json_conv.get_data()
 		if obj == null:
 			obj = {}
 		obj[name] = name + "：" + player_name + "　" + Util.current_date_str()
-		file.store_line(to_json(obj))
+		file.store_line(JSON.new().stringify(obj))
 		file.close()
 
 func _on_Game1_pressed():
@@ -95,7 +99,7 @@ func _on_SystemMenu_save_clicked():
 	mode = MODE.SAVE
 	$Title.text = tr('SAVE_GAME')
 	for node in get_children():
-		if node.get_name().begins_with("Game"):
+		if String(node.get_name()).begins_with("Game"):
 			node.disabled = false
 	_update_items()
 	show()
@@ -109,7 +113,7 @@ func load_game():
 	mode = MODE.LOAD
 	$Title.text = tr('LOAD_GAME')
 	for node in get_children():
-		if node.get_name().begins_with("Game"):
+		if String(node.get_name()).begins_with("Game"):
 			node.disabled = true
 	_update_items()
 	show()

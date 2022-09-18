@@ -11,7 +11,7 @@ func _ready():
 	_add_tab('BASIC')
 
 func show_data(army_list: Array):
-	.show_data(army_list)
+	super.show_data(army_list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('ATTACHED_ARMY_LIST')
@@ -31,7 +31,7 @@ func show_data(army_list: Array):
 	_populate_basic_data(army_list, current_action)
 
 	show()
-	._post_show()
+	super._post_show()
 
 
 func _populate_basic_data(army_list: Array, action):
@@ -115,7 +115,7 @@ func _on_Confirm_pressed():
 	var selected_army = _get_selected_list()
 
 	call_deferred("emit_signal", "attached_army_selected", current_action, current_architecture, selected_army, {})
-	._on_Confirm_pressed()
+	super._on_Confirm_pressed()
 
 	
 func _on_ArchitectureMenu_update_attached_army(arch, armies):

@@ -13,7 +13,7 @@ func _on_TroopMenu_troop_detail_clicked(troop):
 	
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			hide()
 
 func set_data():
@@ -43,7 +43,7 @@ func set_data():
 	$A/H1/Content/Quantity.text = str(current_troop.quantity)
 	$A/H1/Content/Offence.text = str(current_troop.get_offence())
 	$A/H1/Content/Defence.text = str(current_troop.get_defence())
-	$A/H1/Content/Speed.text = str(current_troop.get_speed())
+	$A/H1/Content/Speed.text = str(current_troop.get_velocity())
 	$A/H1/Content/Initiative.text = str(current_troop.get_initiative())
 	$A/H1/Content/Critical.text = str(current_troop.critical_chance() * 100) + "%"
 	$A/H1/Content/AntiCritical.text = str(current_troop.anti_critical_chance() * 100) + "%"

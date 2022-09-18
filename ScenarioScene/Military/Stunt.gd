@@ -4,35 +4,111 @@ class_name Stunt
 enum TargetType { ALLIES, ENEMIES, ALL }
 enum CompetitionAbility { NONE, COMMAND, STRENGTH, INTELLIGENCE }
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var gname: String setget forbidden
-var color: Color setget forbidden
-var description: String setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var color: Color :
+	get:
+		return color # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var description: String :
+	get:
+		return description # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var target_range: int setget forbidden
-var effect_range: int setget forbidden
+var target_range: int :
+	get:
+		return target_range # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var effect_range: int :
+	get:
+		return effect_range # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var tile_effect: String setget forbidden
+var tile_effect: String :
+	get:
+		return tile_effect # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var combativity_cost: int setget forbidden
-var duration: int setget forbidden
+var combativity_cost: int :
+	get:
+		return combativity_cost # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var duration: int :
+	get:
+		return duration # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var experience: int setget forbidden
+var experience: int :
+	get:
+		return experience # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var influences setget forbidden
-var conditions setget forbidden
-var ai_conditions setget forbidden
+var influences :
+	get:
+		return influences # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var conditions :
+	get:
+		return conditions # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var ai_conditions :
+	get:
+		return ai_conditions # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var learn_conditions setget forbidden
-var max_level: int setget forbidden
+var learn_conditions :
+	get:
+		return learn_conditions # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var max_level: int :
+	get:
+		return max_level # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var target_type setget forbidden
+var target_type :
+	get:
+		return target_type # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var success_chance: float setget forbidden
-var competition_ability setget forbidden
-var ability_chance_rate: float setget forbidden
+var success_chance: float :
+	get:
+		return success_chance # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var competition_ability :
+	get:
+		return competition_ability # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var ability_chance_rate: float :
+	get:
+		return ability_chance_rate # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 func forbidden(x):
 	assert(false)
@@ -82,8 +158,8 @@ func save_data() -> Dictionary:
 		"Influences": influences
 	}
 
-func get_name() -> String:
-	return gname
+func get_name() -> StringName:
+	return StringName(gname)
 
 func get_color():
 	return color

@@ -13,8 +13,8 @@ func _init():
 	texture_food_shortage = preload("res://UIMain/TroopTitle/FoodShortage.png")
 
 func show_data(troop: Troop):
-	$Background/Morale.rect_scale.x = troop.morale / 100.0
-	$Background/Combativity.rect_scale.x = troop.combativity / 100.0
+	$Background/Morale.scale.x = troop.morale / 100.0
+	$Background/Combativity.scale.x = troop.combativity / 100.0
 	$Background/Portrait.texture = troop.get_leader().get_portrait()
 
 	$Background/LeaderName.text = troop.get_leader().get_name()

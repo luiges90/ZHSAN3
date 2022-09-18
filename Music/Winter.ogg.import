@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Winter.ogg-b5a3d99e58e88bf3aa0aeae977faf1aa.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bx03w87r1gtv4"
+path="res://.godot/imported/Winter.ogg-b5a3d99e58e88bf3aa0aeae977faf1aa.oggvorbisstr"
 
 [deps]
 
 source_file="res://Music/Winter.ogg"
-dest_files=[ "res://.import/Winter.ogg-b5a3d99e58e88bf3aa0aeae977faf1aa.oggstr" ]
+dest_files=["res://.godot/imported/Winter.ogg-b5a3d99e58e88bf3aa0aeae977faf1aa.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

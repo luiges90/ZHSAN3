@@ -5,46 +5,46 @@
 [ext_resource path="res://UIMain/ContextMenu/ContextMenu.tscn" type="PackedScene" id=6]
 
 [node name="SystemMenu" instance=ExtResource( 6 )]
-margin_right = 180.0
-margin_bottom = 106.0
+offset_right = 180.0
+offset_bottom = 106.0
 script = ExtResource( 2 )
 
 [node name="V" type="VBoxContainer" parent="." index="3"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="V" index="0"]
-margin_right = 153.0
-margin_bottom = 34.0
+offset_right = 153.0
+offset_bottom = 34.0
 custom_styles/normal = ExtResource( 5 )
 text = "SYSTEM"
 align = 1
 
 [node name="Save" type="Button" parent="V" index="1"]
-margin_top = 30.0
-margin_right = 153.0
-margin_bottom = 68.1229
+offset_top = 30.0
+offset_right = 153.0
+offset_bottom = 68.1229
 text = "SAVE_GAME"
 
 [node name="Load" type="Button" parent="V" index="2"]
-margin_top = 64.0
-margin_right = 153.0
-margin_bottom = 102.123
+offset_top = 64.0
+offset_right = 153.0
+offset_bottom = 102.123
 text = "LOAD_GAME"
 
 [node name="Info" type="Button" parent="V" index="3"]
-margin_top = 98.0
-margin_right = 153.0
-margin_bottom = 136.123
+offset_top = 98.0
+offset_right = 153.0
+offset_bottom = 136.123
 text = "GAME_INFO"
 
 [node name="Quit" type="Button" parent="V" index="4"]
-margin_top = 132.0
-margin_right = 153.0
-margin_bottom = 170.123
+offset_top = 132.0
+offset_right = 153.0
+offset_bottom = 170.123
 text = "QUIT_GAME"
 [connection signal="pressed" from="V/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="V/Load" to="." method="_on_Load_pressed"]

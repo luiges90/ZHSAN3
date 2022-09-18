@@ -21,7 +21,7 @@ func show_dialog(person: Person, text, sound = SoundType.NONE):
 			else:
 				$Portrait.texture =  SharedData.person_portraits[SharedData.PERSON_PORTRAIT_BLANK]
 			$SpeakerPanel/Speaker.text = tr('NARRATOR')
-		$DialogPanel/Dialog.bbcode_text = text
+		$DialogPanel/Dialog.text = text
 		
 		match sound:
 			SoundType.OCCUPY_ARCHITECTURE: $OccupyArchitecture.play()
@@ -37,5 +37,5 @@ func _on_Timer_timeout():
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) and event.pressed:
+		if (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT) and event.pressed:
 			hide()

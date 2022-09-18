@@ -1,6 +1,6 @@
 extends Control
 
-onready var map_size = Vector2($MapTexture.rect_size.x, $MapTexture.rect_size.y)
+@onready var map_size = Vector2($MapTexture.size.x, $MapTexture.size.y)
 
 var view_rectangle = Rect2(0, 0, 0, 0)
 var architecture_positions = {}
@@ -51,7 +51,7 @@ func _on_architecture_faction_changed(arch, scen):
 	if faction != null:
 		color = faction.color
 	else:
-		color = Color.white
+		color = Color.WHITE
 	architecture_positions[arch.id] = {
 		"position": __scen_position_to_map_position(arch.map_position),
 		"color": color
@@ -71,7 +71,7 @@ func _on_troop_created(scen, troop):
 	if faction != null:
 		color = faction.color
 	else:
-		color = Color.white
+		color = Color.WHITE
 	troop_positions[troop.id] = {
 		"position": __scen_position_to_map_position(troop.map_position),
 		"color": color
@@ -82,7 +82,7 @@ func _on_troop_removed(scen, troop):
 
 
 func _on_PaintLayer_mouse_down(event):
-	if event.button_mask == BUTTON_LEFT:
+	if event.button_mask == MOUSE_BUTTON_LEFT:
 		var real_pos = Vector2(event.position.x, event.position.y)
-		if real_pos.x >= 0 and real_pos.y >= 0 and real_pos.x <= $PaintLayer.rect_size.x and real_pos.y <= $PaintLayer.rect_size.y:
+		if real_pos.x >= 0 and real_pos.y >= 0 and real_pos.x <= $PaintLayer.size.x and real_pos.y <= $PaintLayer.size.y:
 			call_deferred("emit_signal", 'focus_camera', __map_position_to_scen_position(real_pos))

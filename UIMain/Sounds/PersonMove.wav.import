@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/PersonMove.wav-7043d1e29999f335a6563b01d70ad308.sample"
+type="AudioStreamWAV"
+uid="uid://dg52ibbcwn1ty"
+path="res://.godot/imported/PersonMove.wav-7043d1e29999f335a6563b01d70ad308.sample"
 
 [deps]
 
 source_file="res://UIMain/Sounds/PersonMove.wav"
-dest_files=[ "res://.import/PersonMove.wav-7043d1e29999f335a6563b01d70ad308.sample" ]
+dest_files=["res://.godot/imported/PersonMove.wav-7043d1e29999f335a6563b01d70ad308.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

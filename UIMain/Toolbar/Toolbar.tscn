@@ -1,16 +1,16 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://UIMain/Toolbar/Background.png" type="Texture" id=1]
-[ext_resource path="res://UIMain/Toolbar/UpperArrow.png" type="Texture" id=2]
-[ext_resource path="res://UIMain/Toolbar/LowerArrow.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://UIMain/Toolbar/Background.png" type="Texture2D" id=1]
+[ext_resource path="res://UIMain/Toolbar/UpperArrow.png" type="Texture2D" id=2]
+[ext_resource path="res://UIMain/Toolbar/LowerArrow.png" type="Texture2D" id=3]
+[ext_resource path="res://Fonts/FZLB_GBK.TTF" type="FontFile" id=4]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=5]
-[ext_resource path="res://UIMain/Toolbar/Play.png" type="Texture" id=6]
-[ext_resource path="res://UIMain/Toolbar/PlaySelected.png" type="Texture" id=7]
-[ext_resource path="res://UIMain/Toolbar/UpperArrowSelected.png" type="Texture" id=8]
-[ext_resource path="res://UIMain/Toolbar/LowerArrowSelected.png" type="Texture" id=9]
-[ext_resource path="res://UIMain/Toolbar/StopSelected.png" type="Texture" id=10]
-[ext_resource path="res://UIMain/Toolbar/Stop.png" type="Texture" id=11]
+[ext_resource path="res://UIMain/Toolbar/Play.png" type="Texture2D" id=6]
+[ext_resource path="res://UIMain/Toolbar/PlaySelected.png" type="Texture2D" id=7]
+[ext_resource path="res://UIMain/Toolbar/UpperArrowSelected.png" type="Texture2D" id=8]
+[ext_resource path="res://UIMain/Toolbar/LowerArrowSelected.png" type="Texture2D" id=9]
+[ext_resource path="res://UIMain/Toolbar/StopSelected.png" type="Texture2D" id=10]
+[ext_resource path="res://UIMain/Toolbar/Stop.png" type="Texture2D" id=11]
 [ext_resource path="res://UIMain/Toolbar/Toolbar.gd" type="Script" id=12]
 [ext_resource path="res://UIMain/Toolbar/ToolbarTheme.tres" type="Theme" id=13]
 [ext_resource path="res://UIMain/Sounds/Select.wav" type="AudioStream" id=14]
@@ -18,16 +18,16 @@
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 1024, 48 )
-margin_right = 400.0
+offset_right = 400.0
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 24
 font_data = ExtResource( 4 )
 
 [node name="Toolbar" type="Panel"]
 anchor_right = 1.0
-margin_right = 0.00012207
-margin_bottom = 48.0
+offset_right = 0.00012207
+offset_bottom = 48.0
 theme = ExtResource( 13 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 12 )
@@ -36,22 +36,22 @@ __meta__ = {
 }
 
 [node name="DateRunner" type="HBoxContainer" parent="."]
-margin_left = 5.0
+offset_left = 5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TensDigit" type="VBoxContainer" parent="DateRunner"]
-margin_right = 20.0
-margin_bottom = 45.0
+offset_right = 20.0
+offset_bottom = 45.0
 
 [node name="Up10" type="TextureButton" parent="DateRunner/TensDigit" groups=[
 "date_runner_change_digit",
 ]]
-margin_right = 20.0
-margin_bottom = 5.0
+offset_right = 20.0
+offset_bottom = 5.0
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 8 )
@@ -60,9 +60,9 @@ __meta__ = {
 }
 
 [node name="Text10" type="Label" parent="DateRunner/TensDigit"]
-margin_top = 9.0
-margin_right = 20.0
-margin_bottom = 36.0
+offset_top = 9.0
+offset_right = 20.0
+offset_bottom = 36.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 2 )
 text = "0"
@@ -72,11 +72,11 @@ valign = 1
 [node name="Down10" type="TextureButton" parent="DateRunner/TensDigit" groups=[
 "date_runner_change_digit",
 ]]
-margin_top = 40.0
-margin_right = 20.0
-margin_bottom = 45.0
+offset_top = 40.0
+offset_right = 20.0
+offset_bottom = 45.0
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 9 )
@@ -85,17 +85,17 @@ __meta__ = {
 }
 
 [node name="UnitDigit" type="VBoxContainer" parent="DateRunner"]
-margin_left = 24.0
-margin_right = 44.0
-margin_bottom = 45.0
+offset_left = 24.0
+offset_right = 44.0
+offset_bottom = 45.0
 
 [node name="Up" type="TextureButton" parent="DateRunner/UnitDigit" groups=[
 "date_runner_change_digit",
 ]]
-margin_right = 20.0
-margin_bottom = 5.0
+offset_right = 20.0
+offset_bottom = 5.0
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 8 )
@@ -104,9 +104,9 @@ __meta__ = {
 }
 
 [node name="Text" type="Label" parent="DateRunner/UnitDigit"]
-margin_top = 9.0
-margin_right = 20.0
-margin_bottom = 36.0
+offset_top = 9.0
+offset_right = 20.0
+offset_bottom = 36.0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 2 )
 text = "0"
@@ -116,11 +116,11 @@ valign = 1
 [node name="Down" type="TextureButton" parent="DateRunner/UnitDigit" groups=[
 "date_runner_change_digit",
 ]]
-margin_top = 40.0
-margin_right = 20.0
-margin_bottom = 45.0
+offset_top = 40.0
+offset_right = 20.0
+offset_bottom = 45.0
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 9 )
@@ -129,55 +129,55 @@ __meta__ = {
 }
 
 [node name="Play" type="TextureButton" parent="DateRunner"]
-margin_left = 48.0
-margin_top = 5.0
-margin_right = 83.0
-margin_bottom = 40.0
+offset_left = 48.0
+offset_top = 5.0
+offset_right = 83.0
+offset_bottom = 40.0
 focus_mode = 0
 size_flags_vertical = 4
-enabled_focus_mode = 0
+focus_mode = 0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 stretch_mode = 3
 
 [node name="Stop" type="TextureButton" parent="DateRunner"]
-margin_left = 87.0
-margin_top = 5.0
-margin_right = 122.0
-margin_bottom = 40.0
+offset_left = 87.0
+offset_top = 5.0
+offset_right = 122.0
+offset_bottom = 40.0
 focus_mode = 0
 size_flags_vertical = 4
-enabled_focus_mode = 0
+focus_mode = 0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 10 )
 stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="DateRunner"]
-margin_left = 126.0
-margin_right = 270.415
-margin_bottom = 45.0
-custom_constants/margin_top = 4
-custom_constants/margin_left = 4
-custom_constants/margin_bottom = 4
+offset_left = 126.0
+offset_right = 270.415
+offset_bottom = 45.0
+custom_constants/offset_top = 4
+custom_constants/offset_left = 4
+custom_constants/offset_bottom = 4
 
 [node name="GameRecord" type="Button" parent="DateRunner/MarginContainer"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 144.415
-margin_bottom = 41.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 144.415
+offset_bottom = 41.0
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 text = "GAME_RECORD"
 
 [node name="EndContainer" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 0
 custom_constants/separation = 16
 __meta__ = {
@@ -185,23 +185,23 @@ __meta__ = {
 }
 
 [node name="Map" type="Button" parent="EndContainer"]
-margin_right = 57.4148
-margin_bottom = 32.0
+offset_right = 57.4148
+offset_bottom = 32.0
 grow_horizontal = 0
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 text = "MAP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="System" type="Button" parent="EndContainer"]
-margin_left = 73.0
-margin_right = 159.415
-margin_bottom = 32.0
+offset_left = 73.0
+offset_right = 159.415
+offset_bottom = 32.0
 grow_horizontal = 0
 focus_mode = 0
-enabled_focus_mode = 0
+focus_mode = 0
 text = "SYSTEM"
 __meta__ = {
 "_edit_use_anchors_": false

@@ -59,17 +59,17 @@ func update_views(initing):
 				$S/G.add_child(lbl_title)
 				
 				var lbl_from = Label.new()
-				lbl_from.align = Label.ALIGN_CENTER
+				lbl_from.align = Label.ALIGNMENT_CENTER
 				$S/G.add_child(lbl_from)
 				items['from'] = lbl_from
 				
 				var le_amount = LineEdit.new()
 				$S/G.add_child(le_amount)
-				le_amount.connect("text_changed", self, "_on_equipment_text_changed", [mk], 0)
+				le_amount.connect("text_changed",Callable(self,"_on_equipment_text_changed").bind(mk),0)
 				items['amount'] = le_amount
 				
 				var lbl_to = Label.new()
-				lbl_to.align = Label.ALIGN_CENTER
+				lbl_to.align = Label.ALIGNMENT_CENTER
 				$S/G.add_child(lbl_to)
 				items['to'] = lbl_to
 			
@@ -98,7 +98,7 @@ func update_views(initing):
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if (event.button_index == BUTTON_RIGHT) and event.pressed:
+		if (event.button_index == MOUSE_BUTTON_RIGHT) and event.pressed:
 			if GameConfig.se_enabled:
 				$CancelSound.play()
 			hide()

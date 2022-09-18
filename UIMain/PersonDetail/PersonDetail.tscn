@@ -1,18 +1,18 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Images/PersonPortrait/default-male-martial.jpg" type="Texture" id=2]
-[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Images/PersonPortrait/default-male-martial.jpg" type="Texture2D" id=2]
+[ext_resource path="res://Fonts/font_header.tres" type="FontFile" id=3]
 [ext_resource path="res://UIMain/PersonDetail/PersonDetail.gd" type="Script" id=4]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=5]
-[ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Fonts/font_subheader.tres" type="FontFile" id=6]
 [ext_resource path="res://UIMain/TabList/PersonList.tscn" type="PackedScene" id=7]
 
 [node name="PersonDetail" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -342.0
-margin_bottom = -168.0
+offset_right = -342.0
+offset_bottom = -168.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -20,44 +20,44 @@ __meta__ = {
 }
 
 [node name="Portrait" type="TextureRect" parent="."]
-margin_left = 16.0
-margin_top = 16.0
-rect_scale = Vector2( 0.5, 0.5 )
+offset_left = 16.0
+offset_top = 16.0
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Name" type="Label" parent="."]
-margin_left = 288.0
-margin_top = 16.0
+offset_left = 288.0
+offset_top = 16.0
 custom_fonts/font = ExtResource( 3 )
 text = "耒火(字字)"
 
 [node name="SurnameEdit" type="LineEdit" parent="."]
 visible = false
-margin_left = 288.0
-margin_top = 16.0
+offset_left = 288.0
+offset_top = 16.0
 custom_fonts/font = ExtResource( 3 )
 
 [node name="GivenNameEdit" type="LineEdit" parent="."]
 visible = false
-margin_left = 410.0
-margin_top = 16.0
+offset_left = 410.0
+offset_top = 16.0
 custom_fonts/font = ExtResource( 3 )
 
 [node name="CourtesyNameEdit" type="LineEdit" parent="."]
 visible = false
-margin_left = 532.0
-margin_top = 16.0
+offset_left = 532.0
+offset_top = 16.0
 custom_fonts/font = ExtResource( 3 )
 
 [node name="Description" type="RichTextLabel" parent="."]
 anchor_bottom = 1.0
-margin_left = 17.0
-margin_top = 288.0
-margin_right = 448.0
-margin_bottom = -16.0
+offset_left = 17.0
+offset_top = 288.0
+offset_right = 448.0
+offset_bottom = -16.0
 bbcode_enabled = true
 meta_underlined = false
 __meta__ = {
@@ -66,19 +66,19 @@ __meta__ = {
 
 [node name="Status" type="GridContainer" parent="."]
 anchor_right = 1.0
-margin_left = 288.0
-margin_top = 64.0
-margin_right = -16.0
-custom_constants/vseparation = 8
-custom_constants/hseparation = 8
+offset_left = 288.0
+offset_top = 64.0
+offset_right = -16.0
+custom_constants/v_separation = 8
+custom_constants/h_separation = 8
 columns = 13
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label10" type="Label" parent="Status"]
-margin_right = 89.0
-margin_bottom = 18.0
+offset_right = 89.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "GENDER"
@@ -88,9 +88,9 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="Status"]
-margin_left = 97.0
-margin_right = 186.0
-margin_bottom = 18.0
+offset_left = 97.0
+offset_right = 186.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "FACTION"
@@ -100,9 +100,9 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="Status"]
-margin_left = 194.0
-margin_right = 283.0
-margin_bottom = 18.0
+offset_left = 194.0
+offset_right = 283.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "SECTION"
@@ -112,9 +112,9 @@ __meta__ = {
 }
 
 [node name="Label8" type="Label" parent="Status"]
-margin_left = 291.0
-margin_right = 380.0
-margin_bottom = 18.0
+offset_left = 291.0
+offset_right = 380.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "LOCATION"
@@ -124,9 +124,9 @@ __meta__ = {
 }
 
 [node name="Label9" type="Label" parent="Status"]
-margin_left = 388.0
-margin_right = 477.0
-margin_bottom = 18.0
+offset_left = 388.0
+offset_right = 477.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "STATUS"
@@ -136,9 +136,9 @@ __meta__ = {
 }
 
 [node name="Label14" type="Label" parent="Status"]
-margin_left = 485.0
-margin_right = 574.0
-margin_bottom = 18.0
+offset_left = 485.0
+offset_right = 574.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "MERIT"
@@ -148,9 +148,9 @@ __meta__ = {
 }
 
 [node name="Label11" type="Label" parent="Status"]
-margin_left = 582.0
-margin_right = 671.0
-margin_bottom = 18.0
+offset_left = 582.0
+offset_right = 671.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "KARMA"
@@ -160,9 +160,9 @@ __meta__ = {
 }
 
 [node name="Label12" type="Label" parent="Status"]
-margin_left = 679.0
-margin_right = 780.0
-margin_bottom = 18.0
+offset_left = 679.0
+offset_right = 780.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "POPULARITY"
@@ -172,9 +172,9 @@ __meta__ = {
 }
 
 [node name="Label13" type="Label" parent="Status"]
-margin_left = 788.0
-margin_right = 877.0
-margin_bottom = 18.0
+offset_left = 788.0
+offset_right = 877.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "PRESTIGE"
@@ -184,9 +184,9 @@ __meta__ = {
 }
 
 [node name="Label15" type="Label" parent="Status"]
-margin_left = 885.0
-margin_right = 974.0
-margin_bottom = 18.0
+offset_left = 885.0
+offset_right = 974.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "AMBITION"
@@ -196,9 +196,9 @@ __meta__ = {
 }
 
 [node name="Label16" type="Label" parent="Status"]
-margin_left = 982.0
-margin_right = 1071.0
-margin_bottom = 18.0
+offset_left = 982.0
+offset_right = 1071.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "MORALITY"
@@ -208,9 +208,9 @@ __meta__ = {
 }
 
 [node name="Label17" type="Label" parent="Status"]
-margin_left = 1079.0
-margin_right = 1177.0
-margin_bottom = 18.0
+offset_left = 1079.0
+offset_right = 1177.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "BRAVENESS"
@@ -220,9 +220,9 @@ __meta__ = {
 }
 
 [node name="Label18" type="Label" parent="Status"]
-margin_left = 1185.0
-margin_right = 1274.0
-margin_bottom = 18.0
+offset_left = 1185.0
+offset_right = 1274.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "CALMNESS"
@@ -232,9 +232,9 @@ __meta__ = {
 }
 
 [node name="Gender" type="Label" parent="Status"]
-margin_top = 26.0
-margin_right = 89.0
-margin_bottom = 44.0
+offset_top = 26.0
+offset_right = 89.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "男"
 align = 1
@@ -244,16 +244,16 @@ __meta__ = {
 
 [node name="GenderButton" type="Button" parent="Status"]
 visible = false
-margin_left = 116.0
-margin_top = 26.0
-margin_right = 224.0
-margin_bottom = 44.0
+offset_left = 116.0
+offset_top = 26.0
+offset_right = 224.0
+offset_bottom = 44.0
 
 [node name="Faction" type="Label" parent="Status"]
-margin_left = 97.0
-margin_top = 26.0
-margin_right = 186.0
-margin_bottom = 44.0
+offset_left = 97.0
+offset_top = 26.0
+offset_right = 186.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
 __meta__ = {
@@ -261,10 +261,10 @@ __meta__ = {
 }
 
 [node name="Section" type="Label" parent="Status"]
-margin_left = 194.0
-margin_top = 26.0
-margin_right = 283.0
-margin_bottom = 44.0
+offset_left = 194.0
+offset_top = 26.0
+offset_right = 283.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
 __meta__ = {
@@ -272,10 +272,10 @@ __meta__ = {
 }
 
 [node name="Location" type="Label" parent="Status"]
-margin_left = 291.0
-margin_top = 26.0
-margin_right = 380.0
-margin_bottom = 44.0
+offset_left = 291.0
+offset_top = 26.0
+offset_right = 380.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
 __meta__ = {
@@ -283,10 +283,10 @@ __meta__ = {
 }
 
 [node name="Status" type="Label" parent="Status"]
-margin_left = 388.0
-margin_top = 26.0
-margin_right = 477.0
-margin_bottom = 44.0
+offset_left = 388.0
+offset_top = 26.0
+offset_right = 477.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 align = 1
 __meta__ = {
@@ -294,10 +294,10 @@ __meta__ = {
 }
 
 [node name="Merit" type="Label" parent="Status"]
-margin_left = 485.0
-margin_top = 26.0
-margin_right = 574.0
-margin_bottom = 44.0
+offset_left = 485.0
+offset_top = 26.0
+offset_right = 574.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "10"
 align = 1
@@ -307,19 +307,19 @@ __meta__ = {
 
 [node name="MeritEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_left = 852.0
-margin_top = 26.0
-margin_right = 986.0
-margin_bottom = 54.0
+offset_left = 852.0
+offset_top = 26.0
+offset_right = 986.0
+offset_bottom = 54.0
 size_flags_horizontal = 3
 text = "10"
 align = 1
 
 [node name="Karma" type="Label" parent="Status"]
-margin_left = 582.0
-margin_top = 26.0
-margin_right = 671.0
-margin_bottom = 44.0
+offset_left = 582.0
+offset_top = 26.0
+offset_right = 671.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "10"
 align = 1
@@ -329,19 +329,19 @@ __meta__ = {
 
 [node name="KarmaEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_left = 994.0
-margin_top = 26.0
-margin_right = 1128.0
-margin_bottom = 44.0
+offset_left = 994.0
+offset_top = 26.0
+offset_right = 1128.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "10"
 align = 1
 
 [node name="Popularity" type="Label" parent="Status"]
-margin_left = 679.0
-margin_top = 26.0
-margin_right = 780.0
-margin_bottom = 44.0
+offset_left = 679.0
+offset_top = 26.0
+offset_right = 780.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
@@ -351,19 +351,19 @@ __meta__ = {
 
 [node name="PopularityEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_left = 1136.0
-margin_top = 26.0
-margin_right = 1270.0
-margin_bottom = 44.0
+offset_left = 1136.0
+offset_top = 26.0
+offset_right = 1270.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Prestige" type="Label" parent="Status"]
-margin_left = 788.0
-margin_top = 26.0
-margin_right = 877.0
-margin_bottom = 44.0
+offset_left = 788.0
+offset_top = 26.0
+offset_right = 877.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
@@ -373,18 +373,18 @@ __meta__ = {
 
 [node name="PrestigeEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_top = 52.0
-margin_right = 134.0
-margin_bottom = 70.0
+offset_top = 52.0
+offset_right = 134.0
+offset_bottom = 70.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Ambition" type="Label" parent="Status"]
-margin_left = 885.0
-margin_top = 26.0
-margin_right = 974.0
-margin_bottom = 44.0
+offset_left = 885.0
+offset_top = 26.0
+offset_right = 974.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
@@ -394,18 +394,18 @@ __meta__ = {
 
 [node name="AmbitionEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_top = 52.0
-margin_right = 134.0
-margin_bottom = 80.0
+offset_top = 52.0
+offset_right = 134.0
+offset_bottom = 80.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Morality" type="Label" parent="Status"]
-margin_left = 982.0
-margin_top = 26.0
-margin_right = 1071.0
-margin_bottom = 44.0
+offset_left = 982.0
+offset_top = 26.0
+offset_right = 1071.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
@@ -415,18 +415,18 @@ __meta__ = {
 
 [node name="MoralityEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_top = 52.0
-margin_right = 134.0
-margin_bottom = 80.0
+offset_top = 52.0
+offset_right = 134.0
+offset_bottom = 80.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Braveness" type="Label" parent="Status"]
-margin_left = 1079.0
-margin_top = 26.0
-margin_right = 1177.0
-margin_bottom = 44.0
+offset_left = 1079.0
+offset_top = 26.0
+offset_right = 1177.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
@@ -436,18 +436,18 @@ __meta__ = {
 
 [node name="BravenessEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_top = 52.0
-margin_right = 134.0
-margin_bottom = 80.0
+offset_top = 52.0
+offset_right = 134.0
+offset_bottom = 80.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Calmness" type="Label" parent="Status"]
-margin_left = 1185.0
-margin_top = 26.0
-margin_right = 1274.0
-margin_bottom = 44.0
+offset_left = 1185.0
+offset_top = 26.0
+offset_right = 1274.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
@@ -457,28 +457,28 @@ __meta__ = {
 
 [node name="CalmnessEdit" type="LineEdit" parent="Status"]
 visible = false
-margin_top = 52.0
-margin_right = 134.0
-margin_bottom = 80.0
+offset_top = 52.0
+offset_right = 134.0
+offset_bottom = 80.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Abilities" type="GridContainer" parent="."]
-margin_left = 288.0
-margin_top = 128.0
-margin_right = 492.0
-margin_bottom = 276.0
-custom_constants/vseparation = 8
-custom_constants/hseparation = 8
+offset_left = 288.0
+offset_top = 128.0
+offset_right = 492.0
+offset_bottom = 276.0
+custom_constants/v_separation = 8
+custom_constants/h_separation = 8
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Abilities"]
-margin_right = 118.0
-margin_bottom = 18.0
+offset_right = 118.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "COMMAND"
@@ -488,9 +488,9 @@ __meta__ = {
 }
 
 [node name="Command" type="Label" parent="Abilities"]
-margin_left = 126.0
-margin_right = 204.0
-margin_bottom = 18.0
+offset_left = 126.0
+offset_right = 204.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
@@ -500,17 +500,17 @@ __meta__ = {
 
 [node name="CommandEdit" type="LineEdit" parent="Abilities"]
 visible = false
-margin_top = 26.0
-margin_right = 78.0
-margin_bottom = 44.0
+offset_top = 26.0
+offset_right = 78.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
 
 [node name="Label2" type="Label" parent="Abilities"]
-margin_top = 26.0
-margin_right = 118.0
-margin_bottom = 44.0
+offset_top = 26.0
+offset_right = 118.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "STRENGTH"
@@ -520,10 +520,10 @@ __meta__ = {
 }
 
 [node name="Strength" type="Label" parent="Abilities"]
-margin_left = 126.0
-margin_top = 26.0
-margin_right = 204.0
-margin_bottom = 44.0
+offset_left = 126.0
+offset_top = 26.0
+offset_right = 204.0
+offset_bottom = 44.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
@@ -533,17 +533,17 @@ __meta__ = {
 
 [node name="StrengthEdit" type="LineEdit" parent="Abilities"]
 visible = false
-margin_top = 52.0
-margin_right = 89.0
-margin_bottom = 70.0
+offset_top = 52.0
+offset_right = 89.0
+offset_bottom = 70.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
 
 [node name="Label3" type="Label" parent="Abilities"]
-margin_top = 52.0
-margin_right = 118.0
-margin_bottom = 70.0
+offset_top = 52.0
+offset_right = 118.0
+offset_bottom = 70.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "INTELLIGENCE"
@@ -553,10 +553,10 @@ __meta__ = {
 }
 
 [node name="Intelligence" type="Label" parent="Abilities"]
-margin_left = 126.0
-margin_top = 52.0
-margin_right = 204.0
-margin_bottom = 70.0
+offset_left = 126.0
+offset_top = 52.0
+offset_right = 204.0
+offset_bottom = 70.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
@@ -566,17 +566,17 @@ __meta__ = {
 
 [node name="IntelligenceEdit" type="LineEdit" parent="Abilities"]
 visible = false
-margin_top = 78.0
-margin_right = 118.0
-margin_bottom = 96.0
+offset_top = 78.0
+offset_right = 118.0
+offset_bottom = 96.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
 
 [node name="Label4" type="Label" parent="Abilities"]
-margin_top = 78.0
-margin_right = 118.0
-margin_bottom = 96.0
+offset_top = 78.0
+offset_right = 118.0
+offset_bottom = 96.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "POLITICS"
@@ -586,10 +586,10 @@ __meta__ = {
 }
 
 [node name="Politics" type="Label" parent="Abilities"]
-margin_left = 126.0
-margin_top = 78.0
-margin_right = 204.0
-margin_bottom = 96.0
+offset_left = 126.0
+offset_top = 78.0
+offset_right = 204.0
+offset_bottom = 96.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
@@ -599,17 +599,17 @@ __meta__ = {
 
 [node name="PoliticsEdit" type="LineEdit" parent="Abilities"]
 visible = false
-margin_top = 104.0
-margin_right = 118.0
-margin_bottom = 122.0
+offset_top = 104.0
+offset_right = 118.0
+offset_bottom = 122.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
 
 [node name="Label5" type="Label" parent="Abilities"]
-margin_top = 104.0
-margin_right = 118.0
-margin_bottom = 122.0
+offset_top = 104.0
+offset_right = 118.0
+offset_bottom = 122.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "GLAMOUR"
@@ -619,10 +619,10 @@ __meta__ = {
 }
 
 [node name="Glamour" type="Label" parent="Abilities"]
-margin_left = 126.0
-margin_top = 104.0
-margin_right = 204.0
-margin_bottom = 122.0
+offset_left = 126.0
+offset_top = 104.0
+offset_right = 204.0
+offset_bottom = 122.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
@@ -632,45 +632,45 @@ __meta__ = {
 
 [node name="GlamourEdit" type="LineEdit" parent="Abilities"]
 visible = false
-margin_top = 130.0
-margin_right = 118.0
-margin_bottom = 148.0
+offset_top = 130.0
+offset_right = 118.0
+offset_bottom = 148.0
 size_flags_horizontal = 3
 text = "60"
 align = 1
 
 [node name="Relations" type="GridContainer" parent="."]
 anchor_right = 1.0
-margin_left = 508.0
-margin_top = 128.0
-margin_right = -16.0
-margin_bottom = 172.0
+offset_left = 508.0
+offset_top = 128.0
+offset_right = -16.0
+offset_bottom = 172.0
 columns = 7
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="Relations"]
-margin_right = 147.0
-margin_bottom = 18.0
+offset_right = 147.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "IDEAL"
 align = 1
 
 [node name="Label6" type="Label" parent="Relations"]
-margin_left = 151.0
-margin_right = 298.0
-margin_bottom = 18.0
+offset_left = 151.0
+offset_right = 298.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "BORN_YEAR"
 align = 1
 
 [node name="AgeLabel" type="Label" parent="Relations"]
-margin_left = 302.0
-margin_right = 449.0
-margin_bottom = 18.0
+offset_left = 302.0
+offset_right = 449.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "AGE"
@@ -678,166 +678,166 @@ align = 1
 
 [node name="DeathYearLabel" type="Label" parent="Relations"]
 visible = false
-margin_left = 453.0
-margin_right = 600.0
-margin_bottom = 18.0
+offset_left = 453.0
+offset_right = 600.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "DEATH_YEAR"
 align = 1
 
 [node name="Label" type="Label" parent="Relations"]
-margin_left = 453.0
-margin_right = 600.0
-margin_bottom = 18.0
+offset_left = 453.0
+offset_right = 600.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "FATHER"
 align = 1
 
 [node name="Label2" type="Label" parent="Relations"]
-margin_left = 604.0
-margin_right = 751.0
-margin_bottom = 18.0
+offset_left = 604.0
+offset_right = 751.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "MOTHER"
 align = 1
 
 [node name="Label3" type="Label" parent="Relations"]
-margin_left = 755.0
-margin_right = 902.0
-margin_bottom = 18.0
+offset_left = 755.0
+offset_right = 902.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "SPOUSE"
 align = 1
 
 [node name="Label4" type="Label" parent="Relations"]
-margin_left = 906.0
-margin_right = 1053.0
-margin_bottom = 18.0
+offset_left = 906.0
+offset_right = 1053.0
+offset_bottom = 18.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 text = "BROTHER"
 align = 1
 
 [node name="Ideal" type="Label" parent="Relations"]
-margin_top = 22.0
-margin_right = 147.0
-margin_bottom = 40.0
+offset_top = 22.0
+offset_right = 147.0
+offset_bottom = 40.0
 align = 1
 
 [node name="IdealEdit" type="LineEdit" parent="Relations"]
 visible = false
-margin_top = 52.0
-margin_right = 134.0
-margin_bottom = 80.0
+offset_top = 52.0
+offset_right = 134.0
+offset_bottom = 80.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="BornYear" type="Label" parent="Relations"]
-margin_left = 151.0
-margin_top = 22.0
-margin_right = 298.0
-margin_bottom = 40.0
+offset_left = 151.0
+offset_top = 22.0
+offset_right = 298.0
+offset_bottom = 40.0
 align = 1
 
 [node name="BornYearEdit" type="LineEdit" parent="Relations"]
 visible = false
-margin_top = 52.0
-margin_right = 134.0
-margin_bottom = 80.0
+offset_top = 52.0
+offset_right = 134.0
+offset_bottom = 80.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Age" type="Label" parent="Relations"]
-margin_left = 302.0
-margin_top = 22.0
-margin_right = 449.0
-margin_bottom = 40.0
+offset_left = 302.0
+offset_top = 22.0
+offset_right = 449.0
+offset_bottom = 40.0
 align = 1
 
 [node name="DeathYearEdit" type="LineEdit" parent="Relations"]
 visible = false
-margin_left = 453.0
-margin_top = 22.0
-margin_right = 600.0
-margin_bottom = 50.0
+offset_left = 453.0
+offset_top = 22.0
+offset_right = 600.0
+offset_bottom = 50.0
 size_flags_horizontal = 3
 text = "100"
 align = 1
 
 [node name="Father" type="Label" parent="Relations"]
-margin_left = 453.0
-margin_top = 22.0
-margin_right = 600.0
-margin_bottom = 40.0
+offset_left = 453.0
+offset_top = 22.0
+offset_right = 600.0
+offset_bottom = 40.0
 align = 1
 
 [node name="FatherEdit" type="Button" parent="Relations"]
 visible = false
-margin_left = 422.0
-margin_top = 22.0
-margin_right = 629.0
-margin_bottom = 40.0
+offset_left = 422.0
+offset_top = 22.0
+offset_right = 629.0
+offset_bottom = 40.0
 
 [node name="Mother" type="Label" parent="Relations"]
-margin_left = 604.0
-margin_top = 22.0
-margin_right = 751.0
-margin_bottom = 40.0
+offset_left = 604.0
+offset_top = 22.0
+offset_right = 751.0
+offset_bottom = 40.0
 align = 1
 
 [node name="MotherEdit" type="Button" parent="Relations"]
 visible = false
-margin_left = 422.0
-margin_top = 22.0
-margin_right = 629.0
-margin_bottom = 40.0
+offset_left = 422.0
+offset_top = 22.0
+offset_right = 629.0
+offset_bottom = 40.0
 
 [node name="Spouses" type="Label" parent="Relations"]
-margin_left = 755.0
-margin_top = 22.0
-margin_right = 902.0
-margin_bottom = 40.0
+offset_left = 755.0
+offset_top = 22.0
+offset_right = 902.0
+offset_bottom = 40.0
 align = 1
 
 [node name="SpousesEdit" type="Button" parent="Relations"]
 visible = false
-margin_left = 422.0
-margin_top = 22.0
-margin_right = 629.0
-margin_bottom = 40.0
+offset_left = 422.0
+offset_top = 22.0
+offset_right = 629.0
+offset_bottom = 40.0
 
 [node name="Brothers" type="Label" parent="Relations"]
-margin_left = 906.0
-margin_top = 22.0
-margin_right = 1053.0
-margin_bottom = 40.0
+offset_left = 906.0
+offset_top = 22.0
+offset_right = 1053.0
+offset_bottom = 40.0
 align = 1
 
 [node name="BrothersEdit" type="Button" parent="Relations"]
 visible = false
-margin_left = 422.0
-margin_top = 22.0
-margin_right = 629.0
-margin_bottom = 40.0
+offset_left = 422.0
+offset_top = 22.0
+offset_right = 629.0
+offset_bottom = 40.0
 
 [node name="SkillsHeader" type="HBoxContainer" parent="."]
-margin_left = 508.0
-margin_top = 180.0
-margin_right = 591.0
-margin_bottom = 207.0
+offset_left = 508.0
+offset_top = 180.0
+offset_right = 591.0
+offset_bottom = 207.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="SkillsHeader"]
-margin_right = 83.0
-margin_bottom = 27.0
+offset_right = 83.0
+offset_bottom = 27.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
 text = "SKILLS"
@@ -847,43 +847,43 @@ __meta__ = {
 
 [node name="Edit" type="Button" parent="SkillsHeader"]
 visible = false
-margin_left = 87.0
-margin_right = 180.0
-margin_bottom = 27.0
+offset_left = 87.0
+offset_right = 180.0
+offset_bottom = 27.0
 text = "EDIT"
 
 [node name="Label2" type="Label" parent="SkillsHeader"]
 visible = false
-margin_left = 184.0
-margin_top = 4.0
-margin_right = 375.0
-margin_bottom = 22.0
+offset_left = 184.0
+offset_top = 4.0
+offset_right = 375.0
+offset_bottom = 22.0
 text = "SKILL_EDIT_INSTRUCTION"
 
 [node name="Skills" type="GridContainer" parent="."]
-margin_left = 508.0
-margin_top = 212.0
-margin_right = 508.0
-margin_bottom = 212.0
-custom_constants/vseparation = 8
-custom_constants/hseparation = 8
+offset_left = 508.0
+offset_top = 212.0
+offset_right = 508.0
+offset_bottom = 212.0
+custom_constants/v_separation = 8
+custom_constants/h_separation = 8
 columns = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="StuntsHeader" type="HBoxContainer" parent="."]
-margin_left = 508.0
-margin_top = 288.0
-margin_right = 601.0
-margin_bottom = 315.0
+offset_left = 508.0
+offset_top = 288.0
+offset_right = 601.0
+offset_bottom = 315.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="StuntsHeader"]
-margin_right = 93.0
-margin_bottom = 27.0
+offset_right = 93.0
+offset_bottom = 27.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.501961, 0, 1 )
 text = "STUNTS"
@@ -893,26 +893,26 @@ __meta__ = {
 
 [node name="Edit" type="Button" parent="StuntsHeader"]
 visible = false
-margin_left = 97.0
-margin_right = 190.0
-margin_bottom = 27.0
+offset_left = 97.0
+offset_right = 190.0
+offset_bottom = 27.0
 text = "EDIT"
 
 [node name="Label2" type="Label" parent="StuntsHeader"]
 visible = false
-margin_left = 194.0
-margin_top = 4.0
-margin_right = 385.0
-margin_bottom = 22.0
+offset_left = 194.0
+offset_top = 4.0
+offset_right = 385.0
+offset_bottom = 22.0
 text = "SKILL_EDIT_INSTRUCTION"
 
 [node name="Stunts" type="GridContainer" parent="."]
-margin_left = 508.0
-margin_top = 320.0
-margin_right = 508.0
-margin_bottom = 320.0
-custom_constants/vseparation = 8
-custom_constants/hseparation = 8
+offset_left = 508.0
+offset_top = 320.0
+offset_right = 508.0
+offset_bottom = 320.0
+custom_constants/v_separation = 8
+custom_constants/h_separation = 8
 columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
@@ -924,17 +924,17 @@ stream = ExtResource( 5 )
 [node name="_Id" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_right = -20.0
+offset_right = -20.0
 grow_horizontal = 0
 text = "9999"
 
 [node name="Edit" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -120.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 48.0
+offset_left = -120.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 48.0
 text = "EDIT"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -944,26 +944,26 @@ __meta__ = {
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 48.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 48.0
 grow_horizontal = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Cancel" type="Button" parent="EditingButtons"]
-margin_right = 121.0
-margin_bottom = 32.0
+offset_right = 121.0
+offset_bottom = 32.0
 text = "CANCEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Save" type="Button" parent="EditingButtons"]
-margin_left = 125.0
-margin_right = 224.0
-margin_bottom = 32.0
+offset_left = 125.0
+offset_right = 224.0
+offset_bottom = 32.0
 text = "SAVE"
 __meta__ = {
 "_edit_use_anchors_": false

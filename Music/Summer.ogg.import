@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Summer.ogg-0073b33fe9616394e8ca2ec3a39afe06.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://75am0f3k1lpx"
+path="res://.godot/imported/Summer.ogg-0073b33fe9616394e8ca2ec3a39afe06.oggvorbisstr"
 
 [deps]
 
 source_file="res://Music/Summer.ogg"
-dest_files=[ "res://.import/Summer.ogg-0073b33fe9616394e8ca2ec3a39afe06.oggstr" ]
+dest_files=["res://.godot/imported/Summer.ogg-0073b33fe9616394e8ca2ec3a39afe06.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

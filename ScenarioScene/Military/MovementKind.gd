@@ -1,11 +1,23 @@
 extends Node
 class_name MovementKind
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
-var naval: bool setget forbidden
+var naval: bool :
+	get:
+		return naval # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var movement_cost = {} setget forbidden
+var movement_cost = {} :
+	get:
+		return movement_cost # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 func forbidden(x):
 	assert(false)

@@ -44,16 +44,16 @@ func _ready():
 	_add_tab('COMBAT_EXPERIENCE')
 	_add_tab('PERSONAL_RELATIONS')
 
-	self.connect("single_pressed_signal", self, "__on_clickable_label_click")
-	self.connect("long_pressed_signal", self, "__on_clickable_label_long_pressed")
+	self.connect("single_pressed_signal",Callable(self,"__on_clickable_label_click"))
+	self.connect("long_pressed_signal",Callable(self,"__on_clickable_label_long_pressed"))
 	
 func handle_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			if _detail_showing:
 				_detail_showing = false
 			else:
-				.handle_input(event)
+				super.handle_input(event)
 
 
 func _on_InfoMenu_persons_clicked(scenario):
@@ -90,7 +90,7 @@ func select_leader_for_new_faction(all_persons: Array):
 
 
 func show_data(person_list: Array):
-	.show_data(person_list)
+	super.show_data(person_list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('PERSON_LIST')
@@ -170,7 +170,7 @@ func show_data(person_list: Array):
 	_populate_personal_relation_data(person_list, current_action)
 	
 	show()
-	._post_show()
+	super._post_show()
 	
 func _populate_relevant_data(person_list: Array, action):
 	match current_action:
@@ -344,7 +344,7 @@ func _populate_ability_data(person_list: Array, action):
 			checkbox = _checkbox(person.id)
 			item_list.add_child(checkbox)
 		item_list.add_child(_clickable_label_with_long_pressed_event(person.get_name(), self, person, checkbox))
-		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_command()), self, person, checkbox))
+		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.is_command_or_control_pressed()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_strength()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_intelligence()), self, person, checkbox))
 		item_list.add_child(_clickable_label_with_long_pressed_event(str(person.get_politics()), self, person, checkbox))
@@ -544,8 +544,8 @@ func __get_compare_value(_clicked_label, a, b):
 		a1 = a.task_days
 		b1 = b.task_days
 	elif _clicked_label == tr("COMMAND"):
-		a1 = a.get_command()
-		b1 = b.get_command()
+		a1 = a.is_command_or_control_pressed()
+		b1 = b.is_command_or_control_pressed()
 	elif _clicked_label == tr("STRENGTH"):
 		a1 = a.get_strength()
 		b1 = b.get_strength()
@@ -651,11 +651,11 @@ func _on_Confirm_pressed():
 		Action.CONVINCE_PERSON:
 			call_deferred("emit_signal", "person_selected", current_action, current_architecture, selected, {"target": _previously_selected_person_ids[0]})
 			$PersonMove.play()
-			._on_Confirm_pressed()
+			super._on_Confirm_pressed()
 		_:
 			call_deferred("emit_signal", "person_selected", current_action, current_architecture, selected)
 			$ConfirmSound.play()
-			._on_Confirm_pressed()
+			super._on_Confirm_pressed()
 
 
 func _on_CreateTroop_select_person(arch, persons):

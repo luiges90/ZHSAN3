@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Images/PersonPortrait/default-male-officer.jpg" type="Texture" id=2]
+[ext_resource path="res://Fonts/font_subheader.tres" type="FontFile" id=1]
+[ext_resource path="res://Images/PersonPortrait/default-male-officer.jpg" type="Texture2D" id=2]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://UIMain/PersonDialog/PersonDialog.gd" type="Script" id=4]
 [ext_resource path="res://UIMain/PersonDialog/OccupyArchitecture.wav" type="AudioStream" id=5]
@@ -9,8 +9,8 @@
 [ext_resource path="res://UIMain/PersonDialog/FactionDestroyed.wav" type="AudioStream" id=7]
 
 [node name="PersonDialog" type="Control"]
-margin_right = 800.0
-margin_bottom = 192.0
+offset_right = 800.0
+offset_bottom = 192.0
 theme = ExtResource( 3 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -18,19 +18,19 @@ __meta__ = {
 }
 
 [node name="Portrait" type="TextureRect" parent="."]
-margin_right = 512.0
-margin_bottom = 512.0
-rect_scale = Vector2( 0.375, 0.375 )
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2( 0.375, 0.375 )
 texture = ExtResource( 2 )
 
 [node name="SpeakerPanel" type="Panel" parent="."]
-margin_left = 192.0
-margin_right = 312.0
-margin_bottom = 36.0
+offset_left = 192.0
+offset_right = 312.0
+offset_bottom = 36.0
 
 [node name="Speaker" type="Label" parent="SpeakerPanel"]
-margin_right = 120.0
-margin_bottom = 36.0
+offset_right = 120.0
+offset_bottom = 36.0
 custom_fonts/font = ExtResource( 1 )
 text = "旁白"
 align = 1
@@ -42,8 +42,8 @@ __meta__ = {
 [node name="DialogPanel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 192.0
-margin_top = 36.0
+offset_left = 192.0
+offset_top = 36.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -51,13 +51,13 @@ __meta__ = {
 [node name="Dialog" type="RichTextLabel" parent="DialogPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = -16.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[color=red]劉表軍[/color]滅亡了"
+text = "[color=red]劉表軍[/color]滅亡了"
 text = "劉表軍滅亡了"
 __meta__ = {
 "_edit_use_anchors_": false

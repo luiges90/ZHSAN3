@@ -16,7 +16,7 @@ func _on_InfoMenu_factions_clicked(scenario):
 	show_data(scenario.factions.values())
 	
 func show_data(list: Array):
-	.show_data(list)
+	super.show_data(list)
 	match current_action:
 		Action.LIST: 
 			$Title.text = tr('FACTION_LIST')
@@ -26,7 +26,7 @@ func show_data(list: Array):
 	_selected_table = "faction_list" 
 	_populate_basic_data(list, current_action)
 	show()
-	._post_show()
+	super._post_show()
 
 func _populate_basic_data(list: Array, action):
 	var item_list = tabs['BASIC'] as GridContainer

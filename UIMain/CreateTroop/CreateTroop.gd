@@ -104,7 +104,7 @@ func set_data():
 		$All/H1/V2/H2/QuantitySlider.max_value = max_quantity
 		$All/H1/V2/C/Offence.text = str(current_troop.get_offence())
 		$All/H1/V2/C/Defence.text = str(current_troop.get_defence())
-		$All/H1/V2/C/Speed.text = str(current_troop.get_speed())
+		$All/H1/V2/C/Speed.text = str(current_troop.get_velocity())
 		$All/H1/V2/C/Initiative.text = str(current_troop.get_initiative())
 		$All/H1/V2/C/Critical.text = str(current_troop.critical_chance() * 100) + "%"
 		$All/H1/V2/C/AntiCritical.text = str(current_troop.anti_critical_chance() * 100) + "%"
@@ -130,7 +130,7 @@ func _on_PersonList_person_selected(action, arch, selected):
 		var selected_person = current_architecture.scenario.persons[selected[0]]
 		var persons = current_troop.persons
 		var index = persons.find(selected_person)
-		persons.remove(index)
+		persons.remove_at(index)
 		persons.push_front(selected_person)
 		current_troop.persons = persons
 		set_data()

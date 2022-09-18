@@ -37,12 +37,12 @@ func _init():
 func _load_troop_images():
 	var dir = Directory.new()
 	dir.open("res://Images/Troop")
-	dir.list_dir_begin()
+	dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	while true:
 		var in_dir_name = dir.get_next()
 		if in_dir_name == "":
 			break
-		elif not in_dir_name.begins_with(".") and dir.current_is_dir() and int(in_dir_name) > 0:
+		elif not in_dir_name.begins_with(".") and dir.current_is_dir() and in_dir_name.to_int() > 0:
 			var path = "res://Images/Troop/" + in_dir_name
 			var attack = load(path + "/Attack.png")
 			var be_attacked = load(path + "/BeAttacked.png")
@@ -53,7 +53,7 @@ func _load_troop_images():
 					"be_attacked": be_attacked,
 					"move": move
 				}
-				troop_images[int(in_dir_name)] = textures
+				troop_images[in_dir_name.to_int()] = textures
 				
 func _load_troop_sprite_frames(military_kinds):
 	for military_kind in military_kinds:
@@ -68,7 +68,7 @@ func _load_troop_sprite_frames(military_kinds):
 			troop_sprite_frames[military_kind.id] = sprite_frame
 			
 func __set_frames(sprite_frame, animation, texture, spritesheet_offset):
-	sprite_frame.add_animation(animation)
+	sprite_frame.add_animation_library(animation)
 	sprite_frame.set_animation_speed(animation, TROOP_ANIMATION_SPEED)
 	for i in range(0, TROOP_SPRITE_SHEET_FRAMES):
 		var sprite = Image.new()
@@ -83,12 +83,12 @@ func __set_frames(sprite_frame, animation, texture, spritesheet_offset):
 func _load_troop_sounds():
 	var dir = Directory.new()
 	dir.open("res://Sounds/Troop")
-	dir.list_dir_begin()
+	dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	while true:
 		var in_dir_name = dir.get_next()
 		if in_dir_name == "":
 			break
-		elif not in_dir_name.begins_with(".") and dir.current_is_dir() and int(in_dir_name) > 0:
+		elif not in_dir_name.begins_with(".") and dir.current_is_dir() and in_dir_name.to_int() > 0:
 			var path = "res://Sounds/Troop/" + in_dir_name
 
 			var attack = load(path + "/Attack.wav")
@@ -100,15 +100,15 @@ func _load_troop_sounds():
 					"moving": moving,
 					"critical": critical
 				}
-				troop_sounds[int(in_dir_name)] = sounds
+				troop_sounds[in_dir_name.to_int()] = sounds
 
 func __load_sound_file(file):
 	var wav_file = File.new()
 	var stream
 	wav_file.open(file, File.READ)
-	stream = AudioStreamSample.new()
-	stream.format = AudioStreamSample.FORMAT_IMA_ADPCM
-	stream.data = wav_file.get_buffer(wav_file.get_len())
+	stream = AudioStreamWAV.new()
+	stream.format = AudioStreamWAV.FORMAT_IMA_ADPCM
+	stream.data = wav_file.get_buffer(wav_file.get_length())
 	stream.stereo = true
 	wav_file.close()
 	return stream
@@ -117,16 +117,16 @@ func _load_person_portraits():
 	var dir = Directory.new()
 	var path = "res://" + GameConfig.mod_directory + "Images/PersonPortrait"
 	dir.open(path)
-	dir.list_dir_begin()
+	dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	while true:
 		var in_file_name = dir.get_next()
 		# https://godotengine.org/qa/59637/cannot-traverse-asset-directory-in-android?show=59637#q59637
 		in_file_name = in_file_name.replace('.import', '')
 		if in_file_name == "":
 			break
-		elif not in_file_name.begins_with(".") and in_file_name.ends_with('.jpg'):
-			if int(in_file_name) > 0:
-				__load_portrait(path + "/" + in_file_name, int(in_file_name))
+		elif not in_file_name.begins_with(".") and (in_file_name.ends_with('.jpg') or in_file_name.ends_with('.png')):
+			if in_file_name.to_int() > 0:
+				__load_portrait(path + "/" + in_file_name, in_file_name.to_int())
 			elif in_file_name == 'default-male-martial.jpg':
 				__load_portrait(path + "/" + in_file_name, PERSON_PORTRAIT_DEFAULT_MALE_MARTIAL)
 			elif in_file_name == 'default-male-officer.jpg':

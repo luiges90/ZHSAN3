@@ -6,334 +6,324 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[ {
+_global_script_classes=[{
 "base": "Node",
-"class": "AI",
-"language": "GDScript",
+"class": &"AI",
+"language": &"GDScript",
 "path": "res://ScenarioScene/AI/AI.gd"
 }, {
 "base": "Node",
-"class": "AIAllocation",
-"language": "GDScript",
+"class": &"AIAllocation",
+"language": &"GDScript",
 "path": "res://ScenarioScene/AI/AIAllocation.gd"
 }, {
 "base": "Node",
-"class": "AIArchitecture",
-"language": "GDScript",
+"class": &"AIArchitecture",
+"language": &"GDScript",
 "path": "res://ScenarioScene/AI/AIArchitecture.gd"
 }, {
 "base": "Node",
-"class": "AICampaign",
-"language": "GDScript",
+"class": &"AICampaign",
+"language": &"GDScript",
 "path": "res://ScenarioScene/AI/AICampaign.gd"
 }, {
 "base": "Node",
-"class": "AIPaths",
-"language": "GDScript",
+"class": &"AIPaths",
+"language": &"GDScript",
 "path": "res://ScenarioScene/AI/AIPaths.gd"
 }, {
 "base": "Node",
-"class": "AITroop",
-"language": "GDScript",
+"class": &"AITroop",
+"language": &"GDScript",
 "path": "res://ScenarioScene/AI/AITroop.gd"
 }, {
 "base": "Node2D",
-"class": "Architecture",
-"language": "GDScript",
+"class": &"Architecture",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Architecture/Architecture.gd"
 }, {
 "base": "ContextMenu",
-"class": "ArchitectureAndTroopMenu",
-"language": "GDScript",
+"class": &"ArchitectureAndTroopMenu",
+"language": &"GDScript",
 "path": "res://UIMain/ContextMenu/ArchitectureAndTroopMenu.gd"
 }, {
 "base": "Panel",
-"class": "ArchitectureDetail",
-"language": "GDScript",
+"class": &"ArchitectureDetail",
+"language": &"GDScript",
 "path": "res://UIMain/ArchitectureDetail/ArchitectureDetail.gd"
 }, {
 "base": "Node",
-"class": "ArchitectureKind",
-"language": "GDScript",
+"class": &"ArchitectureKind",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Architecture/ArchitectureKind.gd"
 }, {
 "base": "TabList",
-"class": "ArchitectureList",
-"language": "GDScript",
+"class": &"ArchitectureList",
+"language": &"GDScript",
 "path": "res://UIMain/TabList/ArchitectureList.gd"
 }, {
 "base": "ContextMenu",
-"class": "ArchitectureMenu",
-"language": "GDScript",
+"class": &"ArchitectureMenu",
+"language": &"GDScript",
 "path": "res://UIMain/ContextMenu/ArchitectureMenu.gd"
 }, {
 "base": "Node",
-"class": "ArchitectureSpecialty",
-"language": "GDScript",
+"class": &"ArchitectureSpecialty",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Architecture/ArchitectureSpecialty.gd"
 }, {
 "base": "Panel",
-"class": "ArchitectureSurvey",
-"language": "GDScript",
+"class": &"ArchitectureSurvey",
+"language": &"GDScript",
 "path": "res://UIMain/ArchitectureSurvey/ArchitectureSurvey.gd"
 }, {
-"base": "Reference",
-"class": "AttachedArmy",
-"language": "GDScript",
+"base": "RefCounted",
+"class": &"AttachedArmy",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Person/AttachedArmy.gd"
 }, {
 "base": "TabList",
-"class": "AttachedArmyList",
-"language": "GDScript",
+"class": &"AttachedArmyList",
+"language": &"GDScript",
 "path": "res://UIMain/TabList/AttachedArmyList.gd"
 }, {
 "base": "Node",
-"class": "Biography",
-"language": "GDScript",
+"class": &"Biography",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Person/Biography.gd"
 }, {
 "base": "Control",
-"class": "ContextMenu",
-"language": "GDScript",
+"class": &"ContextMenu",
+"language": &"GDScript",
 "path": "res://UIMain/ContextMenu/ContextMenu.gd"
 }, {
 "base": "Panel",
-"class": "CreateTroop",
-"language": "GDScript",
+"class": &"CreateTroop",
+"language": &"GDScript",
 "path": "res://UIMain/CreateTroop/CreateTroop.gd"
 }, {
 "base": "Node",
-"class": "CreatingTroop",
-"language": "GDScript",
+"class": &"CreatingTroop",
+"language": &"GDScript",
 "path": "res://UIMain/CreateTroop/CreatingTroop.gd"
 }, {
 "base": "Node",
-"class": "DateRunner",
-"language": "GDScript",
+"class": &"DateRunner",
+"language": &"GDScript",
 "path": "res://ScenarioScene/DateRunner.gd"
 }, {
 "base": "Node",
-"class": "Faction",
-"language": "GDScript",
+"class": &"Faction",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Faction/Faction.gd"
 }, {
 "base": "TabList",
-"class": "FactionList",
-"language": "GDScript",
+"class": &"FactionList",
+"language": &"GDScript",
 "path": "res://UIMain/TabList/FactionList.gd"
 }, {
 "base": "TabList",
-"class": "FactionSurvey",
-"language": "GDScript",
+"class": &"FactionSurvey",
+"language": &"GDScript",
 "path": "res://UIMain/FactionSurvey/FactionSurvey.gd"
 }, {
 "base": "Panel",
-"class": "GameConfiguration",
-"language": "GDScript",
+"class": &"GameConfiguration",
+"language": &"GDScript",
 "path": "res://RootScene/GameConfiguration.gd"
 }, {
 "base": "Panel",
-"class": "GameRecord",
-"language": "GDScript",
+"class": &"GameRecord",
+"language": &"GDScript",
 "path": "res://UIMain/GameRecord/GameRecord.gd"
 }, {
-"base": "Node",
-"class": "GameRecordCreator",
-"language": "GDScript",
-"path": "res://ScenarioScene/GameRecordCreator.gd"
-}, {
 "base": "TabList",
-"class": "InfoList",
-"language": "GDScript",
+"class": &"InfoList",
+"language": &"GDScript",
 "path": "res://UIMain/TabList/InfoList.gd"
 }, {
 "base": "ContextMenu",
-"class": "InfoMenu",
-"language": "GDScript",
+"class": &"InfoMenu",
+"language": &"GDScript",
 "path": "res://UIMain/ContextMenu/InfoMenu.gd"
 }, {
 "base": "Node",
-"class": "Main",
-"language": "GDScript",
+"class": &"Main",
+"language": &"GDScript",
 "path": "res://Main.gd"
 }, {
 "base": "Camera2D",
-"class": "MainCamera",
-"language": "GDScript",
+"class": &"MainCamera",
+"language": &"GDScript",
 "path": "res://ScenarioScene/MainCamera.gd"
 }, {
 "base": "Node",
-"class": "MilitaryKind",
-"language": "GDScript",
+"class": &"MilitaryKind",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Military/MilitaryKind.gd"
 }, {
 "base": "TabList",
-"class": "MilitaryKindList",
-"language": "GDScript",
+"class": &"MilitaryKindList",
+"language": &"GDScript",
 "path": "res://UIMain/TabList/MilitaryKindList.gd"
 }, {
 "base": "Node",
-"class": "MovementKind",
-"language": "GDScript",
+"class": &"MovementKind",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Military/MovementKind.gd"
 }, {
 "base": "Node",
-"class": "PathFinder",
-"language": "GDScript",
+"class": &"PathFinder",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Military/PathFinder.gd"
 }, {
 "base": "Node",
-"class": "Person",
-"language": "GDScript",
+"class": &"Person",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Person/Person.gd"
 }, {
 "base": "Panel",
-"class": "PersonBubble",
-"language": "GDScript",
+"class": &"PersonBubble",
+"language": &"GDScript",
 "path": "res://UIMain/PersonBubble/PersonBubble.gd"
 }, {
-"base": "Panel",
-"class": "PersonDetail",
-"language": "GDScript",
-"path": "res://UIMain/PersonDetail/PersonDetail.gd"
-}, {
 "base": "Control",
-"class": "PersonDialog",
-"language": "GDScript",
+"class": &"PersonDialog",
+"language": &"GDScript",
 "path": "res://UIMain/PersonDialog/PersonDialog.gd"
 }, {
 "base": "TabList",
-"class": "PersonList",
-"language": "GDScript",
+"class": &"PersonList",
+"language": &"GDScript",
 "path": "res://UIMain/TabList/PersonList.gd"
 }, {
 "base": "Node2D",
-"class": "PositionSelectItem",
-"language": "GDScript",
+"class": &"PositionSelectItem",
+"language": &"GDScript",
 "path": "res://ScenarioScene/PositionSelector/PositionSelectItem.gd"
 }, {
 "base": "Node2D",
-"class": "PositionSelector",
-"language": "GDScript",
+"class": &"PositionSelector",
+"language": &"GDScript",
 "path": "res://ScenarioScene/PositionSelector/PositionSelector.gd"
 }, {
 "base": "Node",
-"class": "ResourcePack",
-"language": "GDScript",
+"class": &"ResourcePack",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Architecture/ResourcePack.gd"
 }, {
 "base": "Node",
-"class": "Root",
-"language": "GDScript",
+"class": &"Root",
+"language": &"GDScript",
 "path": "res://Root.gd"
 }, {
 "base": "VBoxContainer",
-"class": "SaveLoadMenu",
-"language": "GDScript",
+"class": &"SaveLoadMenu",
+"language": &"GDScript",
 "path": "res://UIMain/SaveLoadMenu/SaveLoadMenu.gd"
 }, {
 "base": "Node",
-"class": "Scenario",
-"language": "GDScript",
+"class": &"Scenario",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Scenario.gd"
 }, {
 "base": "Node",
-"class": "ScenarioConfig",
-"language": "GDScript",
+"class": &"ScenarioConfig",
+"language": &"GDScript",
 "path": "res://ScenarioScene/ScenarioConfig.gd"
 }, {
 "base": "Panel",
-"class": "ScenarioSelector",
-"language": "GDScript",
+"class": &"ScenarioSelector",
+"language": &"GDScript",
 "path": "res://RootScene/ScenarioSelector.gd"
 }, {
 "base": "Control",
-"class": "ScreenBlind",
-"language": "GDScript",
+"class": &"ScreenBlind",
+"language": &"GDScript",
 "path": "res://UIMain/ScreenBlind/ScreenBlind.gd"
 }, {
 "base": "Node",
-"class": "Section",
-"language": "GDScript",
+"class": &"Section",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Faction/Section.gd"
 }, {
 "base": "Node",
-"class": "Skill",
-"language": "GDScript",
+"class": &"Skill",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Person/Skill.gd"
 }, {
 "base": "Node",
-"class": "Stunt",
-"language": "GDScript",
+"class": &"Stunt",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Military/Stunt.gd"
 }, {
 "base": "ContextMenu",
-"class": "SystemMenu",
-"language": "GDScript",
+"class": &"SystemMenu",
+"language": &"GDScript",
 "path": "res://UIMain/ContextMenu/SystemMenu.gd"
 }, {
 "base": "Panel",
-"class": "TabList",
-"language": "GDScript",
+"class": &"TabList",
+"language": &"GDScript",
 "path": "res://UIMain/TabList/TabList.gd"
 }, {
 "base": "Node",
-"class": "TerrainDetail",
-"language": "GDScript",
+"class": &"TerrainDetail",
+"language": &"GDScript",
 "path": "res://ScenarioScene/GameMap/TerrainDetail.gd"
 }, {
 "base": "Panel",
-"class": "Toolbar",
-"language": "GDScript",
+"class": &"Toolbar",
+"language": &"GDScript",
 "path": "res://UIMain/Toolbar/Toolbar.gd"
 }, {
 "base": "Panel",
-"class": "TransportDialog",
-"language": "GDScript",
+"class": &"TransportDialog",
+"language": &"GDScript",
 "path": "res://UIMain/TransportDialog/TransportDialog.gd"
 }, {
 "base": "Node2D",
-"class": "Troop",
-"language": "GDScript",
+"class": &"Troop",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Military/Troop.gd"
 }, {
 "base": "Panel",
-"class": "TroopDetail",
-"language": "GDScript",
+"class": &"TroopDetail",
+"language": &"GDScript",
 "path": "res://UIMain/TroopDetail/TroopDetail.gd"
 }, {
 "base": "ContextMenu",
-"class": "TroopMenu",
-"language": "GDScript",
+"class": &"TroopMenu",
+"language": &"GDScript",
 "path": "res://UIMain/ContextMenu/TroopMenu.gd"
 }, {
 "base": "Node",
-"class": "TroopQueue",
-"language": "GDScript",
+"class": &"TroopQueue",
+"language": &"GDScript",
 "path": "res://ScenarioScene/Military/TroopQueue.gd"
 }, {
 "base": "Panel",
-"class": "TroopSurvey",
-"language": "GDScript",
+"class": &"TroopSurvey",
+"language": &"GDScript",
 "path": "res://UIMain/TroopSurvey/TroopSurvey.gd"
 }, {
 "base": "Control",
-"class": "TroopTitle",
-"language": "GDScript",
+"class": &"TroopTitle",
+"language": &"GDScript",
 "path": "res://UIMain/TroopTitle/TroopTitle.gd"
 }, {
 "base": "Control",
-"class": "UIMain",
-"language": "GDScript",
+"class": &"UIMain",
+"language": &"GDScript",
 "path": "res://UIMain/UIMain.gd"
 }, {
 "base": "Node2D",
-"class": "ZhsanMap",
-"language": "GDScript",
+"class": &"ZhsanMap",
+"language": &"GDScript",
 "path": "res://ScenarioScene/GameMap/ZhsanMap.gd"
-} ]
+}]
 _global_script_class_icons={
 "AI": "",
 "AIAllocation": "",
@@ -361,7 +351,6 @@ _global_script_class_icons={
 "FactionSurvey": "",
 "GameConfiguration": "",
 "GameRecord": "",
-"GameRecordCreator": "",
 "InfoList": "",
 "InfoMenu": "",
 "Main": "",
@@ -372,7 +361,6 @@ _global_script_class_icons={
 "PathFinder": "",
 "Person": "",
 "PersonBubble": "",
-"PersonDetail": "",
 "PersonDialog": "",
 "PersonList": "",
 "PositionSelectItem": "",
@@ -408,8 +396,9 @@ config/name="ZHSAN3"
 run/main_scene="res://Root.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="ZHSAN3"
+config/features=PackedStringArray("4.0")
 boot_splash/image="res://Images/Splash.png"
-boot_splash/bg_color=Color( 0, 0, 0, 1 )
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -434,42 +423,42 @@ window/size/height=1080
 
 [editor_plugins]
 
-enabled=PoolStringArray( "vnen.tiled_importer" )
+enabled=PackedStringArray("vnen.tiled_importer")
 
 [input]
 
 ui_left={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
- ]
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_right={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
- ]
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_up={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
- ]
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 ui_down={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
- ]
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 
 [locale]
 
-translations=PoolStringArray( "res://i18n/i18n.en.translation", "res://i18n/i18n.zh_CN.translation", "res://i18n/i18n.zh_TW.translation" )
+translations=PackedStringArray("res://i18n/i18n.en.translation", "res://i18n/i18n.zh_CN.translation", "res://i18n/i18n.zh_TW.translation")
 
 [logging]
 

@@ -22,7 +22,7 @@ func _ready():
 	var dir = Directory.new()
 	var path = "res://Scenarios"
 	dir.open(path)
-	dir.list_dir_begin()
+	dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	while true:
 		var in_dir_name = dir.get_next()
 		if in_dir_name == "":
@@ -31,7 +31,9 @@ func _ready():
 			var scen_path = "res://Scenarios/" + in_dir_name + "/Scenario.json"
 			var file = File.new()
 			if file.open(scen_path, File.READ) == OK:
-				var obj = parse_json(file.get_as_text())
+				var test_json_conv = JSON.new()
+				test_json_conv.parse(file.get_as_text())
+				var obj = test_json_conv.get_data()
 				if obj != null:
 					obj['__FileName'] = in_dir_name
 					_scenario_data.append(obj)
@@ -42,7 +44,7 @@ func _ready():
 		
 		var radioButton = CheckBox.new()
 		hcontainer.add_child(radioButton)
-		radioButton.connect("pressed", self, "_on_scenario_clicked", [radioButton, scen])
+		radioButton.connect("pressed",Callable(self,"_on_scenario_clicked").bind(radioButton, scen))
 		radioButton.add_to_group("RadioButton_Scenario")
 		
 		var label = Label.new()
@@ -53,7 +55,9 @@ func _ready():
 		
 	var file = File.new()
 	if file.open('user://custom_persons.json', File.READ) == OK:
-		var obj = parse_json(file.get_as_text())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(file.get_as_text())
+		var obj = test_json_conv.get_data()
 		for item in obj:
 			var instance = Person.new()
 			instance.load_data(item, {})
@@ -81,7 +85,7 @@ func _on_scenario_clicked(node, scen):
 			
 			var radioButton = CheckBox.new()
 			hcontainer.add_child(radioButton)
-			radioButton.connect("pressed", self, "_on_faction_clicked", [radioButton, scen, faction])
+			radioButton.connect("pressed",Callable(self,"_on_faction_clicked").bind(radioButton, scen, faction))
 			radioButton.add_to_group("RadioButton_Faction")
 			
 			var label = Label.new()
@@ -141,7 +145,7 @@ func _on_PersonList_person_selected(current_action, current_architecture, select
 			
 		var radioButton = CheckBox.new()
 		hcontainer.add_child(radioButton)
-		radioButton.connect("pressed", self, "_on_faction_clicked", [radioButton, _selected_scenario, _selected_leader.id])
+		radioButton.connect("pressed",Callable(self,"_on_faction_clicked").bind(radioButton, _selected_scenario, _selected_leader.id))
 		radioButton.add_to_group("RadioButton_Faction")
 		
 		var label = Label.new()

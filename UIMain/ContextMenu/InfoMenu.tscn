@@ -4,65 +4,65 @@
 [ext_resource path="res://UIMain/ContextMenu/ContextMenu.tscn" type="PackedScene" id=5]
 
 [node name="InfoMenu" instance=ExtResource( 5 )]
-margin_right = 206.0
-margin_bottom = 18.0
+offset_right = 206.0
+offset_bottom = 18.0
 script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="3"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Factions" type="Button" parent="VBoxContainer" index="0"]
-margin_right = 205.0
-margin_bottom = 38.1229
+offset_right = 205.0
+offset_bottom = 38.1229
 text = "FACTION_LIST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Architectures" type="Button" parent="VBoxContainer" index="1"]
-margin_top = 34.0
-margin_right = 205.0
-margin_bottom = 72.1229
+offset_top = 34.0
+offset_right = 205.0
+offset_bottom = 72.1229
 text = "ARCHITECTURE_LIST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Persons" type="Button" parent="VBoxContainer" index="2"]
-margin_top = 68.0
-margin_right = 205.0
-margin_bottom = 106.123
+offset_top = 68.0
+offset_right = 205.0
+offset_bottom = 106.123
 text = "PERSON_LIST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MilitaryKind" type="Button" parent="VBoxContainer" index="3"]
-margin_top = 102.0
-margin_right = 205.0
-margin_bottom = 140.123
+offset_top = 102.0
+offset_right = 205.0
+offset_bottom = 140.123
 text = "MILITARY_KIND_LIST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Skill" type="Button" parent="VBoxContainer" index="4"]
-margin_top = 136.0
-margin_right = 205.0
-margin_bottom = 174.123
+offset_top = 136.0
+offset_right = 205.0
+offset_bottom = 174.123
 text = "SKILL_LIST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Stunt" type="Button" parent="VBoxContainer" index="5"]
-margin_top = 170.0
-margin_right = 205.0
-margin_bottom = 208.123
+offset_top = 170.0
+offset_right = 205.0
+offset_bottom = 208.123
 text = "STUNT_LIST"
 __meta__ = {
 "_edit_use_anchors_": false

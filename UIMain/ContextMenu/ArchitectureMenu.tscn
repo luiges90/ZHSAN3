@@ -14,119 +14,119 @@
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [node name="ArchitectureMenu" instance=ExtResource( 6 )]
-margin_right = 143.0
-margin_bottom = 68.0
+offset_right = 143.0
+offset_bottom = 68.0
 script = ExtResource( 3 )
 
 [node name="H" type="HBoxContainer" parent="." index="3"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainMenu" type="VBoxContainer" parent="H" index="0"]
-margin_right = 239.0
-margin_bottom = 310.0
+offset_right = 239.0
+offset_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Internal" type="Button" parent="H/MainMenu" index="0"]
-margin_right = 239.0
-margin_bottom = 38.1229
+offset_right = 239.0
+offset_bottom = 38.1229
 text = "INTERNAL"
 
 [node name="Military" type="Button" parent="H/MainMenu" index="1"]
-margin_top = 34.0
-margin_right = 239.0
-margin_bottom = 72.1229
+offset_top = 34.0
+offset_right = 239.0
+offset_bottom = 72.1229
 text = "MILITARY"
 
 [node name="Officers" type="Button" parent="H/MainMenu" index="2"]
-margin_top = 68.0
-margin_right = 239.0
-margin_bottom = 106.123
+offset_top = 68.0
+offset_right = 239.0
+offset_bottom = 106.123
 text = "OFFICERS"
 
 [node name="Transport" type="Button" parent="H/MainMenu" index="3"]
-margin_top = 102.0
-margin_right = 239.0
-margin_bottom = 140.123
+offset_top = 102.0
+offset_right = 239.0
+offset_bottom = 140.123
 text = "TRANSPORT"
 
 [node name="Faction" type="Button" parent="H/MainMenu" index="4"]
-margin_top = 136.0
-margin_right = 239.0
-margin_bottom = 174.123
+offset_top = 136.0
+offset_right = 239.0
+offset_bottom = 174.123
 text = "FACTION"
 
 [node name="ToggleAutoTask" type="Button" parent="H/MainMenu" index="5"]
-margin_top = 170.0
-margin_right = 239.0
-margin_bottom = 208.123
+offset_top = 170.0
+offset_right = 239.0
+offset_bottom = 208.123
 text = "TOGGLE_AUTO_TASK"
 
 [node name="PersonList" type="Button" parent="H/MainMenu" index="6"]
-margin_top = 204.0
-margin_right = 239.0
-margin_bottom = 242.123
+offset_top = 204.0
+offset_right = 239.0
+offset_bottom = 242.123
 text = "PERSON_LIST"
 
 [node name="ArchitectureDetail" type="Button" parent="H/MainMenu" index="7"]
-margin_top = 238.0
-margin_right = 239.0
-margin_bottom = 276.123
+offset_top = 238.0
+offset_right = 239.0
+offset_bottom = 276.123
 text = "ARCHITECTURE_DETAILS"
 
 [node name="FactionDetail" type="Button" parent="H/MainMenu" index="8"]
-margin_top = 272.0
-margin_right = 239.0
-margin_bottom = 310.123
+offset_top = 272.0
+offset_right = 239.0
+offset_bottom = 310.123
 text = "FACTION_DETAILS"
 
 [node name="InternalMenu" type="VBoxContainer" parent="H" index="1"]
 visible = false
-margin_left = 235.0
-margin_right = 390.0
-margin_bottom = 276.0
+offset_left = 235.0
+offset_right = 390.0
+offset_bottom = 276.0
 
 [node name="Agriculture" type="Button" parent="H/InternalMenu" index="0"]
-margin_right = 155.0
-margin_bottom = 38.1229
+offset_right = 155.0
+offset_bottom = 38.1229
 text = "AGRICULTURE"
 
 [node name="Commerce" type="Button" parent="H/InternalMenu" index="1"]
-margin_top = 34.0
-margin_right = 155.0
-margin_bottom = 72.1229
+offset_top = 34.0
+offset_right = 155.0
+offset_bottom = 72.1229
 text = "COMMERCE"
 
 [node name="Morale" type="Button" parent="H/InternalMenu" index="2"]
-margin_top = 68.0
-margin_right = 155.0
-margin_bottom = 106.123
+offset_top = 68.0
+offset_right = 155.0
+offset_bottom = 106.123
 text = "MORALE"
 
 [node name="Endurance" type="Button" parent="H/InternalMenu" index="3"]
-margin_top = 102.0
-margin_right = 155.0
-margin_bottom = 140.123
+offset_top = 102.0
+offset_right = 155.0
+offset_bottom = 140.123
 text = "ENDURANCE"
 
 [node name="MilitaryMenu" type="VBoxContainer" parent="H" index="2"]
 visible = false
-margin_left = 235.0
-margin_right = 471.0
-margin_bottom = 310.0
+offset_left = 235.0
+offset_right = 471.0
+offset_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Blank" type="Button" parent="H/MilitaryMenu" index="0"]
-margin_right = 236.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 0, 36 )
+offset_right = 236.0
+offset_bottom = 36.0
+minimum_size = Vector2( 0, 36 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
@@ -134,51 +134,51 @@ custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="StartCampaign" type="Button" parent="H/MilitaryMenu" index="1"]
-margin_top = 32.0
-margin_right = 236.0
-margin_bottom = 70.1229
+offset_top = 32.0
+offset_right = 236.0
+offset_bottom = 70.1229
 text = "CREATE_TROOP"
 
 [node name="CreateTroopAttached" type="Button" parent="H/MilitaryMenu" index="2"]
-margin_top = 66.0
-margin_right = 236.0
-margin_bottom = 104.123
+offset_top = 66.0
+offset_right = 236.0
+offset_bottom = 104.123
 text = "ATTACHED_ARMY_TROOP"
 
 [node name="RecruitTroop" type="Button" parent="H/MilitaryMenu" index="3"]
-margin_top = 100.0
-margin_right = 236.0
-margin_bottom = 138.123
+offset_top = 100.0
+offset_right = 236.0
+offset_bottom = 138.123
 text = "RECRUIT_TROOP"
 
 [node name="TrainTroop" type="Button" parent="H/MilitaryMenu" index="4"]
-margin_top = 134.0
-margin_right = 236.0
-margin_bottom = 172.123
+offset_top = 134.0
+offset_right = 236.0
+offset_bottom = 172.123
 text = "TRAIN_TROOP"
 
 [node name="ProduceEquipment" type="Button" parent="H/MilitaryMenu" index="5"]
-margin_top = 168.0
-margin_right = 236.0
-margin_bottom = 206.123
+offset_top = 168.0
+offset_right = 236.0
+offset_bottom = 206.123
 text = "PRODUCE_EQUIPMENT"
 
 [node name="AttachedArmy" type="Button" parent="H/MilitaryMenu" index="6"]
-margin_top = 202.0
-margin_right = 236.0
-margin_bottom = 240.123
+offset_top = 202.0
+offset_right = 236.0
+offset_bottom = 240.123
 text = "ATTACHED_ARMY"
 
 [node name="OfficersMenu" type="VBoxContainer" parent="H" index="3"]
 visible = false
-margin_left = 235.0
-margin_right = 400.0
-margin_bottom = 310.0
+offset_left = 235.0
+offset_right = 400.0
+offset_bottom = 310.0
 
 [node name="Blank" type="Button" parent="H/OfficersMenu" index="0"]
-margin_right = 165.0
-margin_bottom = 72.0
-rect_min_size = Vector2( 0, 72 )
+offset_right = 165.0
+offset_bottom = 72.0
+minimum_size = Vector2( 0, 72 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
@@ -186,39 +186,39 @@ custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="Move" type="Button" parent="H/OfficersMenu" index="1"]
-margin_top = 68.0
-margin_right = 165.0
-margin_bottom = 106.123
+offset_top = 68.0
+offset_right = 165.0
+offset_bottom = 106.123
 text = "MOVE"
 
 [node name="Call" type="Button" parent="H/OfficersMenu" index="2"]
-margin_top = 102.0
-margin_right = 165.0
-margin_bottom = 140.123
+offset_top = 102.0
+offset_right = 165.0
+offset_bottom = 140.123
 text = "CALL"
 
 [node name="Convince" type="Button" parent="H/OfficersMenu" index="3"]
-margin_top = 136.0
-margin_right = 165.0
-margin_bottom = 174.123
+offset_top = 136.0
+offset_right = 165.0
+offset_bottom = 174.123
 text = "CONVINCE"
 
 [node name="AutoConvince" type="Button" parent="H/OfficersMenu" index="4"]
-margin_top = 170.0
-margin_right = 165.0
-margin_bottom = 208.123
+offset_top = 170.0
+offset_right = 165.0
+offset_bottom = 208.123
 text = "AUTO_CONVINCE"
 
 [node name="FactionMenu" type="VBoxContainer" parent="H" index="4"]
 visible = false
-margin_left = 235.0
-margin_right = 415.0
-margin_bottom = 310.0
+offset_left = 235.0
+offset_right = 415.0
+offset_bottom = 310.0
 
 [node name="Blank" type="Button" parent="H/FactionMenu" index="0"]
-margin_right = 180.0
-margin_bottom = 136.0
-rect_min_size = Vector2( 0, 136 )
+offset_right = 180.0
+offset_bottom = 136.0
+minimum_size = Vector2( 0, 136 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
@@ -226,27 +226,27 @@ custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="AssignAdvisor" type="Button" parent="H/FactionMenu" index="1"]
-margin_top = 132.0
-margin_right = 180.0
-margin_bottom = 170.123
+offset_top = 132.0
+offset_right = 180.0
+offset_bottom = 170.123
 text = "ASSIGN_ADVISOR"
 
 [node name="RemoveAdvisor" type="Button" parent="H/FactionMenu" index="2"]
-margin_top = 166.0
-margin_right = 180.0
-margin_bottom = 204.123
+offset_top = 166.0
+offset_right = 180.0
+offset_bottom = 204.123
 text = "REMOVE_ADVISOR"
 
 [node name="FactionDetailsMenu" type="VBoxContainer" parent="H" index="5"]
 visible = false
-margin_left = 235.0
-margin_right = 481.0
-margin_bottom = 374.0
+offset_left = 235.0
+offset_right = 481.0
+offset_bottom = 374.0
 
 [node name="Blank" type="Button" parent="H/FactionDetailsMenu" index="0"]
-margin_right = 246.0
-margin_bottom = 272.0
-rect_min_size = Vector2( 0, 272 )
+offset_right = 246.0
+offset_bottom = 272.0
+minimum_size = Vector2( 0, 272 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
@@ -254,33 +254,33 @@ custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="FactionDetail" type="Button" parent="H/FactionDetailsMenu" index="1"]
-margin_top = 268.0
-margin_right = 246.0
-margin_bottom = 306.123
+offset_top = 268.0
+offset_right = 246.0
+offset_bottom = 306.123
 text = "FACTION_DETAILS"
 
 [node name="FactionArchitectures" type="Button" parent="H/FactionDetailsMenu" index="2"]
-margin_top = 302.0
-margin_right = 246.0
-margin_bottom = 340.123
+offset_top = 302.0
+offset_right = 246.0
+offset_bottom = 340.123
 text = "FACTION_ARCHITECTURES"
 
 [node name="FactionPersons" type="Button" parent="H/FactionDetailsMenu" index="3"]
-margin_top = 336.0
-margin_right = 246.0
-margin_bottom = 374.123
+offset_top = 336.0
+offset_right = 246.0
+offset_bottom = 374.123
 text = "FACTION_PERSONS"
 
 [node name="AttachedArmyMenu" type="VBoxContainer" parent="H" index="6"]
 visible = false
-margin_left = 235.0
-margin_right = 484.0
-margin_bottom = 310.0
+offset_left = 235.0
+offset_right = 484.0
+offset_bottom = 310.0
 
 [node name="Blank" type="Button" parent="H/AttachedArmyMenu" index="0"]
-margin_right = 249.0
-margin_bottom = 168.0
-rect_min_size = Vector2( 0, 168 )
+offset_right = 249.0
+offset_bottom = 168.0
+minimum_size = Vector2( 0, 168 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
@@ -288,27 +288,27 @@ custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 
 [node name="AttachArmy" type="Button" parent="H/AttachedArmyMenu" index="1"]
-margin_top = 164.0
-margin_right = 249.0
-margin_bottom = 202.123
+offset_top = 164.0
+offset_right = 249.0
+offset_bottom = 202.123
 text = "ATTACH_ARMY"
 
 [node name="UpdateAttachedArmy" type="Button" parent="H/AttachedArmyMenu" index="2"]
-margin_top = 198.0
-margin_right = 249.0
-margin_bottom = 236.123
+offset_top = 198.0
+offset_right = 249.0
+offset_bottom = 236.123
 text = "UPDATE_ATTACHED_ARMY"
 
 [node name="DetachArmy" type="Button" parent="H/AttachedArmyMenu" index="3"]
-margin_top = 232.0
-margin_right = 249.0
-margin_bottom = 270.123
+offset_top = 232.0
+offset_right = 249.0
+offset_bottom = 270.123
 text = "DETACH_ARMY"
 
 [node name="AttachedArmyList" type="Button" parent="H/AttachedArmyMenu" index="4"]
-margin_top = 266.0
-margin_right = 249.0
-margin_bottom = 304.123
+offset_top = 266.0
+offset_right = 249.0
+offset_bottom = 304.123
 text = "ATTACHED_ARMY_LIST"
 
 [connection signal="pressed" from="H/MainMenu/Internal" to="." method="_on_Internal_pressed"]

@@ -6,7 +6,7 @@ var _confirming = false
 func show():
 	if GameConfig.se_enabled:
 		$OpenSound.play()
-	.show()
+	super.show()
 
 
 func _select_item():

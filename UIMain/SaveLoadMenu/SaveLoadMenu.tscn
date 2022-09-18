@@ -7,8 +7,8 @@
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=5]
 
 [node name="SaveLoadMenu" type="VBoxContainer"]
-margin_right = 600.0
-margin_bottom = 374.0
+offset_right = 600.0
+offset_bottom = 374.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -16,70 +16,70 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="."]
-margin_right = 600.0
-margin_bottom = 34.0
+offset_right = 600.0
+offset_bottom = 34.0
 custom_styles/normal = ExtResource( 2 )
 text = "SAVE_GAME"
 align = 1
 
 [node name="Game01" type="Button" parent="."]
-margin_top = 30.0
-margin_right = 600.0
-margin_bottom = 68.1229
+offset_top = 30.0
+offset_right = 600.0
+offset_bottom = 68.1229
 text = "FILE_BLANK"
 
 [node name="Game02" type="Button" parent="."]
-margin_top = 64.0
-margin_right = 600.0
-margin_bottom = 102.123
+offset_top = 64.0
+offset_right = 600.0
+offset_bottom = 102.123
 text = "FILE_BLANK"
 
 [node name="Game03" type="Button" parent="."]
-margin_top = 98.0
-margin_right = 600.0
-margin_bottom = 136.123
+offset_top = 98.0
+offset_right = 600.0
+offset_bottom = 136.123
 text = "FILE_BLANK"
 
 [node name="Game04" type="Button" parent="."]
-margin_top = 132.0
-margin_right = 600.0
-margin_bottom = 170.123
+offset_top = 132.0
+offset_right = 600.0
+offset_bottom = 170.123
 text = "FILE_BLANK"
 
 [node name="Game05" type="Button" parent="."]
-margin_top = 166.0
-margin_right = 600.0
-margin_bottom = 204.123
+offset_top = 166.0
+offset_right = 600.0
+offset_bottom = 204.123
 text = "FILE_BLANK"
 
 [node name="Game06" type="Button" parent="."]
-margin_top = 200.0
-margin_right = 600.0
-margin_bottom = 238.123
+offset_top = 200.0
+offset_right = 600.0
+offset_bottom = 238.123
 text = "FILE_BLANK"
 
 [node name="Game07" type="Button" parent="."]
-margin_top = 234.0
-margin_right = 600.0
-margin_bottom = 272.123
+offset_top = 234.0
+offset_right = 600.0
+offset_bottom = 272.123
 text = "FILE_BLANK"
 
 [node name="Game08" type="Button" parent="."]
-margin_top = 268.0
-margin_right = 600.0
-margin_bottom = 306.123
+offset_top = 268.0
+offset_right = 600.0
+offset_bottom = 306.123
 text = "FILE_BLANK"
 
 [node name="Game09" type="Button" parent="."]
-margin_top = 302.0
-margin_right = 600.0
-margin_bottom = 340.123
+offset_top = 302.0
+offset_right = 600.0
+offset_bottom = 340.123
 text = "FILE_BLANK"
 
 [node name="Game10" type="Button" parent="."]
-margin_top = 336.0
-margin_right = 600.0
-margin_bottom = 374.123
+offset_top = 336.0
+offset_right = 600.0
+offset_bottom = 374.123
 text = "FILE_BLANK"
 
 [node name="Confirm" type="AudioStreamPlayer" parent="."]

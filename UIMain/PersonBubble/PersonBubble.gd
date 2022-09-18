@@ -20,14 +20,14 @@ func show_bubble(person, map_object, text: String):
 		var viewing_rect = get_viewport_rect()
 		var x = map_object.get_screen_position().x
 		var y = map_object.get_screen_position().y - 88
-		var bubble_rect = Rect2(x, y, rect_size.x, rect_size.y)
+		var bubble_rect = Rect2(x, y, size.x, size.y)
 		if viewing_rect.intersects(bubble_rect):
 			var bubble = duplicate()
 			find_parent("*").add_child(bubble)
 			
-			bubble.find_node('Portrait').texture = person.get_portrait()
-			bubble.rect_position = Vector2(x, y)
-			bubble.find_node('Text').bbcode_text = text
+			bubble.find_child('Portrait').texture = person.get_portrait()
+			bubble.position = Vector2(x, y)
+			bubble.find_child('Text').text = text
 			
 			bubble.show()
 

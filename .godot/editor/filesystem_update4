@@ -1,0 +1,14 @@
+res://Root.tscn
+res://UIMain/MainTheme.tres
+res://UIMain/ContextMenu/ContextMenuTheme.tres
+res://Util.gd
+res://UIMain/TabList/TabList.gd
+res://ScenarioScene/Architecture/ArchitectureKind.gd
+res://GameConfig.gd
+res://ScenarioUtil.gd
+res://SharedData.gd
+res://UIMain/TabList/ArchitectureList.gd
+res://ScenarioScene/Architecture/Architecture.gd
+res://ScenarioScene/Military/Troop.gd
+res://ScenarioScene/Military/Stunt.gd
+res://ScenarioScene/Military/PathFinder.gd

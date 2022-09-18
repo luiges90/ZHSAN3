@@ -56,14 +56,14 @@ func _outside_task(arch: Architecture, scenario):
 				if convincer.convince_probability(target) > 0.5 and not _convincing_persons.has(target.id) and convincer.outside_task_eta_days(target) < 5:
 					convincer.go_for_convince(target)
 					_convincing_persons[target.id] = target
-					convincer.connect("convince_success", self, "_on_convince_done")
-					convincer.connect("convince_failure", self, "_on_convince_done")
+					convincer.connect("convince_success",Callable(self,"_on_convince_done"))
+					convincer.connect("convince_failure",Callable(self,"_on_convince_done"))
 					break
 					
 func _on_convince_done(convincer, convinced):
 	_convincing_persons.erase(convinced)
-	convincer.disconnect("convince_success", self, "_on_convince_done")
-	convincer.disconnect("convince_failure", self, "_on_convince_done")
+	convincer.disconnect("convince_success",Callable(self,"_on_convince_done"))
+	convincer.disconnect("convince_failure",Callable(self,"_on_convince_done"))
 
 func _assign_task(arch: Architecture, scenario):
 	var list = arch.get_workable_persons().duplicate()
@@ -100,43 +100,43 @@ func _assign_task(arch: Architecture, scenario):
 			0: 
 				var person = Util.max_by(list, "get_agriculture_ability")
 				person[1].set_working_task(Person.Task.AGRICULTURE)
-				list.remove(person[0])
+				list.remove_at(person[0])
 				task_priority[0] -= 0.2
 			1:
 				var person = Util.max_by(list, "get_commerce_ability")
 				person[1].set_working_task(Person.Task.COMMERCE)
-				list.remove(person[0])
+				list.remove_at(person[0])
 				task_priority[1] -= 0.2
 			2:
 				var person = Util.max_by(list, "get_morale_ability")
 				person[1].set_working_task(Person.Task.MORALE)
-				list.remove(person[0])
+				list.remove_at(person[0])
 				task_priority[2] -= 0.2
 			3:
 				var person = Util.max_by(list, "get_endurance_ability")
 				person[1].set_working_task(Person.Task.ENDURANCE)
-				list.remove(person[0])
+				list.remove_at(person[0])
 				task_priority[3] -= 0.2
 			4:
 				var person = Util.max_by(list, "get_recruit_troop_ability")
 				person[1].set_working_task(Person.Task.RECRUIT_TROOP)
-				list.remove(person[0])
+				list.remove_at(person[0])
 				task_priority[4] -= 0.2
 			5:
 				var person = Util.max_by(list, "get_train_troop_ability")
 				person[1].set_working_task(Person.Task.TRAIN_TROOP)
-				list.remove(person[0])
+				list.remove_at(person[0])
 				task_priority[5] -= 0.2
 			6:
 				var person = Util.max_by(list, "get_produce_equipment_ability")
 				person[1].set_working_task(Person.Task.PRODUCE_EQUIPMENT)
 				person[1].set_produce_equipment(min_equipment.id)
-				list.remove(person[0])
+				list.remove_at(person[0])
 				task_priority[6] -= 0.2
 
 func _manage_attached_army(arch: Architecture, scenario):
 	if arch.troop > 5000:
 		var workable_persons = arch.get_workable_persons()
 		for person in workable_persons:
-			if person.get_command() >= 80:
+			if person.is_command_or_control_pressed() >= 80:
 				pass

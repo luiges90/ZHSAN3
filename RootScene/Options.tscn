@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/font_header.tres" type="FontFile" id=1]
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=2]
 [ext_resource path="res://RootScene/Options.gd" type="Script" id=3]
 
@@ -15,9 +15,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 16.0
-margin_top = 16.0
-margin_right = -16.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
 custom_fonts/font = ExtResource( 1 )
 text = "OPTIONS"
 align = 1
@@ -28,134 +28,134 @@ __meta__ = {
 [node name="G" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 56.0
-margin_right = -16.0
-margin_bottom = -64.0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = -16.0
+offset_bottom = -64.0
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SE" type="CheckBox" parent="G"]
-margin_right = 270.0
-margin_bottom = 18.0
+offset_right = 270.0
+offset_bottom = 18.0
 text = "SE_ENABLED"
 
 [node name="Control" type="Control" parent="G"]
-margin_left = 274.0
-margin_right = 332.0
-margin_bottom = 18.0
+offset_left = 274.0
+offset_right = 332.0
+offset_bottom = 18.0
 
 [node name="BGM" type="CheckBox" parent="G"]
-margin_top = 22.0
-margin_right = 270.0
-margin_bottom = 40.0
+offset_top = 22.0
+offset_right = 270.0
+offset_bottom = 40.0
 text = "BGM_ENABLED"
 
 [node name="Control4" type="Control" parent="G"]
-margin_left = 274.0
-margin_top = 22.0
-margin_right = 332.0
-margin_bottom = 40.0
+offset_left = 274.0
+offset_top = 22.0
+offset_right = 332.0
+offset_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TroopAnimation" type="CheckBox" parent="G"]
-margin_top = 44.0
-margin_right = 270.0
-margin_bottom = 72.0
+offset_top = 44.0
+offset_right = 270.0
+offset_bottom = 72.0
 text = "TROOP_ANIMATION_SPEED"
 
 [node name="TroopAnimationSpeed" type="LineEdit" parent="G"]
-margin_left = 274.0
-margin_top = 44.0
-margin_right = 332.0
-margin_bottom = 72.0
+offset_left = 274.0
+offset_top = 44.0
+offset_right = 332.0
+offset_bottom = 72.0
 text = "3"
 
 [node name="Label4" type="Label" parent="G"]
-margin_top = 81.0
-margin_right = 270.0
-margin_bottom = 99.0
+offset_top = 81.0
+offset_right = 270.0
+offset_bottom = 99.0
 text = "DIALOG_SHOW_TIME"
 
 [node name="DialogShowTime" type="LineEdit" parent="G"]
-margin_left = 274.0
-margin_top = 76.0
-margin_right = 332.0
-margin_bottom = 104.0
+offset_left = 274.0
+offset_top = 76.0
+offset_right = 332.0
+offset_bottom = 104.0
 text = "5"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="G"]
-margin_top = 113.0
-margin_right = 270.0
-margin_bottom = 131.0
+offset_top = 113.0
+offset_right = 270.0
+offset_bottom = 131.0
 text = "BUBBLE_SHOW_TIME"
 
 [node name="BubbleShowTime" type="LineEdit" parent="G"]
-margin_left = 274.0
-margin_top = 108.0
-margin_right = 332.0
-margin_bottom = 136.0
+offset_left = 274.0
+offset_top = 108.0
+offset_right = 332.0
+offset_bottom = 136.0
 text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RadioButtonDirectSelect" type="CheckBox" parent="G"]
-margin_top = 140.0
-margin_right = 270.0
-margin_bottom = 158.0
+offset_top = 140.0
+offset_right = 270.0
+offset_bottom = 158.0
 text = "RADIO_BUTTON_DIRECT_SELECT"
 
 [node name="Control2" type="Control" parent="G"]
-margin_left = 274.0
-margin_top = 140.0
-margin_right = 332.0
-margin_bottom = 158.0
+offset_left = 274.0
+offset_top = 140.0
+offset_right = 332.0
+offset_bottom = 158.0
 
 [node name="AutoSave" type="CheckBox" parent="G"]
-margin_top = 162.0
-margin_right = 270.0
-margin_bottom = 190.0
+offset_top = 162.0
+offset_right = 270.0
+offset_bottom = 190.0
 text = "AUTO_SAVE_ENABLED"
 
 [node name="AutoSaveInterval" type="LineEdit" parent="G"]
-margin_left = 274.0
-margin_top = 162.0
-margin_right = 332.0
-margin_bottom = 190.0
+offset_left = 274.0
+offset_top = 162.0
+offset_right = 332.0
+offset_bottom = 190.0
 text = "120"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EnableInGameEdit" type="CheckBox" parent="G"]
-margin_top = 194.0
-margin_right = 270.0
-margin_bottom = 212.0
+offset_top = 194.0
+offset_right = 270.0
+offset_bottom = 212.0
 text = "ENABLE_IN_GAME_EDIT"
 
 [node name="Control3" type="Control" parent="G"]
-margin_left = 274.0
-margin_top = 194.0
-margin_right = 332.0
-margin_bottom = 212.0
+offset_left = 274.0
+offset_top = 194.0
+offset_right = 332.0
+offset_bottom = 212.0
 
 [node name="Confirm" type="Button" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -140.0
-margin_top = -56.0
-margin_right = -16.0
-margin_bottom = -16.0
+offset_left = -140.0
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = -16.0
 text = "CONFIRM"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -166,10 +166,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -272.0
-margin_top = -56.0
-margin_right = -148.0
-margin_bottom = -16.0
+offset_left = -272.0
+offset_top = -56.0
+offset_right = -148.0
+offset_bottom = -16.0
 text = "CANCEL"
 __meta__ = {
 "_edit_use_anchors_": false

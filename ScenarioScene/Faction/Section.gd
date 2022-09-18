@@ -1,14 +1,34 @@
 extends Node
 class_name Section
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var gname: String setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _belonged_faction setget set_belonged_faction, get_belonged_faction 
-var _architecture_list: Array setget forbidden, get_architectures
-var _troop_list: Array setget forbidden, get_troops
+var _belonged_faction :
+	get:
+		return _belonged_faction # TODOConverter40 Copy here content of get_belonged_faction
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_belonged_faction 
+var _architecture_list: Array :
+	get:
+		return _architecture_list # TODOConverter40 Copy here content of get_architectures
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var _troop_list: Array :
+	get:
+		return _troop_list # TODOConverter40 Copy here content of get_troops
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 func forbidden(x):
 	assert(false)

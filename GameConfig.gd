@@ -30,7 +30,9 @@ func load_game_config():
 	var file_path = "user://game_config.json"
 	var file = File.new()
 	file.open(file_path, File.READ)
-	var obj = parse_json(file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	var obj = test_json_conv.get_data()
 
 	if obj != null:
 		GameConfig.day_per_turn = obj["day_per_turn"]
@@ -50,7 +52,7 @@ func load_game_config():
 		GameConfig.bubble_show_time = obj["bubble_show_time"]
 		
 		GameConfig.radio_button_direct_select = obj["radio_button_direct_select"]
-	   
+
 		GameConfig.auto_save = obj["auto_save"]
 		GameConfig.auto_save_interval = obj["auto_save_interval"]
 		GameConfig.auto_save_file_count = obj["auto_save_file_count"]
@@ -94,5 +96,5 @@ func save_game_config():
 		"mod_directory": GameConfig.mod_directory
 	}
 
-	file.store_line(to_json(obj))
+	file.store_line(JSON.new().stringify(obj))
 	file.close()

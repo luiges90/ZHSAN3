@@ -26,11 +26,11 @@ func get_strength():
 	strength = max(strength, max_strength * 0.7)
 	return strength
 	
-func get_command():
-	var command = get_leader().get_command()
+func is_command_or_control_pressed():
+	var command = get_leader().is_command_or_control_pressed()
 	var max_command = 0
 	for p in get_persons():
-		var sub_command = p.get_command()
+		var sub_command = p.is_command_or_control_pressed()
 		if sub_command > max_command:
 			max_command = sub_command
 	command = max(command, max_command * 0.7)
@@ -39,7 +39,7 @@ func get_command():
 func get_offence():
 	var troop_base = military_kind.base_offence
 	var troop_quantity = 30 * sqrt(military_kind.offence * quantity / military_kind.max_quantity_multiplier)
-	var ability_factor = ((get_strength() * 0.3 + get_command() * 0.7) + 10) / 100.0
+	var ability_factor = ((get_strength() * 0.3 + is_command_or_control_pressed() * 0.7) + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 	
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
@@ -51,7 +51,7 @@ func get_offence():
 func get_defence():
 	var troop_base = military_kind.base_defence
 	var troop_quantity = 30 * sqrt(military_kind.defence * quantity / military_kind.max_quantity_multiplier)
-	var ability_factor = (get_command() + 10) / 100.0
+	var ability_factor = (is_command_or_control_pressed() + 10) / 100.0
 	var morale_factor = (morale + 1) / 100.0
 
 	var base = (troop_base + troop_quantity) * ability_factor * morale_factor
@@ -60,7 +60,7 @@ func get_defence():
 		
 	return int(base)
 
-func get_speed():
+func get_velocity():
 	var base = military_kind.speed
 	base = clamp(apply_influences("modify_troop_speed", {"value": base}), base * 0.2, base * 2)
 	return int(base)
@@ -76,7 +76,7 @@ func critical_chance():
 	return chance
 	
 func anti_critical_chance():
-	var chance = -0.1 + float(get_command()) / 500.0
+	var chance = -0.1 + float(is_command_or_control_pressed()) / 500.0
 	chance = apply_influences('add_troop_anti_critical', {"value": chance})
 	return chance
 

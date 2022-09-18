@@ -1,14 +1,14 @@
 extends Node2D
 class_name ZhsanMap
 
-onready var tile_size = (find_node('*') as TileMap).cell_size[0]
-onready var map_size = Vector2(390, 390)
+@onready var tile_size = (find_child('*') as TileMap).cell_size[0]
+@onready var map_size = Vector2(390, 390)
 
 var quadrant_size = Vector2(100, 100)
 
 func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
-	var top_left = (find_node('*') as TileMap).world_to_map(camera_rect.position)
-	var bottom_right = (find_node('*') as TileMap).world_to_map(camera_rect.position + camera_rect.size)
+	var top_left = (find_child('*') as TileMap).local_to_map(camera_rect.position)
+	var bottom_right = (find_child('*') as TileMap).local_to_map(camera_rect.position + camera_rect.size)
 
 	var quadrant_left = int(top_left.x / quadrant_size.x)
 	var quadrant_right = int(bottom_right.x / quadrant_size.x)
@@ -24,5 +24,5 @@ func _on_MainCamera_camera_moved(camera_rect: Rect2, zoom: Vector2):
 func _get_terrain_id_at_position(pos: Vector2):
 	var quadrant_x = int(pos.x / quadrant_size.x)
 	var quadrant_y = int((pos.y + 1) / quadrant_size.y)
-	return (find_node(str(quadrant_y) + 'x' + str(quadrant_x)) as TileMap).get_cell(pos.x, pos.y + 1)
+	return (find_child(str(quadrant_y) + 'x' + str(quadrant_x)) as TileMap).get_cell(pos.x, pos.y + 1)
 	

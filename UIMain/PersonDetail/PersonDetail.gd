@@ -21,7 +21,7 @@ func _on_PersonDetail_hide():
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed and not has_active_subwindow and not _editing:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and not has_active_subwindow and not _editing:
 			hide()
 	elif event is InputEventKey:
 		if event.scancode == KEY_SHIFT:
@@ -35,8 +35,8 @@ func set_data(editing = false, custom_persons = {}):
 	$Edit.visible = editing or GameConfig.enable_edit
 	$EditingButtons.visible = editing
 	for e in _editables:
-		find_node(e).visible = true
-		find_node(e + 'Edit').visible = false
+		find_child(e).visible = true
+		find_child(e + 'Edit').visible = false
 	$SkillsHeader/Edit.visible = false
 	$SkillsHeader/Label2.visible = false
 	$StuntsHeader/Edit.visible = false
@@ -44,7 +44,7 @@ func set_data(editing = false, custom_persons = {}):
 	
 	$_Id.text = str(current_person.id)
 	if !editing:
-		$Description.bbcode_text = current_person.get_biography_text()
+		$Description.text = current_person.get_biography_text()
 	
 	$Portrait.texture = current_person.get_portrait()
 	$Name.text = current_person.get_full_name()
@@ -98,10 +98,10 @@ func _update_skill_list():
 	for skill in skills:
 		var label = LinkButton.new()
 		label.text = skill.get_name_with_level(skills[skill])
-		label.add_color_override("font_color", skill.color)
+		label.add_theme_color_override("font_color", skill.color)
 		label.underline = LinkButton.UNDERLINE_MODE_NEVER
 		label.mouse_default_cursor_shape = Control.CURSOR_ARROW
-		label.connect("pressed", self, "_on_skill_clicked", [skill])
+		label.connect("pressed",Callable(self,"_on_skill_clicked").bind(skill))
 		label.mouse_filter = Control.MOUSE_FILTER_STOP
 		
 		$Skills.add_child(label)
@@ -112,10 +112,10 @@ func _update_stunt_list():
 	for stunt in stunts:
 		var label = LinkButton.new()
 		label.text = stunt.get_name_with_level(stunts[stunt])
-		label.add_color_override("font_color", stunt.color)
+		label.add_theme_color_override("font_color", stunt.color)
 		label.underline = LinkButton.UNDERLINE_MODE_NEVER
 		label.mouse_default_cursor_shape = Control.CURSOR_ARROW
-		label.connect("pressed", self, "_on_stunt_clicked", [stunt])
+		label.connect("pressed",Callable(self,"_on_stunt_clicked").bind(stunt))
 		label.mouse_filter = Control.MOUSE_FILTER_STOP
 		
 		$Stunts.add_child(label)
@@ -132,7 +132,7 @@ func _on_skill_clicked(skill):
 	bbcode += "[color=#FF7700]" + tr("SKILLS") + "[/color] "
 	bbcode += "[color=#" + skill.color.to_html() + "]" + skill.get_name() + "[/color]\n"
 	bbcode += skill.description
-	description.bbcode_text = bbcode
+	description.text = bbcode
 	
 	if $SkillsHeader/Edit.visible:
 		if _shift_held_down:
@@ -148,7 +148,7 @@ func _on_stunt_clicked(stunt):
 	bbcode += "[color=#" + stunt.color.to_html() + "]" + stunt.get_name() + "[/color]\n"
 	bbcode += tr("COMBATIVITY_COST").format({"cost": stunt.combativity_cost}) + "\n"
 	bbcode += stunt.description
-	description.bbcode_text = bbcode
+	description.text = bbcode
 	
 	if $StuntsHeader/Edit.visible:
 		if _shift_held_down:
@@ -178,8 +178,8 @@ func _on_Edit_pressed():
 	$Relations/DeathYearEdit.text = str(current_person.death_year)
 	
 	for e in _editables:
-		var nonedit = find_node(e)
-		var edit = find_node(e + 'Edit')
+		var nonedit = find_child(e)
+		var edit = find_child(e + 'Edit')
 		nonedit.visible = false
 		edit.visible = true
 		match e:
@@ -217,7 +217,7 @@ func _on_MoralityEdit_text_changed(new_text):
 
 
 func _on_CommandEdit_text_changed(new_text):
-	current_person.set_command(int(new_text))
+	current_person.set_meta_pressed(int(new_text))
 
 
 func _on_StrengthEdit_text_changed(new_text):
@@ -269,10 +269,10 @@ func _on_Save_pressed():
 
 
 func _on_Cancel_pressed():
-	var btn_ok = $ConfirmationDialog.get_ok()
+	var btn_ok = $ConfirmationDialog.get_ok_button()
 	btn_ok.text = tr("EXIT")
 	
-	var btn_cancel = $ConfirmationDialog.get_cancel()
+	var btn_cancel = $ConfirmationDialog.get_cancel_button()
 	btn_cancel.text = tr("RETURN")
 
 	$ConfirmationDialog.popup()

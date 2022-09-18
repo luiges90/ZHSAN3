@@ -15,8 +15,8 @@ func show_menu(arch, troop, mouse_x, mouse_y, right_clicked):
 	showing_arch = arch
 	showing_troop = troop
 	
-	margin_left = mouse_x
-	margin_top = mouse_y
+	offset_left = mouse_x
+	offset_top = mouse_y
 	mx = mouse_x
 	my = mouse_y
 	

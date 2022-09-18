@@ -1,46 +1,138 @@
 extends Node2D
 class_name Architecture
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var map_position: Vector2 setget forbidden
+var map_position: Vector2 :
+	get:
+		return map_position # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var gname: String setget forbidden
-var title: String setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var title: String :
+	get:
+		return title # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var kind: ArchitectureKind setget forbidden
+var kind: ArchitectureKind :
+	get:
+		return kind # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var _belonged_section setget set_belonged_section, get_belonged_section
-var _person_list = Array() setget forbidden, get_persons
+var _belonged_section :
+	get:
+		return _belonged_section # TODOConverter40 Copy here content of get_belonged_section
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of set_belonged_section
+var _person_list = Array() :
+	get:
+		return _person_list # TODOConverter40 Copy here content of get_persons
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var population: int setget forbidden
-var military_population: int setget forbidden
-var fund: int setget forbidden
-var food: int setget forbidden
-var agriculture: int setget forbidden
-var commerce: int setget forbidden
-var morale: int setget forbidden
-var endurance: int setget forbidden
+var population: int :
+	get:
+		return population # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var military_population: int :
+	get:
+		return military_population # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var fund: int :
+	get:
+		return fund # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var food: int :
+	get:
+		return food # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var agriculture: int :
+	get:
+		return agriculture # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var commerce: int :
+	get:
+		return commerce # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var morale: int :
+	get:
+		return morale # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var endurance: int :
+	get:
+		return endurance # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var adjacent_archs = {} setget forbidden
+var adjacent_archs = {} :
+	get:
+		return adjacent_archs # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var troop: int setget forbidden
-var troop_morale: int setget forbidden
-var troop_combativity: int setget forbidden
-var troop_experience: int setget forbidden
+var troop: int :
+	get:
+		return troop # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var troop_morale: int :
+	get:
+		return troop_morale # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var troop_combativity: int :
+	get:
+		return troop_combativity # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var troop_experience: int :
+	get:
+		return troop_experience # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var equipments = {} setget forbidden
+var equipments = {} :
+	get:
+		return equipments # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var auto_convince = true
 
 var auto_task: bool
 
-var specialties = {} setget forbidden
+var specialties = {} :
+	get:
+		return specialties # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var _destroyed: bool = false
 
-var _recently_battled: int setget forbidden
+var _recently_battled: int :
+	get:
+		return _recently_battled # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 var _resource_packs: Array
 
@@ -61,13 +153,13 @@ func _draw():
 	#for a in adjacent_archs:
 	#	var arch = scenario.architectures[a]
 	#	var dest = arch.get_global_transform_with_canvas().origin - get_global_transform_with_canvas().origin
-	#	draw_line(Vector2(56, 56), dest, Color(255, 0, 0), 5, true)
+	#	draw_line(Vector2(56, 56),dest,Color(255, 0, 0),5)
 
 func _ready():
 	if scenario:
 		position.x = map_position.x * scenario.tile_size
 		position.y = map_position.y * scenario.tile_size
-		scenario.connect("scenario_loaded", self, "_on_scenario_loaded")
+		scenario.connect("scenario_loaded",Callable(self,"_on_scenario_loaded"))
 
 ####################################
 #            Save / Load           #
@@ -158,12 +250,12 @@ func setup_after_load():
 				equipments[kind] = 0
 	
 func _on_scenario_loaded(scenario):
-	($SpriteArea/Sprite as Sprite).texture = kind.image
-	($SpriteArea/Sprite/Title/Label as Label).text = title
+	($SpriteArea/Sprite2D as Sprite2D).texture = kind.image
+	($SpriteArea/Sprite2D/Title/Label as Label).text = title
 	
 	var faction = get_belonged_faction()
 	if faction:
-		($Flag as Sprite).modulate = faction.color
+		($Flag as Sprite2D).modulate = faction.color
 		
 func set_adjacency(archs, ai_paths):
 	for kind in ai_paths:
@@ -188,8 +280,8 @@ func is_frontline_including_blank() -> bool:
 			return true
 	return false
 
-func get_name() -> String:
-	return gname
+func get_name() -> StringName:
+	return StringName(gname)
 	
 func get_belonged_faction():
 	return _belonged_section.get_belonged_faction() if _belonged_section != null else null
@@ -565,9 +657,9 @@ func change_faction(to_section):
 	
 	# update UI
 	if faction != null:
-		($Flag as Sprite).modulate = faction.color
+		($Flag as Sprite2D).modulate = faction.color
 	else:
-		($Flag as Sprite).modulate = Color.white
+		($Flag as Sprite2D).modulate = Color.WHITE
 	
 	call_deferred("emit_signal", 'faction_changed', self)
 
@@ -908,10 +1000,10 @@ func apply_influences(operation, params: Dictionary):
 ####################################
 func _on_SpriteArea_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			call_deferred("emit_signal", "architecture_clicked", self, event.global_position.x, event.global_position.y, false)
 			get_tree().set_input_as_handled()
-		elif event.button_index == BUTTON_RIGHT and event.pressed:
+		elif event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			call_deferred("emit_signal", "architecture_clicked", self, event.global_position.x, event.global_position.y, true)
 			get_tree().set_input_as_handled()
 			

@@ -5,36 +5,128 @@ enum MilitaryType {
 	INFANTRY, BOWMAN, CALVARY, SIEGE, NAVAL
 }
 
-var id: int setget forbidden
+var id: int :
+	get:
+		return id # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 var scenario
 
-var gname: String setget forbidden
+var gname: String :
+	get:
+		return gname # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var base_offence: int setget forbidden
-var base_defence: int setget forbidden
-var offence: float setget forbidden
-var defence: float setget forbidden
-var range_min: int setget forbidden
-var range_max: int setget forbidden
-var type setget forbidden
-var type_offensive_effectiveness setget forbidden
-var type_defensive_effectiveness setget forbidden
+var base_offence: int :
+	get:
+		return base_offence # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var base_defence: int :
+	get:
+		return base_defence # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var offence: float :
+	get:
+		return offence # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var defence: float :
+	get:
+		return defence # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var range_min: int :
+	get:
+		return range_min # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var range_max: int :
+	get:
+		return range_max # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var type :
+	get:
+		return type # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var type_offensive_effectiveness :
+	get:
+		return type_offensive_effectiveness # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var type_defensive_effectiveness :
+	get:
+		return type_defensive_effectiveness # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var speed: int setget forbidden
-var initiative: int setget forbidden
-var food_per_soldier: int setget forbidden
-var movement_kind setget forbidden
-var terrain_strength setget forbidden
-var receive_counter_attacks: bool setget forbidden
-var architecture_attack_factor: float setget forbidden
+var speed: int :
+	get:
+		return speed # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var initiative: int :
+	get:
+		return initiative # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var food_per_soldier: int :
+	get:
+		return food_per_soldier # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var movement_kind :
+	get:
+		return movement_kind # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var terrain_strength :
+	get:
+		return terrain_strength # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var receive_counter_attacks: bool :
+	get:
+		return receive_counter_attacks # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var architecture_attack_factor: float :
+	get:
+		return architecture_attack_factor # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var max_quantity_multiplier: float setget forbidden
-var equipment_cost: float setget forbidden
+var max_quantity_multiplier: float :
+	get:
+		return max_quantity_multiplier # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var equipment_cost: float :
+	get:
+		return equipment_cost # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var influences: Array setget forbidden
-var conditions: Array setget forbidden
+var influences: Array :
+	get:
+		return influences # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
+var conditions: Array :
+	get:
+		return conditions # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
-var amount_to_troop_ratio: float setget forbidden
+var amount_to_troop_ratio: float :
+	get:
+		return amount_to_troop_ratio # TODOConverter40 Non existent get function 
+	set(mod_value):
+		mod_value  # TODOConverter40 Copy here content of forbidden
 
 func forbidden(x):
 	assert(false)
@@ -103,7 +195,7 @@ func get_offence():
 func get_defence():
 	return defence
 
-func get_speed():
+func get_velocity():
 	return speed
 
 func get_initiative():

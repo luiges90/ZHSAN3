@@ -90,7 +90,7 @@ static func check_conditions_list(condition_list, params: Dictionary, level = 1)
 			'command_at_least':
 				if params.has('person'):
 					var inc = condition['level_increment'] if condition.has('level_increment') else 0
-					if _op_cond(op_not, params['person'].get_command() < condition['Value'] + inc * (level - 1)):
+					if _op_cond(op_not, params['person'].is_command_or_control_pressed() < condition['Value'] + inc * (level - 1)):
 						return false
 			'command_experience_at_least':
 				if params.has('person'):

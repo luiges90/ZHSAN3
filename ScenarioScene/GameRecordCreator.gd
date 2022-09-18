@@ -18,12 +18,16 @@ const YELLOW = "#FFFF00" # person
 func _init():
 	var file = File.new()
 	file.open("res://i18n/PersonBubbles.json", File.READ)
-	_bubbles = parse_json(file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	_bubbles = test_json_conv.get_data()
 	file.close()
 	
 	file = File.new()
 	file.open("res://i18n/PersonDialogs.json", File.READ)
-	_dialogs = parse_json(file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	_dialogs = test_json_conv.get_data()
 	file.close()
 
 	
@@ -73,7 +77,7 @@ func _on_Scenario_scenario_loaded(scenario):
 
 func create_troop(troop, position):
 	var faction = troop.get_belonged_faction()
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	call_deferred("emit_signal", "add_game_record", _register_click(
 		"focus(" + str(position.x) + "," + str(position.y) + ")",
 		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_CREATE_TROOP").format({
@@ -84,7 +88,7 @@ func create_troop(troop, position):
 
 func _on_troop_occupy_architecture(troop, architecture):
 	var faction = troop.get_belonged_faction()
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	call_deferred("emit_signal", "add_game_record", _register_click(
 		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
 		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_TROOP_OCCUPY_ARCHITECTURE").format({
@@ -102,7 +106,7 @@ func _on_troop_occupy_architecture(troop, architecture):
 
 func _on_troop_destroyed(troop):
 	var faction = troop.get_belonged_faction()
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	call_deferred("emit_signal", "add_game_record", _register_click(
 		"focus(" + str(troop.map_position.x) + "," + str(troop.map_position.y) + ")",
 		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_TROOP_DESTROYED").format({
@@ -146,7 +150,7 @@ func _on_troop_received_attack(current, sender, critical):
 		
 
 func _on_faction_destroyed(faction):
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	call_deferred("emit_signal", "add_game_record", 
 		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_FACTION_DESTROYED").format({
 			"faction": _color_text(RED, faction.get_name())
@@ -209,7 +213,7 @@ func _on_PositionSelector_create_troop(current_troop, position):
 
 func person_died(person):
 	var faction = person.get_belonged_faction()
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	call_deferred("emit_signal", "add_game_record", 
 		_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_DIED").format({
 			"person": _color_text(YELLOW, person.get_name())
@@ -223,7 +227,7 @@ func person_available_by_brother(person, other_person):
 	if person.get_belonged_faction() != null:
 		if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 			var faction = person.get_belonged_faction()
-			var fcolor = faction.color if faction != null else Color.white
+			var fcolor = faction.color if faction != null else Color.WHITE
 			if !_scenario.is_observer():
 				call_deferred("emit_signal", "add_person_dialog", person,
 					_get_dialog("person_available_by_brother", person, {'other': other_person}).format({
@@ -242,7 +246,7 @@ func person_available_by_spouse(person, other_person):
 	if person.get_belonged_faction() != null:
 		if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 			var faction = person.get_belonged_faction()
-			var fcolor = faction.color if faction != null else Color.white
+			var fcolor = faction.color if faction != null else Color.WHITE
 			if !_scenario.is_observer():
 				call_deferred("emit_signal", "add_person_dialog", person,
 					_get_dialog("person_available_by_spouse", person, {'other': other_person}).format({
@@ -261,7 +265,7 @@ func person_available_by_children(person, other_person):
 	if person.get_belonged_faction() != null:
 		if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 			var faction = person.get_belonged_faction()
-			var fcolor = faction.color if faction != null else Color.white
+			var fcolor = faction.color if faction != null else Color.WHITE
 			if !_scenario.is_observer():
 				call_deferred("emit_signal", "add_person_dialog", person,
 					_get_dialog("person_available_by_children", person, {'other': other_person}).format({
@@ -280,7 +284,7 @@ func person_available_by_sibling(person, other_person):
 	if person.get_belonged_faction() != null:
 		if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 			var faction = person.get_belonged_faction()
-			var fcolor = faction.color if faction != null else Color.white
+			var fcolor = faction.color if faction != null else Color.WHITE
 			if !_scenario.is_observer():
 				call_deferred("emit_signal", "add_person_dialog", person,
 					_get_dialog("person_available_by_sibling", person, {'other': other_person}).format({
@@ -299,7 +303,7 @@ func person_available_by_sibling(person, other_person):
 func person_convince_success(person, other_person):
 	if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 		var faction = person.get_belonged_faction()
-		var fcolor = faction.color if faction != null else Color.white
+		var fcolor = faction.color if faction != null else Color.WHITE
 		if !_scenario.is_observer():
 			call_deferred("emit_signal", "add_person_dialog", other_person,
 				_get_dialog("person_convince_success_destination", other_person, {'other': person}).format({
@@ -320,7 +324,7 @@ func person_convince_success(person, other_person):
 func person_convince_failure(person, other_person):
 	if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 		var faction = person.get_belonged_faction()
-		var fcolor = faction.color if faction != null else Color.white
+		var fcolor = faction.color if faction != null else Color.WHITE
 		call_deferred("emit_signal", "add_game_record", 
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_CONVINCE_PERSON_FAILURE").format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -330,7 +334,7 @@ func person_convince_failure(person, other_person):
 func person_move_complete(person):
 	if person.get_belonged_faction() != null and person.get_belonged_faction().player_controlled:
 		var faction = person.get_belonged_faction()
-		var fcolor = faction.color if faction != null else Color.white
+		var fcolor = faction.color if faction != null else Color.WHITE
 		call_deferred("emit_signal", "add_game_record", 
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_MOVE_COMPLETE").format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -340,7 +344,7 @@ func person_move_complete(person):
 func assign_advisor(person):
 	if person.get_belonged_faction().player_controlled or _scenario.is_observer():
 		var faction = person.get_belonged_faction()
-		var fcolor = faction.color if faction != null else Color.white
+		var fcolor = faction.color if faction != null else Color.WHITE
 		call_deferred("emit_signal", "add_person_dialog", person,
 			_get_dialog("person_assigned_to_advisor", person, {}).format({
 				"person": _color_text(YELLOW, person.get_name()),
@@ -354,7 +358,7 @@ func assign_advisor(person):
 		}))
 	
 func remove_advisor(faction):
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	if faction.player_controlled:
 		call_deferred("emit_signal", "add_game_record", 
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_REMOVE_ADVISOR").format({
@@ -370,7 +374,7 @@ func _on_troop_person_captured(capturer, persons):
 		person_list_str += p.get_name() + tr("SEPARATOR")
 	person_list_str = person_list_str.substr(0, person_list_str.length() - 1)
 	
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	call_deferred("emit_signal", "add_person_bubble", capturer.get_leader(), capturer,
 		 _get_bubble("troop_captured_person", capturer.get_leader()).format({
 			"person": _color_text(YELLOW, person_list_str)
@@ -390,7 +394,7 @@ func _on_troop_person_released(troop, persons):
 		person_list_str += p.get_name() + tr("SEPARATOR")
 	person_list_str = person_list_str.substr(0, person_list_str.length() - 1)
 	
-	var fcolor = faction.color if faction != null else Color.white
+	var fcolor = faction.color if faction != null else Color.WHITE
 	if faction.player_controlled or _scenario.is_observer():
 		call_deferred("emit_signal", "add_game_record", 
 			_color_block("#" + fcolor.to_html()) + tr("GAME_RECORD_PERSON_CAPTURED").format({

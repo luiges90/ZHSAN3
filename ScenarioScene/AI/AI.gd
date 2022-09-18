@@ -90,7 +90,7 @@ func _estimated_arch_military_power(arch) -> float:
 	
 	var person_power = 0.0
 	var persons = arch.get_persons().duplicate()
-	persons.sort_custom(self, "__compare_by_person_military_power_desc")
+	persons.sort_custom(Callable(self,"__compare_by_person_military_power_desc"))
 	
 	var total_power = 0
 	var troop_left = arch.troop

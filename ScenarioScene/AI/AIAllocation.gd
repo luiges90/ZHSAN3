@@ -115,12 +115,12 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 			target_troop[i] = int(target_troop[i] * total_deficit_ratio)
 
 	# distribute resources from surplus to deficit by having deficit places ask nearby surplus greedily, most deficit first
-	valid_architectures.sort_custom(self, "__sort_by_fund_deficit")
+	valid_architectures.sort_custom(Callable(self,"__sort_by_fund_deficit"))
 	for a in valid_architectures:
 		if __surplus_fund[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
 			var from = valid_architectures.duplicate()
-			from.sort_custom(self, "__sort_by_transport_eta")
+			from.sort_custom(Callable(self,"__sort_by_transport_eta"))
 			for a2 in from:
 				if a2.fund > target_fund[a2]:
 					var to_transfer = int(min(a2.fund - target_fund[a2], max(1000, (target_fund[a] - a.fund) * 12)))
@@ -130,12 +130,12 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 				if __surplus_fund[a] >= 0:
 					break
 					
-	valid_architectures.sort_custom(self, "__sort_by_food_deficit")
+	valid_architectures.sort_custom(Callable(self,"__sort_by_food_deficit"))
 	for a in valid_architectures:
 		if __surplus_food[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
 			var from = valid_architectures.duplicate()
-			from.sort_custom(self, "__sort_by_transport_eta")
+			from.sort_custom(Callable(self,"__sort_by_transport_eta"))
 			for a2 in from:
 				if a2.food > target_food[a2]:
 					var to_transfer = int(min(a2.food - target_food[a2], max(100000, (target_food[a] - a.food) * 12)))
@@ -145,12 +145,12 @@ func _allocate_resources(section: Section, _ai_architecture: AIArchitecture):
 				if __surplus_food[a] >= 0:
 					break
 
-	valid_architectures.sort_custom(self, "__sort_by_troop_deficit")
+	valid_architectures.sort_custom(Callable(self,"__sort_by_troop_deficit"))
 	for a in valid_architectures:
 		if __surplus_troop[a] < 0:
 			___sort_by_transport_eta_current_architecture = a
 			var from = valid_architectures.duplicate()
-			from.sort_custom(self, "__sort_by_transport_eta")
+			from.sort_custom(Callable(self,"__sort_by_transport_eta"))
 			for a2 in from:
 				if a2.troop > target_troop[a2]:
 					var to_transfer = int(min(a2.troop - target_troop[a2], max(1000, (target_troop[a] - a.troop) * 12)))
@@ -185,9 +185,9 @@ func _allocate_person(section: Section):
 				var call_from_expected_state = __needed_person_state(call_from)
 				var persons = call_from.get_workable_persons()
 				if expected_state['frontline'] and not call_from_expected_state['frontline']:
-					persons.sort_custom(_ai, "__compare_by_person_troop_leader_ability_desc")
+					persons.sort_custom(Callable(_ai,"__compare_by_person_troop_leader_ability_desc"))
 				elif not expected_state['frontline'] and call_from_expected_state['frontline']:
-					persons.sort_custom(_ai, "__compare_by_person_troop_leader_ability_asc")
+					persons.sort_custom(Callable(_ai,"__compare_by_person_troop_leader_ability_asc"))
 				
 				while persons.size() > call_from_expected_state['count']:
 					var p = persons.pop_front()

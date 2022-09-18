@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Close.wav-5d1347f63e47fe2ed40897695c614a64.sample"
+type="AudioStreamWAV"
+uid="uid://cyhkep5hlk6dk"
+path="res://.godot/imported/Close.wav-5d1347f63e47fe2ed40897695c614a64.sample"
 
 [deps]
 
 source_file="res://UIMain/Sounds/Close.wav"
-dest_files=[ "res://.import/Close.wav-5d1347f63e47fe2ed40897695c614a64.sample" ]
+dest_files=["res://.godot/imported/Close.wav-5d1347f63e47fe2ed40897695c614a64.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -67,7 +67,7 @@ static func snstr(n: int) -> String:
 	return s
 	
 static func current_date_str() -> String:
-	var now = OS.get_datetime()
+	var now = Time.get_datetime_dict_from_system()
 	return str(now['year']) + '-' + str(now['month']) + '-' + str(now['day']) + " " + str(now['hour']) + ":" + str(now['minute'])
 	
 static func bstr(b: bool) -> String:
@@ -143,7 +143,7 @@ static func append_all(list: Array, other: Array):
 static func remove_object(arr: Array, item):
 	var index = arr.find(item)
 	if index >= 0:
-		arr.remove(index)
+		arr.remove_at(index)
 		
 static func dict_try_get(dict: Dictionary, key, default):
 	if dict.has(key):

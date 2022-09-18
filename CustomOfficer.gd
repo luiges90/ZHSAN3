@@ -82,7 +82,7 @@ func _on_PersonDetail_on_save(person):
 	var data = []
 	for p in custom_persons:
 		data.append(custom_persons[p].save_data())
-	file.store_line(to_json(data))
+	file.store_line(JSON.new().stringify(data))
 
 
 func _on_CustomOfficer_visibility_changed():

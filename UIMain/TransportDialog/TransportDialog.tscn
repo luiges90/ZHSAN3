@@ -1,18 +1,18 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UIMain/MainTheme.tres" type="Theme" id=1]
-[ext_resource path="res://Fonts/font_header.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Fonts/font_subheader.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/font_header.tres" type="FontFile" id=2]
+[ext_resource path="res://Fonts/font_subheader.tres" type="FontFile" id=3]
 [ext_resource path="res://UIMain/TransportDialog/TransportDialog.gd" type="Script" id=4]
-[ext_resource path="res://Fonts/font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://UIMain/TransportDialog/arrow.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/font.tres" type="FontFile" id=5]
+[ext_resource path="res://UIMain/TransportDialog/arrow.png" type="Texture2D" id=6]
 [ext_resource path="res://UIMain/Sounds/Click.wav" type="AudioStream" id=7]
 [ext_resource path="res://UIMain/Sounds/Close.wav" type="AudioStream" id=8]
 [ext_resource path="res://UIMain/Sounds/PersonMove.wav" type="AudioStream" id=9]
 
 [node name="TransportDialog" type="Panel"]
-margin_right = 600.0
-margin_bottom = 400.0
+offset_right = 600.0
+offset_bottom = 400.0
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -21,10 +21,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-margin_left = 16.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 18.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 18.0
 custom_fonts/font = ExtResource( 2 )
 text = "TRANSPORT"
 align = 1
@@ -35,17 +35,17 @@ __meta__ = {
 [node name="S" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 64.0
-margin_right = -16.0
-margin_bottom = -64.0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = -16.0
+offset_bottom = -64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="G" type="GridContainer" parent="S"]
-margin_right = 568.0
-margin_bottom = 127.0
+offset_right = 568.0
+offset_bottom = 127.0
 size_flags_horizontal = 3
 columns = 4
 __meta__ = {
@@ -53,15 +53,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="S/G"]
-margin_top = 6.0
-margin_right = 54.0
-margin_bottom = 24.0
+offset_top = 6.0
+offset_right = 54.0
+offset_bottom = 24.0
 
 [node name="FromArchitecture" type="Label" parent="S/G"]
-margin_left = 58.0
-margin_top = 2.0
-margin_right = 225.0
-margin_bottom = 29.0
+offset_left = 58.0
+offset_top = 2.0
+offset_right = 225.0
+offset_bottom = 29.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )
 text = "郴縣"
@@ -71,9 +71,9 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="S/G"]
-margin_left = 229.0
-margin_right = 396.0
-margin_bottom = 31.0
+offset_left = 229.0
+offset_right = 396.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 texture = ExtResource( 6 )
 stretch_mode = 4
@@ -82,9 +82,9 @@ __meta__ = {
 }
 
 [node name="ToArchitecture" type="Button" parent="S/G"]
-margin_left = 400.0
-margin_right = 567.0
-margin_bottom = 31.0
+offset_left = 400.0
+offset_right = 567.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 3 )
 __meta__ = {
@@ -92,9 +92,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="S/G"]
-margin_top = 40.0
-margin_right = 54.0
-margin_bottom = 58.0
+offset_top = 40.0
+offset_right = 54.0
+offset_bottom = 58.0
 custom_fonts/font = ExtResource( 5 )
 text = "FUND"
 align = 1
@@ -103,10 +103,10 @@ __meta__ = {
 }
 
 [node name="FromFund" type="Label" parent="S/G"]
-margin_left = 58.0
-margin_top = 40.0
-margin_right = 225.0
-margin_bottom = 58.0
+offset_left = 58.0
+offset_top = 40.0
+offset_right = 225.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
@@ -116,10 +116,10 @@ __meta__ = {
 }
 
 [node name="TransportFund" type="LineEdit" parent="S/G"]
-margin_left = 229.0
-margin_top = 35.0
-margin_right = 396.0
-margin_bottom = 63.0
+offset_left = 229.0
+offset_top = 35.0
+offset_right = 396.0
+offset_bottom = 63.0
 size_flags_horizontal = 3
 text = "0"
 __meta__ = {
@@ -127,10 +127,10 @@ __meta__ = {
 }
 
 [node name="ToFund" type="Label" parent="S/G"]
-margin_left = 400.0
-margin_top = 40.0
-margin_right = 567.0
-margin_bottom = 58.0
+offset_left = 400.0
+offset_top = 40.0
+offset_right = 567.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
@@ -140,9 +140,9 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="S/G"]
-margin_top = 72.0
-margin_right = 54.0
-margin_bottom = 90.0
+offset_top = 72.0
+offset_right = 54.0
+offset_bottom = 90.0
 custom_fonts/font = ExtResource( 5 )
 text = "FOOD"
 align = 1
@@ -151,10 +151,10 @@ __meta__ = {
 }
 
 [node name="FromFood" type="Label" parent="S/G"]
-margin_left = 58.0
-margin_top = 72.0
-margin_right = 225.0
-margin_bottom = 90.0
+offset_left = 58.0
+offset_top = 72.0
+offset_right = 225.0
+offset_bottom = 90.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
@@ -164,10 +164,10 @@ __meta__ = {
 }
 
 [node name="TransportFood" type="LineEdit" parent="S/G"]
-margin_left = 229.0
-margin_top = 67.0
-margin_right = 396.0
-margin_bottom = 95.0
+offset_left = 229.0
+offset_top = 67.0
+offset_right = 396.0
+offset_bottom = 95.0
 size_flags_horizontal = 3
 text = "0"
 __meta__ = {
@@ -175,10 +175,10 @@ __meta__ = {
 }
 
 [node name="ToFood" type="Label" parent="S/G"]
-margin_left = 400.0
-margin_top = 72.0
-margin_right = 567.0
-margin_bottom = 90.0
+offset_left = 400.0
+offset_top = 72.0
+offset_right = 567.0
+offset_bottom = 90.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
@@ -188,9 +188,9 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="S/G"]
-margin_top = 104.0
-margin_right = 54.0
-margin_bottom = 122.0
+offset_top = 104.0
+offset_right = 54.0
+offset_bottom = 122.0
 custom_fonts/font = ExtResource( 5 )
 text = "TROOP"
 align = 1
@@ -199,10 +199,10 @@ __meta__ = {
 }
 
 [node name="FromTroop" type="Label" parent="S/G"]
-margin_left = 58.0
-margin_top = 104.0
-margin_right = 225.0
-margin_bottom = 122.0
+offset_left = 58.0
+offset_top = 104.0
+offset_right = 225.0
+offset_bottom = 122.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
@@ -212,10 +212,10 @@ __meta__ = {
 }
 
 [node name="TransportTroop" type="LineEdit" parent="S/G"]
-margin_left = 229.0
-margin_top = 99.0
-margin_right = 396.0
-margin_bottom = 127.0
+offset_left = 229.0
+offset_top = 99.0
+offset_right = 396.0
+offset_bottom = 127.0
 size_flags_horizontal = 3
 text = "0"
 __meta__ = {
@@ -223,10 +223,10 @@ __meta__ = {
 }
 
 [node name="ToTroop" type="Label" parent="S/G"]
-margin_left = 400.0
-margin_top = 104.0
-margin_right = 567.0
-margin_bottom = 122.0
+offset_left = 400.0
+offset_top = 104.0
+offset_right = 567.0
+offset_bottom = 122.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 5 )
 text = "100,000 (-1,000)"
@@ -240,10 +240,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -137.0
-margin_top = -48.0
-margin_right = -16.0
-margin_bottom = -16.0
+offset_left = -137.0
+offset_top = -48.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 __meta__ = {
@@ -251,16 +251,16 @@ __meta__ = {
 }
 
 [node name="Cancel" type="Button" parent="ActionButtons"]
-margin_right = 121.0
-margin_bottom = 32.0
+offset_right = 121.0
+offset_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CANCEL"
 
 [node name="Confirm" type="Button" parent="ActionButtons"]
-margin_left = 125.0
-margin_right = 249.0
-margin_bottom = 32.0
+offset_left = 125.0
+offset_right = 249.0
+offset_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
 disabled = true

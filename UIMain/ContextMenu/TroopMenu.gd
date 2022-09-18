@@ -26,8 +26,8 @@ func show_menu(troop, mouse_x, mouse_y, right_clicked):
 	$H/V/Occupy.visible = is_player and not troop.order_made
 	$H/V/Occupy.disabled = !troop.can_occupy()
 	
-	margin_left = mouse_x
-	margin_top = mouse_y
+	offset_left = mouse_x
+	offset_top = mouse_y
 	
 	for n in $H/Stunt.get_children():
 		if n.name != 'Blank':
@@ -37,7 +37,7 @@ func show_menu(troop, mouse_x, mouse_y, right_clicked):
 	for s in troop.available_stunts():
 		var button = Button.new()
 		button.text = s.get_name() + "(" + str(s.combativity_cost) + ")"
-		button.connect("pressed", self, "_on_Stunt_item_pressed", [s])
+		button.connect("pressed",Callable(self,"_on_Stunt_item_pressed").bind(s))
 		$H/Stunt.add_child(button)
 	
 	show()
@@ -61,7 +61,7 @@ func _on_Attack_pressed():
 
 
 func _on_Stunt_pressed():
-	._open_submenu()
+	super._open_submenu()
 	$H/Stunt.show()
 	
 

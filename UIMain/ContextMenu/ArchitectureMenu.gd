@@ -41,8 +41,8 @@ func show_menu(arch, mouse_x, mouse_y, right_clicked):
 
 	showing_architecture = arch
 	
-	margin_left = mouse_x
-	margin_top = mouse_y
+	offset_left = mouse_x
+	offset_top = mouse_y
 	
 	$H/MainMenu/ToggleAutoTask.text = tr('TOGGLE_MANUAL_TASK') if arch.auto_task else tr('TOGGLE_AUTO_TASK')
 	
@@ -54,22 +54,22 @@ func show_menu(arch, mouse_x, mouse_y, right_clicked):
 	$H/MainMenu/Transport.disabled = not arch.can_transport_resources()
 	if $H/MainMenu/Transport.disabled:
 		if arch.surrounded():
-			$H/MainMenu/Transport.hint_tooltip = tr('TRANSPORT_DISABLED_HINT_SURROUNDED')
+			$H/MainMenu/Transport.tooltip_text = tr('TRANSPORT_DISABLED_HINT_SURROUNDED')
 		else:
-			$H/MainMenu/Transport.hint_tooltip = ""
+			$H/MainMenu/Transport.tooltip_text = ""
 	else:
-		$H/MainMenu/Transport.hint_tooltip = ""
+		$H/MainMenu/Transport.tooltip_text = ""
 		
 	$H/OfficersMenu/AutoConvince.text = tr('MANUAL_CONVINCE') if arch.auto_convince else tr('AUTO_CONVINCE')
 	
 	show()
 	
 func _open_submenu():
-	$H/MilitaryMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Military.rect_position.y + 4)
-	$H/OfficersMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Officers.rect_position.y + 4)
-	$H/FactionMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/Faction.rect_position.y + 4)
-	$H/FactionDetailsMenu/Blank.rect_min_size = Vector2(0, $H/MainMenu/FactionDetail.rect_position.y + 4)
-	._open_submenu()
+	$H/MilitaryMenu/Blank.minimum_size = Vector2(0, $H/MainMenu/Military.position.y + 4)
+	$H/OfficersMenu/Blank.minimum_size = Vector2(0, $H/MainMenu/Officers.position.y + 4)
+	$H/FactionMenu/Blank.minimum_size = Vector2(0, $H/MainMenu/Faction.position.y + 4)
+	$H/FactionDetailsMenu/Blank.minimum_size = Vector2(0, $H/MainMenu/FactionDetail.position.y + 4)
+	super._open_submenu()
 	
 func _hide_submenus():
 	$H/InternalMenu.hide()
@@ -248,7 +248,7 @@ func _on_UpdateAttachedArmy_pressed():
 
 
 func _on_AttachedArmy_pressed():
-	$H/AttachedArmyMenu/Blank.rect_min_size = Vector2(0, $H/MilitaryMenu/AttachedArmy.rect_position.y + 4)
+	$H/AttachedArmyMenu/Blank.minimum_size = Vector2(0, $H/MilitaryMenu/AttachedArmy.position.y + 4)
 	$H/AttachedArmyMenu.show()
 
 

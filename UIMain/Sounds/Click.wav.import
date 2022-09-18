@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Click.wav-bdb6c674bde580b34534d86d3ecaa822.sample"
+type="AudioStreamWAV"
+uid="uid://bbjjxp1gkjyca"
+path="res://.godot/imported/Click.wav-bdb6c674bde580b34534d86d3ecaa822.sample"
 
 [deps]
 
 source_file="res://UIMain/Sounds/Click.wav"
-dest_files=[ "res://.import/Click.wav-bdb6c674bde580b34534d86d3ecaa822.sample" ]
+dest_files=["res://.godot/imported/Click.wav-bdb6c674bde580b34534d86d3ecaa822.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

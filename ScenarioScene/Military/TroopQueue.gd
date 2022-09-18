@@ -10,7 +10,7 @@ func _init(in_queue: Array):
 	
 func execute():
 	queue.shuffle()
-	queue.sort_custom(Troop, "cmp_initiative")
+	queue.sort_custom(Callable(Troop,"cmp_initiative"))
 	for troop in queue:
 		troop.prepare_orders()
 	while queue.size() > 0:
@@ -21,13 +21,13 @@ func execute():
 			if step.type == Troop.ExecuteStepType.MOVED:
 				var result = troop.set_position(step.new_position)
 				if result:
-					yield(troop, "animation_step_finished")
+					await troop.animation_step_finished
 					
 			var enter = troop.execute_enter()
 					
 			var attack = troop.execute_attack()
 			if attack:
-				yield(troop, "animation_attack_finished")
+				await troop.animation_attack_finished
 			
 			if step.type != Troop.ExecuteStepType.STOPPED:
 				queue.push_back(troop)

@@ -20,7 +20,7 @@ func _unhandled_input(event):
 		$ArchitectureDetail.visible or \
 		$PersonDialog.visible
 	if event is InputEventMouseButton:
-		if (event.button_index == BUTTON_LEFT or event.button_index == BUTTON_RIGHT) and event.pressed:
+		if (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT) and event.pressed:
 			($ArchitectureSurvey as ArchitectureSurvey).hide()
 			($ArchitectureMenu as ArchitectureMenu).hide()
 			($TroopSurvey as TroopSurvey).hide()
